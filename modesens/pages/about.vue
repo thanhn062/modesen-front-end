@@ -6,11 +6,11 @@
         modesens
       </h1>
       <h2 class="subtitle">
-        ModeSens Frontend Nuxt Project
+        About Page
       </h2>
       <div class="links">
         <nuxt-link
-          to="/about/"
+          to="/"
           class="button--green">To Home</nuxt-link>
         <a
           href="https://github.com/nuxt/nuxt.js"
