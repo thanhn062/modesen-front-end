@@ -1,0 +1,68 @@
+{
+  "_from": "nuxt-trailingslash-module@^1.1.0",
+  "_id": "nuxt-trailingslash-module@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-cZHN+I3FPaQuJ0pDmXJ+E+7Sl2HTsLrh2vEV2ZW6HmRWRHDuooKIfxYgSrJfemZejiumyGjB8/5LA4MpVO5rfg==",
+  "_location": "/nuxt-trailingslash-module",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "nuxt-trailingslash-module@^1.1.0",
+    "name": "nuxt-trailingslash-module",
+    "escapedName": "nuxt-trailingslash-module",
+    "rawSpec": "^1.1.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.1.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/nuxt-trailingslash-module/-/nuxt-trailingslash-module-1.1.0.tgz",
+  "_shasum": "9038b82c2b426b07d9c1279bd1758829571beeee",
+  "_spec": "nuxt-trailingslash-module@^1.1.0",
+  "_where": "C:\\workspace\\modesens-frontend\\modesens",
+  "bugs": {
+    "url": "https://github.com/WilliamDASILVA/nuxt-trailingslash-module/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "William DA SILVA",
+      "email": "william.da.silva@outlook.com"
+    }
+  ],
+  "dependencies": {},
+  "deprecated": false,
+  "description": "NuxtJS module to remove trailing slashes from URLs",
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "nuxt-module-builder": "latest"
+  },
+  "eslintIgnore": [
+    "lib/templates/*.*"
+  ],
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/WilliamDASILVA/nuxt-trailingslash-module#readme",
+  "license": "MIT",
+  "main": "lib/module.js",
+  "name": "nuxt-trailingslash-module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamDASILVA/nuxt-trailingslash-module.git"
+  },
+  "scripts": {
+    "lint": "eslint lib test"
+  },
+  "version": "1.1.0"
+}
