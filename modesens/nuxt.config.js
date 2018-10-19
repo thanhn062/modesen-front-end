@@ -49,6 +49,46 @@ module.exports = {
         'GET',
       ],
     }],
+    ['./modules/i18n', {
+      countries: [
+        {
+          code: 'us',
+          defaultLocale: 'en'
+        },
+        {
+          code: 'cn',
+          defaultLocale: 'zh'
+        },
+      ],
+      locales: [
+        {
+          code: 'en',
+          file: 'en-US.js',
+          name: 'English'
+        },
+        {
+          code: 'zh',
+          file: 'zh-CN.js',
+          name: '中文'
+        }
+      ],
+      lazy: true,
+      langDir: 'lang/',
+      // defaultLocale: 'en',
+      vueI18n: {
+        fallbackLocale: 'en',
+        messages: {
+          en: {
+            welcome: 'Welcome'
+          },
+          fr: {
+            welcome: 'Bienvenue'
+          },
+          es: {
+            welcome: 'Bienvenido'
+          }
+        }
+      }
   ],
   /*
   ** Axios module configuration
