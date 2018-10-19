@@ -29,7 +29,14 @@ function localePathFactory (i18nPath, routerPath) {
       const regexp = new RegExp(router.options.base)
       href = href.replace(regexp, '/')
     }
-
+	
+	console.log(resolved)
+	
+	
+	if (!resolved.route.path.endsWith('/')){
+		href = href.replace(resolved.route.path, resolved.route.path+'/')
+	}
+	
     return href
   }
 }

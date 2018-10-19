@@ -74,21 +74,20 @@ module.exports = {
       ],
       lazy: true,
       langDir: 'lang/',
-      // defaultLocale: 'en',
+      defaultLocale: 'en',
+      strategy: 'prefix',
       vueI18n: {
         fallbackLocale: 'en',
         messages: {
           en: {
             welcome: 'Welcome'
           },
-          fr: {
-            welcome: 'Bienvenue'
-          },
-          es: {
-            welcome: 'Bienvenido'
+          zh: {
+            welcome: '欢迎'
           }
         }
       }
+    }]
   ],
   /*
   ** Axios module configuration
