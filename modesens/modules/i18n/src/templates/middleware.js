@@ -1,4 +1,4 @@
-import cookie from 'cookie'
+// import cookie from 'cookie'
 // import Cookies from 'js-cookie'
 import middleware from '../middleware'
 
@@ -201,7 +201,7 @@ middleware['i18n'] = async ({ app, req, res, route, store, redirect, isHMR }) =>
   const [routeCountry, routeLocale] = getCountryLocaleFromRoute(route, routesNameSeparator, countries, locales)
 
   const detectBrowserLanguage = <%= JSON.stringify(options.detectBrowserLanguage) %>
-  const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(req, cookie, detectBrowserLanguage)
+  const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(app, detectBrowserLanguage)
 
   console.log('203'+cookieCountry + cookieLocale)
   console.log('204'+routeCountry + routeLocale)
@@ -213,7 +213,7 @@ middleware['i18n'] = async ({ app, req, res, route, store, redirect, isHMR }) =>
   console.log('205'+country + locale + app.i18n.locale)
 
   if (cookieCountry != country || cookieLocale != locale) {
-    setCountryLocaleToCookie(res, cookie, detectBrowserLanguage, country, locale)
+    setCountryLocaleToCookie(app, detectBrowserLanguage, country, locale)
   }
 
 

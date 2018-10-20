@@ -1,7 +1,6 @@
 import Vue from 'vue'
+import cookieUniversal from 'cookie-universal'
 import VueI18n from 'vue-i18n'
-import cookie from 'cookie'
-
 Vue.use(VueI18n)
 
 export default async ({ app, route, store, req }) => {
@@ -16,6 +15,7 @@ export default async ({ app, route, store, req }) => {
   const getCountryCodes = <%= options.getCountryCodes %>
   const getLocaleCodes = <%= options.getLocaleCodes %>
   const getCountryLocaleFromCookie = <%= options.getCountryLocaleFromCookie %>
+  const setCountryLocaleToCookie = <%= options.setCountryLocaleToCookie %>
   const getCountryLocaleFromRoute = <%= options.getCountryLocaleFromRoute %>
   const getHostname = <%= options.getHostname %>
   const getForwarded = <%= options.getForwarded %>
@@ -52,6 +52,8 @@ export default async ({ app, route, store, req }) => {
   <% } %>
 
   // Set instance options
+
+  app.$cookies = new cookieUniversal(req, null, <%= JSON.stringify(options.vueI18n) %>)
   app.i18n = new VueI18n(<%= JSON.stringify(options.vueI18n) %>)
   app.i18n.countries = <%= JSON.stringify(options.countries) %>
   app.i18n.locales = <%= JSON.stringify(options.locales) %>
@@ -81,7 +83,8 @@ export default async ({ app, route, store, req }) => {
     const detectBrowserLanguage = <%= JSON.stringify(options.detectBrowserLanguage) %>
 
     // import cookie from 'cookie'
-    const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(req, cookie, detectBrowserLanguage)
+    console.log(app.$cookies)
+    const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(app, detectBrowserLanguage)
 
     console.log('85'+cookieCountry + cookieLocale)
     console.log('86'+routeCountry + routeLocale)
@@ -91,6 +94,10 @@ export default async ({ app, route, store, req }) => {
     country = routeCountry ? routeCountry : country
     locale = routeLocale ? routeLocale : locale
     console.log('87'+country + locale)
+
+    if (cookieCountry != country || cookieLocale != locale) {
+      setCountryLocaleToCookie(app, detectBrowserLanguage, country, locale)
+    }
   }
 
   app.i18n.country = country

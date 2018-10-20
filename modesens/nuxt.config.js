@@ -43,12 +43,15 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
-    // Enforce trailingslash
+    // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
+    'cookie-universal-nuxt',
+    // Doc: https://www.npmjs.com/package/nuxt-trailingslash-module
     ['./modules/trailingslash', {
       methods: [
         'GET',
       ],
     }],
+    // Doc: https://nuxt-community.github.io/nuxt-i18n/
     ['./modules/i18n', {
       countries: [
         {
