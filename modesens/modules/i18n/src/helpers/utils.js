@@ -97,10 +97,20 @@ exports.getLocaleFromRoute = (route = {}, routesNameSeparator = '', locales = []
   const codes = getLocaleCodes(locales)
   const localesPattern = `(${codes.join('|')})`
   // Extract from route name
-  if (route.name) {
-    const regexp = new RegExp(`${routesNameSeparator}${countriesPattern}${localesPattern}$`, 'i')
+  console.log(routesNameSeparator)
+  console.log(countriesPattern)
+  console.log(localesPattern)
+  console.log(route)
+  console.log(route.name)
+  console.log(route.path)
+  if (0 && route.name) {
+    const regexp = new RegExp(`${routesNameSeparator}${countriesPattern}${routesNameSeparator}${localesPattern}$`, 'i')
     const matches = route.name.match(regexp)
+    console.log(matches)
     if (matches && matches.length > 2) {
+      console.log(matches)
+      console.log('1' + matches[1])
+      console.log('2' + matches[2])
       return [matches[1], matches[2]]
     }
   } else if (route.path) {
@@ -108,6 +118,9 @@ exports.getLocaleFromRoute = (route = {}, routesNameSeparator = '', locales = []
     const regexp = new RegExp(`^/${countriesPattern}/${localesPattern}/`, 'i')
     const matches = route.path.match(regexp)
     if (matches && matches.length > 2) {
+      console.log(matches)
+      console.log('2.1' + matches[1])
+      console.log('2.2' + matches[2])
       return [matches[1], matches[2]]
     }
   }
