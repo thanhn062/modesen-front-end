@@ -25,6 +25,7 @@ exports.COMPONENT_OPTIONS_KEY = 'nuxtI18n'
 exports.DEFAULT_OPTIONS = {
   vueI18n: {},
   vueI18nLoader: false,
+  countries: [],
   locales: [],
   defaultLocale: null,
   routesNameSeparator: '___',

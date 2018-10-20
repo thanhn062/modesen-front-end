@@ -51,6 +51,7 @@ export default async ({ app, route, store, req }) => {
 
   // Set instance options
   app.i18n = new VueI18n(<%= JSON.stringify(options.vueI18n) %>)
+  app.i18n.countries = <%= JSON.stringify(options.countries) %>
   app.i18n.locales = <%= JSON.stringify(options.locales) %>
   app.i18n.defaultLocale = '<%= options.defaultLocale %>'
   app.i18n.differentDomains = <%= options.differentDomains %>
@@ -67,14 +68,18 @@ export default async ({ app, route, store, req }) => {
 
   let locale = app.i18n.defaultLocale || null
 
+  let country = null;
   if (app.i18n.differentDomains) {
     const domainLocale = getLocaleDomain()
     locale = domainLocale ? domainLocale : locale
   } else {
-    const routeLocale = getLocaleFromRoute(route, app.i18n.routesNameSeparator, app.i18n.locales, app.i18n.countries)
-    locale = routeLocale ? routeLocale : locale
+    const [routeCountry, routeLocale] = getLocaleFromRoute(route, app.i18n.routesNameSeparator, app.i18n.locales, app.i18n.countries)
+	console.log('2'+routeCountry + routeLocale)
+	country = routeCountry
+	locale = routeLocale ? routeLocale : locale
   }
 
+  app.i18n.country = country
   app.i18n.locale = locale
 
   // Lazy-load translations

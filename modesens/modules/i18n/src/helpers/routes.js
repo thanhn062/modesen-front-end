@@ -70,8 +70,19 @@ exports.makeRoutes = (baseRoutes, {
         }
 
         console.log(locale)
+
+
+        // if (locale === defaultLocale && strategy === STRATEGIES.PREFIX_AND_DEFAULT) {
+        //   routes.push({ ...localizedRoute, path })
+        // }
+        if (country == 'us' && locale == 'en') {
+
+          localizedRoute.name = name
+          routes.push({ ...localizedRoute, path })
+        }
+
         // Make localized route name
-        localizedRoute.name = name + routesNameSeparator + locale
+        localizedRoute.name = name + routesNameSeparator + country + routesNameSeparator + locale
 
         // Generate localized children routes if any
         if (route.children) {
@@ -96,13 +107,6 @@ exports.makeRoutes = (baseRoutes, {
           // Skip default locale if strategy is PREFIX_EXCEPT_DEFAULT
           !(locale === defaultLocale && strategy === STRATEGIES.PREFIX_EXCEPT_DEFAULT)
         )
-
-        // if (locale === defaultLocale && strategy === STRATEGIES.PREFIX_AND_DEFAULT) {
-        //   routes.push({ ...localizedRoute, path })
-        // }
-        if (country == 'us' && locale == 'en') {
-          routes.push({ ...localizedRoute, path })
-        }
 
         if (shouldAddPrefix) {
           path = `/${country}/${locale}${path}`

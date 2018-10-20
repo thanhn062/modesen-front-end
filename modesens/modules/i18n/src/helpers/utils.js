@@ -89,7 +89,7 @@ exports.getPageOptions = (route, pages, locales, pagesDir) => {
  * @param  {String} routesNameSeparator Separator used to add locale suffixes in routes names
  * @param  {Array}  locales             Locales list from nuxt config
  * @param  {Array}  countries           Countries list from nuxt config
- * @return {String}                     Locale code found if any
+ * @return {[string, string]}           Country and locale code found if any
  */
 exports.getLocaleFromRoute = (route = {}, routesNameSeparator = '', locales = [], countries = []) => {
   const country_codes = getCountryCodes(countries)
@@ -97,28 +97,21 @@ exports.getLocaleFromRoute = (route = {}, routesNameSeparator = '', locales = []
   const codes = getLocaleCodes(locales)
   const localesPattern = `(${codes.join('|')})`
   // Extract from route name
-  console.log(countriesPattern)
-  console.log(route.name)
-  console.log(route.path)
   if (route.name) {
-    const regexp = new RegExp(`${routesNameSeparator}${localesPattern}$`, 'i')
+    const regexp = new RegExp(`${routesNameSeparator}${countriesPattern}${localesPattern}$`, 'i')
     const matches = route.name.match(regexp)
-    if (matches && matches.length > 1) {
-      console.log(matches)
-      console.log('1' + matches[1])
-      return matches[1]
+    if (matches && matches.length > 2) {
+      return [matches[1], matches[2]]
     }
   } else if (route.path) {
     // Extract from path
     const regexp = new RegExp(`^/${countriesPattern}/${localesPattern}/`, 'i')
     const matches = route.path.match(regexp)
-    if (matches && matches.length > 1) {
-      console.log(matches)
-      console.log('2' + matches[2])
-      return matches[2]
+    if (matches && matches.length > 2) {
+      return [matches[1], matches[2]]
     }
   }
-  return null
+  return [null, null]
 }
 
 /**

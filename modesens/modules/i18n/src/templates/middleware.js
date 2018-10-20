@@ -100,9 +100,13 @@ middleware['i18n'] = async ({ app, req, res, route, store, redirect, isHMR }) =>
     return
   }
 
-  const routeLocale = getLocaleFromRoute(route, routesNameSeparator, locales, countries)
+  const [routeCountry, routeLocale] = getLocaleFromRoute(route, routesNameSeparator, locales, countries)
+  console.log('1'+routeCountry + routeLocale)
+  const country = routeCountry
   locale = routeLocale ? routeLocale : locale
-
+  console.log(locale)
+  
+  app.i18n.country = country
   // Abort if locale did not change
   if (locale === app.i18n.locale) {
     return

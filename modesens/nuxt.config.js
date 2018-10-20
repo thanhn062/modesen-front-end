@@ -53,11 +53,13 @@ module.exports = {
       countries: [
         {
           code: 'us',
-          defaultLocale: 'en'
+          defaultLocale: 'en',
+          iso: 'en-US'
         },
         {
           code: 'cn',
-          defaultLocale: 'zh'
+          defaultLocale: 'zh',
+          iso: 'zh-CN'
         },
       ],
       locales: [
