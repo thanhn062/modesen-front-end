@@ -1,5 +1,4 @@
 /* global app, req, vuex, store */
-
 const { COUNTRY_CODE_KEY, LOCALE_CODE_KEY, LOCALE_DOMAIN_KEY } = require('./constants')
 
 /**
@@ -82,35 +81,76 @@ exports.getPageOptions = (route, pages, locales, pagesDir) => {
 }
 
 /**
- * Extract locale code from given route:
+ * Extract country and locale code from cookie:
+ * - Try to extract country and locale from it.
+ * - Update country and locale in cookie if necessary
+ * @param  {Object} req                 Request
+ * @param  {Object} res                 Response
+ * @param  {Object} cookie              Cookie
+ * @param  {Object} detectBrowserLanguage detectBrowserLanguage
+ * @param  {string}  routeCountry       Country got from roote
+ * @param  {string}  routeLocale        Locale got from route
+ * @return {[string, string]}           Country and locale code found if any
+ */
+exports.getCountryLocaleFromCookie = (req, res, cookie, detectBrowserLanguage, routeCountry, routeLocale) => {
+  console.log(96 + req)
+  if (!req) {
+    return [null, null]
+  }
+
+  const { useCookie, cookieKey, countryKey, localeKey } = detectBrowserLanguage
+
+  const getCookieCountryLocale = () => {
+    const cookies = req.headers && req.headers.cookie ? cookie.parse(req.headers.cookie) : {}
+    console.log(147, [cookies[countryKey], cookies[localeKey]])
+    return [cookies[countryKey], cookies[localeKey]]
+  }
+
+  const setCookieCountryLocale = (country, locale) => {
+    const date = new Date()
+    const countryCookie = cookie.serialize(countryKey, country, {
+      expires: new Date(date.setDate(date.getDate() + 365)),
+      path: '/'
+    })
+    const localeCookie = cookie.serialize(localeKey, locale, {
+      expires: new Date(date.setDate(date.getDate() + 365)),
+      path: '/'
+    })
+    console.log(174, countryCookie, localeCookie)
+    res.setHeader('Set-Cookie', [countryCookie, localeCookie])
+  }
+
+  const [cookieCountry, cookieLocale] = getCookieCountryLocale()
+  console.log(183, cookieCountry, cookieLocale)
+  if (res && routeCountry && routeLocale && (routeCountry != cookieCountry || routeLocale != cookieLocale)) {
+    // Set cookie
+    setCookieCountryLocale(routeCountry, routeLocale)
+    // redirectToBrowserLocale()
+  }
+
+  return [cookieCountry, cookieLocale]
+}
+
+/**
+ * Extract country and locale code from given route:
  * - If route has a name, try to extract locale from it
  * - Otherwise, fall back to using the routes'path
  * @param  {Object} route               Route
  * @param  {String} routesNameSeparator Separator used to add locale suffixes in routes names
- * @param  {Array}  locales             Locales list from nuxt config
  * @param  {Array}  countries           Countries list from nuxt config
+ * @param  {Array}  locales             Locales list from nuxt config
  * @return {[string, string]}           Country and locale code found if any
  */
-exports.getLocaleFromRoute = (route = {}, routesNameSeparator = '', locales = [], countries = []) => {
+exports.getCountryLocaleFromRoute = (route = {}, routesNameSeparator = '', countries = [], locales = []) => {
   const country_codes = getCountryCodes(countries)
   const countriesPattern = `(${country_codes.join('|')})`
   const codes = getLocaleCodes(locales)
   const localesPattern = `(${codes.join('|')})`
   // Extract from route name
-  console.log(routesNameSeparator)
-  console.log(countriesPattern)
-  console.log(localesPattern)
-  console.log(route)
-  console.log(route.name)
-  console.log(route.path)
   if (0 && route.name) {
     const regexp = new RegExp(`${routesNameSeparator}${countriesPattern}${routesNameSeparator}${localesPattern}$`, 'i')
     const matches = route.name.match(regexp)
-    console.log(matches)
     if (matches && matches.length > 2) {
-      console.log(matches)
-      console.log('1' + matches[1])
-      console.log('2' + matches[2])
       return [matches[1], matches[2]]
     }
   } else if (route.path) {
@@ -118,9 +158,6 @@ exports.getLocaleFromRoute = (route = {}, routesNameSeparator = '', locales = []
     const regexp = new RegExp(`^/${countriesPattern}/${localesPattern}/`, 'i')
     const matches = route.path.match(regexp)
     if (matches && matches.length > 2) {
-      console.log(matches)
-      console.log('2.1' + matches[1])
-      console.log('2.2' + matches[2])
       return [matches[1], matches[2]]
     }
   }

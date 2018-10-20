@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
+import cookie from 'cookie'
 
 Vue.use(VueI18n)
 
@@ -14,7 +15,8 @@ export default async ({ app, route, store, req }) => {
   const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
   const getCountryCodes = <%= options.getCountryCodes %>
   const getLocaleCodes = <%= options.getLocaleCodes %>
-  const getLocaleFromRoute = <%= options.getLocaleFromRoute %>
+  const getCountryLocaleFromCookie = <%= options.getCountryLocaleFromCookie %>
+  const getCountryLocaleFromRoute = <%= options.getCountryLocaleFromRoute %>
   const getHostname = <%= options.getHostname %>
   const getForwarded = <%= options.getForwarded %>
   const getLocaleDomain = <%= options.getLocaleDomain %>
@@ -53,6 +55,7 @@ export default async ({ app, route, store, req }) => {
   app.i18n = new VueI18n(<%= JSON.stringify(options.vueI18n) %>)
   app.i18n.countries = <%= JSON.stringify(options.countries) %>
   app.i18n.locales = <%= JSON.stringify(options.locales) %>
+  app.i18n.defaultCountry = '<%= options.defaultCountry %>'
   app.i18n.defaultLocale = '<%= options.defaultLocale %>'
   app.i18n.differentDomains = <%= options.differentDomains %>
   app.i18n.forwardedHost = <%= options.forwardedHost %>
@@ -66,17 +69,28 @@ export default async ({ app, route, store, req }) => {
     })
   }
 
+  let country = app.i18n.defaultCountry || null
   let locale = app.i18n.defaultLocale || null
 
-  let country = null;
   if (app.i18n.differentDomains) {
     const domainLocale = getLocaleDomain()
     locale = domainLocale ? domainLocale : locale
   } else {
-    const [routeCountry, routeLocale] = getLocaleFromRoute(route, app.i18n.routesNameSeparator, app.i18n.locales, app.i18n.countries)
-	console.log('2'+routeCountry + routeLocale)
-	country = routeCountry
-	locale = routeLocale ? routeLocale : locale
+    const [routeCountry, routeLocale] = getCountryLocaleFromRoute(route, app.i18n.routesNameSeparator, app.i18n.countries, app.i18n.locales)
+
+    const detectBrowserLanguage = <%= JSON.stringify(options.detectBrowserLanguage) %>
+
+    // import cookie from 'cookie'
+    const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(req, null, cookie, detectBrowserLanguage, routeCountry, routeLocale)
+
+    console.log('85'+cookieCountry + cookieLocale)
+    console.log('86'+routeCountry + routeLocale)
+
+    country = cookieCountry ? cookieCountry : country
+    locale = cookieLocale ? cookieLocale : locale
+    country = routeCountry ? routeCountry : country
+    locale = routeLocale ? routeLocale : locale
+    console.log('87'+country + locale)
   }
 
   app.i18n.country = country

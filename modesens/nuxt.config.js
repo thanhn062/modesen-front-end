@@ -76,8 +76,19 @@ module.exports = {
       ],
       lazy: true,
       langDir: 'lang/',
+      defaultCountry: 'us',
       defaultLocale: 'en',
       strategy: 'prefix',
+      detectBrowserLanguage: {
+        // If enabled, a cookie is set once a user has been redirected to his
+        // preferred language to prevent subsequent redirections
+        // Set to false to redirect every time
+        useCookie: true,
+        // Cookie name
+        cookieKey: 'i18n_redirected',
+        countryKey: 'i18n_country',
+        localeKey: 'i18n_locale'
+      },
       vueI18n: {
         fallbackLocale: 'en',
         messages: {
