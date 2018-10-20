@@ -81,7 +81,7 @@ export default async ({ app, route, store, req }) => {
     const detectBrowserLanguage = <%= JSON.stringify(options.detectBrowserLanguage) %>
 
     // import cookie from 'cookie'
-    const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(req, null, cookie, detectBrowserLanguage, routeCountry, routeLocale)
+    const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(req, cookie, detectBrowserLanguage)
 
     console.log('85'+cookieCountry + cookieLocale)
     console.log('86'+routeCountry + routeLocale)

@@ -19,6 +19,7 @@ middleware['i18n'] = async ({ app, req, res, route, store, redirect, isHMR }) =>
   const getCountryCodes = <%= options.getCountryCodes %>
   const getLocaleCodes = <%= options.getLocaleCodes %>
   const getCountryLocaleFromCookie = <%= options.getCountryLocaleFromCookie %>
+  const setCountryLocaleToCookie = <%= options.setCountryLocaleToCookie %>
   const getCountryLocaleFromRoute = <%= options.getCountryLocaleFromRoute %>
   const routesNameSeparator = '<%= options.routesNameSeparator %>'
   const countries = getCountryCodes(<%= JSON.stringify(options.countries) %>)
@@ -200,7 +201,7 @@ middleware['i18n'] = async ({ app, req, res, route, store, redirect, isHMR }) =>
   const [routeCountry, routeLocale] = getCountryLocaleFromRoute(route, routesNameSeparator, countries, locales)
 
   const detectBrowserLanguage = <%= JSON.stringify(options.detectBrowserLanguage) %>
-  const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(req, res, cookie, detectBrowserLanguage, routeCountry, routeLocale)
+  const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(req, cookie, detectBrowserLanguage)
 
   console.log('203'+cookieCountry + cookieLocale)
   console.log('204'+routeCountry + routeLocale)
@@ -210,6 +211,10 @@ middleware['i18n'] = async ({ app, req, res, route, store, redirect, isHMR }) =>
   country = routeCountry ? routeCountry : country
   locale = routeLocale ? routeLocale : locale
   console.log('205'+country + locale + app.i18n.locale)
+
+  if (cookieCountry != country || cookieLocale != locale) {
+    setCountryLocaleToCookie(res, cookie, detectBrowserLanguage, country, locale)
+  }
 
 
   app.i18n.country = country

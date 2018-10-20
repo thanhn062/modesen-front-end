@@ -92,7 +92,7 @@ exports.getPageOptions = (route, pages, locales, pagesDir) => {
  * @param  {string}  routeLocale        Locale got from route
  * @return {[string, string]}           Country and locale code found if any
  */
-exports.getCountryLocaleFromCookie = (req, res, cookie, detectBrowserLanguage, routeCountry, routeLocale) => {
+exports.getCountryLocaleFromCookie = (req, cookie, detectBrowserLanguage) => {
   console.log(96 + req)
   if (!req) {
     return [null, null]
@@ -106,29 +106,40 @@ exports.getCountryLocaleFromCookie = (req, res, cookie, detectBrowserLanguage, r
     return [cookies[countryKey], cookies[localeKey]]
   }
 
-  const setCookieCountryLocale = (country, locale) => {
-    const date = new Date()
-    const countryCookie = cookie.serialize(countryKey, country, {
-      expires: new Date(date.setDate(date.getDate() + 365)),
-      path: '/'
-    })
-    const localeCookie = cookie.serialize(localeKey, locale, {
-      expires: new Date(date.setDate(date.getDate() + 365)),
-      path: '/'
-    })
-    console.log(174, countryCookie, localeCookie)
-    res.setHeader('Set-Cookie', [countryCookie, localeCookie])
-  }
-
   const [cookieCountry, cookieLocale] = getCookieCountryLocale()
   console.log(183, cookieCountry, cookieLocale)
-  if (res && routeCountry && routeLocale && (routeCountry != cookieCountry || routeLocale != cookieLocale)) {
-    // Set cookie
-    setCookieCountryLocale(routeCountry, routeLocale)
-    // redirectToBrowserLocale()
-  }
 
   return [cookieCountry, cookieLocale]
+}
+
+/**
+ * Update country and locale code in cookie:
+ * - Try to set country and locale from it.
+ * - Update country and locale in cookie if necessary
+ * @param  {Object} res                 Response
+ * @param  {Object} cookie              Cookie
+ * @param  {Object} detectBrowserLanguage detectBrowserLanguage
+ * @param  {string} country             Country to set
+ * @param  {string} locale              Locale to set
+ */
+exports.setCountryLocaleToCookie = (res, cookie, detectBrowserLanguage, country, locale) => {
+  if (!res) {
+    return
+  }
+
+  const { useCookie, cookieKey, countryKey, localeKey } = detectBrowserLanguage
+
+  const date = new Date()
+  const countryCookie = cookie.serialize(countryKey, country, {
+    expires: new Date(date.setDate(date.getDate() + 365)),
+    path: '/'
+  })
+  const localeCookie = cookie.serialize(localeKey, locale, {
+    expires: new Date(date.setDate(date.getDate() + 365)),
+    path: '/'
+  })
+  console.log(174, countryCookie, localeCookie)
+  res.setHeader('Set-Cookie', [countryCookie, localeCookie])
 }
 
 /**
