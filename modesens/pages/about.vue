@@ -6,9 +6,15 @@
         modesens
       </h1>
       <h2 class="subtitle">
-        About Page
+        {{ $t('aboutpage.subtitle') }}
       </h2>
       <div class="links">
+        <span>Current Country: {{ $i18n.country }}; Current Locale: {{ $i18n.locale }}</span><br>
+        <nuxt-link
+          v-for="locale in $i18n.locales"
+          v-if="locale.code !== $i18n.locale"
+          :key="locale.code"
+          :to="switchLocalePath($i18n.country, locale.code)">{{ locale.name }}</nuxt-link><br>
         <nuxt-link
           to="/"
           class="button--green">To Home</nuxt-link>
