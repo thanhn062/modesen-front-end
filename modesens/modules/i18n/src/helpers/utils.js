@@ -102,7 +102,7 @@ exports.getCountryLocaleFromCookie = (app, detectBrowserLanguage) => {
  * @param  {string} country             Country to set
  * @param  {string} locale              Locale to set
  * @param  {string} cookie              Cookies to serialize, only for plugin
- * @param  {string} Cookie              JS-Cookie, only for pugin
+ * @param  {string} Cookies              JS-Cookie, only for pugin
  */
 exports.setCountryLocaleToCookie = (app, detectBrowserLanguage, country, locale, cookie=null, Cookies=null) => {
   const { useCookie, cookieKey, countryKey, localeKey } = detectBrowserLanguage
