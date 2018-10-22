@@ -13,11 +13,13 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
+  env: {
+    /*baseUrl: process.env.BASE_URL || 'http://localhost:3000'*/
+    baseUrl:'https://modesens.com/'
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -26,14 +28,12 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  css: [],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-  ],
+  plugins: [],
 
   /*
   ** Nuxt.js modules
@@ -41,19 +41,22 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     // Enforce trailingslash
-    ['./modules/trailingslash', {
-      methods: [
-        'GET',
-      ],
-    }],
+    [
+      './modules/trailingslash',
+      {
+        methods: ['GET']
+      }
+    ]
   ],
   /*
   ** Axios module configuration
   */
   axios: {
+    proxy: true
     // See https://github.com/nuxt-community/axios-module#options
   },
 
