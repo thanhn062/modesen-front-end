@@ -54,11 +54,10 @@ exports.makeRoutes = (baseRoutes, {
     // Generate routes for component's supported locales
     for (let j = 0, length2 = countries.length; j < length2; j++) {
       const country = countries[j].code
-      console.log(country)
+
       for (let i = 0, length1 = componentOptions.locales.length; i < length1; i++) {
         const locale = componentOptions.locales[i]
-        console.log(locales)
-        console.log(locale)
+
         let { name, path } = route
         const localizedRoute = { ...route }
 
@@ -69,12 +68,6 @@ exports.makeRoutes = (baseRoutes, {
           continue
         }
 
-        console.log(locale)
-
-
-        // if (locale === defaultLocale && strategy === STRATEGIES.PREFIX_AND_DEFAULT) {
-        //   routes.push({ ...localizedRoute, path })
-        // }
         if (country == 'us' && locale == 'en') {
 
           localizedRoute.name = name
@@ -110,7 +103,6 @@ exports.makeRoutes = (baseRoutes, {
 
         if (shouldAddPrefix) {
           path = `/${country}/${locale}${path}`
-          console.log(path)
         }
 
         localizedRoute.path = path

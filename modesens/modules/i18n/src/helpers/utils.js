@@ -84,12 +84,8 @@ exports.getPageOptions = (route, pages, locales, pagesDir) => {
  * Extract country and locale code from cookie:
  * - Try to extract country and locale from it.
  * - Update country and locale in cookie if necessary
- * @param  {Object} req                 Request
- * @param  {Object} res                 Response
- * @param  {Object} cookie              Cookie
+ * @param  {Object} app                 App
  * @param  {Object} detectBrowserLanguage detectBrowserLanguage
- * @param  {string}  routeCountry       Country got from roote
- * @param  {string}  routeLocale        Locale got from route
  * @return {[string, string]}           Country and locale code found if any
  */
 exports.getCountryLocaleFromCookie = (app, detectBrowserLanguage) => {
@@ -101,34 +97,36 @@ exports.getCountryLocaleFromCookie = (app, detectBrowserLanguage) => {
  * Update country and locale code in cookie:
  * - Try to set country and locale from it.
  * - Update country and locale in cookie if necessary
- * @param  {Object} res                 Response
- * @param  {Object} cookie              Cookie
+ * @param  {Object} app                 App
  * @param  {Object} detectBrowserLanguage detectBrowserLanguage
  * @param  {string} country             Country to set
  * @param  {string} locale              Locale to set
  */
-exports.setCountryLocaleToCookie = (app, detectBrowserLanguage, country, locale) => {
+exports.setCountryLocaleToCookie = (app, detectBrowserLanguage, country, locale, cookie=null, Cookies=null) => {
   const { useCookie, cookieKey, countryKey, localeKey } = detectBrowserLanguage
 
   const date = new Date()
-  // const countryCookie = cookie.serialize(countryKey, country, {
-  //   expires: new Date(date.setDate(date.getDate() + 365)),
-  //   path: '/'
-  // })
-  // const localeCookie = cookie.serialize(localeKey, locale, {
-  //   expires: new Date(date.setDate(date.getDate() + 365)),
-  //   path: '/'
-  // })
-  // console.log(174, countryCookie, localeCookie)
-  // res.setHeader('Set-Cookie', [countryCookie, localeCookie])
-  app.$cookies.set(countryKey, country, {
-    expires: new Date(date.setDate(date.getDate() + 365)),
-    path: '/'
-  })
-  app.$cookies.set(localeKey, locale, {
-    expires: new Date(date.setDate(date.getDate() + 365)),
-    path: '/'
-  })
+
+  if (Cookies){
+    const countryCookie = cookie.serialize(countryKey, country, {
+      expires: new Date(date.setDate(date.getDate() + 365)),
+      path: '/'
+    })
+    const localeCookie = cookie.serialize(localeKey, locale, {
+      expires: new Date(date.setDate(date.getDate() + 365)),
+      path: '/'
+    })
+    Cookies.set([countryCookie, localeCookie])
+  } else {
+    app.$cookies.set(countryKey, country, {
+      expires: new Date(date.setDate(date.getDate() + 365)),
+      path: '/'
+    })
+    app.$cookies.set(localeKey, locale, {
+      expires: new Date(date.setDate(date.getDate() + 365)),
+      path: '/'
+    })
+  }
 }
 
 /**

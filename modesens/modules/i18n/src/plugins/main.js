@@ -1,7 +1,10 @@
 import Vue from 'vue'
-import cookieUniversal from 'cookie-universal'
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
+
+import cookie from 'cookie'
+import Cookies from 'js-cookie'
+import cookieUniversal from 'cookie-universal'
 
 export default async ({ app, route, store, req }) => {
   // Options
@@ -82,21 +85,15 @@ export default async ({ app, route, store, req }) => {
 
     const detectBrowserLanguage = <%= JSON.stringify(options.detectBrowserLanguage) %>
 
-    // import cookie from 'cookie'
-    console.log(app.$cookies)
     const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(app, detectBrowserLanguage)
-
-    console.log('85'+cookieCountry + cookieLocale)
-    console.log('86'+routeCountry + routeLocale)
 
     country = cookieCountry ? cookieCountry : country
     locale = cookieLocale ? cookieLocale : locale
     country = routeCountry ? routeCountry : country
     locale = routeLocale ? routeLocale : locale
-    console.log('87'+country + locale)
 
     if (cookieCountry != country || cookieLocale != locale) {
-      setCountryLocaleToCookie(app, detectBrowserLanguage, country, locale)
+      setCountryLocaleToCookie(app, detectBrowserLanguage, country, locale, cookie, Cookies)
     }
   }
 

@@ -44,14 +44,14 @@ function switchLocalePathFactory (i18nPath) {
     const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
     const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
     const name = this.getRouteBaseName() + '___' + country
-	//console.log(name)
+	
     if (!name) {
       return ''
     }
     const baseRoute = Object.assign({}, this.$route , { name })
-	//console.log(baseRoute)
+	
     let path = this.localePath(baseRoute, locale)
-    //console.log(path)
+	
     // Handle different domains
     if (this[i18nPath].differentDomains) {
       const lang = this[i18nPath].locales.find(l => l[LOCALE_CODE_KEY] === locale)
@@ -68,7 +68,7 @@ function switchLocalePathFactory (i18nPath) {
         console.warn('[<%= options.MODULE_NAME %>] Could not find domain name for locale ' + locale)
       }
     }
-    //console.log(path)
+	
     return path
   }
 }
