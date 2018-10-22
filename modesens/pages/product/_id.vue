@@ -87,23 +87,19 @@ export default {
     }
   },
   head: {},
-  async asyncData({ route }) {
+  async asyncData({ route, store }) {
     let {
       data: { availabilities, product }
     } = await axios.get(
-      `/product/${
-        route.params.id
-      }/getinfo/?secretkey=gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8`
+      `/product/${route.params.id}/getinfo/?secretkey=${store.state.secretKey}`
     )
-    // let {data} = await api.getProductInfo({});
-    // console.log(product)
     return { availabilities, product }
   },
   created() {
     this.getSub()
     this.getMd()
     this.getMore()
-    // this.getRecentMore();
+    this.getRecentMore()
   },
   methods: {
     async getSub() {
@@ -129,9 +125,9 @@ export default {
       data.merchants = ''
       data.onsale = false
       data.sizes = 'IT'
-      // data.minprice = value[0];
-      // data.maxprice = value[1];
       data.timestamp = new Date().getTime() + ''
+      data.pid = this.$route.params.id
+      console.log(data.timestamp)
       let { similars } = await api.getmore(data)
       this.similars = similars
     },
@@ -140,6 +136,7 @@ export default {
       data.offset = 0
       data.amount = ''
       data.timestamp = new Date().getTime() + ''
+      data.pid = this.$route.params.id
       let { recent } = await api.getrecentmore(data)
       this.recent = recent
     }

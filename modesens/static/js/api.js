@@ -45,18 +45,6 @@ export function fetch(url, params) {
   })
 }
 export default {
-  /**
-   * 获取广告信息
-   */
-  getBanner(params) {
-    return fetch('/bannerimgs/', params)
-  },
-  getProductInfo(params) {
-    return fetch(
-      '/product/7582248/getinfo/?secretkey=gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8',
-      params
-    )
-  },
   getSub(params) {
     return fetch('/product/v2/getsub/', params)
   },
@@ -64,9 +52,9 @@ export default {
     return fetch('/product/getmd/', params)
   },
   getmore(params) {
-    return fetch('/product/7582248/getsimilar/', params)
+    return fetch(`/product/${params.pid}/getsimilar/`, params)
   },
   getrecentmore(params) {
-    return fetch('/product/7582248/getrecent/', params)
+    return fetch(`/product/${params.pid}/getrecent/`, params)
   }
 }

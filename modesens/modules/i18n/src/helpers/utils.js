@@ -1,5 +1,9 @@
 /* global app, req, vuex, store */
-const { COUNTRY_CODE_KEY, LOCALE_CODE_KEY, LOCALE_DOMAIN_KEY } = require('./constants')
+const {
+  COUNTRY_CODE_KEY,
+  LOCALE_CODE_KEY,
+  LOCALE_DOMAIN_KEY
+} = require('./constants')
 
 /**
  * Get an array of country codes from a list of countries
@@ -57,7 +61,9 @@ exports.getPageOptions = (route, pages, locales, pagesDir) => {
     paths: {}
   }
   const pattern = new RegExp(`${pagesDir}/`, 'i')
-  const chunkName = route.chunkName ? route.chunkName.replace(pattern, '') : route.name
+  const chunkName = route.chunkName
+    ? route.chunkName.replace(pattern, '')
+    : route.name
   const pageOptions = pages[chunkName]
   // Routing disabled
   if (pageOptions === false) {
@@ -68,7 +74,7 @@ exports.getPageOptions = (route, pages, locales, pagesDir) => {
     return options
   }
   // Construct options object
-  Object.keys(pageOptions).forEach((locale) => {
+  Object.keys(pageOptions).forEach(locale => {
     // Remove disabled locales from page options
     if (pageOptions[locale] === false) {
       options.locales = options.locales.filter(l => l !== locale)
@@ -104,12 +110,19 @@ exports.getCountryLocaleFromCookie = (app, detectBrowserLanguage) => {
  * @param  {string} cookie              Cookies to serialize, only for plugin
  * @param  {string} Cookies              JS-Cookie, only for pugin
  */
-exports.setCountryLocaleToCookie = (app, detectBrowserLanguage, country, locale, cookie=null, Cookies=null) => {
+exports.setCountryLocaleToCookie = (
+  app,
+  detectBrowserLanguage,
+  country,
+  locale,
+  cookie = null,
+  Cookies = null
+) => {
   const { useCookie, cookieKey, countryKey, localeKey } = detectBrowserLanguage
 
   const date = new Date()
 
-  if (Cookies){
+  if (Cookies) {
     const countryCookie = cookie.serialize(countryKey, country, {
       expires: new Date(date.setDate(date.getDate() + 365)),
       path: '/'
@@ -141,14 +154,22 @@ exports.setCountryLocaleToCookie = (app, detectBrowserLanguage, country, locale,
  * @param  {Array}  locales             Locales list from nuxt config
  * @return {[string, string]}           Country and locale code found if any
  */
-exports.getCountryLocaleFromRoute = (route = {}, routesNameSeparator = '', countries = [], locales = []) => {
+exports.getCountryLocaleFromRoute = (
+  route = {},
+  routesNameSeparator = '',
+  countries = [],
+  locales = []
+) => {
   const country_codes = getCountryCodes(countries)
   const countriesPattern = `(${country_codes.join('|')})`
   const codes = getLocaleCodes(locales)
   const localesPattern = `(${codes.join('|')})`
   // Extract from route name
   if (0 && route.name) {
-    const regexp = new RegExp(`${routesNameSeparator}${countriesPattern}${routesNameSeparator}${localesPattern}$`, 'i')
+    const regexp = new RegExp(
+      `${routesNameSeparator}${countriesPattern}${routesNameSeparator}${localesPattern}$`,
+      'i'
+    )
     const matches = route.name.match(regexp)
     if (matches && matches.length > 2) {
       return [matches[1], matches[2]]
@@ -168,9 +189,12 @@ exports.getCountryLocaleFromRoute = (route = {}, routesNameSeparator = '', count
  * Get x-forwarded-host
  * @return {String} x-forwarded-host
  */
-const getForwarded = () => (
-  process.browser ? window.location.href.split('/')[2] : (req.headers['x-forwarded-host'] ? req.headers['x-forwarded-host'] : req.headers.host)
-)
+const getForwarded = () =>
+  process.browser
+    ? window.location.href.split('/')[2]
+    : req.headers['x-forwarded-host']
+      ? req.headers['x-forwarded-host']
+      : req.headers.host
 
 exports.getForwarded = getForwarded
 
@@ -178,9 +202,8 @@ exports.getForwarded = getForwarded
  * Get hostname
  * @return {String} Hostname
  */
-const getHostname = () => (
+const getHostname = () =>
   process.browser ? window.location.href.split('/')[2] : req.headers.host // eslint-disable-line
-)
 
 exports.getHostname = getHostname
 
