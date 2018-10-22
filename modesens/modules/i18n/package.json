@@ -1,0 +1,100 @@
+{
+  "_from": "nuxt-i18n",
+  "_id": "nuxt-i18n@5.4.3",
+  "_inBundle": false,
+  "_integrity": "sha512-diAUtw6kmgNi5iz8UvIj93d2dC3bMFsqiTiJrVOGow1Sgyiv/AuUxF6ArQHG2l09xJv6Mc0dBYi9UuO/Kd2xdg==",
+  "_location": "/nuxt-i18n",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "nuxt-i18n",
+    "name": "nuxt-i18n",
+    "escapedName": "nuxt-i18n",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/nuxt-i18n/-/nuxt-i18n-5.4.3.tgz",
+  "_shasum": "ff0b299036981e4123acbd804cc68ee3684c4b09",
+  "_spec": "nuxt-i18n",
+  "_where": "C:\\workspace\\modesens-frontend",
+  "bugs": {
+    "url": "https://nuxtjs.cmty.io/nuxt-community/nuxt-i18n/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Paul Gascou-Vaillancourt",
+      "url": "@paulgv"
+    }
+  ],
+  "dependencies": {
+    "@kazupon/vue-i18n-loader": "^0.3.0",
+    "acorn": "^6.0.2",
+    "acorn-walk": "^6.1.0",
+    "cookie": "^0.3.1",
+    "js-cookie": "^2.2.0",
+    "vue-i18n": "^8.1.0",
+    "vue-i18n-extensions": "^0.2.0"
+  },
+  "deprecated": false,
+  "description": "i18n for Nuxt",
+  "devDependencies": {
+    "codecov": "^3.1.0",
+    "eslint": "^5.6.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.24.1",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^4.3.0",
+    "jest": "^23.6.0",
+    "jsdom": "^12.2.0",
+    "nuxt": "^2.1.0",
+    "standard-version": "^4.4.0",
+    "vuepress": "^0.14.4"
+  },
+  "eslintIgnore": [
+    "src/templates/*.*",
+    "src/plugins/*.*"
+  ],
+  "files": [
+    "src",
+    "types/index.d.ts"
+  ],
+  "homepage": "https://nuxt-community.github.io/nuxt-i18n/",
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src",
+      "test"
+    ]
+  },
+  "license": "MIT",
+  "main": "src/index.js",
+  "name": "nuxt-i18n",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxt-community/nuxt-i18n.git"
+  },
+  "scripts": {
+    "docs:build": "vuepress build docs",
+    "docs:dev": "vuepress dev docs",
+    "lint": "eslint src test",
+    "release": "standard-version && git push --follow-tags && npm publish",
+    "test": "jest"
+  },
+  "types": "types/index.d.ts",
+  "version": "5.4.3"
+}
