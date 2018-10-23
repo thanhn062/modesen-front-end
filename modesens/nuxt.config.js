@@ -41,6 +41,7 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
@@ -113,10 +114,22 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    proxy: true
+    proxy: true,
     // See https://github.com/nuxt-community/axios-module#options
+
   },
 
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/o/token', method: 'post', propertyName: 'access_token' },
+          // user: { url: 'me', method: 'get', propertyName: 'data' },
+          logout: false
+        }
+      }
+    }
+  },
   /*
   ** Build configuration
   */
