@@ -51,6 +51,9 @@ module.exports = {
         'GET',
       ],
     }],
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-37288238-6'
+    }],
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
     ['./modules/i18n', {
       countries: [
