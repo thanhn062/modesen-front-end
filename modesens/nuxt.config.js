@@ -113,6 +113,7 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
+    proxy: true
     // See https://github.com/nuxt-community/axios-module#options
   },
 

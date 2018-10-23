@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import state from './state'
-// import * as mutations from './mutations'
-// import * as actions from './actions'
+import * as actions from '~/store/action.js'
 
 Vue.use(Vuex)
 
@@ -10,7 +8,7 @@ const store = () =>
   new Vuex.Store({
     state: {},
     mutations: {},
-    actions: {}
+    actions
   })
 
 export default store

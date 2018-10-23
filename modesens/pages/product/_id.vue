@@ -74,7 +74,7 @@
 </template>
 <script>
 import axios from '~/plugins/axios'
-import api from '~/static/api/product.js'
+import product from '~/static/api/product.js'
 
 export default {
   components: {},
@@ -87,15 +87,12 @@ export default {
     }
   },
   head: {},
-  async asyncData({ route }) {
+  async asyncData({ route, store }) {
     let {
       data: { availabilities, product }
     } = await axios.get(
       `/product/${route.params.id}/getinfo/?secretkey=${process.env.secretKey}`
     )
-    // let {
-    //   data: { availabilities, product }
-    // } = await api.getinfo({ pid: route.params.id })
     return { availabilities, product }
   },
   created() {
@@ -103,14 +100,15 @@ export default {
     this.getMd()
     this.getMore()
     this.getRecentMore()
-    // this.getSingleUserMedia()
   },
   methods: {
     async getSub() {
       var params = {}
       params.gender = 'f' //window.modeSens.Gender.get();
       params.category = 'c'
-      let { keys } = await api.getSub(params)
+      params.hasSecretKey = true
+      let { keys } = await this.$store.dispatch('sub', params)
+      // let { keys } = await product.getSub(params)
       this.keysStr = keys
     },
     async getMd() {
@@ -118,7 +116,7 @@ export default {
       params.gender = 'f'
       params.category = 'c'
       params.subcategories = ''
-      let { merchants } = await api.getmd(params)
+      let { merchants } = await product.getmd(params)
       this.merchants = merchants
     },
     async getMore() {
@@ -129,28 +127,19 @@ export default {
       data.merchants = ''
       data.onsale = false
       data.sizes = 'IT'
-      data.timestamp = new Date().getTime() + ''
       data.pid = this.$route.params.id
-      let { similars } = await api.getmore(data)
+      let timestemp = new Date().getTime() + ''
+      let { similars } = await product.getmore(data, timestemp)
       this.similars = similars
     },
     async getRecentMore() {
       let data = new Object()
       data.offset = 0
       data.amount = ''
-      data.timestamp = new Date().getTime() + ''
       data.pid = this.$route.params.id
-      let { recent } = await api.getrecentmore(data)
+      let { recent } = await product.getrecentmore(data)
       this.recent = recent
     }
-    // async getSingleUserMedia() {
-    //   let {
-    //     data: { umedia }
-    //   } = await axios.post('/moment/v2/getsingleusermedia/', {
-    //     umid: '448132'
-    //   })
-    //   console.log(umedia)
-    // }
   }
 }
 </script>
