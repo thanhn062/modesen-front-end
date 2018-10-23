@@ -15,18 +15,18 @@
           gender = {{ product.gender }}
           <span>{{ product.description }}</span><br>
           <span>{{ product.designer }}</span><br>
+          <h3>images信息</h3>
+          <ul>
+            <li 
+              v-for="(img,index) in product.images" 
+              :key="index">
+              <img 
+                :src="img.link" 
+                :alt="product.title" 
+                merchant="img.availability__merchant">
+            </li>
+          </ul>
         </div>
-        <h3>images信息</h3>
-        <ul>
-          <li 
-            v-for="(img,index) in product.images" 
-            :key="index">
-            <img 
-              :src="img.link" 
-              :alt="product.title" 
-              merchant="img.availability__merchant">
-          </li>
-        </ul>
         <h3>availabilities信息</h3>
         <ul>
           <li 
@@ -74,7 +74,7 @@
 </template>
 <script>
 import axios from '~/plugins/axios'
-import api from '~/static/js/api.js'
+import api from '~/static/api/product.js'
 
 export default {
   components: {},
@@ -87,12 +87,15 @@ export default {
     }
   },
   head: {},
-  async asyncData({ route, store }) {
+  async asyncData({ route }) {
     let {
       data: { availabilities, product }
     } = await axios.get(
-      `/product/${route.params.id}/getinfo/?secretkey=${store.state.secretKey}`
+      `/product/${route.params.id}/getinfo/?secretkey=${process.env.secretKey}`
     )
+    // let {
+    //   data: { availabilities, product }
+    // } = await api.getinfo({ pid: route.params.id })
     return { availabilities, product }
   },
   created() {
@@ -100,6 +103,7 @@ export default {
     this.getMd()
     this.getMore()
     this.getRecentMore()
+    // this.getSingleUserMedia()
   },
   methods: {
     async getSub() {
@@ -127,7 +131,6 @@ export default {
       data.sizes = 'IT'
       data.timestamp = new Date().getTime() + ''
       data.pid = this.$route.params.id
-      console.log(data.timestamp)
       let { similars } = await api.getmore(data)
       this.similars = similars
     },
@@ -140,6 +143,14 @@ export default {
       let { recent } = await api.getrecentmore(data)
       this.recent = recent
     }
+    // async getSingleUserMedia() {
+    //   let {
+    //     data: { umedia }
+    //   } = await axios.post('/moment/v2/getsingleusermedia/', {
+    //     umid: '448132'
+    //   })
+    //   console.log(umedia)
+    // }
   }
 }
 </script>

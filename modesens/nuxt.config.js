@@ -17,8 +17,8 @@ module.exports = {
   },
 
   env: {
-    /*baseUrl: process.env.BASE_URL || 'http://localhost:3000'*/
-    baseUrl: 'https://modesens.com/api/1.0/'
+    secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8',
+    baseUrl: 'https://modesens.com/'
   },
   /*
   ** Customize the progress-bar color

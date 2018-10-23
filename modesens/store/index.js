@@ -6,13 +6,9 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-// require('whatwg-fetch')
-
 const store = () =>
   new Vuex.Store({
-    state: {
-      secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
-    },
+    state: {},
     mutations: {},
     actions: {}
   })
