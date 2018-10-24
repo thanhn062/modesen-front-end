@@ -74,7 +74,7 @@
 </template>
 <script>
 import axios from '~/plugins/axios'
-import product from '~/static/api/product.js'
+import product from '~/static/api/1.0/product.js'
 
 export default {
   components: {},
@@ -87,7 +87,7 @@ export default {
     }
   },
   head: {},
-  async asyncData({ route, store }) {
+  async asyncData({ route }) {
     let {
       data: { availabilities, product }
     } = await axios.get(
@@ -99,16 +99,16 @@ export default {
     this.getSub()
     this.getMd()
     this.getMore()
-    this.getRecentMore()
   },
   methods: {
     async getSub() {
       var params = {}
-      params.gender = 'f' //window.modeSens.Gender.get();
+      params.gender = 'f'
       params.category = 'c'
       params.hasSecretKey = true
-      let { keys } = await this.$store.dispatch('sub', params)
-      // let { keys } = await product.getSub(params)
+      let {
+        data: { keys }
+      } = await product.getSub(params)
       this.keysStr = keys
     },
     async getMd() {
@@ -116,7 +116,9 @@ export default {
       params.gender = 'f'
       params.category = 'c'
       params.subcategories = ''
-      let { merchants } = await product.getmd(params)
+      let {
+        data: { merchants }
+      } = await product.getmd(params)
       this.merchants = merchants
     },
     async getMore() {
@@ -129,7 +131,9 @@ export default {
       data.sizes = 'IT'
       data.pid = this.$route.params.id
       let timestemp = new Date().getTime() + ''
-      let { similars } = await product.getmore(data, timestemp)
+      let {
+        data: { similars }
+      } = await product.getmore(data, timestemp)
       this.similars = similars
     },
     async getRecentMore() {
@@ -137,7 +141,9 @@ export default {
       data.offset = 0
       data.amount = ''
       data.pid = this.$route.params.id
-      let { recent } = await product.getrecentmore(data)
+      let {
+        data: { recent }
+      } = await product.getrecentmore(data)
       this.recent = recent
     }
   }

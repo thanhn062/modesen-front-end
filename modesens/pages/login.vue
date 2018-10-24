@@ -50,7 +50,7 @@
 
 <script>
 import qs from 'qs'
-import account from '~/static/api/account.js'
+import account from '~/static/api/1.0/account.js'
 
 export default {
   data() {
@@ -73,8 +73,6 @@ export default {
         let {
           data: { access_token }
         } = await account.login(data)
-        console.log(access_token)
-        redirect('/')
       } catch (e) {
         this.error = e.message
       }
