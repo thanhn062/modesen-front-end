@@ -4,10 +4,6 @@ import qs from 'qs'
 const req = axios.create({
   //定义请求根目录
   baseURL: process.env.baseUrl + 'api/1.0/',
-  //与请求一起发送的 URL 参数
-  // params: {
-  //   secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
-  // },
   // 请求超时
   timeout: 5000
 })
@@ -48,7 +44,10 @@ export default {
       data: data
     })
   },
-  get(url, data) {
+  get(url, data, secretKey) {
+    if (secretKey == 1) {
+      url += `?secretkey=${process.env.secretKey}`
+    }
     return req({
       method: 'get',
       url,

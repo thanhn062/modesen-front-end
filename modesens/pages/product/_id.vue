@@ -90,9 +90,7 @@ export default {
   async asyncData({ route }) {
     let {
       data: { availabilities, product }
-    } = await axios.get(
-      `/product/${route.params.id}/getinfo/?secretkey=${process.env.secretKey}`
-    )
+    } = await axios.get(`/product/${route.params.id}/getinfo/`, {}, 1)
     return { availabilities, product }
   },
   created() {
