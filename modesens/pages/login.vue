@@ -63,9 +63,8 @@ export default {
   methods: {
     async login() {
       let data = new Object()
-      data.client_id = 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF'
-      data.client_secret =
-        'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
+      data.client_id = this.$auth.options.client_id
+      data.client_secret = this.$auth.options.client_secret
       data.grant_type = 'password'
       data.username = this.email
       data.password = this.password

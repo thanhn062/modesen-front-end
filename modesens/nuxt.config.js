@@ -117,7 +117,6 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    proxy: true
     // See https://github.com/nuxt-community/axios-module#options
   },
 
@@ -129,15 +128,13 @@ module.exports = {
             propertyName: 'access_token'
           },
           // user: { url: 'me', method: 'get', propertyName: 'data' },
-          logout: false,
-          auth0: {
-            client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
-            client_secret:
-              'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
-          }
+          logout: false
         }
       }
-    }
+    },
+    client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
+    client_secret:
+      'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
   },
 
   /*

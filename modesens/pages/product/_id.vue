@@ -90,7 +90,7 @@ export default {
   async asyncData({ route }) {
     let {
       data: { availabilities, product }
-    } = await axios.get(`/product/${route.params.id}/getinfo/`, {}, 1)
+    } = await axios.get(`/product/${route.params.id}/getinfo/`, 1)
     return { availabilities, product }
   },
   created() {
@@ -103,7 +103,6 @@ export default {
       var params = {}
       params.gender = 'f'
       params.category = 'c'
-      params.hasSecretKey = true
       let {
         data: { keys }
       } = await product.getSub(params)

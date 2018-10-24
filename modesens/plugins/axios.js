@@ -45,8 +45,11 @@ export default {
     })
   },
   get(url, data, secretKey) {
-    if (secretKey == 1) {
+    if (data == 1 || secretKey == 1) {
       url += `?secretkey=${process.env.secretKey}`
+      if (data == 1) {
+        data = null
+      }
     }
     return req({
       method: 'get',
