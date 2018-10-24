@@ -8,7 +8,6 @@ const req = axios.create({
   // params: {
   //   secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
   // },
-
   // 请求超时
   timeout: 5000
 })

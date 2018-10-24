@@ -17,8 +17,11 @@ module.exports = {
   },
 
   env: {
-    secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8',
-    baseUrl: 'https://modesens.com/'
+    baseUrl: process.env.BASE_URL || 'https://modesens.com/',
+    secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
+    // client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
+    // client_secret:
+    //   'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
   },
   /*
   ** Customize the progress-bar color
@@ -114,26 +117,34 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    proxy: true,
+    proxy: true
     // See https://github.com/nuxt-community/axios-module#options
-
   },
 
   auth: {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/o/token', method: 'post', propertyName: 'access_token' },
+          login: {
+            propertyName: 'access_token'
+          },
           // user: { url: 'me', method: 'get', propertyName: 'data' },
-          logout: false
+          logout: false,
+          auth0: {
+            client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
+            client_secret:
+              'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
+          }
         }
       }
     }
   },
+
   /*
   ** Build configuration
   */
   build: {
+    // 防止多次打包axios
     vendor: ['axios'],
     /*
     ** You can extend webpack config here

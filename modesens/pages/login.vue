@@ -4,9 +4,6 @@
       <div class="columns">
         <div class="column is-4 is-offset-4">
           <h2 class="title has-text-centered">Welcome back!</h2>
-
-          <!-- <Notification :message="error" v-if="error"/> -->
-
           <form 
             method="post"
             @submit.prevent="login">
@@ -53,6 +50,7 @@
 
 <script>
 import qs from 'qs'
+import account from '~/static/api/account.js'
 
 export default {
   data() {
@@ -62,20 +60,23 @@ export default {
       error: null
     }
   },
-
   methods: {
     async login() {
+      let data = new Object()
+      data.client_id = 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF'
+      data.client_secret =
+        'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
+      data.grant_type = 'password'
+      data.username = this.email
+      data.password = this.password
       try {
-        await this.$auth.loginWith('local', {
-          data: qs.stringify({
-            email: this.email,
-            password: this.password
-          })
-        })
-
-        this.$router.push('/')
+        let {
+          data: { access_token }
+        } = await account.login(data)
+        console.log(access_token)
+        redirect('/')
       } catch (e) {
-        this.error = e.response.data.message
+        this.error = e.message
       }
     }
   }

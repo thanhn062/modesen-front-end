@@ -24,7 +24,7 @@
           target="_blank"
           class="button--grey">GitHub</a>
         <nuxt-link :to="'/product/' + pid + '/'">To Product</nuxt-link>
-        <nuxt-link :to="'/login/'">Log In</nuxt-link>
+        <nuxt-link to="/login/">Log In</nuxt-link>
       </div>
     </div>
   </section>
