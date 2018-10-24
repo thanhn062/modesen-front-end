@@ -13,11 +13,13 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
+  env: {
+    secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8',
+    baseUrl: 'https://modesens.com/'
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -26,14 +28,12 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  css: [],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-  ],
+  plugins: [],
 
   /*
   ** Nuxt.js modules
@@ -46,72 +46,74 @@ module.exports = {
     // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
     'cookie-universal-nuxt',
     // Doc: https://www.npmjs.com/package/nuxt-trailingslash-module
-    ['./modules/trailingslash', {
-      methods: [
-        'GET',
-      ],
-    }],
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-37288238-6'
-    }],
+    [
+      './modules/trailingslash',
+      {
+        methods: ['GET']
+      }
+    ],
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
-    ['./modules/i18n', {
-      countries: [
-        {
-          code: 'us',
-          defaultLocale: 'en',
-          iso: 'en-US'
-        },
-        {
-          code: 'cn',
-          defaultLocale: 'zh',
-          iso: 'zh-CN'
-        },
-      ],
-      locales: [
-        {
-          code: 'en',
-          file: 'en-US.js',
-          name: 'English'
-        },
-        {
-          code: 'zh',
-          file: 'zh-CN.js',
-          name: '中文'
-        }
-      ],
-      lazy: true,
-      langDir: 'lang/',
-      defaultCountry: 'us',
-      defaultLocale: 'en',
-      strategy: 'prefix',
-      detectBrowserLanguage: {
-        // If enabled, a cookie is set once a user has been redirected to his
-        // preferred language to prevent subsequent redirections
-        // Set to false to redirect every time
-        useCookie: true,
-        // Cookie name
-        cookieKey: 'i18n_redirected',
-        countryKey: 'i18n_country',
-        localeKey: 'i18n_locale'
-      },
-      vueI18n: {
-        fallbackLocale: 'en',
-        messages: {
-          en: {
-            welcome: 'Welcome'
+    [
+      './modules/i18n',
+      {
+        countries: [
+          {
+            code: 'us',
+            defaultLocale: 'en',
+            iso: 'en-US'
           },
-          zh: {
-            welcome: '欢迎'
+          {
+            code: 'cn',
+            defaultLocale: 'zh',
+            iso: 'zh-CN'
+          }
+        ],
+        locales: [
+          {
+            code: 'en',
+            file: 'en-US.js',
+            name: 'English'
+          },
+          {
+            code: 'zh',
+            file: 'zh-CN.js',
+            name: '中文'
+          }
+        ],
+        lazy: true,
+        langDir: 'lang/',
+        defaultCountry: 'us',
+        defaultLocale: 'en',
+        strategy: 'prefix',
+        detectBrowserLanguage: {
+          // If enabled, a cookie is set once a user has been redirected to his
+          // preferred language to prevent subsequent redirections
+          // Set to false to redirect every time
+          useCookie: true,
+          // Cookie name
+          cookieKey: 'i18n_redirected',
+          countryKey: 'i18n_country',
+          localeKey: 'i18n_locale'
+        },
+        vueI18n: {
+          fallbackLocale: 'en',
+          messages: {
+            en: {
+              welcome: 'Welcome'
+            },
+            zh: {
+              welcome: '欢迎'
+            }
           }
         }
       }
-    }]
+    ]
   ],
   /*
   ** Axios module configuration
   */
   axios: {
+    proxy: true
     // See https://github.com/nuxt-community/axios-module#options
   },
 
@@ -119,6 +121,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: ['axios'],
     /*
     ** You can extend webpack config here
     */

@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
+      <logo />
       <h1 class="title">
         modesens
       </h1>
@@ -23,21 +23,25 @@
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
           class="button--grey">GitHub</a>
+        <nuxt-link :to="'/product/' + pid + '/'">To Product</nuxt-link>
       </div>
     </div>
   </section>
 </template>
-
 <script>
 import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
     Logo
+  },
+  data() {
+    return {
+      pid: '7582248'
+    }
   }
 }
 </script>
-
 <style>
 .container {
   min-height: 100vh;

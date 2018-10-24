@@ -1,23 +1,26 @@
 import Vue from 'vue'
 
 Vue.mixin({
-  head () {
+  head() {
     const COMPONENT_OPTIONS_KEY = '<%= options.COMPONENT_OPTIONS_KEY %>'
     if (
       !this._hasMetaInfo ||
       !this.$i18n ||
       !this.$i18n.locales ||
       this.$options[COMPONENT_OPTIONS_KEY] === false ||
-      (this.$options[COMPONENT_OPTIONS_KEY] && this.$options[COMPONENT_OPTIONS_KEY].seo === false)
+      (this.$options[COMPONENT_OPTIONS_KEY] &&
+        this.$options[COMPONENT_OPTIONS_KEY].seo === false)
     ) {
-      return {};
+      return {}
     }
     const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
     const LOCALE_ISO_KEY = '<%= options.LOCALE_ISO_KEY %>'
     const BASE_URL = '<%= options.baseUrl %>'
 
     // Prepare html lang attribute
-    const currentLocaleData = this.$i18n.locales.find(l => l[LOCALE_CODE_KEY] === this.$i18n.locale)
+    const currentLocaleData = this.$i18n.locales.find(
+      l => l[LOCALE_CODE_KEY] === this.$i18n.locale
+    )
     const htmlAttrs = {}
     if (currentLocaleData && currentLocaleData[LOCALE_ISO_KEY]) {
       htmlAttrs.lang = currentLocaleData[LOCALE_ISO_KEY]
@@ -25,16 +28,20 @@ Vue.mixin({
 
     // hreflang tags
     const link = this.$i18n.countries
-      .map(country => {		  
+      .map(country => {
         if (country[LOCALE_ISO_KEY]) {
           return {
             hid: 'alternate-hreflang-' + country[LOCALE_ISO_KEY],
             rel: 'alternate',
-            href: BASE_URL + this.switchLocalePath(country.code, country.defaultLocale),
+            href:
+              BASE_URL +
+              this.switchLocalePath(country.code, country.defaultLocale),
             hreflang: country[LOCALE_ISO_KEY]
           }
         } else {
-          console.warn('[<%= options.MODULE_NAME %>] Locale ISO code is required to generate alternate link')
+          console.warn(
+            '[<%= options.MODULE_NAME %>] Locale ISO code is required to generate alternate link'
+          )
           return null
         }
         /*if (locale[LOCALE_ISO_KEY]) {
@@ -49,7 +56,7 @@ Vue.mixin({
           return null
         }*/
       })
-    .filter(item => !!item)
+      .filter(item => !!item)
 
     // og:locale meta
     const meta = []
@@ -66,14 +73,18 @@ Vue.mixin({
     // og:locale - alternate
     meta.push(
       ...this.$i18n.locales
-        .filter(l => l[LOCALE_ISO_KEY] && l[LOCALE_ISO_KEY] !== currentLocaleData[LOCALE_ISO_KEY])
+        .filter(
+          l =>
+            l[LOCALE_ISO_KEY] &&
+            l[LOCALE_ISO_KEY] !== currentLocaleData[LOCALE_ISO_KEY]
+        )
         .map(locale => ({
           hid: 'og:locale:alternate-' + locale[LOCALE_ISO_KEY],
           name: 'og:locale:alternate',
           property: 'og:locale:alternate',
           content: locale[LOCALE_ISO_KEY].replace(/-/g, '_')
         }))
-    );
+    )
 
     return {
       htmlAttrs,

@@ -1,9 +1,8 @@
-import './middleware';
+import './middleware'
 import Vue from 'vue'
 
-
-function localePathFactory (i18nPath, routerPath) {
-  return function localePath (route, locale) {
+function localePathFactory(i18nPath, routerPath) {
+  return function localePath(route, locale) {
     // Abort if no route or no locale
     if (!route) return
     locale = locale || this[i18nPath].locale
@@ -30,31 +29,32 @@ function localePathFactory (i18nPath, routerPath) {
       href = href.replace(regexp, '/')
     }
 
-	if (!resolved.route.path.endsWith('/')){
-		href = href.replace(resolved.route.path, resolved.route.path+'/')
-	}
+    if (!resolved.route.path.endsWith('/')) {
+      href = href.replace(resolved.route.path, resolved.route.path + '/')
+    }
 
     return href
   }
 }
 
-
-function switchLocalePathFactory (i18nPath) {
-  return function switchLocalePath (country, locale) {
+function switchLocalePathFactory(i18nPath) {
+  return function switchLocalePath(country, locale) {
     const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
     const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
     const name = this.getRouteBaseName() + '___' + country
-	
+
     if (!name) {
       return ''
     }
-    const baseRoute = Object.assign({}, this.$route , { name })
-	
+    const baseRoute = Object.assign({}, this.$route, { name })
+
     let path = this.localePath(baseRoute, locale)
-	
+
     // Handle different domains
     if (this[i18nPath].differentDomains) {
-      const lang = this[i18nPath].locales.find(l => l[LOCALE_CODE_KEY] === locale)
+      const lang = this[i18nPath].locales.find(
+        l => l[LOCALE_CODE_KEY] === locale
+      )
       if (lang && lang[LOCALE_DOMAIN_KEY]) {
         let protocol
         if (!process.browser) {
@@ -65,22 +65,25 @@ function switchLocalePathFactory (i18nPath) {
         }
         path = protocol + '://' + lang[LOCALE_DOMAIN_KEY] + path
       } else {
-        console.warn('[<%= options.MODULE_NAME %>] Could not find domain name for locale ' + locale)
+        console.warn(
+          '[<%= options.MODULE_NAME %>] Could not find domain name for locale ' +
+            locale
+        )
       }
     }
-	
+
     return path
   }
 }
 
-function getRouteBaseNameFactory (contextRoute) {
+function getRouteBaseNameFactory(contextRoute) {
+  const routeGetter = contextRoute
+    ? route => route || contextRoute
+    : function(route) {
+        return route || this.$route
+      }
 
-  const routeGetter  = contextRoute ? route => route || contextRoute :
-  function (route) {
-    return route || this.$route
-  }
-
-  return function getRouteBaseName (route) {
+  return function getRouteBaseName(route) {
     const routesNameSeparator = '<%= options.routesNameSeparator %>'
     route = routeGetter.call(this, route)
     if (!route.name) {
@@ -98,9 +101,8 @@ Vue.mixin({
   }
 })
 
-
 export default ({ app, route }) => {
   app.localePath = localePathFactory('i18n', 'router')
-  app.switchLocalePath = switchLocalePathFactory('i18n'),
-  app.getRouteBaseName = getRouteBaseNameFactory(route)
+  ;(app.switchLocalePath = switchLocalePathFactory('i18n')),
+    (app.getRouteBaseName = getRouteBaseNameFactory(route))
 }
