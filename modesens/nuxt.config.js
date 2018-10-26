@@ -142,7 +142,7 @@ module.exports = {
   */
   build: {
     // 防止多次打包axios
-    vendor: ['axios'],
+    // vendor: ['axios'],
     /*
     ** You can extend webpack config here
     */

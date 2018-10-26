@@ -1,4 +1,5 @@
 import * as axios from 'axios'
+import store from '~/store'
 import qs from 'qs'
 
 const req = axios.create({
@@ -10,6 +11,13 @@ const req = axios.create({
 // POST传参序列化
 req.interceptors.request.use(
   config => {
+    let token = store().state.TOKEN
+    console.log(token)
+    console.log(config)
+    if (token) {
+      config.headers.Authorization = 'token'
+    }
+    console.log(config)
     if (config.method === 'post') {
       config.data = qs.stringify(config.data)
     }
