@@ -40,6 +40,12 @@ export default {
     return {
       pid: '7582248'
     }
+  },
+  created() {
+    // sessionStorage.removeItem('TOKEN')
+  },
+  mounted() {
+    // this.$store.commit('DEL_TOKEN')
   }
 }
 </script>

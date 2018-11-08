@@ -1,5 +1,5 @@
 <template>
-  <section class="">
+  <section class="prdCon">
     <Header/>
     <main>
       <nuxt-link to="/about">To About</nuxt-link><br>
@@ -94,6 +94,7 @@ export default {
     return { availabilities, product }
   },
   created() {
+    console.log(this.$store.state.TOKEN)
     this.getSub()
     this.getMd()
     this.getMore()
@@ -146,5 +147,10 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="less">
+// @import '~/assets/prd.less';
+@fontS: 20px;
+.prdCon {
+  font-size: @fontS;
+}
 </style>

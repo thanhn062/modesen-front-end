@@ -11,6 +11,17 @@ const store = () =>
     mutations: {
       SET_TOKEN: (state, token) => {
         state.TOKEN = token
+        sessionStorage.setItem('TOKEN', token)
+      },
+      DEL_TOKEN: state => {
+        state.TOKEN = ''
+        sessionStorage.removeItem('TOKEN')
+      }
+    },
+    getters: {
+      token(state) {
+        debugger
+        return state.TOKEN
       }
     },
     actions: {}

@@ -11,13 +11,10 @@ const req = axios.create({
 // POST传参序列化
 req.interceptors.request.use(
   config => {
-    let token = store().state.TOKEN
-    console.log(token)
-    console.log(config)
+    var token = sessionStorage.getItem('TOKEN')
     if (token) {
-      config.headers.Authorization = 'token'
+      config.headers.Authorization = token
     }
-    console.log(config)
     if (config.method === 'post') {
       config.data = qs.stringify(config.data)
     }
@@ -63,6 +60,13 @@ export default {
       method: 'get',
       url,
       data: data
+    })
+  },
+  delete(url, data) {
+    return service({
+      methods: 'delete',
+      url,
+      params: data
     })
   }
 }
