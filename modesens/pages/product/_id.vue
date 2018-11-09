@@ -148,7 +148,7 @@ export default {
 }
 </script>
 <style lang="less">
-// @import '~/assets/prd.less';
+@import '../../assets/css/prd.less';
 @fontS: 20px;
 .prdCon {
   font-size: @fontS;
