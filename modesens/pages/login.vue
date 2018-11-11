@@ -74,6 +74,7 @@ export default {
         } = await account.login(data)
         this.$store.commit('SET_TOKEN', token_type + ' ' + access_token)
         // sessionStorage.setItem('TOKEN', token_type + ' ' + access_token)
+        this.$cookies.set('TOKEN', token_type + ' ' + access_token)
         this.$router.replace('/about')
       } catch (e) {
         this.error = e.message

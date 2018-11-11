@@ -87,14 +87,19 @@ export default {
     }
   },
   head: {},
-  async asyncData({ route }) {
+  async asyncData({ app, res, route }) {
     let {
       data: { availabilities, product }
-    } = await axios.get(`/product/${route.params.id}/getinfo/`, 1)
+    } = await axios.getasync(
+      `/product/${route.params.id}/getinfo/`,
+      1,
+      1,
+      app.$cookies.get('TOKEN')
+    )
     return { availabilities, product }
   },
-  created() {
-    console.log(this.$store.state.TOKEN)
+  created() {},
+  mounted() {
     this.getSub()
     this.getMd()
     this.getMore()
