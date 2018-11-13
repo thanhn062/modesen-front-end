@@ -12,7 +12,6 @@ const store = () =>
       SET_TOKEN: (state, token) => {
         state.TOKEN = token
         sessionStorage.setItem('TOKEN', token)
-        localStorage.setItem('TOKEN', token)
       },
       DEL_TOKEN: state => {
         state.TOKEN = ''

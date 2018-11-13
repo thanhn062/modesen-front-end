@@ -10,7 +10,7 @@ const req = axios.create({
   timeout: 5000
 })
 if (!process.server) {
-  axios.headers = { Authorization: cookie.get('TOKEN') }
+  axios.headers = { Authorization: cookie.get('TOKEN') || '' }
 }
 // POST传参序列化
 req.interceptors.request.use(
@@ -52,7 +52,7 @@ export default {
       url,
       data: data,
       headers: {
-        Authorization: sessionStorage.getItem('TOKEN')
+        Authorization: cookie.get('TOKEN') || ''
       }
     })
   },
@@ -68,7 +68,7 @@ export default {
       url,
       data: data,
       headers: {
-        Authorization: sessionStorage.getItem('TOKEN')
+        Authorization: cookie.get('TOKEN') || ''
       }
     })
   },

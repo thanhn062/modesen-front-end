@@ -94,7 +94,7 @@ export default {
       `/product/${route.params.id}/getinfo/`,
       1,
       1,
-      app.$cookies.get('TOKEN')
+      app.$cookies.get('TOKEN') || ''
     )
     return { availabilities, product }
   },
