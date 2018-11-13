@@ -25,16 +25,23 @@
           class="button--grey">GitHub</a>
         <nuxt-link :to="'/product/' + pid + '/'">To Product</nuxt-link>
         <nuxt-link to="/account/login/">Log In</nuxt-link>
+        <b-btn v-b-modal.mdLogin>Log In</b-btn>
+        <b-modal
+          id="mdLogin"
+          hide-footer>
+          <Login/>
+        </b-modal>
       </div>
     </div>
   </section>
 </template>
 <script>
 import Logo from '~/components/Logo.vue'
-
+import Login from '~/pages/account/login.vue'
 export default {
   components: {
-    Logo
+    Logo,
+    Login
   },
   data() {
     return {
