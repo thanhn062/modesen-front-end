@@ -20,7 +20,7 @@
       <b-button type="submit">Log In</b-button>
       <nuxt-link to="/accounts/password/reset/">Forgot Password?</nuxt-link>
       <label>Not yet a member?</label>
-      <nuxt-link to="/account/signup/">Sign Up</nuxt-link>
+      <nuxt-link to="/accounts/signup/">Sign Up</nuxt-link>
     </b-form>
   </section>
 </template>
