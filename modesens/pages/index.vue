@@ -19,6 +19,9 @@
         <nuxt-link
           to="/about/"
           class="button--green">{{ $t('about') }}</nuxt-link>
+        <nuxt-link
+          to="/membership/"
+          class="button--green">membership</nuxt-link>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
