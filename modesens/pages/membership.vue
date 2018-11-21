@@ -15,13 +15,18 @@
           <div id="rankbox">
             <div class="title-part">Your Perks</div>
             <div class="con">
-              <div class="percent-circle percent-circle-left">
-                <div class="left-content"/>
-              </div>
               <div class="percent-circle percent-circle-right">
-                <div class="right-content"/>
+                <div 
+                  :style="percentage_r"
+                  class="right-content"/>
+                <div class="text-circle">0%</div>
               </div>
-              <div class="text-circle">0%</div>
+              <div class="percent-circle percent-circle-left">
+                <div 
+                  :style="percentage_l"
+                  class="left-content"/>
+                <div class="text-circle">0%</div>
+              </div>
             </div>
           </div>
           <div id="consume-box">
@@ -53,9 +58,12 @@ export default {
   data() {
     return {
       limit: -1,
-      isShow: false
+      isShow: false,
+      percentage_l: { transform: 'rotate(30deg)' },
+      percentage_r: { transform: 'rotate(180deg)' }
     }
   },
+  computed: {},
   methods: {
     toggle: function(index) {
       if (index == this.limit) {
