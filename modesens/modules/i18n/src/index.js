@@ -30,7 +30,7 @@ const {
   syncVuex
 } = require('./helpers/utils')
 
-module.exports = function (userOptions) {
+module.exports = function(userOptions) {
   const pluginsPath = join(__dirname, PLUGINS_DIR)
   const templatesPath = join(__dirname, TEMPLATES_DIR)
   const requiredPlugins = ['main', 'routing']
@@ -46,13 +46,13 @@ module.exports = function (userOptions) {
   const templatesOptions = {
     ...options,
     MODULE_NAME,
-	COUNTRY_CODE_KEY,
+    COUNTRY_CODE_KEY,
     LOCALE_CODE_KEY,
     LOCALE_ISO_KEY,
     LOCALE_DOMAIN_KEY,
     LOCALE_FILE_KEY,
     COMPONENT_OPTIONS_KEY,
-	getCountryCodes,
+    getCountryCodes,
     getLocaleCodes,
     getCountryLocaleFromCookie,
     setCountryLocaleToCookie,
@@ -65,8 +65,11 @@ module.exports = function (userOptions) {
   }
 
   // Generate localized routes
-  const pagesDir = this.options.dir && this.options.dir.pages ? this.options.dir.pages : 'pages'
-  this.extendRoutes((routes) => {
+  const pagesDir =
+    this.options.dir && this.options.dir.pages
+      ? this.options.dir.pages
+      : 'pages'
+  this.extendRoutes(routes => {
     const localizedRoutes = makeRoutes(routes, {
       ...options,
       pagesDir
@@ -110,7 +113,8 @@ module.exports = function (userOptions) {
   // Add vue-i18n-loader if applicable
   if (options.vueI18nLoader) {
     this.extendBuild(config => {
-      const loaders = config.module.rules.find(el => el.loader === 'vue-loader').options.loaders
+      const loaders = config.module.rules.find(el => el.loader === 'vue-loader')
+        .options.loaders
       if (loaders) {
         // vue-loader under 15.0.0
         loaders.i18n = '@kazupon/vue-i18n-loader'
@@ -125,6 +129,7 @@ module.exports = function (userOptions) {
   }
 
   this.options.router.middleware.push('i18n')
-  this.options.render.bundleRenderer.directives = this.options.render.bundleRenderer.directives || {}
+  this.options.render.bundleRenderer.directives =
+    this.options.render.bundleRenderer.directives || {}
   this.options.render.bundleRenderer.directives.t = i18nExtensions.directive
 }

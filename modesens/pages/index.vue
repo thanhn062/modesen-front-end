@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
+      <logo />
       <h1 class="title">
         modesens
       </h1>
@@ -23,21 +23,39 @@
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
           class="button--grey">GitHub</a>
+        <nuxt-link :to="'/product/' + pid + '/'">To Product</nuxt-link>
+        <nuxt-link to="/accounts/login/">Log In</nuxt-link>
+        <b-btn v-b-modal.mdLogin>Log In</b-btn>
+        <b-modal
+          id="mdLogin"
+          hide-footer>
+          <Login/>
+        </b-modal>
       </div>
     </div>
   </section>
 </template>
-
 <script>
 import Logo from '~/components/Logo.vue'
-
+import Login from '~/pages/accounts/login.vue'
 export default {
   components: {
-    Logo
+    Logo,
+    Login
+  },
+  data() {
+    return {
+      pid: '7582248'
+    }
+  },
+  created() {
+    // sessionStorage.removeItem('TOKEN')
+  },
+  mounted() {
+    // this.$store.commit('DEL_TOKEN')
   }
 }
 </script>
-
 <style>
 .container {
   min-height: 100vh;
