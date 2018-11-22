@@ -2,7 +2,14 @@
   <section>
     <div>
       <div class="userInfoBox">
-        membership
+        <img 
+          :src="usericon" 
+          alt="">
+        <div class="info">
+          <div class="user_name">{{ username }}</div>
+          <div class="user_bio">{{ userbio }}</div>
+          <div class="user_words">{{ userwords }}</div>
+        </div>
       </div>
       <div class="page-content">
         <div class="page-left">
@@ -32,17 +39,27 @@
             <div class="title-part">Loyalty Points</div>
             <ul id="consume">
               <li
-                v-for=" n in 10 " 
-                :key=" n ">
-                <span> {{ n }}</span>
-                <div
-                  class="see-more button--green"
-                  @click="toggle(n)">
-                  item</div>
+                v-for=" (record,index) in recordslist " 
+                :key=" index ">
+                <div class="record_info">
+                  <div>{{ index }}</div>
+                  <div>{{ record.source }}</div>
+                  <div>{{ record.points }}</div>
+                  <div>{{ record.memo.merchant_name }}</div>
+                  <div
+                    class="see-more button--green"
+                    @click="toggle(index)">
+                    item</div>
+                </div>
                 <div 
-                  v-show="n==limit"
+                  v-show="index==limit"
                   class="consume-item">
-                  aaaaa</div>
+                  <ul>
+                    <li>store : {{ record.memo.merchant_name }}</li>
+                    <li>Order id : {{ record.memo.order_id }}</li>
+                    <li>price : ${{ record.value }}</li>
+                  </ul>
+                </div>
               </li>
             </ul>
           </div>
@@ -68,13 +85,13 @@ export default {
   async asyncData() {
     var params = {}
     params.level = true
-    params.lsuid = 5
+    params.lsuid = 652
     let { data } = await axios.post(
       'https://modesens.com/accounts/profile/get/',
       params
     )
     let pers = data.level.points_earned / data.level.points_goal
-    let pers_percentage = pers * 100
+    let pers_percentage = Math.round(pers * 100)
     if (pers <= 0.5) {
       var degRight = pers * 360
       var degLeft = 0
@@ -85,15 +102,25 @@ export default {
       var degRight = 180
       var degLeft = pers * 360 - 180
     }
+    let { data: records } = await axios.post(
+      'https://modesens.com/loyalty/records/'
+    )
     return {
+      usericon: data.lsuser.icon,
+      username: data.lsuser.username,
+      userbio: data.lsuser.bio,
+      userwords: data.lsuser.words,
       pers_percentage,
       degRight,
-      degLeft
+      degLeft,
+      recordslist: records.records
     }
   },
   computed: {},
   methods: {
     toggle: function(index) {
+      console.log(1111)
+      console.log(index)
       if (index == this.limit) {
         this.limit = -1
       } else {
