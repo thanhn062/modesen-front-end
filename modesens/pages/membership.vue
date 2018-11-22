@@ -11,7 +11,7 @@
             <b-nav-item>MY LOYALTY</b-nav-item>
           </b-nav>
         </div>
-        <div class="page-right">
+        <div class="page-right ">
           <div id="rankbox">
             <div class="title-part">Your Perks</div>
             <div class="con">
