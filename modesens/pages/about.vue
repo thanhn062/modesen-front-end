@@ -18,6 +18,9 @@
         <nuxt-link
           to="/"
           class="button--green">To Home</nuxt-link>
+        <nuxt-link
+          to="/membership/"
+          class="button--green">membership</nuxt-link>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
