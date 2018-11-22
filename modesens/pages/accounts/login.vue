@@ -28,7 +28,6 @@
 <script>
 import account from '~/static/api/1.0/account.js'
 import ga from '~/plugins/ga.js'
-import qs from 'qs'
 export default {
   data() {
     return {
@@ -55,9 +54,9 @@ export default {
         this.$cookies.set('TOKEN', token_type + ' ' + access_token)
         let [, nextUrl] = [...window.location.href.match(/next=([^?&=#]+)/)]
         console.log(window.location.href.match(/next=[^?&=#]+/))
-        console.log(qs.stringify(nextUrl))
+        console.log(decodeURIComponent(nextUrl))
         // window.parent.location.pathname = qs.stringify(nextUrl)
-        window.parent.location.pathname = '/about/'
+        window.parent.location.pathname = decodeURIComponent(nextUrl)
         // this.$router.replace('/about')
       } catch (e) {
         this.error = e.message

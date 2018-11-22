@@ -3,7 +3,10 @@
     <nuxt/>
   </div>
 </template>
-
+<!-- <script>
+import '~/assets/js/main.js'
+export default {}
+</script> -->
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
