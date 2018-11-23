@@ -119,8 +119,6 @@ export default {
   computed: {},
   methods: {
     toggle: function(index) {
-      console.log(1111)
-      console.log(index)
       if (index == this.limit) {
         this.limit = -1
       } else {
