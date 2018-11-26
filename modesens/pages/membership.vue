@@ -6,20 +6,20 @@
           :src="usericon" 
           alt="">
         <div class="info">
-          <div class="user_name">{{ username }}</div>
-          <div class="user_bio">{{ userbio }}</div>
-          <div class="user_words">{{ userwords }}</div>
+          <div class="user_name">{{ lsuser.username }}</div>
+          <div class="user_bio">{{ lsuser.userbio }}</div>
+          <div class="user_words">{{ lsuser.userwords }}</div>
         </div>
       </div>
       <div class="page-content">
         <div class="page-left">
-          <b-nav 
-            vertical>
-            <b-nav-item>MY LOYALTY</b-nav-item>
-          </b-nav>
+          <vueNav 
+            :navlist="list" 
+            :showdir="dir"
+            :showview="viewlist"/>
         </div>
         <div class="page-right ">
-          <div id="rankbox">
+          <!-- <div id="rankbox">
             <div class="title-part">Your Perks</div>
             <div class="con">
               <div class="percent-circle percent-circle-right">
@@ -62,7 +62,11 @@
                 </div>
               </li>
             </ul>
-          </div>
+          </div> -->
+          <div 
+            :is="currentView"
+            :myloyaltycontent="level"
+            :myloyaltycontent1="records"/>
         </div>
       </div>
     </div>
@@ -72,11 +76,45 @@
 import $ from 'jquery'
 import axios from '~/plugins/axios'
 import product from '~/static/api/1.0/membership.js'
+import vueNav from '~/components/nav.vue'
+import myloyalty from '~/components/myloyalty.vue'
+import myloyalty1 from '~/components/myloyalty1.vue'
+import myloyalty2 from '~/components/myloyalty2.vue'
+import myloyalty3 from '~/components/myloyalty3.vue'
+import myloyalty4 from '~/components/myloyalty4.vue'
 export default {
+  components: {
+    vueNav,
+    myloyalty,
+    myloyalty1,
+    myloyalty2,
+    myloyalty3,
+    myloyalty4
+  },
   data() {
     return {
       limit: -1,
-      isShow: false
+      isShow: false,
+      // tab项列表
+      list: [
+        'MY LOYALTY',
+        'MY LOYALTY1',
+        'MY LOYALTY2',
+        'MY LOYALTY3',
+        'MY LOYALTY4'
+      ],
+      // tab排列方向
+      dir: 'flex-column',
+      // tab对应显示内容的name
+      viewlist: [
+        'myloyalty',
+        'myloyalty1',
+        'myloyalty2',
+        'myloyalty3',
+        'myloyalty4'
+      ],
+      //当前显示的页面
+      currentView: 'myloyalty'
     }
   },
   head: {
@@ -86,34 +124,20 @@ export default {
     var params = {}
     params.level = true
     params.lsuid = 652
-    let { data } = await axios.post(
-      'https://modesens.com/accounts/profile/get/',
-      params
-    )
-    let pers = data.level.points_earned / data.level.points_goal
-    let pers_percentage = Math.round(pers * 100)
-    if (pers <= 0.5) {
-      var degRight = pers * 360
-      var degLeft = 0
-    } else if (pers >= 1) {
-      var degRight = 180
-      var degLeft = 180
-    } else {
-      var degRight = 180
-      var degLeft = pers * 360 - 180
-    }
+    let {
+      data: { lsuser, level }
+    } = await axios.post('https://modesens.com/accounts/profile/get/', params)
     let { data: records } = await axios.post(
       'https://modesens.com/loyalty/records/'
     )
     return {
-      usericon: data.lsuser.icon,
-      username: data.lsuser.username,
-      userbio: data.lsuser.bio,
-      userwords: data.lsuser.words,
-      pers_percentage,
-      degRight,
-      degLeft,
-      recordslist: records.records
+      lsuser,
+      level,
+      records
+      // pers_percentage,
+      // degRight,
+      // degLeft,
+      // recordslist: records.records
     }
   },
   computed: {},
