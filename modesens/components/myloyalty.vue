@@ -44,8 +44,11 @@
         </li>
       </ul>
     </div>
-    <!-- <div>{{ myloyaltycontent }}</div>
-    <div>{{ myloyaltycontent1 }}</div> -->
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="100"
+      :per-page="10"
+      align="center"/>
   </section>
 </template>
 <script>

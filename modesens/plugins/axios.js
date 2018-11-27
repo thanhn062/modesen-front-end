@@ -88,6 +88,22 @@ export default {
       }
     })
   },
+  postasync(url, data, secretKey, token) {
+    if (data == 1 || secretKey == 1) {
+      url += `?secretkey=${process.env.secretKey}`
+      if (data == 1) {
+        data = null
+      }
+    }
+    return req({
+      method: 'post',
+      url,
+      data: data,
+      headers: {
+        Authorization: token
+      }
+    })
+  },
   delete(url, data) {
     return service({
       methods: 'delete',
