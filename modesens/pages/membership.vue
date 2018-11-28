@@ -22,7 +22,8 @@
           <div 
             :is="currentView"
             :myloyaltycontent="level"
-            :myloyaltycontent1="records"/>
+            :myloyaltycontent1="records.records"
+            :changepage="currentPage"/>
         </div>
       </div>
     </div>
@@ -62,7 +63,8 @@ export default {
       // tab排列方向
       dir: 'flex-column',
       //当前显示的页面
-      currentView: 'myloyalty0'
+      currentView: 'myloyalty0',
+      currentPage: 1
     }
   },
   head: {
@@ -80,9 +82,12 @@ export default {
       0,
       app.$cookies.get('TOKEN')
     )
+    var recordsparams = {}
+    recordsparams.offset = 0
+    recordsparams.amount = 10
     let { data: records } = await axios.postasync(
       'https://modesens.com/loyalty/records/',
-      0,
+      recordsparams,
       0,
       app.$cookies.get('TOKEN')
     )

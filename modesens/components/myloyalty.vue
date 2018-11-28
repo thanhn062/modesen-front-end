@@ -45,8 +45,8 @@
       </ul>
     </div>
     <b-pagination
-      v-model="currentPage"
-      :total-rows="100"
+      v-model="changepage"
+      :total-rows="myloyaltycontent1.amount"
       :per-page="10"
       align="center"/>
   </section>
@@ -64,6 +64,12 @@ export default {
       type: Object,
       default: function() {
         return {}
+      }
+    },
+    changepage: {
+      type: Number,
+      default: function() {
+        return 1
       }
     }
   },
