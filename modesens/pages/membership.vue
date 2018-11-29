@@ -22,8 +22,7 @@
           <div 
             :is="currentView"
             :myloyaltycontent="level"
-            :myloyaltycontent1="records.records"
-            :changepage="currentPage"/>
+            :myloyaltycontent1="records.records"/>
         </div>
       </div>
     </div>
@@ -32,7 +31,7 @@
 <script>
 import $ from 'jquery'
 import axios from '~/plugins/axios'
-import product from '~/static/api/1.0/membership.js'
+import membership from '~/static/api/1.0/membership.js'
 import vueNav from '~/components/nav.vue'
 import myloyalty0 from '~/components/myloyalty.vue'
 import myloyalty1 from '~/components/myloyalty1.vue'

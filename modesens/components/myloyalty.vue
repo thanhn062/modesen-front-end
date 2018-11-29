@@ -20,7 +20,7 @@
       <div class="title-part">Loyalty Points</div>
       <ul id="consume">
         <li
-          v-for=" (record,index) in myloyaltycontent1.records " 
+          v-for=" (record,index) in recordslist.records " 
           :key=" index ">
           <div class="record_info">
             <div>{{ index }}</div>
@@ -45,13 +45,15 @@
       </ul>
     </div>
     <b-pagination
-      v-model="changepage"
+      v-model="currentPage"
       :total-rows="myloyaltycontent1.amount"
       :per-page="10"
-      align="center"/>
+      align="center"
+      @input="pageSwitching"/>
   </section>
 </template>
 <script>
+import membership from '~/static/api/1.0/membership.js'
 export default {
   props: {
     myloyaltycontent: {
@@ -65,12 +67,6 @@ export default {
       default: function() {
         return {}
       }
-    },
-    changepage: {
-      type: Number,
-      default: function() {
-        return 1
-      }
     }
   },
   data() {
@@ -79,7 +75,10 @@ export default {
       isShow: false,
       degRight: '',
       degLeft: '',
-      pers_percentage: ''
+      pers_percentage: '',
+      currentPage: 1,
+      pagestate: 1,
+      recordslist: this.myloyaltycontent1
     }
   },
   created() {
@@ -103,6 +102,21 @@ export default {
         this.limit = -1
       } else {
         this.limit = index
+      }
+    },
+    async getmoreRecords(page) {
+      var params = {}
+      params.amount = 10
+      params.offset = (page - 1) * 10
+      let { data: records } = await membership.getRecords(params)
+      this.recordslist = records.records
+    },
+    pageSwitching: function() {
+      if (this.pagestate === this.currentPage) {
+        return
+      } else {
+        this.getmoreRecords(this.currentPage)
+        this.pagestate = this.currentPage
       }
     }
   }
