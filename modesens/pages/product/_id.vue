@@ -13,7 +13,7 @@
           category = {{ product.category }} &nbsp;&nbsp;
           price = {{ product.saleprice }} &nbsp;&nbsp;
           gender = {{ product.gender }}
-          <span>{{ product.description }}</span><br>
+          <span class="description">{{ product.description }}</span><br>
           <span>{{ product.designer }}</span><br>
           <h3>images信息</h3>
           <ul>
@@ -75,7 +75,6 @@
 <script>
 import axios from '~/plugins/axios'
 import product from '~/static/api/1.0/product.js'
-
 export default {
   components: {},
   data() {
@@ -98,7 +97,9 @@ export default {
     )
     return { availabilities, product }
   },
-  created() {},
+  created() {
+    // this.$ga.page('/product/' + this.$route.params.id)
+  },
   mounted() {
     this.getSub()
     this.getMd()

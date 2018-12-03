@@ -1,17 +1,19 @@
 import * as axios from 'axios'
 import store from '~/store'
-import cookie from '~/static/util/cookie.js'
+// import cookie from '~/static/util/cookie.js'
 import qs from 'qs'
 
 const req = axios.create({
   //定义请求根目录
   baseURL: process.env.baseUrl + 'api/1.0/',
+  // baseURL: 'http://34.226.204.204/' + 'api/1.0/',
   // 请求超时
-  timeout: 5000
+  timeout: 5000,
+  // withCredentials: true // 允许携带cookie
 })
-if (!process.server) {
-  axios.headers = { Authorization: cookie.get('TOKEN') || '' }
-}
+// if (!process.server) {
+//   axios.headers = { Authorization: cookie.get('TOKEN') || '' }
+// }
 // POST传参序列化
 req.interceptors.request.use(
   config => {
@@ -51,9 +53,10 @@ export default {
       method: 'post',
       url,
       data: data,
-      headers: {
-        Authorization: cookie.get('TOKEN') || ''
-      }
+      // headers: {
+      //   // Authorization: cookie.get('TOKEN') || ''
+      //   cookie: document.cookie
+      // }
     })
   },
   get(url, data, secretKey) {
@@ -67,9 +70,9 @@ export default {
       method: 'get',
       url,
       data: data,
-      headers: {
-        Authorization: cookie.get('TOKEN') || ''
-      }
+      // headers: {
+      //   Authorization: cookie.get('TOKEN') || ''
+      // }
     })
   },
   getasync(url, data, secretKey, token) {
@@ -83,9 +86,9 @@ export default {
       method: 'get',
       url,
       data: data,
-      headers: {
-        Authorization: token
-      }
+      // headers: {
+      //   Authorization: token
+      // }
     })
   },
   delete(url, data) {

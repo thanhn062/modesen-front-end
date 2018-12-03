@@ -1,8 +1,8 @@
-export default ({ app }) => {
+export default ({ app: { router} }) => {
   /*
   ** Only run on client-side and only in production mode
   */
-  if (process.env.NODE_ENV === 'production') return
+  // if (process.env.NODE_ENV === 'production') return
   /*
   ** Include Google Analytics Script
   */
@@ -17,7 +17,7 @@ export default ({ app }) => {
   /*
   ** Every time the route changes (fired on initialization too)
   */
-  app.router.afterEach((to, from) => {
+  router.afterEach((to, from) => {
     /*
     ** We tell Google Analytics to add a `pageview`
     */

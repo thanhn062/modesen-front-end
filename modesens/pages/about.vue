@@ -24,18 +24,33 @@
           class="button--grey">GitHub</a>
       </div>
     </div>
+    <iframe
+      src="https://modesens.com/accounts/login/"
+      width="100%"
+      height="300px"
+      frameborder="0"/>
   </section>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
-
+import axios from '~/plugins/axios'
 export default {
   components: {
     Logo
   },
-  created() {
-    console.log(this.$store.state.TOKEN)
+  mounted() {
+    this.getDesigner()
+  },
+  methods: {
+    async getDesigner() {
+      var designer = 'GUCCI'
+      let obj = await axios.post('/invited/', {
+        offset: 0,
+        amount: 10
+      })
+      console.log(obj)
+    }
   }
 }
 </script>

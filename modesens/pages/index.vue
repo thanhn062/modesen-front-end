@@ -25,12 +25,26 @@
           class="button--grey">GitHub</a>
         <nuxt-link :to="'/product/' + pid + '/'">To Product</nuxt-link>
         <nuxt-link to="/accounts/login/">Log In</nuxt-link>
-        <b-btn v-b-modal.mdLogin>Log In</b-btn>
+        <b-btn
+          v-b-modal.mdLogin 
+          class="ga-accounts-login-login-123"
+          data-ga="ga-accounts-login-login-123">Log In</b-btn>
         <b-modal
           id="mdLogin"
           hide-footer>
           <Login/>
         </b-modal>
+      </div>
+      <div>
+        <button
+          class="ga-test-test-click-1"
+          data-ga="ga-test-test1-click-1">ga1</button>
+        <button
+          class="ga-test-test-click-2"
+          data-ga="ga-test-test2-click-2">ga2</button>
+        <button
+          class="ga-test-test-click-3"
+          data-ga="ga-test-test3-click-3">ga3</button>
       </div>
     </div>
   </section>
