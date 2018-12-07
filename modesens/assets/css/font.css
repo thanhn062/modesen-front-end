@@ -1,0 +1,30 @@
+/*SuisseIntl*/
+@font-face {
+  font-family: 'SuisseIntl';
+  font-weight: bolder;
+  src: url('../fonts/SuisseIntl-Medium.otf');
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  font-weight: bold;
+  src: url('../fonts/SuisseIntl-Medium.otf');
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  font-weight: normal;
+  src: url('../fonts/SuisseIntl-Regular.otf');
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  font-weight: 300;
+  src: url('../fonts/SuisseIntl-Light.otf');
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  font-weight: 100;
+  src: url('../fonts/SuisseIntl-Thin.otf');
+}

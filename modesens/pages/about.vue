@@ -24,11 +24,11 @@
           class="button--grey">GitHub</a>
       </div>
     </div>
-    <iframe
+    <!-- <iframe
       src="https://modesens.com/accounts/login/"
       width="100%"
       height="300px"
-      frameborder="0"/>
+      frameborder="0"/> -->
   </section>
 </template>
 

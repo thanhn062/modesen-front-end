@@ -33,7 +33,6 @@ module.exports = {
 	** Global CSS
 	*/
   css: ['~/assets/css/main.less'],
-  // script: ['~/assets/js/main.js'],
 
   /*
 	** Plugins to load before mounting the App

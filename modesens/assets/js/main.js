@@ -1,28 +1,27 @@
-// import Vue from 'vue'
-// import cookie from '~/static/util/cookie.js'
-// // import $ from 'jquery'
-// console.log(Vue.http)
-// Vue.http = { headers: { Authorization: cookie.get('TOKEN') || '' }}
-// if (process.server) {
-//     Vue.http.headers.common['token'] = cookie.get('TOKEN') || ''
-// }
+import Vue from 'vue'
+import ls from '~/static/util/localStorage.js'
 
-// Vue.use(VueResource)
-// Vue.http.interceptors.push((request, next) => {
-//   request.headers['Authorization'] = cookie.get('TOKEN') || ''
-//   next()
-// })
-
+//浏览器端功能
 if (process.browser){
-  $('[class*=ga-]').click(function() {
-    console.log(1111111111)
-    var [, resVal] = [...$(this).attr('class').match(/ga-([^ ]+)/)]
-    var [, category, action, label, val] = resVal.split('-')
-    ga('send', 'event', category, action, label, val)
+  //click--ga
+  $('*[data-ga-click]').click(function() {
+    let res = $(this).attr('data-ga-click');
+    if (res) {
+      var [category, action, label, val] = [...res.split('-')];
+      label = label || 'click'
+      ga('send', 'event', category, action, label, val)
+    }
   })
-  // $('[data-ga*=ga-]').click(function() {
-  //   console.log(2222222)
-  //   var [, category, action, label, val] = [...$(this).attr('data-ga').split('-')];
-  //   ga('send', 'event', category, action, label, val)
-  // })
+  //mouseover--ga
+  $('*[data-ga-enter]').mouseenter(function() {
+    let res = $(this).attr('data-ga-enter');
+    if (res) {
+      var [category, action, label, val] = [...res.split('-')];
+      label = label || 'mouseover'
+      ga('send', 'event', category, action, label, val)
+    }
+  })
 }
+
+Vue.prototype.STATIC_DOMAIN = 'https://d2go30nqlx7k6d.cloudfront.net'
+Vue.prototype.$localStorage = ls

@@ -1,13 +1,27 @@
 <template>
   <div>
-    <nuxt/>
+    <Header/>
+    <main>
+      <nuxt/>
+    </main>
+    <Footer/>
   </div>
 </template>
 <script>
 import '~/assets/js/main.js'
-export default {}
+import Header from '~/components/Header.vue'
+import Footer from '~/components/Footer.vue'
+export default {
+  components: {
+    Header,
+    Footer
+  }
+}
 </script>
 <style>
+main {
+  padding-top: 60px;
+}
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;

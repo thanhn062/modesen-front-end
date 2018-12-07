@@ -37,7 +37,9 @@
 
 
 export const state = () => ({
-  TOKEN: ''
+  TOKEN: '',
+  availabilities: '',
+  product: ''
 })
 
 export const mutations = {
@@ -48,6 +50,10 @@ export const mutations = {
   DEL_TOKEN: state => {
     state.TOKEN = ''
     sessionStorage.removeItem('TOKEN')
+  },
+  setInfos: (state, params) => {
+    state.availabilities = params.availabilities
+    state.product = params.product
   }
 }
 
