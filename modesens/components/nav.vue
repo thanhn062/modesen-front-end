@@ -8,6 +8,7 @@
   </b-nav>
 </template>
 <script>
+import $ from 'jquery'
 export default {
   props: {
     navlist: {

@@ -18,6 +18,13 @@
     </div>
     <div id="consume-box">
       <div class="title-part">Loyalty Points</div>
+      <div> 
+        <input 
+          id="config-demo" 
+          type="text" 
+          class="form-control">
+        <i class="glyphicon glyphicon-calendar fa fa-calendar"/>
+      </div>
       <ul id="consume">
         <li
           v-for=" (record,index) in recordslist.records " 
@@ -47,13 +54,16 @@
     <b-pagination
       v-model="currentPage"
       :total-rows="myloyaltycontent1.amount"
-      :per-page="10"
+      :per-page="20"
+      :disabled="pageCannotSwitched"
       align="center"
       @input="pageSwitching"/>
   </section>
 </template>
 <script>
 import membership from '~/static/api/1.0/membership.js'
+// import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/moment.js'
+// import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.js'
 export default {
   props: {
     myloyaltycontent: {
@@ -72,7 +82,7 @@ export default {
   data() {
     return {
       limit: -1,
-      isShow: false,
+      pageCannotSwitched: false,
       degRight: '',
       degLeft: '',
       pers_percentage: '',
@@ -96,6 +106,40 @@ export default {
       this.degLeft = pers * 360 - 180
     }
   },
+  mounted() {
+    var beginTimeStore = ''
+    var endTimeStore = ''
+    $('#config-demo').daterangepicker(
+      {
+        timePicker: true,
+        timePicker24Hour: true,
+        linkedCalendars: false,
+        autoUpdateInput: false,
+        locale: {
+          format: 'YYYY-MM-DD',
+          separator: ' ~ ',
+          applyLabel: '应用',
+          cancelLabel: '取消',
+          resetLabel: '重置'
+        }
+      },
+      function(start, end, label) {
+        beginTimeStore = start
+        endTimeStore = end
+        console.log(this.startDate.format(this.locale.format))
+        console.log(this.endDate.format(this.locale.format))
+        if (!this.startDate) {
+          this.element.val('')
+        } else {
+          this.element.val(
+            this.startDate.format(this.locale.format) +
+              this.locale.separator +
+              this.endDate.format(this.locale.format)
+          )
+        }
+      }
+    )
+  },
   methods: {
     toggle: function(index) {
       if (index == this.limit) {
@@ -105,11 +149,13 @@ export default {
       }
     },
     async getmoreRecords(page) {
+      this.pageCannotSwitched = true
       var params = {}
-      params.amount = 10
-      params.offset = (page - 1) * 10
+      params.amount = 20
+      params.offset = (page - 1) * 20
       let { data: records } = await membership.getRecords(params)
       this.recordslist = records.records
+      this.pageCannotSwitched = false
     },
     pageSwitching: function() {
       if (this.pagestate === this.currentPage) {
@@ -122,3 +168,7 @@ export default {
   }
 }
 </script>
+<style scoped>
+@import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css';
+@import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.css';
+</style>

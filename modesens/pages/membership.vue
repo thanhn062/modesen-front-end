@@ -19,25 +19,27 @@
             @navchange="tabchange"/>
         </div>
         <div class="page-right ">
-          <div 
-            :is="currentView"
-            :myloyaltycontent="level"
-            :myloyaltycontent1="records.records"/>
+          <keep-alive>
+            <div 
+              :is="currentView"
+              :myloyaltycontent="level"
+              :myloyaltycontent1="records.records"/>
+          </keep-alive>
         </div>
       </div>
     </div>
   </section>
 </template>
 <script>
-import $ from 'jquery'
+// import $ from 'jquery'
 import axios from '~/plugins/axios'
 import membership from '~/static/api/1.0/membership.js'
 import vueNav from '~/components/nav.vue'
-import myloyalty0 from '~/components/myloyalty.vue'
-import myloyalty1 from '~/components/myloyalty1.vue'
-import myloyalty2 from '~/components/myloyalty2.vue'
-import myloyalty3 from '~/components/myloyalty3.vue'
-import myloyalty4 from '~/components/myloyalty4.vue'
+import myloyalty0 from '~/components/membership/myloyalty.vue'
+import myloyalty1 from '~/components/membership/myloyalty1.vue'
+import myloyalty2 from '~/components/membership/myloyalty2.vue'
+import myloyalty3 from '~/components/membership/myloyalty3.vue'
+import myloyalty4 from '~/components/membership/myloyalty4.vue'
 export default {
   components: {
     vueNav,
@@ -72,7 +74,7 @@ export default {
   async asyncData({ app }) {
     var params = {}
     params.level = true
-    params.lsuid = 652
+    // params.lsuid = 652
     let {
       data: { lsuser, level }
     } = await axios.postasync(
@@ -83,7 +85,7 @@ export default {
     )
     var recordsparams = {}
     recordsparams.offset = 0
-    recordsparams.amount = 10
+    recordsparams.amount = 20
     let { data: records } = await axios.postasync(
       'https://modesens.com/loyalty/records/',
       recordsparams,
