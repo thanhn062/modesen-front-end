@@ -18,7 +18,7 @@
     </div>
     <div id="consume-box">
       <div class="title-part">Loyalty Points</div>
-      <div> 
+      <div class="demo"> 
         <input 
           id="config-demo" 
           type="text" 
@@ -30,7 +30,7 @@
           v-for=" (record,index) in recordslist.records " 
           :key=" index ">
           <div class="record_info">
-            <div>{{ index }}</div>
+            <div>{{ record.create_datetime | getLocalTime }}</div>
             <div>{{ record.source }}</div>
             <div>{{ record.points }}</div>
             <div>{{ record.memo.merchant_name }}</div>
@@ -53,18 +53,26 @@
     </div>
     <b-pagination
       v-model="currentPage"
-      :total-rows="myloyaltycontent1.amount"
-      :per-page="20"
+      :total-rows="recordslist.amount"
+      :per-page="10"
       :disabled="pageCannotSwitched"
       align="center"
       @input="pageSwitching"/>
   </section>
 </template>
+
 <script>
+import daterangepicker from 'bootstrap-daterangepicker'
+// import moment from 'bootstrap-daterangepicker/moment.js'
 import membership from '~/static/api/1.0/membership.js'
-// import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/moment.js'
-// import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.js'
+import { getLocalTime } from '~/static/util/util.js'
+import { getTimestamp } from '~/static/util/util.js'
 export default {
+  filters: {
+    getLocalTime(time) {
+      return getLocalTime(time)
+    }
+  },
   props: {
     myloyaltycontent: {
       type: Object,
@@ -88,7 +96,9 @@ export default {
       pers_percentage: '',
       currentPage: 1,
       pagestate: 1,
-      recordslist: this.myloyaltycontent1
+      recordslist: this.myloyaltycontent1,
+      startTime: '',
+      endTime: ''
     }
   },
   created() {
@@ -109,12 +119,13 @@ export default {
   mounted() {
     var beginTimeStore = ''
     var endTimeStore = ''
+    var that = this
     $('#config-demo').daterangepicker(
       {
-        timePicker: true,
         timePicker24Hour: true,
         linkedCalendars: false,
         autoUpdateInput: false,
+        maxDate: new Date(),
         locale: {
           format: 'YYYY-MM-DD',
           separator: ' ~ ',
@@ -125,9 +136,7 @@ export default {
       },
       function(start, end, label) {
         beginTimeStore = start
-        endTimeStore = end
-        console.log(this.startDate.format(this.locale.format))
-        console.log(this.endDate.format(this.locale.format))
+        endTimeStore = start
         if (!this.startDate) {
           this.element.val('')
         } else {
@@ -137,6 +146,11 @@ export default {
               this.endDate.format(this.locale.format)
           )
         }
+        var timestamp = this.element.val().split('~')
+        that.startTime = timestamp[0].trim()
+        that.endTime = timestamp[1].trim()
+        that.getmoreRecords(1, that.startTime, that.endTime)
+        that.pagestate = 1
       }
     )
   },
@@ -148,11 +162,13 @@ export default {
         this.limit = index
       }
     },
-    async getmoreRecords(page) {
+    async getmoreRecords(page, starttime, endtime) {
       this.pageCannotSwitched = true
       var params = {}
-      params.amount = 20
-      params.offset = (page - 1) * 20
+      params.amount = 10
+      params.offset = (page - 1) * 10
+      params.start_datetime = starttime
+      params.end_datetime = endtime
       let { data: records } = await membership.getRecords(params)
       this.recordslist = records.records
       this.pageCannotSwitched = false
@@ -161,7 +177,7 @@ export default {
       if (this.pagestate === this.currentPage) {
         return
       } else {
-        this.getmoreRecords(this.currentPage)
+        this.getmoreRecords(this.currentPage, this.startTime, this.endTime)
         this.pagestate = this.currentPage
       }
     }
@@ -169,6 +185,17 @@ export default {
 }
 </script>
 <style scoped>
-@import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css';
-@import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.css';
+.demo {
+  position: relative;
+}
+.demo i {
+  position: absolute;
+  bottom: 10px;
+  right: 24px;
+  top: auto;
+  cursor: pointer;
+}
+.pagination {
+  display: flex;
+}
 </style>

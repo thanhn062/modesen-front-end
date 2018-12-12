@@ -14,14 +14,7 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    script: [
-      { src: 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/moment.js' },
-      { src: 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.js' },
-      { src: 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js' },
-      { src: 'https://code.jquery.com/jquery-1.11.3.min.js' },
-      
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   env: {

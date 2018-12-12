@@ -78,16 +78,16 @@ export default {
     let {
       data: { lsuser, level }
     } = await axios.postasync(
-      'https://modesens.com/accounts/profile/get/',
+      '/accounts/profile/get/',
       params,
       0,
       app.$cookies.get('TOKEN')
     )
     var recordsparams = {}
     recordsparams.offset = 0
-    recordsparams.amount = 20
+    recordsparams.amount = 10
     let { data: records } = await axios.postasync(
-      'https://modesens.com/loyalty/records/',
+      '/loyalty/records/',
       recordsparams,
       0,
       app.$cookies.get('TOKEN')
