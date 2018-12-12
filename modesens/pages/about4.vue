@@ -24,11 +24,11 @@
           class="button--grey">GitHub</a>
       </div>
     </div>
-    <!-- <iframe
-      src="https://modesens.com/accounts/login/"
+    <iframe
+      :src="'https://modesens.com/accounts/login/?next=' + nextUrl"
       width="100%"
       height="300px"
-      frameborder="0"/> -->
+      frameborder="0"/>
   </section>
 </template>
 
@@ -39,6 +39,12 @@ export default {
   components: {
     Logo
   },
+  data() {
+    return {
+      nextUrl: this.$route.fullPath
+    }
+  },
+  created() {},
   mounted() {
     this.getDesigner()
   },

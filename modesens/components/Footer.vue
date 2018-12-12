@@ -3,66 +3,66 @@
     <div class="container footer-content">
       <div class="footer-wrap">
         <div class="wrap-item">
-          <h6 class="footer-title">{{ $t('CUSTOMER CARE') }}</h6>
+          <h6 class="footer-title">{{ $t('Footer.classtitle1') }}</h6>
           <div class="p">
             <ul class="list-unstyled contact">
-              <li><a href="/faq/">{{ $t('Help Center') }}</a></li>
-              <li><a>{{ $t('Contact Us') }}</a></li>
-              <li><a>{{ $t('Feedback') }}</a></li>
+              <li><nuxt-link to="/faq/">{{ $t('Footer.helpcenter') }}</nuxt-link></li>
+              <!-- <li><nuxt-link>{{ $t('Footer.contactus') }}</nuxt-link></li>
+              <li><nuxt-link>{{ $t('Footer.feedback') }}</nuxt-link></li> -->
             </ul>
           </div>
         </div>
         <div class="wrap-item">
-          <h6 class="footer-title">{{ $t('INFORMATION') }}</h6>
+          <h6 class="footer-title">{{ $t('Footer.classtitle2') }}</h6>
           <div class="p">
             <ul class="list-unstyled contact">
-              <li><a href="/about/">{{ $t('About Us') }}</a></li>
-              <li><a href="/influencer/">{{ $t('Influencer Program') }}</a></li>
-              <li><a 
-                :onclick="clickVal">{{ $t('Invite Friends') }}</a></li>
-              <li><a href="/stores/">{{ $t('Partner Stores') }}</a></li>
+              <li><nuxt-link to="/about/">{{ $t('Footer.aboutus') }}</nuxt-link></li>
+              <li><nuxt-link to="/influencer/">{{ $t('Footer.influencerpro') }}</nuxt-link></li>
+              <!-- <li><nuxt-link 
+                :onclick="clickVal">{{ $t('Footer.invitefd') }}</nuxt-link></li> -->
+              <li><nuxt-link to="/stores/">{{ $t('Footer.partnerstores') }}</nuxt-link></li>
             </ul>
           </div>
         </div>
         <div class="wrap-item">
-          <h6 class="footer-title">{{ $t('LEGAL') }}</h6>
+          <h6 class="footer-title">{{ $t('Footer.classtitle3') }}</h6>
           <div class="p">
             <ul class="list-unstyled contact">
-              <li><a href="/legal/">{{ $t('Terms Of Use') }}</a></li>
-              <li><a href="/privacy/">{{ $t('Privacy Policy') }}</a></li>
+              <li><nuxt-link to="/legal/">{{ $t('Footer.termsofuse') }}</nuxt-link></li>
+              <li><nuxt-link to="/privacy/">{{ $t('Footer.privacypolicy') }}</nuxt-link></li>
             </ul>
           </div>
         </div>
         <div class="wrap-item">
-          <h6 class="footer-title">{{ $t('CONNECT WITH US') }}</h6>
+          <h6 class="footer-title">{{ $t('Footer.classtitle4') }}</h6>
           <ul class="list-unstyled contact">
             <li>
-              <a
-                href="https://itunes.apple.com/app/modesens-the-premier-shopping-assistant/id976201094?mt=8"
+              <!-- <div
+                to="https://itunes.apple.com/app/modesens-the-premier-shopping-assistant/id976201094?mt=8"
                 target="_blank">
                 <img
                   class="footer-connect-img"
                   src="~/static/img/download-on-the-app-store.png">
-              </a>
+              </div> -->
             </li>
-            <li><a><img
+            <!-- <li><nuxt-link><img
               class="footer-connect-img"
-              src="~/static/img/add-to-chrome.png"></a></li>
+              src="~/static/img/add-to-chrome.png"></nuxt-link></li> -->
           </ul>
         </div>
         <div
           v-if="lsuser"
           style="min-width: 300px;"
           class="wrap-item">
-          <h6 class="footer-title">{{ $t('SHARE THE LOVE') }}</h6>
-          <div>{{ $t('Your friends will thank you - more than once') }}</div>
+          <h6 class="footer-title">{{ $t('Footer.classtitle5') }}</h6>
+          <div>{{ $t('Footer.class5desc') }}</div>
           <input
             id="iemail"
-            :placeholder="$t('Enter email addresses separated by commas')"
+            :placeholder="$t('Footer.placeholder')"
             class="form-control footer-email"
             name="iemail">
           <input
-            :value="$t('Invite Friends')"
+            :value="$t('Footer.invitefd')"
             class="btn btn-default"
             type="button"
             style="width: 100%;margin-top: 30px;">
@@ -70,10 +70,10 @@
         <div
           v-else
           class="wrap-item">
-          <h6 class="footer-title">{{ $t('NEWSLETTER SIGN UP') }}</h6>
+          <h6 class="footer-title">{{ $t('Footer.classtitle6') }}</h6>
           <form id="footer_form">
             <input
-              :placeholder="$t('Email Address')"
+              :placeholder="$t('emailaddress')"
               class="form-control footer-email"
               name="email">
             <div class="footer-sex">
@@ -85,7 +85,7 @@
                   value="f"
                   class="form-control"
                   checked>
-                <label for="footer_female">{{ $t("Women's") }}</label>
+                <label for="footer_female">{{ $t('womens') }}</label>
               </div>
               <div>
                 <input
@@ -94,7 +94,7 @@
                   type="radio"
                   value="m"
                   class="form-control">
-                <label for="footer_male">{{ $t("Men's") }}</label>
+                <label for="footer_male">{{ $t('mens') }}</label>
               </div>
             </div>
             <input
@@ -118,30 +118,29 @@
             {{ rcountry ? '京 ICP 备 16029930号' : '' }}
           </span>
         </div>
-
         <div
           class="footer-svg-con"
           style="float: right;margin-right:-9px;">
-          <a href="https://www.pinterest.com/modesens/"><img
+          <nuxt-link to="https://www.pinterest.com/modesens/"><img
             class="footer-mini-img"
             src="~/static/img/20181008footer-pit.svg"
-            style="width: 30px;margin-right: 20px;"></a>
-          <a href="https://twitter.com/modesens"><img
+            style="width: 30px;margin-right: 20px;"></nuxt-link>
+          <nuxt-link to="https://twitter.com/modesens"><img
             class="footer-mini-img"
             src="~/static/img/20181008footer-tt.svg"
-            style="width: 30px;margin-right: 10px;"></a>
-          <a href="https://www.instagram.com/modesens/"><img
+            style="width: 30px;margin-right: 10px;"></nuxt-link>
+          <nuxt-link to="https://www.instagram.com/modesens/"><img
             class="footer-mini-img"
-            src="~/static/img/footer-p.svg"></a>
-          <a href="https://www.facebook.com/modesens"><img
+            src="~/static/img/footer-p.svg"></nuxt-link>
+          <nuxt-link to="https://www.facebook.com/modesens"><img
             class="footer-mini-img"
-            src="~/static/img/footer-fb.svg"></a>
-          <a href="https://weibo.com/5365182498/profile?topnav=1&wvr=6&is_all=1"><img
+            src="~/static/img/footer-fb.svg"></nuxt-link>
+          <nuxt-link to="https://weibo.com/5365182498/profile?topnav=1&wvr=6&is_all=1"><img
             class="footer-mini-img"
-            src="~/static/img/footer-wb.svg"></a>
-          <a href="javascript:;"><img
+            src="~/static/img/footer-wb.svg"></nuxt-link>
+          <nuxt-link to="javascript:;"><img
             class="footer-mini-img"
-            src="~/static/img/footer-wx.svg"></a>
+            src="~/static/img/footer-wx.svg"></nuxt-link>
         </div>
       </div>
     </div>
@@ -169,11 +168,83 @@ export default {
 }
 </script>
 <style>
-.footer-content {
-  border-top: 0.5px solid #929292;
-}
 .footer-wrap {
   display: flex;
   justify-content: space-between;
+  padding-top: 44px;
+  border-top: 0.5px solid #929292;
+  padding-bottom: 50px;
+}
+.footer-title {
+  font-size: 1.1em;
+}
+.footer-logo {
+  width: 150px;
+}
+.footer-mini-img {
+  width: 50px;
+  cursor: pointer;
+}
+.footer-connect-img {
+  width: 130px;
+}
+.footer-email {
+  width: 100% !important;
+  border: 0 !important;
+  border-bottom: 0.5px solid #252525 !important;
+  padding: 6px 0 !important;
+}
+.footer-sex {
+  display: flex;
+  margin: 10px 0;
+}
+.footer-sex label {
+  margin-left: 25px;
+  margin-right: 30px;
+  padding-left: 0;
+}
+.footer-bottom {
+  overflow: hidden;
+  border-top: 0.5px solid #929292;
+  padding-top: 28px;
+  padding-bottom: 30px;
+}
+#footer_form {
+  width: 100%;
+}
+.footer-logo-con img {
+  width: 34px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.footer-logo-con span {
+  font-size: 12px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#footer_female[type='radio'],
+#footer_male[type='radio'] {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: url('/static/img/login-icon/unchecked.svg');
+  margin-top: 2px;
+  margin-left: 0px;
+  cursor: pointer;
+  position: absolute;
+  border: none;
+}
+#footer_female[type='radio'] {
+  margin-left: 0;
+}
+#footer_female[type='radio']:checked,
+#footer_male[type='radio']:checked {
+  -webkit-appearance: none;
+  background: url('/static/img/checked.svg');
+}
+#footer_female[type='radio']:focus,
+#footer_male[type='radio']:focus {
+  background: url('/static/img/checked.svg');
 }
 </style>

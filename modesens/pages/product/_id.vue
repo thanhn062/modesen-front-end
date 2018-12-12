@@ -1,6 +1,6 @@
 <template>
   <section class="prdCon">
-    <nuxt-link to="/about">To About</nuxt-link><br>
+    <nuxt-link to="/about4">To About</nuxt-link><br>
     {{ $route.params.id }}
     <div v-if="product">
       <div>
