@@ -45,11 +45,9 @@ export const state = () => ({
 export const mutations = {
   SET_TOKEN: (state, token) => {
     state.TOKEN = token
-    sessionStorage.setItem('TOKEN', token)
   },
   DEL_TOKEN: state => {
     state.TOKEN = ''
-    sessionStorage.removeItem('TOKEN')
   },
   setInfos: (state, params) => {
     state.availabilities = params.availabilities

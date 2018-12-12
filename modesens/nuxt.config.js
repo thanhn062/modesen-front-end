@@ -40,7 +40,6 @@ module.exports = {
   plugins: [
     // { src: '~plugins/ga.js', ssr: false },
     { src: '~plugins/axios.js', ssr: false },
-    { src: '~plugins/common.js', ssr: false }
   ],
 
   /*
