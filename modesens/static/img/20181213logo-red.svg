@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40.67 48.578">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #f54a35;
+      }
+
+      .cls-1 {
+        opacity: 0.363;
+      }
+
+      .cls-2 {
+        opacity: 0.81;
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="矩形_3149" data-name="矩形 3149" class="cls-1" width="40.67" height="48.578"/>
+    </clipPath>
+  </defs>
+  <g id="monogram_b" class="cls-2">
+    <g id="组_9727" data-name="组 9727" transform="translate(1.13 1.132)">
+      <path id="路径_9538" data-name="路径 9538" class="cls-3" d="M920.841,494.546v16.77h-2.755V495.032l-7.737,16.317h-1.036l-7.382-16.317v16.284h-1.1v-16.77c0-1.522-.033-2.946-.033-2.946h2.622l7.316,16.252,7.737-16.252h2.363Z" transform="translate(-891.444 -478.198)"/>
+      <path id="路径_9539" data-name="路径 9539" class="cls-3" d="M891.227,496.56h0c-17.158,0-19.327-15.961-19.327-23.18h0c0-7.22,2.2-23.18,19.327-23.18h.1c17.125,0,19.327,15.961,19.327,23.18h0c0,7.219-2.2,23.18-19.327,23.18Zm.033-.972h0c15.477,0,17-15.216,17-22.241h0c0-7.026-1.489-22.241-17-22.241H891.2c-15.477,0-17,15.216-17,22.241h0c0,7.026,1.489,22.241,17,22.241Z" transform="translate(-871.9 -450.201)"/>
+    </g>
+  </g>
+</svg>
