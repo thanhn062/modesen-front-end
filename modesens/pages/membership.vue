@@ -1,17 +1,55 @@
 <template>
   <section>
-    <div>
+    <div class="membershippage">
       <div class="userInfoBox">
-        <img 
-          :src="lsuser.icon" 
-          alt="">
-        <div class="info">
-          <div class="user_name">{{ lsuser.username }}</div>
-          <div class="user_bio">{{ lsuser.bio }}</div>
-          <div class="user_words">{{ lsuser.words }}</div>
+        <div class="userInfoinnerBox">
+          <div class="userinfo">
+            <img 
+              :src="lsuser.icon" 
+              alt="">
+            <div class="info">
+              <div class="user_name">{{ lsuser.username }}</div>
+              <div class="user_bio">{{ lsuser.bio }}</div>
+              <div class="user_words">{{ lsuser.words }}</div>
+            </div>
+          </div>
+          <div class="levelcard">
+            <div class="card">
+              <img
+                v-if="level.level==='Bronze'" 
+                src="/img/20181213bronzecard.svg"
+                alt="">
+              <img
+                v-if="level.level==='Silver'" 
+                src="/img/20181213silvercard.svg"
+                alt="">
+              <img
+                v-if="level.level==='Gold'" 
+                src="/img/20181213goldcard.svg"
+                alt="">
+              <img
+                v-if="level.level==='Platinum'" 
+                src="/img/20181213platinumcard.svg"
+                alt="">
+              <div class="cardinfo keepLeft">
+                <div class="userStart">
+                  <div class="name">{{ lsuser.username }}</div>
+                  <div class="start">Member Since {{ level.start_date }}</div>
+                </div>
+                <div class="currentLevel">{{ level.level.toUpperCase() }}</div>
+                <div class="userEnd">
+                  <a
+                    href="##"
+                    target="_blank">
+                    Your Membership Benefits through {{ level.end_date }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="page-content">
+      <div class="page-content container">
         <div class="page-left">
           <vueNav 
             :navlist="list" 
@@ -36,31 +74,17 @@ import axios from '~/plugins/axios'
 import membership from '~/static/api/1.0/membership.js'
 import vueNav from '~/components/nav.vue'
 import myloyalty0 from '~/components/membership/myloyalty.vue'
-import myloyalty1 from '~/components/membership/myloyalty1.vue'
-import myloyalty2 from '~/components/membership/myloyalty2.vue'
-import myloyalty3 from '~/components/membership/myloyalty3.vue'
-import myloyalty4 from '~/components/membership/myloyalty4.vue'
 export default {
   components: {
     vueNav,
-    myloyalty0,
-    myloyalty1,
-    myloyalty2,
-    myloyalty3,
-    myloyalty4
+    myloyalty0
   },
   data() {
     return {
       limit: -1,
       isShow: false,
       // tab项列表
-      list: [
-        'MY LOYALTY',
-        'MY LOYALTY1',
-        'MY LOYALTY2',
-        'MY LOYALTY3',
-        'MY LOYALTY4'
-      ],
+      list: ['ACCOUNT OVERVIEW'],
       // tab排列方向
       dir: 'flex-column',
       //当前显示的页面
@@ -74,7 +98,7 @@ export default {
   async asyncData({ app }) {
     var params = {}
     params.level = true
-    // params.lsuid = 652
+    params.lsuid = 652
     let {
       data: { lsuser, level }
     } = await axios.postasync(
@@ -107,5 +131,6 @@ export default {
 }
 </script>
 <style lang="less">
+@import '../assets/css/main.less';
 @import '../assets/css/membership.less';
 </style>
