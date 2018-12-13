@@ -1,17 +1,20 @@
-@color: #8e8e8e;
+@borderColor: #8e8e8e;
+@fontColor: #1c1c1c;
+@underlineColor: #f54a35;
 @font-size: 18px;
 @image: "~/static/img";
-@border: .5px solid @color;
+@border: .5px solid @borderColor;
+
 
 * {
     font-family: SuisseIntl;
+    color: @fontColor;
 }
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; }
 input:focus::-moz-placeholder { color:transparent; }
 input:focus:-ms-input-placeholder { color:transparent; }
 .prdCon {
-    // background: @color;
     font-size: @font-size;
     border: @border;
 }
