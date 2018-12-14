@@ -27,30 +27,51 @@
           class="button--grey">GitHub</a>
       </div>
     </div>
+    <!-- <iframe
+      :src="'https://modesens.com/accounts/login/?next=' + nextUrl"
+      width="100%"
+      height="300px"
+      frameborder="0"/> -->
   </section>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
-
+import axios from '~/plugins/axios'
 export default {
   components: {
     Logo
   },
-  created() {
-    console.log(this.$store.state.TOKEN)
+  data() {
+    return {
+      nextUrl: this.$route.fullPath
+    }
+  },
+  created() {},
+  mounted() {
+    this.getDesigner()
+  },
+  methods: {
+    async getDesigner() {
+      var designer = 'GUCCI'
+      let obj = await axios.post('/invited/', {
+        offset: 0,
+        amount: 10
+      })
+      console.log(obj)
+    }
   }
 }
 </script>
 
 <style>
-.container {
+/* .container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
+} */
 
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,

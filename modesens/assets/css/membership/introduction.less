@@ -1,0 +1,191 @@
+@import '../main.less';
+.accountsCon {
+  padding: 50px 0;
+  width: 100%;
+  height: 387px;
+  text-align: center;
+  background: @bgColor;
+  .logoCon {
+    img {
+      height: 109px;
+    }
+  }
+  .desc {
+    margin-top: 20px;
+    font-size: 22px;
+  }
+}
+.accountsBox {
+  margin-top: 20px;
+  .loginBox {
+    margin-top: 10px;
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+.benefitsCon {
+  margin-top: 36px;
+  padding: 50px 0;
+  background: @bgColor;
+  .benefitsTitle {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+  }
+  .benefitsBox {
+    margin-top: 58px;
+    overflow: hidden;
+  }
+}
+.benefitsEach {
+  float: left;
+  padding: 0px 60px;
+  width: 50%;
+  height: 152px;
+  overflow: hidden;
+  &:nth-of-type(3),
+  &:nth-of-type(4) {
+    margin-top: 90px;
+  }
+  .imgBox {
+    float: left;
+    width: 20%;
+    img {
+      width: 100%;
+    }
+  }
+  .descBox {
+    float: left;
+    padding-left: 30px;
+    width: 80%;
+    .title {
+      font-weight: bold;
+    }
+    .desc {
+      margin-top: 10px;
+      color: @fontGray;
+    }
+  }
+}
+.levelCon {
+  margin-top: 50px;
+  text-align: center;
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .levelBox {
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 40px;
+    width: 840px;
+    height: 490px;
+    border: 10px solid @bgColor;
+    .imgBox-l {
+      margin-bottom: 15px;
+      overflow: hidden;
+      .level-bronze {
+        background: url('/img/20181213bronze-l.svg');
+      }
+      .level-silver {
+        background: url('/img/20181213silver-l.svg');
+      }
+      .level-gold {
+        background: url('/img/20181213gold-l.svg');
+      }
+      .level-platinum {
+        background: url('/img/20181213platinum-l.svg');
+      }
+    }
+    .levelKind {
+      padding-top: 15px;
+      overflow: hidden;
+      &>span {
+        float: left;
+        line-height: 30px;
+      }
+      .levelEach {
+        padding: 6px 0;
+      }
+      .level-bronze {
+        background: url('/img/20181213bronze-s.svg');
+      }
+      .level-silver {
+        background: url('/img/20181213silver-s.svg');
+      }
+      .level-gold {
+        background: url('/img/20181213gold-s.svg');
+      }
+      .level-platinum {
+        background: url('/img/20181213platinum-s.svg');
+      }
+      i {
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        background: @fontColor;
+        display: inline-block;
+      }
+    }
+    .levelEach {
+      float: right;
+      margin-left: 20px;
+      padding: 12px 0;
+      width: 103px;
+    }
+  }
+}
+.earnCon {
+  margin-top: 80px;
+  padding: 50px 0;
+  text-align: center;
+  background: @bgColor;
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .desc {
+    margin-top: 20px;
+  }
+  .earnBox {
+    padding: 0 100px;
+    .earnEach {
+      margin-top: 60px;
+    }
+  }
+}
+.questionsCon {
+  margin-top: 60px;
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .questionsBox {
+    margin-top: 30px;
+    padding: 0 150px;
+    border-top: @border;
+  }
+}
+.questionBox {
+  margin-top: 30px;
+  .question {
+    overflow: hidden;
+    span {
+      float: left;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    img {
+      float: right;
+      margin-top: 6px;
+      width: 20px;
+    }
+  }
+  .answer {
+    margin-top: 10px;
+    padding: 0 20px;
+  }
+}

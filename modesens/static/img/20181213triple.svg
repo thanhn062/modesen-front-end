@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 73.553 57.542">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-10, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke: #f8472b;
+        stroke-width: 0.75px;
+      }
+
+      .cls-3, .cls-4 {
+        stroke-linecap: round;
+      }
+
+      .cls-3 {
+        stroke-linejoin: round;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-6, .cls-7, .cls-8 {
+        fill: #f8472b;
+        letter-spacing: 0.05em;
+      }
+
+      .cls-6 {
+        font-size: 12px;
+        font-family: SuisseIntl-Regular, Suisse Intl;
+      }
+
+      .cls-7 {
+        font-size: 7px;
+      }
+
+      .cls-7, .cls-8 {
+        font-family: SuisseIntl-Medium, Suisse Intl;
+        font-weight: 500;
+      }
+
+      .cls-8 {
+        font-size: 4px;
+      }
+
+      .cls-9 {
+        stroke: none;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="矩形_3146" data-name="矩形 3146" width="73.554" height="57.542"/>
+    </clipPath>
+  </defs>
+  <g id="组_9723" data-name="组 9723" transform="translate(0 0)">
+    <g id="benef_join_our_community" class="cls-1">
+      <g id="组_9722" data-name="组 9722" transform="translate(16.372 2.092)">
+        <path id="路径_9513" data-name="路径 9513" class="cls-2" d="M30.31,4.1H80.018a2.551,2.551,0,0,1,2.669,2.3v.052h0c0,.052-.119.052-.237.052H27.878c-.178,0-.178-.052-.178-.1h0a2.159,2.159,0,0,1,.76-1.631,2.783,2.783,0,0,1,1.85-.67Z" transform="translate(-27.641 -4.1)"/>
+        <path id="路径_9514" data-name="路径 9514" class="cls-3" d="M43.857,24.818a1.773,1.773,0,0,0-1.424-.523,2.514,2.514,0,0,0,0,.942c.119.575.593.837.593,1.569S41.9,28.637,41.9,29.892v1.465h1.957" transform="translate(-33.418 -13.728)"/>
+        <path id="路径_9515" data-name="路径 9515" class="cls-3" d="M45.2,24.818a1.773,1.773,0,0,1,1.424-.523,2.513,2.513,0,0,1,0,.942c-.119.575-.593.837-.593,1.569S47.1,28.637,47.1,29.892v1.465H45.2" transform="translate(-34.76 -13.728)"/>
+        <line id="直线_2123" data-name="直线 2123" class="cls-4" x2="1.72" transform="translate(9.55 13.182)"/>
+        <path id="路径_9516" data-name="路径 9516" class="cls-3" d="M73.554,24.815a2.235,2.235,0,0,0-1.661-.523,1.29,1.29,0,0,0,0,.942c.119.575.652.837.652,1.569S71.3,28.634,71.3,29.889v.366" transform="translate(-45.378 -13.725)"/>
+        <path id="路径_9517" data-name="路径 9517" class="cls-3" d="M75.1,24.817a2.173,2.173,0,0,1,1.6-.523,2.513,2.513,0,0,1,0,.942c-.119.575-.652.837-.652,1.569s1.186,1.831,1.186,3.086v.732" transform="translate(-46.924 -13.728)"/>
+        <line id="直线_2124" data-name="直线 2124" class="cls-4" y2="0.942" transform="translate(27.049 9.625)"/>
+        <line id="直线_2125" data-name="直线 2125" class="cls-4" y2="0.942" transform="translate(29.362 9.625)"/>
+        <path id="路径_9518" data-name="路径 9518" class="cls-3" d="M102.757,24.818a1.773,1.773,0,0,0-1.424-.523,2.513,2.513,0,0,0,0,.942c.119.575.593.837.593,1.569s-1.127,1.831-1.127,3.086v1.465h1.957" transform="translate(-57.38 -13.728)"/>
+        <path id="路径_9519" data-name="路径 9519" class="cls-3" d="M104.1,24.818a1.773,1.773,0,0,1,1.424-.523,2.513,2.513,0,0,1,0,.942c-.119.575-.593.837-.593,1.569S106,28.637,106,29.892v1.465h-1.9" transform="translate(-58.722 -13.728)"/>
+        <line id="直线_2126" data-name="直线 2126" class="cls-4" x2="2.788" y2="4.08" transform="translate(44.488 13.182)"/>
+        <path id="路径_9520" data-name="路径 9520" class="cls-3" d="M104.122,49.2h-2.847a2.512,2.512,0,0,0,0,.942c.119.575.593.837.593,1.569S100.8,53.542,100.8,54.8v1.465h1.957" transform="translate(-57.38 -25.608)"/>
+        <path id="路径_9521" data-name="路径 9521" class="cls-3" d="M105.524,49.2a2.513,2.513,0,0,1,0,.942c-.119.575-.593.837-.593,1.569S106,53.542,106,54.8v1.465h-1.9" transform="translate(-58.722 -25.608)"/>
+        <path id="路径_9532" data-name="路径 9532" class="cls-4" d="M120.4,8.7V43.591" transform="translate(-65.353 -6.294)"/>
+        <path id="路径_9533" data-name="路径 9533" class="cls-4" d="M27.6,20.47V8.7H82.647V43.591" transform="translate(-27.6 -6.294)"/>
+      </g>
+    </g>
+    <g id="椭圆_216" data-name="椭圆 216" class="cls-5" transform="translate(36.741 17.84)">
+      <circle class="cls-9" cx="9.692" cy="9.692" r="9.692"/>
+      <circle class="cls-10" cx="9.692" cy="9.692" r="9.317"/>
+    </g>
+    <g id="椭圆_217" data-name="椭圆 217" class="cls-5" transform="translate(37.364 29.83)">
+      <circle class="cls-9" cx="7.858" cy="7.858" r="7.858"/>
+      <circle class="cls-10" cx="7.858" cy="7.858" r="7.483"/>
+    </g>
+    <g id="椭圆_215" data-name="椭圆 215" class="cls-5" transform="translate(17.98 15.718)">
+      <circle class="cls-9" cx="12.43" cy="12.43" r="12.43"/>
+      <circle class="cls-10" cx="12.43" cy="12.43" r="12.055"/>
+    </g>
+    <text id="x3" class="cls-6" transform="translate(22.821 32.115)"><tspan x="0" y="0">x3</tspan></text>
+    <text id="x2" class="cls-7" transform="translate(42.904 28.028)"><tspan x="0" y="0">x2</tspan></text>
+    <text id="x1" class="cls-8" transform="translate(42.389 38.37)"><tspan x="0" y="0">x1</tspan></text>
+  </g>
+</svg>

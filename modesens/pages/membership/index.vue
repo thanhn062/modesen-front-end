@@ -39,7 +39,7 @@
                 <div class="currentLevel">{{ level.level.toUpperCase() }}</div>
                 <div class="userEnd">
                   <a
-                    href="##"
+                    href="javascript:;"
                     target="_blank">
                     Your Membership Benefits through {{ level.end_date }}
                   </a>
@@ -131,6 +131,6 @@ export default {
 }
 </script>
 <style lang="less">
-@import '../assets/css/main.less';
-@import '../assets/css/membership.less';
+// @import '../../assets/css/main.less';
+@import '../../assets/css/membership/membership.less';
 </style>
