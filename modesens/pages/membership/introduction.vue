@@ -66,100 +66,102 @@
         <span>Swap Right</span>
       </div>
       <div class="levelBox">
-        <div class="imgBox-l">
-          <div class="levelEach level-platinum">
-            <span>Platinum</span><br>
-            <span>{{ platinumNum }}</span>
+        <div class="levelWrap">
+          <div class="imgBox-l">
+            <div class="levelEach level-platinum">
+              <span>Platinum</span><br>
+              <span>{{ platinumNum }}</span>
+            </div>
+            <div class="levelEach level-gold">
+              <span>Gold</span><br>
+              <span>{{ goldNum }}</span>
+            </div>
+            <div class="levelEach level-silver">
+              <span>Silver</span><br>
+              <span>{{ silverNum }}</span>
+            </div>
+            <div class="levelEach level-bronze">
+              <span>Bronze</span><br>
+              <span>{{ bronzeNum }}</span>
+            </div>
           </div>
-          <div class="levelEach level-gold">
-            <span>Gold</span><br>
-            <span>{{ goldNum }}</span>
+          <div class="levelKind">
+            <span>Priority Sale Alert</span>
+            <div class="levelEach level-platinum">
+              <span>First Priority</span>
+            </div>
+            <div class="levelEach level-gold">
+              <span>Second Priority</span>
+            </div>
+            <div class="levelEach level-silver">
+              <span>Third Priority</span>
+            </div>
+            <div class="levelEach level-bronze">
+              <span>Fourth Priority</span>
+            </div>
           </div>
-          <div class="levelEach level-silver">
-            <span>Silver</span><br>
-            <span>{{ silverNum }}</span>
+          <div class="levelKind">
+            <span>Maximum Wanted Products</span>
+            <div class="levelEach level-platinum">
+              <span>Unlimited</span>
+            </div>
+            <div class="levelEach level-gold">
+              <span>100</span>
+            </div>
+            <div class="levelEach level-silver">
+              <span>50</span>
+            </div>
+            <div class="levelEach level-bronze">
+              <span>10</span>
+            </div>
           </div>
-          <div class="levelEach level-bronze">
-            <span>Bronze</span><br>
-            <span>{{ bronzeNum }}</span>
+          <div class="levelKind">
+            <span>ModeSens Protection </span>
+            <div class="levelEach level-platinum">
+              <i/>
+            </div>
+            <div class="levelEach level-gold">
+              <i/>
+            </div>
+            <div class="levelEach level-silver">
+              <i/>
+            </div>
+            <div class="levelEach level-bronze">
+              <i/>
+            </div>
           </div>
-        </div>
-        <div class="levelKind">
-          <span>Priority Sale Alert</span>
-          <div class="levelEach level-platinum">
-            <span>First Priority</span>
+          <div class="levelKind">
+            <span>Triple Points Days</span>
+            <div class="levelEach level-platinum">
+              <span>3</span>
+            </div>
+            <div class="levelEach level-gold">
+              <span>2</span>
+            </div>
+            <div class="levelEach level-silver">
+              <span>1</span>
+            </div>
           </div>
-          <div class="levelEach level-gold">
-            <span>Second Priority</span>
+          <div class="levelKind">
+            <span>Early Sale Access</span>
+            <div class="levelEach level-platinum">
+              <i/>
+            </div>
+            <div class="levelEach level-gold">
+              <i/>
+            </div>
           </div>
-          <div class="levelEach level-silver">
-            <span>Third Priority</span>
+          <div class="levelKind">
+            <span>Dedicated VIP Service</span>
+            <div class="levelEach level-platinum">
+              <i/>
+            </div>
           </div>
-          <div class="levelEach level-bronze">
-            <span>Fourth Priority</span>
-          </div>
-        </div>
-        <div class="levelKind">
-          <span>Maximum Wanted Products</span>
-          <div class="levelEach level-platinum">
-            <span>Unlimited</span>
-          </div>
-          <div class="levelEach level-gold">
-            <span>100</span>
-          </div>
-          <div class="levelEach level-silver">
-            <span>50</span>
-          </div>
-          <div class="levelEach level-bronze">
-            <span>10</span>
-          </div>
-        </div>
-        <div class="levelKind">
-          <span>ModeSens Protection </span>
-          <div class="levelEach level-platinum">
-            <i/>
-          </div>
-          <div class="levelEach level-gold">
-            <i/>
-          </div>
-          <div class="levelEach level-silver">
-            <i/>
-          </div>
-          <div class="levelEach level-bronze">
-            <i/>
-          </div>
-        </div>
-        <div class="levelKind">
-          <span>Triple Points Days</span>
-          <div class="levelEach level-platinum">
-            <span>3</span>
-          </div>
-          <div class="levelEach level-gold">
-            <span>2</span>
-          </div>
-          <div class="levelEach level-silver">
-            <span>1</span>
-          </div>
-        </div>
-        <div class="levelKind">
-          <span>Early Sale Access</span>
-          <div class="levelEach level-platinum">
-            <i/>
-          </div>
-          <div class="levelEach level-gold">
-            <i/>
-          </div>
-        </div>
-        <div class="levelKind">
-          <span>Dedicated VIP Service</span>
-          <div class="levelEach level-platinum">
-            <i/>
-          </div>
-        </div>
-        <div class="levelKind">
-          <span> Limited Products</span>
-          <div class="levelEach level-platinum">
-            <i/>
+          <div class="levelKind">
+            <span> Limited Products</span>
+            <div class="levelEach level-platinum">
+              <i/>
+            </div>
           </div>
         </div>
       </div>
