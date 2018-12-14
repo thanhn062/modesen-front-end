@@ -5,7 +5,7 @@ import qs from 'qs'
 
 const req = axios.create({
   //定义请求根目录
-  baseURL: process.env.baseUrl + 'api/2.0/',
+  baseURL: process.env.baseUrl + 'api/1.0/',
   // baseURL: 'http://34.226.204.204/' + 'api/2.0/',
   // 请求超时
   timeout: 5000,

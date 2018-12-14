@@ -44,6 +44,7 @@
           data-ga-click="test-test3--">ga3</button>
       </div>
       <div><nuxt-link to="/membership/introduction/">membership-intro</nuxt-link></div>
+      <div><nuxt-link to="/membership/">membership</nuxt-link></div>
     </div>
   </section>
 </template>

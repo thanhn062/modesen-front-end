@@ -13,7 +13,9 @@
         </div>
         <div class="loginBox">Already a member? <a
           v-b-modal.mdLogin
-          href="javascript:;">Login Now</a></div>
+          href="javascript:;">Login Now</a>
+        </div>
+        <Modal/>
       </div>
     </div>
     <div class="benefitsCon">
@@ -59,6 +61,10 @@
     </div>
     <div class="levelCon">
       <div class="title">MEMBERSHIP LEVELS</div>
+      <div class="arrowBox">
+        <img src="/img/20180905overlay_right_arrow_b.svg">
+        <span>Swap Right</span>
+      </div>
       <div class="levelBox">
         <div class="imgBox-l">
           <div class="levelEach level-platinum">
@@ -70,7 +76,7 @@
             <span>{{ goldNum }}</span>
           </div>
           <div class="levelEach level-silver">
-            <span>silver</span><br>
+            <span>Silver</span><br>
             <span>{{ silverNum }}</span>
           </div>
           <div class="levelEach level-bronze">
@@ -178,54 +184,104 @@
       <div class="title">FREQUENTLY ASKED QUESTIONS</div>
       <div class="questionsBox">
         <div class="questionBox">
-          <div class="question">
+          <div
+            class="question"
+            @click="questionClick(0)">
             <span>HOW CAN I JOIN IN?</span>
             <img
               src="/img/sidebar_more.png"
               alt="">
           </div>
-          <div class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
+          <div
+            v-if="indexQt===0"
+            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
         </div>
         <div class="questionBox">
-          <div class="question">
+          <div
+            class="question"
+            @click="questionClick(1)">
             <span>HOW CAN I FIND OUT MY LEVEL?</span>
             <img
               src="/img/sidebar_more.png"
               alt="">
           </div>
-          <div class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
+          <div
+            v-if="indexQt===1"
+            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
         </div>
         <div class="questionBox">
-          <div class="question">
+          <div
+            class="question"
+            @click="questionClick(2)">
             <span>DO LEVELS EXPIRE OR GET RESET?</span>
             <img
               src="/img/sidebar_more.png"
               alt="">
           </div>
-          <div class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
+          <div
+            v-if="indexQt===2"
+            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
         </div>
         <div class="questionBox">
-          <div class="question">
+          <div
+            class="question"
+            @click="questionClick(3)">
             <span>WHAT IS EARLY SALE ACCESS?</span>
             <img
               src="/img/sidebar_more.png"
               alt="">
           </div>
-          <div class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
+          <div
+            v-if="indexQt===3"
+            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
         </div>
       </div>
     </div>
   </section>
 </template>
 <script>
+import Modal from '~/components/Modal.vue'
+import membership from '~/static/api/1.0/membership.js'
 export default {
+  components: {
+    Modal
+  },
   data() {
     return {
       isNotLogin: true,
+      level: '',
       bronzeNum: '<20K',
       silverNum: '20K-50k',
       goldNum: '50k-100k',
-      platinumNum: '>100k'
+      platinumNum: '>100k',
+      indexQt: -1
+    }
+  },
+  created() {
+    this.getLevelInfo()
+  },
+  methods: {
+    async getLevelInfo() {
+      var params = {}
+      params.level = true
+      params.lsuid = 652
+      let {
+        data: { level }
+      } = await membership.getProfile(params)
+      this.level = level.level
+      $('.levelEach')
+        .not($(`.level-${level.level.toLowerCase()}`))
+        .addClass('level-gray')
+    },
+    questionClick(index) {
+      if (this.indexQt === index) {
+        this.indexQt = -1
+        // $($('.question img')[index]).css('transform', '0deg')
+        return
+      }
+      this.indexQt = index
+      // $($('.question img')[index]).css('transform', '180deg')
+      $('.question img').css('transform', '180deg')
     }
   }
 }

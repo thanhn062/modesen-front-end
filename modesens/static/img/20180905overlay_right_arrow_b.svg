@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 45 29">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-overlay_right_arrow_b);
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #000;
+      }
+    </style>
+    <clipPath id="clip-overlay_right_arrow_b">
+      <rect width="45" height="29"/>
+    </clipPath>
+  </defs>
+  <g id="overlay_right_arrow_b" class="cls-1">
+    <g id="组_3874" data-name="组 3874" transform="translate(-1760 -526)">
+      <path id="路径_9408" data-name="路径 9408" class="cls-2" d="M-6353.91-7538.467l11.46,11.46-11.46,11.46" transform="translate(8145.285 8067.023)"/>
+      <line id="直线_3024" data-name="直线 3024" class="cls-2" x1="41" transform="translate(1802.836 539.977) rotate(180)"/>
+    </g>
+  </g>
+</svg>

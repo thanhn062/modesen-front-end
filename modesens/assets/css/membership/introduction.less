@@ -2,7 +2,7 @@
 .accountsCon {
   padding: 50px 0;
   width: 100%;
-  height: 387px;
+  // height: 387px;
   text-align: center;
   background: @bgColor;
   .logoCon {
@@ -75,6 +75,9 @@
     font-size: 16px;
     font-weight: bold;
   }
+  .arrowBox {
+    display: none;
+  }
   .levelBox {
     box-sizing: border-box;
     margin: 0 auto;
@@ -83,58 +86,78 @@
     width: 840px;
     height: 490px;
     border: 10px solid @bgColor;
-    .imgBox-l {
-      margin-bottom: 15px;
-      overflow: hidden;
-      .level-bronze {
-        background: url('/img/20181213bronze-l.svg');
-      }
-      .level-silver {
-        background: url('/img/20181213silver-l.svg');
-      }
-      .level-gold {
-        background: url('/img/20181213gold-l.svg');
-      }
-      .level-platinum {
-        background: url('/img/20181213platinum-l.svg');
-      }
-    }
-    .levelKind {
-      padding-top: 15px;
-      overflow: hidden;
-      &>span {
-        float: left;
-        line-height: 30px;
-      }
-      .levelEach {
-        padding: 6px 0;
-      }
-      .level-bronze {
-        background: url('/img/20181213bronze-s.svg');
-      }
-      .level-silver {
-        background: url('/img/20181213silver-s.svg');
-      }
-      .level-gold {
-        background: url('/img/20181213gold-s.svg');
-      }
-      .level-platinum {
-        background: url('/img/20181213platinum-s.svg');
-      }
-      i {
-        width: 10px;
-        height: 10px;
-        border-radius: 100%;
-        background: @fontColor;
-        display: inline-block;
-      }
-    }
-    .levelEach {
-      float: right;
-      margin-left: 20px;
-      padding: 12px 0;
-      width: 103px;
-    }
+  }
+}
+.level-bronze {
+  background: url('/img/20181213bronze-l.svg') round;
+  span {
+    color: #A57058;
+  }
+  i {
+    background: #9D664D;
+  }
+}
+.level-silver {
+  background: url('/img/20181213silver-l.svg') round;
+  span {
+    color: #7D7C7C;
+  }
+  i {
+    background: #7D7C7C;
+  }
+}
+.level-gold {
+  background: url('/img/20181213gold-l.svg') round;
+  span {
+    color: #977B47;
+  }
+  i {
+    background: #977B47;
+  }
+}
+.level-platinum {
+  background: url('/img/20181213platinum-l.svg') round;
+  span {
+    color: #898989;
+  }
+  i {
+    background: #898989;
+  }
+}
+.level-gray {
+  background: @bgColor;
+  span {
+    color: @fontGray;
+  }
+  i {
+    background: @borderColor;
+  }
+}
+.levelEach {
+  float: right;
+  margin-left: 20px;
+  padding: 12px 0;
+  width: 103px;
+}
+.imgBox-l {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.levelKind {
+  padding-top: 15px;
+  overflow: hidden;
+  &>span {
+    float: left;
+    line-height: 30px;
+  }
+  .levelEach {
+    padding: 7px 0 5px;
+  }
+  i {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    display: inline-block;
   }
 }
 .earnCon {
@@ -173,6 +196,7 @@
   margin-top: 30px;
   .question {
     overflow: hidden;
+    cursor: pointer;
     span {
       float: left;
       font-size: 16px;
@@ -187,5 +211,26 @@
   .answer {
     margin-top: 10px;
     padding: 0 20px;
+  }
+}
+
+@media(max-width: 1199px) {
+  .accountsCon .desc {
+    font-size: 14px;
+  }
+  .levelCon {
+    .arrowBox {
+      display: block;
+      margin: 20px;
+      overflow: hidden;
+      img {
+        float: right;
+        margin-left: 11px;
+        height: 18px;
+      }
+      span {
+        float: right;
+      }
+    }
   }
 }
