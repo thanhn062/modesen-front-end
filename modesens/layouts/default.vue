@@ -1,7 +1,7 @@
 <template>
   <div>
     <nuxt/>
-    <Modal/>
+    <Modal v-if="login"/>
   </div>
 </template>
 <script>
@@ -10,6 +10,11 @@ import Modal from '~/components/Modal.vue'
 export default {
   components: {
     Modal
+  },
+  data() {
+    return {
+      login: false
+    }
   }
 }
 </script>
