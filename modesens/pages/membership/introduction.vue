@@ -171,14 +171,14 @@
       <div class="desc">Receive 1 point per dollar spent across all of our partner stores. Plus, enjoy these additional ways to earn more points.</div>
       <div class="earnBox">
         <div class="row">
-          <div class="col-md-3 earnEach">1,000<br>Points<br>Install ModeSens Browser<br>Extension (One Time)</div>
-          <div class="col-md-3 earnEach">1,000<br>Points<br>Download ModeSens App<br>(One Time)</div>
-          <div class="col-md-3 earnEach">100<br>Points<br>Save A Filter<br>(One Time)</div>
-          <div class="col-md-3 earnEach">100<br>Points<br>Follow A Designer<br>(One Time)</div>
-          <div class="col-md-3 earnEach">100<br>Points<br>Create A Product <br>(One Time)</div>
-          <div class="col-md-3 earnEach">100<br>Points<br>Upload A Look</div>
-          <div class="col-md-3 earnEach">10<br>Points<br>Daily Log In to ModeSens<br>Website or App</div>
-          <div class="col-md-3 earnEach">1<br>Points<br>Like A Look</div>
+          <div class="col-md-3 col-xs-12 earnEach">1,000<br>Points<br>Install ModeSens Browser<br>Extension (One Time)</div>
+          <div class="col-md-3 col-xs-12 earnEach">1,000<br>Points<br>Download ModeSens App<br>(One Time)</div>
+          <div class="col-md-3 col-xs-12 earnEach">100<br>Points<br>Save A Filter<br>(One Time)</div>
+          <div class="col-md-3 col-xs-12 earnEach">100<br>Points<br>Follow A Designer<br>(One Time)</div>
+          <div class="col-md-3 col-xs-12 earnEach">100<br>Points<br>Create A Product <br>(One Time)</div>
+          <div class="col-md-3 col-xs-12 earnEach">100<br>Points<br>Upload A Look</div>
+          <div class="col-md-3 col-xs-12 earnEach">10<br>Points<br>Daily Log In to ModeSens<br>Website or App</div>
+          <div class="col-md-3 col-xs-12 earnEach">1<br>Points<br>Like A Look</div>
         </div>
       </div>
     </div>

@@ -79,14 +79,13 @@
     display: none;
   }
   .levelBox {
-    box-sizing: border-box;
     margin: 0 auto;
     margin-top: 30px;
-    padding: 40px;
     width: 840px;
     border: 10px solid @bgColor;
     height: 490px;
     .levelWrap {
+      padding: 40px;
       width: 740px;
     }
   }
@@ -174,6 +173,7 @@
   }
   .desc {
     margin-top: 20px;
+    padding: 0 20px;
   }
   .earnBox {
     padding: 0 100px;
@@ -233,6 +233,24 @@
       }
       span {
         float: right;
+      }
+    }
+    .levelBox {
+      margin: 0 10px;
+      width: calc(100% - 20px);
+      overflow-y: scroll;
+    }
+  }
+  .earnCon .earnBox .earnEach {
+    margin-top: 20px;
+  }
+  .questionsCon {
+    .questionsBox {
+      padding: 0 20px;
+      .questionBox {
+        margin: 0;
+        padding: 20px;
+        border-bottom: 0.5px solid #f5f5f5;
       }
     }
   }
