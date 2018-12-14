@@ -14,7 +14,6 @@
             </a>
             <div class="current-L">
               <img
-                v-if="myloyaltycontent.level==='Silver'" 
                 :src="levelimgHref"
                 alt="">
             </div>
@@ -178,7 +177,7 @@ export default {
       endTime: '',
       levelClass: '',
       levelimgHref: '',
-      Tripledays: 0,
+      Tripledays: 0
     }
   },
   created() {
@@ -197,19 +196,19 @@ export default {
     }
     if (this.myloyaltycontent.level == 'Bronze') {
       this.levelClass = 'bronze'
-      this.levelimgHref = '/img/20181213bronze.svg'
+      this.levelimgHref = '/img/20181213bronze.png'
       this.Tripledays = 0
     } else if (this.myloyaltycontent.level == 'Silver') {
       this.levelClass = 'sliver'
-      this.levelimgHref = '/img/20181213silver.svg'
+      this.levelimgHref = '/img/20181213silver.png'
       this.Tripledays = 1
     } else if (this.myloyaltycontent.level == 'Gold') {
       this.levelClass = 'gold'
-      this.levelimgHref = '/img/20181213gold.svg'
+      this.levelimgHref = '/img/20181213gold.png'
       this.Tripledays = 2
     } else if (this.myloyaltycontent.level == 'Platinum') {
       this.levelClass = 'platinum'
-      this.levelimgHref = '/img/20181213platinum.svg'
+      this.levelimgHref = '/img/20181213platinum.png'
       this.Tripledays = 3
     }
   },
@@ -219,37 +218,28 @@ export default {
     var that = this
     $('#config-demo').daterangepicker(
       {
-        timePicker24Hour: true,
         linkedCalendars: false,
-        autoUpdateInput: false,
+        autoApply: false,
         maxDate: new Date(),
+        opens: 'left',
         locale: {
           format: 'YYYY-MM-DD',
           separator: ' ~ ',
-          applyLabel: '应用',
-          cancelLabel: '取消',
-          resetLabel: '重置'
+          applyLabel: 'OK',
+          cancelLabel: 'Cancel'
         }
       },
       function(start, end, label) {
         beginTimeStore = start
         endTimeStore = start
-        if (!this.startDate) {
-          this.element.val('')
-        } else {
-          this.element.val(
-            this.startDate.format(this.locale.format) +
-              this.locale.separator +
-              this.endDate.format(this.locale.format)
-          )
-        }
-        var timestamp = this.element.val().split('~')
-        that.startTime = timestamp[0].trim()
-        that.endTime = timestamp[1].trim()
-        that.getmoreRecords(1, that.startTime, that.endTime)
-        that.pagestate = 1
       }
     )
+    $('#config-demo').on('apply.daterangepicker', function(ev, picker) {
+      that.startTime = picker.startDate.format('YYYY-MM-DD')
+      that.endTime = picker.endDate.format('YYYY-MM-DD')
+      that.getmoreRecords(1, that.startTime, that.endTime)
+      that.pagestate = 1
+    })
   },
   methods: {
     toggle: function(index) {
@@ -276,6 +266,7 @@ export default {
       } else {
         this.getmoreRecords(this.currentPage, this.startTime, this.endTime)
         this.pagestate = this.currentPage
+        this.limit = -1
       }
     }
   }
@@ -286,12 +277,6 @@ export default {
 @import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.css';
 .demo {
   position: relative;
-}
-.demo i {
-  position: absolute;
-  bottom: 10px;
-  right: 24px;
-  top: auto;
   cursor: pointer;
 }
 .pagination {
