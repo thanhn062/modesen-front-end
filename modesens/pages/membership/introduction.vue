@@ -158,8 +158,62 @@
         </div>
       </div>
     </div>
-    <div>
-      <div>SHOP-JOIN-EARN</div>
+    <div class="earnCon">
+      <div class="title">SHOP-JOIN-EARN</div>
+      <div class="desc">Receive 1 point per dollar spent across all of our partner stores. Plus, enjoy these additional ways to earn more points.</div>
+      <div class="earnBox">
+        <div class="row">
+          <div class="col-md-3 earnEach">1,000<br>Points<br>Install ModeSens Browser<br>Extension (One Time)</div>
+          <div class="col-md-3 earnEach">1,000<br>Points<br>Download ModeSens App<br>(One Time)</div>
+          <div class="col-md-3 earnEach">100<br>Points<br>Save A Filter<br>(One Time)</div>
+          <div class="col-md-3 earnEach">100<br>Points<br>Follow A Designer<br>(One Time)</div>
+          <div class="col-md-3 earnEach">100<br>Points<br>Create A Product <br>(One Time)</div>
+          <div class="col-md-3 earnEach">100<br>Points<br>Upload A Look</div>
+          <div class="col-md-3 earnEach">10<br>Points<br>Daily Log In to ModeSens<br>Website or App</div>
+          <div class="col-md-3 earnEach">1<br>Points<br>Like A Look</div>
+        </div>
+      </div>
+    </div>
+    <div class="questionsCon">
+      <div class="title">FREQUENTLY ASKED QUESTIONS</div>
+      <div class="questionsBox">
+        <div class="questionBox">
+          <div class="question">
+            <span>HOW CAN I JOIN IN?</span>
+            <img
+              src="/img/sidebar_more.png"
+              alt="">
+          </div>
+          <div class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
+        </div>
+        <div class="questionBox">
+          <div class="question">
+            <span>HOW CAN I FIND OUT MY LEVEL?</span>
+            <img
+              src="/img/sidebar_more.png"
+              alt="">
+          </div>
+          <div class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
+        </div>
+        <div class="questionBox">
+          <div class="question">
+            <span>DO LEVELS EXPIRE OR GET RESET?</span>
+            <img
+              src="/img/sidebar_more.png"
+              alt="">
+          </div>
+          <div class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
+        </div>
+        <div class="questionBox">
+          <div class="question">
+            <span>WHAT IS EARLY SALE ACCESS?</span>
+            <img
+              src="/img/sidebar_more.png"
+              alt="">
+          </div>
+          <div class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
