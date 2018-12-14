@@ -110,174 +110,164 @@
   }
   #rankbox {
     margin-bottom: 20px;
-    .levelinfo {
-      margin-top: 46px;
-      display: flex;
-      justify-content: space-between;
-      .levelBenefits, .userleveldes {
-        width: 49.5%;
-        height: 280px;
-        background: #f5f5f5;
-      }
-      .levelBenefits {
-        padding: 10px;
-        .levelBenefitscon {
-          background: #fff;
-          padding: 5px;
-          width: 100%;
-          height: 100%;
-          .leveltitle {
-           font-weight: 700;
-          }
-          .Member-failure {
-            font-weight: 300;
-            margin-top: 7px;
-            display: flex;
-            justify-content: center;
-            .tointro{
-              width: 18px;
-              height: 18px;
-              border: @border;
-              border-radius: 50%;
-              margin-left: 6px;
-            }  
-          }
-          .current-L {
-            width: 276px;
-            height: 69px;
-            margin: 10px auto 0;
-          }
-          .level-rights {
-            padding-left: 0;
-            list-style: none;
-            text-align: left;
-            margin-left: 100px;
-            margin-top: 20px;
-            .levelrightsliat span{
-              display: inline-block;
-              width: 8px;
-              height: 8px;
-              border-radius: 50%;
-              background: #000;
-              margin-right: 15px;
-            }
-          }
-        }
-      }
-      .userleveldes {
-        padding: 10px;
-        .leveltitle{
-          font-weight: 700;
-        }
-        .Member-failure{
-          font-weight: 300;
-          margin-top: 7px;
-          display: flex;
-          justify-content: center;
-          .tointro{
-            width: 18px;
-            height: 18px;
-            border: @border;
-            border-radius: 50%;
-            margin-left: 6px;
-          }  
-        }
-      }
+  }
+  .levelinfo {
+    margin-top: 46px;
+    display: flex;
+    justify-content: space-between;
+    .levelBenefits, .userleveldes {
+      width: 49.5%;
+      height: 280px;
+      background: #f5f5f5;
     }
-    .conbox{
-      margin-top: 30px;
+    .levelBenefits {
+      padding: 10px;
+    }
+    .levelBenefitscon {
+      background: #fff;
+      padding: 5px;
+      width: 100%;
+      height: 100%;
+    }
+    .leveltitle {
+      font-weight: 700;
+    }
+    .Member-failure {
+      font-weight: 300;
+      margin-top: 7px;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 144px;
-      .con {
-        position: relative;
-        height: 144px;
-        width: 144px;
-        border-radius: 50%; 
-      }
-      .percent-circle {
-        position: absolute;
-        height: 144px;
-        width: 144px;
-        border-radius: 50%;
-      }
-      .percent-circle.gold {
-        background: #D3B880;
-      }
-      .percent-circle.bronze {
-        background: #D3A38B;
-      }
-      .percent-circle.sliver {
-        background: #959595;
-      }
-      .percent-circle.platinum {
-        background: #E6E6E6;
-      }
-      .left-content, .right-content {
-        position: absolute;
-        height: 144px;
-        width: 144px;
-        border-radius: 50%;
-        background: #fff;
-        box-shadow: 0px 0px 1px 1px #f5f5f5;
-      }
-      .percent-circle-right, .right-content {
-        clip: rect(0, auto, auto, 72px);
-      }
-      .percent-circle-left, .left-content {
-        clip: rect(0, 72px, auto, 0);
-      }
-      .text-circle {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        height: 120px;
-        width: 120px;
-        background: #f5f5f5;
-        border-radius: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .percentage {
-          font-size: 24px;
-          font-weight: 700;
-        }
-        .txt {
-          font-size: @font-size;
-        }
-      }   
-      .condes {
-        font-size: 14px;
-        font-weight: 700;
-        margin-left: 16px;
-        text-align: left;
-        .level-rights {
-          padding-left: 0;
-          list-style: none;
-          text-align: left;
-          margin-top: 20px;
-          font-weight: 100;
-          font-size: @font-size;
-          .levelrightsliat span{
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #000;
-            margin-right: 15px;
-          }
-        }
-      }   
     }
-    .toleveldes {
-      display: block;
+    .tointro{
+      width: 18px;
+      height: 18px;
+      border: @border;
+      border-radius: 50%;
+      margin-left: 6px;
+      line-height: 18px;
+    }  
+    .current-L {
+      width: 276px;
+      height: 69px;
+      margin: 10px auto 0;
+    }
+    .level-rights {
+      padding-left: 0;
+      list-style: none;
+      text-align: left;
+      margin-left: 100px;
       margin-top: 20px;
     }
-    .toleveldes:hover {
-      text-decoration: underline;
+    .levelrightsliat span{
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #000;
+      margin-right: 15px;
     }
+  }
+  .userleveldes {
+    padding: 10px;
+  } 
+  .conbox{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 144px;
+    .con {
+      position: relative;
+      height: 144px;
+      width: 144px;
+      border-radius: 50%; 
+    }
+    .percent-circle {
+      position: absolute;
+      height: 144px;
+      width: 144px;
+      border-radius: 50%;
+    }
+    .percent-circle.gold {
+      background: #D3B880;
+    }
+    .percent-circle.bronze {
+      background: #D3A38B;
+    }
+    .percent-circle.sliver {
+      background: #959595;
+    }
+    .percent-circle.platinum {
+      background: #E6E6E6;
+    }
+    .left-content, .right-content {
+      position: absolute;
+      height: 144px;
+      width: 144px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0px 0px 1px 1px #f5f5f5;
+    }
+    .percent-circle-right, .right-content {
+      clip: rect(0, auto, auto, 72px);
+    }
+    .percent-circle-left, .left-content {
+      clip: rect(0, 72px, auto, 0);
+    }
+    .text-circle {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      height: 120px;
+      width: 120px;
+      background: #f5f5f5;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }   
+    .percentage {
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .txt {
+      font-size: @font-size;
+    }
+    .condes {
+      font-size: 14px;
+      font-weight: 700;
+      margin-left: 16px;
+      text-align: left;
+    }   
+    .level-rights {
+      padding-left: 0;
+      list-style: none;
+      text-align: left;
+      margin-top: 20px;
+      font-weight: 100;
+      margin-left: 0;
+      font-size: @font-size;
+    }
+    .levelrightsliat span{
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #000;
+      margin-right: 15px;
+    }
+  }
+  .userleveldes .Member-failure br{
+    display: none;
+  }
+  .toleveldes {
+    display: block;
+    margin-top: 20px;
+  }
+  .toleveldes:hover {
+    text-decoration: underline;
   }
   .num-days {
     margin-top: 80px;
@@ -332,6 +322,22 @@
       .see-more {
         box-sizing: border-box;
         cursor: pointer;
+      }
+      .see-more img {
+        width: 9px;
+        transform: rotate(90deg);
+        -ms-transform:rotate(90deg); 	/* IE 9 */
+        -moz-transform:rotate(90deg); 	/* Firefox */
+        -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+        -o-transform:rotate(90deg); 
+      }
+      .see-more img.active {
+        width: 9px;
+        transform: rotate(0deg);
+        -ms-transform:rotate(0deg); 	/* IE 9 */
+        -moz-transform:rotate(0deg); 	/* Firefox */
+        -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+        -o-transform:rotate(0deg); 
       }
     }
   }
@@ -389,8 +395,84 @@
       display: none;
     }
   }
+  .page-content {
+    margin-top:10px;
+    padding:  10px;
+  }
   .page-left {
     float: unset;
     width: 100%;
+    margin-top: 0;
+    line-height: 36px;
+    .nav-item {
+      text-align: center;
+      border: @border;
+    }
+  }
+  .page-right {
+    float: unset;
+    width: 100%;
+    margin-top: 20px;
+    .levelinfo {
+      margin-top: 20px;
+      flex-direction: column;
+      align-content: center;
+      .levelBenefits, .userleveldes {
+        width: 100%;
+        height: auto;
+      }
+      .current-L img {
+        width: 90%;
+      }
+      .level-rights {
+        margin-left: 50px;
+      }
+    }
+    .userleveldes {
+      margin-top: 10px;
+      .Member-failure {
+        align-items: flex-start;
+      }
+    }
+    .conbox {
+      margin-top: 20px;
+      display: block;
+      height: auto;
+      .con {
+        margin: 0 auto;
+      }
+      .condes {
+        margin-left: unset;
+        margin-top: 15px;
+        text-align: center;
+      }
+      .condes br {
+        display: none;
+      }
+      .level-rights {
+        margin-top: 15px;
+        margin-left: 55px;
+      }
+    }
+    .userleveldes .Member-failure br{
+      display: block;
+    }
+    .num-days {
+      margin-top: 30px;
+    }
+    #consume-box {
+      margin-top: 40px;
+      #recordbox {
+        width: 100%;
+        overflow-x: scroll;
+      }
+      #consume-title {
+        margin-top: 20px;
+        width: 500px;
+      }
+      #consume {
+        width: 500px;
+      }
+    }
   }
 }

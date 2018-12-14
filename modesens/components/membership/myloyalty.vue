@@ -31,7 +31,9 @@
           <a 
             href="##" 
             class="Member-failure">
-            All activity this year gets you closer to even more benefits!     
+            All activity this year gets you closer to 
+            <br>
+            even more benefits!     
             <div class="tointro">?</div>
           </a>
           <div class="conbox">
@@ -81,50 +83,61 @@
       class="num-days">You have {{ Tripledays }} triple points days to use before {{ myloyaltycontent.end_date }}. Please email us at vip@modesens.com to schedule your triple points day.</div>
     <div id="consume-box">
       <div class="title-part">ACCOUNT ACTIVITY</div>
-      <div id="consume-title">
-        <div class="title-list col-md-3">Date</div>
-        <div class="title-list col-md-3">Activity</div>
-        <div class="title-list col-md-3">Points/ Earned</div>
-        <div class="title-list col-md-3 keepRight">
-          <div class="demo"> 
-            <div id="config-demo">Filter By</div>
+      <div id="recordbox">
+        <div id="consume-title">
+          <div class="title-list col-md-3 col-xs-3">Date</div>
+          <div class="title-list col-md-3 col-xs-3">Activity</div>
+          <div class="title-list col-md-3 col-xs-3">Points/ Earned</div>
+          <div class="title-list col-md-3 col-xs-3 keepRight">
+            <div class="demo"> 
+              <div id="config-demo">
+                Filter By
+                <img
+                  src="/img/20181214slidedown.svg"
+                  alt="">
+              </div>
+            </div>
           </div>
         </div>
+        <ul id="consume">
+          <li
+            v-for=" (record,index) in recordslist.records " 
+            :key=" index ">
+            <div class="record_info">
+              <div class="col-md-3 col-xs-3">{{ record.create_datetime | getLocalTime }}</div>
+              <div class="col-md-3 col-xs-3">{{ record.source }}</div>
+              <div class="col-md-3 col-xs-3">{{ record.points }}</div>
+              <div
+                v-if="record.source==='Purchase'"
+                class="see-more  keepRight col-md-3 col-xs-3"
+                @click="toggle(index)">
+                <img
+                  :class="index===limit ? 'active' : ''"
+                  src="/img/20181214slidedown.svg" 
+                  alt="">
+              </div>
+            </div>
+            <div 
+              v-show="index===limit"
+              class="consume-item">
+              <ul class="openitem keepLeft">
+                <li>
+                  <div class="itemtitle keepLeft">store :</div>
+                  <div class="itemcon keepRight">{{ record.memo.merchant_name }}</div>
+                </li>
+                <li>
+                  <div class="itemtitle keepLeft">Order id :</div>
+                  <div class="itemcon keepRight">{{ record.memo.order_id }}</div>
+                </li>
+                <li>
+                  <div class="itemtitle keepLeft">price :</div>
+                  <div class="itemcon keepRight">${{ record.value }}</div>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
       </div>
-      <ul id="consume">
-        <li
-          v-for=" (record,index) in recordslist.records " 
-          :key=" index ">
-          <div class="record_info">
-            <div class="col-md-3">{{ record.create_datetime | getLocalTime }}</div>
-            <div class="col-md-3">{{ record.source }}</div>
-            <div class="col-md-3">{{ record.points }}</div>
-            <div
-              v-if="record.source==='Purchase'"
-              class="see-more  keepRight col-md-3"
-              @click="toggle(index)">
-              item</div>
-          </div>
-          <div 
-            v-show="index==limit"
-            class="consume-item">
-            <ul class="openitem keepLeft">
-              <li>
-                <div class="itemtitle keepLeft">store :</div>
-                <div class="itemcon keepRight">{{ record.memo.merchant_name }}</div>
-              </li>
-              <li>
-                <div class="itemtitle keepLeft">Order id :</div>
-                <div class="itemcon keepRight">{{ record.memo.order_id }}</div>
-              </li>
-              <li>
-                <div class="itemtitle keepLeft">price :</div>
-                <div class="itemcon keepRight">${{ record.value }}</div>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
     </div>
     <b-pagination
       v-model="currentPage"
@@ -278,6 +291,15 @@ export default {
 .demo {
   position: relative;
   cursor: pointer;
+}
+.demo img {
+  width: 9px;
+  margin-left: 8px;
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
 }
 .pagination {
   display: flex;
