@@ -29,14 +29,17 @@ module.exports = {
   /*
 	** Global CSS
 	*/
-  css: ['~/assets/css/main.less', '~/assets/css/font.css'],
+  css: [
+    '~/assets/css/font.css',
+    // 'swiper/dist/css/swiper.css'
+  ],
 
   /*
 	** Plugins to load before mounting the App
 	*/
   plugins: [
-    // { src: '~plugins/ga.js', ssr: false },
     { src: '~plugins/axios.js', ssr: false },
+    // { src: '~plugins/vue-swiper.js', ssr: false },
   ],
 
   /*

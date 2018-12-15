@@ -20,7 +20,7 @@
           to="/about/"
           class="button--green">{{ $t('about') }}</nuxt-link>
         <nuxt-link
-          to="/membership/"
+          to="/account/loyalty/"
           class="button--green">membership</nuxt-link>
         <a
           href="https://github.com/nuxt/nuxt.js"
@@ -28,14 +28,6 @@
           class="button--grey">GitHub</a>
         <nuxt-link :to="'/product/' + pid + '/'">To Product</nuxt-link>
         <nuxt-link to="/accounts/login/">Log In</nuxt-link>
-        <b-btn
-          v-b-modal.mdLogin 
-          data-ga-click="accounts-login-login-123">Log In</b-btn>
-        <b-modal
-          id="mdLogin"
-          hide-footer>
-          <Login/>
-        </b-modal>
       </div>
       <div>
         <button
@@ -46,17 +38,16 @@
         <button
           data-ga-click="test-test3--">ga3</button>
       </div>
-      <div><nuxt-link to="/membership/introduction/">membership-intro</nuxt-link></div>
+      <div><nuxt-link to="/loyalty/">membership-intro</nuxt-link></div>
+      <div><nuxt-link to="/membership/">membership</nuxt-link></div>
     </div>
   </section>
 </template>
 <script>
 import Logo from '~/components/Logo.vue'
-import Login from '~/pages/accounts/login.vue'
 export default {
   components: {
-    Logo,
-    Login
+    Logo
   },
   data() {
     return {

@@ -26,9 +26,6 @@ a {
     color: @fontColor;
     text-decoration: none;
   }
-  &:focus {
-    // outline: 0;
-  }
 }
 ul {
   list-style: none;
@@ -41,4 +38,10 @@ ul {
 .prdCon {
   font-size: @font-size;
   border: @border;
+}
+
+@media(max-width: 1199px) {
+  .container {
+    padding: 0;
+  }
 }

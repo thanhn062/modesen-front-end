@@ -1,0 +1,339 @@
+@import 'main.less';
+.accountsCon {
+  padding: 50px 0;
+  width: 100%;
+  // height: 387px;
+  text-align: center;
+  background: @bgColor;
+  .logoCon {
+    img {
+      height: 109px;
+    }
+  }
+  .desc {
+    margin-top: 20px;
+    font-size: 22px;
+  }
+}
+.accountsBox {
+  margin-top: 20px;
+  .loginBox {
+    margin-top: 10px;
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+.benefitsCon {
+  margin-top: 36px;
+  padding: 50px 0;
+  background: @bgColor;
+  .benefitsTitle {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+  }
+  .benefitsBox,
+  .swiper-wrapper {
+    display: block;
+    margin-top: 58px;
+    // overflow: hidden;
+  }
+}
+.benefitsEach,
+.swiper-slide {
+  float: left;
+  padding: 0px 60px;
+  width: 50%;
+  height: 152px;
+  overflow: hidden;
+  &:nth-of-type(3),
+  &:nth-of-type(4) {
+    margin-top: 90px;
+  }
+  .imgBox {
+    float: left;
+    width: 20%;
+    img {
+      width: 100%;
+    }
+  }
+  .descBox {
+    float: left;
+    padding-left: 30px;
+    width: 80%;
+    .title {
+      font-weight: bold;
+    }
+    .desc {
+      margin-top: 10px;
+      color: @fontGray;
+    }
+  }
+}
+.levelCon {
+  margin-top: 50px;
+  text-align: center;
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .arrowBox {
+    display: none;
+  }
+  .levelBox {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 840px;
+    border: 10px solid @bgColor;
+    height: 490px;
+    .levelWrap {
+      padding: 40px;
+      width: 740px;
+    }
+  }
+}
+.level-bronze {
+  background: url('/img/20181213bronze-l.svg') center/cover;
+  span {
+    color: #A57058;
+  }
+  i {
+    background: #9D664D;
+  }
+}
+.level-silver {
+  background: url('/img/20181213silver-l.svg') center/cover;
+  span {
+    color: #7D7C7C;
+  }
+  i {
+    background: #7D7C7C;
+  }
+}
+.level-gold {
+  background: url('/img/20181213gold-l.svg') center/cover;
+  span {
+    color: #977B47;
+  }
+  i {
+    background: #977B47;
+  }
+}
+.level-platinum {
+  background: url('/img/20181213platinum-l.svg') center/cover;
+  span {
+    color: #898989;
+  }
+  i {
+    background: #898989;
+  }
+}
+.level-gray {
+  background: @bgColor;
+  span {
+    color: @fontGray;
+  }
+  i {
+    background: @borderColor;
+  }
+}
+.levelEach {
+  float: right;
+  margin-left: 20px;
+  padding: 12px 0;
+  width: 103px;
+}
+.imgBox-l {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.levelKind {
+  padding-top: 15px;
+  overflow: hidden;
+  &>span {
+    float: left;
+    line-height: 30px;
+  }
+  .levelEach {
+    padding: 7px 0 5px;
+  }
+  i {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    display: inline-block;
+  }
+}
+.earnCon {
+  margin-top: 80px;
+  padding: 50px 0;
+  text-align: center;
+  background: @bgColor;
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .desc {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+  .earnBox {
+    padding: 0 100px;
+  }
+}
+.earnEach {
+  margin-top: 60px;
+  span {
+    &:nth-of-type(1) {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    &:nth-of-type(2) {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 31px;
+    }
+    &:nth-of-type(3),
+    &:nth-of-type(4) {
+      font-size: 16px;
+      font-weight: 300;
+    }
+  }
+}
+.questionsCon {
+  margin-top: 60px;
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .questionsBox {
+    margin-top: 30px;
+    padding: 0 150px;
+    border-top: @border;
+  }
+}
+.questionBox {
+  margin-top: 30px;
+  .question {
+    overflow: hidden;
+    cursor: pointer;
+    span {
+      float: left;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    img {
+      float: right;
+      margin-top: 6px;
+      width: 20px;
+    }
+  }
+  .answer {
+    margin-top: 10px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 300;
+  }
+}
+
+@media(max-width: 1199px) {
+  .accountsCon .desc {
+    font-size: 14px;
+  }
+  .levelCon {
+    .arrowBox {
+      display: block;
+      margin: 20px;
+      overflow: hidden;
+      img {
+        float: right;
+        margin-left: 11px;
+        height: 18px;
+      }
+      span {
+        float: right;
+      }
+    }
+    .levelBox {
+      margin: 0 10px;
+      width: calc(100% - 20px);
+      overflow-y: scroll;
+    }
+  }
+  .earnEach {
+    margin-top: 20px;
+    span {
+      &:nth-of-type(1) {
+        font-size: 20px;
+      }
+      &:nth-of-type(2) {
+        font-size: 12px;
+        line-height: 26px;
+      }
+      &:nth-of-type(3),
+      &:nth-of-type(4) {
+        font-size: 14px;
+      }
+    }
+  }
+  .questionsCon {
+    .questionsBox {
+      padding: 0 20px;
+      .questionBox {
+        margin: 0;
+        padding: 20px;
+        border-bottom: 0.5px solid #f5f5f5;
+      }
+    }
+  }
+  .benefitsCon {
+    .swiper-container {
+      padding-bottom: 40px;
+    }
+    .swiper-wrapper {
+      display: flex;
+      margin-top: 0;
+      .swiper-slide {
+        float: none;
+        padding: 0 10px;
+        margin-top: 0;
+        height: 225px;
+        text-align: center;
+      }
+    }
+    .swiper-pagination-bullet {
+      width: 26px !important;
+      height: 2px !important;
+      border-radius: 0 !important;
+    }
+    .swiper-pagination-bullet-active {
+      background: #f54a35 !important;
+    }
+  }
+  .swiper-slide {
+    .imgBox {
+      float: none;
+      margin: 0 auto;
+      margin-top: 20px;
+      height: 65px;
+      img {
+        height: 100%;
+      }
+    }
+    .descBox {
+      float: none;
+      padding: 20px;
+      width: 100%;
+      height: 140px;
+      .title {
+        font-weight: bold;
+      }
+      .desc {
+        margin-top: 10px;
+        color: @fontGray;
+      }
+    }
+  }
+}
