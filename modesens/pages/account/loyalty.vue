@@ -39,7 +39,7 @@
                 <div class="currentLevel">{{ level.level.toUpperCase() }}</div>
                 <div class="userEnd">
                   <a
-                    href="javascript:;"
+                    href="http://127.0.0.1:8000/loyalty/"
                     target="_blank">
                     Your Membership Benefits through {{ level.end_date }}
                   </a>
@@ -73,7 +73,7 @@
 import axios from '~/plugins/axios'
 import membership from '~/static/api/1.0/membership.js'
 import vueNav from '~/components/nav.vue'
-import myloyalty0 from '~/components/membership/myloyalty.vue'
+import myloyalty0 from '~/components/loyalty/myloyalty.vue'
 export default {
   components: {
     vueNav,
@@ -95,10 +95,10 @@ export default {
   head: {
     title: 'membership'
   },
-  async asyncData({ app }) {
+  async asyncData({ app, route, router }) {
     var params = {}
     params.level = true
-    params.lsuid = 652
+    params.lsuid = route.query.lsuid
     let {
       data: { lsuser, level }
     } = await axios.postasync(
@@ -131,5 +131,5 @@ export default {
 }
 </script>
 <style lang="less">
-@import '../../assets/css/membership/membership.less';
+@import '../../assets/css/account/loyalty.less';
 </style>

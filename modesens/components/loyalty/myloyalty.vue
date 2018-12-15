@@ -7,7 +7,8 @@
           <div class="levelBenefitscon">
             <div class="leveltitle">Benefits</div>
             <a 
-              href="##" 
+              href="http://127.0.0.1:8000/loyalty/"
+              target="_blank"
               class="Member-failure">
               Your Membership through {{ myloyaltycontent.end_date }}       
               <div class="tointro">?</div>
@@ -29,7 +30,8 @@
         <div class="userleveldes">
           <div class="leveltitle">Membership Details</div>
           <a 
-            href="##" 
+            href="http://127.0.0.1:8000/loyalty/"
+            target="_blank" 
             class="Member-failure">
             All activity this year gets you closer to 
             <br>
@@ -71,7 +73,8 @@
             </div>
           </div>
           <a 
-            href="##" 
+            href="http://127.0.0.1:8000/loyalty/"
+            target="_blank" 
             class="toleveldes">
             Learn More About The Benefits     
           </a>
@@ -93,6 +96,7 @@
               <div id="config-demo">
                 Filter By
                 <img
+                  :class="dateSlideDown ? 'active' : ''"
                   src="/img/20181214slidedown.svg"
                   alt="">
               </div>
@@ -190,7 +194,8 @@ export default {
       endTime: '',
       levelClass: '',
       levelimgHref: '',
-      Tripledays: 0
+      Tripledays: 0,
+      dateSlideDown: false
     }
   },
   created() {
@@ -233,6 +238,7 @@ export default {
       {
         linkedCalendars: false,
         autoApply: false,
+        autoUpdateInput: true,
         maxDate: new Date(),
         opens: 'left',
         locale: {
@@ -252,6 +258,12 @@ export default {
       that.endTime = picker.endDate.format('YYYY-MM-DD')
       that.getmoreRecords(1, that.startTime, that.endTime)
       that.pagestate = 1
+    })
+    $('#config-demo').on('show.daterangepicker', function() {
+      that.dateSlideDown = true
+    })
+    $('#config-demo').on('hide.daterangepicker', function() {
+      that.dateSlideDown = false
     })
   },
   methods: {
@@ -300,6 +312,13 @@ export default {
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   -o-transform: rotate(180deg);
+}
+.demo img.active {
+  transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
 }
 .pagination {
   display: flex;
