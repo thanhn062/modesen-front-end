@@ -5,7 +5,7 @@
     hide-footer
     style="width: 600px, height: 680px">
     <iframe
-      :src="'https://modesens.com/accounts/login/?next=' + nextUrl"
+      :src="'http://127.0.0.1:8000/accounts/login/?next=' + nextUrl"
       width="100%"
       height="100%"
       frameborder="0"/>
@@ -17,12 +17,15 @@ export default {
     return {
       nextUrl: this.$route.fullPath
     }
+  },
+  created() {
+    console.log(this.nextUrl)
   }
 }
 </script>
 <style lang="less">
 .modal-content {
-  width: 600px;
+  // width: 600px;
   border-radius: 0;
 }
 #mdLogin {

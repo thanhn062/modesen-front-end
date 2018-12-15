@@ -6,7 +6,7 @@
         alt="logo"></div>
       <div class="desc">Premium Membership Gives<br>You More Benefits Shopping Worldwide</div>
       <div
-        v-if="isNotLogin"
+        v-if="!lsuid"
         class="accountsBox">
         <div>
           <button class="btn btn-modesens">JOIN NOW</button>
@@ -20,7 +20,9 @@
     </div>
     <div class="benefitsCon">
       <div class="benefitsTitle">MEMBERSHIP BENEFITS</div>
-      <div class="benefitsBox">
+      <!-- <div
+        v-if="isPC"
+        class="benefitsBox">
         <div class="benefitsEach">
           <div class="imgBox"><img
             src="/img/20181213triple.svg"
@@ -57,6 +59,48 @@
             <div class="desc">This service allows you to receive shopping assistance from an individual that’s with you every step of the way. They’ll help in any area across all of our partner stores. From finding products to placing orders and beyond.</div>
           </div>
         </div>
+      </div> -->
+      <div
+        class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="imgBox"><img
+              src="/img/20181213triple.svg"
+              alt=""></div>
+            <div class="descBox">
+              <div class="title">Triple Points Days</div>
+              <div class="desc">Enjoy the benefit of earning triple points toward ModeSens premier status on the day(s) of your choice up to 3 times per year. On these days, you earn 3 points for every one dollar spent. That’s 3x the regular dollar-to-point ratio, getting you closer to the next ModeSens membership level even faster.</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imgBox"><img
+              src="/img/20181213tip.svg"
+              alt=""></div>
+            <div class="descBox">
+              <div class="title">Sale Alert Priority</div>
+              <div class="desc">Be among the first to know about sales from all of your favorite stores. Our unique technology will automatically alert you of new offers in priority of your status level. Simply sign up for alerts on your favorite stores, designers and products.</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imgBox"><img
+              src="/img/20181213bag.svg"
+              alt=""></div>
+            <div class="descBox">
+              <div class="title">divmited & Exclusive Product Perks</div>
+              <div class="desc">Enjoy the benefit of earning triple points toward ModeSens premier status on the day(s) of your choice up to 3 times per year. On these days, you earn 3 points for every one dollar spent. That’s 3x the regular dollar-to-point ratio, getting you closer to the next ModeSens membership level even faster.</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="imgBox"><img
+              src="/img/20181213logo-red.svg"
+              alt=""></div>
+            <div class="descBox">
+              <div class="title">Dedicated VIP Service</div>
+              <div class="desc">This service allows you to receive shopping assistance from an individual that’s with you every step of the way. They’ll help in any area across all of our partner stores. From finding products to placing orders and beyond.</div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination swiper-p5"/>
       </div>
     </div>
     <div class="levelCon">
@@ -106,13 +150,13 @@
               <span>Unlimited</span>
             </div>
             <div class="levelEach level-gold">
-              <span>100</span>
+              <span><span>1,000</span></span>
             </div>
             <div class="levelEach level-silver">
               <span>50</span>
             </div>
             <div class="levelEach level-bronze">
-              <span>10</span>
+              <span><span>1,000</span></span>
             </div>
           </div>
           <div class="levelKind">
@@ -171,14 +215,30 @@
       <div class="desc">Receive 1 point per dollar spent across all of our partner stores. Plus, enjoy these additional ways to earn more points.</div>
       <div class="earnBox">
         <div class="row">
-          <div class="col-md-3 col-xs-12 earnEach">1,000<br>Points<br>Install ModeSens Browser<br>Extension (One Time)</div>
-          <div class="col-md-3 col-xs-12 earnEach">1,000<br>Points<br>Download ModeSens App<br>(One Time)</div>
-          <div class="col-md-3 col-xs-12 earnEach">100<br>Points<br>Save A Filter<br>(One Time)</div>
-          <div class="col-md-3 col-xs-12 earnEach">100<br>Points<br>Follow A Designer<br>(One Time)</div>
-          <div class="col-md-3 col-xs-12 earnEach">100<br>Points<br>Create A Product <br>(One Time)</div>
-          <div class="col-md-3 col-xs-12 earnEach">100<br>Points<br>Upload A Look</div>
-          <div class="col-md-3 col-xs-12 earnEach">10<br>Points<br>Daily Log In to ModeSens<br>Website or App</div>
-          <div class="col-md-3 col-xs-12 earnEach">1<br>Points<br>Like A Look</div>
+          <div class="col-md-3 col-xs-12 earnEach">
+            <span>1,000</span><br><span>Points</span><br><span>Install ModeSens Browser</span><br><span>Extension (One Time)</span>
+          </div>
+          <div class="col-md-3 col-xs-12 earnEach">
+            <span>1,000</span><br><span>Points</span><br><span>Download ModeSens App</span><br><span>(One Time)</span>
+          </div>
+          <div class="col-md-3 col-xs-12 earnEach">
+            <span>100</span><br><span>Points</span><br><span>Save A Filter</span><br><span>(One Time)</span>
+          </div>
+          <div class="col-md-3 col-xs-12 earnEach">
+            <span>100</span><br><span>Points</span><br><span>Follow A Designer</span><br><span>(One Time)</span>
+          </div>
+          <div class="col-md-3 col-xs-12 earnEach">
+            <span>100</span><br><span>Points</span><br><span>Create A Product</span><br><span>(One Time)</span>
+          </div>
+          <div class="col-md-3 col-xs-12 earnEach">
+            <span>100</span><br><span>Points</span><br><span>Upload A Look</span>
+          </div>
+          <div class="col-md-3 col-xs-12 earnEach">
+            <span>10</span><br><span>Points</span><br><span>Daily Log In to ModeSens</span><br><span>Website or App</span>
+          </div>
+          <div class="col-md-3 col-xs-12 earnEach">
+            <span>1</span><br><span>Points</span><br><span>Like A Look</span>
+          </div>
         </div>
       </div>
     </div>
@@ -191,7 +251,7 @@
             @click="questionClick(0)">
             <span>HOW CAN I JOIN IN?</span>
             <img
-              src="/img/sidebar_more.png"
+              src="/img/20181214slidedown.svg"
               alt="">
           </div>
           <div
@@ -204,7 +264,7 @@
             @click="questionClick(1)">
             <span>HOW CAN I FIND OUT MY LEVEL?</span>
             <img
-              src="/img/sidebar_more.png"
+              src="/img/20181214slidedown.svg"
               alt="">
           </div>
           <div
@@ -217,7 +277,7 @@
             @click="questionClick(2)">
             <span>DO LEVELS EXPIRE OR GET RESET?</span>
             <img
-              src="/img/sidebar_more.png"
+              src="/img/20181214slidedown.svg"
               alt="">
           </div>
           <div
@@ -230,7 +290,7 @@
             @click="questionClick(3)">
             <span>WHAT IS EARLY SALE ACCESS?</span>
             <img
-              src="/img/sidebar_more.png"
+              src="/img/20181214slidedown.svg"
               alt="">
           </div>
           <div
@@ -244,29 +304,56 @@
 <script>
 import Modal from '~/components/Modal.vue'
 import membership from '~/static/api/1.0/membership.js'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
 export default {
   components: {
     Modal
   },
   data() {
     return {
-      isNotLogin: true,
       level: '',
       bronzeNum: '<20K',
       silverNum: '20K-50k',
       goldNum: '50k-100k',
       platinumNum: '>100k',
-      indexQt: -1
+      indexQt: -1,
+      isPC: true
     }
+  },
+  asyncData({ query }) {
+    return { lsuid: query.lsuid }
   },
   created() {
     this.getLevelInfo()
+  },
+  mounted() {
+    if ($(window).width() < 1200) {
+      this.isPC = false
+      var banner_swiper_5 = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-p5',
+          clickable: true
+        },
+        autoplay: true,
+        speed: 1000,
+        loop: true,
+        initialSlide: 1
+      })
+    }
+    // $('#banner-swiper_5')
+    //   .mouseover(function() {
+    //     banner_swiper_5.stopAutoplay()
+    //   })
+    //   .mouseout(function() {
+    //     banner_swiper_5.startAutoplay()
+    //   })
   },
   methods: {
     async getLevelInfo() {
       var params = {}
       params.level = true
-      params.lsuid = 652
+      params.lsuid = this.$route.query.lsuid
       let {
         data: { level }
       } = await membership.getProfile(params)
@@ -289,5 +376,5 @@ export default {
 }
 </script>
 <style lang="less">
-@import '../../assets/css/membership/introduction.less';
+@import '../assets/css/loyalty.less';
 </style>

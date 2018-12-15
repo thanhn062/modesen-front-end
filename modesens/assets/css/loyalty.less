@@ -1,4 +1,4 @@
-@import '../main.less';
+@import 'main.less';
 .accountsCon {
   padding: 50px 0;
   width: 100%;
@@ -33,12 +33,15 @@
     font-size: 16px;
     text-align: center;
   }
-  .benefitsBox {
+  .benefitsBox,
+  .swiper-wrapper {
+    display: block;
     margin-top: 58px;
-    overflow: hidden;
+    // overflow: hidden;
   }
 }
-.benefitsEach {
+.benefitsEach,
+.swiper-slide {
   float: left;
   padding: 0px 60px;
   width: 50%;
@@ -177,8 +180,24 @@
   }
   .earnBox {
     padding: 0 100px;
-    .earnEach {
-      margin-top: 60px;
+  }
+}
+.earnEach {
+  margin-top: 60px;
+  span {
+    &:nth-of-type(1) {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    &:nth-of-type(2) {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 31px;
+    }
+    &:nth-of-type(3),
+    &:nth-of-type(4) {
+      font-size: 16px;
+      font-weight: 300;
     }
   }
 }
@@ -214,6 +233,8 @@
   .answer {
     margin-top: 10px;
     padding: 0 20px;
+    font-size: 16px;
+    font-weight: 300;
   }
 }
 
@@ -241,8 +262,21 @@
       overflow-y: scroll;
     }
   }
-  .earnCon .earnBox .earnEach {
+  .earnEach {
     margin-top: 20px;
+    span {
+      &:nth-of-type(1) {
+        font-size: 20px;
+      }
+      &:nth-of-type(2) {
+        font-size: 12px;
+        line-height: 26px;
+      }
+      &:nth-of-type(3),
+      &:nth-of-type(4) {
+        font-size: 14px;
+      }
+    }
   }
   .questionsCon {
     .questionsBox {
@@ -251,6 +285,54 @@
         margin: 0;
         padding: 20px;
         border-bottom: 0.5px solid #f5f5f5;
+      }
+    }
+  }
+  .benefitsCon {
+    .swiper-container {
+      padding-bottom: 40px;
+    }
+    .swiper-wrapper {
+      display: flex;
+      margin-top: 0;
+      .swiper-slide {
+        float: none;
+        padding: 0 10px;
+        margin-top: 0;
+        height: 225px;
+        text-align: center;
+      }
+    }
+    .swiper-pagination-bullet {
+      width: 26px !important;
+      height: 2px !important;
+      border-radius: 0 !important;
+    }
+    .swiper-pagination-bullet-active {
+      background: #f54a35 !important;
+    }
+  }
+  .swiper-slide {
+    .imgBox {
+      float: none;
+      margin: 0 auto;
+      margin-top: 20px;
+      height: 65px;
+      img {
+        height: 100%;
+      }
+    }
+    .descBox {
+      float: none;
+      padding: 20px;
+      width: 100%;
+      height: 140px;
+      .title {
+        font-weight: bold;
+      }
+      .desc {
+        margin-top: 10px;
+        color: @fontGray;
       }
     }
   }
