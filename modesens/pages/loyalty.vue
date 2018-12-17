@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="benefitsCon">
-      <div class="benefitsTitle">MEMBERSHIP BENEFITS</div>
+      <div class="benefitsTitle">{{ $t('loyalty.benefitsTitle') }}</div>
       <!-- <div
         v-if="isPC"
         class="benefitsBox">
@@ -65,40 +65,16 @@
       <div
         class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+          <div
+            v-for="num in benefits"
+            :key="num"
+            class="swiper-slide">
             <div class="imgBox"><img
-              src="/img/20181213triple.svg"
+              :src="'/img/20181213benefits-' + num + '.svg'"
               alt=""></div>
             <div class="descBox">
-              <div class="title">Triple Points Days</div>
-              <div class="desc">Enjoy the benefit of earning triple points toward ModeSens premier status on the day(s) of your choice up to 3 times per year. On these days, you earn 3 points for every one dollar spent. That’s 3x the regular dollar-to-point ratio, getting you closer to the next ModeSens membership level even faster.</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imgBox"><img
-              src="/img/20181213tip.svg"
-              alt=""></div>
-            <div class="descBox">
-              <div class="title">Sale Alert Priority</div>
-              <div class="desc">Be among the first to know about sales from all of your favorite stores. Our unique technology will automatically alert you of new offers in priority of your status level. Simply sign up for alerts on your favorite stores, designers and products.</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imgBox"><img
-              src="/img/20181213bag.svg"
-              alt=""></div>
-            <div class="descBox">
-              <div class="title">divmited & Exclusive Product Perks</div>
-              <div class="desc">Enjoy the benefit of earning triple points toward ModeSens premier status on the day(s) of your choice up to 3 times per year. On these days, you earn 3 points for every one dollar spent. That’s 3x the regular dollar-to-point ratio, getting you closer to the next ModeSens membership level even faster.</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imgBox"><img
-              src="/img/20181213logo-red.svg"
-              alt=""></div>
-            <div class="descBox">
-              <div class="title">Dedicated VIP Service</div>
-              <div class="desc">This service allows you to receive shopping assistance from an individual that’s with you every step of the way. They’ll help in any area across all of our partner stores. From finding products to placing orders and beyond.</div>
+              <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
+              <div class="desc">{{ $t('loyalty.bfdesc' + num) }}</div>
             </div>
           </div>
         </div>
@@ -213,8 +189,8 @@
       </div>
     </div>
     <div class="earnCon">
-      <div class="title">SHOP-JOIN-EARN</div>
-      <div class="desc">Receive 1 point per dollar spent across all of our partner stores. Plus, enjoy these additional ways to earn more points.</div>
+      <div class="title">{{ $t('loyalty.earnTitle') }}</div>
+      <div class="desc">{{ $t('loyalty.earnDesc') }}</div>
       <div class="earnBox">
         <div class="row">
           <div class="col-md-3 col-xs-12 earnEach">
@@ -247,7 +223,7 @@
     <div class="questionsCon">
       <div class="title">FREQUENTLY ASKED QUESTIONS</div>
       <div class="questionsBox">
-        <div class="questionBox">
+        <!-- <div class="questionBox">
           <div
             class="question"
             @click="questionClick(0)">
@@ -285,19 +261,36 @@
           <div
             v-if="indexQt===2"
             class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
-        </div>
-        <div class="questionBox">
+        </div> -->
+        <div
+          v-for="(answer,index) in answers"
+          :key="index"
+          class="questionBox">
           <div
             class="question"
-            @click="questionClick(3)">
-            <span>WHAT IS EARLY SALE ACCESS?</span>
+            @click="questionClick(index)">
+            <span>{{ $t('loyalty.question'+(index+1)) }}</span>
             <img
               src="/img/20181214slidedown.svg"
               alt="">
           </div>
           <div
-            v-if="indexQt===3"
-            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
+            v-if="indexQt===index"
+            class="answers">
+            <div
+              v-for="(a, aindex) in answer"
+              :key="aindex"
+              class="answer">
+              {{ $t('loyalty.answer'+(index+1)+'_'+(aindex+1)) }}
+              <div v-if="typeof(a)==='object'">
+                <div
+                  v-for="(num,bindex) in a"
+                  :key="bindex">
+                  &nbsp;&nbsp;&nbsp;&nbsp;{{ $t('loyalty.answer'+(index+1)+'_'+(aindex+1)+'_'+(bindex+1)) }}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -321,18 +314,44 @@ export default {
       platinumNum: '>100k',
       indexQt: -1,
       isPC: true,
-      nextUrl: '/'
+      nextUrl: '/',
+      benefits: [1, 2, 3, 4],
+      answers: [
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1, [1, 2, 3, 4, 5, 6, 7, 8, 9], 3],
+        [1],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1]
+      ]
     }
   },
   asyncData({ query }) {
-    console.log(query)
     return { lsuid: query.lsuid || '' }
   },
   created() {
     if (this.$route.query.lsuid) {
       this.getLevelInfo()
     }
-    console.log(this.$route)
   },
   mounted() {
     if ($(window).width() < 1200) {
@@ -365,7 +384,6 @@ export default {
         data: { level }
       } = await membership.getProfile(params)
       this.level = level.level
-      console.log(this.level)
       $('.levelEach')
         .not($(`.level-${level.level.toLowerCase()}`))
         .addClass('level-gray')

@@ -96,7 +96,6 @@ export default {
     title: 'membership'
   },
   async asyncData({ app, route, router }) {
-    console.log('*******' + route.query.lsuid)
     var params = {}
     params.level = true
     params.lsuid = route.query.lsuid
