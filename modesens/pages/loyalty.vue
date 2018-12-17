@@ -11,10 +11,12 @@
         <a href="javascript:;">
           <button
             class="btn btn-modesens"
+            data-ga-click="loyalty-joinBtn--"
             @click="joinnow('http://127.0.0.1:8000/accounts/signup/?next=' + $route.fullPath)">JOIN NOW</button>
         </a>
         <div class="loginBox">Already a member? <a
           v-b-modal.mdLogin
+          data-ga-click="loyalty-loginBtn--"
           href="javascript:;">Login Now</a>
         </div>
         <Modal :lsuid="lsuid"/>

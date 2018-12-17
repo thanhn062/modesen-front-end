@@ -1,16 +1,18 @@
 <template>
-  <b-modal
-    v-if="lsuid===''"
-    id="mdLogin"
-    hide-header
-    hide-footer
-    style="height: 680px">
-    <iframe
-      :src="'http://127.0.0.1:8000/accounts/login/?next=' + nextUrl"
-      width="100%"
-      height="100%"
-      frameborder="0"/>
-  </b-modal>
+  <div>
+    <b-modal
+      v-if="lsuid===''"
+      id="mdLogin"
+      hide-header
+      hide-footer
+      style="width: 600px,height: 680px">
+      <iframe
+        :src="'http://127.0.0.1:8000/accounts/login/?next=' + nextUrl"
+        width="100%"
+        height="100%"
+        frameborder="0"/>
+    </b-modal>
+  </div>
 </template>
 <script>
 export default {
