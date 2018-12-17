@@ -28,5 +28,8 @@ module.exports = {
     class5desc: 'Your friends will thank you - more than once',
     placeholder1: 'Enter email addresses separated by commas',
     classtitle6: 'NEWSLETTER SIGN UP',
+  },
+  loyalty: {
+    
   }
 }

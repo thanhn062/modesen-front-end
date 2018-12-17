@@ -1,5 +1,6 @@
 <template>
   <b-modal
+    v-if="lsuid===''"
     id="mdLogin"
     hide-header
     hide-footer
@@ -13,6 +14,14 @@
 </template>
 <script>
 export default {
+  props: {
+    lsuid: {
+      type: String,
+      default: function() {
+        return '123'
+      }
+    }
+  },
   data() {
     return {
       nextUrl: this.$route.fullPath

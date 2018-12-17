@@ -6,18 +6,18 @@
         alt="logo"></div>
       <div class="desc">Premium Membership Gives<br>You More Benefits Shopping Worldwide</div>
       <div
-        v-if="!lsuid"
+        v-if="lsuid===''"
         class="accountsBox">
-        <a :href="'https://modesens.com/accounts/signup/?next=' + $route.fullPath">
+        <a href="javascript:;">
           <button
             class="btn btn-modesens"
-            @click="joinnow()">JOIN NOW</button>
+            @click="joinnow('http://127.0.0.1:8000/accounts/signup/?next=' + $route.fullPath)">JOIN NOW</button>
         </a>
         <div class="loginBox">Already a member? <a
           v-b-modal.mdLogin
-          href="#">Login Now</a>
+          href="javascript:;">Login Now</a>
         </div>
-        <Modal/>
+        <Modal :lsuid="lsuid"/>
       </div>
     </div>
     <div class="benefitsCon">
@@ -325,7 +325,8 @@ export default {
     }
   },
   asyncData({ query }) {
-    return { lsuid: query.lsuid }
+    console.log(query)
+    return { lsuid: query.lsuid || '' }
   },
   created() {
     if (this.$route.query.lsuid) {
@@ -372,18 +373,14 @@ export default {
     questionClick(index) {
       if (this.indexQt === index) {
         this.indexQt = -1
-        // $($('.question img')[index]).css('transform', '0deg')
+        $($('.question img')[index]).css('transform', 'rotate(180deg)')
         return
       }
       this.indexQt = index
-      // $($('.question img')[index]).css('transform', '180deg')
-      $('.question img').css('transform', '180deg')
+      $($('.question img')[index]).css('transform', 'rotate(0deg)')
     },
-    joinnow() {
-      window.parent.location.pathname = decodeURIComponent(
-        'https://modesens.com'
-      )
-      // window.parent.location.pathname = decodeURIComponent(this.$route.fullPath)
+    joinnow(url) {
+      window.open(url, '_blank')
     }
   }
 }

@@ -21,6 +21,10 @@ if (process.browser){
       ga('send', 'event', category, action, label, val)
     }
   })
+
+  function openBlank(url) {
+    window.open(url, '_blank');
+  }
 }
 
 Vue.prototype.STATIC_DOMAIN = 'https://d2go30nqlx7k6d.cloudfront.net'
