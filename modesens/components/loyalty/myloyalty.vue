@@ -1,16 +1,17 @@
 <template>
   <section>
     <div id="rankbox">
-      <div class="title-part">Your Perks</div>
+      <div class="title-part">{{ $t('accountLoyalty.perk') }}</div>
       <div class="levelinfo">
         <div class="levelBenefits">
           <div class="levelBenefitscon">
-            <div class="leveltitle">Benefits</div>
-            <a 
+            <div class="leveltitle">{{ $t('accountLoyalty.benefits') }}</div>
+            <a
+              data-ga-click="accountLoyalty-Benefits--"
               href="http://127.0.0.1:8000/loyalty/"
               target="_blank"
               class="Member-failure">
-              Your Membership through {{ myloyaltycontent.end_date }}       
+              {{ $t('accountLoyalty.memberendTimg') }} {{ myloyaltycontent.end_date }}       
               <div class="tointro">?</div>
             </a>
             <div class="current-L">
@@ -19,23 +20,21 @@
                 alt="">
             </div>
             <ul class="level-rights">
-              <li class="levelrightsliat"><span/>Second Priority Alert</li>
-              <li class="levelrightsliat"><span/>10,000 Product Alerts</li>
-              <li class="levelrightsliat"><span/>Triple Points: {{ Tripledays }} Days</li>
-              <li class="levelrightsliat"><span/>Early Sale Access</li>
-              <li class="levelrightsliat"><span/>Resell</li>
+              <li
+                v-for="(rightlist,index) in levelRights"
+                :key="index"
+                class="levelrightsliat"><span/>{{ $t('accountLoyalty.'+myloyaltycontent.level+'_'+index) }}</li>
             </ul>
           </div>
         </div>
         <div class="userleveldes">
-          <div class="leveltitle">Membership Details</div>
-          <a 
+          <div class="leveltitle">{{ $t('accountLoyalty.membershipDeltails') }}</div>
+          <a
+            data-ga-click="accountLoyalty-Membership_Details--"
             href="http://127.0.0.1:8000/loyalty/"
             target="_blank" 
             class="Member-failure">
-            All activity this year gets you closer to 
-            <br>
-            even more benefits!     
+            {{ $t('accountLoyalty.deltail') }}  
             <div class="tointro">?</div>
           </a>
           <div class="conbox">
@@ -56,45 +55,47 @@
               </div>
               <div class="text-circle">
                 <div class="percentage">{{ pers_percentage }}%</div>
-                <div class="txt">TOWARDS
+                <div class="txt">{{ $t('accountLoyalty.Towards') }}
                   <br>
-                  PLATINUM</div>
+                  {{ $t('accountLoyalty.'+nexrLevel.toUpperCase()+'2') }}</div>
               </div>
             </div>
             <div class="condes">
-              As Platinum
+              {{ $t('accountLoyalty.as') }}{{ $t('accountLoyalty.'+nexrLevel+'2') }}
               <br>
-              you enjoy:
+              {{ $t('accountLoyalty.enjoy') }}:
               <ul class="level-rights">
-                <li class="levelrightsliat"><span/>Dedicated VIP Service</li>
-                <li class="levelrightsliat"><span/>Limited & Exclusive Products</li>
-                <li class="levelrightsliat"><span/>Product Perks</li>
+                <li
+                  v-for="(nxtRightlist,index) in nextLevelRights"
+                  :key="index"
+                  class="levelrightsliat"><span/>{{ $t('accountLoyalty.'+nexrLevel+'_'+index) }}</li>
               </ul>
             </div>
           </div>
-          <a 
+          <a
+            data-ga-click="accountLoyalty-Learn_More_Benefits--"
             href="http://127.0.0.1:8000/loyalty/"
             target="_blank" 
             class="toleveldes">
-            Learn More About The Benefits     
+            {{ $t('accountLoyalty.moreBennefits') }}     
           </a>
         </div>
       </div>
     </div>
     <div
       v-if="myloyaltycontent.level!=='Bronze' "
-      class="num-days">You have {{ Tripledays }} triple points days to use before {{ myloyaltycontent.end_date }}. Please email us at vip@modesens.com to schedule your triple points day.</div>
+      class="num-days">{{ $t('youhave') }} {{ Tripledays }} {{ $t('pointsdays') }} {{ myloyaltycontent.end_date }}{{ $t('triple') }}</div>
     <div id="consume-box">
-      <div class="title-part">ACCOUNT ACTIVITY</div>
+      <div class="title-part">{{ $t('accountLoyalty.account_activity') }}</div>
       <div id="recordbox">
         <div id="consume-title">
-          <div class="title-list col-md-3 col-xs-3">Date</div>
-          <div class="title-list col-md-3 col-xs-3">Activity</div>
-          <div class="title-list col-md-3 col-xs-3">Points/ Earned</div>
+          <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.date') }}</div>
+          <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.activity') }}</div>
+          <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.earn') }}</div>
           <div class="title-list col-md-3 col-xs-3 keepRight">
             <div class="demo"> 
               <div id="config-demo">
-                Filter By
+                {{ $t('accountLoyalty.filter') }}
                 <img
                   :class="dateSlideDown ? 'active' : ''"
                   src="/img/20181214slidedown.svg"
@@ -126,15 +127,15 @@
               class="consume-item">
               <ul class="openitem keepLeft">
                 <li>
-                  <div class="itemtitle keepLeft">store :</div>
+                  <div class="itemtitle keepLeft">{{ $t('store') }} :</div>
                   <div class="itemcon keepRight">{{ record.memo.merchant_name }}</div>
                 </li>
                 <li>
-                  <div class="itemtitle keepLeft">Order id :</div>
+                  <div class="itemtitle keepLeft">{{ $t('accountLoyalty.order') }} :</div>
                   <div class="itemcon keepRight">{{ record.memo.order_id }}</div>
                 </li>
                 <li>
-                  <div class="itemtitle keepLeft">price :</div>
+                  <div class="itemtitle keepLeft">{{ $t('price') }} :</div>
                   <div class="itemcon keepRight">${{ record.value }}</div>
                 </li>
               </ul>
@@ -195,7 +196,10 @@ export default {
       levelClass: '',
       levelimgHref: '',
       Tripledays: 0,
-      dateSlideDown: false
+      dateSlideDown: false,
+      levelRights: [],
+      nextLevelRights: [],
+      nexrLevel: ''
     }
   },
   created() {
@@ -216,18 +220,56 @@ export default {
       this.levelClass = 'bronze'
       this.levelimgHref = '/img/20181213bronze.png'
       this.Tripledays = 0
+      this.levelRights = ['Fourth Priority Alert', '100 Products Alerts']
+      this.nextLevelRights = [
+        'Third Priority Alert',
+        '1000 Products Alerts',
+        'Triple Points: 1 Day'
+      ]
+      this.nexrLevel = 'Silver'
     } else if (this.myloyaltycontent.level == 'Silver') {
       this.levelClass = 'sliver'
       this.levelimgHref = '/img/20181213silver.png'
       this.Tripledays = 1
+      this.levelRights = [
+        'Third Priority Alert',
+        '1000 Products Alerts',
+        'Triple Points: 1 Day'
+      ]
+      this.nextLevelRights = [
+        'Second Priority Alert',
+        '10,000 Products Alerts',
+        'Triple Points: 2 Days',
+        'Early Sale Access'
+      ]
+      this.nexrLevel = 'Gold'
     } else if (this.myloyaltycontent.level == 'Gold') {
       this.levelClass = 'gold'
       this.levelimgHref = '/img/20181213gold.png'
       this.Tripledays = 2
+      this.levelRights = [
+        'Second Priority Alert',
+        '10,000 Products Alerts',
+        'Triple Points: 2 Days',
+        'Early Sale Access'
+      ]
+      this.nextLevelRights = [
+        'First Priority Alert',
+        'Unlimited Products Alerts',
+        'Triple Points: 3 Days',
+        'Early Sale Access'
+      ]
+      this.nexrLevel = 'Platinum'
     } else if (this.myloyaltycontent.level == 'Platinum') {
       this.levelClass = 'platinum'
       this.levelimgHref = '/img/20181213platinum.png'
       this.Tripledays = 3
+      this.levelRights = [
+        'First Priority Alert',
+        'Unlimited Products Alerts',
+        'Triple Points: 3 Days',
+        'Early Sale Access'
+      ]
     }
   },
   mounted() {

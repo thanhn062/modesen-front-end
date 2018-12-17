@@ -4,7 +4,7 @@
     <b-nav-item 
       v-for="(list, index) in navlist"
       :key="index"
-      @click="nav_change(index)">{{ list }}</b-nav-item>
+      @click="nav_change(index)">{{ $t('accountLoyalty.account_overview') }}</b-nav-item>
   </b-nav>
 </template>
 <script>
