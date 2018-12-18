@@ -8,16 +8,17 @@
       <div
         v-if="lsuid===''"
         class="accountsBox">
-        <a href="javascript:;">
+        <a
+          :href="'http://127.0.0.1:8000'+'/accounts/signup/?next=' + $route.fullPath"
+          target="_blank">
           <button
             class="btn btn-modesens"
-            data-ga-click="loyalty-joinBtn--"
-            @click="joinnow('http://127.0.0.1:8000/accounts/signup/?next=' + $route.fullPath)">JOIN NOW</button>
+            data-ga-click="loyalty-joinBtn--">{{ $t('loyalty.joinNow') }}</button>
         </a>
         <div class="loginBox">Already a member? <a
           v-b-modal.mdLogin
           data-ga-click="loyalty-loginBtn--"
-          href="javascript:;">Login Now</a>
+          href="javascript:;">{{ $t('loyalty.loginNow') }}</a>
         </div>
         <Modal :lsuid="lsuid"/>
       </div>
@@ -84,7 +85,7 @@
       </div>
     </div>
     <div class="levelCon">
-      <div class="title">MEMBERSHIP LEVELS</div>
+      <div class="title">{{ $t('loyalty.levelTitle') }}</div>
       <div class="arrowBox">
         <img src="/img/20180905overlay_right_arrow_b.svg">
         <span>Swap Right</span>
@@ -196,74 +197,35 @@
       <div class="earnBox">
         <div class="row">
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>1,000</span><br><span>Points</span><br><span>Install ModeSens Browser</span><br><span>Extension (One Time)</span>
+            <span>1,000</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.browserInstall') }}</span><br><span>{{ $t('loyalty.browserInstall2') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>1,000</span><br><span>Points</span><br><span>Download ModeSens App</span><br><span>(One Time)</span>
+            <span>1,000</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.downloadApp') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>100</span><br><span>Points</span><br><span>Save A Filter</span><br><span>(One Time)</span>
+            <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.saveFilter') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>100</span><br><span>Points</span><br><span>Follow A Designer</span><br><span>(One Time)</span>
+            <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.followDesigner') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>100</span><br><span>Points</span><br><span>Create A Product</span><br><span>(One Time)</span>
+            <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.createPrdAlert') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>100</span><br><span>Points</span><br><span>Upload A Look</span>
+            <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.uploadLook') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>10</span><br><span>Points</span><br><span>Daily Log In to ModeSens</span><br><span>Website or App</span>
+            <span>10</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.dailyLogin') }}</span><br><span>{{ $t('loyalty.websiteOrApp') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>1</span><br><span>Points</span><br><span>Like A Look</span>
+            <span>1</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.likeALook') }}</span>
           </div>
         </div>
       </div>
     </div>
     <div class="questionsCon">
-      <div class="title">FREQUENTLY ASKED QUESTIONS</div>
+      <div class="title">{{ $t('loyalty.questionTitle') }}</div>
       <div class="questionsBox">
-        <!-- <div class="questionBox">
-          <div
-            class="question"
-            @click="questionClick(0)">
-            <span>HOW CAN I JOIN IN?</span>
-            <img
-              src="/img/20181214slidedown.svg"
-              alt="">
-          </div>
-          <div
-            v-if="indexQt===0"
-            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
-        </div>
-        <div class="questionBox">
-          <div
-            class="question"
-            @click="questionClick(1)">
-            <span>HOW CAN I FIND OUT MY LEVEL?</span>
-            <img
-              src="/img/20181214slidedown.svg"
-              alt="">
-          </div>
-          <div
-            v-if="indexQt===1"
-            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
-        </div>
-        <div class="questionBox">
-          <div
-            class="question"
-            @click="questionClick(2)">
-            <span>DO LEVELS EXPIRE OR GET RESET?</span>
-            <img
-              src="/img/20181214slidedown.svg"
-              alt="">
-          </div>
-          <div
-            v-if="indexQt===2"
-            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
-        </div> -->
         <div
           v-for="(answer,index) in answers"
           :key="index"
@@ -280,7 +242,22 @@
             v-if="indexQt===index"
             class="answers">
             <div
+              v-if="index===1"
+              class="answer">
+              {{ $t('loyalty.answer2_1') }}<a
+                :href="'http://127.0.0.1:8000'+'/accounts/signup/?next='+$route.fullPath"
+                target="_blank">{{ $t('loyalty.answer2_2') }}</a>
+            </div>
+            <div
+              v-else-if="index===14"
+              class="answer">
+              {{ $t('loyalty.answer15_1') }}<a
+                :href="'http://127.0.0.1:8000'+'/shopping-assistant/'"
+                target="_blank">{{ $t('loyalty.answer15_2') }}</a>
+            </div>
+            <div
               v-for="(a, aindex) in answer"
+              v-else
               :key="aindex"
               class="answer">
               {{ $t('loyalty.answer'+(index+1)+'_'+(aindex+1)) }}

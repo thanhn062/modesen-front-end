@@ -63,7 +63,7 @@ export default {
 }
 </script>
 <style>
-.title {
+/* .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
@@ -83,5 +83,5 @@ export default {
 
 .links {
   padding-top: 15px;
-}
+} */
 </style>
