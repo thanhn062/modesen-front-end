@@ -340,7 +340,7 @@ export default {
 }
 </script>
 <style scoped>
-@import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css';
+/* @import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'; */
 @import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.css';
 .demo {
   position: relative;

@@ -32,7 +32,6 @@ module.exports = {
     classtitle6: '订阅时尚资讯',
   },
   accountLoyalty: {
-    hatitle: '你是谁',
     memberstartTimg: '会员开始时间',
     BRONZE: '青铜级',
     SILVER: '白银级',

@@ -1,6 +1,5 @@
 <template>
   <section>
-    <h1>{{ $t('accountLoyalty.hatitle') }}</h1>
     <div class="membershippage">
       <div class="userInfoBox">
         <div class="userInfoinnerBox">

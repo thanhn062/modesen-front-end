@@ -32,7 +32,6 @@ module.exports = {
     classtitle6: 'NEWSLETTER SIGN UP',
   },
   accountLoyalty: {
-    hatitle: 'who are you',
     memberstartTimg:'Member Since',
     BRONZE: 'BRONZE',
     SILVER: 'SILVER',
