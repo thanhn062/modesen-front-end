@@ -34,14 +34,15 @@
               <div class="cardinfo keepLeft">
                 <div class="userStart">
                   <div class="name">{{ lsuser.username }}</div>
-                  <div class="start">Member Since {{ level.start_date }}</div>
+                  <div class="start">{{ $t('accountLoyalty.memberstartTimg') }} {{ level.start_date }}</div>
                 </div>
-                <div class="currentLevel">{{ level.level.toUpperCase() }}</div>
+                <div class="currentLevel">{{ $t('accountLoyalty.'+level.level.toUpperCase()) }}</div>
                 <div class="userEnd">
                   <a
+                    data-ga-click="accountLoyalty-card--"
                     href="http://127.0.0.1:8000/loyalty/"
                     target="_blank">
-                    Your Membership Benefits through {{ level.end_date }}
+                    {{ $t('accountLoyalty.memberendTimg') }} {{ level.end_date }}
                   </a>
                 </div>
               </div>

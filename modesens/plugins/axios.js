@@ -75,16 +75,13 @@ export default {
         data = null
       }
     }
-    let headers = {}
-    if (token) {
-      headers.Authorization = `Bearer ${token}`
-      console.log(headers.Authorization)
-    }
     return req({
       method: 'get',
       url,
       data: data,
-      headers
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     })
   },
   postasync(url, data, secretKey, token) {
@@ -94,15 +91,13 @@ export default {
         data = null
       }
     }
-    let headers = {}
-    if (token) {
-      headers.Authorization = `Bearer ${token}`
-    }
     return req({
       method: 'post',
       url,
       data: data,
-      headers
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     })
   },
   delete(url, data) {

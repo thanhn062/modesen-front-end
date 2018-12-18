@@ -286,19 +286,16 @@ export default {
   },
   asyncData({ app, query }) {
     let oToken = query.otoken
-    console.log(oToken)
     if (oToken) {
       app.$cookies.set('token', oToken)
     }
     console.log('cookie=', oToken)
     return { lsuid: query.otoken || '' }
   },
-  created() {
+  mounted() {
     if (this.$route.query.otoken) {
       this.getLevelInfo()
     }
-  },
-  mounted() {
     if ($(window).width() < 1200) {
       this.isPC = false
       var banner_swiper_5 = new Swiper('.swiper-container', {
@@ -328,10 +325,11 @@ export default {
       let {
         data: { level }
       } = await membership.getProfile(params)
-      this.level = level.level
-      $('.levelEach')
-        .not($(`.level-${level.level.toLowerCase()}`))
-        .addClass('level-gray')
+      console.log(level)
+      // this.level = level.level
+      // $('.levelEach')
+      //   .not($(`.level-${level.level.toLowerCase()}`))
+      //   .addClass('level-gray')
     },
     questionClick(index) {
       if (this.indexQt === index) {
