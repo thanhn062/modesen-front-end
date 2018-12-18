@@ -46,10 +46,10 @@ export default {
       method: 'post',
       url,
       data: data,
-      headers: {
-        Authorization: cookie.get('TOKEN') || ''
-        // cookie: document.cookie
-      }
+      // headers: {
+      //   Authorization: cookie.get('TOKEN') || ''
+      //   // cookie: document.cookie
+      // }
     })
   },
   get(url, data, secretKey) {
@@ -95,9 +95,9 @@ export default {
       method: 'post',
       url,
       data: data,
-      headers: {
-        Authorization: token
-      }
+      // headers: {
+      //   Authorization: token
+      // }
     })
   },
   delete(url, data) {
