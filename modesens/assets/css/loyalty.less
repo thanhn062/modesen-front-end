@@ -82,11 +82,12 @@
     display: none;
   }
   .levelBox {
+    overflow: hidden;
     margin: 0 auto;
     margin-top: 30px;
     width: 840px;
-    border: 10px solid @bgColor;
     height: 490px;
+    border: 10px solid @bgColor;
     .levelWrap {
       padding: 40px;
       width: 740px;
@@ -267,7 +268,8 @@
     .levelBox {
       margin: 0 10px;
       width: calc(100% - 20px);
-      overflow-y: scroll;
+      height: 508px;
+      overflow-x: scroll;
     }
   }
   .earnEach {
