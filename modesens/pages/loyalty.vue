@@ -293,6 +293,7 @@ export default {
     return { lsuid: query.otoken || '' }
   },
   mounted() {
+    console.log(this.$route.query)
     if (this.$route.query.otoken) {
       this.getLevelInfo()
     }

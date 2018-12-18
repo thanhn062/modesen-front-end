@@ -18,8 +18,8 @@ module.exports = {
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://127.0.0.1:8000/',
-    // baseUrl: process.env.BASE_URL || 'https://modesens.com/',
+    baseUrl: process.env.BASE_URL || 'http://34.226.204.204/',
+    browserBaseURL: process.env.BASE_URL || 'http://34.226.204.204/',
     secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
   },
   /*
@@ -39,7 +39,7 @@ module.exports = {
 	** Plugins to load before mounting the App
 	*/
   plugins: [
-    { src: '~plugins/axios.js', ssr: false },
+    { src: '~/plugins/axios.js', ssr: false },
     // { src: '~plugins/vue-swiper.js', ssr: false },
   ],
 
@@ -151,7 +151,7 @@ module.exports = {
 	*/
   build: {
     // 防止多次打包axios
-    // vendor: ['axios'],
+    vendor: ['axios'],
     plugins: [
       new webpack.ProvidePlugin({
         '$': 'jquery'

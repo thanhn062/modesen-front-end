@@ -99,14 +99,14 @@ export default {
   async asyncData({ app, route, router }) {
     var params = {}
     params.level = true
-    params.lsuid = route.query.lsuid
+    var token = route.query.otoken
     let {
       data: { lsuser, level }
     } = await axios.postasync(
       '/accounts/profile/get/',
       params,
       0,
-      app.$cookies.get('TOKEN')
+      token
     )
     var recordsparams = {}
     recordsparams.offset = 0
@@ -115,7 +115,7 @@ export default {
       '/loyalty/records/',
       recordsparams,
       0,
-      app.$cookies.get('TOKEN')
+      token
     )
     return {
       lsuser,
