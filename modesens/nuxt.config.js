@@ -32,6 +32,7 @@ module.exports = {
 	*/
   css: [
     '~/assets/css/font.css',
+    '~/assets/css/main.less',
     // 'swiper/dist/css/swiper.css'
   ],
 
@@ -39,8 +40,7 @@ module.exports = {
 	** Plugins to load before mounting the App
 	*/
   plugins: [
-    { src: '~/plugins/axios.js', ssr: false },
-    // { src: '~plugins/vue-swiper.js', ssr: false },
+    { src: '~/plugins/axios.js', ssr: true },
   ],
 
   /*
@@ -151,7 +151,7 @@ module.exports = {
 	*/
   build: {
     // 防止多次打包axios
-    vendor: ['axios'],
+    // vendor: ['axios'],
     plugins: [
       new webpack.ProvidePlugin({
         '$': 'jquery'

@@ -96,23 +96,16 @@ export default {
   head: {
     title: 'membership'
   },
-  async asyncData({ app, route, router }) {
+  async asyncData({ app, route, $axios }) {
     var params = {}
     params.level = true
     var token = route.query.otoken
     app.$cookies.set('token', token)
-    let {
-      data: { lsuser, level }
-    } = await axios.postasync('/accounts/profile/get/', params, 0, token)
+    let { lsuser, level } = await $axios.post('/accounts/profile/get/', params)
     var recordsparams = {}
     recordsparams.offset = 0
     recordsparams.amount = 10
-    let { data: records } = await axios.postasync(
-      '/loyalty/records/',
-      recordsparams,
-      0,
-      token
-    )
+    let records = await $axios.post('/loyalty/records/', recordsparams)
     return {
       lsuser,
       level,
