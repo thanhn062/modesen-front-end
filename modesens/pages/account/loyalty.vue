@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="membershippage">
+    <!-- <div class="membershippage">
       <div class="userInfoBox">
         <div class="userInfoinnerBox">
           <div class="userinfo">
@@ -66,7 +66,7 @@
           </keep-alive>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 <script>
@@ -97,9 +97,10 @@ export default {
     title: 'membership'
   },
   async asyncData({ app, route, router }) {
+    console.log(route)
     var params = {}
     params.level = true
-    params.lsuid = route.query.lsuid
+    // params.lsuid = decodeURIComponent(route.query.otoken)
     let {
       data: { lsuser, level }
     } = await axios.postasync(

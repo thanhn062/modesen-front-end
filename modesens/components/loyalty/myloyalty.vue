@@ -88,7 +88,9 @@
     <div id="consume-box">
       <div class="title-part">{{ $t('accountLoyalty.account_activity') }}</div>
       <div id="recordbox">
-        <div id="consume-title">
+        <div
+          id="consume-title"
+          class="row">
           <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.date') }}</div>
           <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.activity') }}</div>
           <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.earn') }}</div>
@@ -108,7 +110,7 @@
           <li
             v-for=" (record,index) in recordslist.records " 
             :key=" index ">
-            <div class="record_info">
+            <div class="record_info row">
               <div class="col-md-3 col-xs-3">{{ record.create_datetime | getLocalTime }}</div>
               <div class="col-md-3 col-xs-3">{{ record.source }}</div>
               <div class="col-md-3 col-xs-3">{{ record.points }}</div>
@@ -340,7 +342,7 @@ export default {
 }
 </script>
 <style scoped>
-@import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css';
+/* @import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'; */
 @import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.css';
 .demo {
   position: relative;

@@ -9,7 +9,9 @@ const req = axios.create({
   // baseURL: 'http://34.226.204.204/' + 'api/2.0/',
   // 请求超时
   timeout: 5000,
-  // withCredentials: true // 允许携带cookie
+  withCredentials: true, // 允许携带cookie
+  // crossDomain : true  //允许跨域
+
 })
 // POST传参序列化
 req.interceptors.request.use(
@@ -46,10 +48,9 @@ export default {
       method: 'post',
       url,
       data: data,
-      // headers: {
+      headers: {
       //   Authorization: cookie.get('TOKEN') || ''
-      //   // cookie: document.cookie
-      // }
+      }
     })
   },
   get(url, data, secretKey) {
@@ -95,9 +96,9 @@ export default {
       method: 'post',
       url,
       data: data,
-      // headers: {
-      //   Authorization: token
-      // }
+      headers: {
+        // Authorization: token,
+      }
     })
   },
   delete(url, data) {
