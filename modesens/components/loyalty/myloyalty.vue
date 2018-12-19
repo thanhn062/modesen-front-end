@@ -164,7 +164,6 @@ import membership from '~/static/api/1.0/membership.js'
 import { getLocalTime } from '~/static/util/util.js'
 import { getTimestamp } from '~/static/util/util.js'
 import 'bootstrap-daterangepicker/daterangepicker.css'
-import 'vue/dist/vue.js'
 export default {
   filters: {
     getLocalTime(time) {
@@ -277,6 +276,7 @@ export default {
     }
   },
   mounted() {
+    console.log(99999999999999)
     var beginTimeStore = ''
     var endTimeStore = ''
     var that = this
