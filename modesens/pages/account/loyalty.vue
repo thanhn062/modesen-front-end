@@ -58,10 +58,12 @@
             @navchange="tabchange"/>
         </div>
         <div class="page-right ">
-          <div 
-            :is="currentView"
-            :myloyaltycontent="level"
-            :myloyaltycontent1="records.records"/>
+          <keep-alive>
+            <div 
+              :is="currentView"
+              :myloyaltycontent="level"
+              :myloyaltycontent1="records.records"/>
+          </keep-alive>
         </div>
       </div>
     </div>
