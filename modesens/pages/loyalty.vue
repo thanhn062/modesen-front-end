@@ -236,6 +236,7 @@
   </section>
 </template>
 <script>
+import axios from '~/plugins/axios'
 import Modal from '~/components/Modal.vue'
 import membership from '~/static/api/1.0/membership.js'
 import Swiper from 'swiper'
@@ -284,18 +285,30 @@ export default {
       ]
     }
   },
-  asyncData({ app, query }) {
+  async asyncData({ app, query }) {
     let oToken = query.otoken
     if (oToken) {
       app.$cookies.set('token', oToken)
     }
-    console.log('cookie=', oToken)
+    var token = app.$cookies.get('token')
+    if (token) {
+      // app.$axios.setHeader('Authorization', 'Bearer ' + token)
+      // app.$axios.setHeader('Content-Type', 'text/plain')
+      var params = {}
+      params.level = true
+      // let obj = await app.$axios.post('/accounts/profile/get/', params)
+      let obj = await app.$axios.post(
+        'http://34.226.204.204/api/2.0/accounts/profile/get/',
+        params
+      )
+      app.$cookies.set('getProfile', obj)
+    }
     return { lsuid: query.otoken || '' }
   },
   mounted() {
-    console.log(this.$route.query)
     if (this.$route.query.otoken) {
       this.getLevelInfo()
+      console.log('profile=', this.$cookies.get('getProfile'))
     }
     if ($(window).width() < 1200) {
       this.isPC = false
@@ -323,14 +336,21 @@ export default {
       var params = {}
       params.level = true
       // params.lsuid = this.$route.query.lsuid
-      let {
-        data: { level }
-      } = await membership.getProfile(params)
-      console.log(level)
-      // this.level = level.level
-      // $('.levelEach')
-      //   .not($(`.level-${level.level.toLowerCase()}`))
-      //   .addClass('level-gray')
+      let { level } = await this.$axios.post('/accounts/profile/get/', params)
+      // let {
+      //   data: { level }
+      // } = await this.$axios.post('/accounts/profile/get/', params)
+      console.log('#####', level)
+      // let {
+      //   data: { level }
+      // } = await membership.getProfile(params)
+      // console.log(level)
+      // if (level) {
+      //   this.level = level.level
+      //   $('.levelEach')
+      //     .not($(`.level-${level.level.toLowerCase()}`))
+      //     .addClass('level-gray')
+      // }
     },
     questionClick(index) {
       if (this.indexQt === index) {

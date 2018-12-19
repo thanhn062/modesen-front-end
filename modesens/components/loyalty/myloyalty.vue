@@ -323,7 +323,7 @@ export default {
       params.offset = (page - 1) * 10
       params.start_datetime = starttime
       params.end_datetime = endtime
-      let { data: records } = await membership.getRecords(params)
+      let records = await this.$axios.post('/loyalty/records/', params)
       this.recordslist = records.records
       this.pageCannotSwitched = false
     },
