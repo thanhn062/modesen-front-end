@@ -30,3 +30,4 @@ if (process.browser){
   }
   Vue.prototype.modesens = utils
 }
+Vue.prototype.BASE_URL = 'http://127.0.0.1:8000'
