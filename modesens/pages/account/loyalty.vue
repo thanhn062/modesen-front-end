@@ -100,6 +100,7 @@ export default {
     var params = {}
     params.level = true
     var token = route.query.otoken
+    app.$cookies.set('token', token)
     let {
       data: { lsuser, level }
     } = await axios.postasync('/accounts/profile/get/', params, 0, token)

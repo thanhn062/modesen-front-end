@@ -319,13 +319,14 @@ export default {
       }
     },
     async getmoreRecords(page, starttime, endtime) {
+      var token = this.$route.query.otoken
       this.pageCannotSwitched = true
       var params = {}
       params.amount = 10
       params.offset = (page - 1) * 10
       params.start_datetime = starttime
       params.end_datetime = endtime
-      let { data: records } = await membership.getRecords(params)
+      let { data: records } = await membership.getRecords(params, token)
       this.recordslist = records.records
       this.pageCannotSwitched = false
     },

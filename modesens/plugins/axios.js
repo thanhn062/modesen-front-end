@@ -9,8 +9,8 @@ const req = axios.create({
   baseURL: 'http://34.226.204.204/' + 'api/2.0/',
   browserBaseURL: 'http://34.226.204.204/' + 'api/2.0/',
   // 请求超时
-  timeout: 5000,
-  withCredentials: true, // 允许携带cookie
+  timeout: 50000
+  // withCredentials: true, // 允许携带cookie
   // crossDomain : true   //允许跨域
 })
 // POST传参序列化
@@ -39,17 +39,16 @@ req.interceptors.response.use(
   }
 )
 export default {
-  post(url, data, timestamp) {
+  post(url, data, token, timestamp) {
     if (timestamp) {
       data.timestamp = timestamp
     }
-    console.log('#####', url, cookie.get('token'))
     return req({
       method: 'post',
       url,
       data: data,
       headers: {
-        Authorization: `Bearer ${cookie.get('token')}`
+        Authorization: `Bearer ${token}`
       }
     })
   },
