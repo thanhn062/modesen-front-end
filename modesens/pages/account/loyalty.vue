@@ -1,6 +1,6 @@
 <template>
   <section>
-    <!-- <div class="membershippage">
+    <div class="membershippage">
       <div class="userInfoBox">
         <div class="userInfoinnerBox">
           <div class="userinfo">
@@ -40,7 +40,7 @@
                 <div class="userEnd">
                   <a
                     data-ga-click="accountLoyalty-card--"
-                    href="http://127.0.0.1:8000/loyalty/"
+                    href="http://34.226.204.204/loyalty/"
                     target="_blank">
                     {{ $t('accountLoyalty.memberendTimg') }} {{ level.end_date }}
                   </a>
@@ -66,7 +66,7 @@
           </keep-alive>
         </div>
       </div>
-    </div> -->
+    </div>
   </section>
 </template>
 <script>
@@ -97,18 +97,12 @@ export default {
     title: 'membership'
   },
   async asyncData({ app, route, router }) {
-    console.log(route)
     var params = {}
     params.level = true
-    // params.lsuid = decodeURIComponent(route.query.otoken)
+    var token = route.query.otoken
     let {
       data: { lsuser, level }
-    } = await axios.postasync(
-      '/accounts/profile/get/',
-      params,
-      0,
-      app.$cookies.get('TOKEN')
-    )
+    } = await axios.postasync('/accounts/profile/get/', params, 0, token)
     var recordsparams = {}
     recordsparams.offset = 0
     recordsparams.amount = 10
@@ -116,7 +110,7 @@ export default {
       '/loyalty/records/',
       recordsparams,
       0,
-      app.$cookies.get('TOKEN')
+      token
     )
     return {
       lsuser,

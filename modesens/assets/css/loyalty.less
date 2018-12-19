@@ -82,11 +82,12 @@
     display: none;
   }
   .levelBox {
+    overflow: hidden;
     margin: 0 auto;
     margin-top: 30px;
     width: 840px;
-    border: 10px solid @bgColor;
     height: 490px;
+    border: 10px solid @bgColor;
     .levelWrap {
       padding: 40px;
       width: 740px;
@@ -228,6 +229,7 @@
       float: right;
       margin-top: 6px;
       width: 20px;
+      transform: rotate(180deg);
     }
   }
   .answer {
@@ -235,6 +237,13 @@
     padding: 0 20px;
     font-size: 16px;
     font-weight: 300;
+    div {
+      font-size: 16px;
+    }
+    a {
+      font-size: 16px;
+      text-decoration: underline;
+    }
   }
 }
 
@@ -259,7 +268,8 @@
     .levelBox {
       margin: 0 10px;
       width: calc(100% - 20px);
-      overflow-y: scroll;
+      height: 508px;
+      overflow-x: scroll;
     }
   }
   .earnEach {

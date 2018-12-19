@@ -4,101 +4,40 @@
       <div class="logoCon"><img 
         src="/img/20180905footer_logo.svg"
         alt="logo"></div>
-      <div class="desc">Premium Membership Gives<br>You More Benefits Shopping Worldwide</div>
+      <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
       <div
-        v-if="!lsuid"
+        v-if="lsuid===''"
         class="accountsBox">
-        <a :href="'https://modesens.com/accounts/signup/?next=' + $route.fullPath">
+        <a
+          :href="'http://127.0.0.1:8000'+'/accounts/signup/?next=' + $route.fullPath"
+          target="_blank">
           <button
             class="btn btn-modesens"
-            @click="joinnow()">JOIN NOW</button>
+            data-ga-click="loyalty-joinBtn--">{{ $t('loyalty.joinNow') }}</button>
         </a>
-        <div class="loginBox">Already a member? <a
+        <div class="loginBox">{{ $t('loyalty.member') }}<a
           v-b-modal.mdLogin
-          href="#">Login Now</a>
+          data-ga-click="loyalty-loginBtn--"
+          href="javascript:;">{{ $t('loyalty.loginNow') }}</a>
         </div>
-        <Modal/>
+        <Modal :lsuid="lsuid"/>
       </div>
     </div>
     <div class="benefitsCon">
-      <div class="benefitsTitle">MEMBERSHIP BENEFITS</div>
-      <!-- <div
-        v-if="isPC"
-        class="benefitsBox">
-        <div class="benefitsEach">
-          <div class="imgBox"><img
-            src="/img/20181213triple.svg"
-            alt=""></div>
-          <div class="descBox">
-            <div class="title">Triple Points Days</div>
-            <div class="desc">Enjoy the benefit of earning triple points toward ModeSens premier status on the day(s) of your choice up to 3 times per year. On these days, you earn 3 points for every one dollar spent. That’s 3x the regular dollar-to-point ratio, getting you closer to the next ModeSens membership level even faster.</div>
-          </div>
-        </div>
-        <div class="benefitsEach">
-          <div class="imgBox"><img
-            src="/img/20181213tip.svg"
-            alt=""></div>
-          <div class="descBox">
-            <div class="title">Sale Alert Priority</div>
-            <div class="desc">Be among the first to know about sales from all of your favorite stores. Our unique technology will automatically alert you of new offers in priority of your status level. Simply sign up for alerts on your favorite stores, designers and products.</div>
-          </div>
-        </div>
-        <div class="benefitsEach">
-          <div class="imgBox"><img
-            src="/img/20181213bag.svg"
-            alt=""></div>
-          <div class="descBox">
-            <div class="title">divmited & Exclusive Product Perks</div>
-            <div class="desc">Enjoy the benefit of earning triple points toward ModeSens premier status on the day(s) of your choice up to 3 times per year. On these days, you earn 3 points for every one dollar spent. That’s 3x the regular dollar-to-point ratio, getting you closer to the next ModeSens membership level even faster.</div>
-          </div>
-        </div>
-        <div class="benefitsEach">
-          <div class="imgBox"><img
-            src="/img/20181213logo-red.svg"
-            alt=""></div>
-          <div class="descBox">
-            <div class="title">Dedicated VIP Service</div>
-            <div class="desc">This service allows you to receive shopping assistance from an individual that’s with you every step of the way. They’ll help in any area across all of our partner stores. From finding products to placing orders and beyond.</div>
-          </div>
-        </div>
-      </div> -->
+      <div class="benefitsTitle">{{ $t('loyalty.benefitsTitle') }}</div>
       <div
         class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+          <div
+            v-for="num in benefits"
+            :key="num"
+            class="swiper-slide">
             <div class="imgBox"><img
-              src="/img/20181213triple.svg"
+              :src="'/img/20181213benefits-' + num + '.svg'"
               alt=""></div>
             <div class="descBox">
-              <div class="title">Triple Points Days</div>
-              <div class="desc">Enjoy the benefit of earning triple points toward ModeSens premier status on the day(s) of your choice up to 3 times per year. On these days, you earn 3 points for every one dollar spent. That’s 3x the regular dollar-to-point ratio, getting you closer to the next ModeSens membership level even faster.</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imgBox"><img
-              src="/img/20181213tip.svg"
-              alt=""></div>
-            <div class="descBox">
-              <div class="title">Sale Alert Priority</div>
-              <div class="desc">Be among the first to know about sales from all of your favorite stores. Our unique technology will automatically alert you of new offers in priority of your status level. Simply sign up for alerts on your favorite stores, designers and products.</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imgBox"><img
-              src="/img/20181213bag.svg"
-              alt=""></div>
-            <div class="descBox">
-              <div class="title">divmited & Exclusive Product Perks</div>
-              <div class="desc">Enjoy the benefit of earning triple points toward ModeSens premier status on the day(s) of your choice up to 3 times per year. On these days, you earn 3 points for every one dollar spent. That’s 3x the regular dollar-to-point ratio, getting you closer to the next ModeSens membership level even faster.</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="imgBox"><img
-              src="/img/20181213logo-red.svg"
-              alt=""></div>
-            <div class="descBox">
-              <div class="title">Dedicated VIP Service</div>
-              <div class="desc">This service allows you to receive shopping assistance from an individual that’s with you every step of the way. They’ll help in any area across all of our partner stores. From finding products to placing orders and beyond.</div>
+              <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
+              <div class="desc">{{ $t('loyalty.bfdesc' + num) }}</div>
             </div>
           </div>
         </div>
@@ -106,50 +45,50 @@
       </div>
     </div>
     <div class="levelCon">
-      <div class="title">MEMBERSHIP LEVELS</div>
+      <div class="title">{{ $t('loyalty.levelTitle') }}</div>
       <div class="arrowBox">
         <img src="/img/20180905overlay_right_arrow_b.svg">
-        <span>Swap Right</span>
+        <span>{{ $t('loyalty.SwapRight') }}</span>
       </div>
       <div class="levelBox">
         <div class="levelWrap">
           <div class="imgBox-l">
             <div class="levelEach level-platinum">
-              <span>Platinum</span><br>
+              <span>{{ $t('loyalty.Platinum') }}</span><br>
               <span>{{ platinumNum }}</span>
             </div>
             <div class="levelEach level-gold">
-              <span>Gold</span><br>
+              <span>{{ $t('loyalty.Gold') }}</span><br>
               <span>{{ goldNum }}</span>
             </div>
             <div class="levelEach level-silver">
-              <span>Silver</span><br>
+              <span>{{ $t('loyalty.Silver') }}</span><br>
               <span>{{ silverNum }}</span>
             </div>
             <div class="levelEach level-bronze">
-              <span>Bronze</span><br>
+              <span>{{ $t('loyalty.Bronze') }}</span><br>
               <span>{{ bronzeNum }}</span>
             </div>
           </div>
           <div class="levelKind">
-            <span>Priority Sale Alert</span>
+            <span>{{ $t('loyalty.PrioritySaleAlert') }}</span>
             <div class="levelEach level-platinum">
-              <span>First Priority</span>
+              <span>{{ $t('loyalty.FirstPriority') }}</span>
             </div>
             <div class="levelEach level-gold">
-              <span>Second Priority</span>
+              <span>{{ $t('loyalty.SecondPriority') }}</span>
             </div>
             <div class="levelEach level-silver">
-              <span>Third Priority</span>
+              <span>{{ $t('loyalty.ThirdPriority') }}</span>
             </div>
             <div class="levelEach level-bronze">
-              <span>Fourth Priority</span>
+              <span>{{ $t('loyalty.FourthPriority') }}</span>
             </div>
           </div>
           <div class="levelKind">
-            <span>Maximum Wanted Products</span>
+            <span>{{ $t('loyalty.MaxProducts') }}</span>
             <div class="levelEach level-platinum">
-              <span>Unlimited</span>
+              <span>{{ $t('loyalty.Unlimited') }}</span>
             </div>
             <div class="levelEach level-gold">
               <span><span>1,000</span></span>
@@ -162,7 +101,7 @@
             </div>
           </div>
           <div class="levelKind">
-            <span>ModeSens Protection </span>
+            <span>{{ $t('loyalty.ModeSensProtection') }}</span>
             <div class="levelEach level-platinum">
               <i/>
             </div>
@@ -177,7 +116,7 @@
             </div>
           </div>
           <div class="levelKind">
-            <span>Triple Points Days</span>
+            <span>{{ $t('loyalty.TriplePointsDays') }}</span>
             <div class="levelEach level-platinum">
               <span>3</span>
             </div>
@@ -189,7 +128,7 @@
             </div>
           </div>
           <div class="levelKind">
-            <span>Early Sale Access</span>
+            <span>{{ $t('loyalty.EarlySaleAccess') }}</span>
             <div class="levelEach level-platinum">
               <i/>
             </div>
@@ -198,13 +137,13 @@
             </div>
           </div>
           <div class="levelKind">
-            <span>Dedicated VIP Service</span>
+            <span>{{ $t('loyalty.DedicatedVIPService') }}</span>
             <div class="levelEach level-platinum">
               <i/>
             </div>
           </div>
           <div class="levelKind">
-            <span> Limited Products</span>
+            <span>{{ $t('loyalty.LimitedProducts') }}</span>
             <div class="levelEach level-platinum">
               <i/>
             </div>
@@ -213,91 +152,84 @@
       </div>
     </div>
     <div class="earnCon">
-      <div class="title">SHOP-JOIN-EARN</div>
-      <div class="desc">Receive 1 point per dollar spent across all of our partner stores. Plus, enjoy these additional ways to earn more points.</div>
+      <div class="title">{{ $t('loyalty.earnTitle') }}</div>
+      <div class="desc">{{ $t('loyalty.earnDesc') }}</div>
       <div class="earnBox">
         <div class="row">
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>1,000</span><br><span>Points</span><br><span>Install ModeSens Browser</span><br><span>Extension (One Time)</span>
+            <span>1,000</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.browserInstall') }}</span><br><span>{{ $t('loyalty.browserInstall2') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>1,000</span><br><span>Points</span><br><span>Download ModeSens App</span><br><span>(One Time)</span>
+            <span>1,000</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.downloadApp') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>100</span><br><span>Points</span><br><span>Save A Filter</span><br><span>(One Time)</span>
+            <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.saveFilter') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>100</span><br><span>Points</span><br><span>Follow A Designer</span><br><span>(One Time)</span>
+            <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.followDesigner') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>100</span><br><span>Points</span><br><span>Create A Product</span><br><span>(One Time)</span>
+            <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.createPrdAlert') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>100</span><br><span>Points</span><br><span>Upload A Look</span>
+            <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.uploadLook') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>10</span><br><span>Points</span><br><span>Daily Log In to ModeSens</span><br><span>Website or App</span>
+            <span>10</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.dailyLogin') }}</span><br><span>{{ $t('loyalty.websiteOrApp') }}</span>
           </div>
           <div class="col-md-3 col-xs-12 earnEach">
-            <span>1</span><br><span>Points</span><br><span>Like A Look</span>
+            <span>1</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.likeALook') }}</span>
           </div>
         </div>
       </div>
     </div>
     <div class="questionsCon">
-      <div class="title">FREQUENTLY ASKED QUESTIONS</div>
+      <div class="title">{{ $t('loyalty.questionTitle') }}</div>
       <div class="questionsBox">
-        <div class="questionBox">
+        <div
+          v-for="(answer,index) in answers"
+          :key="index"
+          class="questionBox">
           <div
             class="question"
-            @click="questionClick(0)">
-            <span>HOW CAN I JOIN IN?</span>
+            @click="questionClick(index)">
+            <span>{{ $t('loyalty.question'+(index+1)) }}</span>
             <img
               src="/img/20181214slidedown.svg"
               alt="">
           </div>
           <div
-            v-if="indexQt===0"
-            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
-        </div>
-        <div class="questionBox">
-          <div
-            class="question"
-            @click="questionClick(1)">
-            <span>HOW CAN I FIND OUT MY LEVEL?</span>
-            <img
-              src="/img/20181214slidedown.svg"
-              alt="">
+            v-if="indexQt===index"
+            class="answers">
+            <div
+              v-if="index===1"
+              class="answer">
+              {{ $t('loyalty.answer2_1') }}<a
+                :href="'http://127.0.0.1:8000'+'/accounts/signup/?next='+$route.fullPath"
+                target="_blank">{{ $t('loyalty.answer2_2') }}</a>
+            </div>
+            <div
+              v-else-if="index===14"
+              class="answer">
+              {{ $t('loyalty.answer15_1') }}<a
+                :href="'http://127.0.0.1:8000'+'/shopping-assistant/'"
+                target="_blank">{{ $t('loyalty.answer15_2') }}</a>
+            </div>
+            <div
+              v-for="(a, aindex) in answer"
+              v-else
+              :key="aindex"
+              class="answer">
+              {{ $t('loyalty.answer'+(index+1)+'_'+(aindex+1)) }}
+              <div v-if="typeof(a)==='object'">
+                <div
+                  v-for="(num,bindex) in a"
+                  :key="bindex">
+                  &nbsp;&nbsp;&nbsp;&nbsp;{{ $t('loyalty.answer'+(index+1)+'_'+(aindex+1)+'_'+(bindex+1)) }}
+                </div>
+              </div>
+            </div>
           </div>
-          <div
-            v-if="indexQt===1"
-            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
-        </div>
-        <div class="questionBox">
-          <div
-            class="question"
-            @click="questionClick(2)">
-            <span>DO LEVELS EXPIRE OR GET RESET?</span>
-            <img
-              src="/img/20181214slidedown.svg"
-              alt="">
-          </div>
-          <div
-            v-if="indexQt===2"
-            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
-        </div>
-        <div class="questionBox">
-          <div
-            class="question"
-            @click="questionClick(3)">
-            <span>WHAT IS EARLY SALE ACCESS?</span>
-            <img
-              src="/img/20181214slidedown.svg"
-              alt="">
-          </div>
-          <div
-            v-if="indexQt===3"
-            class="answer">Get exclusive early access to the best sales. As a ModeSens premier member, you’ll always be ahead of the curve, especially when it comes to scoring amazing deals on the luxury products you love.</div>
         </div>
       </div>
     </div>
@@ -321,19 +253,50 @@ export default {
       platinumNum: '>100k',
       indexQt: -1,
       isPC: true,
-      nextUrl: '/'
+      nextUrl: '/',
+      benefits: [1, 2, 3, 4],
+      answers: [
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1, [1, 2, 3, 4, 5, 6, 7, 8, 9], 3],
+        [1],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1, 2],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1],
+        [1]
+      ]
     }
   },
-  asyncData({ query }) {
-    return { lsuid: query.lsuid }
-  },
-  created() {
-    if (this.$route.query.lsuid) {
-      this.getLevelInfo()
+  asyncData({ app, query }) {
+    let oToken = query.otoken
+    if (oToken) {
+      app.$cookies.set('token', oToken)
     }
-    console.log(this.$route)
+    console.log('cookie=', oToken)
+    return { lsuid: query.otoken || '' }
   },
   mounted() {
+    console.log(this.$route.query)
+    if (this.$route.query.otoken) {
+      this.getLevelInfo()
+    }
     if ($(window).width() < 1200) {
       this.isPC = false
       var banner_swiper_5 = new Swiper('.swiper-container', {
@@ -359,31 +322,27 @@ export default {
     async getLevelInfo() {
       var params = {}
       params.level = true
-      params.lsuid = this.$route.query.lsuid
+      // params.lsuid = this.$route.query.lsuid
       let {
         data: { level }
       } = await membership.getProfile(params)
-      this.level = level.level
-      console.log(this.level)
-      $('.levelEach')
-        .not($(`.level-${level.level.toLowerCase()}`))
-        .addClass('level-gray')
+      console.log(level)
+      // this.level = level.level
+      // $('.levelEach')
+      //   .not($(`.level-${level.level.toLowerCase()}`))
+      //   .addClass('level-gray')
     },
     questionClick(index) {
       if (this.indexQt === index) {
         this.indexQt = -1
-        // $($('.question img')[index]).css('transform', '0deg')
+        $($('.question img')[index]).css('transform', 'rotate(180deg)')
         return
       }
       this.indexQt = index
-      // $($('.question img')[index]).css('transform', '180deg')
-      $('.question img').css('transform', '180deg')
+      $($('.question img')[index]).css('transform', 'rotate(0deg)')
     },
-    joinnow() {
-      window.parent.location.pathname = decodeURIComponent(
-        'https://modesens.com'
-      )
-      // window.parent.location.pathname = decodeURIComponent(this.$route.fullPath)
+    joinnow(url) {
+      window.open(url, '_blank')
     }
   }
 }

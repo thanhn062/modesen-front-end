@@ -8,7 +8,7 @@
             <div class="leveltitle">{{ $t('accountLoyalty.benefits') }}</div>
             <a
               data-ga-click="accountLoyalty-Benefits--"
-              href="http://127.0.0.1:8000/loyalty/"
+              href="http://34.226.204.204/loyalty/"
               target="_blank"
               class="Member-failure">
               {{ $t('accountLoyalty.memberendTimg') }} {{ myloyaltycontent.end_date }}       
@@ -31,7 +31,7 @@
           <div class="leveltitle">{{ $t('accountLoyalty.membershipDeltails') }}</div>
           <a
             data-ga-click="accountLoyalty-Membership_Details--"
-            href="http://127.0.0.1:8000/loyalty/"
+            href="http://34.226.204.204/loyalty/"
             target="_blank" 
             class="Member-failure">
             {{ $t('accountLoyalty.deltail') }}  
@@ -74,7 +74,7 @@
           </div>
           <a
             data-ga-click="accountLoyalty-Learn_More_Benefits--"
-            href="http://127.0.0.1:8000/loyalty/"
+            href="http://34.226.204.204/loyalty/"
             target="_blank" 
             class="toleveldes">
             {{ $t('accountLoyalty.moreBennefits') }}     

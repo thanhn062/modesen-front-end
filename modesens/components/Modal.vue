@@ -1,18 +1,33 @@
 <template>
-  <b-modal
-    id="mdLogin"
-    hide-header
-    hide-footer
-    style="width: 600px, height: 680px">
-    <iframe
-      :src="'http://127.0.0.1:8000/accounts/login/?next=' + nextUrl"
-      width="100%"
-      height="100%"
-      frameborder="0"/>
-  </b-modal>
+  <div>
+    <b-modal
+      v-if="lsuid===''"
+      id="mdLogin"
+      ref="mdLogin"
+      hide-header
+      hide-footer
+      style="width: 600px,height: 680px">
+      <button
+        class="close closebtn"
+        @click="hideLoginModal"><img src="/img/close.svg"></button>
+      <iframe
+        :src="'http://127.0.0.1:8000/accounts/login/?next=' + nextUrl"
+        width="100%"
+        height="100%"
+        frameborder="0"/>
+    </b-modal>
+  </div>
 </template>
 <script>
 export default {
+  props: {
+    lsuid: {
+      type: String,
+      default: function() {
+        return '123'
+      }
+    }
+  },
   data() {
     return {
       nextUrl: this.$route.fullPath
@@ -20,6 +35,11 @@ export default {
   },
   created() {
     console.log(this.nextUrl)
+  },
+  methods: {
+    hideLoginModal() {
+      this.$refs.mdLogin.hide()
+    }
   }
 }
 </script>
@@ -29,6 +49,11 @@ export default {
   border-radius: 0;
 }
 #mdLogin {
+  button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
   .modal-body {
     height: 680px;
   }
