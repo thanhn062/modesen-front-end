@@ -40,7 +40,7 @@
                 <div class="userEnd">
                   <a
                     data-ga-click="accountLoyalty-card--"
-                    href="http://127.0.0.1:8000/loyalty/"
+                    href="http://34.226.204.204/loyalty/"
                     target="_blank">
                     {{ $t('accountLoyalty.memberendTimg') }} {{ level.end_date }}
                   </a>
@@ -101,15 +101,11 @@ export default {
     params.level = true
     var token = route.query.otoken
     app.$cookies.set('token', token)
-    // let obj = await $axios.post('/accounts/profile/get/', params)
-    // console.log(obj)
     let { lsuser, level } = await $axios.post('/accounts/profile/get/', params)
     var recordsparams = {}
     recordsparams.offset = 0
     recordsparams.amount = 10
     let records = await $axios.post('/loyalty/records/', recordsparams)
-    // let { records } = await $axios.post('/loyalty/records/', recordsparams)
-    console.log(records)
     return {
       lsuser,
       level,

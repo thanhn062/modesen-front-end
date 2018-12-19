@@ -8,7 +8,7 @@
             <div class="leveltitle">{{ $t('accountLoyalty.benefits') }}</div>
             <a
               data-ga-click="accountLoyalty-Benefits--"
-              href="http://127.0.0.1:8000/loyalty/"
+              href="http://34.226.204.204/loyalty/"
               target="_blank"
               class="Member-failure">
               {{ $t('accountLoyalty.memberendTimg') }} {{ myloyaltycontent.end_date }}       
@@ -31,7 +31,7 @@
           <div class="leveltitle">{{ $t('accountLoyalty.membershipDeltails') }}</div>
           <a
             data-ga-click="accountLoyalty-Membership_Details--"
-            href="http://127.0.0.1:8000/loyalty/"
+            href="http://34.226.204.204/loyalty/"
             target="_blank" 
             class="Member-failure">
             {{ $t('accountLoyalty.deltail') }}  
@@ -74,7 +74,7 @@
           </div>
           <a
             data-ga-click="accountLoyalty-Learn_More_Benefits--"
-            href="http://127.0.0.1:8000/loyalty/"
+            href="http://34.226.204.204/loyalty/"
             target="_blank" 
             class="toleveldes">
             {{ $t('accountLoyalty.moreBennefits') }}     
@@ -88,7 +88,9 @@
     <div id="consume-box">
       <div class="title-part">{{ $t('accountLoyalty.account_activity') }}</div>
       <div id="recordbox">
-        <div id="consume-title">
+        <div
+          id="consume-title"
+          class="row">
           <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.date') }}</div>
           <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.activity') }}</div>
           <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.earn') }}</div>
@@ -108,7 +110,7 @@
           <li
             v-for=" (record,index) in recordslist.records " 
             :key=" index ">
-            <div class="record_info">
+            <div class="record_info row">
               <div class="col-md-3 col-xs-3">{{ record.create_datetime | getLocalTime }}</div>
               <div class="col-md-3 col-xs-3">{{ record.source }}</div>
               <div class="col-md-3 col-xs-3">{{ record.points }}</div>
@@ -161,6 +163,7 @@ import daterangepicker from 'bootstrap-daterangepicker'
 import membership from '~/static/api/1.0/membership.js'
 import { getLocalTime } from '~/static/util/util.js'
 import { getTimestamp } from '~/static/util/util.js'
+import 'bootstrap-daterangepicker/daterangepicker.css'
 export default {
   filters: {
     getLocalTime(time) {
@@ -273,6 +276,7 @@ export default {
     }
   },
   mounted() {
+    console.log(99999999999999)
     var beginTimeStore = ''
     var endTimeStore = ''
     var that = this
@@ -317,6 +321,7 @@ export default {
       }
     },
     async getmoreRecords(page, starttime, endtime) {
+      var token = this.$route.query.otoken
       this.pageCannotSwitched = true
       var params = {}
       params.amount = 10
@@ -340,8 +345,7 @@ export default {
 }
 </script>
 <style scoped>
-@import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css';
-@import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.css';
+/* @import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'; */
 .demo {
   position: relative;
   cursor: pointer;
