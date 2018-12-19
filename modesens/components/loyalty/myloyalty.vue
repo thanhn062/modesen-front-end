@@ -276,7 +276,6 @@ export default {
     }
   },
   mounted() {
-    console.log(99999999999999)
     var beginTimeStore = ''
     var endTimeStore = ''
     var that = this
