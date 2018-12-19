@@ -163,6 +163,8 @@ import daterangepicker from 'bootstrap-daterangepicker'
 import membership from '~/static/api/1.0/membership.js'
 import { getLocalTime } from '~/static/util/util.js'
 import { getTimestamp } from '~/static/util/util.js'
+import 'bootstrap-daterangepicker/daterangepicker.css'
+import 'vue/dist/vue.js'
 export default {
   filters: {
     getLocalTime(time) {
@@ -344,7 +346,6 @@ export default {
 </script>
 <style scoped>
 /* @import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'; */
-@import 'https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.css';
 .demo {
   position: relative;
   cursor: pointer;
