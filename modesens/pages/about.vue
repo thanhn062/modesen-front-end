@@ -58,7 +58,6 @@ export default {
         offset: 0,
         amount: 10
       })
-      console.log(obj)
     }
   }
 }

@@ -3,6 +3,5 @@ export default function({ store, redirect }) {
   if (store.state.TOKEN) {
     return redirect('/about')
   } else {
-    // console.log('NNNNNNNNNNN')
   }
 }

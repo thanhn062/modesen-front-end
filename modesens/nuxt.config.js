@@ -33,15 +33,15 @@ module.exports = {
 	*/
   css: [
     '~/assets/css/font.css',
-    '~/assets/css/main.less',
-    // 'swiper/dist/css/swiper.css'
+    {src: '~/assets/css/main.less', lang: 'less'},
   ],
 
   /*
 	** Plugins to load before mounting the App
 	*/
   plugins: [
-    { src: '~/plugins/axios.js', ssr: true },
+    //ssr：false是为了不让js文件再服务器中编译；
+    { src: '~/plugins/axios.js', ssr: false },
   ],
 
   /*
@@ -51,6 +51,7 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    //ga跟踪
     ['@nuxtjs/google-analytics', {
       id: 'UA-37288238-6'
     }],
@@ -151,6 +152,8 @@ module.exports = {
 	** Build configuration
 	*/
   build: {
+    //生产环境下，allChunks=true利于seo（源代码中的css）https://juejin.im/post/5b98accb6fb9a05cd8490c5b
+    extractCSS: { allChunks: true },
     // 防止多次打包axios
     // vendor: ['axios'],
     plugins: [
@@ -162,6 +165,21 @@ module.exports = {
 		** You can extend webpack config here
 		*/
     extend(config, ctx) {
+      //全局less变量配置
+      // const sassResourcesLoader = {
+      //   loader: 'sass-resources-loader',
+      //   options: {
+      //     resources: ['assets/style/main.less', 'assets/style/common.less']
+      //   }
+      // }
+      // config.module.rules.forEach(rule => {
+      //   if (rule.test.toString() === '/\\.vue$/') {
+      //     rule.options.loaders.less.push(sassResourcesLoader)
+      //   }
+      //   if (rule.test.toString() === '/\\.less$/') {
+      //     rule.use.push(sassResourcesLoader)
+      //   }
+      // })
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
