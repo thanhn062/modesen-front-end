@@ -81,29 +81,19 @@
 .page-content {
   margin-top: 33px;
 }
-.page-left {
-  float: left;
+.col-auto {
   width: 25%;
   margin-top: 77px;
-  .nav-item {
-    text-align: left;
-  }
-  .nav-link {
-    display: inline;
-    font-size: @font-size;
+  .nav-tabs .nav-link.active {
+    border: 0;
+    color: #1c1c1c;
     font-weight: 700;
-  }
-  .nav>li>a {
-    color: @fontColor;
-  }
-  .nav>li>a:focus, .nav>li>a:hover{
-    background: none;
-    color: @fontColor;
+    background: transparent;
+    box-sizing: border-box;
+    padding: 0;
   }
 }
 .page-right {
-  float: right;
-  width: 75%;
   .title-part {
     font-size: 20px;
     font-weight: 300;
@@ -399,8 +389,7 @@
     margin-top:10px;
     padding:  10px;
   }
-  .page-left {
-    float: unset;
+  .col-auto {
     width: 100%;
     margin-top: 0;
     line-height: 36px;
@@ -410,7 +399,6 @@
     }
   }
   .page-right {
-    float: unset;
     width: 100%;
     margin-top: 20px;
     .levelinfo {

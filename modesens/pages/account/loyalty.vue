@@ -51,20 +51,20 @@
         </div>
       </div>
       <div class="page-content container">
-        <div class="page-left">
-          <vueNav 
-            :navlist="list" 
-            :showdir="dir"
-            @navchange="tabchange"/>
-        </div>
-        <div class="page-right ">
-          <keep-alive>
-            <div 
-              :is="currentView"
-              :myloyaltycontent="level"
-              :myloyaltycontent1="records.records"/>
-          </keep-alive>
-        </div>
+        <b-tabs
+          vertical>
+          <b-tab
+            :title="$t('accountLoyalty.account_overview')" 
+            active>
+            <div class="page-right ">
+              <keep-alive>
+                <myloyalty 
+                  :myloyaltycontent="level"
+                  :myloyaltycontent1="records.records"/>
+              </keep-alive>
+            </div>
+          </b-tab>
+        </b-tabs>
       </div>
     </div>
   </section>
@@ -73,23 +73,15 @@
 // import $ from 'jquery'
 import axios from '~/plugins/axios'
 import membership from '~/static/api/1.0/membership.js'
-import vueNav from '~/components/nav.vue'
-import myloyalty0 from '~/components/loyalty/myloyalty.vue'
+import myloyalty from '~/components/loyalty/myloyalty.vue'
 export default {
   components: {
-    vueNav,
-    myloyalty0
+    myloyalty
   },
   data() {
     return {
       limit: -1,
-      isShow: false,
-      // tab项列表
-      list: ['ACCOUNT OVERVIEW'],
-      // tab排列方向
-      dir: 'flex-column',
       //当前显示的页面
-      currentView: 'myloyalty0',
       currentPage: 1
     }
   },
@@ -112,12 +104,7 @@ export default {
       records
     }
   },
-  computed: {},
-  methods: {
-    tabchange(tabItem) {
-      this.currentView = 'myloyalty' + tabItem
-    }
-  }
+  computed: {}
 }
 </script>
 <style lang="less">
