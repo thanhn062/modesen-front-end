@@ -9,7 +9,7 @@
         v-if="lsuid===''"
         class="accountsBox">
         <a
-          :href="'http://127.0.0.1:8000'+'/accounts/signup/?next=' + $route.fullPath"
+          :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
           target="_blank">
           <button
             class="btn btn-modesens"
@@ -194,7 +194,8 @@
             class="question"
             @click="questionClick(index)">
             <span>{{ $t('loyalty.question'+(index+1)) }}</span>
-            <img
+            <img 
+              :class="indexQt===index ? 'imgrotate' : ''"
               src="/img/20181214slidedown.svg"
               alt="">
           </div>
@@ -205,14 +206,14 @@
               v-if="index===1"
               class="answer">
               {{ $t('loyalty.answer2_1') }}<a
-                :href="'http://127.0.0.1:8000'+'/accounts/signup/?next='+$route.fullPath"
+                :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
                 target="_blank">{{ $t('loyalty.answer2_2') }}</a>
             </div>
             <div
               v-else-if="index===14"
               class="answer">
               {{ $t('loyalty.answer15_1') }}<a
-                :href="'http://127.0.0.1:8000'+'/shopping-assistant/'"
+                :href="BASE_URL+'/shopping-assistant/'"
                 target="_blank">{{ $t('loyalty.answer15_2') }}</a>
             </div>
             <div
@@ -290,25 +291,11 @@ export default {
     if (oToken) {
       app.$cookies.set('token', oToken)
     }
-    var token = app.$cookies.get('token')
-    if (token) {
-      // app.$axios.setHeader('Authorization', 'Bearer ' + token)
-      // app.$axios.setHeader('Content-Type', 'text/plain')
-      var params = {}
-      params.level = true
-      // let obj = await app.$axios.post('/accounts/profile/get/', params)
-      let obj = await app.$axios.post(
-        'http://34.226.204.204/api/2.0/accounts/profile/get/',
-        params
-      )
-      app.$cookies.set('getProfile', obj)
-    }
-    return { lsuid: query.otoken || '' }
+    return { lsuid: oToken || '' }
   },
   mounted() {
     if (this.$route.query.otoken) {
       this.getLevelInfo()
-      console.log('profile=', this.$cookies.get('getProfile'))
     }
     if ($(window).width() < 1200) {
       this.isPC = false
@@ -323,46 +310,25 @@ export default {
         initialSlide: 1
       })
     }
-    // $('#banner-swiper_5')
-    //   .mouseover(function() {
-    //     banner_swiper_5.stopAutoplay()
-    //   })
-    //   .mouseout(function() {
-    //     banner_swiper_5.startAutoplay()
-    //   })
   },
   methods: {
     async getLevelInfo() {
       var params = {}
       params.level = true
-      // params.lsuid = this.$route.query.lsuid
       let { level } = await this.$axios.post('/accounts/profile/get/', params)
-      // let {
-      //   data: { level }
-      // } = await this.$axios.post('/accounts/profile/get/', params)
-      console.log('#####', level)
-      // let {
-      //   data: { level }
-      // } = await membership.getProfile(params)
-      // console.log(level)
-      // if (level) {
-      //   this.level = level.level
-      //   $('.levelEach')
-      //     .not($(`.level-${level.level.toLowerCase()}`))
-      //     .addClass('level-gray')
-      // }
+      if (level) {
+        this.level = level.level
+        $('.levelEach')
+          .not($(`.level-${level.level.toLowerCase()}`))
+          .addClass('level-gray')
+      }
     },
     questionClick(index) {
       if (this.indexQt === index) {
         this.indexQt = -1
-        $($('.question img')[index]).css('transform', 'rotate(180deg)')
         return
       }
       this.indexQt = index
-      $($('.question img')[index]).css('transform', 'rotate(0deg)')
-    },
-    joinnow(url) {
-      window.open(url, '_blank')
     }
   }
 }

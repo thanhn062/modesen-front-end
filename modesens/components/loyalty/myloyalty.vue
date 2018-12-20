@@ -7,8 +7,8 @@
           <div class="levelBenefitscon">
             <div class="leveltitle">{{ $t('accountLoyalty.benefits') }}</div>
             <a
+              :href="BASE_URL+'/loyalty/'"
               data-ga-click="accountLoyalty-Benefits--"
-              href="http://34.226.204.204/loyalty/"
               target="_blank"
               class="Member-failure">
               {{ $t('accountLoyalty.memberendTimg') }} {{ myloyaltycontent.end_date }}       
@@ -30,8 +30,8 @@
         <div class="userleveldes">
           <div class="leveltitle">{{ $t('accountLoyalty.membershipDeltails') }}</div>
           <a
+            :href="BASE_URL+'/loyalty/'"
             data-ga-click="accountLoyalty-Membership_Details--"
-            href="http://34.226.204.204/loyalty/"
             target="_blank" 
             class="Member-failure">
             {{ $t('accountLoyalty.deltail') }}  
@@ -73,8 +73,8 @@
             </div>
           </div>
           <a
+            :href="BASE_URL+'/loyalty/'"
             data-ga-click="accountLoyalty-Learn_More_Benefits--"
-            href="http://34.226.204.204/loyalty/"
             target="_blank" 
             class="toleveldes">
             {{ $t('accountLoyalty.moreBennefits') }}     
@@ -91,10 +91,10 @@
         <div
           id="consume-title"
           class="row">
-          <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.date') }}</div>
-          <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.activity') }}</div>
-          <div class="title-list col-md-3 col-xs-3">{{ $t('accountLoyalty.earn') }}</div>
-          <div class="title-list col-md-3 col-xs-3 keepRight">
+          <div class="title-list col-md-3 col-3">{{ $t('accountLoyalty.date') }}</div>
+          <div class="title-list col-md-3 col-3">{{ $t('accountLoyalty.activity') }}</div>
+          <div class="title-list col-md-3 col-3">{{ $t('accountLoyalty.earn') }}</div>
+          <div class="title-list col-md-3 col-3 keepRight">
             <div class="demo"> 
               <div id="config-demo">
                 {{ $t('accountLoyalty.filter') }}
@@ -111,9 +111,9 @@
             v-for=" (record,index) in recordslist.records " 
             :key=" index ">
             <div class="record_info row">
-              <div class="col-md-3 col-xs-3">{{ record.create_datetime | getLocalTime }}</div>
-              <div class="col-md-3 col-xs-3">{{ record.source }}</div>
-              <div class="col-md-3 col-xs-3">{{ record.points }}</div>
+              <div class="col-md-3 col-3">{{ record.create_datetime | getLocalTime }}</div>
+              <div class="col-md-3 col-3">{{ record.source }}</div>
+              <div class="col-md-3 col-3">{{ record.points }}</div>
               <div
                 v-if="record.source==='Purchase'"
                 class="see-more  keepRight col-md-3 col-xs-3"
