@@ -157,13 +157,9 @@ export default {
         : this.loginInviteFriends()
     }
   },
-  mounted() {
-    // console.log(this.STATIC_DOMAIN)
-  },
+  mounted() {},
   methods: {
-    loginInviteFriends() {
-      // console.log(1111222222)
-    }
+    loginInviteFriends() {}
   }
 }
 </script>

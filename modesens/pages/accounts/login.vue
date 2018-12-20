@@ -44,8 +44,6 @@ export default {
   methods: {
     async login(evt) {
       evt.preventDefault()
-      // console.log($('div'))
-      // this.$ga.event('accounts', 'login', 'login', 123)
       let data = new Object()
       data.client_id = this.$auth.options.client_id
       data.client_secret = this.$auth.options.client_secret
@@ -56,12 +54,7 @@ export default {
         let {
           data: { access_token, token_type }
         } = await account.login(data)
-        // this.$store.commit('SET_TOKEN', token_type + ' ' + access_token)
         this.$cookies.set('TOKEN', token_type + ' ' + access_token)
-        // let [, nextUrl] = [...window.location.href.match(/next=([^?&=#]+)/)]
-        // console.log(window.location.href.match(/next=[^?&=#]+/))
-        // console.log(decodeURIComponent(nextUrl))
-        // window.parent.location.pathname = decodeURIComponent(nextUrl)
         this.$router.replace('/about')
       } catch (e) {
         this.error = e.message

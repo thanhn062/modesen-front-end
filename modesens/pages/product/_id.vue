@@ -97,10 +97,7 @@ export default {
     store.commit('setInfos', { availabilities, product })
     return { availabilities, product }
   },
-  created() {
-    // console.log(this.availabilities)
-    // this.$ga.page('/product/' + this.$route.params.id)
-  },
+  created() {},
   mounted() {
     this.getSub()
     this.getMd()
@@ -109,7 +106,6 @@ export default {
   methods: {
     async getSub() {
       this.keysStr = this.$localStorage.get('product-keys')
-      console.log(22222, this.keysStr)
       if (!this.keysStr) {
         var params = {}
         params.gender = 'f'
@@ -119,7 +115,6 @@ export default {
         } = await product.getSub(params)
         this.$localStorage.set('product-keys', keys, 1)
         this.keysStr = keys
-        console.log(1111111111111111)
       }
     },
     async getMd() {
