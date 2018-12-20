@@ -18,9 +18,8 @@ module.exports = {
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://34.226.204.204/',
+    baseUrl: process.env.BASE_URL || 'http://127.0.0.1/',
     browserBaseURL: process.env.BASE_URL || 'http://34.226.204.204/',
-    linkUrl: 'http://127.0.0.1:8000',
     secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
   },
   /*
@@ -44,13 +43,16 @@ module.exports = {
     { src: '~/plugins/axios.js', ssr: false },
   ],
 
+  router: {
+    base: '/vue/'
+  },
+
   /*
 	** Nuxt.js modules
 	*/
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
     //ga跟踪
     ['@nuxtjs/google-analytics', {
       id: 'UA-37288238-6'
@@ -131,22 +133,6 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
-  auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            propertyName: 'access_token'
-          },
-          // user: { url: 'me', method: 'get', propertyName: 'data' },
-          logout: false
-        }
-      }
-    },
-    client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
-    client_secret:
-      'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
-  },
 
   /*
 	** Build configuration

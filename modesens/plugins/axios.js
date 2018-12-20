@@ -1,6 +1,5 @@
 import * as axios from 'axios'
 import store from '~/store'
-import cookie from '~/static/util/cookie.js'
 import qs from 'qs'
 
 // import qs from "qs";
