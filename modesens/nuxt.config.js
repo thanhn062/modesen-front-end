@@ -40,7 +40,7 @@ module.exports = {
 	*/
   plugins: [
     //ssr：false是为了不让js文件再服务器中编译；
-    { src: '~/plugins/axios.js', ssr: false },
+    { src: '~/plugins/axios.js', ssr: true },
   ],
 
   router: {
@@ -138,8 +138,6 @@ module.exports = {
 	** Build configuration
 	*/
   build: {
-    //生产环境下，allChunks=true利于seo（源代码中的css）https://juejin.im/post/5b98accb6fb9a05cd8490c5b
-    extractCSS: { allChunks: true },
     // 防止多次打包axios
     // vendor: ['axios'],
     plugins: [
@@ -151,21 +149,6 @@ module.exports = {
 		** You can extend webpack config here
 		*/
     extend(config, ctx) {
-      //全局less变量配置
-      // const sassResourcesLoader = {
-      //   loader: 'sass-resources-loader',
-      //   options: {
-      //     resources: ['assets/style/main.less', 'assets/style/common.less']
-      //   }
-      // }
-      // config.module.rules.forEach(rule => {
-      //   if (rule.test.toString() === '/\\.vue$/') {
-      //     rule.options.loaders.less.push(sassResourcesLoader)
-      //   }
-      //   if (rule.test.toString() === '/\\.less$/') {
-      //     rule.use.push(sassResourcesLoader)
-      //   }
-      // })
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({

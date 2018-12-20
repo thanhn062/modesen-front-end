@@ -70,9 +70,6 @@
   </section>
 </template>
 <script>
-// import $ from 'jquery'
-import axios from '~/plugins/axios'
-import membership from '~/static/api/1.0/membership.js'
 import vueNav from '~/components/nav.vue'
 import myloyalty0 from '~/components/loyalty/myloyalty.vue'
 export default {
