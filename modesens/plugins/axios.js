@@ -9,7 +9,6 @@ export default function ({ $axios, app }) {
     // config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     //获取cookie放在头部传到后端
     config.headers.Authorization = 'Bearer ' + app.$cookies.get('token');
-    console.log(config)
     let extradata = config['0'];
     if (extradata === 1) {
       config.url += `?secretkey=${process.env.secretKey}`
