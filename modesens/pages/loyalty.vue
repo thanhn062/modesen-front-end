@@ -9,7 +9,7 @@
         v-if="lsuid===''"
         class="accountsBox">
         <a
-          :href="'http://127.0.0.1:8000'+'/accounts/signup/?next=' + $route.fullPath"
+          :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
           target="_blank">
           <button
             class="btn btn-modesens"
@@ -206,14 +206,14 @@
               v-if="index===1"
               class="answer">
               {{ $t('loyalty.answer2_1') }}<a
-                :href="'http://127.0.0.1:8000'+'/accounts/signup/?next='+$route.fullPath"
+                :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
                 target="_blank">{{ $t('loyalty.answer2_2') }}</a>
             </div>
             <div
               v-else-if="index===14"
               class="answer">
               {{ $t('loyalty.answer15_1') }}<a
-                :href="'http://127.0.0.1:8000'+'/shopping-assistant/'"
+                :href="BASE_URL+'/shopping-assistant/'"
                 target="_blank">{{ $t('loyalty.answer15_2') }}</a>
             </div>
             <div

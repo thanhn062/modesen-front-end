@@ -7,8 +7,8 @@
           <div class="levelBenefitscon">
             <div class="leveltitle">{{ $t('accountLoyalty.benefits') }}</div>
             <a
+              :href="BASE_URL+'/loyalty/'"
               data-ga-click="accountLoyalty-Benefits--"
-              href="http://34.226.204.204/loyalty/"
               target="_blank"
               class="Member-failure">
               {{ $t('accountLoyalty.memberendTimg') }} {{ myloyaltycontent.end_date }}       
@@ -30,8 +30,8 @@
         <div class="userleveldes">
           <div class="leveltitle">{{ $t('accountLoyalty.membershipDeltails') }}</div>
           <a
+            :href="BASE_URL+'/loyalty/'"
             data-ga-click="accountLoyalty-Membership_Details--"
-            href="http://34.226.204.204/loyalty/"
             target="_blank" 
             class="Member-failure">
             {{ $t('accountLoyalty.deltail') }}  
@@ -73,8 +73,8 @@
             </div>
           </div>
           <a
+            :href="BASE_URL+'/loyalty/'"
             data-ga-click="accountLoyalty-Learn_More_Benefits--"
-            href="http://34.226.204.204/loyalty/"
             target="_blank" 
             class="toleveldes">
             {{ $t('accountLoyalty.moreBennefits') }}     
