@@ -1,5 +1,4 @@
 import * as axios from 'axios'
-import store from '~/store'
 import qs from 'qs'
 
 // import qs from "qs";
