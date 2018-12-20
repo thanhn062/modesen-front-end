@@ -33,9 +33,7 @@ export default {
       nextUrl: this.$route.fullPath
     }
   },
-  created() {
-    console.log(this.nextUrl)
-  },
+  created() {},
   methods: {
     hideLoginModal() {
       this.$refs.mdLogin.hide()
