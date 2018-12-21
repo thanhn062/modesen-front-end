@@ -33,8 +33,12 @@
                 alt="">
               <div class="cardinfo keepLeft">
                 <div class="userStart">
-                  <div class="name">{{ lsuser.username }}</div>
-                  <div class="start">{{ $t('accountLoyalty.memberstartTimg') }} {{ level.start_date }}</div>
+                  <div
+                    v-if="lsuser.first_name !== '' || lsuser.last_name !== ''"
+                    class="name">{{ lsuser.first_name }} {{ lsuser.last_name }}</div>
+                  <div
+                    v-else
+                    class="name">{{ lsuser.username }}</div>
                 </div>
                 <div class="currentLevel">{{ $t('accountLoyalty.'+level.level.toUpperCase()) }}</div>
                 <div class="userEnd">
@@ -42,7 +46,7 @@
                     :href="BASE_URL+'/loyalty/'"
                     data-ga-click="accountLoyalty-card--"
                     target="_blank">
-                    {{ $t('accountLoyalty.memberendTimg') }} {{ level.end_date }}
+                    {{ $t('accountLoyalty.memberendTimgcard') }} {{ level.end_date }}
                   </a>
                 </div>
               </div>
