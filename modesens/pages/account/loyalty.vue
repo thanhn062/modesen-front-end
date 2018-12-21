@@ -74,9 +74,6 @@
   </section>
 </template>
 <script>
-// import $ from 'jquery'
-import axios from '~/plugins/axios'
-import membership from '~/static/api/1.0/membership.js'
 import myloyalty from '~/components/loyalty/myloyalty.vue'
 export default {
   components: {

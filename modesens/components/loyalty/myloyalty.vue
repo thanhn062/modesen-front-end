@@ -171,7 +171,6 @@
 
 <script>
 import daterangepicker from 'bootstrap-daterangepicker'
-import membership from '~/static/api/1.0/membership.js'
 import { getLocalTime } from '~/static/util/util.js'
 import { getTimestamp } from '~/static/util/util.js'
 import 'bootstrap-daterangepicker/daterangepicker.css'
