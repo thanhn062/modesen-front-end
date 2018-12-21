@@ -33,8 +33,12 @@
                 alt="">
               <div class="cardinfo keepLeft">
                 <div class="userStart">
-                  <div class="name">{{ lsuser.username }}</div>
-                  <div class="start">{{ $t('accountLoyalty.memberstartTimg') }} {{ level.start_date }}</div>
+                  <div
+                    v-if="lsuser.first_name !== '' || lsuser.last_name !== ''"
+                    class="name">{{ lsuser.first_name }} {{ lsuser.last_name }}</div>
+                  <div
+                    v-else
+                    class="name">{{ lsuser.username }}</div>
                 </div>
                 <div class="currentLevel">{{ $t('accountLoyalty.'+level.level.toUpperCase()) }}</div>
                 <div class="userEnd">
@@ -42,7 +46,7 @@
                     :href="BASE_URL+'/loyalty/'"
                     data-ga-click="accountLoyalty-card--"
                     target="_blank">
-                    {{ $t('accountLoyalty.memberendTimg') }} {{ level.end_date }}
+                    {{ $t('accountLoyalty.memberendTimgcard') }} {{ level.end_date }}
                   </a>
                 </div>
               </div>
@@ -51,42 +55,34 @@
         </div>
       </div>
       <div class="page-content container">
-        <div class="page-left">
-          <vueNav 
-            :navlist="list" 
-            :showdir="dir"
-            @navchange="tabchange"/>
-        </div>
-        <div class="page-right ">
-          <keep-alive>
-            <div 
-              :is="currentView"
-              :myloyaltycontent="level"
-              :myloyaltycontent1="records.records"/>
-          </keep-alive>
-        </div>
+        <b-tabs
+          vertical>
+          <b-tab
+            :title="$t('accountLoyalty.account_overview')" 
+            active>
+            <div class="page-right ">
+              <keep-alive>
+                <myloyalty 
+                  :myloyaltycontent="level"
+                  :myloyaltycontent1="records.records"/>
+              </keep-alive>
+            </div>
+          </b-tab>
+        </b-tabs>
       </div>
     </div>
   </section>
 </template>
 <script>
-import vueNav from '~/components/nav.vue'
-import myloyalty0 from '~/components/loyalty/myloyalty.vue'
+import myloyalty from '~/components/loyalty/myloyalty.vue'
 export default {
   components: {
-    vueNav,
-    myloyalty0
+    myloyalty
   },
   data() {
     return {
       limit: -1,
-      isShow: false,
-      // tab项列表
-      list: ['ACCOUNT OVERVIEW'],
-      // tab排列方向
-      dir: 'flex-column',
       //当前显示的页面
-      currentView: 'myloyalty0',
       currentPage: 1
     }
   },
@@ -109,12 +105,7 @@ export default {
       records
     }
   },
-  computed: {},
-  methods: {
-    tabchange(tabItem) {
-      this.currentView = 'myloyalty' + tabItem
-    }
-  }
+  computed: {}
 }
 </script>
 <style lang="less">

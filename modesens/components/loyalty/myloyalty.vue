@@ -1,7 +1,7 @@
 <template>
   <section>
     <div id="rankbox">
-      <div class="title-part">{{ $t('accountLoyalty.perk') }}</div>
+      <div class="title-part">{{ $t('accountLoyalty.account_overview') }}</div>
       <div class="levelinfo">
         <div class="levelBenefits">
           <div class="levelBenefitscon">
@@ -11,8 +11,12 @@
               data-ga-click="accountLoyalty-Benefits--"
               target="_blank"
               class="Member-failure">
-              {{ $t('accountLoyalty.memberendTimg') }} {{ myloyaltycontent.end_date }}       
-              <div class="tointro">?</div>
+              <span>{{ $t('accountLoyalty.memberendTimg') }} {{ myloyaltycontent.end_date }}</span>
+              <div class="tointro">
+                <img
+                  src="/img/20181221tointro.png"
+                  alt="">
+              </div>
             </a>
             <div class="current-L">
               <img
@@ -34,8 +38,12 @@
             data-ga-click="accountLoyalty-Membership_Details--"
             target="_blank" 
             class="Member-failure">
-            {{ $t('accountLoyalty.deltail') }}  
-            <div class="tointro">?</div>
+            <span>{{ $t('accountLoyalty.deltail') }}</span>
+            <div class="tointro">
+              <img
+                src="/img/20181221tointro.png"
+                alt="">
+            </div>
           </a>
           <div class="conbox">
             <div class="con">
@@ -83,8 +91,11 @@
       </div>
     </div>
     <div
-      v-if="myloyaltycontent.level!=='Bronze' "
-      class="num-days">{{ $t('youhave') }} {{ Tripledays }} {{ $t('pointsdays') }} {{ myloyaltycontent.end_date }}{{ $t('triple') }}</div>
+      v-if="myloyaltycontent.level!=='Bronze' && Tripledays === 1"
+      class="num-days">{{ $t('accountLoyalty.youhave') }} {{ Tripledays }} {{ $t('accountLoyalty.pointsday') }} {{ myloyaltycontent.end_date }}{{ $t('accountLoyalty.triple') }}</div>
+    <div
+      v-else-if="myloyaltycontent.level!=='Bronze' && Tripledays > 1"
+      class="num-days">{{ $t('accountLoyalty.youhave') }} {{ Tripledays }} {{ $t('accountLoyalty.pointsdays') }} {{ myloyaltycontent.end_date }}{{ $t('accountLoyalty.triple') }}</div>
     <div id="consume-box">
       <div class="title-part">{{ $t('accountLoyalty.account_activity') }}</div>
       <div id="recordbox">
@@ -112,11 +123,11 @@
             :key=" index ">
             <div class="record_info row">
               <div class="col-md-3 col-3">{{ record.create_datetime | getLocalTime }}</div>
-              <div class="col-md-3 col-3">{{ record.source }}</div>
+              <div class="col-md-3 col-3">{{ $t('accountLoyalty.record_' + record.source_s) }}</div>
               <div class="col-md-3 col-3">{{ record.points }}</div>
               <div
                 v-if="record.source==='Purchase'"
-                class="see-more  keepRight col-md-3 col-xs-3"
+                class="see-more  keepRight col-md-3 col-3"
                 @click="toggle(index)">
                 <img
                   :class="index===limit ? 'active' : ''"
@@ -160,7 +171,6 @@
 
 <script>
 import daterangepicker from 'bootstrap-daterangepicker'
-import membership from '~/static/api/1.0/membership.js'
 import { getLocalTime } from '~/static/util/util.js'
 import { getTimestamp } from '~/static/util/util.js'
 import 'bootstrap-daterangepicker/daterangepicker.css'
@@ -219,9 +229,14 @@ export default {
       this.degRight = 180
       this.degLeft = pers * 360 - 180
     }
+    var languageReg = /\/en\//
     if (this.myloyaltycontent.level == 'Bronze') {
       this.levelClass = 'bronze'
-      this.levelimgHref = '/img/20181213bronze.png'
+      if (this.$route.path.match(languageReg)) {
+        this.levelimgHref = '/img/20181221bronze-en.png'
+      } else {
+        this.levelimgHref = '/img/20181221bronze-zh.png'
+      }
       this.Tripledays = 0
       this.levelRights = ['Fourth Priority Alert', '100 Products Alerts']
       this.nextLevelRights = [
@@ -232,7 +247,11 @@ export default {
       this.nexrLevel = 'Silver'
     } else if (this.myloyaltycontent.level == 'Silver') {
       this.levelClass = 'sliver'
-      this.levelimgHref = '/img/20181213silver.png'
+      if (this.$route.path.match(languageReg)) {
+        this.levelimgHref = '/img/20181221silver-en.png'
+      } else {
+        this.levelimgHref = '/img/20181221silver-zh.png'
+      }
       this.Tripledays = 1
       this.levelRights = [
         'Third Priority Alert',
@@ -248,7 +267,11 @@ export default {
       this.nexrLevel = 'Gold'
     } else if (this.myloyaltycontent.level == 'Gold') {
       this.levelClass = 'gold'
-      this.levelimgHref = '/img/20181213gold.png'
+      if (this.$route.path.match(languageReg)) {
+        this.levelimgHref = '/img/20181221gold-en.png'
+      } else {
+        this.levelimgHref = '/img/20181221gold-zh.png'
+      }
       this.Tripledays = 2
       this.levelRights = [
         'Second Priority Alert',
@@ -265,7 +288,11 @@ export default {
       this.nexrLevel = 'Platinum'
     } else if (this.myloyaltycontent.level == 'Platinum') {
       this.levelClass = 'platinum'
-      this.levelimgHref = '/img/20181213platinum.png'
+      if (this.$route.path.match(languageReg)) {
+        this.levelimgHref = '/img/20181221platinum-en.png'
+      } else {
+        this.levelimgHref = '/img/20181221platinum-zh.png'
+      }
       this.Tripledays = 3
       this.levelRights = [
         'First Priority Alert',

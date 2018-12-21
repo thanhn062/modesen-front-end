@@ -20,6 +20,7 @@ module.exports = {
   env: {
     baseUrl: process.env.BASE_URL || 'http://34.226.204.204/',
     browserBaseURL: process.env.BASE_URL || 'http://34.226.204.204/',
+    linkUrl: 'http://34.226.204.204/',
     secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
   },
   /*
