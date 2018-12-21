@@ -132,7 +132,7 @@ module.exports = {
     SwapRight: 'Swap Right',
     desc1: 'Premium Membership Gives',
     desc2: 'You More Benefits Shopping Worldwide',
-    levelTitle: 'Member Ship Level',
+    levelTitle: 'Membership Level',
     Platinum: 'Platinum',
     Gold: 'Gold',
     Silver: 'Silver',
@@ -148,7 +148,8 @@ module.exports = {
     TriplePointsDays: 'Triple Points Days',
     EarlySaleAccess: 'Early Sale Access',
     DedicatedVIPService: 'Dedicated VIP Service',
-    LimitedProducts: 'Limited Products',
+    LimitedProducts: 'Limited & Exclusive Products',
+    ViewMyAccount: 'View My Account',
   },
   accountLoyalty: {
     memberstartTimg:'Member Since',

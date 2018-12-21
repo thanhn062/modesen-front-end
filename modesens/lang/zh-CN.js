@@ -138,7 +138,7 @@ module.exports = {
     Silver: '白银级',
     Bronze: '青铜级',
     PrioritySaleAlert: '优先促销提醒',
-    FirstPriority: '一级优先',
+    FirstPriority: '特级优先',
     SecondPriority: '二级优先',
     ThirdPriority: '三级优先',
     FourthPriority: '四级优先',
@@ -149,6 +149,7 @@ module.exports = {
     EarlySaleAccess: '优先折扣权限',
     DedicatedVIPService: '专属VIP服务',
     LimitedProducts: '限量以及专属商品',
+    ViewMyAccount: '查看我的账户',
   },
   accountLoyalty: {
     memberstartTimg: '会员开始时间',

@@ -22,6 +22,14 @@
         </div>
         <Modal :lsuid="lsuid"/>
       </div>
+      <div
+        v-else
+        class="accountsBox">
+        <a
+          :href="BASE_URL+'/account/loyalty/'"
+          target="_blank"><button
+            class="btn btn-modesens"
+            data-ga-click="loyalty-ViewMyAccount--">{{ $t('loyalty.ViewMyAccount') }}</button></a></div>
     </div>
     <div class="benefitsCon">
       <div class="benefitsTitle">{{ $t('loyalty.benefitsTitle') }}</div>
@@ -91,13 +99,13 @@
               <span>{{ $t('loyalty.Unlimited') }}</span>
             </div>
             <div class="levelEach level-gold">
-              <span><span>1,000</span></span>
+              <span><span>100</span></span>
             </div>
             <div class="levelEach level-silver">
               <span>50</span>
             </div>
             <div class="levelEach level-bronze">
-              <span><span>1,000</span></span>
+              <span><span>10</span></span>
             </div>
           </div>
           <div class="levelKind">
