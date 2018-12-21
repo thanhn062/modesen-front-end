@@ -237,9 +237,7 @@
   </section>
 </template>
 <script>
-import axios from '~/plugins/axios'
 import Modal from '~/components/Modal.vue'
-import membership from '~/static/api/1.0/membership.js'
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
 export default {

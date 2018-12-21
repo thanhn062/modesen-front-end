@@ -80,4 +80,5 @@ dist
 # IDE
 .idea
 .vscode
+.sftp.json
 sftp-config.json

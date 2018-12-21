@@ -18,9 +18,9 @@ module.exports = {
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://127.0.0.1:8000/',
-    browserBaseURL: process.env.BASE_URL || 'http://127.0.0.1:8000/',
-    linkUrl: 'http://127.0.0.1:8000',
+    baseUrl: process.env.BASE_URL || 'http://34.226.204.204/',
+    browserBaseURL: process.env.BASE_URL || 'http://34.226.204.204/',
+    linkUrl: 'http://34.226.204.204/',
     secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
   },
   /*
@@ -44,13 +44,16 @@ module.exports = {
     { src: '~/plugins/axios.js', ssr: true },
   ],
 
+  router: {
+    base: '/vue/'
+  },
+
   /*
 	** Nuxt.js modules
 	*/
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
     //ga跟踪
     ['@nuxtjs/google-analytics', {
       id: 'UA-37288238-6'
@@ -131,29 +134,11 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
-  auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            propertyName: 'access_token'
-          },
-          // user: { url: 'me', method: 'get', propertyName: 'data' },
-          logout: false
-        }
-      }
-    },
-    client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
-    client_secret:
-      'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
-  },
 
   /*
 	** Build configuration
 	*/
   build: {
-    //生产环境下，allChunks=true利于seo（源代码中的css）https://juejin.im/post/5b98accb6fb9a05cd8490c5b
-    extractCSS: { allChunks: true },
     // 防止多次打包axios
     // vendor: ['axios'],
     plugins: [
@@ -165,21 +150,6 @@ module.exports = {
 		** You can extend webpack config here
 		*/
     extend(config, ctx) {
-      //全局less变量配置
-      // const sassResourcesLoader = {
-      //   loader: 'sass-resources-loader',
-      //   options: {
-      //     resources: ['assets/style/main.less', 'assets/style/common.less']
-      //   }
-      // }
-      // config.module.rules.forEach(rule => {
-      //   if (rule.test.toString() === '/\\.vue$/') {
-      //     rule.options.loaders.less.push(sassResourcesLoader)
-      //   }
-      //   if (rule.test.toString() === '/\\.less$/') {
-      //     rule.use.push(sassResourcesLoader)
-      //   }
-      // })
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
