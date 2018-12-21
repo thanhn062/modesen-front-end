@@ -1,8 +1,7 @@
 @import 'common.less';
 .accountsCon {
-  padding: 50px 0;
+  padding: @padding;
   width: 100%;
-  // height: 387px;
   text-align: center;
   background: @bgColor;
   .logoCon {
@@ -11,12 +10,12 @@
     }
   }
   .desc {
-    margin-top: 20px;
+    margin-top: @titleSpace;
     font-size: 22px;
   }
 }
 .accountsBox {
-  margin-top: 20px;
+  margin-top: @titleSpace;
   .loginBox {
     margin-top: 10px;
     a {
@@ -25,53 +24,43 @@
   }
 }
 .benefitsCon {
-  margin-top: 36px;
-  padding: 50px 0;
+  margin-top: @sectionSpace;
+  padding: @padding;
   background: @bgColor;
   .benefitsTitle {
     font-weight: bold;
     font-size: 16px;
     text-align: center;
   }
-  .benefitsBox,
   .swiper-wrapper {
     display: block;
-    margin-top: 58px;
     overflow: hidden;
+    margin: 0 auto;
+    width: 930px;
     .swiper-slide {
       float: left;
-      padding: 0px 60px;
-      width: 50%;
-      height: 152px;
+      width: 430px;
+      height: 112px;
       overflow: hidden;
-      &:nth-of-type(3),
-      &:nth-of-type(4) {
-        margin-top: 90px;
+      margin-top: @descSpace;
+      &:nth-of-type(2n) {
+        margin-left: 70px;
       }
     }
   }
 }
 .swiper-slide {
-  // float: left;
-  // padding: 0px 60px;
-  // width: 50%;
-  // height: 152px;
-  // overflow: hidden;
-  // &:nth-of-type(3),
-  // &:nth-of-type(4) {
-  //   margin-top: 90px;
-  // }
   .imgBox {
     float: left;
-    width: 20%;
+    width: 125px;
     img {
       width: 100%;
     }
   }
   .descBox {
     float: left;
-    padding-left: 30px;
-    width: 80%;
+    padding-left: 15px;
+    width: 300px;
     .title {
       font-weight: bold;
     }
@@ -82,7 +71,7 @@
   }
 }
 .levelCon {
-  margin-top: 50px;
+  margin-top: @sectionSpace;
   text-align: center;
   .title {
     font-size: 16px;
@@ -94,13 +83,13 @@
   .levelBox {
     overflow: hidden;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: @descSpace;
+    padding: 30px;
     width: 840px;
     height: 490px;
     border: 10px solid @bgColor;
     .levelWrap {
-      padding: 40px;
-      width: 740px;
+      width: 760px;
     }
   }
 }
@@ -177,8 +166,8 @@
   }
 }
 .earnCon {
-  margin-top: 80px;
-  padding: 50px 0;
+  margin-top: @sectionSpace;
+  padding: @padding;
   text-align: center;
   background: @bgColor;
   .title {
@@ -186,7 +175,7 @@
     font-weight: bold;
   }
   .desc {
-    margin-top: 20px;
+    margin-top: @titleSpace;
     padding: 0 20px;
   }
   .earnBox {
@@ -194,7 +183,7 @@
   }
 }
 .earnEach {
-  margin-top: 60px;
+  margin-top: @descSpace;
   span {
     &:nth-of-type(1) {
       font-size: 24px;
@@ -213,20 +202,19 @@
   }
 }
 .questionsCon {
-  margin-top: 60px;
+  margin-top: @sectionSpace;
   .title {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
   }
   .questionsBox {
-    margin-top: 30px;
+    margin-top: @descSpace;
     padding: 0 150px;
-    // border-top: @border;
   }
 }
 .questionBox {
-  margin-top: 30px;
+  margin-bottom: 30px;
   .question {
     display: flex;
     justify-content: space-between;
@@ -237,7 +225,7 @@
       font-weight: bold;
     }
     img {
-      margin-top: 6px;
+      // margin-top: 6px;
       width: 20px;
       transform: rotate(180deg);
     }
@@ -245,8 +233,10 @@
       transform: rotate(0deg);
     }
   }
+  .answers {
+    padding: @descSpace-s 0;
+  }
   .answer {
-    margin-top: 10px;
     padding: 0 20px;
     font-size: 16px;
     font-weight: 300;
@@ -286,7 +276,7 @@
     }
   }
   .earnEach {
-    margin-top: 20px;
+    margin-top: @descSpace-s;
     span {
       &:nth-of-type(1) {
         font-size: 20px;
@@ -323,6 +313,7 @@
         float: none;
         padding: 0 10px;
         margin-top: 0 !important;
+        margin-left: 0 !important;
         height: 225px;
         text-align: center;
       }
@@ -341,10 +332,7 @@
       float: none;
       margin: 0 auto;
       margin-top: 20px;
-      height: 65px;
-      img {
-        height: 100%;
-      }
+      width: 100px;
     }
     .descBox {
       float: none;

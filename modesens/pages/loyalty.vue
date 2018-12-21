@@ -27,9 +27,12 @@
         class="accountsBox">
         <a
           :href="BASE_URL+'/account/loyalty/'"
-          target="_blank"><button
+          target="_blank">
+          <button
             class="btn btn-modesens"
-            data-ga-click="loyalty-ViewMyAccount--">{{ $t('loyalty.ViewMyAccount') }}</button></a></div>
+            data-ga-click="loyalty-ViewMyAccount--">{{ $t('loyalty.ViewMyAccount') }}</button>
+        </a>
+      </div>
     </div>
     <div class="benefitsCon">
       <div class="benefitsTitle">{{ $t('loyalty.benefitsTitle') }}</div>
@@ -41,7 +44,7 @@
             :key="num"
             class="swiper-slide">
             <div class="imgBox"><img
-              :src="'/img/20181213benefits-' + num + '.svg'"
+              :src="'/img/20181213benefits-' + num + '.png'"
               alt=""></div>
             <div class="descBox">
               <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
@@ -164,28 +167,28 @@
       <div class="desc">{{ $t('loyalty.earnDesc') }}</div>
       <div class="earnBox">
         <div class="row">
-          <div class="col-md-3 col-xs-12 earnEach">
+          <div class="col-md-3 col-12 earnEach">
             <span>1,000</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.browserInstall') }}</span><br><span>{{ $t('loyalty.browserInstall2') }}</span>
           </div>
-          <div class="col-md-3 col-xs-12 earnEach">
+          <div class="col-md-3 col-12 earnEach">
             <span>1,000</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.downloadApp') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
-          <div class="col-md-3 col-xs-12 earnEach">
+          <div class="col-md-3 col-12 earnEach">
             <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.saveFilter') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
-          <div class="col-md-3 col-xs-12 earnEach">
+          <div class="col-md-3 col-12 earnEach">
             <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.followDesigner') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
-          <div class="col-md-3 col-xs-12 earnEach">
+          <div class="col-md-3 col-12 earnEach">
             <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.createPrdAlert') }}</span><br><span>{{ $t('loyalty.oneTime') }}</span>
           </div>
-          <div class="col-md-3 col-xs-12 earnEach">
+          <div class="col-md-3 col-12 earnEach">
             <span>100</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.uploadLook') }}</span>
           </div>
-          <div class="col-md-3 col-xs-12 earnEach">
+          <div class="col-md-3 col-12 earnEach">
             <span>10</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.dailyLogin') }}</span><br><span>{{ $t('loyalty.websiteOrApp') }}</span>
           </div>
-          <div class="col-md-3 col-xs-12 earnEach">
+          <div class="col-md-3 col-12 earnEach">
             <span>1</span><br><span>{{ $t('loyalty.Points') }}</span><br><span>{{ $t('loyalty.likeALook') }}</span>
           </div>
         </div>
@@ -223,6 +226,13 @@
               {{ $t('loyalty.answer15_1') }}<a
                 :href="BASE_URL+'/shopping-assistant/'"
                 target="_blank">{{ $t('loyalty.answer15_2') }}</a>
+            </div>
+            <div
+              v-else-if="index===23"
+              class="answer">
+              {{ $t('loyalty.answer24_1') }} <a
+                href="mailto:info@modesens.com"
+                data-ga-click="loyalty-questionAnswer--24">info@modesens.com.</a>
             </div>
             <div
               v-for="(a, aindex) in answer"
