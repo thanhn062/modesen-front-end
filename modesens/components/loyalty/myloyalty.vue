@@ -238,10 +238,10 @@ export default {
         this.levelimgHref = '/img/20181221bronze-zh.png'
       }
       this.Tripledays = 0
-      this.levelRights = ['Fourth Priority Alert', '100 Products Alerts']
+      this.levelRights = ['Fourth Priority Alert', '100 Product Alerts']
       this.nextLevelRights = [
         'Third Priority Alert',
-        '1000 Products Alerts',
+        '1000 Product Alerts',
         'Triple Points: 1 Day'
       ]
       this.nexrLevel = 'Silver'
@@ -255,12 +255,12 @@ export default {
       this.Tripledays = 1
       this.levelRights = [
         'Third Priority Alert',
-        '1000 Products Alerts',
+        '1000 Product Alerts',
         'Triple Points: 1 Day'
       ]
       this.nextLevelRights = [
         'Second Priority Alert',
-        '10,000 Products Alerts',
+        '10,000 Product Alerts',
         'Triple Points: 2 Days',
         'Early Sale Access'
       ]
@@ -275,13 +275,13 @@ export default {
       this.Tripledays = 2
       this.levelRights = [
         'Second Priority Alert',
-        '10,000 Products Alerts',
+        '10,000 Product Alerts',
         'Triple Points: 2 Days',
         'Early Sale Access'
       ]
       this.nextLevelRights = [
         'First Priority Alert',
-        'Unlimited Products Alerts',
+        'Unlimited Product Alerts',
         'Triple Points: 3 Days',
         'Early Sale Access'
       ]
@@ -296,7 +296,7 @@ export default {
       this.Tripledays = 3
       this.levelRights = [
         'First Priority Alert',
-        'Unlimited Products Alerts',
+        'Unlimited Product Alerts',
         'Triple Points: 3 Days',
         'Early Sale Access'
       ]
