@@ -34,7 +34,9 @@
         </a>
       </div>
     </div>
-    <div class="benefitsCon">
+    <div
+      id="benefitsCon"
+      class="benefitsCon">
       <div class="benefitsTitle">{{ $t('loyalty.benefitsTitle') }}</div>
       <div
         class="swiper-container">
@@ -49,6 +51,7 @@
             <div class="descBox">
               <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
               <div class="desc">{{ $t('loyalty.bfdesc' + num) }}</div>
+              <!-- <a href="">{{ $t('loyalty.MoreDetails') }}</a> -->
             </div>
           </div>
         </div>
@@ -162,7 +165,9 @@
         </div>
       </div>
     </div>
-    <div class="earnCon">
+    <div
+      id="earnCon"
+      class="earnCon">
       <div class="title">{{ $t('loyalty.earnTitle') }}</div>
       <div class="desc">{{ $t('loyalty.earnDesc') }}</div>
       <div class="earnBox">
@@ -202,6 +207,7 @@
           :key="index"
           class="questionBox">
           <div
+            :id="`question-${index+1}`"
             class="question"
             @click="questionClick(index)">
             <span>{{ $t('loyalty.question'+(index+1)) }}</span>
@@ -216,9 +222,12 @@
             <div
               v-if="index===1"
               class="answer">
-              {{ $t('loyalty.answer2_1') }}<a
+              <div v-if="lsuid">{{ $t('loyalty.answer2_1_1') }}<a
+                :href="BASE_URL+'/account/loyalty/'"
+                target="_blank">{{ $t('loyalty.answer2_2_1') }}</a></div>
+              <div v-else>{{ $t('loyalty.answer2_1') }}<a
                 :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
-                target="_blank">{{ $t('loyalty.answer2_2') }}</a>
+                target="_blank">{{ $t('loyalty.answer2_2') }}</a></div>
             </div>
             <div
               v-else-if="index===14"
@@ -226,6 +235,13 @@
               {{ $t('loyalty.answer15_1') }}<a
                 :href="BASE_URL+'/shopping-assistant/'"
                 target="_blank">{{ $t('loyalty.answer15_2') }}</a>
+            </div>
+            <div
+              v-else-if="index===19"
+              class="answer">
+              {{ $t('loyalty.answer20_1') }}<a
+                :href="BASE_URL+'/invite/'"
+                target="_blank">{{ $t('loyalty.answer20_2') }}</a>{{ $t('loyalty.answer20_3') }}
             </div>
             <div
               v-else-if="index===23"
@@ -293,7 +309,7 @@ export default {
         [1],
         [1],
         [1],
-        [1],
+        [1, 2, 3],
         [1],
         [1],
         [1],
