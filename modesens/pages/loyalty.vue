@@ -281,10 +281,10 @@ export default {
   data() {
     return {
       level: '',
-      bronzeNum: '<20K',
-      silverNum: '20K-50k',
-      goldNum: '50k-100k',
-      platinumNum: '>100k',
+      bronzeNum: '0-19,999',
+      silverNum: '20,000-49,999',
+      goldNum: '50,000-99,999',
+      platinumNum: '100,000+',
       indexQt: -1,
       isPC: true,
       nextUrl: '/',
