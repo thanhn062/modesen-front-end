@@ -51,7 +51,7 @@
             <div class="descBox">
               <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
               <div class="desc">{{ $t('loyalty.bfdesc' + num) }}</div>
-              <a href="">{{ $t('loyalty.MoreDetails') }}</a>
+              <!-- <a href="">{{ $t('loyalty.MoreDetails') }}</a> -->
             </div>
           </div>
         </div>
@@ -222,15 +222,12 @@
             <div
               v-if="index===1"
               class="answer">
-              {{ $t('loyalty.answer2_1') }}
-              <a
-                v-if="!lsuid"
+              <div v-if="lsuid">{{ $t('loyalty.answer2_1_1') }}<a
+                :href="BASE_URL+'/account/loyalty/'"
+                target="_blank">{{ $t('loyalty.answer2_2_1') }}</a></div>
+              <div v-else>{{ $t('loyalty.answer2_1') }}<a
                 :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
-                target="_blank">{{ $t('loyalty.answer2_2') }}</a>
-              <a
-                v-b-modal.memberModal
-                v-else
-                href="javascript:;">{{ $t('loyalty.answer2_2') }}</a>
+                target="_blank">{{ $t('loyalty.answer2_2') }}</a></div>
             </div>
             <div
               v-else-if="index===14"
@@ -238,6 +235,13 @@
               {{ $t('loyalty.answer15_1') }}<a
                 :href="BASE_URL+'/shopping-assistant/'"
                 target="_blank">{{ $t('loyalty.answer15_2') }}</a>
+            </div>
+            <div
+              v-else-if="index===19"
+              class="answer">
+              {{ $t('loyalty.answer20_1') }}<a
+                :href="BASE_URL+'/invite/'"
+                target="_blank">{{ $t('loyalty.answer20_2') }}</a>{{ $t('loyalty.answer20_3') }}
             </div>
             <div
               v-else-if="index===23"
@@ -264,12 +268,6 @@
         </div>
       </div>
     </div>
-    <b-modal
-      id="memberModal"
-      :title="$t('loyalty.WelcomeToModeSens')"
-      ok-only>
-      <div>{{ $t('loyalty.alreadyMember') }}</div>
-    </b-modal>
   </section>
 </template>
 <script>
@@ -311,7 +309,7 @@ export default {
         [1],
         [1],
         [1],
-        [1],
+        [1, 2, 3],
         [1],
         [1],
         [1],
@@ -331,12 +329,6 @@ export default {
     if (this.$route.query.otoken) {
       this.getLevelInfo()
     }
-    console.log($(window).height())
-    console.log(
-      document.documentElement.clientHeight || document.body.clientHeight
-    )
-    console.log($('#question-2').offset())
-    $('#memberModal').css('top', $('#question-2').offset().top)
     if ($(window).width() < 1200) {
       this.isPC = false
       var banner_swiper_5 = new Swiper('.swiper-container', {
@@ -350,8 +342,6 @@ export default {
         initialSlide: 1
       })
     }
-    window.location.hash = '#earnCon'
-    window.location = window.location
   },
   methods: {
     async getLevelInfo() {
