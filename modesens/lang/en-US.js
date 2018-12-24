@@ -34,13 +34,13 @@ module.exports = {
   loyalty: {
     benefitsTitle: 'Membership Benefits',
     bfTitle1: 'Triple Points Days',
-    bfdesc1: 'With Triple Points Days you can move up to the next ModeSens Rewards level in no time.',
+    bfdesc1: 'Enjoy the benefit of earning triple points toward ModeSens premier status on the day(s) of your choice up to 3 times a year.',
     bfTitle2: 'Sale Alert Priority',
-    bfdesc2: 'Enjoy Product Alerts, Sale Alert Priority, and Early Access to the best designer sales and never miss out on the pieces you want at the right price again.',
+    bfdesc2: 'Our unique technology will automatically alert you of new offers in priority of your status level.',
     bfTitle3: 'Limited & Exclusive Product Perks',
-    bfdesc3: 'ModeSens Protection ensures you will never be stuck with something you don’t truly love.',
+    bfdesc3: 'Enjoy first access to offline and very limited online inventory collections to land the most coveted and unique products.',
     bfTitle4: 'Dedicated VIP Service',
-    bfdesc4: 'Gain access to Limited & Exclusive Products and take advantage of our Dedicated VIP Service - you will soon wonder how you ever shopped for luxury fashion without it.',
+    bfdesc4: 'The service allows you to receive shopping assistance from a personal shopper that’s with you.',
     earnTitle: 'Join - Shop - Earn',
     earnDesc: 'Enjoy these additional ways to earn points towards ModeSens Rewards premier status',
     questionTitle: 'Frequently Asked Questions',
@@ -150,6 +150,9 @@ module.exports = {
     DedicatedVIPService: 'Dedicated VIP Service',
     LimitedProducts: 'Limited & Exclusive Products',
     ViewMyAccount: 'View My Account',
+    MoreDetails: 'More Details',
+    WelcomeToModeSens: 'Welcome To ModeSens',
+    alreadyMember: 'Congratulations! You are already a ModeSens member.',
   },
   accountLoyalty: {
     memberstartTimg:'Member Since',
@@ -216,5 +219,5 @@ module.exports = {
     record_dc: 'Daily Checkin',
     record_fs: 'Follow Someone',
     record_ll: 'Like A Look',
-  }
+  },
 }

@@ -34,7 +34,9 @@
         </a>
       </div>
     </div>
-    <div class="benefitsCon">
+    <div
+      id="benefitsCon"
+      class="benefitsCon">
       <div class="benefitsTitle">{{ $t('loyalty.benefitsTitle') }}</div>
       <div
         class="swiper-container">
@@ -49,6 +51,7 @@
             <div class="descBox">
               <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
               <div class="desc">{{ $t('loyalty.bfdesc' + num) }}</div>
+              <a href="">{{ $t('loyalty.MoreDetails') }}</a>
             </div>
           </div>
         </div>
@@ -162,7 +165,9 @@
         </div>
       </div>
     </div>
-    <div class="earnCon">
+    <div
+      id="earnCon"
+      class="earnCon">
       <div class="title">{{ $t('loyalty.earnTitle') }}</div>
       <div class="desc">{{ $t('loyalty.earnDesc') }}</div>
       <div class="earnBox">
@@ -202,6 +207,7 @@
           :key="index"
           class="questionBox">
           <div
+            :id="`question-${index+1}`"
             class="question"
             @click="questionClick(index)">
             <span>{{ $t('loyalty.question'+(index+1)) }}</span>
@@ -216,9 +222,15 @@
             <div
               v-if="index===1"
               class="answer">
-              {{ $t('loyalty.answer2_1') }}<a
+              {{ $t('loyalty.answer2_1') }}
+              <a
+                v-if="!lsuid"
                 :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
                 target="_blank">{{ $t('loyalty.answer2_2') }}</a>
+              <a
+                v-b-modal.memberModal
+                v-else
+                href="javascript:;">{{ $t('loyalty.answer2_2') }}</a>
             </div>
             <div
               v-else-if="index===14"
@@ -252,6 +264,12 @@
         </div>
       </div>
     </div>
+    <b-modal
+      id="memberModal"
+      :title="$t('loyalty.WelcomeToModeSens')"
+      ok-only>
+      <div>{{ $t('loyalty.alreadyMember') }}</div>
+    </b-modal>
   </section>
 </template>
 <script>
@@ -313,6 +331,12 @@ export default {
     if (this.$route.query.otoken) {
       this.getLevelInfo()
     }
+    console.log($(window).height())
+    console.log(
+      document.documentElement.clientHeight || document.body.clientHeight
+    )
+    console.log($('#question-2').offset())
+    $('#memberModal').css('top', $('#question-2').offset().top)
     if ($(window).width() < 1200) {
       this.isPC = false
       var banner_swiper_5 = new Swiper('.swiper-container', {
@@ -326,6 +350,8 @@ export default {
         initialSlide: 1
       })
     }
+    window.location.hash = '#earnCon'
+    window.location = window.location
   },
   methods: {
     async getLevelInfo() {
