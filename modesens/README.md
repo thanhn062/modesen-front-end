@@ -1,5 +1,30 @@
 # modesens
 
+## Install
+
+### nginx & uwsgi
+[Setting up Django and your web server with uWSGI and nginx](https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html) <br>
+[How to use Django with uWSGI](https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/uwsgi/)
+
+### node, vue, nuxt
+```
+curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum -y install nodejs
+npm install -g vue-cli
+```
+
+[Download | nodejs](https://nodejs.org/en/download/)
+
+
+### nuxt
+[nuxt github](https://github.com/nuxt/nuxt.js) <br>
+```
+vue init nuxt-community/starter-template <project-name>
+npm install
+```
+
+
+
 > ModeSens Frontend Nuxt Project
 
 ## Build Setup
