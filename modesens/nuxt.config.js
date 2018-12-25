@@ -65,14 +65,14 @@ module.exports = {
     'cookie-universal-nuxt',
     // Doc: https://www.npmjs.com/package/nuxt-trailingslash-module
     [
-      './modules/trailingslash',
+      '~/modules/trailingslash',
       {
         methods: ['GET']
       }
     ],
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
     [
-      './modules/i18n',
+      '~/modules/i18n',
       {
         countries: [
           {
