@@ -8,11 +8,10 @@ export default function ({ $axios, app }) {
       config.baseURL = process.env.browserBaseURL + 'api/2.0/';  //请求根目录
     }
     config.timeout = 5000;    //请求超时
-    config.headers.Authorization = 'Bearer ' + app.$cookies.get('token');
+    config.headers.Authorization = 'Bearer ' + app.$cookies.get('token'); //获取cookie放在头部传到后端
     // config.withCredentials = true, // 允许携带cookie
     // config.crossDomain = true   //允许跨域
     // config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-    //获取cookie放在头部传到后端
     if (config.secretKey === 1) {
       config.url += `?secretkey=${process.env.secretKey}`
     }
