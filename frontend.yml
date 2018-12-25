@@ -1,0 +1,23 @@
+---
+- hosts: us,cn
+  remote_user: root
+  become: yes 
+  tasks:
+  - name: git pull
+    git:
+      repo: git@gitlab.com:hanglihl/modesens-frontend.git
+      dest: /modesens/modesens-frontend/
+      version: master
+      update: yes
+      accept_hostkey: yes
+      force: yes
+    register: result
+  - debug: msg="{{result.before}}->{{result.after}}"
+
+  - name: get nuxt server scripts from s3.
+    command: "aws s3 sync s3://modesens/nuxt /modesens/modesens-frontend/modesens/.nuxt"
+
+  - name: pm2 restart.
+    command: "pm2 restart all"
+    args:
+      chdir: /modesens/modesens-frontend/modesens
