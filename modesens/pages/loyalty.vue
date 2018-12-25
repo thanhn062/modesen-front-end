@@ -325,7 +325,7 @@ export default {
   async asyncData({ app, query }) {
     let oToken = query.otoken
     if (oToken) {
-      app.$cookies.set('token', oToken)
+      app.$cookies.set('token', oToken, true, {async: true})
     }
     return { lsuid: oToken || '' }
   },

@@ -2,6 +2,7 @@ import qs from 'qs'
 
 export default function ({ $axios, app }) {
   $axios.onRequest(config => {
+    console.log(config)
     config.baseURL = process.env.browserBaseURL + 'api/2.0/';  //请求根目录
     config.timeout = 5000;    //请求超时
     // config.withCredentials = true, // 允许携带cookie
