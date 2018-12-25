@@ -94,11 +94,19 @@ export default {
     params.level = true
     var token = route.query.otoken
     app.$cookies.set('token', token)
-    let { lsuser, level } = await $axios.post('/accounts/profile/get/', params)
+    let { lsuser, level } = await $axios.post(
+      '/accounts/profile/get/',
+      params,
+      {
+        async: false
+      }
+    )
     var recordsparams = {}
     recordsparams.offset = 0
     recordsparams.amount = 10
-    let records = await $axios.post('/loyalty/records/', recordsparams)
+    let records = await $axios.post('/loyalty/records/', recordsparams, {
+      async: false
+    })
     return {
       lsuser,
       level,

@@ -224,24 +224,28 @@
               class="answer">
               <div v-if="lsuid">{{ $t('loyalty.answer2_1_1') }}<a
                 :href="BASE_URL+'/account/loyalty/'"
-                target="_blank">{{ $t('loyalty.answer2_2_1') }}</a></div>
+                target="_blank"
+                data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</a></div>
               <div v-else>{{ $t('loyalty.answer2_1') }}<a
                 :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
-                target="_blank">{{ $t('loyalty.answer2_2') }}</a></div>
+                target="_blank"
+                data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2') }}</a></div>
             </div>
             <div
               v-else-if="index===14"
               class="answer">
               {{ $t('loyalty.answer15_1') }}<a
                 :href="BASE_URL+'/shopping-assistant/'"
-                target="_blank">{{ $t('loyalty.answer15_2') }}</a>
+                target="_blank"
+                data-ga-click="loyalty-questionAnswer--15">{{ $t('loyalty.answer15_2') }}</a>
             </div>
             <div
               v-else-if="index===19"
               class="answer">
               {{ $t('loyalty.answer20_1') }}<a
                 :href="BASE_URL+'/invite/'"
-                target="_blank">{{ $t('loyalty.answer20_2') }}</a>{{ $t('loyalty.answer20_3') }}
+                target="_blank"
+                data-ga-click="loyalty-questionAnswer--20">{{ $t('loyalty.answer20_2') }}</a>{{ $t('loyalty.answer20_3') }}
             </div>
             <div
               v-else-if="index===23"
@@ -361,6 +365,7 @@ export default {
         return
       }
       this.indexQt = index
+      this.$ga.event('loyalty', 'question', 'click', index + 1)
     }
   }
 }
