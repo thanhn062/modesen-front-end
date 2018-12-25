@@ -1,5 +1,67 @@
 # modesens
 
+## Install
+
+### nginx & uwsgi
+[Setting up Django and your web server with uWSGI and nginx](https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html) <br>
+[How to use Django with uWSGI](https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/uwsgi/)
+
+### node, vue, nuxt, pm2
+```
+curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum -y install nodejs
+npm install -g vue-cli
+npm install -g pm2
+```
+
+[Download | nodejs](https://nodejs.org/en/download/)
+
+## build & start
+```
+cd /modesens/modesens-frontend/modesens
+
+npm i
+npm run build
+
+启动(4个进程):
+pm2  start server.json -i 4  
+
+查看实时日志：
+pm2 logs ModeSens
+
+停止：
+pm2 stop all
+
+调试的时候可以直接这样前台起：(先stop调后台进程)
+npm start
+```
+
+
+## nginx modify
+```
+/etc/nginx/conf.d/modesens.conf
+    location /vue/ {
+        proxy_pass http://127.0.0.1:3000/;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Host $host;
+    }
+    location ~ /(_nuxt|__webpack_hmr)/ {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Host $host;
+    }
+```
+
+
+### nuxt
+[nuxt github](https://github.com/nuxt/nuxt.js) <br>
+```
+vue init nuxt-community/starter-template <project-name>
+npm install
+```
+
+
+
 > ModeSens Frontend Nuxt Project
 
 ## Build Setup

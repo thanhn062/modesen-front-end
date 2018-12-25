@@ -77,6 +77,8 @@ dist
 # Serverless directories
 .serverless
 
+!server.json
+
 # IDE
 .idea
 .vscode
