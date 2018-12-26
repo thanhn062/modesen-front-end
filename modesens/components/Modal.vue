@@ -11,7 +11,7 @@
         class="close closebtn"
         @click="hideLoginModal"><img src="/img/close.svg"></button>
       <iframe
-        :src="BASE_URL+'/accounts/login/?next=/loyalty/'"
+        src="/accounts/login/?next=/loyalty/"
         width="100%"
         height="100%"
         frameborder="0"/>
