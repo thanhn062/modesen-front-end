@@ -15,7 +15,7 @@
   - debug: msg="{{result.before}}->{{result.after}}"
 
   - name: get nuxt server scripts from s3.
-    command: "aws s3 sync s3://modesens/nuxt /modesens/modesens-frontend/modesens/.nuxt"
+    command: "rm -rf /modesens/modesens-frontend/modesens/.nuxt/* && aws s3 sync s3://modesens/nuxt /modesens/modesens-frontend/modesens/.nuxt"
 
   - name: pm2 restart.
     command: "pm2 restart all"
