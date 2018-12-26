@@ -21,7 +21,7 @@ echo
 echo '#########################'
 echo
 echo "3. sync files to s3 ..."
-aws s3 sync .nuxt/client s3://modesens/static/dist --cache-control max-age=315360000
+aws s3 sync .nuxt/dist/client s3://modesens/static/dist --cache-control max-age=315360000
 aws s3 sync .nuxt s3://modesens/nuxt
 
 # echo
@@ -38,7 +38,8 @@ echo '#########################'
 echo
 echo "5. deploy to product machines..."
 echo
-ansible-playbook web.yml
+cd ..
+ansible-playbook frontend.yml
 
 echo '###########END###########'
 
