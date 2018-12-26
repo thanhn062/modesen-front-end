@@ -21,9 +21,6 @@ echo
 echo '#########################'
 echo
 echo "3. sync files to s3 ..."
-# clear
-rm -rf .nuxt/*
-npm run build
 aws s3 sync .nuxt/client s3://modesens/static/dist --cache-control max-age=315360000
 aws s3 sync .nuxt s3://modesens/nuxt
 
