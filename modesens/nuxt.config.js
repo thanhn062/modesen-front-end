@@ -19,7 +19,7 @@ module.exports = {
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://127.0.0.1:9000/',
+    baseUrl: process.env.BASE_URL || 'http://127.0.0.1',
     browserBaseURL: process.env.BROWSER_BASE_URL || 'https://modesens.com/',
     secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
   },
