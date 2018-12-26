@@ -9,7 +9,7 @@
         v-if="lsuid===''"
         class="accountsBox">
         <a
-          :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
+          href="/accounts/signup/?next=/loyalty/"
           target="_blank">
           <button
             class="btn btn-modesens"
@@ -26,7 +26,7 @@
         v-else
         class="accountsBox">
         <a
-          :href="BASE_URL+'/account/loyalty/'"
+          href="/account/loyalty/"
           target="_blank">
           <button
             class="btn btn-modesens"
@@ -223,11 +223,11 @@
               v-if="index===1"
               class="answer">
               <div v-if="lsuid">{{ $t('loyalty.answer2_1_1') }}<a
-                :href="BASE_URL+'/account/loyalty/'"
+                href="/account/loyalty/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</a></div>
               <div v-else>{{ $t('loyalty.answer2_1') }}<a
-                :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
+                href="/accounts/signup/?next=/loyalty/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2') }}</a></div>
             </div>
@@ -235,7 +235,7 @@
               v-else-if="index===14"
               class="answer">
               {{ $t('loyalty.answer15_1') }}<a
-                :href="BASE_URL+'/shopping-assistant/'"
+                href="/shopping-assistant/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--15">{{ $t('loyalty.answer15_2') }}</a>
             </div>
@@ -243,7 +243,7 @@
               v-else-if="index===19"
               class="answer">
               {{ $t('loyalty.answer20_1') }}<a
-                :href="BASE_URL+'/invite/'"
+                href="/invite/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--20">{{ $t('loyalty.answer20_2') }}</a>{{ $t('loyalty.answer20_3') }}
             </div>
