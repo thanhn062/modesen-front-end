@@ -23,6 +23,6 @@
     command: "aws s3 sync s3://modesens/nuxt /modesens/modesens-frontend/modesens/.nuxt"
 
   - name: pm2 restart.
-    command: "pm2 restart all"
+    command: "pm2  start server.json -i 4"
     args:
       chdir: /modesens/modesens-frontend/modesens
