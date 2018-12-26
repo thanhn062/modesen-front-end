@@ -16,6 +16,8 @@
 
   - name: clean nuxt scripts.
     command: "/bin/rm -rf /modesens/modesens-frontend/modesens/.nuxt/*"
+    args:
+      warn: no
 
   - name: get nuxt server scripts from s3.
     command: "aws s3 sync s3://modesens/nuxt /modesens/modesens-frontend/modesens/.nuxt"
