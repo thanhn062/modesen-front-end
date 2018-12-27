@@ -1,11 +1,31 @@
 <template>
   <div>
-    <nuxt/>
+    <Header/>
+    <main :style="{'padding': headerHeight}"><nuxt/></main>
+    <Footer/>
+    <Modals/>
   </div>
 </template>
 <script>
 import '~/assets/js/main.js'
-export default {}
+import Header from '~/components/Header.vue'
+import Footer from '~/components/Footer.vue'
+import Modals from '~/components/Modals.vue'
+export default {
+  components: {
+    Header,
+    Footer,
+    Modals
+  },
+  data() {
+    return {
+      headerHeight: '50px 0'
+    }
+  },
+  mounted() {
+    this.headerHeight = $('header').height() + 'px 0'
+  }
+}
 </script>
 <style>
 </style>

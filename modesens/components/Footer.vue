@@ -41,12 +41,12 @@
                 to="https://itunes.apple.com/app/modesens-the-premier-shopping-assistant/id976201094?mt=8"
                 target="_blank">
                 <img
-                  :src="STATIC_DOMAIN + '/static/img/download-on-the-app-store.png'"
+                  src="/img/download-on-the-app-store.png"
                   class="footer-connect-img">
               </div> -->
             </li>
             <!-- <li><nuxt-link><img
-              :src="STATIC_DOMAIN + '/static/img/add-to-chrome.png'"
+              src="/img/add-to-chrome.png"
               class="footer-connect-img"></nuxt-link></li> -->
           </ul>
         </div>
@@ -110,7 +110,7 @@
           class="footer-logo-con"
           style="float: left">
           <img
-            :src="STATIC_DOMAIN + '/static/img/20180905footer_logo.svg'"
+            src="/img/20180905footer_logo.svg"
             class="footer-logo">
           <span>
             {{ rcountry ? '© 2018, 尚睿科技（北京）有限公司' : '© 2018, ModeSens Inc' }}
@@ -122,24 +122,24 @@
           class="footer-svg-con"
           style="float: right;margin-right:-9px;">
           <nuxt-link to="https://www.pinterest.com/modesens/"><img
-           :src="STATIC_DOMAIN + '/static/img/20181008footer-pit.svg'"
+            src="/img/20181008footer-pit.svg"
             class="footer-mini-img"
             style="width: 30px;margin-right: 20px;"></nuxt-link>
           <nuxt-link to="https://twitter.com/modesens"><img
-            :src="STATIC_DOMAIN + '/static/img/20181008footer-tt.svg'"
+            src="/img/20181008footer-tt.svg"
             class="footer-mini-img"
             style="width: 30px;margin-right: 10px;"></nuxt-link>
           <nuxt-link to="https://www.instagram.com/modesens/"><img
-            :src="STATIC_DOMAIN + '/static/img/footer-p.svg'"
+            src="/img/footer-p.svg"
             class="footer-mini-img"></nuxt-link>
           <nuxt-link to="https://www.facebook.com/modesens"><img
-            :src="STATIC_DOMAIN + '/static/img/footer-fb.svg'">
+            src="/img/footer-fb.svg">
             class="footer-mini-img"</nuxt-link>
           <nuxt-link to="https://weibo.com/5365182498/profile?topnav=1&wvr=6&is_all=1"><img
-            :src="STATIC_DOMAIN + '/static/img/footer-wb.svg'"
+            src="/img/footer-wb.svg"
             class="footer-mini-img"></nuxt-link>
           <nuxt-link to="javascript:;"><img
-            :src="STATIC_DOMAIN + '/static/img/footer-wx.svg'"
+            src="/img/footer-wx.svg"
             class="footer-mini-img"></nuxt-link>
         </div>
       </div>
@@ -224,7 +224,7 @@ export default {
   -webkit-appearance: none;
   width: 16px;
   height: 16px;
-  background: url('/static/img/login-icon/unchecked.svg');
+  background: url('/img/login-icon/unchecked.svg');
   margin-top: 2px;
   margin-left: 0px;
   cursor: pointer;
@@ -237,10 +237,10 @@ export default {
 #footer_female[type='radio']:checked,
 #footer_male[type='radio']:checked {
   -webkit-appearance: none;
-  background: url('/static/img/checked.svg');
+  background: url('/img/checked.svg');
 }
 #footer_female[type='radio']:focus,
 #footer_male[type='radio']:focus {
-  background: url('/static/img/checked.svg');
+  background: url('/img/checked.svg');
 }
 </style>

@@ -20,7 +20,7 @@
           data-ga-click="loyalty-loginBtn--"
           href="javascript:;">{{ $t('loyalty.loginNow') }}</a>
         </div>
-        <Modal :lsuid="lsuid"/>
+        <Modals :lsuid="lsuid"/>
       </div>
       <div
         v-else
@@ -275,12 +275,12 @@
   </section>
 </template>
 <script>
-import Modal from '~/components/Modal.vue'
+import Modals from '~/components/Modals.vue'
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
 export default {
   components: {
-    Modal
+    Modals
   },
   data() {
     return {
