@@ -51,7 +51,9 @@
     <div class="bestDeal">
       <div class="title">Best Deal Received</div>
       <div class="dealDetail">
-        <div class="dealitem">
+        <div
+          v-if="userprd !== null"
+          class="dealitem">
           <div class="imgbox">
             <div class="img">
               <img
@@ -67,6 +69,19 @@
             <div
               :style="{width:savedPercentage+'%'}"
               class="proportion_user proportion"/>
+          </div>
+        </div>
+        <div
+          v-else
+          class="dealitem">
+          <div class="dealimgbox">
+            <img
+              src="/img/20181228proimg.png"
+              alt="">
+            <div class="noprocon">
+              Oh no! We don't see any purchase history for you. Be sure your purchases are tracked next year to view these results and enjoy the full benefits of ModeSens membership.
+            </div>
+
           </div>
         </div>
         <div class="dealitem overall">
@@ -97,6 +112,7 @@
           :colors="histogram.colorArr"
           :extend="histogram.chartExtend"
           :legend="histogram.legend"
+          :settings="histogram.chartSettings"
           :tooltip-visible="false"
           class="histogram"/>
         <div class="yAxis">
@@ -112,14 +128,29 @@
       <div class="topdesignerCon">
         <div class="youbox itembox">
           <div class="itemtitle">Your Top 5</div>
-          <div class="piebox">
+          <div
+            v-if="user.top_designers !== null"
+            class="piebox">
             <vepie
               :width="piechart.width"
               :data="piechartDataY"
               :settings="piechart.chartSettings"
+              :extend="piechart.chartExtend"
               :colors="piechart.colorArrY"
               :tooltip-visible="false"
               :legend="piechart.legend"/>
+          </div>
+          <div
+            v-else
+            class="piebox">
+            <div class="imgbox">
+              <img
+                src="/img/20181228pieY.png"
+                alt="">
+              <div class="noprocon">
+                Oh no! We don't see any purchase history for you. Be sure your purchases are tracked next year to view these results and enjoy the full benefits of ModeSens membership.
+              </div>
+            </div>
           </div>
         </div>
         <div class="allmemberbox itembox">
@@ -129,6 +160,7 @@
               :width="piechart.width"
               :data="piechartDataM"
               :settings="piechart.chartSettings"
+              :extend="piechart.chartExtend"
               :colors="piechart.colorArrM"
               :tooltip-visible="false"
               :legend="piechart.legend"/>
@@ -202,6 +234,11 @@ export default {
           series: {
             barMaxWidth: '21px',
             barGap: '0px'
+          },
+          xAxis: {
+            axisLabel: {
+              rotate: '0'
+            }
           }
         },
         legend: {
@@ -209,6 +246,10 @@ export default {
           align: 'left',
           x: 'right',
           y: 'top'
+        },
+        chartSettings: {
+          metrics: ['You', 'ModeSens Members Overall'],
+          yAxisType: ['KMB', '']
         }
       },
       histogramData: {
@@ -229,9 +270,16 @@ export default {
           x: 'right',
           y: 'center'
         },
+        chartExtend: {
+          series: {
+            type: 'pie',
+            center: ['50%', '50%']
+          }
+        },
         chartSettings: {
           hoverAnimation: false,
           radius: 122,
+          center: ['5%', '5%'],
           label: {
             normal: {
               show: false
@@ -274,7 +322,17 @@ export default {
       this.getannualreview()
     }
   },
-  mounted() {},
+  mounted() {
+    if ($(window).width() < 1200) {
+      this.histogram.width = '100%'
+      this.histogram.height = '400px'
+      this.histogram.chartExtend.series.barMaxWidth = '11px'
+      this.histogram.chartExtend.xAxis.axisLabel.rotate = '-60'
+      this.piechart.width = '100%'
+      this.piechart.chartSettings.radius = '80'
+      this.piechart.chartExtend.series.center = ['30%', '50%']
+    }
+  },
   methods: {
     async getannualreview() {
       let { overall, user } = await this.$axios.get('/annualreview/')
@@ -283,8 +341,8 @@ export default {
       that.piechartDataY.rows = []
       that.user = user
       that.overall = overall
-      that.overallprd = overall.diff_product
-      that.userprd = user.diff_product
+      that.userprd = that.user.diff_product
+      that.overallprd = that.overall.diff_product
       that.proportion = Math.round(
         (that.user.saving / that.overall.saving) * 100
       )

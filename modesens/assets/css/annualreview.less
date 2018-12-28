@@ -114,7 +114,6 @@ img {
 	.title {
 		width: 100%;
 		height: 130px;
-		background: #F8F7F6;
 		line-height: 130px;
 		font-size: 32px;
 		font-weight: 700;
@@ -164,7 +163,7 @@ img {
 			font-weight: 700;
 		}
 		.moneyNum {
-			font-size: 66px;
+			font-size: 50px;
 			font-weight: 700;
 		}
 		.proportion {
@@ -178,7 +177,20 @@ img {
 			background:  #F8472B;
 		}
 	}
-
+  .dealimgbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .noprocon {
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 24px;
+  }
 }
 .productCategories {
 	margin-top: 100px;
@@ -238,13 +250,26 @@ img {
 		}
 		.piebox {
 			width: 454px;
-		}
+    }
+    .imgbox {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .noprocon {
+      width: 100%;
+      padding: 10px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 24px;
+    }
 	}
 }
 .lookforward {
 	.title {
 		height: 130px;
-		background: #F8F7F6;
 		font-size: 32px;
 		font-weight: 700;
 		line-height: 130px;
@@ -255,7 +280,8 @@ img {
 			font-size: 28px;
 		}
 		p {
-			margin-bottom: 76px;
+      margin-bottom: 76px;
+      font-weight: 300;
 		}
 		.itemtitle {
 			margin-bottom: 50px;
@@ -277,7 +303,7 @@ img {
     margin-top: 20px;
     .username, .memberStartTime {
       font-size: 12px;
-      margin-left: 10px;
+      padding: 0 2%;
     }
     .memberStartTime {
       margin-top: 10px;
@@ -285,7 +311,7 @@ img {
     .savingProportion {
       margin-top: 50px;
       .title {
-        font-size: 14px;
+        font-size: 16px;
       }
       .proportionbox {
         margin-top: 35px;
@@ -311,6 +337,135 @@ img {
           font-size: 12px;
         }
       }
+    }
+    .detailsBox {
+      margin-top: 72px;
+      margin-bottom: 50px;
+      display: block;
+      .item {
+        margin-bottom: 50px;
+      }
+      .itemtitle {
+        font-size: 14px;
+      }
+      .itemNum {
+        width: 80px;
+        height: 80px;
+        margin-top: 26px;
+        font-size: 24px;
+        line-height: 80px;
+      }
+    }
+  }
+  .bestDeal {
+    .title {
+      height: 48px;
+      line-height: 48px;
+      font-size: 16px;
+    }
+    .dealDetail {
+      display: block;
+      margin-top: 50px;
+      padding: 0 5%;
+    }
+    .dealitem {
+      width: 100%;
+    }
+    .imgbox {
+      width: 210px;
+      margin: 0 auto;
+      .designername {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+      .prdname {
+        margin-top: 10px;
+        font-size: 12px;
+      }
+    }
+    .savingbox {
+      margin-top: 21px;
+      .itemtitle {
+        font-size: 14px;
+      }
+      .moneyNum {
+        font-size: 24px;
+      }
+      .proportion {
+        margin-top: 10px;
+        height: 15px;
+      }
+    }
+    .dealitem.overall {
+      margin-left: 0;
+      margin-top: 72px;
+    }
+  }
+  .productCategories {
+    margin-top: 50px;
+    width: 100%;
+    padding: 40px 5% 0;
+    .title {
+      font-size: 16px;
+    }
+    .histogrambox {
+      .histogram {
+        margin: 50px auto 0;
+      }
+      .yAxis {
+        width: 100px;
+        top: 0;
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg); 
+        line-height: 18px;
+        font-size: 14px;
+        font-weight: 300;
+        margin-top: 0;
+      }
+      .xAxis {
+        line-height: 18px;
+        font-size: 14px;
+        font-weight: 300;
+      }
+    }
+  }
+  .topdesigner {
+    margin-top: 50px;
+    width: 100%;
+    padding: 0 5%;
+    .title {
+      font-size: 16px;
+    }
+    .topdesignerCon {
+      display: block;
+      margin-top: 50px;
+      .itemtitle {
+        font-size: 14px;
+      }
+      .piebox {
+        width: 100%;
+      }
+    }
+  }
+  .lookforward {
+    margin-top: 50px;
+    .title {
+      font-size: 16px;
+      height: 48px;
+      line-height: 48px;
+    }
+    .contain {
+      margin-top: 50px;
+      padding: 0 5%;
+    }
+    .contain p, .contain b {
+      font-size: 20px;
+    }
+    .contain p {
+      margin-bottom: 30px;
     }
   }
 }
