@@ -37,6 +37,11 @@ ul {
   &:hover {
     color: @btnFontColor;
   }
+  &:disabled,
+  &.disabled {
+    background: @btnBgColor;
+    border-color: @btnBgColor;
+  }
 }
 .modal-header {
   background: #ecedef;
