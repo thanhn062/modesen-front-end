@@ -1,0 +1,316 @@
+@import 'common.less';
+.container {
+	text-align:center;
+}
+.keepRight {
+  text-align: right;
+}
+.keepLeft {
+  text-align: left;
+}
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+.bannerimg {
+	width: 100%;
+	background: #f5f5f5;
+}
+.totalSaving {
+	margin-top: 75px;
+	.username {
+		font-size: 26px;
+		font-weight: 300;
+	}
+	.memberStartTime {
+		font-size: 16px;
+		font-weight: 700;
+	}
+	.savingProportion {
+		margin-top: 100px;
+		.title {
+			font-size: 24px;
+			font-weight: 700;
+			text-align: center;
+		}
+		.proportionbox {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 33px;
+			margin-top: 141px;
+		}
+		.start, .end {
+			font-size: 16px;
+			font-weight: 700;
+			padding: 0 10px;
+		}
+		.proportionImg {
+			width: 836px;
+			height: 100%;
+			background: #f5f5f5;
+			position: relative;
+		}
+		.proportionitem {
+			position: absolute;
+			// width: 30%;
+			height: 100%;
+			background: #F8472B;
+		}
+		.savingnum {
+			position: absolute;
+			top:-35px;
+		}
+		.tooltip {
+			position: relative;
+			width: 100%;
+			height: 34px;
+			opacity: 1;
+		}
+		.arrow {
+			left: 50%;
+			margin-left: -5px;
+		}
+		.arrow::before {
+			border-top-color: #1c1c1c;
+		}
+		.tooltip-inner {
+			border-radius: 0;
+			padding: 0 5px;
+			line-height: 24px;
+			background-color: #1c1c1c;	
+		}
+	}
+	.detailsBox {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		margin-top:180px;
+		margin-bottom: 100px;
+		.item {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+		}
+		.itemtitle {
+			font-size: 24px;
+			font-weight: 700;
+		}
+		.itemNum {
+			margin-top: 45px;
+			width: 130px;
+			height: 130px;
+			border-radius: 50%;
+			background: rgba(248, 71, 43, 0.1);
+			line-height: 130px;
+			font-size:40px;
+			font-weight: 300;
+		}
+	}
+}
+.bestDeal {
+	.title {
+		width: 100%;
+		height: 130px;
+		background: #F8F7F6;
+		line-height: 130px;
+		font-size: 32px;
+		font-weight: 700;
+	}
+	.dealDetail {
+		margin-top: 100px;
+		display:flex;
+		justify-content: flex-start;
+		padding: 0 173px;
+	}
+	.dealitem {
+		width: 326px
+	}
+	.dealitem.overall {
+		margin-left: 144px;
+	}
+	.imgbox {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		.img {
+			width: 120px;
+			height: 120px;
+		}
+		.designername {
+			width: 100%;
+			margin-top: 38px;
+			font-size: 18px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.prdname {
+			width: 100%;
+			font-size: 18px;
+			font-weight: 300;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+	.savingbox {
+		margin-top: 35px;
+		.itemtitle {
+			font-size: 24px;
+			font-weight: 700;
+		}
+		.moneyNum {
+			font-size: 66px;
+			font-weight: 700;
+		}
+		.proportion {
+			height: 26px;
+		}
+		.proportion_modesens {
+			width: 100%;
+			background: #ECE8E7;
+		}
+		.proportion_user {
+			background:  #F8472B;
+		}
+	}
+
+}
+.productCategories {
+	margin-top: 100px;
+	padding: 45px 103px;
+	.title {
+		font-size: 32px;
+		font-weight: 700;
+	}
+	.histogrambox {
+		position: relative;
+		.histogram {
+			margin: 100px auto 0;
+		}
+		.yAxis {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: rotate(-90deg);
+			-ms-transform: rotate(-90deg);
+			-moz-transform: rotate(-90deg);
+			-webkit-transform: rotate(-90deg);
+			-o-transform: rotate(-90deg); 
+			width: 136px;
+			line-height: 24px;
+			font-size: 18px;
+			font-weight: 700;
+			margin-top: -68px;
+		}
+		.xAxis {
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			width: 148px;
+			line-height: 24px;
+			font-size: 18px;
+			font-weight: 700;
+			margin-left: -74px;
+		}
+	}
+}
+.topdesigner {
+	margin-top: 95px;
+	.title {
+		font-size: 32px;
+		font-weight: 700;
+	}
+	.topdesignerCon {
+		margin-top: 95px;
+		display: flex;
+		justify-content: center;
+		.itembox {
+			flex: 1;
+		}
+		.itemtitle {
+			font-size: 24px;
+			font-weight: 700;
+		}
+		.piebox {
+			width: 454px;
+		}
+	}
+}
+.lookforward {
+	.title {
+		height: 130px;
+		background: #F8F7F6;
+		font-size: 32px;
+		font-weight: 700;
+		line-height: 130px;
+	}
+	.contain {
+		margin-top: 95px;
+		p, b {
+			font-size: 28px;
+		}
+		p {
+			margin-bottom: 76px;
+		}
+		.itemtitle {
+			margin-bottom: 50px;
+			font-size: 34px;
+		}
+	}
+	.toloyalty {
+		display: inline-block;
+		font-size: 20px;
+		font-weight: 700;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+@media(max-width: 1199px) {
+	.totalSaving {
+    padding: 0 3%;
+    margin-top: 20px;
+    .username, .memberStartTime {
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    .memberStartTime {
+      margin-top: 10px;
+    }
+    .savingProportion {
+      margin-top: 50px;
+      .title {
+        font-size: 14px;
+      }
+      .proportionbox {
+        margin-top: 35px;
+        height: 15px;
+        position: relative;
+        display: block;
+        padding:0 2%;
+        .start {
+          position: absolute;
+          left: 0;
+          bottom: -32px;
+          padding-left: 0;
+          font-size: 12px;
+        }
+        .proportionImg {
+          width: 100%;
+        }
+        .end {
+          position: absolute;
+          right: 0;
+          bottom: -32px;
+          padding-right: 0;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
