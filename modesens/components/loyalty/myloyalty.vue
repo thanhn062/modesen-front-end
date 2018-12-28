@@ -74,7 +74,6 @@
               v-if="myloyaltycontent.level !=='Platinum'"
               class="condes">
               {{ $t('accountLoyalty.as') }}{{ $t('accountLoyalty.'+nexrLevel+'2') }}
-              <br>
               {{ $t('accountLoyalty.enjoy') }}:
               <ul class="level-rights">
                 <li
