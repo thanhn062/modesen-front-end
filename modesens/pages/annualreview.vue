@@ -139,9 +139,7 @@
       <div class="topdesignerCon">
         <div class="youbox itembox">
           <div class="itemtitle">Your Top 5</div>
-          <div
-            v-if="user.top_designers !== null"
-            class="piebox">
+          <div class="piebox">
             <vepie
               :width="piechart.width"
               :data="piechartDataY"
@@ -150,14 +148,9 @@
               :colors="piechart.colorArrY"
               :tooltip-visible="false"
               :legend="piechart.legend"/>
-          </div>
-          <div
-            v-else
-            class="piebox">
-            <div class="imgbox">
-              <img
-                src="/img/20181228pieY.png"
-                alt="">
+            <div
+              v-if="designerempty"
+              class="mask">
               <div class="noprocon">
                 Oh no! We don't see any purchase history for you. Be sure your purchases are tracked next year to view these results and enjoy the full benefits of ModeSens membership.
               </div>
@@ -220,6 +213,7 @@ export default {
       user: {},
       userprd: {},
       userempty: false,
+      designerempty: false,
       proportion: '',
       proportionalter: '',
       savingtotal: 0,
@@ -414,10 +408,19 @@ export default {
         that.histogramData.rows[4]['ModeSens Members Overall'] =
           (that.overall.purchase_e_count / overalltotal) * 100
       }
-      $.each(that.user.top_designers, function(i, e) {
-        var Youlist = { designer: e[0], value: e[1] }
-        that.piechartDataY.rows.push(Youlist)
-      })
+      if (that.user.top_designers === null) {
+        that.designerempty = true
+        $.each(that.overall.top_designers, function(i, e) {
+          var Youlist = { designer: e[0], value: e[1] }
+          that.piechartDataY.rows.push(Youlist)
+        })
+      } else {
+        that.designerempty = false
+        $.each(that.user.top_designers, function(i, e) {
+          var Youlist = { designer: e[0], value: e[1] }
+          that.piechartDataY.rows.push(Youlist)
+        })
+      }
       $.each(that.overall.top_designers, function(i, e) {
         var overalllist = { designer: e[0], value: e[1] }
         that.piechartDataM.rows.push(overalllist)
