@@ -45,9 +45,9 @@ module.exports = {
     { src: '~/plugins/axios.js', ssr: true },
   ],
 
-  // router: {
-  //   base: '/vue/'
-  // },
+  router: {
+    base: '/vue/'
+  },
 
   /*
 	** Nuxt.js modules
