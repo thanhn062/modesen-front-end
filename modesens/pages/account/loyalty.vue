@@ -43,7 +43,7 @@
                 <div class="currentLevel">{{ $t('accountLoyalty.'+level.level.toUpperCase()) }}</div>
                 <div class="userEnd">
                   <a
-                    :href="BASE_URL+'/loyalty/'"
+                    href="/loyalty/"
                     data-ga-click="accountLoyalty-card--"
                     target="_blank">
                     {{ $t('accountLoyalty.memberendTimgcard') }} {{ level.end_date }}

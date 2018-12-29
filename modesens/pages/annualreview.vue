@@ -51,11 +51,9 @@
     <div class="bestDeal">
       <div class="title">Single Best Deal Received</div>
       <div class="dealDetail">
-        <div
-          v-if="userprd !== null"
-          class="dealitem">
+        <div class="dealitem">
           <a
-            :href="BASE_URL+'/product/'+touserprd+'/'"
+            :href="touserprd"
             target="_blank">
             <div class="imgbox">
               <div class="img">
@@ -74,8 +72,15 @@
                 class="proportion_user proportion"/>
             </div>
           </a>
+          <div
+            v-if="userempty"
+            class="markimg">
+            <div class="noprocon">
+              Oh no! We don't see any purchase history for you. Be sure your purchases are tracked next year to view these results and enjoy the full benefits of ModeSens membership.
+            </div>
+          </div>
         </div>
-        <div
+        <!-- <div
           v-else
           class="dealitem">
           <div class="dealimgbox">
@@ -87,10 +92,10 @@
             </div>
 
           </div>
-        </div>
+        </div> -->
         <div class="dealitem overall">
           <a
-            :href="BASE_URL+'/product/'+toModesensprd+'/'"
+            :href="toModesensprd"
             target="_blank">
             <div class="imgbox">
               <div class="img">
@@ -188,7 +193,7 @@
         </p>
       </div>
       <a
-        :href="BASE_URL+'/loyalty/'"
+        href="/loyalty/"
         target="_blank"
         class="toloyalty">Learn More</a>
     </div>
@@ -214,6 +219,7 @@ export default {
       overallprd: {},
       user: {},
       userprd: {},
+      userempty: false,
       proportion: '',
       proportionalter: '',
       savingtotal: 0,
@@ -353,18 +359,19 @@ export default {
       )
       if (that.user.diff_product === null) {
         that.userprd = that.overall.diff_product
-        // that.touserprd = that.overall.diff_product.pid
+        that.userempty = true
       } else {
         that.userprd = that.user.diff_product
-        that.touserprd = that.user.diff_product.pid
+        that.touserprd = '/product/' + that.user.diff_product.pid + '/'
         that.userprdsaved = Math.round(
           that.user.diff_product_high_price -
             that.user.diff_product_purchase_price
         )
+        that.userempty = false
       }
       that.savedPercentage = (that.userprdsaved / that.overallsaed) * 100
       that.overallprd = that.overall.diff_product
-      that.toModesensprd = that.overall.diff_product.pid
+      that.toModesensprd = '/product/' + that.overall.diff_product.pid + '/'
       that.proportion = Math.round(
         (that.user.saving / that.overall.saving) * 100
       )

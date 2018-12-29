@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const countries = require('./countries')
 const webpack = require('webpack')
 require('dotenv').config()
 
@@ -19,7 +20,7 @@ module.exports = {
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://127.0.0.1:9000/',
+    baseUrl: process.env.BASE_URL || 'http://127.0.0.1/',
     browserBaseURL: process.env.BROWSER_BASE_URL || 'https://modesens.com/',
     secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
   },
@@ -74,27 +75,16 @@ module.exports = {
     [
       '~/modules/i18n',
       {
-        countries: [
-          {
-            code: 'us',
-            defaultLocale: 'en',
-            iso: 'en-US'
-          },
-          {
-            code: 'cn',
-            defaultLocale: 'zh',
-            iso: 'zh-CN'
-          }
-        ],
+        countries: countries,
         locales: [
           {
             code: 'en',
-            file: 'en-US.js',
+            file: 'en.js',
             name: 'English'
           },
           {
             code: 'zh',
-            file: 'zh-CN.js',
+            file: 'zh.js',
             name: '中文'
           }
         ],

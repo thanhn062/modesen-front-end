@@ -9,7 +9,7 @@
         v-if="lsuid===''"
         class="accountsBox">
         <a
-          :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
+          href="/accounts/signup/?next=/loyalty/"
           target="_blank">
           <button
             class="btn btn-modesens"
@@ -26,7 +26,7 @@
         v-else
         class="accountsBox">
         <a
-          :href="BASE_URL+'/account/loyalty/'"
+          href="/account/loyalty/"
           target="_blank">
           <button
             class="btn btn-modesens"
@@ -69,19 +69,23 @@
           <div class="imgBox-l">
             <div class="levelEach level-platinum">
               <span>{{ $t('loyalty.Platinum') }}</span><br>
-              <span>{{ platinumNum }}</span>
+              <span>{{ platinumNum }}</span><br>
+              <span>{{ $t('loyalty.Points') }}</span>
             </div>
             <div class="levelEach level-gold">
               <span>{{ $t('loyalty.Gold') }}</span><br>
-              <span>{{ goldNum }}</span>
+              <span>{{ goldNum }}</span><br>
+              <span>{{ $t('loyalty.Points') }}</span>
             </div>
             <div class="levelEach level-silver">
               <span>{{ $t('loyalty.Silver') }}</span><br>
-              <span>{{ silverNum }}</span>
+              <span>{{ silverNum }}</span><br>
+              <span>{{ $t('loyalty.Points') }}</span>
             </div>
             <div class="levelEach level-bronze">
               <span>{{ $t('loyalty.Bronze') }}</span><br>
-              <span>{{ bronzeNum }}</span>
+              <span>{{ bronzeNum }}</span><br>
+              <span>{{ $t('loyalty.Points') }}</span>
             </div>
           </div>
           <div class="levelKind">
@@ -105,13 +109,13 @@
               <span>{{ $t('loyalty.Unlimited') }}</span>
             </div>
             <div class="levelEach level-gold">
-              <span><span>100</span></span>
+              <span><span>10,000</span></span>
             </div>
             <div class="levelEach level-silver">
-              <span>50</span>
+              <span>1,000</span>
             </div>
             <div class="levelEach level-bronze">
-              <span><span>10</span></span>
+              <span><span>100</span></span>
             </div>
           </div>
           <div class="levelKind">
@@ -223,11 +227,11 @@
               v-if="index===1"
               class="answer">
               <div v-if="lsuid">{{ $t('loyalty.answer2_1_1') }}<a
-                :href="BASE_URL+'/account/loyalty/'"
+                href="/account/loyalty/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</a></div>
               <div v-else>{{ $t('loyalty.answer2_1') }}<a
-                :href="BASE_URL+'/accounts/signup/?next=/loyalty/'"
+                href="/accounts/signup/?next=/loyalty/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2') }}</a></div>
             </div>
@@ -235,7 +239,7 @@
               v-else-if="index===14"
               class="answer">
               {{ $t('loyalty.answer15_1') }}<a
-                :href="BASE_URL+'/shopping-assistant/'"
+                href="/shopping-assistant/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--15">{{ $t('loyalty.answer15_2') }}</a>
             </div>
@@ -243,7 +247,7 @@
               v-else-if="index===19"
               class="answer">
               {{ $t('loyalty.answer20_1') }}<a
-                :href="BASE_URL+'/invite/'"
+                href="/invite/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--20">{{ $t('loyalty.answer20_2') }}</a>{{ $t('loyalty.answer20_3') }}
             </div>

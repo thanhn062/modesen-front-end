@@ -7,7 +7,7 @@
           <div class="levelBenefitscon">
             <div class="leveltitle">{{ $t('accountLoyalty.benefits') }}</div>
             <a
-              :href="BASE_URL+'/loyalty/'"
+              href="/loyalty/"
               data-ga-click="accountLoyalty-Benefits--"
               target="_blank"
               class="Member-failure">
@@ -34,7 +34,7 @@
         <div class="userleveldes">
           <div class="leveltitle">{{ $t('accountLoyalty.membershipDeltails') }}</div>
           <a
-            :href="BASE_URL+'/loyalty/'"
+            href="/loyalty/"
             data-ga-click="accountLoyalty-Membership_Details--"
             target="_blank" 
             class="Member-failure">
@@ -64,17 +64,14 @@
               <div class="text-circle">
                 <div class="percentage">{{ pers_percentage }}%</div>
                 <div
-                  v-if="myloyaltycontent.level !=='Platinum'"
                   class="txt">{{ $t('accountLoyalty.Towards') }}
                   <br>
                   {{ $t('accountLoyalty.'+nexrLevel.toUpperCase()+'2') }}</div>
               </div>
             </div>
             <div
-              v-if="myloyaltycontent.level !=='Platinum'"
               class="condes">
               {{ $t('accountLoyalty.as') }}{{ $t('accountLoyalty.'+nexrLevel+'2') }}
-              <br>
               {{ $t('accountLoyalty.enjoy') }}:
               <ul class="level-rights">
                 <li
@@ -85,7 +82,7 @@
             </div>
           </div>
           <a
-            :href="BASE_URL+'/loyalty/'"
+            href="/loyalty/"
             data-ga-click="accountLoyalty-Learn_More_Benefits--"
             target="_blank" 
             class="toleveldes">
@@ -222,11 +219,7 @@ export default {
   created() {
     let pers =
       this.myloyaltycontent.points_earned / this.myloyaltycontent.points_goal
-    if (this.myloyaltycontent.level == 'Platinum') {
-      this.pers_percentage = 100
-    } else {
-      this.pers_percentage = Math.round(pers * 100)
-    }
+    this.pers_percentage = Math.round(pers * 100)
     if (pers <= 0.5) {
       this.degRight = pers * 360
       this.degLeft = 0
@@ -237,10 +230,10 @@ export default {
       this.degRight = 180
       this.degLeft = pers * 360 - 180
     }
-    if (this.myloyaltycontent.level == 'Platinum') {
-      this.degRight = 180
-      this.degLeft = 180
-    }
+    // if (this.myloyaltycontent.level == 'Platinum') {
+    //   this.degRight = 180
+    //   this.degLeft = 180
+    // }
     var languageReg = /\/en\//
     if (this.myloyaltycontent.level == 'Bronze') {
       this.levelClass = 'bronze'
@@ -312,6 +305,13 @@ export default {
         'Triple Points: 3 Days',
         'Early Sale Access'
       ]
+      this.nextLevelRights = [
+        'First Priority Alert',
+        'Unlimited Product Alerts',
+        'Triple Points: 3 Days',
+        'Early Sale Access'
+      ]
+      this.nexrLevel = 'Platinum'
     }
   },
   mounted() {

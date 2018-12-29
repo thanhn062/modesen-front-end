@@ -22,4 +22,3 @@ if (process.browser){
     }
   })
 }
-Vue.prototype.BASE_URL = 'https://modesens.com'

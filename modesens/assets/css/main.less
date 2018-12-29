@@ -28,15 +28,20 @@ ul {
   list-style: none;
 }
 .btn-modesens,
-.btn-primary {
+.btn-primary,
+.btn-success {
   color: @btnFontColor;
   background: @btnBgColor;
   border-radius: 0;
   border-color: @btnBgColor;
-}
-.prdCon {
-  font-size: @font-size;
-  border: @border;
+  &:hover {
+    color: @btnFontColor;
+  }
+  &:disabled,
+  &.disabled {
+    background: @btnBgColor;
+    border-color: @btnBgColor;
+  }
 }
 .modal-header {
   background: #ecedef;
@@ -44,6 +49,27 @@ ul {
 ul {
   padding: 0;
   margin: 0;
+}
+.daterangepicker,
+.dropdown-menu {
+  border-radius: 0 !important;
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-chevron-left:before {
+  content: "<";
+}
+.glyphicon-chevron-right:before {
+  content: ">";
 }
 @media(max-width: 1199px) {
   .container {
