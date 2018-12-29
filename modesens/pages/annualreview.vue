@@ -2,14 +2,14 @@
   <section class="container">
     <div class="bannerimg">
       <img
-        src="/img/20181228Asset_en.png"
+        :src="handimgsrc"
         alt="">
     </div>
     <div class="totalSaving">
       <div class="username keepLeft">{{ user.username }}</div>
-      <div class="memberStartTime keepLeft">Member Since {{ user.user_joined }}</div>
+      <div class="memberStartTime keepLeft">{{ $t('annual.MemberSince') }} {{ user.user_joined }}</div>
       <div class="savingProportion">
-        <div class="title">Your Total Saving | ModeSens Members Total Saving </div>
+        <div class="title">{{ $t('annual.savingtitle') }} </div>
         <div class="proportionbox">
           <div class="start">$0</div>
           <div class="proportionImg">
@@ -35,21 +35,21 @@
       </div>
       <ul class="detailsBox">
         <li class="item">
-          <div class="itemtitle"># Of Times Shopped</div>
+          <div class="itemtitle">{{ $t('annual.shoppingNum') }}</div>
           <div class="itemNum">{{ user.purchase_count }}</div>
         </li>
         <li class="item">
-          <div class="itemtitle"># Of Items Wishlisted</div>
+          <div class="itemtitle">{{ $t('annual.wishNum') }}</div>
           <div class="itemNum">{{ user.wish_count }}</div>
         </li>
         <li class="item">
-          <div class="itemtitle"># Of Times Posted</div>
+          <div class="itemtitle">{{ $t('annual.postNum') }}</div>
           <div class="itemNum">{{ user.post_count }}</div>
         </li>
       </ul>
     </div>
     <div class="bestDeal">
-      <div class="title">Single Best Deal Received</div>
+      <div class="title">{{ $t('annual.bestDealtitle') }}</div>
       <div class="dealDetail">
         <div class="dealitem">
           <a
@@ -65,7 +65,7 @@
               <div class="prdname">{{ userprd.name }}</div>
             </div>
             <div class="savingbox keepLeft">
-              <div class="itemtitle">Total Saved</div>
+              <div class="itemtitle">{{ $t('annual.usersaved') }}</div>
               <div class="moneyNum">$ {{ userprdsaved|NumFormat }}</div>
               <div
                 :style="{width:savedPercentage+'%'}"
@@ -75,24 +75,9 @@
           <div
             v-if="userempty"
             class="markimg">
-            <div class="noprocon">
-              Oh no! We don't see any purchase history for you. Be sure your purchases are tracked next year to view these results and enjoy the full benefits of ModeSens membership.
-            </div>
+            <div class="noprocon">{{ $t('annual.emptycon') }}</div>
           </div>
         </div>
-        <!-- <div
-          v-else
-          class="dealitem">
-          <div class="dealimgbox">
-            <img
-              src="/img/20181228proimg.png"
-              alt="">
-            <div class="noprocon">
-              Oh no! We don't see any purchase history for you. Be sure your purchases are tracked next year to view these results and enjoy the full benefits of ModeSens membership.
-            </div>
-
-          </div>
-        </div> -->
         <div class="dealitem overall">
           <a
             :href="toModesensprd"
@@ -107,7 +92,7 @@
               <div class="prdname">{{ overallprd.name }}</div>
             </div>
             <div class="savingbox keepLeft">
-              <div class="itemtitle">ModeSens Member Saved</div>
+              <div class="itemtitle">{{ $t('annual.modesensdaved') }}</div>
               <div class="moneyNum">$ {{ overallsaed|NumFormat }}</div>
               <div class="proportion_modesens proportion"/>
             </div>
@@ -116,7 +101,7 @@
       </div>
     </div>
     <div class="productCategories">
-      <div class="title">Most Shopped Product Categories</div>
+      <div class="title">{{ $t('annual.mostShoptitle') }}</div>
       <div class="histogrambox">  
         <VeHistogram
           :data="histogramData"
@@ -129,16 +114,16 @@
           :tooltip-visible="false"
           class="histogram"/>
         <div class="yAxis">
-          % Of Total Purchases
+          {{ $t('annual.yaxisname') }}
         </div>
-        <div class="xAxis">Product Category</div>
+        <div class="xAxis">{{ $t('annual.xaxisname') }}</div>
       </div>
     </div>
     <div class="topdesigner">
-      <div class="title">Top Designers Purchased</div>
+      <div class="title">{{ $t('annual.topdesignertitle') }}</div>
       <div class="topdesignerCon">
         <div class="youbox itembox">
-          <div class="itemtitle">Your Top 5</div>
+          <div class="itemtitle">{{ $t('annual.youtop') }}</div>
           <div class="piebox">
             <vepie
               :width="piechart.width"
@@ -151,14 +136,12 @@
             <div
               v-if="designerempty"
               class="mask">
-              <div class="noprocon">
-                Oh no! We don't see any purchase history for you. Be sure your purchases are tracked next year to view these results and enjoy the full benefits of ModeSens membership.
-              </div>
+              <div class="noprocon">{{ $t('annual.emptycon') }}</div>
             </div>
           </div>
         </div>
         <div class="allmemberbox itembox">
-          <div class="itemtitle">Overall Members Top 5</div>
+          <div class="itemtitle">{{ $t('annual.oeralltop') }}</div>
           <div class="piebox">
             <vepie
               :width="piechart.width"
@@ -173,22 +156,18 @@
       </div>
     </div>
     <div class="lookforward">
-      <div class="title">Looking Forward To 2019</div>
+      <div class="title">{{ $t('annual.lookforwardtitle') }}</div>
       <div class="contain">
         <p>
-          We're rolling out exciting new features in 2019, including the launch of our membership program, ModeSens Rewards. 
+          {{ $t('annual.p1') }}
         </p>
-        <p>
-          Through ModeSens Rewards members automatically have access to a plethora of membership benefits at varying reward levels, including free protection for product authenticity and satisfaction on all purchases made through our site, early access to the best sales, limited and exclusive product access and more.
-        </p>
-        <p>
-          See how you can start enjoying an even more rewarding shopping experience today.
-        </p>
+        <p>{{ $t('annual.p2') }}</p>
+        <p>{{ $t('annual.p3') }}</p>
       </div>
       <a
         href="/loyalty/"
         target="_blank"
-        class="toloyalty">Learn More</a>
+        class="toloyalty"> {{ $t('annual.learnMore') }}</a>
     </div>
   </section>
 </template>
@@ -208,6 +187,7 @@ export default {
   },
   data() {
     return {
+      handimgsrc: '/img/20181228Asset_en.png',
       overall: {},
       overallprd: {},
       user: {},
@@ -324,6 +304,11 @@ export default {
   created() {
     if (this.$route.query.otoken) {
       this.getannualreview()
+    }
+    if (this.$route.path.match(/\/en\//)) {
+      this.handimgsrc = '/img/20181228Asset_en.png'
+    } else {
+      this.handimgsrc = '/img/20181228Asset_zh.png'
     }
   },
   mounted() {
