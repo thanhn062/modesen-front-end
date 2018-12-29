@@ -243,8 +243,8 @@ export default {
         this.levelimgHref = '/img/20181221bronze-zh.png'
       }
       this.Tripledays = 0
-      this.levelRights = [1, 2]
-      this.nextLevelRights = [1, 2, 3]
+      this.levelRights = [1, 2, 3]
+      this.nextLevelRights = [1, 2, 3, 4]
       this.nexrLevel = 'Silver'
     } else if (this.myloyaltycontent.level == 'Silver') {
       this.levelClass = 'sliver'
@@ -254,8 +254,8 @@ export default {
         this.levelimgHref = '/img/20181221silver-zh.png'
       }
       this.Tripledays = 1
-      this.levelRights = [1, 2, 3]
-      this.nextLevelRights = [1, 2, 3, 4]
+      this.levelRights = [1, 2, 3, 4]
+      this.nextLevelRights = [1, 2, 3, 4, 5]
       this.nexrLevel = 'Gold'
     } else if (this.myloyaltycontent.level == 'Gold') {
       this.levelClass = 'gold'
@@ -265,8 +265,8 @@ export default {
         this.levelimgHref = '/img/20181221gold-zh.png'
       }
       this.Tripledays = 2
-      this.levelRights = [1, 2, 3, 4]
-      this.nextLevelRights = [1, 2, 3, 4]
+      this.levelRights = [1, 2, 3, 4, 5]
+      this.nextLevelRights = [1, 2, 3, 4, 5]
       this.nexrLevel = 'Platinum'
     } else if (this.myloyaltycontent.level == 'Platinum') {
       this.levelClass = 'platinum'
@@ -276,8 +276,8 @@ export default {
         this.levelimgHref = '/img/20181221platinum-zh.png'
       }
       this.Tripledays = 3
-      this.levelRights = [1, 2, 3, 4, 5, 6]
-      this.nextLevelRights = [1, 2, 3, 4]
+      this.levelRights = [1, 2, 3, 4, 5, 6, 7]
+      this.nextLevelRights = [1, 2, 3, 4, 5]
       this.nexrLevel = 'Platinum'
     }
   },
