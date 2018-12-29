@@ -25,12 +25,12 @@
                 <div
                   class="arrow"/>
                 <div class="tooltip-inner">
-                  ${{ user.saving }}
+                  ${{ usersavingtotal|NumFormat }}
                 </div>
               </div>
             </div>
           </div>
-          <div class="end">${{ overall.saving }}</div>
+          <div class="end">${{ savingtotal|NumFormat }}</div>
         </div>
       </div>
       <ul class="detailsBox">
@@ -49,7 +49,7 @@
       </ul>
     </div>
     <div class="bestDeal">
-      <div class="title">Best Deal Received</div>
+      <div class="title">Single Best Deal Received</div>
       <div class="dealDetail">
         <div
           v-if="userprd !== null"
@@ -95,7 +95,7 @@
             <div class="prdname">{{ overallprd.name }}</div>
           </div>
           <div class="savingbox keepLeft">
-            <div class="itemtitle">Cutomer Total Saved</div>
+            <div class="itemtitle">ModeSens Member Saved</div>
             <div class="moneyNum">$ {{ overallsaed|NumFormat }}</div>
             <div class="proportion_modesens proportion"/>
           </div>
@@ -116,9 +116,7 @@
           :tooltip-visible="false"
           class="histogram"/>
         <div class="yAxis">
-          Percentages Of 
-          <br>
-          Total Purchases
+          % Of Total Purchases
         </div>
         <div class="xAxis">Product Category</div>
       </div>
@@ -172,23 +170,10 @@
       <div class="title">Looking Forward To 2019</div>
       <div class="contain">
         <p>
-          " We're rolling out exciting new features in 2019, including the launch of our
-          <b> membership program, ModeSens Rewards.</b>
-          "
+          We're rolling out exciting new features in 2019, including the launch of our membership program, ModeSens Rewards. 
         </p>
-        <div class="itemtitle">Through ModeSens Rewards..</div>
         <p>
-          Members automatically have access to a plethora of 
-          <b>membership benefits</b>
-          at varying reward levels, including
-          <b>free protection </b>
-          for product
-          <b>authenticity</b>
-          and satisfaction on all purchases made through our site,
-          <b>early access</b>
-          to the best sales, limited and
-          <b>exclusive product</b>
-          access and more. 
+          Through ModeSens Rewards members automatically have access to a plethora of membership benefits at varying reward levels, including free protection for product authenticity and satisfaction on all purchases made through our site, early access to the best sales, limited and exclusive product access and more.
         </p>
         <p>
           See how you can start enjoying an even more rewarding shopping experience today.
@@ -223,6 +208,8 @@ export default {
       userprd: {},
       proportion: '',
       proportionalter: '',
+      savingtotal: 0,
+      usersavingtotal: 0,
       userprdsaved: 0,
       overallsaed: 0,
       savedPercentage: '',
@@ -267,13 +254,20 @@ export default {
         legend: {
           orient: 'vertical',
           align: 'left',
-          x: 'right',
-          y: 'center'
+          x: '60%',
+          y: 'center',
+          textStyle: {
+            color: '#1c1c1c',
+            fontSize: '16px'
+          },
+          formatter: function(name) {
+            return name.length >= 20 ? name.slice(0, 20) + '...' : name
+          }
         },
         chartExtend: {
           series: {
             type: 'pie',
-            center: ['50%', '50%']
+            center: ['30%', '50%']
           }
         },
         chartSettings: {
@@ -343,6 +337,8 @@ export default {
       that.overall = overall
       that.userprd = that.user.diff_product
       that.overallprd = that.overall.diff_product
+      that.savingtotal = that.overall.saving
+      that.usersavingtotal = that.user.saving
       that.proportion = Math.round(
         (that.user.saving / that.overall.saving) * 100
       )
@@ -358,21 +354,42 @@ export default {
           that.overall.diff_product_purchase_price
       )
       that.savedPercentage = (that.userprdsaved / that.overallsaed) * 100
-      that.histogramData.rows[0].You = that.user.purchase_c_count
-      that.histogramData.rows[1].You = that.user.purchase_s_count
-      that.histogramData.rows[2].You = that.user.purchase_b_count
-      that.histogramData.rows[3].You = that.user.purchase_a_count
-      that.histogramData.rows[4].You = that.user.purchase_e_count
-      that.histogramData.rows[0]['ModeSens Members Overall'] =
-        that.overall.purchase_c_count
-      that.histogramData.rows[1]['ModeSens Members Overall'] =
-        that.overall.purchase_s_count
-      that.histogramData.rows[2]['ModeSens Members Overall'] =
-        that.overall.purchase_b_count
-      that.histogramData.rows[3]['ModeSens Members Overall'] =
-        that.overall.purchase_a_count
-      that.histogramData.rows[4]['ModeSens Members Overall'] =
+      var usertotal =
+        that.user.purchase_c_count +
+        that.user.purchase_s_count +
+        that.user.purchase_b_count +
+        that.user.purchase_a_count +
+        that.user.purchase_e_count
+      var overalltotal =
+        that.overall.purchase_c_count +
+        that.overall.purchase_s_count +
+        that.overall.purchase_b_count +
+        that.overall.purchase_a_count +
         that.overall.purchase_e_count
+      if (usertotal >= 0) {
+        that.histogramData.rows[0].You =
+          (that.user.purchase_c_count / usertotal) * 100
+        that.histogramData.rows[1].You =
+          (that.user.purchase_s_count / usertotal) * 100
+        that.histogramData.rows[2].You =
+          (that.user.purchase_b_count / usertotal) * 100
+        that.histogramData.rows[3].You =
+          (that.user.purchase_a_count / usertotal) * 100
+        that.histogramData.rows[4].You =
+          (that.user.purchase_e_count / usertotal) * 100
+      }
+      if (overalltotal >= 0) {
+        that.histogramData.rows[0]['ModeSens Members Overall'] =
+          (that.overall.purchase_c_count / overalltotal) * 100
+        that.histogramData.rows[1]['ModeSens Members Overall'] =
+          (that.overall.purchase_s_count / overalltotal) * 100
+        that.histogramData.rows[2]['ModeSens Members Overall'] =
+          (that.overall.purchase_b_count / overalltotal) * 100
+        that.histogramData.rows[3]['ModeSens Members Overall'] =
+          (that.overall.purchase_a_count / overalltotal) * 100
+        that.histogramData.rows[4]['ModeSens Members Overall'] =
+          (that.overall.purchase_e_count / overalltotal) * 100
+      }
       $.each(that.user.top_designers, function(i, e) {
         var Youlist = { designer: e[0], value: e[1] }
         that.piechartDataY.rows.push(Youlist)
