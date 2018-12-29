@@ -225,8 +225,7 @@ export default {
           y: 'top'
         },
         chartSettings: {
-          metrics: ['You', 'ModeSens Members Overall'],
-          yAxisType: ['KMB', '']
+          metrics: ['You', 'ModeSens Members Overall']
         }
       },
       histogramData: {
@@ -309,6 +308,15 @@ export default {
       this.handimgsrc = '/img/20181228Asset_en.png'
     } else {
       this.handimgsrc = '/img/20181228Asset_zh.png'
+      // this.histogram.chartSettings.metrics = ['你', 'ModeSens 会员']
+      // this.histogramData.columns = ['category', '你', 'ModeSens 会员']
+      this.histogramData.rows = [
+        { category: '服装', You: 0, 'ModeSens Members Overall': 0 },
+        { category: '鞋履', You: 0, 'ModeSens Members Overall': 0 },
+        { category: '箱包', You: 0, 'ModeSens Members Overall': 0 },
+        { category: '配饰', You: 0, 'ModeSens Members Overall': 0 },
+        { category: '美妆', You: 0, 'ModeSens Members Overall': 0 }
+      ]
     }
   },
   mounted() {
