@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const countries = require('./countries')
 const webpack = require('webpack')
 require('dotenv').config()
 
@@ -74,27 +75,16 @@ module.exports = {
     [
       '~/modules/i18n',
       {
-        countries: [
-          {
-            code: 'us',
-            defaultLocale: 'en',
-            iso: 'en-US'
-          },
-          {
-            code: 'cn',
-            defaultLocale: 'zh',
-            iso: 'zh-CN'
-          }
-        ],
+        countries: countries,
         locales: [
           {
             code: 'en',
-            file: 'en-US.js',
+            file: 'en.js',
             name: 'English'
           },
           {
             code: 'zh',
-            file: 'zh-CN.js',
+            file: 'zh.js',
             name: '中文'
           }
         ],

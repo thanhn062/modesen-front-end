@@ -1,0 +1,182 @@
+[
+  {
+    "code": "us",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "gb",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "au",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "at",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "be",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "ca",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "cy",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "dk",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "ee",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "fr",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "fi",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "de",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "gr",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "hk",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "ie",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "it",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "jp",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "lv",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "lt",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "lu",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "mt",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "nl",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "pl",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "pt",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "no",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "ro",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "ru",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "sg",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "sk",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "si",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "kr",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "es",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "se",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "ch",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "tr",
+    "defaultLocale": "en",
+    "iso": "en"
+  },
+  {
+    "code": "cn",
+    "defaultLocale": "zh",
+    "iso": "zh"
+  }
+]
