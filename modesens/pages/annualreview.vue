@@ -54,22 +54,26 @@
         <div
           v-if="userprd !== null"
           class="dealitem">
-          <div class="imgbox">
-            <div class="img">
-              <img
-                :src="userprd.cover"
-                alt="">
+          <a
+            :href="BASE_URL+'/product/'+touserprd+'/'"
+            target="_blank">
+            <div class="imgbox">
+              <div class="img">
+                <img
+                  :src="userprd.cover"
+                  alt="">
+              </div>
+              <div class="designername">{{ userprd.designer }}</div>
+              <div class="prdname">{{ userprd.name }}</div>
             </div>
-            <div class="designername">{{ userprd.designer }}</div>
-            <div class="prdname">{{ userprd.name }}</div>
-          </div>
-          <div class="savingbox keepLeft">
-            <div class="itemtitle">Total Saved</div>
-            <div class="moneyNum">$ {{ userprdsaved|NumFormat }}</div>
-            <div
-              :style="{width:savedPercentage+'%'}"
-              class="proportion_user proportion"/>
-          </div>
+            <div class="savingbox keepLeft">
+              <div class="itemtitle">Total Saved</div>
+              <div class="moneyNum">$ {{ userprdsaved|NumFormat }}</div>
+              <div
+                :style="{width:savedPercentage+'%'}"
+                class="proportion_user proportion"/>
+            </div>
+          </a>
         </div>
         <div
           v-else
@@ -85,20 +89,24 @@
           </div>
         </div>
         <div class="dealitem overall">
-          <div class="imgbox">
-            <div class="img">
-              <img
-                :src="overallprd.cover"
-                alt="">
+          <a
+            :href="BASE_URL+'/product/'+toModesensprd+'/'"
+            target="_blank">
+            <div class="imgbox">
+              <div class="img">
+                <img
+                  :src="overallprd.cover"
+                  alt="">
+              </div>
+              <div class="designername">{{ overallprd.designer }}</div>
+              <div class="prdname">{{ overallprd.name }}</div>
             </div>
-            <div class="designername">{{ overallprd.designer }}</div>
-            <div class="prdname">{{ overallprd.name }}</div>
-          </div>
-          <div class="savingbox keepLeft">
-            <div class="itemtitle">ModeSens Member Saved</div>
-            <div class="moneyNum">$ {{ overallsaed|NumFormat }}</div>
-            <div class="proportion_modesens proportion"/>
-          </div>
+            <div class="savingbox keepLeft">
+              <div class="itemtitle">ModeSens Member Saved</div>
+              <div class="moneyNum">$ {{ overallsaed|NumFormat }}</div>
+              <div class="proportion_modesens proportion"/>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -210,9 +218,11 @@ export default {
       proportionalter: '',
       savingtotal: 0,
       usersavingtotal: 0,
-      userprdsaved: 0,
+      userprdsaved: 2000,
       overallsaed: 0,
       savedPercentage: '',
+      touserprd: 'javascript:;',
+      toModesensprd: 'javascript:;',
       histogram: {
         width: '657px',
         height: '494px',
@@ -335,25 +345,32 @@ export default {
       that.piechartDataY.rows = []
       that.user = user
       that.overall = overall
-      that.userprd = that.user.diff_product
-      that.overallprd = that.overall.diff_product
       that.savingtotal = that.overall.saving
       that.usersavingtotal = that.user.saving
+      that.overallsaed = Math.round(
+        that.overall.diff_product_high_price -
+          that.overall.diff_product_purchase_price
+      )
+      if (that.user.diff_product === null) {
+        that.userprd = that.overall.diff_product
+        // that.touserprd = that.overall.diff_product.pid
+      } else {
+        that.userprd = that.user.diff_product
+        that.touserprd = that.user.diff_product.pid
+        that.userprdsaved = Math.round(
+          that.user.diff_product_high_price -
+            that.user.diff_product_purchase_price
+        )
+      }
+      that.savedPercentage = (that.userprdsaved / that.overallsaed) * 100
+      that.overallprd = that.overall.diff_product
+      that.toModesensprd = that.overall.diff_product.pid
       that.proportion = Math.round(
         (that.user.saving / that.overall.saving) * 100
       )
       that.$nextTick(() => {
         that.proportionalter = parseInt($('.savingnum').width()) / 2
       })
-      that.userprdsaved = Math.round(
-        that.user.diff_product_high_price -
-          that.user.diff_product_purchase_price
-      )
-      that.overallsaed = Math.round(
-        that.overall.diff_product_high_price -
-          that.overall.diff_product_purchase_price
-      )
-      that.savedPercentage = (that.userprdsaved / that.overallsaed) * 100
       var usertotal =
         that.user.purchase_c_count +
         that.user.purchase_s_count +
