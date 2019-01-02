@@ -19,6 +19,11 @@
     args:
       warn: no
 
+  - name: pm2 stop all.
+    command: "pm2  stop all"
+    args:
+      chdir: /modesens/modesens-frontend/modesens
+
   - name: install packages.
     command: "npm install"
 
