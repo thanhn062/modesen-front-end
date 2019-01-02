@@ -6,9 +6,10 @@
           <h6 class="footer-title">{{ $t('Footer.classtitle1') }}</h6>
           <div class="p">
             <ul class="list-unstyled contact">
+              <li><a href="/loyalty/">{{ $t('Footer.helpcenter') }}</a></li>
               <li><a href="/faq/">{{ $t('Footer.helpcenter') }}</a></li>
-              <li><a>{{ $t('Footer.contactus') }}</a></li>
-              <li><a>{{ $t('Footer.feedback') }}</a></li>
+              <li><a href="javascript:;">{{ $t('Footer.contactus') }}</a></li>
+              <li><a href="javascript:;">{{ $t('Footer.feedback') }}</a></li>
             </ul>
           </div>
         </div>
@@ -154,84 +155,6 @@ export default {
   methods: {}
 }
 </script>
-<style>
-.footer-wrap {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 44px;
-  border-top: 0.5px solid #929292;
-  padding-bottom: 50px;
-}
-.footer-title {
-  font-size: 1.1em;
-}
-.footer-logo {
-  width: 150px;
-}
-.footer-mini-img {
-  width: 50px;
-  cursor: pointer;
-}
-.footer-connect-img {
-  width: 130px;
-}
-.footer-email {
-  width: 100% !important;
-  border: 0 !important;
-  border-bottom: 0.5px solid #252525 !important;
-  padding: 6px 0 !important;
-}
-.footer-sex {
-  display: flex;
-  margin: 10px 0;
-}
-.footer-sex label {
-  margin-left: 25px;
-  margin-right: 30px;
-  padding-left: 0;
-}
-.footer-bottom {
-  overflow: hidden;
-  border-top: 0.5px solid #929292;
-  padding-top: 28px;
-  padding-bottom: 30px;
-}
-#footer_form {
-  width: 100%;
-}
-.footer-logo-con img {
-  width: 34px;
-  margin-right: 10px;
-  display: inline-block;
-  vertical-align: middle;
-}
-.footer-logo-con span {
-  font-size: 12px;
-  display: inline-block;
-  vertical-align: middle;
-}
-#footer_female[type='radio'],
-#footer_male[type='radio'] {
-  -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  background: url('/img/login-icon/unchecked.svg');
-  margin-top: 2px;
-  margin-left: 0px;
-  cursor: pointer;
-  position: absolute;
-  border: none;
-}
-#footer_female[type='radio'] {
-  margin-left: 0;
-}
-#footer_female[type='radio']:checked,
-#footer_male[type='radio']:checked {
-  -webkit-appearance: none;
-  background: url('/img/checked.svg');
-}
-#footer_female[type='radio']:focus,
-#footer_male[type='radio']:focus {
-  background: url('/img/checked.svg');
-}
+<style lang="less">
+@import '../assets/css/components/footer.less';
 </style>
