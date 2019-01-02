@@ -6,12 +6,12 @@
         alt="">
     </div>
     <div class="totalSaving">
-      <div class="username keepLeft">{{ user.username }}</div>
-      <div class="memberStartTime keepLeft">{{ $t('annual.MemberSince') }} {{ user.user_joined }}</div>
+      <div class="username"> {{ username }}</div>
+      <div class="memberStartTime">{{ $t('annual.MemberSince') }} {{ user.user_joined }}</div>
       <div class="savingProportion">
         <div class="title">{{ $t('annual.savingtitle') }} </div>
         <div class="proportionbox">
-          <div class="start">$0</div>
+          <div class="start"/>
           <div class="proportionImg">
             <div
               :style="{width:proportion+'%'}"
@@ -64,12 +64,9 @@
               <div class="designername">{{ userprd.designer }}</div>
               <div class="prdname">{{ userprd.name }}</div>
             </div>
-            <div class="savingbox keepLeft">
+            <div class="savingbox">
               <div class="itemtitle">{{ $t('annual.usersaved') }}</div>
               <div class="moneyNum">$ {{ userprdsaved|NumFormat }}</div>
-              <div
-                :style="{width:savedPercentage+'%'}"
-                class="proportion_user proportion"/>
             </div>
           </a>
           <div
@@ -91,10 +88,9 @@
               <div class="designername">{{ overallprd.designer }}</div>
               <div class="prdname">{{ overallprd.name }}</div>
             </div>
-            <div class="savingbox keepLeft">
+            <div class="savingbox">
               <div class="itemtitle">{{ $t('annual.modesensdaved') }}</div>
-              <div class="moneyNum">$ {{ overallsaed|NumFormat }}</div>
-              <div class="proportion_modesens proportion"/>
+              <div class="moneyNum">$ {{ overallsaved|NumFormat }}</div>
             </div>
           </a>
         </div>
@@ -110,7 +106,6 @@
           :colors="histogram.colorArr"
           :extend="histogram.chartExtend"
           :legend="histogram.legend"
-          :settings="histogram.chartSettings"
           :tooltip-visible="false"
           class="histogram"/>
         <div class="yAxis">
@@ -188,6 +183,7 @@ export default {
   data() {
     return {
       handimgsrc: '/img/20181228Asset_en.png',
+      username: '',
       overall: {},
       overallprd: {},
       user: {},
@@ -199,8 +195,7 @@ export default {
       savingtotal: 0,
       usersavingtotal: 0,
       userprdsaved: 2000,
-      overallsaed: 0,
-      savedPercentage: '',
+      overallsaved: 0,
       touserprd: 'javascript:;',
       toModesensprd: 'javascript:;',
       histogram: {
@@ -223,9 +218,6 @@ export default {
           align: 'left',
           x: 'right',
           y: 'top'
-        },
-        chartSettings: {
-          metrics: ['You', 'ModeSens Members Overall']
         }
       },
       histogramData: {
@@ -304,19 +296,20 @@ export default {
     if (this.$route.query.otoken) {
       this.getannualreview()
     }
-    if (this.$route.path.match(/\/en\//)) {
-      this.handimgsrc = '/img/20181228Asset_en.png'
-    } else {
+    if (this.$i18n.locale == 'zh') {
       this.handimgsrc = '/img/20181228Asset_zh.png'
-      // this.histogram.chartSettings.metrics = ['你', 'ModeSens 会员']
-      // this.histogramData.columns = ['category', '你', 'ModeSens 会员']
-      this.histogramData.rows = [
-        { category: '服装', You: 0, 'ModeSens Members Overall': 0 },
-        { category: '鞋履', You: 0, 'ModeSens Members Overall': 0 },
-        { category: '箱包', You: 0, 'ModeSens Members Overall': 0 },
-        { category: '配饰', You: 0, 'ModeSens Members Overall': 0 },
-        { category: '美妆', You: 0, 'ModeSens Members Overall': 0 }
-      ]
+      this.histogramData = {
+        columns: ['category', '你', 'ModeSens 会员'],
+        rows: [
+          { category: '服装', 你: 0, 'ModeSens 会员': 0 },
+          { category: '鞋履', 你: 0, 'ModeSens 会员': 0 },
+          { category: '箱包', 你: 0, 'ModeSens 会员': 0 },
+          { category: '配饰', 你: 0, 'ModeSens 会员': 0 },
+          { category: '美妆', 你: 0, 'ModeSens 会员': 0 }
+        ]
+      }
+    } else {
+      this.handimgsrc = '/img/20181228Asset_en.png'
     }
   },
   mounted() {
@@ -338,14 +331,23 @@ export default {
       that.piechartDataY.rows = []
       that.user = user
       that.overall = overall
+      if (that.$i18n.locale == 'zh') {
+        that.username = that.user.username + ' 的2018年终总结'
+      } else {
+        that.username = '2018 Annual Report  for ' + that.user.username
+      }
       that.savingtotal = that.overall.saving
       that.usersavingtotal = that.user.saving
-      that.overallsaed = Math.round(
+      that.overallsaved = Math.round(
         that.overall.diff_product_high_price -
           that.overall.diff_product_purchase_price
       )
       if (that.user.diff_product === null) {
-        that.userprd = that.overall.diff_product
+        that.userprd.cover =
+          'https://cdn-images.farfetch-contents.com/12/95/56/42/12955642_13501004_1000.jpg'
+        that.userprd.designer = 'ALEXANDER MCQUEEN'
+        that.userprd.name = 'Leather Bucket Bag'
+        that.userprdsaved = '588'
         that.userempty = true
       } else {
         that.userprd = that.user.diff_product
@@ -356,7 +358,6 @@ export default {
         )
         that.userempty = false
       }
-      that.savedPercentage = (that.userprdsaved / that.overallsaed) * 100
       that.overallprd = that.overall.diff_product
       that.toModesensprd = '/product/' + that.overall.diff_product.pid + '/'
       that.proportion = Math.round(
@@ -377,28 +378,35 @@ export default {
         that.overall.purchase_b_count +
         that.overall.purchase_a_count +
         that.overall.purchase_e_count
+      if (this.$i18n.locale == 'zh') {
+        var user_histogram = '你'
+        var ModeSens_histogram = 'ModeSens 会员'
+      } else {
+        var user_histogram = 'You'
+        var ModeSens_histogram = 'ModeSens Members Overall'
+      }
       if (usertotal >= 0) {
-        that.histogramData.rows[0].You =
+        that.histogramData.rows[0][user_histogram] =
           (that.user.purchase_c_count / usertotal) * 100
-        that.histogramData.rows[1].You =
+        that.histogramData.rows[1][user_histogram] =
           (that.user.purchase_s_count / usertotal) * 100
-        that.histogramData.rows[2].You =
+        that.histogramData.rows[2][user_histogram] =
           (that.user.purchase_b_count / usertotal) * 100
-        that.histogramData.rows[3].You =
+        that.histogramData.rows[3][user_histogram] =
           (that.user.purchase_a_count / usertotal) * 100
-        that.histogramData.rows[4].You =
+        that.histogramData.rows[4][user_histogram] =
           (that.user.purchase_e_count / usertotal) * 100
       }
       if (overalltotal >= 0) {
-        that.histogramData.rows[0]['ModeSens Members Overall'] =
+        that.histogramData.rows[0][ModeSens_histogram] =
           (that.overall.purchase_c_count / overalltotal) * 100
-        that.histogramData.rows[1]['ModeSens Members Overall'] =
+        that.histogramData.rows[1][ModeSens_histogram] =
           (that.overall.purchase_s_count / overalltotal) * 100
-        that.histogramData.rows[2]['ModeSens Members Overall'] =
+        that.histogramData.rows[2][ModeSens_histogram] =
           (that.overall.purchase_b_count / overalltotal) * 100
-        that.histogramData.rows[3]['ModeSens Members Overall'] =
+        that.histogramData.rows[3][ModeSens_histogram] =
           (that.overall.purchase_a_count / overalltotal) * 100
-        that.histogramData.rows[4]['ModeSens Members Overall'] =
+        that.histogramData.rows[4][ModeSens_histogram] =
           (that.overall.purchase_e_count / overalltotal) * 100
       }
       if (that.user.top_designers === null) {
