@@ -322,7 +322,8 @@ export default {
       ]
     }
   },
-  async asyncData({ app, query }) {
+  async asyncData({ app, query, req }) {
+    console.log(req)
     let oToken = query.otoken
     if (oToken) {
       app.$cookies.set('token', oToken)

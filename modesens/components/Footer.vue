@@ -6,9 +6,9 @@
           <h6 class="footer-title">{{ $t('Footer.classtitle1') }}</h6>
           <div class="p">
             <ul class="list-unstyled contact">
-              <li><nuxt-link to="/faq/">{{ $t('Footer.helpcenter') }}</nuxt-link></li>
-              <!-- <li><nuxt-link>{{ $t('Footer.contactus') }}</nuxt-link></li>
-              <li><nuxt-link>{{ $t('Footer.feedback') }}</nuxt-link></li> -->
+              <li><a href="/faq/">{{ $t('Footer.helpcenter') }}</a></li>
+              <li><a>{{ $t('Footer.contactus') }}</a></li>
+              <li><a>{{ $t('Footer.feedback') }}</a></li>
             </ul>
           </div>
         </div>
@@ -112,11 +112,8 @@
           <img
             src="/img/20180905footer_logo.svg"
             class="footer-logo">
-          <span>
-            {{ rcountry ? '© 2018, 尚睿科技（北京）有限公司' : '© 2018, ModeSens Inc' }}
-            <br>
-            {{ rcountry ? '京 ICP 备 16029930号' : '' }}
-          </span>
+          <span v-if="$i18n.country === 'cn'">© 2018, 尚睿科技（北京）有限公司<br>京 ICP 备 16029930号</span>
+          <span v-else>© 2018, ModeSens Inc</span>
         </div>
         <div
           class="footer-svg-con"
@@ -133,8 +130,8 @@
             src="/img/footer-p.svg"
             class="footer-mini-img"></nuxt-link>
           <nuxt-link to="https://www.facebook.com/modesens"><img
-            src="/img/footer-fb.svg">
-            class="footer-mini-img"</nuxt-link>
+            src="/img/footer-fb.svg"
+            class="footer-mini-img"></nuxt-link>
           <nuxt-link to="https://weibo.com/5365182498/profile?topnav=1&wvr=6&is_all=1"><img
             src="/img/footer-wb.svg"
             class="footer-mini-img"></nuxt-link>
@@ -150,17 +147,11 @@
 export default {
   data() {
     return {
-      lsuser: false,
-      rcountry: 'cn',
-      clickVal: this.lsuer
-        ? (window.location = '/invite/')
-        : this.loginInviteFriends()
+      lsuser: false
     }
   },
   mounted() {},
-  methods: {
-    loginInviteFriends() {}
-  }
+  methods: {}
 }
 </script>
 <style>

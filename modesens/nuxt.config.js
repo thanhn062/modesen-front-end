@@ -33,6 +33,7 @@ module.exports = {
 	*/
   css: [
     '~/assets/css/font.css',
+    // {src: '~/assets/css/theme/bootstrap2.css', lang: 'css'},
     {src: '~/assets/css/main.less', lang: 'less'},
   ],
 
@@ -45,7 +46,7 @@ module.exports = {
   ],
 
   router: {
-    base: '/vue/'
+    // base: '/vue/'
   },
 
   /*
