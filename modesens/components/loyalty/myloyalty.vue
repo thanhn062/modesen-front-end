@@ -217,68 +217,69 @@ export default {
     }
   },
   created() {
-    let pers =
-      this.myloyaltycontent.points_earned / this.myloyaltycontent.points_goal
-    this.pers_percentage = Math.round(pers * 100)
-    if (pers <= 0.5) {
-      this.degRight = pers * 360
-      this.degLeft = 0
-    } else if (pers >= 1) {
-      this.degRight = 180
-      this.degLeft = 180
-    } else {
-      this.degRight = 180
-      this.degLeft = pers * 360 - 180
-    }
-    // if (this.myloyaltycontent.level == 'Platinum') {
-    //   this.degRight = 180
-    //   this.degLeft = 180
-    // }
-    var languageReg = /\/en\//
-    if (this.myloyaltycontent.level == 'Bronze') {
-      this.levelClass = 'bronze'
-      if (this.$route.path.match(languageReg)) {
-        this.levelimgHref = '/img/20181221bronze-en.png'
+    console.log(2222222222, this.myloyaltycontent)
+    console.log(111111111, this.recordslist)
+    if (this.$route.query.otoken) {
+      console.log(this.recordslist)
+      let pers =
+        this.myloyaltycontent.points_earned / this.myloyaltycontent.points_goal
+      this.pers_percentage = Math.round(pers * 100)
+      if (pers <= 0.5) {
+        this.degRight = pers * 360
+        this.degLeft = 0
+      } else if (pers >= 1) {
+        this.degRight = 180
+        this.degLeft = 180
       } else {
-        this.levelimgHref = '/img/20181221bronze-zh.png'
+        this.degRight = 180
+        this.degLeft = pers * 360 - 180
       }
-      this.Tripledays = 0
-      this.levelRights = [1, 2, 3]
-      this.nextLevelRights = [1, 2, 3, 4]
-      this.nexrLevel = 'Silver'
-    } else if (this.myloyaltycontent.level == 'Silver') {
-      this.levelClass = 'sliver'
-      if (this.$route.path.match(languageReg)) {
-        this.levelimgHref = '/img/20181221silver-en.png'
-      } else {
-        this.levelimgHref = '/img/20181221silver-zh.png'
+      var languageReg = /\/en\//
+      if (this.myloyaltycontent.level == 'Bronze') {
+        this.levelClass = 'bronze'
+        if (this.$route.path.match(languageReg)) {
+          this.levelimgHref = '/img/20181221bronze-en.png'
+        } else {
+          this.levelimgHref = '/img/20181221bronze-zh.png'
+        }
+        this.Tripledays = 0
+        this.levelRights = [1, 2, 3]
+        this.nextLevelRights = [1, 2, 3, 4]
+        this.nexrLevel = 'Silver'
+      } else if (this.myloyaltycontent.level == 'Silver') {
+        this.levelClass = 'sliver'
+        if (this.$route.path.match(languageReg)) {
+          this.levelimgHref = '/img/20181221silver-en.png'
+        } else {
+          this.levelimgHref = '/img/20181221silver-zh.png'
+        }
+        this.Tripledays = 1
+        this.levelRights = [1, 2, 3, 4]
+        this.nextLevelRights = [1, 2, 3, 4, 5]
+        this.nexrLevel = 'Gold'
+      } else if (this.myloyaltycontent.level == 'Gold') {
+        this.levelClass = 'gold'
+        if (this.$route.path.match(languageReg)) {
+          this.levelimgHref = '/img/20181221gold-en.png'
+        } else {
+          this.levelimgHref = '/img/20181221gold-zh.png'
+        }
+        this.Tripledays = 2
+        this.levelRights = [1, 2, 3, 4, 5]
+        this.nextLevelRights = [1, 2, 3, 4, 5]
+        this.nexrLevel = 'Platinum'
+      } else if (this.myloyaltycontent.level == 'Platinum') {
+        this.levelClass = 'platinum'
+        if (this.$route.path.match(languageReg)) {
+          this.levelimgHref = '/img/20181221platinum-en.png'
+        } else {
+          this.levelimgHref = '/img/20181221platinum-zh.png'
+        }
+        this.Tripledays = 3
+        this.levelRights = [1, 2, 3, 4, 5, 6, 7]
+        this.nextLevelRights = [1, 2, 3, 4, 5]
+        this.nexrLevel = 'Platinum'
       }
-      this.Tripledays = 1
-      this.levelRights = [1, 2, 3, 4]
-      this.nextLevelRights = [1, 2, 3, 4, 5]
-      this.nexrLevel = 'Gold'
-    } else if (this.myloyaltycontent.level == 'Gold') {
-      this.levelClass = 'gold'
-      if (this.$route.path.match(languageReg)) {
-        this.levelimgHref = '/img/20181221gold-en.png'
-      } else {
-        this.levelimgHref = '/img/20181221gold-zh.png'
-      }
-      this.Tripledays = 2
-      this.levelRights = [1, 2, 3, 4, 5]
-      this.nextLevelRights = [1, 2, 3, 4, 5]
-      this.nexrLevel = 'Platinum'
-    } else if (this.myloyaltycontent.level == 'Platinum') {
-      this.levelClass = 'platinum'
-      if (this.$route.path.match(languageReg)) {
-        this.levelimgHref = '/img/20181221platinum-en.png'
-      } else {
-        this.levelimgHref = '/img/20181221platinum-zh.png'
-      }
-      this.Tripledays = 3
-      this.levelRights = [1, 2, 3, 4, 5, 6, 7]
-      this.nextLevelRights = [1, 2, 3, 4, 5]
-      this.nexrLevel = 'Platinum'
     }
   },
   mounted() {
