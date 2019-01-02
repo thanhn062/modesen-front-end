@@ -243,12 +243,8 @@ export default {
         this.levelimgHref = '/img/20181221bronze-zh.png'
       }
       this.Tripledays = 0
-      this.levelRights = ['Fourth Priority Alert', '100 Product Alerts']
-      this.nextLevelRights = [
-        'Third Priority Alert',
-        '1000 Product Alerts',
-        'Triple Points: 1 Day'
-      ]
+      this.levelRights = [1, 2, 3]
+      this.nextLevelRights = [1, 2, 3, 4]
       this.nexrLevel = 'Silver'
     } else if (this.myloyaltycontent.level == 'Silver') {
       this.levelClass = 'sliver'
@@ -258,17 +254,8 @@ export default {
         this.levelimgHref = '/img/20181221silver-zh.png'
       }
       this.Tripledays = 1
-      this.levelRights = [
-        'Third Priority Alert',
-        '1000 Product Alerts',
-        'Triple Points: 1 Day'
-      ]
-      this.nextLevelRights = [
-        'Second Priority Alert',
-        '10,000 Product Alerts',
-        'Triple Points: 2 Days',
-        'Early Sale Access'
-      ]
+      this.levelRights = [1, 2, 3, 4]
+      this.nextLevelRights = [1, 2, 3, 4, 5]
       this.nexrLevel = 'Gold'
     } else if (this.myloyaltycontent.level == 'Gold') {
       this.levelClass = 'gold'
@@ -278,18 +265,8 @@ export default {
         this.levelimgHref = '/img/20181221gold-zh.png'
       }
       this.Tripledays = 2
-      this.levelRights = [
-        'Second Priority Alert',
-        '10,000 Product Alerts',
-        'Triple Points: 2 Days',
-        'Early Sale Access'
-      ]
-      this.nextLevelRights = [
-        'First Priority Alert',
-        'Unlimited Product Alerts',
-        'Triple Points: 3 Days',
-        'Early Sale Access'
-      ]
+      this.levelRights = [1, 2, 3, 4, 5]
+      this.nextLevelRights = [1, 2, 3, 4, 5]
       this.nexrLevel = 'Platinum'
     } else if (this.myloyaltycontent.level == 'Platinum') {
       this.levelClass = 'platinum'
@@ -299,18 +276,8 @@ export default {
         this.levelimgHref = '/img/20181221platinum-zh.png'
       }
       this.Tripledays = 3
-      this.levelRights = [
-        'First Priority Alert',
-        'Unlimited Product Alerts',
-        'Triple Points: 3 Days',
-        'Early Sale Access'
-      ]
-      this.nextLevelRights = [
-        'First Priority Alert',
-        'Unlimited Product Alerts',
-        'Triple Points: 3 Days',
-        'Early Sale Access'
-      ]
+      this.levelRights = [1, 2, 3, 4, 5, 6, 7]
+      this.nextLevelRights = [1, 2, 3, 4, 5]
       this.nexrLevel = 'Platinum'
     }
   },

@@ -38,10 +38,17 @@ ul {
     color: @btnFontColor;
   }
   &:disabled,
-  &.disabled {
+  &.disabled,
+  &:hover {
     background: @btnBgColor;
     border-color: @btnBgColor;
   }
+}
+.btn-success:not(:disabled):not(.disabled):active,
+.btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+  background: @btnBgColor;
+  border-color: @btnBgColor;
 }
 .modal-header {
   background: #ecedef;
