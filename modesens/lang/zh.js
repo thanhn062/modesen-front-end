@@ -14,6 +14,7 @@ module.exports = {
   price: '价格',
   Footer: {
     classtitle1: '使用帮助',
+    loyaltyProgram: '会员介绍',
     helpcenter: '帮助中心',
     contactus: '联系我们',
     feedback: '用户反馈',

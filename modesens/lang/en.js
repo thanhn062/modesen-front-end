@@ -14,6 +14,7 @@ module.exports = {
   price: 'Order Value',
   Footer: {
     classtitle1: 'CUSTOMER CARE',
+    loyaltyProgram: 'Loyalty Program',
     helpcenter: 'Help Center',
     contactus: 'Contact Us',
     feedback: 'Feedback',

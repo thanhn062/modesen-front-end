@@ -5,8 +5,8 @@
         <div class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle1') }}</h6>
           <div class="p">
-            <ul class="list-unstyled contact">
-              <li><a href="/loyalty/">{{ $t('Footer.helpcenter') }}</a></li>
+            <ul class="contact">
+              <li><a href="/loyalty/">{{ $t('Footer.loyaltyProgram') }}</a></li>
               <li><a href="/faq/">{{ $t('Footer.helpcenter') }}</a></li>
               <li><a href="javascript:;">{{ $t('Footer.contactus') }}</a></li>
               <li><a href="javascript:;">{{ $t('Footer.feedback') }}</a></li>
@@ -16,39 +16,38 @@
         <div class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle2') }}</h6>
           <div class="p">
-            <ul class="list-unstyled contact">
-              <li><nuxt-link to="/about/">{{ $t('Footer.aboutus') }}</nuxt-link></li>
-              <li><nuxt-link to="/influencer/">{{ $t('Footer.influencerpro') }}</nuxt-link></li>
-              <!-- <li><nuxt-link 
-                :onclick="clickVal">{{ $t('Footer.invitefd') }}</nuxt-link></li> -->
-              <li><nuxt-link to="/stores/">{{ $t('Footer.partnerstores') }}</nuxt-link></li>
+            <ul class="contact">
+              <li><a href="/about/">{{ $t('Footer.aboutus') }}</a></li>
+              <li><a href="/influencer/">{{ $t('Footer.influencerpro') }}</a></li>
+              <li><a href="javascript:;">{{ $t('Footer.invitefd') }}</a></li>
+              <li><a href="/stores/">{{ $t('Footer.partnerstores') }}</a></li>
             </ul>
           </div>
         </div>
         <div class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle3') }}</h6>
           <div class="p">
-            <ul class="list-unstyled contact">
-              <li><nuxt-link to="/legal/">{{ $t('Footer.termsofuse') }}</nuxt-link></li>
-              <li><nuxt-link to="/privacy/">{{ $t('Footer.privacypolicy') }}</nuxt-link></li>
+            <ul class="contact">
+              <li><a href="/legal/">{{ $t('Footer.termsofuse') }}</a></li>
+              <li><a href="/privacy/">{{ $t('Footer.privacypolicy') }}</a></li>
             </ul>
           </div>
         </div>
         <div class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle4') }}</h6>
-          <ul class="list-unstyled contact">
+          <ul class="contact">
             <li>
-              <!-- <div
-                to="https://itunes.apple.com/app/modesens-the-premier-shopping-assistant/id976201094?mt=8"
+              <a
+                href="https://itunes.apple.com/app/modesens-the-premier-shopping-assistant/id976201094?mt=8"
                 target="_blank">
                 <img
                   src="/img/download-on-the-app-store.png"
                   class="footer-connect-img">
-              </div> -->
+              </a>
             </li>
-            <!-- <li><nuxt-link><img
+            <li><a><img
               src="/img/add-to-chrome.png"
-              class="footer-connect-img"></nuxt-link></li> -->
+              class="footer-connect-img"></a></li>
           </ul>
         </div>
         <div
@@ -119,26 +118,36 @@
         <div
           class="footer-svg-con"
           style="float: right;margin-right:-9px;">
-          <nuxt-link to="https://www.pinterest.com/modesens/"><img
-            src="/img/20181008footer-pit.svg"
-            class="footer-mini-img"
-            style="width: 30px;margin-right: 20px;"></nuxt-link>
-          <nuxt-link to="https://twitter.com/modesens"><img
-            src="/img/20181008footer-tt.svg"
-            class="footer-mini-img"
-            style="width: 30px;margin-right: 10px;"></nuxt-link>
-          <nuxt-link to="https://www.instagram.com/modesens/"><img
-            src="/img/footer-p.svg"
-            class="footer-mini-img"></nuxt-link>
-          <nuxt-link to="https://www.facebook.com/modesens"><img
-            src="/img/footer-fb.svg"
-            class="footer-mini-img"></nuxt-link>
-          <nuxt-link to="https://weibo.com/5365182498/profile?topnav=1&wvr=6&is_all=1"><img
-            src="/img/footer-wb.svg"
-            class="footer-mini-img"></nuxt-link>
-          <nuxt-link to="javascript:;"><img
+          <a
+            href="https://www.pinterest.com/modesens/"
+            target="_blank"><img
+              src="/img/20181008footer-pit.svg"
+              class="footer-mini-img"
+              style="width: 30px;margin-right: 20px;"></a>
+          <a
+            href="https://twitter.com/modesens"
+            target="_blank"><img
+              src="/img/20181008footer-tt.svg"
+              class="footer-mini-img"
+              style="width: 30px;margin-right: 10px;"></a>
+          <a
+            href="https://www.instagram.com/modesens/"
+            target="_blank"><img
+              src="/img/footer-p.svg"
+              class="footer-mini-img"></a>
+          <a
+            href="https://www.facebook.com/modesens"
+            target="_blank"><img
+              src="/img/footer-fb.svg"
+              class="footer-mini-img"></a>
+          <a
+            href="https://weibo.com/5365182498/profile?topnav=1&wvr=6&is_all=1"
+            target="_blank"><img
+              src="/img/footer-wb.svg"
+              class="footer-mini-img"></a>
+          <a href="javascript:;"><img
             src="/img/footer-wx.svg"
-            class="footer-mini-img"></nuxt-link>
+            class="footer-mini-img"></a>
         </div>
       </div>
     </div>
