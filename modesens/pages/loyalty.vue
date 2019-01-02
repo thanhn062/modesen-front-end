@@ -69,19 +69,23 @@
           <div class="imgBox-l">
             <div class="levelEach level-platinum">
               <span>{{ $t('loyalty.Platinum') }}</span><br>
-              <span>{{ platinumNum }}</span>
+              <span>{{ platinumNum }}</span><br>
+              <span>{{ $t('loyalty.Points') }}</span>
             </div>
             <div class="levelEach level-gold">
               <span>{{ $t('loyalty.Gold') }}</span><br>
-              <span>{{ goldNum }}</span>
+              <span>{{ goldNum }}</span><br>
+              <span>{{ $t('loyalty.Points') }}</span>
             </div>
             <div class="levelEach level-silver">
               <span>{{ $t('loyalty.Silver') }}</span><br>
-              <span>{{ silverNum }}</span>
+              <span>{{ silverNum }}</span><br>
+              <span>{{ $t('loyalty.Points') }}</span>
             </div>
             <div class="levelEach level-bronze">
               <span>{{ $t('loyalty.Bronze') }}</span><br>
-              <span>{{ bronzeNum }}</span>
+              <span>{{ bronzeNum }}</span><br>
+              <span>{{ $t('loyalty.Points') }}</span>
             </div>
           </div>
           <div class="levelKind">
@@ -105,13 +109,13 @@
               <span>{{ $t('loyalty.Unlimited') }}</span>
             </div>
             <div class="levelEach level-gold">
-              <span><span>100</span></span>
+              <span><span>10,000</span></span>
             </div>
             <div class="levelEach level-silver">
-              <span>50</span>
+              <span>1,000</span>
             </div>
             <div class="levelEach level-bronze">
-              <span><span>10</span></span>
+              <span><span>100</span></span>
             </div>
           </div>
           <div class="levelKind">

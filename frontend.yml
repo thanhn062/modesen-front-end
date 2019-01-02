@@ -19,6 +19,14 @@
     args:
       warn: no
 
+  - name: pm2 stop all.
+    command: "pm2  stop all"
+    args:
+      chdir: /modesens/modesens-frontend/modesens
+
+  - name: install packages.
+    command: "npm install"
+
   - name: get nuxt server scripts from s3.
     command: "aws s3 sync s3://modesens/nuxt /modesens/modesens-frontend/modesens/.nuxt"
 
