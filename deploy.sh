@@ -14,6 +14,7 @@ echo "2. npm run build..."
 # clear
 cd modesens
 rm -rf .nuxt/*
+npm i
 npm run build
 
 echo
