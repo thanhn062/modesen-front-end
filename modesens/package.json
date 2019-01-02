@@ -22,6 +22,7 @@
     "cookie-universal-nuxt": "^2.0.5",
     "cross-env": "^5.2.0",
     "dotenv": "^6.2.0",
+    "echarts": "^4.2.0-rc.2",
     "fs": "0.0.1-security",
     "geoip-country": "^3.1.10",
     "jquery": "^3.3.1",
@@ -34,6 +35,7 @@
     "request-ip": "^2.1.1",
     "sass-resources-loader": "^2.0.0",
     "swiper": "^4.4.5",
+    "v-charts": "^1.19.0",
     "windows-fs": "^1.2.0"
   },
   "devDependencies": {
