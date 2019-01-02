@@ -223,7 +223,8 @@ module.exports = {
   },
   annual: {
     MemberSince: '会员始于',
-    savingtitle: '你的购物节省总额 VS ModeSens会员购物节省总额',
+    yousaved: '你的购物节省总额',
+    modesenssaved: 'ModeSens会员购物节省总额',
     shoppingNum: '购物次数',
     wishNum: '心愿单',
     postNum: '发布美搭',

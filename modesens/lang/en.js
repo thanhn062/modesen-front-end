@@ -223,7 +223,8 @@ module.exports = {
   },
   annual: {
     MemberSince: 'Member Since',
-    savingtitle: 'Your Total Savings Versus ModeSens Members Total Savings',
+    yousaved: 'Your Total Savings',
+    modesenssaved: 'ModeSens Members Total Savings',
     shoppingNum: '# Of Times Shopped',
     wishNum: '# Of Items Wishlisted',
     postNum: '# Of Times Posted',

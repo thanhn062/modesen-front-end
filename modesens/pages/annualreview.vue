@@ -11,11 +11,11 @@
       <div class="savingProportion">
         <div class="proportionbox">
           <div class="userseavd">
-            <div class="itemtitle">Your Total Savings</div>
+            <div class="itemtitle">{{ $t('annual.yousaved') }}</div>
             <div class="savedNum">${{ usersavingtotal|NumFormat }}</div>
           </div>
           <div class="overallsaved">
-            <div class="itemtitle">ModeSens Members Total Savings </div>
+            <div class="itemtitle">{{ $t('annual.modesenssaved') }} </div>
             <div class="savedNum">${{ savingtotal|NumFormat }}</div>
           </div>
         </div>
