@@ -9,28 +9,15 @@
       <div class="username"> {{ username }}</div>
       <div class="memberStartTime">{{ $t('annual.MemberSince') }} {{ user.user_joined }}</div>
       <div class="savingProportion">
-        <div class="title">{{ $t('annual.savingtitle') }} </div>
         <div class="proportionbox">
-          <div class="start"/>
-          <div class="proportionImg">
-            <div
-              :style="{width:proportion+'%'}"
-              class="proportionitem"/>
-            <div
-              :style="{left:proportion+'%', marginLeft:'-'+proportionalter+'px'}"
-              class="savingnum">
-              <div
-                class="tooltip bs-tooltip-top bs-tooltip-top-docs"
-                role="tooltip">
-                <div
-                  class="arrow"/>
-                <div class="tooltip-inner">
-                  ${{ usersavingtotal|NumFormat }}
-                </div>
-              </div>
-            </div>
+          <div class="userseavd">
+            <div class="itemtitle">Your Total Savings</div>
+            <div class="savedNum">${{ usersavingtotal|NumFormat }}</div>
           </div>
-          <div class="end">${{ savingtotal|NumFormat }}</div>
+          <div class="overallsaved">
+            <div class="itemtitle">ModeSens Members Total Savings </div>
+            <div class="savedNum">${{ savingtotal|NumFormat }}</div>
+          </div>
         </div>
       </div>
       <ul class="detailsBox">

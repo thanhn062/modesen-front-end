@@ -233,7 +233,7 @@ module.exports = {
     mostShoptitle: '最多购买类别',
     yaxisname: '总购买量的百分比',
     xaxisname: '产品类别',
-    topdesignertitle: '经常购买的设计师',
+    topdesignertitle: '经常购买的品牌',
     youtop: '你的前五名',
     oeralltop: '所有会员前五名',
     lookforwardtitle: '展望2019',
