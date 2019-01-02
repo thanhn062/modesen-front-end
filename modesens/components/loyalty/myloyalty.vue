@@ -217,8 +217,6 @@ export default {
     }
   },
   created() {
-    console.log(2222222222, this.myloyaltycontent)
-    console.log(111111111, this.recordslist)
     if (this.$route.query.otoken) {
       console.log(this.recordslist)
       let pers =
