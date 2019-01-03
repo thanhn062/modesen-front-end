@@ -1,8 +1,9 @@
 @import 'common.less';
-* {
+
+body {
   font-family: 'SuisseIntl','Lato';
   color: @fontColor;
-  font-size: @font-size;
+  font-size: @fontStandard;
 }
 h1,
 h2,
@@ -85,6 +86,10 @@ ul {
 }
 .glyphicon-chevron-right:before {
   content: ">";
+}
+img.loadmore {
+  width: 35px;
+  height: 35px;
 }
 @media(max-width: 1199px) {
   .container {

@@ -40,7 +40,7 @@
                     v-else
                     class="name">{{ lsuser.username }}</div>
                 </div>
-                <div class="currentLevel">{{ $t('accountLoyalty.'+level.level.toUpperCase()) }}</div>
+                <div class="currentLevel">{{ $t('accountLoyalty.'+userLevel.toUpperCase()) }}</div>
                 <div class="userEnd">
                   <a
                     href="/loyalty/"
@@ -60,12 +60,22 @@
           <b-tab
             :title="$t('accountLoyalty.account_overview')" 
             active>
-            <div class="page-right ">
+            <div
+              v-if = "flag1 && flag2"
+              class="page-right ">
               <keep-alive>
                 <myloyalty 
                   :myloyaltycontent="level"
-                  :myloyaltycontent1="records.records"/>
+                  :myloyaltycontent1="userRecords"/>
               </keep-alive>
+            </div>
+            <div
+              v-else
+              class="page-right">
+              <img
+                src="/img/20190102sync.gif"
+                alt=""
+                class="loadmore">
             </div>
           </b-tab>
         </b-tabs>
@@ -81,6 +91,13 @@ export default {
   },
   data() {
     return {
+      lsuser: {},
+      level: {},
+      records: {},
+      userLevel: '',
+      userRecords: {},
+      flag1: false,
+      flag2: false,
       limit: -1,
       //当前显示的页面
       currentPage: 1
@@ -90,30 +107,40 @@ export default {
     title: 'membership'
   },
   async asyncData({ app, route, $axios }) {
-    var params = {}
-    params.level = true
-    var token = route.query.otoken
-    app.$cookies.set('token', token)
-    let { lsuser, level } = await $axios.post(
-      '/accounts/profile/get/',
-      params,
-      {
-        async: false
-      }
-    )
-    var recordsparams = {}
-    recordsparams.offset = 0
-    recordsparams.amount = 10
-    let records = await $axios.post('/loyalty/records/', recordsparams, {
-      async: false
-    })
-    return {
-      lsuser,
-      level,
-      records
+    let oToken = route.query.otoken
+    if (oToken) {
+      app.$cookies.set('token', oToken)
     }
   },
-  computed: {}
+  created() {
+    if (this.$route.query.otoken) {
+      this.getUserInfo()
+      this.getRecords()
+    }
+  },
+  methods: {
+    async getUserInfo() {
+      var params = {}
+      params.level = true
+      let { lsuser, level } = await this.$axios.post(
+        '/accounts/profile/get/',
+        params
+      )
+      this.lsuser = lsuser
+      this.level = level
+      this.userLevel = level.level
+      this.flag1 = true
+    },
+    async getRecords() {
+      var recordsparams = {}
+      recordsparams.offset = 0
+      recordsparams.amount = 10
+      let records = await this.$axios.post('/loyalty/records/', recordsparams)
+      this.records = records
+      this.userRecords = records.records
+      this.flag2 = true
+    }
+  }
 }
 </script>
 <style lang="less">
