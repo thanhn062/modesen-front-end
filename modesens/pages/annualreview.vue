@@ -273,6 +273,9 @@ export default {
       }
     }
   },
+  head: {
+    title: 'Annual Review | ModeSens'
+  },
   async asyncData({ app, query }) {
     let oToken = query.otoken
     if (oToken) {
