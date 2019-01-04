@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="navmenu">
     nav
     <input type="datetime">
   </header>
@@ -12,7 +12,7 @@ export default {
 }
 </script>
 <style lang="less">
-header {
+.navmenu {
   position: fixed;
   width: 100%;
   height: 50px;

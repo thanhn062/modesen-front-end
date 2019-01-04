@@ -1,5 +1,6 @@
 @import 'common.less';
 
+html,
 body {
   font-family: 'SuisseIntl','Lato';
   color: @fontColor;
@@ -36,6 +37,11 @@ a {
 ul {
   list-style: none;
 }
+.btn {
+  border-radius: 0;
+  padding: 16px 15px 13px;
+  line-height: 1;
+}
 .btn-modesens,
 .btn-primary,
 .btn-success {
@@ -59,8 +65,24 @@ ul {
   background: @btnBgColor;
   border-color: @btnBgColor;
 }
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: @borderColor;
+  &:hover {
+    color: #fff;
+    background-color: #1c1c1c;
+    border-color: #1c1c1c;
+  }
+}
+.form-control {
+  border-radius: 0;
+}
 .modal-header {
   background: #ecedef;
+}
+.modal-content {
+  border-radius: 0;
 }
 ul {
   padding: 0;
@@ -94,5 +116,10 @@ img.loadmore {
 @media(max-width: 1199px) {
   .container {
     padding: 0;
+  }
+}
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 600px;
   }
 }
