@@ -326,6 +326,9 @@ export default {
       ]
     }
   },
+  head: {
+    title: 'Loyalty | ModeSens'
+  },
   async asyncData({ app, query }) {
     let oToken = query.otoken
     if (oToken) {
