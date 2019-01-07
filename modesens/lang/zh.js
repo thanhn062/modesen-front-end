@@ -12,6 +12,7 @@ export const common = {
   Email: '邮件：',
   Introduction: '介绍：',
   ContactUs: '联系我们',
+  Close: '关闭'
 }
 export const Footer = {
   classtitle1: '使用帮助',

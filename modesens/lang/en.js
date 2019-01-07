@@ -12,6 +12,7 @@ export const common = {
   Email: 'Email:',
   Introduction: 'Introduction:',
   ContactUs: 'Contact Us',
+  Close: 'Close'
 };
 export const Footer = {
   classtitle1: 'CUSTOMER CARE',

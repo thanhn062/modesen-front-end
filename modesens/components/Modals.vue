@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 登录modal -->
     <b-modal
       v-if="lsuid===''"
       id="mdLogin"
@@ -16,9 +17,12 @@
         height="100%"
         frameborder="0"/>
     </b-modal>
+    <!-- Connect Us -->
     <b-modal
       id="cumodal"
       :title="$t('common.ContactUs')"
+      :ok-title="$t('Close')"
+      ok-only
       @hidden="cumodalHide()">
       <div>
         <div v-if="hereHasClick === false">
@@ -119,6 +123,7 @@ export default {
 }
 </script>
 <style lang="less">
+@import '../assets/css/common.less';
 #mdLogin {
   button {
     position: absolute;
@@ -133,6 +138,16 @@ export default {
   .modal-body {
     a {
       text-decoration: underline;
+    }
+  }
+  .btn-primary {
+    color: #333;
+    background-color: @btnFontColor;
+    border-color: @borderColor;
+    &:hover {
+      color: @btnFontColor;
+      background-color: @btnBgColor;
+      border-color: @btnBgColor;
     }
   }
 }
