@@ -172,8 +172,8 @@
 
 <script>
 import daterangepicker from 'bootstrap-daterangepicker'
-import { getLocalTime } from '~/static/util/util.js'
-import { getTimestamp } from '~/static/util/util.js'
+import { getLocalTime } from '~/static/utils/utils.js'
+import { getTimestamp } from '~/static/utils/utils.js'
 import 'bootstrap-daterangepicker/daterangepicker.css'
 export default {
   filters: {
@@ -218,7 +218,6 @@ export default {
   },
   created() {
     if (this.$route.query.otoken) {
-      console.log(this.recordslist)
       let pers =
         this.myloyaltycontent.points_earned / this.myloyaltycontent.points_goal
       this.pers_percentage = Math.round(pers * 100)

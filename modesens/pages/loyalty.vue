@@ -15,12 +15,14 @@
             class="btn btn-modesens"
             data-ga-click="loyalty-joinBtn--">{{ $t('loyalty.joinNow') }}</button>
         </a>
-        <div class="loginBox">{{ $t('loyalty.member') }}<a
-          v-b-modal.mdLogin
+        <div class="loginBox login_btn">{{ $t('loyalty.member') }}<a
           data-ga-click="loyalty-loginBtn--"
-          href="javascript:;">{{ $t('loyalty.loginNow') }}</a>
+          href="javascript:;"
+          @click="openloginmodal">{{ $t('loyalty.loginNow') }}</a>
         </div>
-        <Modal :lsuid="lsuid"/>
+        <Modal
+          ref="modals"
+          :lsuid="lsuid"/>
       </div>
       <div
         v-else
@@ -280,6 +282,7 @@
 </template>
 <script>
 import Modal from '~/components/Modal.vue'
+import { wxlogin } from '~/static/utils/utils.js'
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
 export default {
@@ -342,7 +345,7 @@ export default {
     }
     if ($(window).width() < 1200) {
       this.isPC = false
-      var banner_swiper_5 = new Swiper('.swiper-container', {
+      let banner_swiper_5 = new Swiper('.swiper-container', {
         pagination: {
           el: '.swiper-p5',
           clickable: true
@@ -356,7 +359,7 @@ export default {
   },
   methods: {
     async getLevelInfo() {
-      var params = {}
+      let params = {}
       params.level = true
       let { level } = await this.$axios.post('/accounts/profile/get/', params)
       if (level) {
@@ -373,6 +376,14 @@ export default {
       }
       this.indexQt = index
       this.$ga.event('loyalty', 'question', 'click', index + 1)
+    },
+    openloginmodal() {
+      let ua = window.navigator.userAgent.toLowerCase()
+      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        wxlogin(this.$route.fullPath)
+      } else {
+        this.$refs.modals.showLoginModal()
+      }
     }
   }
 }

@@ -39,3 +39,19 @@ export function NumFormat (value) {
         return intPartFormat;
     }
 };
+
+export function wxlogin (fullPath) {
+  let res = fullPath.match(/\/[a-z]+\/[a-z]+(.+)/)
+  if (!res) return
+  let next = [...res][1]
+  let redirect_uri =
+    'https://modesens.com/accounts/weixin/callback2/?next=' + next
+  let encode_url = encodeURIComponent(redirect_uri)
+  let state = new Date().getTime()
+  let url =
+    'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f36c4e7edbee26e&redirect_uri=' +
+    encode_url +
+    '&response_type=code&scope=snsapi_userinfo&state=' +
+    state
+  window.parent.location = url
+}
