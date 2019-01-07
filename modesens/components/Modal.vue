@@ -28,13 +28,10 @@ export default {
       }
     }
   },
-  data() {
-    return {
-      nextUrl: this.$route.fullPath
-    }
-  },
-  created() {},
   methods: {
+    showLoginModal() {
+      this.$refs.mdLogin.show()
+    },
     hideLoginModal() {
       this.$refs.mdLogin.hide()
     }

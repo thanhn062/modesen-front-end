@@ -156,7 +156,7 @@
 <script>
 import VeHistogram from 'v-charts/lib/histogram.js'
 import vepie from 'v-charts/lib/pie.js'
-import { NumFormat } from '~/static/util/util.js'
+import { NumFormat } from '~/static/utils/utils.js'
 export default {
   filters: {
     NumFormat(value) {
