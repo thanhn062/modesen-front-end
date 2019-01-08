@@ -21,9 +21,10 @@
     <b-modal
       id="cumodal"
       :title="$t('common.ContactUs')"
-      :ok-title="$t('Close')"
+      :ok-title="hereHasClick ? $t('Submit') : $t('Close')"
       ok-only
-      @hidden="cumodalHide()">
+      @ok="contactSubmit"
+      @hidden="cumodalHide">
       <div>
         <div v-if="hereHasClick === false">
           <div class="control-label">{{ $t('cuModal.desc1') }}</div>
@@ -58,6 +59,7 @@
               <label for="contact-company">{{ $t('common.YourCompanyName') }}</label><br>
               <input
                 id="contact-company"
+                v-model="company"
                 name="company"
                 type="text">
             </div>
@@ -65,6 +67,7 @@
               <label for="contact-name">{{ $t('common.YourName') }}</label><br>
               <input
                 id="contact-name"
+                v-model="name"
                 name="name"
                 type="text">
             </div>
@@ -72,6 +75,7 @@
               <label for="contact-url">{{ $t('common.URL') }}</label><br>
               <input
                 id="contact-url"
+                v-model="url"
                 name="url"
                 type="text">
             </div>
@@ -79,6 +83,7 @@
               <label for="contact-email">{{ $t('common.Email') }}</label><br>
               <input
                 id="contact-email"
+                v-model="email"
                 name="email"
                 type="text">
             </div>
@@ -86,11 +91,46 @@
               <label for="contact-intro">{{ $t('common.Introduction') }}</label><br>
               <textarea
                 id="contact-intro"
+                v-model="introduction"
                 name="intro"/>
             </div>
           </form>
         </div>
       </div>
+    </b-modal>
+    <!-- Feedback -->
+    <b-modal
+      id="FbModal"
+      ref="FbModal"
+      :title="$t('Footer.feedback')"
+      :ok-title="$t('Sendmessage')"
+      :cancel-title="$t('Close')"
+      @ok="sendFeedback">
+      <div>{{ $t('FbModal.desc1') }}</div>
+      <br>
+      <div v-if="isSendFeedback===false">
+        <div>{{ $t('FbModal.desc2') }}</div>
+        <br>
+        <form role="form">
+          <div class="form-group">
+            <input
+              :placeholder="$t('FbModal.inputtxt')"
+              v-model="contactEmail"
+              type="email"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <textarea
+              :placeholder="$t('FbModal.textareatxt')"
+              v-model="contactMsg"
+              class="form-control"/>
+          </div>
+        </form>
+      </div>
+      <div
+        v-else
+        id="fbsuceed"
+        class="fb-thanks">{{ $t('FbModal.desc3') }}</div>
     </b-modal>
   </div>
 </template>
@@ -106,7 +146,15 @@ export default {
   },
   data() {
     return {
-      hereHasClick: false
+      hereHasClick: false,
+      company: '',
+      name: '',
+      url: '',
+      email: '',
+      introduction: '',
+      isSendFeedback: false,
+      contactEmail: '',
+      contactMsg: ''
     }
   },
   methods: {
@@ -118,6 +166,65 @@ export default {
     },
     cumodalHide() {
       this.hereHasClick = false
+    },
+    contactSubmit(evt) {
+      if (this.hereHasClick) {
+        evt.preventDefault()
+        if (this.company) {
+          $('#contact-company').css('border-color', '#8E8E8E')
+        } else {
+          $('#contact-company').css('border-color', 'red')
+          return
+        }
+        if (this.name) {
+          $('#contact-name').css('border-color', '#8E8E8E')
+        } else {
+          $('#contact-name').css('border-color', 'red')
+          return
+        }
+        if (this.url) {
+          $('#contact-url').css('border-color', '#8E8E8E')
+        } else {
+          $('#contact-url').css('border-color', 'red')
+          return
+        }
+        if (this.email) {
+          $('#contact-email').css('border-color', '#8E8E8E')
+        } else {
+          $('#contact-email').css('border-color', 'red')
+          return
+        }
+        this.introduction = this.introduction.trim()
+        // var data = `company=${this.company}&name=${this.name}&url=${
+        //   this.url
+        // }&email=${this.email}&intro=${this.introduction}`
+        let data = {}
+        data.company = this.company
+        data.name = this.name
+        data.url = this.url
+        data.email = this.email
+        data.intro = this.introduction
+        console.log(data)
+        this.$axios.post('/customeremail/', data)
+      }
+    },
+    sendFeedback(evt) {
+      evt.preventDefault()
+      if (!this.contactMsg) {
+        alert(this.$t('FbModal.aletmsg'))
+        return
+      }
+      let data = new Object()
+      data.from_href = window.location.href
+      data.contact = this.contactEmail
+      data.content = this.contactMsg
+      this.$axios.post('/feedback/', data)
+      this.isSendFeedback = true
+      setTimeout(() => {
+        this.$refs.FbModal.hide()
+        this.contactMsg = ''
+        this.isSendFeedback = false
+      }, 3000)
     }
   }
 }
@@ -149,6 +256,51 @@ export default {
       background-color: @btnBgColor;
       border-color: @btnBgColor;
     }
+  }
+  form {
+    margin-top: @descSpace-s;
+    div {
+      float: left;
+      width: 45%;
+      box-sizing: border-box;
+      &:nth-of-type(2n) {
+        margin-left: 10%;
+      }
+      &:nth-of-type(5) {
+        width: 100%;
+      }
+    }
+    label {
+      font-weight: 700;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+      border: @border;
+    }
+    textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      border: @border;
+    }
+  }
+}
+#FbModal {
+  .btn-secondary {
+    color: #333;
+    background-color: @btnFontColor;
+    border-color: @borderColor;
+    &:hover {
+      color: @btnFontColor;
+      background-color: @btnBgColor;
+      border-color: @btnBgColor;
+    }
+  }
+  .fb-thanks {
+    padding: 30px 15px;
+    font-size: 18px;
+    height: 186px;
+    text-align: center;
   }
 }
 </style>

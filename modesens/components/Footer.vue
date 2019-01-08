@@ -11,7 +11,9 @@
               <li><a
                 v-b-modal.cumodal
                 href="javascript:;">{{ $t('common.ContactUs') }}</a></li>
-              <li><a href="javascript:;">{{ $t('Footer.feedback') }}</a></li>
+              <li><a
+                v-b-modal.FbModal
+                href="javascript:;">{{ $t('Footer.feedback') }}</a></li>
             </ul>
           </div>
         </div>
@@ -21,7 +23,15 @@
             <ul class="contact">
               <li><a href="/about/">{{ $t('Footer.aboutus') }}</a></li>
               <li><a href="/influencer/">{{ $t('Footer.influencerpro') }}</a></li>
-              <li><a href="javascript:;">{{ $t('Footer.invitefd') }}</a></li>
+              <li>
+                <a
+                  v-if="lsuser"
+                  href="/invite/">{{ $t('Footer.invitefd') }}</a>
+                <a
+                  v-b-modal.inviteModal
+                  v-else
+                  href="javascript:;">{{ $t('Footer.invitefd') }}</a>
+              </li>
               <li><a href="/stores/">{{ $t('Footer.partnerstores') }}</a></li>
             </ul>
           </div>
@@ -153,9 +163,33 @@
         </div>
       </div>
     </div>
+    <!-- invite -->
+    <b-modal
+      id="inviteModal"
+      :title="$t('Footer.inviteTitle')">
+      <h3>{{ $t('Footer.inviteMsg') }}</h3>
+      <div
+        slot="modal-footer"
+        class="w-100 invite-footer">
+        <button
+          v-b-modal.mdLogin
+          class="btn btn-secondary">{{ $t('Login') }}</button>
+        <button
+          class="btn btn-primary"
+          @click="signupJump">{{ $t('SignUp') }}</button>
+      </div>
+    </b-modal>
+    <button v-b-modal.testmodal>test</button>
+    <b-modal id="testmodal">
+      <button v-b-modal.mdLogin>test</button>
+    </b-modal>
+    <b-modal id="dddmodal">
+      <p>jflsjflsjl</p>
+    </b-modal>
   </footer>
 </template>
 <script>
+import { SignupOrLogin } from '~/static/util/util.js'
 export default {
   data() {
     return {
@@ -163,7 +197,11 @@ export default {
     }
   },
   mounted() {},
-  methods: {}
+  methods: {
+    signupJump() {
+      SignupOrLogin('signup')
+    }
+  }
 }
 </script>
 <style lang="less">

@@ -12,7 +12,10 @@ export const common = {
   Email: 'Email:',
   Introduction: 'Introduction:',
   ContactUs: 'Contact Us',
-  Close: 'Close'
+  Close: 'Close',
+  Submit: 'Submit',
+  SignUp: 'Sign Up',
+  Login: 'Login',
 };
 export const Footer = {
   classtitle1: 'CUSTOMER CARE',
@@ -31,7 +34,9 @@ export const Footer = {
   classtitle5: 'SHARE THE LOVE',
   class5desc: 'Your friends will thank you - more than once',
   placeholder1: 'Enter email addresses separated by commas',
-  classtitle6: 'NEWSLETTER SIGN UP'
+  classtitle6: 'NEWSLETTER SIGN UP',
+  inviteTitle: 'Please sign in',
+  inviteMsg: 'Not a member yet? Please log in to invite friends'
 };
 export const loyalty = {
   benefitsTitle: 'Membership Benefits',
@@ -259,3 +264,12 @@ export const cuModal = {
   desc4: 'For any media inquiries please contact',
   desc5: 'If so, please complete and submit the form below.'
 };
+export const FbModal = {
+  desc1: 'Help Improve The ModeSens Experience',
+  desc2: "We're constantly looking for ways to improve your shopping experience, and welcome any feedback that you would like to share with us. As a reminder, you can also alert us of any issues using the product button on the right-hand side of every product page.",
+  inputtxt: 'Please let us know your contact info (optional)',
+  textareatxt: 'Message:',
+  desc3: 'Thanks so much for your time! We review every bit of feedback we receive, and will reach out to you if we have further questions.',
+  aletmsg: 'Please enter your comments or suggestions',
+  Sendmessage: 'Send message'
+}

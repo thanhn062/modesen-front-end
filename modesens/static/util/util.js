@@ -39,3 +39,16 @@ export function NumFormat (value) {
         return intPartFormat;
     }
 };
+
+export function SignupOrLogin(opt) {
+  let res = location.pathname.match(/\/[a-z]+\/[a-z]+(.+)/)
+  if (!res) return
+  let next_url = [...res][1]
+  if (opt === 'signup') {
+    if (next_url === '/about/') {
+      window.open('/accounts/signup/?next=/')
+    } else {
+      window.open('/accounts/signup/?next=' + next_url)
+    }
+  }
+}

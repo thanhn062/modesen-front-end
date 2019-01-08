@@ -12,6 +12,7 @@ export default function ({ $axios, app }) {
     // config.withCredentials = true, // 允许携带cookie
     // config.crossDomain = true   //允许跨域
     // config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+
     if (config.secretKey === 1) {
       config.url += `?secretkey=${process.env.secretKey}`
     }

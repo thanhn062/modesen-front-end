@@ -12,7 +12,10 @@ export const common = {
   Email: '邮件：',
   Introduction: '介绍：',
   ContactUs: '联系我们',
-  Close: '关闭'
+  Close: '关闭',
+  Submit: '提交',
+  SignUp: '注册',
+  Login: '登录',
 }
 export const Footer = {
   classtitle1: '使用帮助',
@@ -32,6 +35,8 @@ export const Footer = {
   class5desc: '你的好友将会不止一次地感谢你',
   placeholder1: '写下好友的邮箱地址',
   classtitle6: '订阅时尚资讯',
+  inviteTitle: '请登录',
+  inviteMsg: '还没成为ModeSens的一员？ 请登录邀请好友'
 };
 export const loyalty = {
   benefitsTitle: '会员权益',
@@ -259,3 +264,12 @@ export const cuModal = {
   desc4: '任何媒体需求请联系',
   desc5: '如果是请填写以下表格并提交。'
 };
+export const FbModal = {
+  desc1: '帮助改善ModeSens体验',
+  desc2: "我们在不断探索改善你购物体验的方法，欢迎你与我们分享您的反馈。提醒一下，你还可以使用每个产品页面右侧的反馈按键向我们反馈任何问题。",
+  inputtxt: '请留下你的联系方式（可选）',
+  textareatxt: '请输入你的意见与建议',
+  desc3: '感谢你的宝贵时间,我们会认真查阅每份反馈,如有新进展会及时通知你.',
+  aletmsg: '请输入你的意见与建议',
+  Sendmessage: '发送消息'
+}

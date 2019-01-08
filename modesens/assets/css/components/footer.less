@@ -91,3 +91,31 @@
 #footer_male[type='radio']:focus {
   background: url('/img/checked.svg');
 }
+
+#inviteModal {
+  h3 {
+    margin-top: 20px;
+    padding: 15px;
+    font-weight: normal;
+  }
+  .invite-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    button {
+      padding: 7px 20px;
+      font-size: 18px;
+    }
+  }
+  .btn-secondary {
+    margin-right: 5px;
+    color: #333;
+    background-color: @btnFontColor;
+    border-color: @borderColor;
+    &:hover {
+      color: @btnFontColor;
+      background-color: @btnBgColor;
+      border-color: @btnBgColor;
+    }
+  }
+}
