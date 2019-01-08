@@ -19,7 +19,8 @@ export default {
   },
   data() {
     return {
-      headerHeight: '50px 0'
+      headerHeight: '50px 0',
+      lsuid: ''
     }
   },
   mounted() {

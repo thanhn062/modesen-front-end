@@ -173,23 +173,16 @@
         class="w-100 invite-footer">
         <button
           v-b-modal.mdLogin
-          class="btn btn-secondary">{{ $t('Login') }}</button>
+          class="btn btn-secondary">{{ $t('common.Login') }}</button>
         <button
           class="btn btn-primary"
-          @click="signupJump">{{ $t('SignUp') }}</button>
+          @click="signupJump">{{ $t('common.SignUp') }}</button>
       </div>
-    </b-modal>
-    <button v-b-modal.testmodal>test</button>
-    <b-modal id="testmodal">
-      <button v-b-modal.mdLogin>test</button>
-    </b-modal>
-    <b-modal id="dddmodal">
-      <p>jflsjflsjl</p>
     </b-modal>
   </footer>
 </template>
 <script>
-import { SignupOrLogin } from '~/static/util/util.js'
+import { SignupOrLogin } from '~/static/utils/utils.js'
 export default {
   data() {
     return {

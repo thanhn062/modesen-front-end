@@ -21,7 +21,7 @@
     <b-modal
       id="cumodal"
       :title="$t('common.ContactUs')"
-      :ok-title="hereHasClick ? $t('Submit') : $t('Close')"
+      :ok-title="hereHasClick ? $t('common.Submit') : $t('common.Close')"
       ok-only
       @ok="contactSubmit"
       @hidden="cumodalHide">
@@ -103,8 +103,8 @@
       id="FbModal"
       ref="FbModal"
       :title="$t('Footer.feedback')"
-      :ok-title="$t('Sendmessage')"
-      :cancel-title="$t('Close')"
+      :ok-title="$t('FbModal.Sendmessage')"
+      :cancel-title="$t('common.Close')"
       @ok="sendFeedback">
       <div>{{ $t('FbModal.desc1') }}</div>
       <br>

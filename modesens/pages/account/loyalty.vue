@@ -104,7 +104,7 @@ export default {
     }
   },
   head: {
-    title: 'membership'
+    title: 'My Loyalty | ModeSens'
   },
   async asyncData({ app, route, $axios }) {
     let oToken = route.query.otoken
