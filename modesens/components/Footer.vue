@@ -69,15 +69,17 @@
           <h6 class="footer-title">{{ $t('Footer.classtitle5') }}</h6>
           <div>{{ $t('Footer.class5desc') }}</div>
           <input
+            v-modal="shareEmail"
             id="iemail"
-            :placeholder="$t('Footer.placeholder')"
+            :placeholder="$t('Footer.placeholder1')"
             class="form-control footer-email"
             name="iemail">
           <input
             :value="$t('Footer.invitefd')"
             class="btn btn-default"
             type="button"
-            style="width: 100%;margin-top: 30px;">
+            style="width: 100%;margin-top: 30px;"
+            @click="shareInvite">
         </div>
         <div
           v-else
@@ -86,8 +88,9 @@
           <form id="footer_form">
             <input
               :placeholder="$t('common.emailaddress')"
+              v-model="newsEmail"
               class="form-control footer-email"
-              name="email">
+              type="email">
             <div class="footer-sex">
               <div>
                 <input
@@ -113,7 +116,8 @@
               :value="$t('common.SUBMIT')"
               class="btn btn-default"
               type="button"
-              style="width: 100%;">
+              style="width: 100%;"
+              @click="newsSubmit">
           </form>
         </div>
       </div>
@@ -165,6 +169,7 @@
     </div>
     <!-- invite -->
     <b-modal
+      v-if="!lsuser"
       id="inviteModal"
       :title="$t('Footer.inviteTitle')">
       <h3>{{ $t('Footer.inviteMsg') }}</h3>
@@ -186,13 +191,50 @@ import { SignupOrLogin } from '~/static/utils/utils.js'
 export default {
   data() {
     return {
-      lsuser: false
+      lsuser: false,
+      newsEmail: '',
+      shareEmail: ''
     }
   },
   mounted() {},
   methods: {
     signupJump() {
       SignupOrLogin('signup')
+    },
+    async newsSubmit() {
+      let reg = /^\w+([-.]\w+)*@[A-Za-z0-9]+([.-][A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
+      if (this.newsEmail == '' || reg.test(this.newsEmail) == false) {
+        alert(this.$t('Footer.newsAlert'))
+      } else {
+        let data = {}
+        data.email = this.newsEmail
+        data.gender = $('#footer_form [type=radio]:checked').val()
+        $('#footer_form input').attr('disabled', true)
+        let obj = await this.$axios.post('/accounts/emailsubscribe/', data)
+        console.log(obj)
+      }
+    },
+    async shareInvite() {
+      var emails = this.shareEmail.trim()
+      let toinvite = []
+      $.each(emails.split(','), function(index, value) {
+        if (validEmail(value.trim())) {
+          toinvite.push(value.trim())
+        }
+      })
+      if (toinvite.length == 0) {
+        alert(this.$t('common.validemails'))
+        return
+      }
+      if (toinvite.length > 10) {
+        alert(this.$t('Footer.invitefriends'))
+        return
+      }
+      let data = new Object()
+      data.emails = toinvite.join(',')
+      data.message = ''
+      let obj = await this.$axios.post('/invite/', data)
+      console.log(obj)
     }
   }
 }

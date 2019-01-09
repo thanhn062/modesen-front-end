@@ -12,7 +12,7 @@
         class="close closebtn"
         @click="hideLoginModal"><img src="/img/close.svg"></button>
       <iframe
-        src="/accounts/login/?next=/loyalty/"
+        src="https://modesens.com/accounts/login/?next=/loyalty/"
         width="100%"
         height="100%"
         frameborder="0"/>
@@ -167,7 +167,7 @@ export default {
     cumodalHide() {
       this.hereHasClick = false
     },
-    contactSubmit(evt) {
+    async contactSubmit(evt) {
       if (this.hereHasClick) {
         evt.preventDefault()
         if (this.company) {
@@ -205,10 +205,11 @@ export default {
         data.email = this.email
         data.intro = this.introduction
         console.log(data)
-        this.$axios.post('/customeremail/', data)
+        let obj = await this.$axios.post('/customeremail/', data)
+        console.log(obj)
       }
     },
-    sendFeedback(evt) {
+    async sendFeedback(evt) {
       evt.preventDefault()
       if (!this.contactMsg) {
         alert(this.$t('FbModal.aletmsg'))
@@ -218,7 +219,7 @@ export default {
       data.from_href = window.location.href
       data.contact = this.contactEmail
       data.content = this.contactMsg
-      this.$axios.post('/feedback/', data)
+      let obj = await this.$axios.post('/feedback/', data)
       this.isSendFeedback = true
       setTimeout(() => {
         this.$refs.FbModal.hide()

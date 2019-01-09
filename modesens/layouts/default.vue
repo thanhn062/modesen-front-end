@@ -3,7 +3,7 @@
     <Header/>
     <main :style="{'padding': headerHeight}"><nuxt/></main>
     <Footer/>
-    <Modals/>
+    <Modals :lsuid="lsuid"/>
   </div>
 </template>
 <script>

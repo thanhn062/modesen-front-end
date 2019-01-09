@@ -16,6 +16,7 @@ export const common = {
   Submit: 'Submit',
   SignUp: 'Sign Up',
   Login: 'Login',
+  validemails: 'Please enter valid email address(es)'
 };
 export const Footer = {
   classtitle1: 'CUSTOMER CARE',
@@ -36,7 +37,9 @@ export const Footer = {
   placeholder1: 'Enter email addresses separated by commas',
   classtitle6: 'NEWSLETTER SIGN UP',
   inviteTitle: 'Please sign in',
-  inviteMsg: 'Not a member yet? Please log in to invite friends'
+  inviteMsg: 'Not a member yet? Please log in to invite friends',
+  newsAlert: 'Please provide a valid email address',
+  invitefriends: 'Please invite 10 friends at one time'
 };
 export const loyalty = {
   benefitsTitle: 'Membership Benefits',

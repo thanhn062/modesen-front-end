@@ -16,6 +16,7 @@ export const common = {
   Submit: '提交',
   SignUp: '注册',
   Login: '登录',
+  validemails: 'Please enter valid email address(es)'
 }
 export const Footer = {
   classtitle1: '使用帮助',
@@ -36,7 +37,9 @@ export const Footer = {
   placeholder1: '写下好友的邮箱地址',
   classtitle6: '订阅时尚资讯',
   inviteTitle: '请登录',
-  inviteMsg: '还没成为ModeSens的一员？ 请登录邀请好友'
+  inviteMsg: '还没成为ModeSens的一员？ 请登录邀请好友',
+  newsAlert: 'Please provide a valid email address',
+  invitefriends: 'Please invite 10 friends at one time'
 };
 export const loyalty = {
   benefitsTitle: '会员权益',
