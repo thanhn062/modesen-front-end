@@ -1,10 +1,16 @@
-# modesens
+# modesens-frontend
+ModeSens Frontend
+
+
 ## 编码规范
-\modesens-frontend\docs\codeStandards.md
+[Coding Rule](./docs/coding_rule.md)
 
 ## api说明文档
-\modesens-web\docs\apis.md
-https://gitlab.com/hanglihl/modesens-web/blob/master/docs/apis.md
+[API doc](https://gitlab.com/hanglihl/modesens-web/blob/master/docs/apis.md)
+
 
 ## nuxt使用技巧
-\modesens-frontend\docs\nuxt.md
+[Nuxt](./docs/nuxt.md)
+
+## 安装部署
+[Install](./docs/install.md)
