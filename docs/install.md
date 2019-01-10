@@ -38,8 +38,8 @@ npm start
 
 
 ## nginx modify
-[nginx config us](../nginx/modesens_us.conf)
-[nginx config cn](../nginx/modesens_cn.conf)
+[nginx config us](../nginx/modesens_us.conf)<br>
+[nginx config cn](../nginx/modesens_cn.conf)<br>
 
 ```
 upstream uwsgi {
@@ -86,6 +86,6 @@ pm2 startOrReload server.json
 ```
 
 ## 部署
-[deploy](../deploy.sh)
-[ansible](../frontend.yml)
+[deploy](../deploy.sh)<br>
+[ansible](../frontend.yml)<br>
 
