@@ -112,6 +112,23 @@
                 <label for="footer_male">{{ $t('common.mens') }}</label>
               </div>
             </div>
+            <b-form-group>
+              <b-form-radio-group
+                v-model="selectedSex"
+                class="sexbox"
+                name="sexoptions">
+                <b-form-radio value="f">{{ $t('common.womens') }}</b-form-radio>
+                <b-form-radio value="m">{{ $t('common.mens') }}</b-form-radio>
+              </b-form-radio-group>
+            </b-form-group>
+            <b-form-group>
+              <b-form-radio-group
+                v-model="selectedSex2"
+                name="jjj">
+                <b-form-radio value="f">{{ $t('common.womens') }}</b-form-radio>
+                <b-form-radio value="m">{{ $t('common.mens') }}</b-form-radio>
+              </b-form-radio-group>
+            </b-form-group>
             <input
               :value="$t('common.SUBMIT')"
               class="btn btn-default"
@@ -184,6 +201,14 @@
           @click="signupJump">{{ $t('common.SignUp') }}</button>
       </div>
     </b-modal>
+    <!-- 订阅modal -->
+    <b-modal
+      ref="emailsubModal"
+      :title="$t('Footer.emailSubTitle')"
+      :ok-title="emailSubStatus ? $t('common.LogInNow') : $t('common.CreateAnAccount')"
+      ok-only>
+      <div>{{ emailSubStatus ? $t('Footer.emailSubDesc1') : $t('Footer.emailSubDesc0') }}</div>
+    </b-modal>
   </footer>
 </template>
 <script>
@@ -193,7 +218,10 @@ export default {
     return {
       lsuser: false,
       newsEmail: '',
-      shareEmail: ''
+      shareEmail: '',
+      emailSubStatus: 0, //0注册 1登录
+      selectedSex: 'f',
+      selectedSex2: 'f'
     }
   },
   mounted() {},
@@ -212,6 +240,14 @@ export default {
         $('#footer_form input').attr('disabled', true)
         let obj = await this.$axios.post('/accounts/emailsubscribe/', data)
         console.log(obj)
+        if (obj.error) {
+          if (obj.error === 'Account exists') {
+            this.emailSubStatus = 1
+          }
+        } else {
+          this.emailSubStatus = 0
+        }
+        this.$refs.emailsubModal.show()
       }
     },
     async shareInvite() {

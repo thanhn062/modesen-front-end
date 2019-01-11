@@ -16,9 +16,9 @@ export default function ({ $axios, app }) {
     if (config.secretKey === 1) {
       config.url += `?secretkey=${process.env.secretKey}`
     }
-    // if (config.method === 'post') {
-    //   config.data.timestamp = new Date().getTime();
-    // }
+    if (config.method === 'post') {
+      config.data.timestamp = new Date().getTime();
+    }
     config.data = qs.stringify(config.data);
     return config;
   });

@@ -170,35 +170,35 @@ export default {
     async contactSubmit(evt) {
       if (this.hereHasClick) {
         evt.preventDefault()
-        if (this.company) {
-          $('#contact-company').css('border-color', '#8E8E8E')
-        } else {
-          $('#contact-company').css('border-color', 'red')
-          return
-        }
-        if (this.name) {
-          $('#contact-name').css('border-color', '#8E8E8E')
-        } else {
-          $('#contact-name').css('border-color', 'red')
-          return
-        }
-        if (this.url) {
-          $('#contact-url').css('border-color', '#8E8E8E')
-        } else {
-          $('#contact-url').css('border-color', 'red')
-          return
-        }
-        if (this.email) {
-          $('#contact-email').css('border-color', '#8E8E8E')
-        } else {
-          $('#contact-email').css('border-color', 'red')
-          return
-        }
+        // if (this.company) {
+        //   $('#contact-company').css('border-color', '#8E8E8E')
+        // } else {
+        //   $('#contact-company').css('border-color', 'red')
+        //   return
+        // }
+        // if (this.name) {
+        //   $('#contact-name').css('border-color', '#8E8E8E')
+        // } else {
+        //   $('#contact-name').css('border-color', 'red')
+        //   return
+        // }
+        // if (this.url) {
+        //   $('#contact-url').css('border-color', '#8E8E8E')
+        // } else {
+        //   $('#contact-url').css('border-color', 'red')
+        //   return
+        // }
+        // if (this.email) {
+        //   $('#contact-email').css('border-color', '#8E8E8E')
+        // } else {
+        //   $('#contact-email').css('border-color', 'red')
+        //   return
+        // }
         this.introduction = this.introduction.trim()
         // var data = `company=${this.company}&name=${this.name}&url=${
         //   this.url
         // }&email=${this.email}&intro=${this.introduction}`
-        let data = {}
+        let data = new Object()
         data.company = this.company
         data.name = this.name
         data.url = this.url

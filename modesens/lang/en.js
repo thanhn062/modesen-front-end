@@ -16,7 +16,9 @@ export const common = {
   Submit: 'Submit',
   SignUp: 'Sign Up',
   Login: 'Login',
-  validemails: 'Please enter valid email address(es)'
+  validemails: 'Please enter valid email address(es)',
+  LogInNow: 'Log In Now',
+  CreateAnAccount: 'Create An Account',
 };
 export const Footer = {
   classtitle1: 'CUSTOMER CARE',
@@ -39,7 +41,10 @@ export const Footer = {
   inviteTitle: 'Please sign in',
   inviteMsg: 'Not a member yet? Please log in to invite friends',
   newsAlert: 'Please provide a valid email address',
-  invitefriends: 'Please invite 10 friends at one time'
+  invitefriends: 'Please invite 10 friends at one time',
+  emailSubTitle: 'You Are On The List!',
+  emailSubDesc0: 'Thank you for signing up to receive ModeSens emails. Your subscription has been confirmed.',
+  emailSubDesc1: 'An account is already registered for this email. We’ve confirmed your ModeSens email subscription.',
 };
 export const loyalty = {
   benefitsTitle: 'Membership Benefits',
