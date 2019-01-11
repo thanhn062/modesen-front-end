@@ -60,6 +60,16 @@
           <b-tab
             :title="$t('accountLoyalty.account_overview')" 
             active>
+            <div class="page-right">
+              <keep-alive>
+                <myorder
+                  :userordercontent="userOrder"/>
+              </keep-alive>
+            </div>
+          </b-tab>
+          <b-tab 
+            :title="$t('accountLoyalty.my_loyalty')"
+            @click="getTabLoyalty">
             <div
               v-if = "flag1 && flag2"
               class="page-right ">
@@ -85,9 +95,12 @@
 </template>
 <script>
 import myloyalty from '~/components/loyalty/myloyalty.vue'
+import myorder from '~/components/loyalty/myorder.vue'
+import localStorage from '~/static/utils/localStorage.js'
 export default {
   components: {
-    myloyalty
+    myloyalty,
+    myorder
   },
   data() {
     return {
@@ -100,7 +113,8 @@ export default {
       flag2: false,
       limit: -1,
       //当前显示的页面
-      currentPage: 1
+      currentPage: 1,
+      userOrder: []
     }
   },
   head: {
@@ -115,7 +129,7 @@ export default {
   created() {
     if (this.$route.query.otoken) {
       this.getUserInfo()
-      this.getRecords()
+      this.getOrderInfo()
     }
   },
   methods: {
@@ -134,11 +148,36 @@ export default {
     async getRecords() {
       var recordsparams = {}
       recordsparams.offset = 0
-      recordsparams.amount = 10
+      recordsparams.amount = 9
       let records = await this.$axios.post('/loyalty/records/', recordsparams)
+      let recordsJson = JSON.stringify(records)
+      localStorage.set('records', recordsJson, 1)
       this.records = records
       this.userRecords = records.records
       this.flag2 = true
+    },
+    async getOrderInfo() {
+      let orderparams = {}
+      orderparams.offset = 0
+      orderparams.amount = 10
+      let { orders } = await this.$axios.get(
+        '/accounts/order/all/',
+        orderparams
+      )
+      this.userOrder = orders
+    },
+    getTabLoyalty: function() {
+      this.flag2 = false
+      if (localStorage.get('records')) {
+        var records = JSON.parse(localStorage.get('records'))
+        this.records = records
+        this.userRecords = records.records
+        this.flag2 = true
+      } else {
+        if (this.$route.query.otoken) {
+          this.getRecords()
+        }
+      }
     }
   }
 }

@@ -176,6 +176,7 @@ module.exports = {
     memberendTimgcard: '有效期至',
     memberendTimg: '会员权益截止时间',
     account_overview: '账户信息',
+    my_loyalty: '我的会员',
     benefits: '福利',
     membershipDeltails: '会员详情',
     deltail: '你今年得到的所有的积分让你更接近更多的会员等级权益!',

@@ -176,6 +176,7 @@ module.exports = {
     memberendTimgcard: 'Valid through',
     memberendTimg: 'Your Membership Benefits through',
     account_overview:'ACCOUNT OVERVIEW',
+    my_loyalty:'MY LOYALTY',
     benefits: 'Benefits',
     membershipDeltails: 'Membership Details',
     deltail: 'All activity this year gets you closer to even more benefits',

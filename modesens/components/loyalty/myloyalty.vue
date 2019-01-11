@@ -113,6 +113,7 @@
                 <img
                   :class="dateSlideDown ? 'active' : ''"
                   src="/img/20181214slidedown.svg"
+                  class="activeimg"
                   alt="">
               </div>
             </div>

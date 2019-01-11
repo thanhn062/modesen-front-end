@@ -11,6 +11,20 @@
 .keepLeft {
   text-align: left;
 }
+.activeimg {
+  transform: rotate(90deg);
+  -ms-transform:rotate(90deg); 	/* IE 9 */
+  -moz-transform:rotate(90deg); 	/* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+  -o-transform:rotate(90deg); 
+}
+.activeimg.active {
+  transform: rotate(0deg);
+  -ms-transform:rotate(0deg); 	/* IE 9 */
+  -moz-transform:rotate(0deg); 	/* Firefox */
+  -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+  -o-transform:rotate(0deg); 
+}
 .userInfoBox {
   width: 100%;
   height: 286px;
@@ -86,16 +100,70 @@
 .col-auto {
   width: 25%;
   margin-top: 77px;
-  .nav-tabs .nav-link.active {
+  text-align: right;
+  padding-right: 85px;
+  .nav-tabs .nav-link {
     border: 0;
-    color: #1c1c1c;
-    font-weight: 700;
-    background: transparent;
     box-sizing: border-box;
     padding: 0;
+    font-weight: 400;
+    line-height: 24px;
+    background: transparent;
+    color: #8e8e8e;
+  }
+  .nav-tabs .nav-link.active {
+    font-weight: 700;
+    color: #1c1c1c;
+  }
+}
+//order
+.order-title {
+  padding:0 22px;
+  margin: 0;
+  font-weight: 700;
+  .order-title-list {
+    padding: 0 5px;
+  }
+}
+.order-title-line {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  margin: 18px 0 0;
+  background: @borderColor;
+}
+#order-list {
+  li {
+    border-bottom: 0.5px solid @borderColor;
+    line-height: 65px;
+  }
+  .order-list-info {
+    margin: 0;
+    padding: 0 22px;
+    div {
+      padding: 0 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      cursor: context-menu;
+    }
+  }
+  .see-info {
+    text-align: right;
+    img {
+      width: 9px;
+      cursor: pointer;
+    }
+  }
+  .order-list-prd {
+    width: 100%;
+    height: 156px;
+    padding: 0 22px;
+    background: #f5f5f5;
   }
 }
 .page-right {
+  // myloyalty
   .title-part {
     font-size: 20px;
     font-weight: 300;
@@ -309,10 +377,13 @@
           border: 0;
           display: flex;
           justify-content: flex-end;
-          width: 200px;
+          width: 250px;
         }
-        .openitem .itemtitle, .openitem .itemcon{
+        .openitem .itemtitle {
           flex: 1;
+        }
+        .openitem .itemcon {
+          flex: 3,
         }
       }
       .see-more {
@@ -321,19 +392,6 @@
       }
       .see-more img {
         width: 9px;
-        transform: rotate(90deg);
-        -ms-transform:rotate(90deg); 	/* IE 9 */
-        -moz-transform:rotate(90deg); 	/* Firefox */
-        -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
-        -o-transform:rotate(90deg); 
-      }
-      .see-more img.active {
-        width: 9px;
-        transform: rotate(0deg);
-        -ms-transform:rotate(0deg); 	/* IE 9 */
-        -moz-transform:rotate(0deg); 	/* Firefox */
-        -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
-        -o-transform:rotate(0deg); 
       }
     }
   }
