@@ -85,57 +85,29 @@
           v-else
           class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle6') }}</h6>
-          <form id="footer_form">
-            <input
-              :placeholder="$t('common.emailaddress')"
-              v-model="newsEmail"
-              class="form-control footer-email"
-              type="email">
-            <div class="footer-sex">
-              <div>
-                <input
-                  id="footer_female"
-                  name="gender"
-                  type="radio"
-                  value="f"
-                  class="form-control"
-                  checked>
-                <label for="footer_female">{{ $t('common.womens') }}</label>
-              </div>
-              <div>
-                <input
-                  id="footer_male"
-                  name="gender"
-                  type="radio"
-                  value="m"
-                  class="form-control">
-                <label for="footer_male">{{ $t('common.mens') }}</label>
-              </div>
-            </div>
+          <b-form
+            id="footer_form"
+            @submit="newsSubmit">
+            <b-form-group>
+              <b-form-input
+                :placeholder="$t('common.emailaddress')"
+                v-model="newsEmail"
+                type="email"/>
+            </b-form-group>
             <b-form-group>
               <b-form-radio-group
+                id="radios1"
                 v-model="selectedSex"
-                class="sexbox"
                 name="sexoptions">
                 <b-form-radio value="f">{{ $t('common.womens') }}</b-form-radio>
                 <b-form-radio value="m">{{ $t('common.mens') }}</b-form-radio>
               </b-form-radio-group>
             </b-form-group>
-            <b-form-group>
-              <b-form-radio-group
-                v-model="selectedSex2"
-                name="jjj">
-                <b-form-radio value="f">{{ $t('common.womens') }}</b-form-radio>
-                <b-form-radio value="m">{{ $t('common.mens') }}</b-form-radio>
-              </b-form-radio-group>
-            </b-form-group>
-            <input
-              :value="$t('common.SUBMIT')"
-              class="btn btn-default"
-              type="button"
-              style="width: 100%;"
-              @click="newsSubmit">
-          </form>
+            <b-button
+              type="submit"
+              variant="default"
+              style="width: 100%;">{{ $t('common.SUBMIT') }}</b-button>
+          </b-form>
         </div>
       </div>
       <div class="footer-bottom">
@@ -220,8 +192,7 @@ export default {
       newsEmail: '',
       shareEmail: '',
       emailSubStatus: 0, //0注册 1登录
-      selectedSex: 'f',
-      selectedSex2: 'f'
+      selectedSex: 'f'
     }
   },
   mounted() {},

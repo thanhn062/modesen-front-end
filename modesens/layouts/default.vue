@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Header/>
+    <!-- <Header/> -->
     <main :style="{'padding': headerHeight}"><nuxt/></main>
-    <Footer/>
+    <!-- <Footer/> -->
     <Modals :lsuid="lsuid"/>
   </div>
 </template>
