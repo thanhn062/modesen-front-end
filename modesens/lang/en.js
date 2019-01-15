@@ -45,6 +45,7 @@ export const Footer = {
   emailSubTitle: 'You Are On The List!',
   emailSubDesc0: 'Thank you for signing up to receive ModeSens emails. Your subscription has been confirmed.',
   emailSubDesc1: 'An account is already registered for this email. We’ve confirmed your ModeSens email subscription.',
+  shareAlert: ' is(are) invited',
 };
 export const loyalty = {
   benefitsTitle: 'Membership Benefits',

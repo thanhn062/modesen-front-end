@@ -103,13 +103,9 @@
               </b-form-radio-group>
             </b-form-group>
             <b-button
+              :disabled="disabledstatus"
               type="submit"
               variant="default"
-              lsuser
-              ?
-              disabled
-              :
-              null
               style="width: 100%;">{{ $t('common.SUBMIT') }}</b-button>
           </b-form>
         </div>
@@ -196,7 +192,8 @@ export default {
       newsEmail: '',
       shareEmail: '',
       emailSubStatus: 0, //0注册 1登录
-      selectedSex: 'f'
+      selectedSex: 'f',
+      disabledstatus: false
     }
   },
   mounted() {},
@@ -204,7 +201,8 @@ export default {
     signupJump() {
       SignupOrLogin('signup')
     },
-    async newsSubmit() {
+    async newsSubmit(evt) {
+      evt.preventDefault()
       let reg = /^\w+([-.]\w+)*@[A-Za-z0-9]+([.-][A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
       if (this.newsEmail == '' || reg.test(this.newsEmail) == false) {
         alert(this.$t('Footer.newsAlert'))
@@ -212,8 +210,9 @@ export default {
         let data = {}
         data.email = this.newsEmail
         data.gender = this.selectedSex
-        $('#footer_form input').attr('disabled', true)
+        this.disabledstatus = true
         let obj = await this.$axios.post('/accounts/emailsubscribe/', data)
+        this.disabledstatus = false
         console.log(obj)
         if (obj.error) {
           if (obj.error === 'Account exists') {
@@ -245,6 +244,7 @@ export default {
       data.emails = toinvite.join(',')
       data.message = ''
       let obj = await this.$axios.post('/invite/', data)
+      alert(this.shareEmail + this.$t(' is(are) invited'))
       console.log(obj)
     }
   }

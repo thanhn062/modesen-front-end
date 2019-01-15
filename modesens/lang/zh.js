@@ -16,7 +16,9 @@ export const common = {
   Submit: '提交',
   SignUp: '注册',
   Login: '登录',
-  validemails: 'Please enter valid email address(es)'
+  validemails: 'Please enter valid email address(es)',
+  LogInNow: 'Log In Now',
+  CreateAnAccount: 'Create An Account',
 }
 export const Footer = {
   classtitle1: '使用帮助',
@@ -39,7 +41,11 @@ export const Footer = {
   inviteTitle: '请登录',
   inviteMsg: '还没成为ModeSens的一员？ 请登录邀请好友',
   newsAlert: 'Please provide a valid email address',
-  invitefriends: 'Please invite 10 friends at one time'
+  invitefriends: 'Please invite 10 friends at one time',
+  emailSubTitle: 'You Are On The List!',
+  emailSubDesc0: 'Thank you for signing up to receive ModeSens emails. Your subscription has been confirmed.',
+  emailSubDesc1: 'An account is already registered for this email. We’ve confirmed your ModeSens email subscription.',
+  shareAlert: ' is(are) invited',
 };
 export const loyalty = {
   benefitsTitle: '会员权益',
