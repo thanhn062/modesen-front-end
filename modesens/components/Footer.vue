@@ -96,7 +96,6 @@
             </b-form-group>
             <b-form-group>
               <b-form-radio-group
-                id="radios1"
                 v-model="selectedSex"
                 name="sexoptions">
                 <b-form-radio value="f">{{ $t('common.womens') }}</b-form-radio>
@@ -106,6 +105,11 @@
             <b-button
               type="submit"
               variant="default"
+              lsuser
+              ?
+              disabled
+              :
+              null
               style="width: 100%;">{{ $t('common.SUBMIT') }}</b-button>
           </b-form>
         </div>
@@ -207,7 +211,7 @@ export default {
       } else {
         let data = {}
         data.email = this.newsEmail
-        data.gender = $('#footer_form [type=radio]:checked').val()
+        data.gender = this.selectedSex
         $('#footer_form input').attr('disabled', true)
         let obj = await this.$axios.post('/accounts/emailsubscribe/', data)
         console.log(obj)
