@@ -14,16 +14,16 @@
     register: result
   - debug: msg="{{result.before}}->{{result.after}}"
 
-  # - name: clean nuxt scripts.
-  #   command: "/bin/rm -rf /modesens/modesens-frontend/modesens/.nuxt/*"
-  #   args:
-  #     warn: no
+  - name: clean nuxt scripts.
+    command: "/bin/rm -rf /modesens/modesens-frontend/modesens/.nuxt/*"
+    args:
+      warn: no
 
   - name: install packages.
     command: "npm install"
 
   - name: get nuxt server scripts from s3.
-    command: "aws s3 sync s3://modesens/nuxt /modesens/modesens-frontend/modesens/.nuxt --delete"
+    command: "aws s3 sync s3://modesens/nuxt /modesens/modesens-frontend/modesens/.nuxt --delete --cache-control max-age=0"
 
   - name: pm2 restart.
     command: "pm2 startOrReload server.json"
