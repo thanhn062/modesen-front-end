@@ -12,11 +12,11 @@
   text-align: left;
 }
 .activeimg {
-  transform: rotate(90deg);
-  -ms-transform:rotate(90deg); 	/* IE 9 */
-  -moz-transform:rotate(90deg); 	/* Firefox */
-  -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
-  -o-transform:rotate(90deg); 
+  transform: rotate(180deg);
+  -ms-transform:rotate(180deg); 	/* IE 9 */
+  -moz-transform:rotate(180deg); 	/* Firefox */
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  -o-transform:rotate(180deg); 
 }
 .activeimg.active {
   transform: rotate(0deg);
@@ -124,6 +124,14 @@
   .order-title-list {
     padding: 0 5px;
   }
+  .order-title-list-status {
+    display: flex;
+    justify-content: space-between;
+  }
+  img {
+    width: 9px;
+    cursor: pointer;
+  }
 }
 .order-title-line {
   width: 100%;
@@ -149,7 +157,7 @@
     }
   }
   .see-info {
-    text-align: right;
+    text-align: right ;
     img {
       width: 9px;
       cursor: pointer;
@@ -158,8 +166,70 @@
   .order-list-prd {
     width: 100%;
     height: 156px;
-    padding: 0 22px;
+    padding: 10px 22px;
+    line-height: normal;
     background: #f5f5f5;
+    .storeId-title, .waybll-null-title {
+      font-size: @font-size;
+      font-weight: 700;
+    }
+    .storeId-con, .waybill-num-con {
+      font-size: @font-size;
+      padding: 20px;
+    }
+    .order-detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 30px;
+    }
+    .order-prd-box {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0;
+    }
+    .order-prd-img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      height: 90px;
+      background: #fff;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .order-prd-info {
+      margin-left: 15px;
+    }
+    .order-prd-designername {
+      font-size: @fontStandard;
+      font-weight: 700;
+    }
+    .order-prd-productname {
+      font-size: @font-size;
+      font-weight: 300;
+      color: #8e8e8e;
+    }
+    .order-prd-price {
+      padding: 0;
+    }
+    .order-prd-price-list {
+      line-height: 16px;
+      display: flex;
+      border: none;
+    }
+    .order-price-list-title {
+      flex: 4;
+      text-align: right;
+    }
+    .order-price-num {
+      flex: 5;
+      padding-left: 10px;
+      text-align: left;
+    }
   }
 }
 .page-right {

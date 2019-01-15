@@ -60,11 +60,22 @@
           <b-tab
             :title="$t('accountLoyalty.account_overview')" 
             active>
-            <div class="page-right">
+            <div
+              v-if = "flag1 && orderflag"
+              class="page-right">
               <keep-alive>
                 <myorder
-                  :userordercontent="userOrder"/>
+                  :userordercontent="userOrder"
+                  :userordertotal="userOrdertotal"/>
               </keep-alive>
+            </div>
+            <div
+              v-else
+              class="page-right">
+              <img
+                src="/img/20190102sync.gif"
+                alt=""
+                class="loadmore">
             </div>
           </b-tab>
           <b-tab 
@@ -114,7 +125,11 @@ export default {
       limit: -1,
       //当前显示的页面
       currentPage: 1,
-      userOrder: []
+      userOrder: [],
+      userOrdertotal: 0,
+      orderOffset: 0,
+      orderAmount: 9,
+      orderflag: false
     }
   },
   head: {
@@ -157,14 +172,14 @@ export default {
       this.flag2 = true
     },
     async getOrderInfo() {
-      let orderparams = {}
-      orderparams.offset = 0
-      orderparams.amount = 10
-      let { orders } = await this.$axios.get(
-        '/accounts/order/all/',
-        orderparams
+      let offset = this.orderOffset
+      let amount = this.orderAmount
+      let { orders, total } = await this.$axios.get(
+        '/accounts/order/all/?offset=' + offset + '&amount=' + amount
       )
       this.userOrder = orders
+      this.userOrdertotal = total
+      this.orderflag = true
     },
     getTabLoyalty: function() {
       this.flag2 = false
