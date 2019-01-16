@@ -7,7 +7,7 @@ export default function ({ $axios, app }) {
     } else {
       config.baseURL = process.env.browserBaseURL + 'api/2.0/';  //请求根目录
     }
-    config.timeout = 5000;    //请求超时
+    config.timeout = 50000;    //请求超时
     config.headers.Authorization = 'Bearer ' + app.$cookies.get('token'); //获取cookie放在头部传到后端
     // config.withCredentials = true, // 允许携带cookie
     // config.crossDomain = true   //允许跨域

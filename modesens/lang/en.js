@@ -228,6 +228,18 @@ module.exports = {
     record_fs: 'Follow Someone',
     record_ll: 'Like A Look',
   },
+  accountOrder: {
+    status0: 'Pending Payment',
+    status1: 'Pending order',
+    status2: 'Pending Ship',
+    status3: 'Shipped',
+    status4: 'Completed',
+    status5: 'Refunding',
+    status6: 'Refunded',
+    status8: 'Transshipment Shipped',
+    statusTracked: 'Tracked',
+    status_1: 'Expired',
+  },
   annual: {
     MemberSince: 'Member Since',
     yousaved: 'Your Total Savings',

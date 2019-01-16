@@ -228,6 +228,18 @@ module.exports = {
     record_fs: '关注一位用户',
     record_ll: '为美达点赞',
   },
+  accountOrder: {
+    status0: '待支付',
+    status1: '待下单',
+    status2: '待发货',
+    status3: '已发货',
+    status4: '已签收',
+    status5: '退款中',
+    status6: '退款完成',
+    status8: '转运已发货',
+    statusTracked: 'Tracked',
+    status_1: '已过期',
+  },
   annual: {
     MemberSince: '会员始于',
     yousaved: '你的购物节省总额',

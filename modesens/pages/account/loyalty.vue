@@ -128,7 +128,7 @@ export default {
       userOrder: [],
       userOrdertotal: 0,
       orderOffset: 0,
-      orderAmount: 9,
+      orderAmount: 16,
       orderflag: false
     }
   },

@@ -23,7 +23,7 @@
         id="order-list"
         class="keepLeft">
         <li
-          v-for=" (order,index) in userordercontent"
+          v-for=" (order,index) in ordercontent"
           :key=" index ">
           <div class="order-list-info row">
             <div
@@ -33,8 +33,8 @@
             <div
               :title="order.merchant_name"
               class="col-3 col-md-3">{{ order.merchant_name }}</div>
-            <div class="col-2 col-md-2">{{ order.amount * order.items }}</div>
-            <div class="col-2 col-md-2">{{ order.status }}</div>
+            <div class="col-2 col-md-2">{{ order.currency }} {{ order.total }}</div>
+            <div class="col-2 col-md-2">{{ orderStatusChange(order.status) }}</div>
             <div
               class="see-info col-1 col-md-1"
               @click="toggle(index)">
@@ -48,58 +48,95 @@
           <div 
             v-show="index===orderlimit"
             class="order-list-prd">
-            <div class="waybill">
-              <div class="storeId">
-                <span class="storeId-title">Store Order ID</span>
-                <span class="storeId-con">{{ order.store_order_id }}</span>
+            <div class="waybill row">
+              <div class="storeId col-4 col-md-4">
+                <div class="storeId-title">Store Order ID</div>
+                <div class="storeId-con">{{ order.store_order_id }}</div>
               </div>
               <div
-                v-if = "waybill"
-                class="waybill-num">
-                <span class="waybll-null-title">Tracking Number :</span>
-                <span class="waybill-num-con">99999999</span>
+                v-if="order.tracking_no"
+                class="waybll-num-title col-5 col-md-5 keepRight">Tracking Number :</div>
+              <div
+                v-if="order.tracking_no"
+                class="waybill-num-con col-3 col-md-3">
+                <a
+                  :href="order.tracking_url"
+                  target="_blank">
+                  {{ order.tracking_no }}
+                </a>
               </div>
             </div>
             <div class="order-detail">
               <div class="order-prd-box col-5 col-md-5">
-                <div class="order-prd-img">
-                  <img
+                <a
+                  :href="order.availability ? '/product/'+order.availability.product_id+'/' : 'javascript:;'"
+                  target="_blank"
+                  class="to-product">
+                  <div
                     v-if = "order.availability"
-                    :src="order.availability.cover"
-                    alt="">
-                </div>
-                <div
-                  v-if = "order.availability"
-                  class="order-prd-info">
-                  <div class="order-prd-designername">{{ order.availability.designer_id }}</div>
-                  <div class="order-prd-productname">{{ order.availability.name }}</div>
-                </div>
+                    class="order-prd-img">
+                    <img
+                      :src="order.availability.cover"
+                      alt="">
+                  </div>
+                  <div class="order-prd-info">
+                    <div
+                      v-if = "order.availability"
+                      class="order-prd-designername">{{ order.availability.designer_id }}</div>
+                    <div class="order-prd-productname">{{ order.product_name }}</div>
+                    <div class="order-prd-size">
+                      <div class="order-size"> 
+                        <span class="order-size-kind">Size</span>
+                        <span class="order-size-con">{{ order.size === '' ? 'One Size' : order.size }}</span>
+                      </div>
+                      <div class="order-quantity">
+                        <span class="order-size-kind">Quantity</span>
+                        <span class="order-size-con">{{ order.items }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
               </div>
               <div class="order-prd-price col-4 col-md-4">
                 <ul class="order-prd-price-box">
-                  <li class="order-prd-price-list">
+                  <li
+                    v-if="order.product_cost"
+                    class="order-prd-price-list">
                     <div class="order-price-list-title">Product Price:</div>
-                    <div class="order-price-num">$ 8,395,823,8</div>
+                    <div class="order-price-num">{{ order.currency }} {{ order.product_cost }}</div>
                   </li>
-                  <li class="order-prd-price-list">
+                  <li
+                    v-if="order.shipping_cost"
+                    class="order-prd-price-list">
                     <div class="order-price-list-title">Shipping Fee:</div>
-                    <div class="order-price-num">$ 8,395,823,823</div>
+                    <div class="order-price-num">{{ order.currency }} {{ order.shipping_cost }}</div>
                   </li>
-                  <li class="order-prd-price-list">
+                  <li
+                    v-if="order.duty_cost"
+                    class="order-prd-price-list">
                     <div class="order-price-list-title">Duty:</div>
-                    <div class="order-price-num">$ 8,395,8</div>
+                    <div class="order-price-num">{{ order.currency }} {{ order.duty_cost }}</div>
                   </li>
-                  <li class="order-prd-price-list">
+                  <li
+                    v-if="order.service_cost"
+                    class="order-prd-price-list">
                     <div class="order-price-list-title">Service fee:</div>
-                    <div class="order-price-num">$ 8,3</div>
+                    <div class="order-price-num">{{ order.currency }} {{ order.service_cost }}</div>
                   </li>
-                  <li class="order-prd-price-list">
+                  <li
+                    v-if="order.promo"
+                    class="order-prd-price-list">
                     <div class="order-price-list-title">Discount:</div>
-                    <div class="order-price-num">$ 8,395,82</div>
+                    <div class="order-price-num">{{ order.currency }} {{ order.promo }}</div>
                   </li>
                 </ul>
               </div>
-              <div class="order-prd-status col-3 col-md-3">Submit A Review</div>
+              <div class="order-prd-status col-3 col-md-3">
+                <div
+                  v-for="(aftersale,index) in orderafterSale(order.status)"
+                  :key="index"
+                  class="after-sale">{{ aftersale }}</div>
+              </div>
             </div>
           </div>
         </li>
@@ -108,11 +145,12 @@
     <b-pagination
       v-model="currentPage"
       :total-rows="ordertotal"
-      :per-page="9"
+      :per-page="8"
       :disabled="pageCannotSwitched"
       align="center"
       prev-text="<"
-      next-text=">"/>
+      next-text=">"
+      @input="orderpageSwitching"/>
   </section>
 </template>
 
@@ -135,36 +173,73 @@ export default {
   data() {
     return {
       ordertotal: this.userordertotal,
+      ordercontent: this.userordercontent,
       pagestate: 1,
       orderlimit: -1,
       waybill: false,
       pageCannotSwitched: false,
-      currentPage: 1
+      currentPage: 1,
+      orderStatus: 0
     }
   },
   methods: {
-    async getorderPrdInfo(ms_orderId) {
-      let { data } = await this.$axios.get(
-        'https:///pay.modesens.com/v1/order/api/' + ms_orderId + '/'
+    async getmoreOrder(page) {
+      let amount = 16
+      let offset = (page - 1) * amount
+      let { orders, total } = await this.$axios.get(
+        '/accounts/order/all/?offset=' + offset + '&amount=' + amount
       )
+      this.ordercontent = orders
+      this.ordertotal = total
+      this.pageCannotSwitched = false
     },
     toggle: function(index) {
-      if (this.userordercontent[index].ms_order_no) {
-        this.getorderPrdInfo(this.userordercontent[index].ms_order_no)
-      }
       if (index === this.orderlimit) {
         this.orderlimit = -1
       } else {
         this.orderlimit = index
       }
-    }
-  },
-  pageSwitching: function() {
-    if (this.pagestate === this.currentPage) {
-      return
-    } else {
-      this.pagestate = this.currentPage
-      this.orderlimit = -1
+    },
+    orderStatusChange: function(index) {
+      if (index === 0) {
+        return this.$t('accountOrder.status0')
+      } else if (index === 1) {
+        return this.$t('accountOrder.status1')
+      } else if (index === 2) {
+        return this.$t('accountOrder.status2')
+      } else if (index === 3) {
+        return this.$t('accountOrder.status3')
+      } else if (index === 4) {
+        return this.$t('accountOrder.status4')
+      } else if (index === 5) {
+        return this.$t('accountOrder.status5')
+      } else if (index === 6) {
+        return this.$t('accountOrder.status6')
+      } else if (index === 8) {
+        return this.$t('accountOrder.status8')
+      } else if (index === 'Tracked') {
+        return this.$t('accountOrder.statusTracked')
+      } else {
+        return this.$t('accountOrder.status_1')
+      }
+    },
+    orderafterSale: function(index) {
+      if (index === 0) {
+        return ['Message', 'Pay Now']
+      } else if (index === 4) {
+        return ['Message', 'File A Claim', 'Submit a Review']
+      } else {
+        return ['Message']
+      }
+    },
+    orderpageSwitching: function() {
+      if (this.pagestate === this.currentPage) {
+        return
+      } else {
+        this.getmoreOrder(this.currentPage)
+        this.pagestate = this.currentPage
+        this.orderlimit = -1
+      }
     }
   }
 }

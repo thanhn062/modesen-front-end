@@ -117,6 +117,10 @@
   }
 }
 //order
+#orderlist-Box {
+  margin-bottom: 40px;
+  // height: 1278px;
+}
 .order-title {
   padding:0 22px;
   margin: 0;
@@ -165,29 +169,46 @@
   }
   .order-list-prd {
     width: 100%;
-    height: 156px;
-    padding: 10px 22px;
+    height: 166px;
+    padding: 20px 22px;
     line-height: normal;
     background: #f5f5f5;
-    .storeId-title, .waybll-null-title {
+    .waybill {
+      margin: 0 0 20px 0;
+    }
+    .storeId {
+      padding: 0 5px;
+      display: flex;
+      justify-content: flex-start
+    }
+    .storeId-title, .waybll-num-title {
       font-size: @font-size;
       font-weight: 700;
     }
     .storeId-con, .waybill-num-con {
       font-size: @font-size;
-      padding: 20px;
+      padding: 0 5px;
+    }
+    .storeId-title, .storeId-con {
+      flex: 1;
+    }
+    .waybll-num-title {
+      padding: 0 14px 0 5px;
     }
     .order-detail {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-top: 30px;
     }
     .order-prd-box {
       display: flex;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
       padding: 0;
+    }
+    .to-product {
+      display: flex;
+      width: 100%;
     }
     .order-prd-img {
       display: flex;
@@ -203,15 +224,32 @@
     }
     .order-prd-info {
       margin-left: 15px;
+      width: calc(100% - 105px);
     }
     .order-prd-designername {
       font-size: @fontStandard;
       font-weight: 700;
+      margin-bottom: 10px;
     }
     .order-prd-productname {
       font-size: @font-size;
       font-weight: 300;
       color: #8e8e8e;
+      margin-bottom: 10px;
+    }
+    .order-prd-size {
+      display: flex;
+      justify-content: flex-start;
+      line-height: 18px;
+    }
+    .order-size-kind {
+      font-weight: 700;
+    }
+    .order-size-con {
+      padding-left: 10px;
+    }
+    .order-quantity {
+      margin-left: 20px;
     }
     .order-prd-price {
       padding: 0;
@@ -222,13 +260,21 @@
       border: none;
     }
     .order-price-list-title {
-      flex: 4;
+      flex: 1;
+      padding-right: 10px;
       text-align: right;
     }
     .order-price-num {
-      flex: 5;
-      padding-left: 10px;
+      flex: 1;
       text-align: left;
+    }
+    .order-prd-status {
+      padding: 0 5px;
+    }
+    .after-sale {
+      margin-bottom: 10px;
+      cursor: pointer;
+      text-decoration: underline;
     }
   }
 }
