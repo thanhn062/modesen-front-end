@@ -28,15 +28,30 @@
           <div class="order-list-info row">
             <div
               :title="order.transaction_datetime.slice(0,10)"
-              class="col-2 col-md-2">{{ order.transaction_datetime.slice(0,10) }}</div>
-            <div class="col-2 col-md-2">{{ order.ms_order_id }}</div>
+              class="order-list-box col-12 col-md-2">
+              <div class="order-list-title mobile-only">Order Time</div>
+              <div class="order-list-con"> {{ order.transaction_datetime.slice(0,10) }}</div>
+            </div>
+            <div class="order-list-box col-12 col-md-2">
+              <div class="order-list-title mobile-only">ModeSens Order ID</div>
+              <div class="order-list-con">{{ order.ms_order_id }}</div>
+            </div>
             <div
               :title="order.merchant_name"
-              class="col-3 col-md-3">{{ order.merchant_name }}</div>
-            <div class="col-2 col-md-2">{{ order.currency }} {{ order.total }}</div>
-            <div class="col-2 col-md-2">{{ orderStatusChange(order.status) }}</div>
+              class="order-list-box col-12 col-md-3">
+              <div class="order-list-title mobile-only">Seller</div>
+              <div class="order-list-con"> {{ order.merchant_name }}</div>
+            </div>
+            <div class="order-list-box col-12 col-md-2">
+              <div class="order-list-title mobile-only">Total</div>
+              <div class="order-list-con"> {{ order.currency }} {{ order.total }}</div>
+            </div>
+            <div class="order-list-box col-12 col-md-2">
+              <div class="order-list-title mobile-only">Status</div>
+              <div class="order-list-con"> {{ orderStatusChange(order.status) }}</div>
+            </div>
             <div
-              class="see-info col-1 col-md-1"
+              class="see-info order-list-box col-12 col-md-1"
               @click="toggle(index)">
               <img
                 :class="index===orderlimit ? 'active' : ''"
@@ -49,16 +64,16 @@
             v-show="index===orderlimit"
             class="order-list-prd">
             <div class="waybill row">
-              <div class="storeId col-4 col-md-4">
+              <div class="storeId col-12 col-md-4">
                 <div class="storeId-title">Store Order ID</div>
                 <div class="storeId-con">{{ order.store_order_id }}</div>
               </div>
               <div
                 v-if="order.tracking_no"
-                class="waybll-num-title col-5 col-md-5 keepRight">Tracking Number :</div>
+                class="waybll-num-title col-6 col-md-5 keepRight">Tracking Number :</div>
               <div
                 v-if="order.tracking_no"
-                class="waybill-num-con col-3 col-md-3">
+                class="waybill-num-con col-6 col-md-3">
                 <a
                   :href="order.tracking_url"
                   target="_blank">
@@ -67,7 +82,7 @@
               </div>
             </div>
             <div class="order-detail">
-              <div class="order-prd-box col-5 col-md-5">
+              <div class="order-prd-box col-12 col-md-5">
                 <a
                   :href="order.availability ? '/product/'+order.availability.product_id+'/' : 'javascript:;'"
                   target="_blank"
@@ -97,7 +112,7 @@
                   </div>
                 </a>
               </div>
-              <div class="order-prd-price col-4 col-md-4">
+              <div class="order-prd-price col-12 col-md-4">
                 <ul class="order-prd-price-box">
                   <li
                     v-if="order.product_cost"
@@ -131,7 +146,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="order-prd-status col-3 col-md-3">
+              <div class="order-prd-status col-12 col-md-3">
                 <div
                   v-for="(aftersale,index) in orderafterSale(order.status)"
                   :key="index"
@@ -145,7 +160,7 @@
     <b-pagination
       v-model="currentPage"
       :total-rows="ordertotal"
-      :per-page="8"
+      :per-page="perorder"
       :disabled="pageCannotSwitched"
       align="center"
       prev-text="<"
@@ -179,7 +194,15 @@ export default {
       waybill: false,
       pageCannotSwitched: false,
       currentPage: 1,
-      orderStatus: 0
+      orderStatus: 0,
+      perorder: 16
+    }
+  },
+  mounted() {
+    if ($(window).width() < 1200) {
+      this.$nextTick(() => {
+        this.perorder = 7
+      })
     }
   },
   methods: {

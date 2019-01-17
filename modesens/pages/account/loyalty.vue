@@ -163,7 +163,7 @@ export default {
     async getRecords() {
       var recordsparams = {}
       recordsparams.offset = 0
-      recordsparams.amount = 9
+      recordsparams.amount = 10
       let records = await this.$axios.post('/loyalty/records/', recordsparams)
       let recordsJson = JSON.stringify(records)
       localStorage.set('records', recordsJson, 1)
@@ -172,6 +172,10 @@ export default {
       this.flag2 = true
     },
     async getOrderInfo() {
+      if ($(window).width() < 1200) {
+        this.orderOffset = 0
+        this.orderAmount = 7
+      }
       let offset = this.orderOffset
       let amount = this.orderAmount
       let { orders, total } = await this.$axios.get(
