@@ -48,18 +48,20 @@
         <div class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle4') }}</h6>
           <ul class="contact">
-            <li>
+            <li class="install-box">
               <a
-                href="https://itunes.apple.com/app/modesens-the-premier-shopping-assistant/id976201094?mt=8"
-                target="_blank">
-                <img
-                  src="/img/download-on-the-app-store.png"
-                  class="footer-connect-img">
+                v-b-modal.app-entrance
+                href="javascript:;">
+                <img src="https://mds0.com/static/img/20181127add_app.svg">
+                <span>{{ $t('Footer.ModeSensApp') }}</span>
               </a>
             </li>
-            <li><a><img
-              src="/img/add-to-chrome.png"
-              class="footer-connect-img"></a></li>
+            <li class="install-box"><a
+              href="javascript:;"
+              @click="myInstallChromeExtention">
+              <img src="https://mds0.com/static/img/20181127add_browse.svg">
+              <span>{{ $t('Footer.Addtobrowser') }}</span>
+            </a></li>
           </ul>
         </div>
         <div
@@ -168,23 +170,68 @@
         <button
           v-b-modal.mdLogin
           class="btn btn-secondary">{{ $t('common.Login') }}</button>
-        <button
-          class="btn btn-primary"
-          @click="signupJump">{{ $t('common.SignUp') }}</button>
+        <button class="btn btn-primary btn-signup">{{ $t('common.SignUp') }}</button>
       </div>
     </b-modal>
     <!-- 订阅modal -->
     <b-modal
       ref="emailsubModal"
-      :title="$t('Footer.emailSubTitle')"
-      :ok-title="emailSubStatus ? $t('common.LogInNow') : $t('common.CreateAnAccount')"
-      ok-only>
+      :title="$t('Footer.emailSubTitle')">
       <div>{{ emailSubStatus ? $t('Footer.emailSubDesc1') : $t('Footer.emailSubDesc0') }}</div>
+      <div slot="modal-footer">
+        <button
+          v-b-modal.mdLogin
+          v-if="emailSubStatus"
+          class="btn btn-primary">{{ $t('common.LogInNow') }}</button>
+        <button
+          v-else
+          class="btn btn-primary btn-signup">{{ $t('common.CreateAnAccount') }}</button>
+      </div>
+    </b-modal>
+    <!-- app install entrance modal -->
+    <b-modal
+      id="app-entrance"
+      ref="appentranceModal"
+      hide-header
+      hide-footer>
+      <button
+        class="close"
+        @click="hideAppEntranceModal">X</button>
+      <div class="apptitle">{{ $t('common.DownloadApp') }}</div>
+      <div class="applistbox">
+        <div class="app-box">
+          <img src="https://mds0.com/static/img/20190103ios_QR_code.png">
+          <a
+            href="https://itunes.apple.com/app/id976201094"
+            target="_blank">
+            <button class="btn-theme">
+              <img src="https://mds0.com/static/img/20181127ioslogo.svg">
+              {{ $t('common.IOSApp') }}
+            </button>
+          </a>
+        </div>
+        <div class="app-box">
+          <img
+            v-if="$i18n.country === 'cn'"
+            src="https://mds0.com/static/img/20181229android_QR_code_cn.png">
+          <img
+            v-else
+            src="https://mds0.com/static/img/20181229android_QR_code_global.png">
+          <a
+            href="https://modesens.com/s/android_cn/"
+            target="_blank">
+            <button class="btn-theme">
+              <img src="https://mds0.com/static/img/20181127androidlogo.svg">
+              {{ $t('common.AndroidApp') }}
+            </button>
+          </a>
+        </div>
+      </div>
     </b-modal>
   </footer>
 </template>
 <script>
-import { SignupOrLogin } from '~/static/utils/utils.js'
+import { installChromeExtention } from '~/static/utils/utils.js'
 export default {
   data() {
     return {
@@ -198,9 +245,6 @@ export default {
   },
   mounted() {},
   methods: {
-    signupJump() {
-      SignupOrLogin('signup')
-    },
     async newsSubmit(evt) {
       evt.preventDefault()
       let reg = /^\w+([-.]\w+)*@[A-Za-z0-9]+([.-][A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
@@ -246,6 +290,12 @@ export default {
       let obj = await this.$axios.post('/invite/', data)
       alert(this.shareEmail + this.$t(' is(are) invited'))
       console.log(obj)
+    },
+    myInstallChromeExtention() {
+      installChromeExtention()
+    },
+    hideAppEntranceModal() {
+      this.$refs.appentranceModal.hide()
     }
   }
 }

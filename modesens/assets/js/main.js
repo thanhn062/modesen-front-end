@@ -19,5 +19,18 @@ if (process.browser){
         ga('send', 'event', category, action, label, val)
       }
     })
+    // 注册 所有的注册按钮添加类名：btn-signup
+    $('.btn-signup').click(function() {
+      let res = location.pathname.match(/(.+)/)
+      // let res = location.pathname.match(/\/[a-z]+\/[a-z]+(.+)/)
+      console.log(res)
+      if (!res) return
+      let next_url = [...res][1]
+      if (next_url === '/about/') {
+        window.open('/accounts/signup/?next=/')
+      } else {
+        window.open('/accounts/signup/?next=' + next_url)
+      }
+    })
   })
 }

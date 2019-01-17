@@ -19,6 +19,24 @@
     letter-spacing: 0.2rem;
   }
 }
+.install-box {
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+    img {
+      width: 21px;
+    }
+    span {
+      display: inline-block;
+      margin-left: 10px;
+      width: 108px;
+      vertical-align: middle;
+      font-size: 12px;
+    }
+  }
+}
 .footer-logo {
   width: 150px;
 }
@@ -115,4 +133,37 @@
       border-color: @btnBgColor;
     }
   }
+}
+#app-entrance {
+  .apptitle {
+    font-size: 24px;
+    color: #000;
+    text-align: center;
+  }
+  .applistbox {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+  }
+}
+.app-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &>img {
+    height: 168px;
+    margin-bottom: 10px;
+  }
+  .btn-theme {
+    width: 168px;
+    font-size: 12px;
+    img {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+@media(max-width: 1199px) {
+  
 }

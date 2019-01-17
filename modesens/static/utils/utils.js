@@ -39,19 +39,7 @@ export function NumFormat (value) {
         return intPartFormat;
     }
 };
-//登录注册
-export function SignupOrLogin(opt) {
-  let res = location.pathname.match(/\/[a-z]+\/[a-z]+(.+)/)
-  if (!res) return
-  let next_url = [...res][1]
-  if (opt === 'signup') {
-    if (next_url === '/about/') {
-      window.open('/accounts/signup/?next=/')
-    } else {
-      window.open('/accounts/signup/?next=' + next_url)
-    }
-  }
-}
+
 // 微信登录
 export function wxlogin (fullPath) {
   let res = fullPath.match(/\/[a-z]+\/[a-z]+(.+)/)
@@ -67,4 +55,16 @@ export function wxlogin (fullPath) {
     '&response_type=code&scope=snsapi_userinfo&state=' +
     state
   window.parent.location = url
+}
+
+export function installChromeExtention(){
+  ga('send', 'event', 'Test', 'Extention', 'Chrome');
+  chrome.webstore.install("https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb", function(){
+      $.each($(".chrome-install-button"), function (i, e){
+          $(e).attr("onclick", "window.open('https://chrome.google.com/webstore/detail/modesens-shopping-assista/cmfmhegpbogfmojekmidappigcfbgbcb/reviews')");
+          $(e).find("span").html(gettext("Write Review"))
+      })
+      ga('send', 'event', 'Test', 'Extention', 'chromeSuccess');
+  });
+  event.stopPropagation();
 }

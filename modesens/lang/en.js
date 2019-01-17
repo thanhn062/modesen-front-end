@@ -19,6 +19,9 @@ export const common = {
   validemails: 'Please enter valid email address(es)',
   LogInNow: 'Log In Now',
   CreateAnAccount: 'Create An Account',
+  DownloadApp: 'Download The ModeSens App',
+  IOSApp: 'IOS App',
+  AndroidApp: 'Android App ',
 };
 export const Footer = {
   classtitle1: 'CUSTOMER CARE',
@@ -46,6 +49,8 @@ export const Footer = {
   emailSubDesc0: 'Thank you for signing up to receive ModeSens emails. Your subscription has been confirmed.',
   emailSubDesc1: 'An account is already registered for this email. We’ve confirmed your ModeSens email subscription.',
   shareAlert: ' is(are) invited',
+  ModeSensApp: 'ModeSens App for IOS and Android',
+  Addtobrowser: 'Add to browser',
 };
 export const loyalty = {
   benefitsTitle: 'Membership Benefits',

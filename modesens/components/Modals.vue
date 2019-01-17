@@ -9,7 +9,7 @@
       hide-footer
       style="width: 600px,height: 680px">
       <button
-        class="close closebtn"
+        class="close"
         @click="hideLoginModal"><img src="/img/close.svg"></button>
       <iframe
         src="https://modesens.com/accounts/login/?next=/loyalty/"
