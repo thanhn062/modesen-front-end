@@ -13,7 +13,7 @@
 <script>
 export default {
   head: {
-    title: 'Barcode Help | ModeSens'
+    title: this.$t('Barcode Help | ModeSens')
   },
   data() {
     return {

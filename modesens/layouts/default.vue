@@ -2,7 +2,7 @@
   <div>
     <Header/>
     <main :style="{'padding': headerHeight}"><nuxt/></main>
-    <Footer/>
+    <Footer :isPC="isPC"/>
     <Modals :lsuid="lsuid"/>
   </div>
 </template>
@@ -20,11 +20,15 @@ export default {
   data() {
     return {
       headerHeight: '50px 0',
-      lsuid: ''
+      lsuid: '',
+      isPC: true
     }
   },
   mounted() {
     this.headerHeight = $('header').height() + 'px 0'
+    if ($(window).width() < 1200) {
+      this.isPC = false
+    }
   }
 }
 </script>

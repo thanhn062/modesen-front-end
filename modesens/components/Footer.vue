@@ -51,16 +51,23 @@
             <li class="install-box">
               <a
                 v-b-modal.app-entrance
+                v-if="isPC"
                 href="javascript:;">
                 <img src="https://mds0.com/static/img/20181127add_app.svg">
                 <span>{{ $t('Footer.ModeSensApp') }}</span>
               </a>
+              <a
+                v-else
+                href="https://itunes.apple.com/app/id976201094"
+                target="_blank">
+                <img src="https://mds0.com/static/img/20190107Mobileios.svg">
+              </a>
             </li>
             <li class="install-box"><a
-              href="javascript:;"
-              @click="myInstallChromeExtention">
-              <img src="https://mds0.com/static/img/20181127add_browse.svg">
-              <span>{{ $t('Footer.Addtobrowser') }}</span>
+              :href="isPC ? 'javascript:;' : 'https://modesens.com/s/android_cn/'"
+              @click="isPC ? 'myInstallChromeExtention' : ''">
+              <img :src="isPC ? 'https://mds0.com/static/img/20181127add_browse.svg' : 'https://mds0.com/static/img/20190107Mobileandroid.svg'">
+              <span v-if="isPC">{{ $t('Footer.Addtobrowser') }}</span>
             </a></li>
           </ul>
         </div>
@@ -113,18 +120,14 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div
-          class="footer-logo-con"
-          style="float: left">
+        <div class="footer-logo-con">
           <img
             src="/img/20180905footer_logo.svg"
             class="footer-logo">
           <span v-if="$i18n.country === 'cn'">© 2018, 尚睿科技（北京）有限公司<br>京 ICP 备 16029930号</span>
           <span v-else>© 2018, ModeSens Inc</span>
         </div>
-        <div
-          class="footer-svg-con"
-          style="float: right;margin-right:-9px;">
+        <div class="footer-svg-con">
           <a
             href="https://www.pinterest.com/modesens/"
             target="_blank"><img
@@ -233,6 +236,12 @@
 <script>
 import { installChromeExtention } from '~/static/utils/utils.js'
 export default {
+  props: {
+    isPC: {
+      type: Boolean,
+      default: () => true
+    }
+  },
   data() {
     return {
       lsuser: false,
