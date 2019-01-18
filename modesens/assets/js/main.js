@@ -1,3 +1,6 @@
+import Vue from 'vue'
+import {gconfig} from '~/assets/js/gconfig.js'
+
 //浏览器端功能
 if (process.browser){
   $(document).ready(function() {
@@ -34,3 +37,5 @@ if (process.browser){
     })
   })
 }
+
+Vue.prototype.GLOBAL = gconfig;

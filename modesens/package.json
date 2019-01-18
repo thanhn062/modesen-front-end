@@ -36,6 +36,7 @@
     "sass-resources-loader": "^2.0.0",
     "swiper": "^4.4.5",
     "v-charts": "^1.19.0",
+    "vuelidate": "^0.7.4",
     "windows-fs": "^1.2.0"
   },
   "devDependencies": {

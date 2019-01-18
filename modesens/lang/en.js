@@ -22,6 +22,7 @@ export const common = {
   DownloadApp: 'Download The ModeSens App',
   IOSApp: 'IOS App',
   AndroidApp: 'Android App ',
+  ModeSens: 'ModeSens - The Premier Shopping Assistant'
 };
 export const Footer = {
   classtitle1: 'CUSTOMER CARE',
@@ -286,4 +287,6 @@ export const FbModal = {
   desc3: 'Thanks so much for your time! We review every bit of feedback we receive, and will reach out to you if we have further questions.',
   aletmsg: 'Please enter your comments or suggestions',
   Sendmessage: 'Send message'
+};
+export const Header = {
 }

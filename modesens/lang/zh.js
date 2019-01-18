@@ -22,6 +22,7 @@ export const common = {
   DownloadApp: 'Download The ModeSens App',
   IOSApp: 'IOS App',
   AndroidApp: 'Android App ',
+  ModeSens: 'ModeSens - The Premier Shopping Assistant'
 }
 export const Footer = {
   classtitle1: '使用帮助',
