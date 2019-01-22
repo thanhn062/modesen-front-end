@@ -150,7 +150,17 @@
                 <div
                   v-for="(aftersale,index) in orderafterSale(order.status)"
                   :key="index"
-                  class="after-sale">{{ aftersale }}</div>
+                  class="after-sale">
+                  <a
+                    v-if="aftersale === 'File A Claim'"
+                    href="/inquery/"
+                    target="_blank">
+                    {{ aftersale }}
+                  </a>
+                  <div
+                    v-else
+                    class="after-sale-other">{{ aftersale }}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -240,7 +250,7 @@ export default {
         return this.$t('accountOrder.status6')
       } else if (index === 8) {
         return this.$t('accountOrder.status8')
-      } else if (index === 'Tracked') {
+      } else if (index === 't') {
         return this.$t('accountOrder.statusTracked')
       } else {
         return this.$t('accountOrder.status_1')

@@ -55,11 +55,15 @@
         </div>
       </div>
       <div class="page-content container">
+        <div
+          class="mobile-tabbtn mobile-only"
+          @click="tabswich">{{ $t('accountLoyalty.account_overview') }}</div>
         <b-tabs
           vertical>
           <b-tab
             :title="$t('accountLoyalty.account_overview')" 
-            active>
+            active
+            @click="getTabOrder">
             <div
               v-if = "flag1 && orderflag"
               class="page-right">
@@ -108,6 +112,7 @@
 import myloyalty from '~/components/loyalty/myloyalty.vue'
 import myorder from '~/components/loyalty/myorder.vue'
 import localStorage from '~/static/utils/localStorage.js'
+import Vue from 'vue'
 export default {
   components: {
     myloyalty,
@@ -129,7 +134,8 @@ export default {
       userOrdertotal: 0,
       orderOffset: 0,
       orderAmount: 16,
-      orderflag: false
+      orderflag: false,
+      sampleElement: '<com></com>'
     }
   },
   head: {
@@ -145,6 +151,13 @@ export default {
     if (this.$route.query.otoken) {
       this.getUserInfo()
       this.getOrderInfo()
+    }
+  },
+  mounted() {
+    if ($(window).width() < 1200) {
+      let backtab = `<div class='tab-backbtn' >< Back</div>`
+      $('.nav-tabs').before(backtab)
+      $('.tab-backbtn').on('click', this.tabback)
     }
   },
   methods: {
@@ -178,12 +191,29 @@ export default {
       }
       let offset = this.orderOffset
       let amount = this.orderAmount
-      let { orders, total } = await this.$axios.get(
+      let orderObj = await this.$axios.get(
         '/accounts/order/all/?offset=' + offset + '&amount=' + amount
       )
-      this.userOrder = orders
-      this.userOrdertotal = total
+      let orderObjJson = JSON.stringify(orderObj)
+      localStorage.set('order', orderObjJson, 1)
+      this.userOrder = orderObj.orders
+      this.userOrdertotal = orderObj.total
       this.orderflag = true
+    },
+    getTabOrder: function() {
+      this.orderflag = false
+      if (localStorage.get('order')) {
+        let order = JSON.parse(localStorage.get('order'))
+        this.userOrder = order.orders
+        this.userOrdertotal = order.total
+        this.orderflag = true
+      } else {
+        this.getOrderInfo()
+      }
+      if ($(window).width() < 1200) {
+        this.tabback()
+        $('.mobile-tabbtn').html(this.$t('accountLoyalty.account_overview'))
+      }
     },
     getTabLoyalty: function() {
       this.flag2 = false
@@ -197,6 +227,16 @@ export default {
           this.getRecords()
         }
       }
+      if ($(window).width() < 1200) {
+        this.tabback()
+        $('.mobile-tabbtn').html(this.$t('accountLoyalty.my_loyalty'))
+      }
+    },
+    tabswich: function() {
+      $('.col-auto').css('left', '0')
+    },
+    tabback: function() {
+      $('.col-auto').css('left', '-100%')
     }
   }
 }
