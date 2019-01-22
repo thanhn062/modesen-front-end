@@ -112,7 +112,6 @@
 import myloyalty from '~/components/loyalty/myloyalty.vue'
 import myorder from '~/components/loyalty/myorder.vue'
 import localStorage from '~/static/utils/localStorage.js'
-import Vue from 'vue'
 export default {
   components: {
     myloyalty,

@@ -9,6 +9,35 @@
         <li class="order-title-list order-title-list-status col-3 col-md-3">
           <div class="order-current-status">Status</div>
           <div class="status-sel">
+            <!-- <select
+              id="status-sel"
+              name="status-sel"
+              title="Change Status"
+              @change="statusSel">
+              <option
+                value=""
+                class="status-sel-option">All</option>
+              <option
+                value="completed"
+                class="status-sel-option">Completed</option>
+              <option
+                value="active"
+                class="status-sel-option">Active</option>
+            </select> -->
+            <b-form-select
+              id="status-sel"
+              v-model="selected"
+              @change="statusSel">
+              <option
+                value=""
+                class="status-sel-option">All</option>
+              <option
+                value="completed"
+                class="status-sel-option">Completed</option>
+              <option
+                value="active"
+                class="status-sel-option">Active</option>
+            </b-form-select>
             <img
               src="/img/20181214slidedown.svg" 
               alt=""
@@ -158,8 +187,19 @@
                     {{ aftersale }}
                   </a>
                   <div
-                    v-else
+                    v-b-modal.service-modal
+                    v-else-if="aftersale === 'Message'"
                     class="after-sale-other">{{ aftersale }}</div>
+                  <a
+                    v-else-if="aftersale === 'Submit a Review'"
+                    :href="'https://modesens.com/store/merchantreview/'+order.merchant_name+'/'"
+                    target="_blank"
+                    class="after-sale-other">{{ aftersale }}</a>
+                  <a
+                    v-else-if="aftersale === 'Pay Now'"
+                    :href="'https://pay.modesens.com/product/'+order.availability_id+'/preview/?t='+usertoken"
+                    target="_blank"
+                    class="after-sale-other">{{ aftersale }}</a>
                 </div>
               </div>
             </div>
@@ -176,11 +216,15 @@
       prev-text="<"
       next-text=">"
       @input="orderpageSwitching"/>
+    <serviceModal/>
   </section>
 </template>
-
 <script>
+import serviceModal from '~/components/Modals.vue'
 export default {
+  components: {
+    serviceModal
+  },
   props: {
     userordercontent: {
       type: Array,
@@ -205,8 +249,13 @@ export default {
       pageCannotSwitched: false,
       currentPage: 1,
       orderStatus: 0,
-      perorder: 16
+      perorder: 16,
+      usertoken: '',
+      selected: ''
     }
+  },
+  created() {
+    this.usertoken = this.$route.query.otoken
   },
   mounted() {
     if ($(window).width() < 1200) {
@@ -216,11 +265,17 @@ export default {
     }
   },
   methods: {
-    async getmoreOrder(page) {
+    async getmoreOrder(page, stauts) {
       let amount = 16
       let offset = (page - 1) * amount
+      let status = stauts ? stauts : ''
       let { orders, total } = await this.$axios.get(
-        '/accounts/order/all/?offset=' + offset + '&amount=' + amount
+        '/accounts/order/all/?offset=' +
+          offset +
+          '&amount=' +
+          amount +
+          '&status=' +
+          stauts
       )
       this.ordercontent = orders
       this.ordertotal = total
@@ -258,9 +313,11 @@ export default {
     },
     orderafterSale: function(index) {
       if (index === 0) {
-        return ['Message', 'Pay Now']
+        return ['Pay Now']
       } else if (index === 4) {
         return ['Message', 'File A Claim', 'Submit a Review']
+      } else if (index === 't') {
+        return ['Submit a Review']
       } else {
         return ['Message']
       }
@@ -269,10 +326,15 @@ export default {
       if (this.pagestate === this.currentPage) {
         return
       } else {
-        this.getmoreOrder(this.currentPage)
+        this.getmoreOrder(this.currentPage, '')
         this.pagestate = this.currentPage
         this.orderlimit = -1
       }
+    },
+    statusSel: function(value) {
+      this.getmoreOrder(1, value)
+      this.pagestate = 1
+      this.orderlimit = -1
     }
   }
 }

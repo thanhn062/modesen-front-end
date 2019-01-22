@@ -6,6 +6,10 @@ module.exports = {
   aboutpage: {
     subtitle: 'About 页面'
   },
+  service: {
+    help: '需要帮助？',
+    WeChat: '扫描二维码添加微信号进行沟通'
+  },
   emailaddress: '填写邮件地址',
   womens: "女士",
   mens: "男士",
@@ -229,16 +233,16 @@ module.exports = {
     record_ll: '为美达点赞',
   },
   accountOrder: {
-    status0: '待支付',
-    status1: '待下单',
-    status2: '待发货',
-    status3: '已发货',
-    status4: '已签收',
-    status5: '退款中',
-    status6: '退款完成',
-    status8: '转运已发货',
-    statusTracked: 'Tracked',
-    status_1: '已过期',
+    status0: 'payment pending',
+    status1: 'payment received',
+    status2: 'ordered placed',
+    status3: 'shipped',
+    status4: 'delivered',
+    status5: 'refund approved',
+    status6: 'refunded',
+    status8: 'Transshipment Shipped',
+    statusTracked: 'tracked',
+    status_1: 'canceled',
   },
   annual: {
     MemberSince: '会员始于',

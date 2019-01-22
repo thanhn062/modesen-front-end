@@ -6,6 +6,10 @@ module.exports = {
   aboutpage: {
     subtitle: 'About Page'
   },
+  service: {
+    help: 'Need help?',
+    WeChat: 'Scan the two-dimensional code to add WeChat to communicate.'
+  },
   emailaddress: 'Email Address',
   womens: "Women's",
   mens: "Men's",
@@ -229,16 +233,16 @@ module.exports = {
     record_ll: 'Like A Look',
   },
   accountOrder: {
-    status0: 'Pending Payment',
-    status1: 'Pending order',
-    status2: 'Pending Ship',
-    status3: 'Shipped',
-    status4: 'Completed',
-    status5: 'Refunding',
-    status6: 'Refunded',
+    status0: 'payment pending',
+    status1: 'payment received',
+    status2: 'ordered placed',
+    status3: 'shipped',
+    status4: 'delivered',
+    status5: 'refund approved',
+    status6: 'refunded',
     status8: 'Transshipment Shipped',
-    statusTracked: 'Tracked',
-    status_1: 'Expired',
+    statusTracked: 'tracked',
+    status_1: 'canceled',
   },
   annual: {
     MemberSince: 'Member Since',
