@@ -2,28 +2,13 @@
   <section>
     <div id="orderlist-Box">
       <ul class="order-title keepLeft row">
-        <li class="order-title-list col-2 col-md-2">Order Time</li>
-        <li class="order-title-list col-2 col-md-2">ModeSens Order ID</li>
-        <li class="order-title-list col-3 col-md-3">Seller</li>
-        <li class="order-title-list col-2 col-md-2">Total</li>
+        <li class="order-title-list col-2 col-md-2">{{ $t('accountOrder.orderTime') }}</li>
+        <li class="order-title-list col-2 col-md-2">{{ $t('accountOrder.msOrderId') }}</li>
+        <li class="order-title-list col-3 col-md-3">{{ $t('accountOrder.Seller') }}</li>
+        <li class="order-title-list col-2 col-md-2">{{ $t('accountOrder.Total') }}</li>
         <li class="order-title-list order-title-list-status col-3 col-md-3">
-          <div class="order-current-status">Status</div>
+          <div class="order-current-status">{{ $t('accountOrder.Status') }}</div>
           <div class="status-sel">
-            <!-- <select
-              id="status-sel"
-              name="status-sel"
-              title="Change Status"
-              @change="statusSel">
-              <option
-                value=""
-                class="status-sel-option">All</option>
-              <option
-                value="completed"
-                class="status-sel-option">Completed</option>
-              <option
-                value="active"
-                class="status-sel-option">Active</option>
-            </select> -->
             <b-form-select
               id="status-sel"
               v-model="selected"
@@ -66,10 +51,10 @@
               <div class="order-list-con">{{ order.ms_order_id }}</div>
             </div>
             <div
-              :title="order.merchant_name"
+              :title="order.merchant_id ? order.merchant_id : order.merchant_name"
               class="order-list-box col-12 col-md-3">
               <div class="order-list-title mobile-only">Seller</div>
-              <div class="order-list-con"> {{ order.merchant_name }}</div>
+              <div class="order-list-con"> {{ order.merchant_id ? order.merchant_id : order.merchant_name }}</div>
             </div>
             <div class="order-list-box col-12 col-md-2">
               <div class="order-list-title mobile-only">Total</div>
@@ -94,12 +79,12 @@
             class="order-list-prd">
             <div class="waybill row">
               <div class="storeId col-12 col-md-4">
-                <div class="storeId-title">Store Order ID</div>
+                <div class="storeId-title">{{ $t('accountOrder.storeId') }}</div>
                 <div class="storeId-con">{{ order.store_order_id }}</div>
               </div>
               <div
                 v-if="order.tracking_no"
-                class="waybll-num-title col-6 col-md-5 keepRight">Tracking Number :</div>
+                class="waybll-num-title col-6 col-md-5 keepRight">{{ $t('accountOrder.trackNum') }} :</div>
               <div
                 v-if="order.tracking_no"
                 class="waybill-num-con col-6 col-md-3">
@@ -130,11 +115,11 @@
                     <div class="order-prd-productname">{{ order.product_name }}</div>
                     <div class="order-prd-size">
                       <div class="order-size"> 
-                        <span class="order-size-kind">Size</span>
-                        <span class="order-size-con">{{ order.size === '' ? 'One Size' : order.size }}</span>
+                        <span class="order-size-kind">{{ $t('accountOrder.Size') }}</span>
+                        <span class="order-size-con">{{ order.size === '' ? $t('accountOrder.oneSize') : order.size }}</span>
                       </div>
                       <div class="order-quantity">
-                        <span class="order-size-kind">Quantity</span>
+                        <span class="order-size-kind">{{ $t('accountOrder.Quantity') }}</span>
                         <span class="order-size-con">{{ order.items }}</span>
                       </div>
                     </div>
@@ -146,31 +131,31 @@
                   <li
                     v-if="order.product_cost"
                     class="order-prd-price-list">
-                    <div class="order-price-list-title">Product Price:</div>
+                    <div class="order-price-list-title">{{ $t('accountOrder.ProductP') }}:</div>
                     <div class="order-price-num">{{ order.currency }} {{ order.product_cost }}</div>
                   </li>
                   <li
                     v-if="order.shipping_cost"
                     class="order-prd-price-list">
-                    <div class="order-price-list-title">Shipping Fee:</div>
+                    <div class="order-price-list-title">{{ $t('accountOrder.ShippingF') }}:</div>
                     <div class="order-price-num">{{ order.currency }} {{ order.shipping_cost }}</div>
                   </li>
                   <li
                     v-if="order.duty_cost"
                     class="order-prd-price-list">
-                    <div class="order-price-list-title">Duty:</div>
+                    <div class="order-price-list-title">{{ $t('accountOrder.Duty') }}:</div>
                     <div class="order-price-num">{{ order.currency }} {{ order.duty_cost }}</div>
                   </li>
                   <li
                     v-if="order.service_cost"
                     class="order-prd-price-list">
-                    <div class="order-price-list-title">Service fee:</div>
+                    <div class="order-price-list-title">{{ $t('accountOrder.Servicef') }}:</div>
                     <div class="order-price-num">{{ order.currency }} {{ order.service_cost }}</div>
                   </li>
                   <li
                     v-if="order.promo"
                     class="order-prd-price-list">
-                    <div class="order-price-list-title">Discount:</div>
+                    <div class="order-price-list-title">{{ $t('accountOrder.Discount') }}:</div>
                     <div class="order-price-num">{{ order.currency }} {{ order.promo }}</div>
                   </li>
                 </ul>
@@ -181,25 +166,25 @@
                   :key="index"
                   class="after-sale">
                   <a
-                    v-if="aftersale === 'File A Claim'"
+                    v-if="aftersale === 3"
                     href="/inquery/"
                     target="_blank">
-                    {{ aftersale }}
+                    {{ $t('accountOrder.afterstatus'+aftersale) }}
                   </a>
                   <div
                     v-b-modal.service-modal
-                    v-else-if="aftersale === 'Message'"
-                    class="after-sale-other">{{ aftersale }}</div>
+                    v-else-if="aftersale === 2 && order.merchant_id"
+                    class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</div>
                   <a
-                    v-else-if="aftersale === 'Submit a Review'"
-                    :href="'https://modesens.com/store/merchantreview/'+order.merchant_name+'/'"
+                    v-else-if="aftersale === 4"
+                    :href="'https://modesens.com/store/merchantreview/'+order.merchant_id+'/'"
                     target="_blank"
-                    class="after-sale-other">{{ aftersale }}</a>
+                    class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</a>
                   <a
-                    v-else-if="aftersale === 'Pay Now'"
+                    v-else-if="aftersale === 1"
                     :href="'https://pay.modesens.com/product/'+order.availability_id+'/preview/?t='+usertoken"
                     target="_blank"
-                    class="after-sale-other">{{ aftersale }}</a>
+                    class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</a>
                 </div>
               </div>
             </div>
@@ -313,13 +298,13 @@ export default {
     },
     orderafterSale: function(index) {
       if (index === 0) {
-        return ['Pay Now']
+        return [1]
       } else if (index === 4) {
-        return ['Message', 'File A Claim', 'Submit a Review']
+        return [2, 3, 4]
       } else if (index === 't') {
-        return ['Submit a Review']
+        return [4]
       } else {
-        return ['Message']
+        return [2]
       }
     },
     orderpageSwitching: function() {
