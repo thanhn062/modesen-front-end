@@ -260,13 +260,13 @@ export default {
   mounted() {
     if ($(window).width() < 1200) {
       this.$nextTick(() => {
-        this.perorder = 7
+        this.perorder = 8
       })
     }
   },
   methods: {
     async getmoreOrder(page, stauts) {
-      let amount = 16
+      let amount = this.perorder
       let offset = (page - 1) * amount
       let status = stauts ? stauts : ''
       let { orders, total } = await this.$axios.get(
