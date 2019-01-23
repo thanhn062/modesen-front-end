@@ -22,7 +22,8 @@ export const common = {
   DownloadApp: 'Download The ModeSens App',
   IOSApp: 'IOS App',
   AndroidApp: 'Android App ',
-  ModeSens: 'ModeSens - The Premier Shopping Assistant'
+  ModeSens: 'ModeSens - The Premier Shopping Assistant',
+  WOMEN: 'WOMEN'
 };
 export const Footer = {
   classtitle1: 'CUSTOMER CARE',

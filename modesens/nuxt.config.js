@@ -51,6 +51,7 @@ module.exports = {
 
   router: {
     // base: '/vue/'
+    middleware: 'countries'
   },
 
   /*
@@ -89,7 +90,7 @@ module.exports = {
           {
             code: 'zh',
             file: 'zh.js',
-            name: '中文'
+            name: '简体中文'
           }
         ],
         lazy: true,

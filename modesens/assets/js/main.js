@@ -4,6 +4,7 @@ import {gconfig} from '~/assets/js/gconfig.js'
 //浏览器端功能
 if (process.browser){
   $(document).ready(function() {
+    $('.main-container').css('padding-top', $('header').height())
     //click--ga
     $('*[data-ga-click]').click(function() {
       let res = $(this).attr('data-ga-click');

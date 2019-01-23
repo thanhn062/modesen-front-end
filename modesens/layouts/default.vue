@@ -1,26 +1,28 @@
 <template>
   <div>
-    <Header/>
-    <main :style="{'padding': headerHeight}"><nuxt/></main>
+    <Header :lsuid="lsuid"/>
+    <main class="main-container"><nuxt/></main>
     <Footer :isPC="isPC"/>
     <Modals :lsuid="lsuid"/>
   </div>
 </template>
 <script>
 import '~/assets/js/main.js'
-import Header from '~/components/Header.vue'
+import Header from '~/components/header/Header.vue'
 import Footer from '~/components/Footer.vue'
 import Modals from '~/components/Modals.vue'
 export default {
+  // middleware: 'countries',
   components: {
     Header,
     Footer,
     Modals
   },
+  create() {},
   data() {
     return {
       headerHeight: '50px 0',
-      lsuid: '',
+      lsuid: 'dd',
       isPC: true
     }
   },

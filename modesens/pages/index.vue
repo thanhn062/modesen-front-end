@@ -8,11 +8,19 @@
         :to="switchLocalePath($i18n.country, locale.code)">{{ locale.name }}</nuxt-link>
       <div><nuxt-link to="/loyalty/">membership-intro</nuxt-link></div>
       <div><nuxt-link to="/account/loyalty/">membership</nuxt-link></div>
+      <!-- {{ COUNTRIES }} -->
     </div>
   </section>
 </template>
 <script>
-export default {}
+export default {
+  // async asyncData({ $axios }) {
+  //   let { COUNTRIES } = await $axios.post('/config/', {
+  //     secretkey: process.env.secretKey
+  //   })
+  //   return { COUNTRIES }
+  // }
+}
 </script>
 <style>
 </style>
