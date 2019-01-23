@@ -260,7 +260,7 @@ export default {
   mounted() {
     if ($(window).width() < 1200) {
       this.$nextTick(() => {
-        this.perorder = 8
+        this.perorder = 7
       })
     }
   },

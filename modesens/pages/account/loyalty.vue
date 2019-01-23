@@ -186,7 +186,7 @@ export default {
     async getOrderInfo() {
       if ($(window).width() < 1200) {
         this.orderOffset = 0
-        this.orderAmount = 8
+        this.orderAmount = 7
       }
       let offset = this.orderOffset
       let amount = this.orderAmount
