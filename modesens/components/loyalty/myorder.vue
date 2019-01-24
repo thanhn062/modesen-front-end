@@ -263,7 +263,6 @@ export default {
           stauts
       )
       this.ordercontent = orders
-      this.ordertotal = total
       this.pageCannotSwitched = false
     },
     toggle: function(index) {
