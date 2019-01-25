@@ -10,7 +10,7 @@
               <li><a href="/faq/">{{ $t('Footer.helpcenter') }}</a></li>
               <li><a
                 v-b-modal.cumodal
-                href="javascript:;">{{ $t('common.ContactUs') }}</a></li>
+                href="javascript:;">{{ $t('ContactUs') }}</a></li>
               <li><a
                 v-b-modal.FbModal
                 href="javascript:;">{{ $t('Footer.feedback') }}</a></li>
@@ -99,7 +99,7 @@
             @submit="newsSubmit">
             <b-form-group>
               <b-form-input
-                :placeholder="$t('common.emailaddress')"
+                :placeholder="$t('emailaddress')"
                 v-model="newsEmail"
                 type="email"/>
             </b-form-group>
@@ -107,15 +107,15 @@
               <b-form-radio-group
                 v-model="selectedSex"
                 name="sexoptions">
-                <b-form-radio value="f">{{ $t('common.womens') }}</b-form-radio>
-                <b-form-radio value="m">{{ $t('common.mens') }}</b-form-radio>
+                <b-form-radio value="f">{{ $t('womens') }}</b-form-radio>
+                <b-form-radio value="m">{{ $t('mens') }}</b-form-radio>
               </b-form-radio-group>
             </b-form-group>
             <b-button
               :disabled="disabledstatus"
               type="submit"
               variant="default"
-              style="width: 100%;">{{ $t('common.SUBMIT') }}</b-button>
+              style="width: 100%;">{{ $t('SUBMIT') }}</b-button>
           </b-form>
         </div>
       </div>
@@ -172,8 +172,8 @@
         class="w-100 invite-footer">
         <button
           v-b-modal.mdLogin
-          class="btn btn-secondary">{{ $t('common.Login') }}</button>
-        <button class="btn btn-primary btn-signup">{{ $t('common.SignUp') }}</button>
+          class="btn btn-secondary">{{ $t('Login') }}</button>
+        <button class="btn btn-primary btn-signup">{{ $t('SignUp') }}</button>
       </div>
     </b-modal>
     <!-- 订阅modal -->
@@ -185,10 +185,10 @@
         <button
           v-b-modal.mdLogin
           v-if="emailSubStatus"
-          class="btn btn-primary">{{ $t('common.LogInNow') }}</button>
+          class="btn btn-primary">{{ $t('LogInNow') }}</button>
         <button
           v-else
-          class="btn btn-primary btn-signup">{{ $t('common.CreateAnAccount') }}</button>
+          class="btn btn-primary btn-signup">{{ $t('CreateAnAccount') }}</button>
       </div>
     </b-modal>
     <!-- app install entrance modal -->
@@ -200,7 +200,7 @@
       <button
         class="close"
         @click="hideAppEntranceModal">X</button>
-      <div class="apptitle">{{ $t('common.DownloadApp') }}</div>
+      <div class="apptitle">{{ $t('DownloadApp') }}</div>
       <div class="applistbox">
         <div class="app-box">
           <img src="https://mds0.com/static/img/20190103ios_QR_code.png">
@@ -209,7 +209,7 @@
             target="_blank">
             <button class="btn-theme">
               <img src="https://mds0.com/static/img/20181127ioslogo.svg">
-              {{ $t('common.IOSApp') }}
+              {{ $t('IOSApp') }}
             </button>
           </a>
         </div>
@@ -225,7 +225,7 @@
             target="_blank">
             <button class="btn-theme">
               <img src="https://mds0.com/static/img/20181127androidlogo.svg">
-              {{ $t('common.AndroidApp') }}
+              {{ $t('AndroidApp') }}
             </button>
           </a>
         </div>
@@ -286,7 +286,7 @@ export default {
         }
       })
       if (toinvite.length == 0) {
-        alert(this.$t('common.validemails'))
+        alert(this.$t('validemails'))
         return
       }
       if (toinvite.length > 10) {

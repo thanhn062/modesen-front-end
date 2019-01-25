@@ -12,7 +12,7 @@
         class="close"
         @click="hideLoginModal"><img src="/img/close.svg"></button>
       <iframe
-        src="https://modesens.com/accounts/login/?next=/loyalty/"
+        src="/accounts/login/?next=/loyalty/"
         width="100%"
         height="100%"
         frameborder="0"/>
@@ -20,8 +20,8 @@
     <!-- Connect Us -->
     <b-modal
       id="cumodal"
-      :title="$t('common.ContactUs')"
-      :ok-title="hereHasClick ? $t('common.Submit') : $t('common.Close')"
+      :title="$t('ContactUs')"
+      :ok-title="hereHasClick ? $t('Submit') : $t('Close')"
       ok-only
       @ok="contactSubmit"
       @hidden="cumodalHide">
@@ -56,7 +56,7 @@
           <div>{{ $t('cuModal.desc3') }}{{ $t('cuModal.desc5') }}</div>
           <form>
             <div>
-              <label for="contact-company">{{ $t('common.YourCompanyName') }}</label><br>
+              <label for="contact-company">{{ $t('YourCompanyName') }}</label><br>
               <input
                 id="contact-company"
                 v-model="company"
@@ -64,7 +64,7 @@
                 type="text">
             </div>
             <div>
-              <label for="contact-name">{{ $t('common.YourName') }}</label><br>
+              <label for="contact-name">{{ $t('YourName') }}</label><br>
               <input
                 id="contact-name"
                 v-model="name"
@@ -72,7 +72,7 @@
                 type="text">
             </div>
             <div>
-              <label for="contact-url">{{ $t('common.URL') }}</label><br>
+              <label for="contact-url">{{ $t('URL') }}</label><br>
               <input
                 id="contact-url"
                 v-model="url"
@@ -80,7 +80,7 @@
                 type="text">
             </div>
             <div>
-              <label for="contact-email">{{ $t('common.Email') }}</label><br>
+              <label for="contact-email">{{ $t('Email') }}</label><br>
               <input
                 id="contact-email"
                 v-model="email"
@@ -88,7 +88,7 @@
                 type="text">
             </div>
             <div>
-              <label for="contact-intro">{{ $t('common.Introduction') }}</label><br>
+              <label for="contact-intro">{{ $t('Introduction') }}</label><br>
               <textarea
                 id="contact-intro"
                 v-model="introduction"
@@ -104,7 +104,7 @@
       ref="FbModal"
       :title="$t('Footer.feedback')"
       :ok-title="$t('FbModal.Sendmessage')"
-      :cancel-title="$t('common.Close')"
+      :cancel-title="$t('Close')"
       @ok="sendFeedback">
       <div>{{ $t('FbModal.desc1') }}</div>
       <br>
@@ -131,6 +131,12 @@
         v-else
         id="fbsuceed"
         class="fb-thanks">{{ $t('FbModal.desc3') }}</div>
+    </b-modal>
+    <!-- notice modal -->
+    <b-modal
+      id="noticemodal1"
+      ok-only>
+      <h3>Coming soon for China. Please stay in tune.</h3>
     </b-modal>
   </div>
 </template>

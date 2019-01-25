@@ -26,12 +26,13 @@
 </template>
 
 <script>
+import { setToken } from '~/static/utils/token.js'
 export default {
   data() {
     return {
       email: 'yinliyuan520@gmail.com',
       password: 'AAaa123456',
-      error: '',
+      error: ''
     }
   },
   methods: {
@@ -46,13 +47,14 @@ export default {
       try {
         let {
           data: { access_token, token_type }
-        } = await this.$axios.(data)
-        this.$cookies.set('TOKEN', token_type + ' ' + access_token)
+        } = await this.$axios.post('/o/token/', data)
+        // this.$cookies.set('token', access_token)
+        setToken(access_token)
         // let [, nextUrl] = [...window.location.href.match(/next=([^?&=#]+)/)]
         // console.log(window.location.href.match(/next=[^?&=#]+/))
         // console.log(decodeURIComponent(nextUrl))
         // window.parent.location.pathname = decodeURIComponent(nextUrl)
-        this.$router.replace('/about')
+        // this.$router.replace('/about')
       } catch (e) {
         this.error = e.message
       }
