@@ -164,6 +164,7 @@
       :total-rows="recordslist.amount"
       :per-page="10"
       :disabled="pageCannotSwitched"
+      :hide-goto-end-buttons="true"
       align="center"
       prev-text="<"
       next-text=">"

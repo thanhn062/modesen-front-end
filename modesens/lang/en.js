@@ -180,6 +180,7 @@ module.exports = {
     memberendTimgcard: 'Valid through',
     memberendTimg: 'Your Membership Benefits through',
     account_overview:'ACCOUNT OVERVIEW',
+    my_order:'MY ORDERS',
     my_loyalty:'MY LOYALTY',
     benefits: 'Benefits',
     membershipDeltails: 'Membership Details',
@@ -259,9 +260,12 @@ module.exports = {
     statusTracked: 'tracked',
     status_1: 'canceled',
     afterstatus1: 'Pay Now',
-    afterstatus2: 'Message',
+    afterstatus2: 'Customer Service',
     afterstatus3: 'File A Claim',
     afterstatus4: 'Submit a Review',
+    All: 'All',
+    Completed: 'Completed',
+    Active: 'Active'
   },
   annual: {
     MemberSince: 'Member Since',

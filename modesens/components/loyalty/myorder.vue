@@ -9,198 +9,216 @@
         <li class="order-title-list order-title-list-status col-3 col-md-3">
           <div class="order-current-status">{{ $t('accountOrder.Status') }}</div>
           <div class="status-sel">
-            <b-form-select
+            <b-dropdown
               id="status-sel"
-              v-model="selected"
-              @change="statusSel">
-              <option
-                value=""
-                class="status-sel-option">All</option>
-              <option
-                value="completed"
-                class="status-sel-option">Completed</option>
-              <option
-                value="active"
-                class="status-sel-option">Active</option>
-            </b-form-select>
-            <img
-              src="/img/20181214slidedown.svg" 
-              alt=""
-              class="activeimg">
+              variant="link"
+              right
+              no-caret>
+              <template slot="button-content">
+                <span class="status-selected">{{ $t('accountOrder.'+status_selected) }}</span>
+                <img
+                  src="/img/20181214slidedown.svg" 
+                  alt=""
+                  class="activeimg">
+              </template>
+              <b-dropdown-item
+                href="javascrit:;"
+                @click="statusSel('All', 'all')">{{ $t('accountOrder.All') }}</b-dropdown-item>
+              <b-dropdown-item
+                href="javascrit:;"
+                @click="statusSel('Completed', 'completed')">{{ $t('accountOrder.Completed') }}</b-dropdown-item>
+              <b-dropdown-item
+                href="javascrit:;"
+                @click="statusSel('Active', 'active')">{{ $t('accountOrder.Active') }}</b-dropdown-item>
+            </b-dropdown>
           </div>
           
         </li>
         <!-- <li class="order-title-list col-1 col-md-1"/> -->
       </ul>
       <hr class="order-title-line">
-      <ul
-        id="order-list"
-        class="keepLeft">
-        <li
-          v-for=" (order,index) in ordercontent"
-          :key=" index ">
-          <div class="order-list-info row">
-            <div
-              :title="order.transaction_datetime.slice(0,10)"
-              class="order-list-box col-12 col-md-2">
-              <div class="order-list-title mobile-only">Order Time</div>
-              <div class="order-list-con"> {{ order.transaction_datetime.slice(0,10) }}</div>
-            </div>
-            <div class="order-list-box col-12 col-md-2">
-              <div class="order-list-title mobile-only">ModeSens Order ID</div>
-              <div class="order-list-con">{{ order.ms_order_id }}</div>
-            </div>
-            <div
-              :title="order.merchant_id ? order.merchant_id : order.merchant_name"
-              class="order-list-box col-12 col-md-3">
-              <div class="order-list-title mobile-only">Seller</div>
-              <div class="order-list-con"> {{ order.merchant_id ? order.merchant_id : order.merchant_name }}</div>
-            </div>
-            <div class="order-list-box col-12 col-md-2">
-              <div class="order-list-title mobile-only">Total</div>
-              <div class="order-list-con"> {{ order.currency }} {{ order.total }}</div>
-            </div>
-            <div class="order-list-box col-12 col-md-2">
-              <div class="order-list-title mobile-only">Status</div>
-              <div class="order-list-con"> {{ orderStatusChange(order.status) }}</div>
-            </div>
-            <div
-              class="see-info order-list-box col-12 col-md-1"
-              @click="toggle(index)">
-              <img
-                :class="index===orderlimit ? 'active' : ''"
-                :src="index===orderlimit ? '/img/20190115slideup.svg' : '/img/20190115slidedown.svg'"
-                class="activeimg"
-                alt="">
-            </div>
-          </div>
-          <div 
-            v-show="index===orderlimit"
-            class="order-list-prd">
-            <div class="waybill row">
-              <div class="storeId col-12 col-md-4">
-                <div class="storeId-title">{{ $t('accountOrder.storeId') }}</div>
-                <div class="storeId-con">{{ order.store_order_id }}</div>
+      <div v-if="orderflag">
+        <ul
+          id="order-list"
+          class="keepLeft">
+          <li
+            v-for=" (order,index) in ordercontent"
+            :key=" index ">
+            <div class="order-list-info row">
+              <div
+                :title="order.transaction_datetime.slice(0,10)"
+                class="order-list-box col-12 col-md-2">
+                <div class="order-list-title mobile-only">Order Time</div>
+                <div class="order-list-con"> {{ order.transaction_datetime.slice(0,10) }}</div>
+              </div>
+              <div class="order-list-box col-12 col-md-2">
+                <div class="order-list-title mobile-only">ModeSens Order ID</div>
+                <div class="order-list-con">{{ order.id }}</div>
               </div>
               <div
-                v-if="order.tracking_no"
-                class="waybll-num-title col-6 col-md-5 keepRight">{{ $t('accountOrder.trackNum') }} :</div>
+                :title="order.merchant_id ? order.merchant_id : order.merchant_name"
+                class="order-list-box col-12 col-md-3">
+                <div class="order-list-title mobile-only">Seller</div>
+                <div class="order-list-con"> {{ order.merchant_id ? order.merchant_id : order.merchant_name }}</div>
+              </div>
+              <div class="order-list-box col-12 col-md-2">
+                <div class="order-list-title mobile-only">Total</div>
+                <div class="order-list-con"> {{ order.currency }} {{ order.total }}</div>
+              </div>
+              <div class="order-list-box col-12 col-md-2">
+                <div class="order-list-title mobile-only">Status</div>
+                <div class="order-list-con"> {{ orderStatusChange(order.status) }}</div>
+              </div>
               <div
-                v-if="order.tracking_no"
-                class="waybill-num-con col-6 col-md-3">
-                <a
-                  :href="order.tracking_url"
-                  target="_blank">
-                  {{ order.tracking_no }}
-                </a>
+                class="see-info order-list-box col-12 col-md-1"
+                @click="toggle(index)">
+                <img
+                  :class="index===orderlimit ? 'active' : ''"
+                  :src="index===orderlimit ? '/img/20190115slideup.svg' : '/img/20190115slidedown.svg'"
+                  class="activeimg"
+                  alt="">
               </div>
             </div>
-            <div class="order-detail">
-              <div class="order-prd-box col-12 col-md-5">
-                <a
-                  :href="order.availability ? '/product/'+order.availability.product_id+'/' : 'javascript:;'"
-                  target="_blank"
-                  class="to-product">
-                  <div
-                    v-if = "order.availability"
-                    class="order-prd-img">
-                    <img
-                      :src="order.availability.cover"
-                      alt="">
-                  </div>
-                  <div class="order-prd-info">
+            <div 
+              v-show="index===orderlimit"
+              class="order-list-prd">
+              <div class="waybill row">
+                <div class="storeId col-12 col-md-4">
+                  <div class="storeId-title">{{ $t('accountOrder.storeId') }}</div>
+                  <div class="storeId-con">{{ order.store_order_id }}</div>
+                </div>
+                <div
+                  v-if="order.tracking_no"
+                  class="waybll-num-title col-6 col-md-5 keepRight">{{ $t('accountOrder.trackNum') }} :</div>
+                <div
+                  v-if="order.tracking_no"
+                  class="waybill-num-con col-6 col-md-3">
+                  <a
+                    :href="order.tracking_url"
+                    target="_blank">
+                    {{ order.tracking_no }}
+                  </a>
+                </div>
+              </div>
+              <div class="order-detail">
+                <div class="order-prd-box col-12 col-md-5">
+                  <a
+                    :href="order.availability ? '/product/'+order.availability.product_id+'/' : 'javascript:;'"
+                    target="_blank"
+                    class="to-product">
                     <div
                       v-if = "order.availability"
-                      class="order-prd-designername">{{ order.availability.designer_id }}</div>
-                    <div class="order-prd-productname">{{ order.product_name }}</div>
-                    <div class="order-prd-size">
-                      <div class="order-size"> 
-                        <span class="order-size-kind">{{ $t('accountOrder.Size') }}</span>
-                        <span class="order-size-con">{{ order.size === '' ? $t('accountOrder.oneSize') : order.size }}</span>
-                      </div>
-                      <div class="order-quantity">
-                        <span class="order-size-kind">{{ $t('accountOrder.Quantity') }}</span>
-                        <span class="order-size-con">{{ order.items }}</span>
+                      class="order-prd-img">
+                      <img
+                        :src="order.availability.cover"
+                        alt="">
+                    </div>
+                    <div class="order-prd-info">
+                      <div
+                        v-if = "order.availability"
+                        class="order-prd-designername">{{ order.availability.designer_id }}</div>
+                      <div
+                        v-if = "order.product_name !== 'null'"
+                        class="order-prd-productname">{{ order.product_name }}</div>
+                      <div class="order-prd-size">
+                        <div class="order-size"> 
+                          <span class="order-size-kind">{{ $t('accountOrder.Size') }}</span>
+                          <span class="order-size-con">{{ order.size === '' ? $t('accountOrder.oneSize') : order.size }}</span>
+                        </div>
+                        <div class="order-quantity">
+                          <span class="order-size-kind">{{ $t('accountOrder.Quantity') }}</span>
+                          <span class="order-size-con">{{ order.items }}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
-              </div>
-              <div class="order-prd-price col-12 col-md-4">
-                <ul class="order-prd-price-box">
-                  <li
-                    v-if="order.product_cost"
-                    class="order-prd-price-list">
-                    <div class="order-price-list-title">{{ $t('accountOrder.ProductP') }}:</div>
-                    <div class="order-price-num">{{ order.currency }} {{ order.product_cost }}</div>
-                  </li>
-                  <li
-                    v-if="order.shipping_cost"
-                    class="order-prd-price-list">
-                    <div class="order-price-list-title">{{ $t('accountOrder.ShippingF') }}:</div>
-                    <div class="order-price-num">{{ order.currency }} {{ order.shipping_cost }}</div>
-                  </li>
-                  <li
-                    v-if="order.duty_cost"
-                    class="order-prd-price-list">
-                    <div class="order-price-list-title">{{ $t('accountOrder.Duty') }}:</div>
-                    <div class="order-price-num">{{ order.currency }} {{ order.duty_cost }}</div>
-                  </li>
-                  <li
-                    v-if="order.service_cost"
-                    class="order-prd-price-list">
-                    <div class="order-price-list-title">{{ $t('accountOrder.Servicef') }}:</div>
-                    <div class="order-price-num">{{ order.currency }} {{ order.service_cost }}</div>
-                  </li>
-                  <li
-                    v-if="order.promo"
-                    class="order-prd-price-list">
-                    <div class="order-price-list-title">{{ $t('accountOrder.Discount') }}:</div>
-                    <div class="order-price-num">{{ order.currency }} {{ order.promo }}</div>
-                  </li>
-                </ul>
-              </div>
-              <div class="order-prd-status col-12 col-md-3">
-                <div
-                  v-for="(aftersale,index) in orderafterSale(order.status)"
-                  :key="index"
-                  class="after-sale">
-                  <a
-                    v-if="aftersale === 3"
-                    href="/inquery/"
-                    target="_blank">
-                    {{ $t('accountOrder.afterstatus'+aftersale) }}
                   </a>
+                </div>
+                <div class="order-prd-price col-12 col-md-4">
+                  <ul class="order-prd-price-box">
+                    <li
+                      v-if="order.product_cost"
+                      class="order-prd-price-list">
+                      <div class="order-price-list-title">{{ $t('accountOrder.ProductP') }}:</div>
+                      <div class="order-price-num">{{ order.currency }} {{ order.product_cost }}</div>
+                    </li>
+                    <li
+                      v-if="order.shipping_cost"
+                      class="order-prd-price-list">
+                      <div class="order-price-list-title">{{ $t('accountOrder.ShippingF') }}:</div>
+                      <div class="order-price-num">{{ order.currency }} {{ order.shipping_cost }}</div>
+                    </li>
+                    <li
+                      v-if="order.duty_cost"
+                      class="order-prd-price-list">
+                      <div class="order-price-list-title">{{ $t('accountOrder.Duty') }}:</div>
+                      <div class="order-price-num">{{ order.currency }} {{ order.duty_cost }}</div>
+                    </li>
+                    <li
+                      v-if="order.service_cost"
+                      class="order-prd-price-list">
+                      <div class="order-price-list-title">{{ $t('accountOrder.Servicef') }}:</div>
+                      <div class="order-price-num">{{ order.currency }} {{ order.service_cost }}</div>
+                    </li>
+                    <li
+                      v-if="order.promo"
+                      class="order-prd-price-list">
+                      <div class="order-price-list-title">{{ $t('accountOrder.Discount') }}:</div>
+                      <div class="order-price-num">{{ order.currency }} {{ order.promo }}</div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="order-prd-status col-12 col-md-3">
                   <div
-                    v-b-modal.service-modal
-                    v-else-if="aftersale === 2 && order.merchant_id"
-                    class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</div>
-                  <a
-                    v-else-if="aftersale === 4"
-                    :href="'https://modesens.com/store/merchantreview/'+order.merchant_id+'/'"
-                    target="_blank"
-                    class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</a>
-                  <a
-                    v-else-if="aftersale === 1"
-                    :href="'https://pay.modesens.com/product/'+order.availability_id+'/preview/?t='+usertoken"
-                    target="_blank"
-                    class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</a>
+                    v-for="(aftersale,index) in orderafterSale(order.status)"
+                    :key="index"
+                    class="after-sale">
+                    <a
+                      v-if="aftersale === 3"
+                      href="/inquery/"
+                      target="_blank">
+                      {{ $t('accountOrder.afterstatus'+aftersale) }}
+                    </a>
+                    <div
+                      v-b-modal.service-modal
+                      v-else-if="aftersale === 2 && order.merchant_id"
+                      class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</div>
+                    <a
+                      v-else-if="aftersale === 4"
+                      :href="order.availability ? '/product/'+order.availability.product_id+'/review/' : 'https://modesens.com/store/merchantreview/'+order.merchant_url+'/'"
+                      target="_blank"
+                      class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</a>
+                    <a
+                      v-else-if="aftersale === 1"
+                      :href="'https://pay.modesens.com/product/'+order.availability_id+'/preview/?t='+usertoken"
+                      target="_blank"
+                      class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+        <b-pagination
+          v-if="ordertotal > perorder && ordercontent.length > 0"
+          v-model="currentPage"
+          :total-rows="ordertotal"
+          :per-page="perorder"
+          :disabled="pageCannotSwitched"
+          :hide-goto-end-buttons="true"
+          align="center"
+          prev-text="<"
+          next-text=">"
+          @input="orderpageSwitching"/>
+      </div> 
+      <div
+        v-else
+        class="order-loadmore">
+        <img
+          src="/img/20190102sync.gif"
+          alt=""
+          class="loadmore">
+      </div>
     </div>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="ordertotal"
-      :per-page="perorder"
-      :disabled="pageCannotSwitched"
-      align="center"
-      prev-text="<"
-      next-text=">"
-      @input="orderpageSwitching"/>
     <serviceModal/>
   </section>
 </template>
@@ -222,12 +240,19 @@ export default {
       default: function() {
         return 0
       }
+    },
+    userorderflag: {
+      type: Boolean,
+      default: function() {
+        return true
+      }
     }
   },
   data() {
     return {
       ordertotal: this.userordertotal,
       ordercontent: this.userordercontent,
+      orderflag: this.userorderflag,
       pagestate: 1,
       orderlimit: -1,
       waybill: false,
@@ -236,7 +261,8 @@ export default {
       orderStatus: 0,
       perorder: 16,
       usertoken: '',
-      selected: ''
+      selected: '',
+      status_selected: 'All'
     }
   },
   created() {
@@ -264,6 +290,7 @@ export default {
       )
       this.ordercontent = orders
       this.pageCannotSwitched = false
+      this.orderflag = true
     },
     toggle: function(index) {
       if (index === this.orderlimit) {
@@ -299,7 +326,7 @@ export default {
       if (index === 0) {
         return [1]
       } else if (index === 4) {
-        return [2, 3, 4]
+        return [2, 4]
       } else if (index === 't') {
         return [4]
       } else {
@@ -310,15 +337,20 @@ export default {
       if (this.pagestate === this.currentPage) {
         return
       } else {
-        this.getmoreOrder(this.currentPage, '')
+        this.getmoreOrder(this.currentPage, this.selected)
         this.pagestate = this.currentPage
         this.orderlimit = -1
+        this.orderflag = false
       }
     },
-    statusSel: function(value) {
+    statusSel: function(selval, value) {
       this.getmoreOrder(1, value)
+      this.selected = value
+      this.status_selected = selval
       this.pagestate = 1
       this.orderlimit = -1
+      this.currentPage = 1
+      this.orderflag = false
     }
   }
 }

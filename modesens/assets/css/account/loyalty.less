@@ -4,6 +4,9 @@
 }
 .membershippage {
   text-align: center;
+  .loadmoreall {
+    margin-top: 200px;
+  }
 }
 .keepRight {
   text-align: right;
@@ -33,76 +36,89 @@
   height: 286px;
   background: @bgColor; 
 }
-  .userInfoinnerBox {
-    width: 1140px;
-    height: 100%;
-    padding: 0 15px;
-    margin: 0 auto;
+.userInfoinnerBox {
+  width: 1140px;
+  height: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  .userinfo{
     display: flex;
-    justify-content: space-between;
-    .userinfo{
-      display: flex;
-      justify-content: flex-start;
-      padding-top: 56px;
-      img{
-        width: 151px;
-        height: 151px;
-        border-radius: 50%;
-      }
-      .info {
-        width: 344px;
-        margin-left: 32px;
-        text-align: left;
-      }
-      .info .user_name{
-        font-size: 18px;
-        font-weight: 300;
-      }
-      .info .user_bio, .info .user_words{
-        margin-top: 12px;
-      }
+    justify-content: flex-start;
+    padding-top: 56px;
+    img{
+      width: 151px;
+      height: 151px;
+      border-radius: 50%;
     }
-    .levelcard {
-      padding-top:32px;
-      .card {
-        width: 364px;
-        height: 193px;
-        position: relative;
-        background: transparent;
-        border: 0;
-      }
-      .card img {
-        widows: 100%;
-      }
-      .card .cardinfo {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top:0;
-        left:0;
-        padding:12px 22px 17px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-      .cardinfo .userStart .name {
-        font-size: 14px;
-      }
-      .cardinfo .currentLevel {
-        font-size: 20px;
-      }
-      .userEnd a:hover {
-        text-decoration: underline;
-      }
+    .info {
+      width: 344px;
+      margin-left: 32px;
+      text-align: left;
+    }
+    .info .user_name{
+      font-size: 18px;
+      font-weight: 300;
+    }
+    .info .user_bio, .info .user_words{
+      margin-top: 12px;
     }
   }
+  .levelcard {
+    padding-top:32px;
+    .card {
+      width: 364px;
+      height: 193px;
+      position: relative;
+      background: transparent;
+      border: 0;
+    }
+    .card img {
+      widows: 100%;
+    }
+    .card .cardinfo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top:0;
+      left:0;
+      padding:12px 22px 17px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cardinfo .userStart .name {
+      font-size: 14px;
+    }
+    .cardinfo .currentLevel {
+      font-size: 20px;
+    }
+    .userEnd a:hover {
+      text-decoration: underline;
+    }
+  }
+}
 .page-content {
   margin-top: @descSpace;
 }
+.page-right {
+  min-height: 500px;
+}
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+  padding: 0 ;
+  color: @fontStandard;
+}
+.btn-link {
+  color: @fontStandard;
+}
+.btn-link:hover {
+  color: @fontColor;
+  text-decoration: none;
+}
 .col-auto {
-  width: 25%;
-  margin-top: 77px;
+  width: 18%;
   text-align: right;
   padding-right: 85px;
   .nav-tabs .nav-link {
@@ -110,7 +126,7 @@
     box-sizing: border-box;
     padding: 0;
     font-weight: 400;
-    line-height: 24px;
+    margin-bottom: 10px;
     background: transparent;
     color: #8e8e8e;
   }
@@ -120,6 +136,9 @@
   }
 }
 //order
+.order-loadmore {
+  margin-top: 50px;
+}
 #orderlist-Box {
   margin-bottom: 40px;
   // height: 1278px;
@@ -137,7 +156,6 @@
     justify-content: space-between;
   }
   #status-sel {
-    padding: 0 13px 0 0;
     width: unset;
     height: unset;
     line-height: unset;
@@ -145,11 +163,17 @@
     outline: none;
     background: transparent;
     appearance: none;
-    direction: rtl;
     -webkit-appearance: none;
-    padding-right: 13px;
     -moz-appearance: none;
     cursor: pointer;
+    .status-selected {
+      padding-right: 13px;
+      color: @fontColor;
+      text-decoration: none;
+    }
+    .dropdown-item:active {
+      background: @btnBgColor;
+    }
   }
   #status-sel:focus {
     border: none;
@@ -265,9 +289,6 @@
       justify-content: flex-start;
       line-height: 18px;
     }
-    .order-size-kind {
-      font-weight: 700;
-    }
     .order-size-con {
       padding-left: 10px;
     }
@@ -306,6 +327,7 @@
   .title-part {
     font-size: 20px;
     font-weight: 300;
+    line-height: normal;
   }
   #rankbox {
     margin-bottom: 20px;
@@ -549,9 +571,10 @@
     border: 0;
     box-sizing: border-box;
   }
-  .page-item.disabled .page-link {
+  .page-item.disabled[role="none presentation"] .page-link {
     margin-left:1px;
     border: 0;
+    color: #fff;
   }
   .page-item.active .page-link:focus {
     outline: none;

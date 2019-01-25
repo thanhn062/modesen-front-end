@@ -1,6 +1,8 @@
 <template>
   <section>
-    <div class="membershippage">
+    <div
+      v-if = "flag1"
+      class="membershippage">
       <div class="userInfoBox">
         <div class="userInfoinnerBox">
           <div class="userinfo">
@@ -57,36 +59,15 @@
       <div class="page-content container">
         <div
           class="mobile-tabbtn mobile-only"
-          @click="tabswich">{{ $t('accountLoyalty.account_overview') }}</div>
+          @click="tabswich">{{ $t('accountLoyalty.my_order') }}</div>
         <b-tabs
           vertical>
-          <b-tab
-            :title="$t('accountLoyalty.account_overview')" 
-            active
-            @click="getTabOrder">
-            <div
-              v-if = "flag1 && orderflag"
-              class="page-right">
-              <keep-alive>
-                <myorder
-                  :userordercontent="userOrder"
-                  :userordertotal="userOrdertotal"/>
-              </keep-alive>
-            </div>
-            <div
-              v-else
-              class="page-right">
-              <img
-                src="/img/20190102sync.gif"
-                alt=""
-                class="loadmore">
-            </div>
-          </b-tab>
           <b-tab 
             :title="$t('accountLoyalty.my_loyalty')"
+            active
             @click="getTabLoyalty">
             <div
-              v-if = "flag1 && flag2"
+              v-if = "flag2"
               class="page-right ">
               <keep-alive>
                 <myloyalty 
@@ -103,8 +84,38 @@
                 class="loadmore">
             </div>
           </b-tab>
+          <b-tab
+            :title="$t('accountLoyalty.my_order')" 
+            @click="getTabOrder">
+            <div
+              v-if = "orderflag"
+              class="page-right">
+              <keep-alive>
+                <myorder
+                  :userordercontent="userOrder"
+                  :userordertotal="userOrdertotal"
+                  :userorderflag="orderflag"/>
+              </keep-alive>
+            </div>
+            <div
+              v-else
+              class="page-right">
+              <img
+                src="/img/20190102sync.gif"
+                alt=""
+                class="loadmore">
+            </div>
+          </b-tab>
         </b-tabs>
       </div>
+    </div>
+    <div
+      v-else
+      class="membershippage">
+      <img
+        src="/img/20190102sync.gif"
+        alt=""
+        class="loadmore loadmoreall">
     </div>
   </section>
 </template>
@@ -149,7 +160,7 @@ export default {
   created() {
     if (this.$route.query.otoken) {
       this.getUserInfo()
-      this.getOrderInfo()
+      this.getRecords()
     }
   },
   mounted() {
@@ -211,7 +222,7 @@ export default {
       }
       if ($(window).width() < 1200) {
         this.tabback()
-        $('.mobile-tabbtn').html(this.$t('accountLoyalty.account_overview'))
+        $('.mobile-tabbtn').html(this.$t('accountLoyalty.my_order'))
       }
     },
     getTabLoyalty: function() {
