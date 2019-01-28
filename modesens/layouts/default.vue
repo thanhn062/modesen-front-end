@@ -1,14 +1,10 @@
 <template>
   <div class="root-container">
-    <Header
-      v-if="hasHeader"
-      :lsuid="lsuid"/>
+    <Header :lsuid="lsuid"/>
     <main class="main-container">
       <nuxt/>
     </main>
-    <Footer
-      v-if="hasFooter"
-      :isPC="isPC"/>
+    <Footer :isPC="isPC"/>
     <div
       class="wrapper-mask hidden"
       @click="hideMenu"/>

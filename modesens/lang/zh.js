@@ -40,6 +40,9 @@ module.exports = {
   COUPONS: '优惠券',
   WOMENSSALE: "女士折扣",
   MENSSALE: "男士折扣",
+  Emailaddress: 'Email address',
+  Password: 'Password',
+  Rememberme: 'Remember me',
   Footer : {
     classtitle1: '使用帮助',
     loyaltyProgram: '会员介绍',

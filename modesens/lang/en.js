@@ -40,6 +40,12 @@ module.exports= {
   COUPONS: 'COUPONS',
   WOMENSSALE: "WOMEN'S SALE",
   MENSSALE: "MEN'S SALE",
+  Emailaddress: 'Email address',
+  Password: 'Password',
+  Rememberme: 'Remember me',
+  Loginwith: 'Login with',
+  ForgotPassword: 'Forgot Password?',
+  LogIn: 'Log In',
   Footer: {
     classtitle1: 'CUSTOMER CARE',
     loyaltyProgram: 'Loyalty Program',

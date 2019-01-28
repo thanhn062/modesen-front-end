@@ -1,33 +1,57 @@
 <template>
-  <section>
-    <div>
-      <nuxt-link to="/"><img src="https://mds0.com/static/img/20181008newlogosub-zh.svg"></nuxt-link>
+  <section class="container login-container">
+    <div class="logo-con">
+      <nuxt-link
+        to="/"
+        target="_blank"><img :src="$i18n.locale==='zh' ? GLOBAL.LOGO_ASSISTRANT_ZH : GLOBAL.LOGO_ASSISTRANT_EN"></nuxt-link>
     </div>
-    <b-form @submit="login">
+    <b-form
+      class="login-form"
+      @submit="login">
       <b-form-input
         v-model="email"
+        :placeholder="$t('Emailaddress')"
         type="email"
-        placeholder="Enter your email"
-      />
+        required/>
       <b-form-input
         v-model="password"
+        :placeholder="$t('Password')"
         type="password"
-        placeholder="Enter your password"
-      />
-      <b-form-checkbox >Remember me</b-form-checkbox>
+        required/>
+      <div class="remember-con">
+        <input
+          id="login-sex"
+          type="checkbox">
+        <label for="login-sex">{{ $t('Rememberme') }}</label>
+      </div>
       <b-button
-        class="ga-accounts-login-login-222"
-        type="submit">Log In</b-button>
-      <nuxt-link to="/accounts/password/reset/">Forgot Password?</nuxt-link>
-      <label>Not yet a member?</label>
-      <nuxt-link to="/accounts/signup/">Sign Up</nuxt-link>
+        variant="primary"
+        type="submit"
+        title="Sign in to love item, build your closet, and get updates on your likes">{{ $t('LogIn') }}</b-button>
+      <div class="forgotpw">
+        <nuxt-link
+          to="/accounts/password/reset/"
+          target="_blank">{{ $t('ForgotPassword') }}</nuxt-link>
+      </div>
+      <div class="sign-con">
+        <label>Not yet a member?</label><br>
+        <a
+          class="btn btn-default"
+          href="/accounts/signup/"
+          target="_blank">Sign Up</a>
+      </div>
     </b-form>
+    <div class="loginwith-con">
+      <label>{{ $t('Loginwith') }}</label><br>
+      <img src="https://mds0.com/static/img/login-icon/icon-weixin.svg">
+    </div>
   </section>
 </template>
 
 <script>
 import { setToken } from '~/static/utils/token.js'
 export default {
+  layout: 'noframe',
   data() {
     return {
       email: 'yinliyuan520@gmail.com',
@@ -48,6 +72,7 @@ export default {
         let {
           data: { access_token, token_type }
         } = await this.$axios.post('/o/token/', data)
+        console.log(3333)
         // this.$cookies.set('token', access_token)
         setToken(access_token)
         // let [, nextUrl] = [...window.location.href.match(/next=([^?&=#]+)/)]
@@ -62,3 +87,6 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+@import '../../assets/css/accounts/login.less';
+</style>

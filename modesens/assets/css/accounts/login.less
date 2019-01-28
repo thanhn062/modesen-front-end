@@ -1,0 +1,56 @@
+@import '../common.less';
+
+.login-container {
+  margin: 0 auto;
+  padding-top: 50px;
+  max-width: 330px;
+}
+.logo-con {
+  margin-bottom: 50px;
+  text-align: center;
+  img {
+    width: 220px;
+  }
+}
+.login-form {
+  text-align: center;
+  input[type=password] {
+    margin-top: 10px;
+  }
+  .btn {
+    width: 100%;
+  }
+  .forgotpw {
+    margin-top: 7px;
+    text-align: right;
+  }
+  .sign-con {
+    margin-top: 23px;
+    font-weight: 300;
+    color: @fontGray;
+  }
+}
+.remember-con {
+  margin: 10px 0 3px;
+  text-align: right;
+  vertical-align: middle;
+  #login-sex[type=checkbox] {
+    margin-right: 6px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    background: url('/img/unchecked.svg') center/cover no-repeat;
+    -webkit-appearance: none;
+    outline: 0;
+    &:checked {
+      background: url('/img/checked.svg') center/cover no-repeat;
+      -webkit-appearance: none;
+    }
+  }
+}
+.loginwith-con {
+  margin-top: 25px;
+  color: @fontGray;
+  font-weight: 300;
+  text-align: center;
+}
