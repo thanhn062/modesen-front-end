@@ -209,7 +209,7 @@
             prev-text="<"
             next-text=">"
             @input="orderpageSwitching"/>
-          <div v-else-if="ordercontent.length >= 0">
+          <div v-else-if="ordercontent.length <= 0">
             <img
               src="/img/20181213benefits-3.png"
               alt="">
