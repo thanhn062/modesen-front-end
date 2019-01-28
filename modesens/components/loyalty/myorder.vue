@@ -34,7 +34,6 @@
           </div>
           
         </li>
-        <!-- <li class="order-title-list col-1 col-md-1"/> -->
       </ul>
       <hr class="order-title-line">
       <div v-if="orderflag">

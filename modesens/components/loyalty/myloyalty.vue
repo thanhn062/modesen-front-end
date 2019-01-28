@@ -119,56 +119,69 @@
             </div>
           </div>
         </div>
-        <ul id="consume">
-          <li
-            v-for=" (record,index) in recordslist.records " 
-            :key=" index ">
-            <div class="record_info row">
-              <div class="col-md-3 col-3">{{ record.create_datetime | getLocalTime }}</div>
-              <div class="col-md-3 col-3">{{ $t('accountLoyalty.record_' + record.source_s) }}</div>
-              <div class="col-md-3 col-3">{{ record.points }}</div>
-              <div
-                v-if="record.source==='Purchase'"
-                class="see-more  keepRight col-md-3 col-3"
-                @click="toggle(index)">
-                <img
-                  :class="index===limit ? 'active' : ''"
-                  src="/img/20181214slidedown.svg" 
-                  alt="">
+        <div
+          v-if="flag2"
+          class="consumeload">
+          <ul id="consume">
+            <li
+              v-for=" (record,index) in recordslist.records " 
+              :key=" index ">
+              <div class="record_info row">
+                <div class="col-md-3 col-3">{{ record.create_datetime | getLocalTime }}</div>
+                <div class="col-md-3 col-3">{{ $t('accountLoyalty.record_' + record.source_s) }}</div>
+                <div class="col-md-3 col-3">{{ record.points }}</div>
+                <div
+                  v-if="record.source==='Purchase'"
+                  class="see-more  keepRight col-md-3 col-3"
+                  @click="toggle(index)">
+                  <img
+                    :class="index===limit ? 'active' : ''"
+                    src="/img/20181214slidedown.svg" 
+                    alt="">
+                </div>
               </div>
-            </div>
-            <div 
-              v-show="index===limit"
-              class="consume-item">
-              <ul class="openitem keepLeft">
-                <li>
-                  <div class="itemtitle keepLeft">{{ $t('store') }} :</div>
-                  <div class="itemcon keepRight">{{ record.memo.merchant_name }}</div>
-                </li>
-                <li>
-                  <div class="itemtitle keepLeft">{{ $t('accountLoyalty.order') }} :</div>
-                  <div class="itemcon keepRight">{{ record.memo.order_id }}</div>
-                </li>
-                <li>
-                  <div class="itemtitle keepLeft">{{ $t('price') }} :</div>
-                  <div class="itemcon keepRight">${{ record.value }}</div>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
+              <div 
+                v-show="index===limit"
+                class="consume-item">
+                <ul class="openitem keepLeft">
+                  <li>
+                    <div class="itemtitle keepLeft">{{ $t('store') }} :</div>
+                    <div class="itemcon keepRight">{{ record.memo.merchant_name }}</div>
+                  </li>
+                  <li>
+                    <div class="itemtitle keepLeft">{{ $t('accountLoyalty.order') }} :</div>
+                    <div class="itemcon keepRight">{{ record.memo.order_id }}</div>
+                  </li>
+                  <li>
+                    <div class="itemtitle keepLeft">{{ $t('price') }} :</div>
+                    <div class="itemcon keepRight">${{ record.value }}</div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <b-pagination
+            v-if="recordslist.amount > 10 && recordslist.records.length > 0"
+            v-model="currentPage"
+            :total-rows="recordslist.amount"
+            :per-page="10"
+            :disabled="pageCannotSwitched"
+            :hide-goto-end-buttons="true"
+            align="center"
+            prev-text="<"
+            next-text=">"
+            @input="pageSwitching"/>
+        </div>
+        <div
+          v-else
+          class="order-loadmore">
+          <img
+            src="/img/20190102sync.gif"
+            alt=""
+            class="loadmore">
+        </div>
       </div>
     </div>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="recordslist.amount"
-      :per-page="10"
-      :disabled="pageCannotSwitched"
-      :hide-goto-end-buttons="true"
-      align="center"
-      prev-text="<"
-      next-text=">"
-      @input="pageSwitching"/>
   </section>
 </template>
 
@@ -195,6 +208,12 @@ export default {
       default: function() {
         return {}
       }
+    },
+    recordsflag2: {
+      type: Boolean,
+      default: function() {
+        return true
+      }
     }
   },
   data() {
@@ -207,6 +226,7 @@ export default {
       currentPage: 1,
       pagestate: 1,
       recordslist: this.myloyaltycontent1,
+      flag2: this.recordsflag2,
       startTime: '',
       endTime: '',
       levelClass: '',
@@ -309,6 +329,7 @@ export default {
       that.endTime = picker.endDate.format('YYYY-MM-DD')
       that.getmoreRecords(1, that.startTime, that.endTime)
       that.pagestate = 1
+      this.flag2 = false
     })
     $('#config-demo').on('show.daterangepicker', function() {
       that.dateSlideDown = true
@@ -336,6 +357,7 @@ export default {
       let records = await this.$axios.post('/loyalty/records/', params)
       this.recordslist = records.records
       this.pageCannotSwitched = false
+      this.flag2 = true
     },
     pageSwitching: function() {
       if (this.pagestate === this.currentPage) {
@@ -344,6 +366,7 @@ export default {
         this.getmoreRecords(this.currentPage, this.startTime, this.endTime)
         this.pagestate = this.currentPage
         this.limit = -1
+        this.flag2 = false
       }
     }
   }

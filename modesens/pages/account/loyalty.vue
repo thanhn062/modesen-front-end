@@ -58,10 +58,16 @@
       </div>
       <div class="page-content container">
         <div
+          v-if="activeTab === 'order'"
           class="mobile-tabbtn mobile-only"
           @click="tabswich">{{ $t('accountLoyalty.my_order') }}</div>
+        <div
+          v-else-if="activeTab === 'loyalty'"
+          class="mobile-tabbtn mobile-only"
+          @click="tabswich">{{ $t('accountLoyalty.my_loyalty') }}</div>
         <b-tabs
-          vertical>
+          vertical
+          class="loyatyTab">
           <b-tab 
             :title="$t('accountLoyalty.my_loyalty')"
             :active="activeTab ==='loyalty' ? true : false"
@@ -72,7 +78,8 @@
               <keep-alive>
                 <myloyalty 
                   :myloyaltycontent="level"
-                  :myloyaltycontent1="userRecords"/>
+                  :myloyaltycontent1="userRecords"
+                  :recordsflag2="flag2"/>
               </keep-alive>
             </div>
             <div
@@ -169,13 +176,6 @@ export default {
       }
     }
   },
-  mounted() {
-    if ($(window).width() < 1200) {
-      let backtab = `<div class='tab-backbtn' >< Back</div>`
-      $('.nav-tabs').before(backtab)
-      $('.tab-backbtn').on('click', this.tabback)
-    }
-  },
   methods: {
     async getUserInfo() {
       var params = {}
@@ -188,6 +188,13 @@ export default {
       this.level = level
       this.userLevel = level.level
       this.flag1 = true
+      if ($(window).width() < 1200 && this.flag1) {
+        this.$nextTick(() => {
+          let backtab = `<div class='tab-backbtn' >< Back</div>`
+          $('.nav-tabs').before(backtab)
+          $('.tab-backbtn').on('click', this.tabback)
+        })
+      }
     },
     async getRecords() {
       var recordsparams = {}
