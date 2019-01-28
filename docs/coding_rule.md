@@ -330,13 +330,13 @@ const message = `Hello, ${name}`      // ✓ ok
 <div class="prdCon"/>				//单闭合
 ```
 ### 5. vue组件命名
+> 驼峰命名
 > 有意义的: 不过于具体，也不过于抽象
 > 简短: 2 到 3 个单词
 > 具有可读性: 以便于沟通交流
 ```
-<app-header></app-header>
-<user-list></user-list>
-<range-slider></range-slider>
+<appHeader></appHeader>
+<userList></userList>
 ```
 ### 6. 只在需要时创建组件
 ### 7. 验证组件的props
