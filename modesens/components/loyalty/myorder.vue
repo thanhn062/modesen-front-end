@@ -174,7 +174,7 @@
                     class="after-sale">
                     <a
                       v-if="aftersale === 3"
-                      href="/inquery/"
+                      href="/orderinquery/"
                       target="_blank">
                       {{ $t('accountOrder.afterstatus'+aftersale) }}
                     </a>
@@ -198,17 +198,24 @@
             </div>
           </li>
         </ul>
-        <b-pagination
-          v-if="ordertotal > perorder && ordercontent.length > 0"
-          v-model="currentPage"
-          :total-rows="ordertotal"
-          :per-page="perorder"
-          :disabled="pageCannotSwitched"
-          :hide-goto-end-buttons="true"
-          align="center"
-          prev-text="<"
-          next-text=">"
-          @input="orderpageSwitching"/>
+        <div class="pagebox">
+          <b-pagination
+            v-if="ordertotal > perorder && ordercontent.length > 0"
+            v-model="currentPage"
+            :total-rows="ordertotal"
+            :per-page="perorder"
+            :disabled="pageCannotSwitched"
+            :hide-goto-end-buttons="true"
+            align="center"
+            prev-text="<"
+            next-text=">"
+            @input="orderpageSwitching"/>
+          <a
+            href="/orderinquery/"
+            target="_blank"
+            class="toIquery">{{ $t('accountOrder.Orderinquery') }}</a>
+        </div>
+        
       </div> 
       <div
         v-else

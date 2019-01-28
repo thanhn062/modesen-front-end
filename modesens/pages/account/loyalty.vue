@@ -64,7 +64,7 @@
           vertical>
           <b-tab 
             :title="$t('accountLoyalty.my_loyalty')"
-            active
+            :active="activeTab ==='loyalty' ? true : false"
             @click="getTabLoyalty">
             <div
               v-if = "flag2"
@@ -85,7 +85,8 @@
             </div>
           </b-tab>
           <b-tab
-            :title="$t('accountLoyalty.my_order')" 
+            :title="$t('accountLoyalty.my_order')"
+            :active="activeTab ==='order' ? true : false"
             @click="getTabOrder">
             <div
               v-if = "orderflag"
@@ -145,7 +146,7 @@ export default {
       orderOffset: 0,
       orderAmount: 16,
       orderflag: false,
-      sampleElement: '<com></com>'
+      activeTab: ''
     }
   },
   head: {
@@ -158,9 +159,14 @@ export default {
     }
   },
   created() {
+    this.activeTab = this.$route.query.tab
     if (this.$route.query.otoken) {
       this.getUserInfo()
-      this.getRecords()
+      if (this.$route.query.tab === 'order') {
+        this.getOrderInfo()
+      } else if (this.$route.query.tab === 'loyalty') {
+        this.getRecords()
+      }
     }
   },
   mounted() {

@@ -265,7 +265,8 @@ module.exports = {
     afterstatus4: '添加评论', 
     All: '全部',
     Completed: '已完成',
-    Active: '进行中'   
+    Active: '进行中',
+    Orderinquery: '追踪订单'   
   },
   annual: {
     MemberSince: '会员始于',

@@ -265,7 +265,8 @@ module.exports = {
     afterstatus4: 'Submit a Review',
     All: 'All',
     Completed: 'Completed',
-    Active: 'Active'
+    Active: 'Active',
+    Orderinquery: 'Order Inquery'
   },
   annual: {
     MemberSince: 'Member Since',
