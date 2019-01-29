@@ -73,7 +73,7 @@
           <h6 class="footer-title">{{ $t('Footer.classtitle6') }}</h6>
           <form id="footer_form">
             <input
-              :placeholder="$t('emailaddress')"
+              :placeholder="$t('common.emailaddress')"
               class="form-control footer-email"
               name="email">
             <div class="footer-sex">
@@ -85,7 +85,7 @@
                   value="f"
                   class="form-control"
                   checked>
-                <label for="footer_female">{{ $t('womens') }}</label>
+                <label for="footer_female">{{ $t('common.womens') }}</label>
               </div>
               <div>
                 <input
@@ -94,11 +94,11 @@
                   type="radio"
                   value="m"
                   class="form-control">
-                <label for="footer_male">{{ $t('mens') }}</label>
+                <label for="footer_male">{{ $t('common.mens') }}</label>
               </div>
             </div>
             <input
-              :value="$t('SUBMIT')"
+              :value="$t('common.SUBMIT')"
               class="btn btn-default"
               type="button"
               style="width: 100%;">

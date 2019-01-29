@@ -145,7 +145,7 @@
                 class="consume-item">
                 <ul class="openitem keepLeft">
                   <li>
-                    <div class="itemtitle keepLeft">{{ $t('store') }} :</div>
+                    <div class="itemtitle keepLeft">{{ $t('common.store') }} :</div>
                     <div class="itemcon keepRight">{{ record.memo.merchant_name }}</div>
                   </li>
                   <li>
@@ -153,7 +153,7 @@
                     <div class="itemcon keepRight">{{ record.memo.order_id }}</div>
                   </li>
                   <li>
-                    <div class="itemtitle keepLeft">{{ $t('price') }} :</div>
+                    <div class="itemtitle keepLeft">{{ $t('common.price') }} :</div>
                     <div class="itemcon keepRight">${{ record.value }}</div>
                   </li>
                 </ul>

@@ -62,7 +62,10 @@
               </div>
               <div class="order-list-box col-12 col-md-2">
                 <div class="order-list-title mobile-only">Total</div>
-                <div class="order-list-con"> {{ order.currency }} {{ order.total }}</div>
+                <div class="order-list-con orderlist-con-total">
+                  <span>{{ order.currency }}</span>
+                  <span class="orderlist-total-num">{{ order.total.toFixed(2) }}</span>
+                </div>
               </div>
               <div class="order-list-box col-12 col-md-2">
                 <div class="order-list-title mobile-only">Status</div>
@@ -79,7 +82,7 @@
               </div>
             </div>
             <div 
-              v-show="index===orderlimit"
+              :id="'orderlist'+index"
               class="order-list-prd">
               <div class="waybill row">
                 <div class="storeId col-12 col-md-4">
@@ -95,7 +98,7 @@
                   <a
                     :href="order.tracking_url"
                     target="_blank">
-                    {{ order.tracking_no }}
+                    {{ order.tracking_no }} ({{ order.tracking_company }})
                   </a>
                 </div>
               </div>
@@ -138,31 +141,46 @@
                       v-if="order.product_cost"
                       class="order-prd-price-list">
                       <div class="order-price-list-title">{{ $t('accountOrder.ProductP') }}:</div>
-                      <div class="order-price-num">{{ order.currency }} {{ order.product_cost }}</div>
+                      <div class="order-price-num">
+                        <span>{{ order.currency }}</span>
+                        <span class="order-price-number">{{ order.product_cost.toFixed(2) }}</span>
+                      </div>
                     </li>
                     <li
                       v-if="order.shipping_cost"
                       class="order-prd-price-list">
                       <div class="order-price-list-title">{{ $t('accountOrder.ShippingF') }}:</div>
-                      <div class="order-price-num">{{ order.currency }} {{ order.shipping_cost }}</div>
+                      <div class="order-price-num">
+                        <span>{{ order.currency }}</span>
+                        <span class="order-price-number">{{ order.shipping_cost.toFixed(2) }}</span>
+                      </div>
                     </li>
                     <li
                       v-if="order.duty_cost"
                       class="order-prd-price-list">
                       <div class="order-price-list-title">{{ $t('accountOrder.Duty') }}:</div>
-                      <div class="order-price-num">{{ order.currency }} {{ order.duty_cost }}</div>
+                      <div class="order-price-num">
+                        <span>{{ order.currency }}</span>
+                        <span class="order-price-number">{{ order.duty_cost.toFixed(2) }}</span>
+                      </div>
                     </li>
                     <li
                       v-if="order.service_cost"
                       class="order-prd-price-list">
                       <div class="order-price-list-title">{{ $t('accountOrder.Servicef') }}:</div>
-                      <div class="order-price-num">{{ order.currency }} {{ order.service_cost }}</div>
+                      <div class="order-price-num">
+                        <span>{{ order.currency }}</span>
+                        <span class="order-price-number">{{ order.service_cost.toFixed(2) }}</span>
+                      </div>
                     </li>
                     <li
                       v-if="order.promo"
                       class="order-prd-price-list">
                       <div class="order-price-list-title">{{ $t('accountOrder.Discount') }}:</div>
-                      <div class="order-price-num">{{ order.currency }} {{ order.promo }}</div>
+                      <div class="order-price-num">
+                        <span>{{ order.currency }}</span>
+                        <span class="order-price-number">{{ order.promo.toFixed(2) }}</span>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -305,8 +323,11 @@ export default {
     toggle: function(index) {
       if (index === this.orderlimit) {
         this.orderlimit = -1
+        $('.order-list-prd').slideUp()
       } else {
         this.orderlimit = index
+        $('.order-list-prd').slideUp()
+        $('#orderlist' + this.orderlimit).slideDown()
       }
     },
     orderStatusChange: function(index) {

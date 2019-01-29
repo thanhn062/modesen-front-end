@@ -165,7 +165,7 @@ export default {
       app.$cookies.set('token', oToken)
     }
   },
-  created() {
+  mounted() {
     this.activeTab = this.$route.query.tab
     if (this.$route.query.otoken) {
       this.getUserInfo()
