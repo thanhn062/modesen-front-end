@@ -86,12 +86,12 @@
               class="order-list-prd">
               <div class="waybill row">
                 <div class="storeId col-12 col-md-4">
-                  <div class="storeId-title">{{ $t('accountOrder.storeId') }}</div>
+                  <div class="storeId-title">{{ $t('accountOrder.storeId') }}<span class="colon">:</span></div>
                   <div class="storeId-con">{{ order.store_order_id }}</div>
                 </div>
                 <div
                   v-if="order.tracking_no"
-                  class="waybll-num-title col-6 col-md-5 keepRight">{{ $t('accountOrder.trackNum') }} :</div>
+                  class="waybll-num-title col-6 col-md-5 keepRight">{{ $t('accountOrder.trackNum') }}<span class="colon">:</span></div>
                 <div
                   v-if="order.tracking_no"
                   class="waybill-num-con col-6 col-md-3">
