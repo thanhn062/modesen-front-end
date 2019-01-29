@@ -229,8 +229,9 @@
             @input="orderpageSwitching"/>
           <div v-else-if="ordercontent.length <= 0">
             <img
-              src="/img/20181213benefits-3.png"
-              alt="">
+              src="/img/20190129order_nothing.svg"
+              alt=""
+              class="order_nothing">
           </div>
           <a
             href="/orderinquery/"
