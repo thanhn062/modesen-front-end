@@ -48,8 +48,12 @@
           <br>
           <div>
             {{ $t('cuModal.desc2') }}<br>
-            <span v-if="$i18n.locale==='zh'">访问我们的<a @click="toFag">帮助中心</a>，在那里你可以找到常见问题解决方案，以及客服中心联络方式信息。</span>
-            <span v-else>Visit our <a @click="toFag">Help Center</a> where you can find frequently asked questions, as well as Customer Care contact information.</span>
+            <span v-if="$i18n.locale==='zh'">访问我们的<a
+              href="javascript:;"
+              @click="toFag">帮助中心</a>，在那里你可以找到常见问题解决方案，以及客服中心联络方式信息。</span>
+            <span v-else>Visit our <a
+              href="javascript:;"
+              @click="toFag">Help Center</a> where you can find frequently asked questions, as well as Customer Care contact information.</span>
           </div>
           <br>
           <div>
