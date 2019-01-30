@@ -11,6 +11,13 @@ export const service = {
   help: '需要帮助？',
   WeChat: '扫描二维码添加微信号进行沟通'
 };
+export const cuModal = {
+  desc1: '我们的团队乐意提供任查询帮助，为了能提供更好的服务，请先确定以下正确操作步骤。',
+  desc2: '你是否存在关于在ModeSens上购物的疑问？',
+  desc3: '作为设计师和电商，你是否想成为我们的合作伙伴？',
+  desc4: '任何媒体需求请联系',
+  desc5: '如果是请填写以下表格并提交。'
+};
 export const Footer = {
   classtitle1: '使用帮助',
   helpcenter: '帮助中心',

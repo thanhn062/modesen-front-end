@@ -11,7 +11,13 @@ export const service = {
   help: 'Need help?',
   WeChat: 'Scan the two-dimensional code to add WeChat to communicate.'
 };
-
+export const cuModal= {
+  desc1: 'Our team is happy to assist with any inquiry. To better serve you, please determine the correct next step below.',
+  desc2: 'Are you a customer with a question about shopping on ModeSens?',
+  desc3: 'Are you a store or designer interested in becoming a ModeSens partner? ',
+  desc4: 'For any media inquiries please contact',
+  desc5: 'If so, please complete and submit the form below.'
+};
 export const Footer = {
   classtitle1: 'CUSTOMER CARE',
   helpcenter: 'Help Center',

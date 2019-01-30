@@ -85,7 +85,9 @@
               :id="'orderlist'+index"
               class="order-list-prd">
               <div class="waybill row">
-                <div class="storeId col-12 col-md-4">
+                <div
+                  v-if="order.store_order_id"
+                  class="storeId col-12 col-md-4">
                   <div class="storeId-title">{{ $t('accountOrder.storeId') }}<span class="colon">:</span></div>
                   <div class="storeId-con">{{ order.store_order_id }}</div>
                 </div>
@@ -196,9 +198,9 @@
                       {{ $t('accountOrder.afterstatus'+aftersale) }}
                     </a>
                     <div
-                      v-b-modal.service-modal
                       v-else-if="aftersale === 2 && order.merchant_id"
-                      class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</div>
+                      class="after-sale-other"
+                      @click="openContact">{{ $t('accountOrder.afterstatus'+aftersale) }}</div>
                     <a
                       v-else-if="aftersale === 4"
                       :href="order.availability ? '/product/'+order.availability.product_id+'/review/' : 'https://modesens.com/store/merchantreview/'+order.merchant_url+'/'"
@@ -248,7 +250,7 @@
           class="loadmore">
       </div>
     </div>
-    <serviceModal/>
+    <serviceModal ref="contact"/>
   </section>
 </template>
 <script>
@@ -383,6 +385,9 @@ export default {
       this.orderlimit = -1
       this.currentPage = 1
       this.orderflag = false
+    },
+    openContact: function() {
+      this.$refs.contact.showCuModal()
     }
   }
 }
