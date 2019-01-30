@@ -38,6 +38,7 @@
       <hr class="order-title-line">
       <div v-if="orderflag">
         <ul
+          v-if="ordercontent.length > 0"
           id="order-list"
           class="keepLeft">
           <li
@@ -84,7 +85,9 @@
             <div 
               :id="'orderlist'+index"
               class="order-list-prd">
-              <div class="waybill row">
+              <div
+                v-if="order.store_order_id && order.tracking_no"
+                class="waybill row">
                 <div
                   v-if="order.store_order_id"
                   class="storeId col-12 col-md-4">
@@ -217,6 +220,12 @@
             </div>
           </li>
         </ul>
+        <div v-else-if="ordercontent.length <= 0">
+          <img
+            src="/img/20190129order_nothing.svg"
+            alt=""
+            class="order_nothing">
+        </div>
         <div class="pagebox">
           <b-pagination
             v-if="ordertotal > perorder && ordercontent.length > 0"
@@ -229,12 +238,6 @@
             prev-text="<"
             next-text=">"
             @input="orderpageSwitching"/>
-          <div v-else-if="ordercontent.length <= 0">
-            <img
-              src="/img/20190129order_nothing.svg"
-              alt=""
-              class="order_nothing">
-          </div>
           <a
             href="/orderinquery/"
             target="_blank"
