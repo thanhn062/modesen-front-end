@@ -193,7 +193,7 @@ export default {
       }
     },
     toFag() {
-      window.parent.open('/fag/')
+      window.parent.open('/faq/','_self')
     }
   }
 }
