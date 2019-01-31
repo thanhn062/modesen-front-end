@@ -3,7 +3,7 @@
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('WOMEN') }}
-        <img :src="GLOBAL.SIDEBAR_MORE">
+        <img :src="gconfig.SIDEBAR_MORE">
       </template>
       <b-dropdown-item href="/product/women/clothing/">{{ $t('CLOTHING') }}</b-dropdown-item>
       <b-dropdown-item href="/product/women/bags/">{{ $t('BAGS') }}</b-dropdown-item>
@@ -20,7 +20,7 @@
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('MEN') }}
-        <img :src="GLOBAL.SIDEBAR_MORE">
+        <img :src="gconfig.SIDEBAR_MORE">
       </template>
       <b-dropdown-item href="/product/men/clothing/">{{ $t('CLOTHING') }}</b-dropdown-item>
       <b-dropdown-item href="/product/men/bags/">{{ $t('BAGS') }}</b-dropdown-item>
@@ -37,7 +37,7 @@
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('OFFERS') }}
-        <img :src="GLOBAL.SIDEBAR_MORE">
+        <img :src="gconfig.SIDEBAR_MORE">
       </template>
       <b-dropdown-item href="/product/coupons/">{{ $t('COUPONS') }}</b-dropdown-item>
       <b-dropdown-item href="/product/women/sale/">{{ $t('WOMENSSALE') }}</b-dropdown-item>

@@ -1,10 +1,16 @@
 import Vue from 'vue'
 import {gconfig} from '~/assets/js/gconfig.js'
+import localStorage from '~/assets/js/utils/localStorage.js'
+
+console.log(Vue.prototype)
+Vue.prototype.gconfig = gconfig;
+Vue.prototype.$localStorage = localStorage;
+console.log(22222, 'main.js')
 
 //浏览器端功能
 if (process.browser){
   $(document).ready(function() {
-    $('.main-container').css('padding-top', $('header').height())
+    // $('.main-container').css('padding-top', $('.header').height())
     //click--ga
     $('*[data-ga-click]').click(function() {
       let res = $(this).attr('data-ga-click');
@@ -27,7 +33,6 @@ if (process.browser){
     $('.btn-signup').click(function() {
       let res = location.pathname.match(/(.+)/)
       // let res = location.pathname.match(/\/[a-z]+\/[a-z]+(.+)/)
-      console.log(res)
       if (!res) return
       let next_url = [...res][1]
       if (next_url === '/about/') {
@@ -38,5 +43,3 @@ if (process.browser){
     })
   })
 }
-
-Vue.prototype.GLOBAL = gconfig;

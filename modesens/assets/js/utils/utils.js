@@ -68,3 +68,10 @@ export function installChromeExtention(){
   });
   event.stopPropagation();
 }
+//搜索框
+//首字母大写
+export function firstUp(str){
+  str = str.toLowerCase();
+  result = '';
+  result += str.substring(0,1).toUpperCase()+str.substring(1)+' ';
+}

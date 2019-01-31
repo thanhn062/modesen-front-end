@@ -17,7 +17,6 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' }
     ]
   },
@@ -25,7 +24,10 @@ module.exports = {
   env: {
     baseUrl: process.env.BASE_URL || 'http://127.0.0.1/',
     browserBaseURL: process.env.BROWSER_BASE_URL || 'https://modesens.com/',
-    secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8'
+    secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8',
+    client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
+    client_secret:
+      'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
   },
   /*
 	** Customize the progress-bar color
@@ -33,7 +35,7 @@ module.exports = {
   loading: { color: '#fff' },
 
   /*
-	** Global CSS
+	** gconfig CSS
 	*/
   css: [
     '~/assets/css/font.css',
@@ -47,6 +49,7 @@ module.exports = {
   plugins: [
     //ssr：false是为了不让js文件再服务器中编译；
     { src: '~/plugins/axios.js', ssr: true },
+    { src: '~/plugins/init.js', ssr: false },
   ],
 
   router: {
@@ -128,7 +131,22 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
-
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       endpoints: {
+  //         login: {
+  //           propertyName: 'access_token'
+  //         },
+  //         // user: { url: 'me', method: 'get', propertyName: 'data' },
+  //         logout: false
+  //       }
+  //     }
+  //   },
+  //   client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
+  //   client_secret:
+  //     'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
+  // },
 
   /*
 	** Build configuration

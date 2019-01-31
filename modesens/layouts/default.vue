@@ -23,25 +23,18 @@ export default {
     Footer,
     Modals
   },
-  create() {
-    let url = this.$route.fullPath
-    if (url.match(/\/accounts\/login\//)) {
-      hasHeader = false
-      hasFooter = false
-    }
-    console.log(url)
-  },
   data() {
     return {
-      hasHeader: true,
-      hasFooter: true,
-      headerHeight: '50px 0',
+      // headerHeight: '50px 0',
       lsuid: '',
       isPC: true
     }
   },
+  created() {
+    console.log(555555, 'default-created')
+  },
   mounted() {
-    this.headerHeight = $('header').height() + 'px 0'
+    // this.headerHeight = $('header').height() + 'px 0'
     if ($(window).width() < 1200) {
       this.isPC = false
     }

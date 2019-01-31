@@ -11,6 +11,15 @@
   // height: 50px;
   background: #fff;
   z-index: 999;
+  .nav-container {
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 1500px;
+    & > nav {
+      height: 60px;
+    }
+  }
 }
 #popLink {
   width: 100%;
@@ -55,6 +64,14 @@
     display: inline-block;
   }
 }
+.language-select-container {
+  padding: 0 5px;
+  border: 0;
+  background: none;
+  &:focus {
+    box-shadow: none;
+  }
+}
 .language-dropdown {
   display: none;
 }
@@ -65,8 +82,112 @@
   img {
     width: 20px;
   }
+  .authInfo {
+    width: 100px;
+    .btn {
+      padding: 0;
+    }
+  }
 }
-
+.search-container {
+  position: relative;
+  .search-btn {
+    cursor: pointer;
+    img {
+      width: 20px;
+    }
+  }
+  .searchbox {
+    position: absolute;
+    right: 0;
+    input {
+      // padding: 6px 12px;
+      width: 0;
+      border: 0;
+      // box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 10px 1px;
+    }
+  }
+  .searchres-box {
+    position: absolute;
+    padding: 0 20px 20px;
+    top: 55px;
+    right: 0;
+    width: 600px;
+    background: #fff;
+    box-shadow: 0 3px 10px 1px rgba(0,0,0,0.4);
+    overflow-y: auto;
+    z-index: 1001;
+    .searchres-item {
+      padding: 15px 0 20px 0;
+      border-bottom: @border;
+    }
+    .searchres-title {
+      font-weight: bold;
+      line-height: 17px;
+    }
+    .momentbox {
+      padding: 5px;
+      font-size: 12px;
+      color: @fontGray;
+      line-height: 12px;
+      border: @border;
+      cursor: pointer;
+      &:hover {
+        color: @fontGray3;
+      }
+    }
+  }
+  ul {
+    overflow: hidden;
+    padding: 5px 20px 0;
+    li {
+      float: left;
+      margin: 10px 20px 0 0;
+    }
+    a {
+      color: @fontGray;
+      &:hover {
+        color: @fontGray3;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.search-user-content {
+  .userbox {
+    width: 70px;
+    height: 70px;
+    a {
+      position: relative;
+      display: block;
+      text-align: center;
+    }
+    img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+    .official-icon,
+    .mstar-icon {
+      position: absolute;
+      width: 20px;
+      left: 43px;
+      top: 25px;
+      height: 20px;
+    }
+    .official-icon {
+      background: url(https://mds0.com/static/img/official.png) round;
+    }
+    .mstar-icon {
+      background: url(https://mds0.com/static/img/mstar.png) round;
+    }
+    .user-name {
+      height: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
 @media(max-width: 1199px) {
   @itemcolor: #9d9d9d;
   #popLink {
@@ -74,6 +195,9 @@
     img {
       width: 20px;
     }
+  }
+  .header .nav-container {
+    padding: 0;
   }
   .navbar {
     box-shadow: 0 2px 4px rgba(0,0,0,0.5)

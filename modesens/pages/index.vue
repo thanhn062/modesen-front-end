@@ -8,18 +8,37 @@
         :to="switchLocalePath($i18n.country, locale.code)">{{ locale.name }}</nuxt-link>
       <div><nuxt-link to="/loyalty/">membership-intro</nuxt-link></div>
       <div><nuxt-link to="/account/loyalty/">membership</nuxt-link></div>
-      <!-- {{ COUNTRIES }} -->
+      <!-- <b-btn @click="showMOdal">showmodal</b-btn> -->
+      <!-- <b-modal v-show="mdLoginShow">
+        <h3>lffffffffff</h3>
+      </b-modal> -->
+      <!-- {{ gconfig }} -->
+      {{ $store.state.login_status }}
     </div>
   </section>
 </template>
 <script>
 export default {
-  // async asyncData({ $axios }) {
-  //   let { COUNTRIES } = await $axios.post('/config/', {
-  //     secretkey: process.env.secretKey
-  //   })
-  //   return { COUNTRIES }
-  // }
+  async asyncData({ $axios }) {
+    // let { COUNTRIES } = await $axios.post('/config/', {
+    //   secretkey: process.env.secretKey
+    // })
+    // return { COUNTRIES }
+    console.log(1111, 'index-asyncdata')
+  },
+  computed: {
+    mdLoginShow() {
+      return this.$store.state.mdLoginShow
+    }
+  },
+  created() {
+    console.log(2222, 'index-created')
+  },
+  methods: {
+    showMOdal() {
+      this.$store.commit('modifyMdLoginShow')
+    }
+  }
 }
 </script>
 <style>

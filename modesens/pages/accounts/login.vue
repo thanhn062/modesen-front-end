@@ -3,7 +3,7 @@
     <div class="logo-con">
       <nuxt-link
         to="/"
-        target="_blank"><img :src="$i18n.locale==='zh' ? GLOBAL.LOGO_ASSISTRANT_ZH : GLOBAL.LOGO_ASSISTRANT_EN"></nuxt-link>
+        target="_blank"><img :src="$i18n.locale==='zh' ? gconfig.LOGO_ASSISTRANT_ZH : gconfig.LOGO_ASSISTRANT_EN"></nuxt-link>
     </div>
     <b-form
       class="login-form"
@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import { setToken } from '~/static/utils/token.js'
 export default {
   layout: 'noframe',
   data() {
@@ -63,26 +62,33 @@ export default {
     async login(evt) {
       evt.preventDefault()
       let data = new Object()
-      data.client_id = this.$auth.options.client_id
-      data.client_secret = this.$auth.options.client_secret
+      data.client_id = process.env.client_id
+      data.client_secret = process.env.client_secret
       data.grant_type = 'password'
       data.username = this.email
       data.password = this.password
-      try {
-        let {
-          data: { access_token, token_type }
-        } = await this.$axios.post('/o/token/', data)
-        console.log(3333)
-        // this.$cookies.set('token', access_token)
-        setToken(access_token)
-        // let [, nextUrl] = [...window.location.href.match(/next=([^?&=#]+)/)]
-        // console.log(window.location.href.match(/next=[^?&=#]+/))
-        // console.log(decodeURIComponent(nextUrl))
-        // window.parent.location.pathname = decodeURIComponent(nextUrl)
-        // this.$router.replace('/about')
-      } catch (e) {
-        this.error = e.message
+      // try {
+      let obj = await this.$axios.post('/o/token/', data)
+      if (obj.access_token) {
+        this.$store.commit('modifyLoginStatus')
+        this.$cookies.set(this.gconfig.ACCESS_TOKEN, obj.access_token)
+        let userdata = await this.$axios.post('/accounts/profile/get/', {})
+        if (userdata.lsuser) {
+          let lsuser = JSON.stringify(userdata.lsuser)
+          this.$localStorage.set(this.gconfig.USERINFO, lsuser, 24 * 30)
+          this.$store.commit('setLsuser', userdata.lsuser)
+          console.log(userdata)
+          this.$store.commit('modifyMdLoginShow')
+          this.$root.$emit('bv::hide::modal', 'mdLogin')
+        }
+        // this.$router.push(this.$route.query.next)
+      } else {
       }
+      // window.parent.open(this.$route.query.next, '_self')
+      // parent.$router.replace('/about')
+      // } catch (e) {
+      //   this.error = e.message
+      // }
     }
   }
 }

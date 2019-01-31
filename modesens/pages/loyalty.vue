@@ -282,7 +282,7 @@
 </template>
 <script>
 import Modals from '~/components/Modals.vue'
-import { wxlogin } from '~/static/utils/utils.js'
+import { wxlogin } from '~/assets/js/utils/utils.js'
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
 export default {

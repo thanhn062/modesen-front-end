@@ -219,7 +219,7 @@
             src="https://mds0.com/static/img/20181229android_QR_code_cn.png">
           <img
             v-else
-            src="https://mds0.com/static/img/20181229android_QR_code_global.png">
+            src="https://mds0.com/static/img/20181229android_QR_code_gconfig.png">
           <a
             href="https://modesens.com/s/android_cn/"
             target="_blank">
@@ -234,7 +234,7 @@
   </footer>
 </template>
 <script>
-import { installChromeExtention } from '~/static/utils/utils.js'
+import { installChromeExtention } from '~/assets/js/utils/utils.js'
 export default {
   props: {
     isPC: {
@@ -266,7 +266,6 @@ export default {
         this.disabledstatus = true
         let obj = await this.$axios.post('/accounts/emailsubscribe/', data)
         this.disabledstatus = false
-        console.log(obj)
         if (obj.error) {
           if (obj.error === 'Account exists') {
             this.emailSubStatus = 1
@@ -298,7 +297,6 @@ export default {
       data.message = ''
       let obj = await this.$axios.post('/invite/', data)
       alert(this.shareEmail + this.$t(' is(are) invited'))
-      console.log(obj)
     },
     myInstallChromeExtention() {
       installChromeExtention()

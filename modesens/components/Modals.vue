@@ -2,7 +2,8 @@
   <div>
     <!-- 登录modal -->
     <b-modal
-      v-if="lsuid===''"
+      v-if="$store.state.login_status===false"
+      v-show="!$store.state.login_status"
       id="mdLogin"
       ref="mdLogin"
       hide-header
@@ -12,7 +13,7 @@
         class="close"
         @click="hideLoginModal"><img src="/img/close.svg"></button>
       <iframe
-        src="/accounts/login/?next=/loyalty/"
+        :src="'/accounts/login/?next=' + $route.fullPath"
         width="100%"
         height="100%"
         frameborder="0"/>
@@ -132,11 +133,46 @@
         id="fbsuceed"
         class="fb-thanks">{{ $t('FbModal.desc3') }}</div>
     </b-modal>
-    <!-- notice modal -->
+    <!-- China notice modal -->
     <b-modal
       id="noticemodal1"
       ok-only>
       <h3>Coming soon for China. Please stay in tune.</h3>
+    </b-modal>
+    <!-- sign out modal -->
+    <b-modal
+      id="signoutmodal"
+      :title="$t('SeeYouSoon')"
+      :ok-title="$t('SignOut')"
+      size="sm"
+      ok-only
+      @ok="signout">
+      <img
+        :src="gconfig.LOGO_ASSISTRANT_ZH"
+        :alt="$t('ModeSens')">
+    </b-modal>
+    <!-- notice -->
+    <b-modal
+      v-if="$store.state.login_status"
+      id="noticeproductmd"
+      hide-header
+      hide-footer>
+      <iframe
+        src="https://modesens.com/notice/product/"
+        width="100%"
+        height="100%"
+        frameborder="0"/>
+    </b-modal>
+    <b-modal
+      v-if="$store.state.login_status"
+      id="noticeusermd"
+      hide-header
+      hide-footer>
+      <iframe
+        src="https://modesens.com/notice/me/"
+        width="100%"
+        height="100%"
+        frameborder="0"/>
     </b-modal>
   </div>
 </template>
@@ -163,6 +199,12 @@ export default {
       contactMsg: ''
     }
   },
+  computed: {
+    mdLoginShow() {
+      return this.$store.state.mdLoginShow
+    }
+  },
+  created() {},
   methods: {
     hideLoginModal() {
       this.$refs.mdLogin.hide()
@@ -210,9 +252,7 @@ export default {
         data.url = this.url
         data.email = this.email
         data.intro = this.introduction
-        console.log(data)
         let obj = await this.$axios.post('/customeremail/', data)
-        console.log(obj)
       }
     },
     async sendFeedback(evt) {
@@ -232,6 +272,13 @@ export default {
         this.contactMsg = ''
         this.isSendFeedback = false
       }, 3000)
+    },
+    async signout() {
+      this.$cookies.remove(this.gconfig.ACCESS_TOKEN)
+      this.$localStorage.remove(this.gconfig.USERINFO)
+      this.$store.commit('modifyLoginStatus')
+      this.$store.commit('removeLsuser')
+      this.login_status = false
     }
   }
 }
@@ -308,6 +355,12 @@ export default {
     font-size: 18px;
     height: 186px;
     text-align: center;
+  }
+}
+#signoutmodal {
+  text-align: center;
+  img {
+    width: 300px;
   }
 }
 </style>

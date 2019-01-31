@@ -1,4 +1,4 @@
-/* global app, req, vuex, store */
+/* gconfig app, req, vuex, store */
 const {
   COUNTRY_CODE_KEY,
   LOCALE_CODE_KEY,
