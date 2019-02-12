@@ -13,11 +13,14 @@ export default function ({ $axios, app }) {
     // config.crossDomain = true   //允许跨域
     // config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
-    if (config.secretKey === 1) {
-      config.url += `?secretkey=${process.env.secretKey}`
-    }
     if (config.method === 'post') {
       config.data.timestamp = new Date().getTime();
+    }
+    if (config.method === 'get') {
+      config.params.secretkey = process.env.secretKey
+      config.params.timestamp = new Date().getTime();
+      // config.params = qs.stringify(config.params);
+      // config.url += `?${config.params}`
     }
     config.data = qs.stringify(config.data);
     return config;

@@ -1,4 +1,10 @@
 import Vue from 'vue'
+import vClickOutside from 'v-click-outside'
+Vue.use(vClickOutside)
+
+import VueClickoutside from 'vue-clickoutside'
+Vue.use(VueClickoutside)
+
 import {gconfig} from '~/assets/js/gconfig.js'
 import localStorage from '~/assets/js/utils/localStorage.js'
 

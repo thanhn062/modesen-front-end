@@ -14,6 +14,12 @@
       </b-modal> -->
       <!-- {{ gconfig }} -->
       {{ $store.state.login_status }}
+      <div
+        v-click-outside="testoutside"
+        style="width: 100px;height: 100px;border: 1px solid">
+        dlfkjsldfjl
+        <div>jjjjjjjj</div>
+      </div>
     </div>
   </section>
 </template>
@@ -37,6 +43,9 @@ export default {
   methods: {
     showMOdal() {
       this.$store.commit('modifyMdLoginShow')
+    },
+    testoutside() {
+      // console.log('999999999')
     }
   }
 }

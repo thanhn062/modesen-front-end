@@ -74,147 +74,154 @@
             </b-form-select>
           </b-navbar-nav>
         </b-collapse>
-        <!-- <div class="d-flex"> -->
-        <!-- 登录/注册 -->
-        <div class="userInfo">
-          <a
-            v-b-modal.mdLogin
-            v-if="$store.state.login_status===false"
-            href="javascript:;">
-            <img src="https://mds0.com/static/img/20180905account_b.svg">
-          </a>
-          <div
-            v-else
-            class="d-flex justify-content-between align-items-center authInfo">
+        <div class="d-flex">
+          <!-- 登录/注册 -->
+          <div class="userInfo">
             <a
-              v-b-modal.noticeproductmd
-              href="javascript:;"><img src="https://mds0.com/static/img/prd-update-20180504.svg"></a>
-            <a
-              v-b-modal.noticeusermd
-              href="javascript:;"><img src="https://mds0.com/static/img/social-update-20180504.svg"></a>
-            <b-dropdown
-              v-if="lsuser"
-              variant="link"
-              right
-              no-caret>
-              <template slot="text">
-                <a href="javascript:;"><img
-                  :src="lsuser.icon"
-                  :alt="lsuser.username"></a>
-              </template>
-              <b-dropdown-item href="/account/loyalty/">{{ $t('MyLoyalty') }}</b-dropdown-item>
-              <b-dropdown-item :href="'/u/'+lsuser.username">{{ $t('MyCloset') }}</b-dropdown-item>
-              <b-dropdown-item href="/dashboard/">{{ $t('MyDashboard') }}</b-dropdown-item>
-              <b-dropdown-item href="/product/coupons/">{{ $t('MyOffers') }}</b-dropdown-item>
-              <b-dropdown-item
-                v-if="$i18n.country==='cn'"
-                :href="'https://pay.modesens.com/order/index/?t='+gconfig.PAY_HASH_TOKEN">{{ $t('MyOrders') }}</b-dropdown-item>
-              <b-dropdown-item href="/invite/">{{ $t('InviteFriends') }}</b-dropdown-item>
-              <b-dropdown-item href="/accounts/profile/">{{ $t('Settings') }}</b-dropdown-item>
-              <b-dropdown-divider/>
-              <div v-if="lsuser.ispublisher">
-                <b-dropdown-item href="/reward/linkbuilder/">{{ $t('InfluencerLinkBuilder') }}</b-dropdown-item>
-                <b-dropdown-item href="/reward/handbook/">{{ $t('InfluencerHandbook') }}</b-dropdown-item>
-                <b-dropdown-item href="/reward/dashboard/">{{ $t('InfluencerDashboard') }}</b-dropdown-item>
-                <b-dropdown-item href="/reward/referral/">{{ $t('InfluencerReferral') }}</b-dropdown-item>
-                <b-dropdown-item href="/trending/">{{ $t('FashionTrendingReport') }}</b-dropdown-item>
+              v-b-modal.mdLogin
+              v-if="$store.state.login_status===false"
+              href="javascript:;">
+              <img src="https://mds0.com/static/img/20180905account_b.svg">
+            </a>
+            <div
+              v-else
+              class="d-flex justify-content-between align-items-center authInfo">
+              <a
+                v-b-modal.noticeproductmd
+                href="javascript:;"><img src="https://mds0.com/static/img/prd-update-20180504.svg"></a>
+              <a
+                v-b-modal.noticeusermd
+                href="javascript:;"><img src="https://mds0.com/static/img/social-update-20180504.svg"></a>
+              <b-dropdown
+                v-if="lsuser"
+                variant="link"
+                right
+                no-caret>
+                <template slot="text">
+                  <a href="javascript:;"><img
+                    :src="lsuser.icon"
+                    :alt="lsuser.username"></a>
+                </template>
+                <b-dropdown-item href="/account/loyalty/">{{ $t('MyLoyalty') }}</b-dropdown-item>
+                <b-dropdown-item :href="'/u/'+lsuser.username">{{ $t('MyCloset') }}</b-dropdown-item>
+                <b-dropdown-item href="/dashboard/">{{ $t('MyDashboard') }}</b-dropdown-item>
+                <b-dropdown-item href="/product/coupons/">{{ $t('MyOffers') }}</b-dropdown-item>
                 <b-dropdown-item
-                  v-if="lsuser.ispubadmin"
-                  href="/reward/admin/">{{ $t('Influencer Admin') }}</b-dropdown-item>
+                  v-if="$i18n.country==='cn'"
+                  :href="'https://pay.modesens.com/order/index/?t='+gconfig.PAY_HASH_TOKEN">{{ $t('MyOrders') }}</b-dropdown-item>
+                <b-dropdown-item href="/invite/">{{ $t('InviteFriends') }}</b-dropdown-item>
+                <b-dropdown-item href="/accounts/profile/">{{ $t('Settings') }}</b-dropdown-item>
                 <b-dropdown-divider/>
+                <div v-if="lsuser.ispublisher">
+                  <b-dropdown-item href="/reward/linkbuilder/">{{ $t('InfluencerLinkBuilder') }}</b-dropdown-item>
+                  <b-dropdown-item href="/reward/handbook/">{{ $t('InfluencerHandbook') }}</b-dropdown-item>
+                  <b-dropdown-item href="/reward/dashboard/">{{ $t('InfluencerDashboard') }}</b-dropdown-item>
+                  <b-dropdown-item href="/reward/referral/">{{ $t('InfluencerReferral') }}</b-dropdown-item>
+                  <b-dropdown-item href="/trending/">{{ $t('FashionTrendingReport') }}</b-dropdown-item>
+                  <b-dropdown-item
+                    v-if="lsuser.ispubadmin"
+                    href="/reward/admin/">{{ $t('Influencer Admin') }}</b-dropdown-item>
+                  <b-dropdown-divider/>
+                </div>
+                <b-dropdown-item v-b-modal.signoutmodal>{{ $t('SignOut') }}</b-dropdown-item>
+              </b-dropdown>
+            </div>
+          </div>
+          <!-- search -->
+          <div class="search-container">
+            <div
+              class="search-btn"
+              @click="openSearchInput">
+              <img
+                src="https://mds0.com/static/img/20180905search_b.svg">
+              <span class="search-btn-txt">SEARCH</span>
+            </div>
+            <div
+              v-click-outside="clickoutside"
+              class="searchbox">
+              <input
+                v-model="searchTxt"
+                type="text"
+                @keyup="getHint2">
+              <img
+                class="search-icon"
+                src="https://mds0.com/static/img/20180905search_b.svg">
+              <div
+                v-if="searchResult && (Object.keys(searchResult.words).length !== 0 || searchResult.designers || searchResult.users || searchResult.hashtags || searchResult.merchants)"
+                class="searchres-box">
+                <div
+                  v-if="Object.keys(searchResult.words).length !== 0"
+                  class="searchres-item">
+                  <div class="searchres-title">{{ $t('nav.SearchProductbykeyword') }}</div>
+                  <ul>
+                    <li
+                      v-for="(word,index) in searchResult.words"
+                      :key="index"
+                      :title="$t('nav.Shop')+word">{{ word | capitalize }}</li>
+                  </ul>
+                </div>
+                <div
+                  v-if="searchResult.designers"
+                  class="searchres-item">
+                  <div class="searchres-title">{{ $t('nav.Designers') }}</div>
+                  <ul>
+                    <li
+                      v-for="(designer,index) in searchResult.designers"
+                      :key="index"><a
+                        :href="'/designer/'+designer.url+'/'+ gender+'/'"
+                        :title="$t('nav.Shop')+designer.name">{{ designer.name }}</a>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  v-if="searchResult.users"
+                  class="searchres-item">
+                  <div class="searchres-title">{{ $t('nav.User') }}</div>
+                  <ul class="search-user-content">
+                    <li
+                      v-for="(user,index) in searchResult.users"
+                      :key="index"
+                      class="userbox">
+                      <a
+                        :href="'/u/'+user.username+'/'"
+                        target="_blank">
+                        <img
+                          :src="user.icon"
+                          :title="$t('nav.Visit')+user.username.toLowerCase()+$t('nav.scloset')">
+                        <span :class=" user.isofficial ? 'official-icon' : 'mstar-icon'"/>
+                        <div class="user-name">{{ user.username.toLowerCase() }}</div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  v-if="searchResult.hashtags"
+                  class="searchres-item">
+                  <div class="searchres-title">{{ $t('nav.Look') }}</div>
+                  <ul>
+                    <li
+                      v-for="(hashtag,index) in searchResult.hashtags"
+                      :key="index"
+                      :title="$t('nav.Searchlookstanged')+hashtag+$t('nav.searchend')"
+                      class="momentbox">#{{ hashtag }}</li>
+                  </ul>
+                </div>
+                <div
+                  v-if="searchResult.merchants"
+                  class="searchres-item">
+                  <div class="searchres-title">{{ $t('nav.Store') }}</div>
+                  <ul>
+                    <li
+                      v-for="(merchant,index) in searchResult.merchants"
+                      :key="index"><a
+                        :href="'/store/'+merchant.url+'/'+gender+'/'"
+                        :title="$t('nav.Shopproductsfrom')+merchant.name+$t('nav.shoppend')">{{ merchant.name }}</a></li>
+                  </ul>
+                </div>
               </div>
-              <b-dropdown-item v-b-modal.signoutmodal>{{ $t('SignOut') }}</b-dropdown-item>
-            </b-dropdown>
-          </div>
-        </div>
-        <!-- search -->
-        <div class="search-container">
-          <div
-            class="search-btn"
-            @click="openSearchInput">
-            <img src="https://mds0.com/static/img/20180905search_b.svg">
-            <span>SEARCH</span>
-          </div>
-          <div class="searchbox">
-            <input
-              v-model="searchTxt"
-              type="text">
-          </div>
-          <div
-            v-if="searchResult"
-            class="searchres-box">
-            <div
-              v-if="searchResult.words.length"
-              class="searchres-item">
-              <div class="searchres-title">{{ $t('nav.SearchProductbykeyword') }}</div>
-              <ul>
-                <li
-                  v-for="(word,index) in searchResult.words"
-                  :key="index"
-                  :title="$t('nav.Shop')+word">{{ word | capitalize }}</li>
-              </ul>
-            </div>
-            <div
-              v-if="searchResult.designers.length"
-              class="searchres-item">
-              <div class="searchres-title">{{ $t('nav.Designers') }}</div>
-              <ul>
-                <li
-                  v-for="(designer,index) in searchResult.designers"
-                  :key="index"><a
-                    :href="'/designer/'+designer.url+'/'+ gender+'/'"
-                    :title="$t('nav.Shop')+designer.name">{{ designer.name }}</a>
-                </li>
-              </ul>
-            </div>
-            <div
-              v-if="searchResult.users.length"
-              class="searchres-item">
-              <div class="searchres-title">{{ $t('nav.User') }}</div>
-              <ul class="search-user-content">
-                <li
-                  v-for="(user,index) in searchResult.users"
-                  :key="index"
-                  class="userbox">
-                  <a
-                    :href="'/u/'+user.username+'/'"
-                    target="_blank">
-                    <img
-                      :src="user.icon"
-                      :title="$t('nav.Visit')+user.username.toLowerCase()+$t('nav.scloset')">
-                    <span :class=" user.isofficial ? 'official-icon' : 'mstar-icon'"/>
-                    <div class="user-name">{{ user.username.toLowerCase() }}</div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div
-              v-if="searchResult.hashtags.length"
-              class="searchres-item">
-              <div class="searchres-title">{{ $t('nav.Look') }}</div>
-              <ul>
-                <li
-                  v-for="(hashtag,index) in searchResult.hashtags"
-                  :key="index"
-                  :title="$t('nav.Searchlookstanged')+hashtag+$t('nav.searchend')"
-                  class="momentbox">#{{ hashtag }}</li>
-              </ul>
-            </div>
-            <div
-              v-if="searchResult.merchants.length"
-              class="searchres-item">
-              <div class="searchres-title">{{ $t('nav.Store') }}</div>
-              <ul>
-                <li
-                  v-for="(merchant,index) in searchResult.merchants"
-                  :key="index"><a
-                    :href="'/store/'+merchant.url+'/'+gender+'/'"
-                    :title="$t('nav.Shopproductsfrom')+merchant.name+$t('nav.shoppend')">{{ merchant.name }}</a></li>
-              </ul>
             </div>
           </div>
         </div>
-        <!-- </div> -->
       </b-navbar>
     </div>
     <!-- <headerModals/> -->
@@ -256,7 +263,8 @@ export default {
       secondaryIndexOver: -1,
       searchTxt: '',
       searchResult: '',
-      serachInputOpen: false
+      serachInputOpen: false,
+      hint2Timeout: null
     }
   },
   computed: {
@@ -276,7 +284,6 @@ export default {
   },
   mounted() {
     this.getConfig()
-    this.searchres()
     $('.main-container').css('padding-top', $('.header').height())
 
     $('.navbar-toggler-icon').click(evt => {
@@ -292,36 +299,6 @@ export default {
       $('#nav_collapse').animate({ left: showStatus ? '-100%' : 0 })
       $('.header').animate({ left: showStatus ? 0 : '80%' })
     })
-    $(document).click(function(e) {
-      if ($(e.target) !== $('.searchbox,.searchres-box')) {
-        console.log(44444)
-        this.serachInputOpen = false
-        $('.searchbox input')
-          .stop()
-          .animate({ width: '0' }, function() {
-            $('.searchbox input').css({
-              padding: '0',
-              'box-shadow': 'none'
-            })
-          })
-      }
-    })
-    // if (this.serachInputOpen) {
-    //   console.log(33333)
-    //   $(document).click(function(e) {
-    //     if ($(e.target) !== $('.searchbox,.searchres-box')) {
-    //       console.log(44444)
-    //       this.serachInputOpen = false
-    //       $('.searchbox input')
-    //         .stop()
-    //         .animate({ width: '0' }, function() {
-    //           $('.searchbox input').css({
-    //             'box-shadow': 'none'
-    //           })
-    //         })
-    //     }
-    //   })
-    // }
   },
   methods: {
     async getConfig() {
@@ -337,40 +314,62 @@ export default {
         $('.main-container').css('padding-top', $('header').height())
       )
     },
-    async searchres() {
+    getHint2() {
+      clearTimeout(this.hint2Timeout)
       let data = {}
       data.txt = this.searchTxt
       data.amount = 10
-      console.log('searchTxt:', this.searchTxt)
-      let { rhints } = await this.$axios.get('/hint2/', data)
-      this.searchResult = rhints
+      this.hint2Timeout = setTimeout(async () => {
+        let { rhints } = await this.$axios.get('/hint2/', { params: data })
+        this.searchResult = rhints
+        if ($(document).width() < 1200) {
+          this.serachInputOpen = true
+          $('.searchbox').show()
+        }
+        this.$nextTick(() => {
+          //获取search_box的max-height;
+          var search_h = $(window).height() - 150
+          $('.searchres-box').css('max-height', search_h)
+        })
+      }, 200)
     },
     openSearchInput() {
-      this.serachInputOpen = true
-      $('.searchbox input')
-        .stop()
-        .animate({ width: '600px' }, function() {
-          $('.searchbox input').css({
-            padding: '6px 12px',
-            'box-shadow': '0 3px 10px 1px rgba(0, 0, 0, 0.4)'
+      if ($(document).width() > 1199) {
+        $('.search-icon').show()
+        $('.searchbox input')
+          .stop()
+          .animate({ width: '600px' }, () => {
+            $('.searchbox input').css({
+              padding: '6px 12px',
+              'box-shadow': '0 3px 10px 1px rgba(0, 0, 0, 0.4)'
+            })
+            this.serachInputOpen = true
           })
-        })
-      // this.$nextTick(function() {
-      //   $(document).click(function(e) {
-      //     if ($(e.target) !== $('.searchbox,.searchres-box')) {
-      //       console.log(44444)
-      //       this.serachInputOpen = false
-      //       $('.searchbox input')
-      //         .stop()
-      //         .animate({ width: '0' }, function() {
-      //           $('.searchbox input').css({
-      //             padding: '0',
-      //             'box-shadow': 'none'
-      //           })
-      //         })
-      //     }
-      //   })
-      // })
+      }
+      $('.searchbox input').focus()
+      this.getHint2()
+    },
+    clickoutside() {
+      if ($(document).width() > 1199) {
+        if (this.serachInputOpen === true) {
+          this.serachInputOpen = false
+          $('.search-icon').hide()
+          $('.searchbox input')
+            .stop()
+            .animate({ width: '0' }, function() {
+              $('.searchbox input').css({
+                padding: '0px',
+                'box-shadow': 'none'
+              })
+            })
+          this.searchResult = ''
+        }
+      } else {
+        if (this.serachInputOpen === true) {
+          $('.searchbox').hide()
+          this.serachInputOpen = false
+        }
+      }
     }
   }
 }
