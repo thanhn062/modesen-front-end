@@ -8,7 +8,6 @@ export const state = () => ({
 
 export const mutations = {
   modifyLoginStatus (state) {
-    console.log(111,'modifyLoginStatus');
     state.login_status = !state.login_status;
   },
   modifyMdLoginShow() {

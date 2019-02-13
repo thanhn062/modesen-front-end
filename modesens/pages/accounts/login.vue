@@ -77,7 +77,6 @@ export default {
           let lsuser = JSON.stringify(userdata.lsuser)
           this.$localStorage.set(this.gconfig.USERINFO, lsuser, 24 * 30)
           this.$store.commit('setLsuser', userdata.lsuser)
-          console.log(userdata)
           this.$store.commit('modifyMdLoginShow')
           this.$root.$emit('bv::hide::modal', 'mdLogin')
         }

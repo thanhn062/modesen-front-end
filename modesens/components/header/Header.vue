@@ -28,7 +28,8 @@
           id="nav_collapse"
           is-nav>
           <!-- 菜单分类 -->
-          <navCategory/>
+          <ThreeLevelMenu/>
+          <NavCategory/>
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <!-- COUNTRIES -->
@@ -74,7 +75,7 @@
             </b-form-select>
           </b-navbar-nav>
         </b-collapse>
-        <div class="d-flex">
+        <div class="d-flex justify-content-between settingbox">
           <!-- 登录/注册 -->
           <div class="userInfo">
             <a
@@ -132,8 +133,9 @@
             <div
               class="search-btn"
               @click="openSearchInput">
-              <img
-                src="https://mds0.com/static/img/20180905search_b.svg">
+              <div class="search-img"/>
+              <!-- <img
+                src="https://mds0.com/static/img/20180905search_b.svg"> -->
               <span class="search-btn-txt">SEARCH</span>
             </div>
             <div
@@ -228,12 +230,12 @@
   </header>
 </template>
 <script>
-// import headerModals from '../modals'
-import navCategory from './navCategory'
+import ThreeLevelMenu from './ThreeLevelMenu'
+import NavCategory from './NavCategory'
 export default {
   components: {
-    navCategory
-    // headerModals
+    NavCategory,
+    ThreeLevelMenu
   },
   filters: {
     capitalize(value) {
@@ -269,7 +271,6 @@ export default {
   },
   computed: {
     lsuser() {
-      console.log(333333, this.$store.state.lsuser)
       return this.$store.state.lsuser
     },
     gender() {
@@ -279,16 +280,15 @@ export default {
       return 'women'
     }
   },
-  created() {
-    console.log(999999, 'header-created')
-  },
   mounted() {
     this.getConfig()
     $('.main-container').css('padding-top', $('.header').height())
 
     $('.navbar-toggler-icon').click(evt => {
+      evt.preventDefault()
       evt.stopPropagation()
       let showStatus = $('.header .navbar-expand-xl').hasClass('show')
+      console.log(45454545)
       if (showStatus) {
         $('.header .navbar-expand-xl').removeClass('show')
         $('.wrapper-mask').addClass('hidden')
@@ -334,6 +334,11 @@ export default {
       }, 200)
     },
     openSearchInput() {
+      if (this.serachInputOpen === true) {
+        $('.searchbox').hide()
+        this.serachInputOpen = false
+        return
+      }
       if ($(document).width() > 1199) {
         $('.search-icon').show()
         $('.searchbox input')
@@ -349,7 +354,7 @@ export default {
       $('.searchbox input').focus()
       this.getHint2()
     },
-    clickoutside() {
+    clickoutside(evt) {
       if ($(document).width() > 1199) {
         if (this.serachInputOpen === true) {
           this.serachInputOpen = false
@@ -365,6 +370,9 @@ export default {
           this.searchResult = ''
         }
       } else {
+        if (evt.target === $('.search-btn > img')[0]) {
+          return
+        }
         if (this.serachInputOpen === true) {
           $('.searchbox').hide()
           this.serachInputOpen = false

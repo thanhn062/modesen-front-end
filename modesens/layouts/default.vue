@@ -25,13 +25,9 @@ export default {
   },
   data() {
     return {
-      // headerHeight: '50px 0',
       lsuid: '',
       isPC: true
     }
-  },
-  created() {
-    console.log(555555, 'default-created')
   },
   mounted() {
     // this.headerHeight = $('header').height() + 'px 0'

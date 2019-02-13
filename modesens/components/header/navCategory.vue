@@ -1,5 +1,5 @@
 <template>
-  <b-navbar-nav>
+  <b-navbar-nav class="nav-mini-menu">
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('WOMEN') }}

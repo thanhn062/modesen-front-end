@@ -54,7 +54,7 @@ module.exports = {
 
   router: {
     // base: '/vue/'
-    middleware: 'countries'
+    // middleware: 'countries'
   },
 
   /*

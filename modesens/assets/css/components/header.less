@@ -48,6 +48,9 @@
     }
   }
 }
+.nav-mini-menu {
+  display: none;
+}
 .country-select-container {
   & > a {
     width: 100px;
@@ -75,12 +78,15 @@
 .language-dropdown {
   display: none;
 }
+.settingbox {
+  width: 196px;
+}
 .userInfo {
   img {
     width: 20px;
   }
   .authInfo {
-    width: 100px;
+    width: 92px;
     .btn {
       padding: 0;
     }
@@ -89,9 +95,13 @@
 .search-container {
   position: relative;
   .search-btn {
+    overflow: hidden;
     cursor: pointer;
-    img {
+    .search-img {
+      float: left;
       width: 20px;
+      height: 20px;
+      background: url('https://mds0.com/static/img/20180905search_b.svg');
     }
   }
   .searchbox {
@@ -220,6 +230,9 @@
     color: @itemcolor;
     background: #eeeeee;
     display: block !important;
+    .nav-mini-menu {
+      display: block;
+    }
     .nav-link {
       display: flex;
       justify-content: space-between;
@@ -262,6 +275,9 @@
   }
   .language-dropdown {
     display: block;
+  }
+  .settingbox {
+    width: 60px;
   }
   .userInfo {
     .authInfo {

@@ -339,5 +339,7 @@ module.exports= {
     searchend: '',
     Shopproductsfrom : 'Shop products from ',
     shoppend: '',
+    MENSJACKETS: "MEN'S JACKETS",
+    WOMENSJACKETS: "WOMEN'S JACKETS",
   },
 }

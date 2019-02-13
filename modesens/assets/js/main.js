@@ -2,21 +2,15 @@ import Vue from 'vue'
 import vClickOutside from 'v-click-outside'
 Vue.use(vClickOutside)
 
-import VueClickoutside from 'vue-clickoutside'
-Vue.use(VueClickoutside)
-
 import {gconfig} from '~/assets/js/gconfig.js'
 import localStorage from '~/assets/js/utils/localStorage.js'
 
-console.log(Vue.prototype)
 Vue.prototype.gconfig = gconfig;
 Vue.prototype.$localStorage = localStorage;
-console.log(22222, 'main.js')
 
 //浏览器端功能
 if (process.browser){
   $(document).ready(function() {
-    // $('.main-container').css('padding-top', $('.header').height())
     //click--ga
     $('*[data-ga-click]').click(function() {
       let res = $(this).attr('data-ga-click');
