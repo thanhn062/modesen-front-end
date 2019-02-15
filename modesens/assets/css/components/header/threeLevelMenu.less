@@ -1,0 +1,144 @@
+@import '../../common.less';
+
+.nav-pc-menu {
+  // display: flex;
+  .dropdown {
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+    height: 60px;
+    a {
+      height: 20px;
+    }
+  }
+  .navbar-secondmenu {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    padding: 0 100px;
+    width: 100%;
+    border-top: @border2;
+    border-bottom: @border2;
+    height: 60px;
+    background: #fff;
+  }
+  .navbar-thirdmenu {
+    position: fixed;
+    top: 150px;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    .thirdmenu-wrapper {
+      margin: auto;
+      padding: 25px 0;
+      max-width: 1200px;
+      font-size: 12px;
+    }
+  }
+  .menucategory-title {
+    margin-bottom: 16px;
+    font-weight: 300;
+    font-size: 13px;
+    color: @fontGray;
+  }
+  .letter-box {
+    margin: 0 0 0 9px;
+    a {
+      margin: 0 5px;
+      padding: 0 3px;
+    }
+  }
+  .search-box {
+    input {
+      width: 207px;
+      border: 0;
+      border-bottom: 0.5px solid #000000;
+    }
+    img {
+      position: absolute;
+      right: 0px;
+      width: 20px;
+    }
+  }
+  .category-box {
+    width: 500px;
+  }
+  .collection-box {
+    width: 220px;
+  }
+  .designers-box {
+    width: 220px;
+  }
+  .sale-designers-box {
+    width: 430px;
+  }
+  .popular-category {
+    width: 260px;
+  }
+}
+.view-all {
+  a {
+    &:hover {
+      border-bottom: @border3;
+    }
+  }
+}
+.sub-menu {
+  height: 320px;
+  & > li {
+    height: 40px;
+  }
+  a {
+    &:hover {
+      border-bottom: @border3;
+    }
+  }
+}
+.community-con {
+  font-size: 12px;
+  .momentimg-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 170px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.8);
+    img {
+      height: 100%;
+    }
+  }
+  .follow-userbox {
+    position: relative;
+    margin-top: 20px;
+    width: 200px;
+    i {
+      position: absolute;
+      bottom: -2px;
+      left: 36px;
+      width: 20px;
+      height: 20px;
+      background: url('https://mds0.com/static/img/mstar.png') round;
+    }
+  }
+  .follow-usericon {
+    // position: relative;
+    width: 50px;
+    height: 50px !important;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .follow-btn {
+    width: 70px;
+    border: 0.5px solid #000000;
+  }
+}
+@media (max-width: 1199px) {
+  .nav-pc-menu {
+    display: none;
+  }
+}

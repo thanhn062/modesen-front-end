@@ -5,7 +5,9 @@
         class="dropdown"
         @mouseover="changeFirstLevelIndex(1)"
         @mouseout="changeFirstLevelIndex(-1)">
-        <a href="/">{{ $t('WOMEN') }}</a>
+        <a
+          :class="{ borderbottom: firstLevelIndex===1 }"
+          href="/">{{ $t('WOMEN') }}</a>
         <ul
           v-if="firstLevelIndex===1"
           :style="secondmenuStyle"
@@ -510,7 +512,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div class="d-flex justify-content-between thirdmenu-wrapper">
-                <div class="category-box">
+                <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('SHOP BY CATEGORY') }}</div>
                   <ul class="sub-menu">
                     <li><a href="/product/women/clothing/">{{ $t('CLOTHING') }}</a></li>
@@ -523,9 +525,9 @@
                     target="_blank"
                     href="/product/women/sale/">{{ $t('SHOP ALL SALE') }}></a></div>
                 </div>
-                <div class="designer-box">
+                <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('DESIGNERS') }}</div>
-                  <ul class="sub-menu">
+                  <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a href="/gucci-women/">{{ $t('GUCCI') }}</a></li>
                     <li><a href="/saint-laurent-women/">{{ $t('SAINT LAURENT') }}</a></li>
                     <li><a href="/valentino-women/">{{ $t('VALENTINO') }}</a></li>
@@ -1037,7 +1039,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div class="d-flex justify-content-between thirdmenu-wrapper">
-                <div class="category-box">
+                <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('SHOP BY CATEGORY') }}</div>
                   <ul class="sub-menu">
                     <li><a href="/product/men/clothing/">{{ $t('CLOTHING') }}</a></li>
@@ -1050,9 +1052,9 @@
                     target="_blank"
                     href="/product/men/sale/">{{ $t('SHOP ALL SALE') }}></a></div>
                 </div>
-                <div class="designer-box">
+                <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('DESIGNERS') }}</div>
-                  <ul class="sub-menu">
+                  <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a href="/gucci-men/">{{ $t('GUCCI') }}</a></li>
                     <li><a href="/saint-laurent-men/">{{ $t('SAINT LAURENT') }}</a></li>
                     <li><a href="/valentino-men/">{{ $t('VALENTINO') }}</a></li>
@@ -1121,7 +1123,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div class="d-flex justify-content-between thirdmenu-wrapper">
-                <div class="category-box">
+                <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('SHOP BY CATEGORY') }}</div>
                   <ul class="sub-menu">
                     <li><a href="/product/women/clothing/">{{ $t('CLOTHING') }}</a></li>
@@ -1134,9 +1136,9 @@
                     target="_blank"
                     href="/product/women/sale/">{{ $t('SHOP ALL SALE') }}></a></div>
                 </div>
-                <div class="designer-box">
+                <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('DESIGNERS') }}</div>
-                  <ul class="sub-menu">
+                  <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a href="/gucci-women/">{{ $t('GUCCI') }}</a></li>
                     <li><a href="/saint-laurent-women/">{{ $t('SAINT LAURENT') }}</a></li>
                     <li><a href="/valentino-women/">{{ $t('VALENTINO') }}</a></li>
@@ -1169,7 +1171,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div class="d-flex justify-content-between thirdmenu-wrapper">
-                <div class="category-box">
+                <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('SHOP BY CATEGORY') }}</div>
                   <ul class="sub-menu">
                     <li><a href="/product/men/clothing/">{{ $t('CLOTHING') }}</a></li>
@@ -1182,9 +1184,9 @@
                     target="_blank"
                     href="/product/men/sale/">{{ $t('SHOP ALL SALE') }}></a></div>
                 </div>
-                <div class="designer-box">
+                <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('DESIGNERS') }}</div>
-                  <ul class="sub-menu">
+                  <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a href="/gucci-men/">{{ $t('GUCCI') }}</a></li>
                     <li><a href="/saint-laurent-men/">{{ $t('SAINT LAURENT') }}</a></li>
                     <li><a href="/valentino-men/">{{ $t('VALENTINO') }}</a></li>
@@ -1228,22 +1230,20 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div class="d-flex justify-content-between thirdmenu-wrapper">
-                <div class="designer-box">
+                <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('DESIGNERS') }}</div>
-                  <div class="designers_con">
-                    <ul class="sub-menu">
-                      <li><a href="/gucci-women/">GUCCI</a></li>
-                      <li><a href="/dolce-%2526-gabbana-women/">DOLCE & GABBANA</a></li>
-                      <li><a href="/burberry-women/">BURBERRY</a></li>
-                      <li><a href="stella-mccartney-women">STELLA MCCARTNEY</a></li>
-                      <li><a href="/prada-women/">PRADA</a></li>
-                      <li><a href="/fendi-women/">FENDI</a></li>
-                      <li><a href="/saint-laurent-women/">SAINT LAURENT</a></li>
-                      <li><a href="/valentino-women/">VALENTINO </a></li>
-                      <li><a href="/givenchy-women/">GIVENCHY</a></li>
-                      <li><a href="/christian-louboutin-women/">CHRISTIAN LOUBOUTIN</a></li>
-                    </ul>
-                  </div>
+                  <ul class="d-flex flex-column flex-wrap sub-menu">
+                    <li><a href="/gucci-women/">GUCCI</a></li>
+                    <li><a href="/dolce-%2526-gabbana-women/">DOLCE & GABBANA</a></li>
+                    <li><a href="/burberry-women/">BURBERRY</a></li>
+                    <li><a href="stella-mccartney-women">STELLA MCCARTNEY</a></li>
+                    <li><a href="/prada-women/">PRADA</a></li>
+                    <li><a href="/fendi-women/">FENDI</a></li>
+                    <li><a href="/saint-laurent-women/">SAINT LAURENT</a></li>
+                    <li><a href="/valentino-women/">VALENTINO </a></li>
+                    <li><a href="/givenchy-women/">GIVENCHY</a></li>
+                    <li><a href="/christian-louboutin-women/">CHRISTIAN LOUBOUTIN</a></li>
+                  </ul>
                   <div class="view-all"><a
                     target="_blank"
                     href="/designers/">{{ $t('VIEW ALL') }}></a></div>
@@ -1260,6 +1260,82 @@
               </div>
             </ul>
           </li>
+          <li
+            v-for="n in 26"
+            :key="n"
+            class="dropdown letter-box"
+            @mouseover="changeSecondLevelIndex(n)"
+            @mouseout="changeSecondLevelIndex(-1)">
+            <a :href="'/designers/#p'+String.fromCharCode(64 + n)">{{ String.fromCharCode(64 + n) }}</a>
+            <ul
+              v-if="secondLevelIndex===n && designers"
+              :style="thirdmenuStyle"
+              class="navbar-thirdmenu">
+              <div class="thirdmenu-wrapper">
+                <ul class="d-flex flex-column flex-wrap sub-menu">
+                  <li
+                    v-for="(designer,i) in designers"
+                    :key="i"><a :href="'/'+designer.url+'-'+gender+'/'">{{ designer.name }}</a></li>
+                </ul>
+                <div class="view-all">
+                  <a
+                    target="_blank"
+                    href="/designers/">{{ $t('VIEW ALL') }}></a>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li
+            class="dropdown letter-box"
+            @mouseover="changeSecondLevelIndex(27)"
+            @mouseout="changeSecondLevelIndex(-1)">
+            <a href="/designers/#p#">#</a>
+            <ul
+              v-if="secondLevelIndex===27 && designers"
+              :style="thirdmenuStyle"
+              class="navbar-thirdmenu">
+              <div class="thirdmenu-wrapper">
+                <ul class="d-flex flex-column flex-wrap sub-menu">
+                  <li
+                    v-for="(designer,i) in designers"
+                    :key="i"><a :href="'/'+designer.url+'-'+gender+'/'">{{ designer.name }}</a></li>
+                </ul>
+                <div class="view-all">
+                  <a
+                    target="_blank"
+                    href="/designers/">{{ $t('VIEW ALL') }}></a>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li
+            class="dropdown letter-box search-box"
+            @mouseover="changeSecondLevelIndex(28)"
+            @mouseout="changeSecondLevelIndex(-1)">
+            <input
+              v-model="searchTxt"
+              :placeholder="$t('FILTER BY DESIGNER NAME')"
+              type="text"
+              @keyup="searchKeyUp">
+            <img src="https://mds0.com/static/img/20180905search_b.svg">
+            <ul
+              v-if="secondLevelIndex===28 && designers"
+              :style="thirdmenuStyle"
+              class="navbar-thirdmenu">
+              <div class="thirdmenu-wrapper">
+                <ul class="d-flex flex-column flex-wrap sub-menu">
+                  <li
+                    v-for="(designer,i) in designers"
+                    :key="i"><a :href="'/'+designer.url+'-'+gender+'/'">{{ designer.name }}</a></li>
+                </ul>
+                <div class="view-all">
+                  <a
+                    target="_blank"
+                    href="/designers/">{{ $t('VIEW ALL') }}></a>
+                </div>
+              </div>
+            </ul>
+          </li>
         </ul>
       </li>
       <li
@@ -1270,20 +1346,62 @@
         <ul
           v-if="firstLevelIndex===5"
           :style="secondmenuStyle"
+          style="height: 350px"
           class="d-flex align-items-center navbar-secondmenu">
-          <div class="d-flex justify-content-between thirdmenu-wrapper">
-            <div class="mmt-hottest">
+          <div class="d-flex justify-content-between thirdmenu-wrapper community-con">
+            <div style="width: 750px">
               <div class="menucategory-title">{{ $t('BEST LOOKS') }}</div>
-              <ul class="mmt-wrapper"/>
-              <div class="prd-recommend-text">
-                <div><a
-                  target="_blank"
-                  href="/looks/">{{ $t('MORE LOOKS') }}></a></div>
-              </div>
+              <ul class="d-flex justify-content-between">
+                <li
+                  v-for="(e,i) in navHeadJson.moments"
+                  :key="i">
+                  <a
+                    :href="'https://modesens.com/u/'+e.lsuname+'/'+e.umid+'/?popup=open'"
+                    target="_blank">
+                    <div class="momentimg-box">
+                      <img
+                        :src="e.link+'s'"
+                        :alt="e.dsp">
+                    </div>
+                    <div
+                      class="text-center"
+                      style="margin-top: 10px">{{ e.lsuname }}</div>
+                  </a>
+                </li>
+              </ul>
+              <div><a
+                target="_blank"
+                href="/looks/">{{ $t('MORE LOOKS') }}></a></div>
             </div>
-            <div class="menu-userinfo"/>
-            <ul class="rframe_follows">
+            <div class="menu-userinfo">
+              <div class="menucategory-title">{{ $t('MY CLOSET') }}</div>
+            </div>
+            <ul>
               <div class="menucategory-title">{{ $t('WHO TO FOLLOW') }}</div>
+              <ul>
+                <li
+                  v-for="(e,i) in navHeadJson.users"
+                  :key="i"
+                  class="d-flex justify-content-between follow-userbox">
+                  <a
+                    :href="'/u/'+e.username"
+                    target="_blank"
+                    class="d-flex justify-content-center align-items-center follow-usericon">
+                    <img
+                      :src="e.icon"
+                      class="w-100">
+                  </a>
+                  <i/>
+                  <div
+                    style="width: 120px"
+                    class="d-flex flex-column">
+                    <a
+                      :href="'/u/'+e.username"
+                      target="_blank">{{ e.username }}</a>
+                    <div class="text-center follow-btn">{{ $t('Follow') }}</div>
+                  </div>
+                </li>
+              </ul>
             </ul>
           </div>
         </ul>
@@ -1296,7 +1414,12 @@ export default {
   data() {
     return {
       firstLevelIndex: -1,
-      secondLevelIndex: -1
+      secondLevelIndex: -1,
+      menuTimer1: -1,
+      menuTimer2: -1,
+      searchTxt: '',
+      designers: '',
+      navHeadJson: ''
     }
   },
   computed: {
@@ -1313,106 +1436,77 @@ export default {
       return {
         top: this.headerH + $('.navbar-secondmenu').height() + 'px'
       }
+    },
+    gender() {
+      if (this.$store.state.gender === 'm') {
+        return 'men'
+      }
+      return 'women'
     }
   },
   mounted() {
-    if ($(document).width() > 1199) {
-      let headerH = $('.header').height()
-      console.log(
-        headerH,
-        $('.nav-pc-menu').offset().left,
-        $('.navbar-secondmenu').height()
-      )
-      $('.navbar-secondmenu').css({
-        top: headerH + 'px',
-        'padding-left': $('.nav-pc-menu').offset().left
-      })
-      $('.navbar-thirdmenu').css({
-        top: headerH + $('.navbar-secondmenu').height() + 'px'
-      })
-    }
+    // if ($(document).width() > 1199) {
+    //   let headerH = $('.header').height()
+    //   console.log(
+    //     headerH,
+    //     $('.nav-pc-menu').offset().left,
+    //     $('.navbar-secondmenu').height()
+    //   )
+    //   $('.navbar-secondmenu').css({
+    //     top: headerH + 'px',
+    //     'padding-left': $('.nav-pc-menu').offset().left
+    //   })
+    //   $('.navbar-thirdmenu').css({
+    //     top: headerH + $('.navbar-secondmenu').height() + 'px'
+    //   })
+    // }
   },
   methods: {
     changeFirstLevelIndex(index) {
-      this.firstLevelIndex = index
-      console.log('firstLevelIndex: ' + this.firstLevelIndex)
+      clearTimeout(this.menuTimer1)
+      this.menuTimer1 = setTimeout(async () => {
+        this.firstLevelIndex = index
+        if (index === 5) {
+          let { navHeadJson } = await this.$axios.get('/getnavhead/', {
+            params: {}
+          })
+          this.navHeadJson = navHeadJson
+        }
+      }, 300)
     },
     changeSecondLevelIndex(index) {
-      this.secondLevelIndex = index
-      console.log('secondLevelIndex: ' + this.secondLevelIndex)
+      clearTimeout(this.menuTimer2)
+      this.menuTimer2 = setTimeout(() => {
+        this.secondLevelIndex = index
+        if (this.firstLevelIndex === 4 && index > 0) {
+          let letter = ''
+          if (index < 28) {
+            letter = $('.letter-box > a')
+              .eq(index - 1)
+              .html()
+              .toLowerCase()
+          } else {
+            letter = this.searchTxt
+          }
+          this.getHint2(letter)
+        }
+      }, 300)
+    },
+    async getHint2(txt) {
+      var data = {}
+      data.txt = txt
+      data.amount = 30
+      data.prefix = 1
+      data.typs = 'D'
+      let { rhints } = await this.$axios.get('/hint2/', { params: data })
+      this.designers = rhints.designers
+    },
+    searchKeyUp() {
+      this.getHint2(this.searchTxt)
     }
   }
 }
 </script>
 <style lang="less" scoped>
-@import '../../assets/css/common.less';
-.nav-pc-menu {
-  // display: flex;
-  .dropdown {
-    display: flex;
-    align-items: center;
-    margin: 0 30px;
-    height: 60px;
-  }
-  .navbar-secondmenu {
-    position: fixed;
-    top: 90px;
-    left: 0;
-    padding: 0 100px;
-    width: 100%;
-    border-top: @border2;
-    border-bottom: @border2;
-    height: 60px;
-    background: #fff;
-  }
-  .navbar-thirdmenu {
-    position: fixed;
-    top: 150px;
-    left: 0;
-    padding: 0;
-    width: 100%;
-    border: 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    opacity: 1;
-    .thirdmenu-wrapper {
-      margin: auto;
-      padding: 25px 0;
-      max-width: 1200px;
-      font-size: 12px;
-    }
-  }
-  .menucategory-title {
-    margin-bottom: 16px;
-    font-weight: 300;
-    font-size: 13px;
-    color: @fontGray;
-  }
-  .category-box {
-    width: 500px;
-  }
-  .collection-box {
-    width: 220px;
-  }
-  .designers-box {
-    width: 220px;
-  }
-  .sale-designers-box {
-    width: 430px;
-  }
-  .popular-category {
-    width: 260px;
-  }
-}
-.sub-menu {
-  height: 320px;
-  & > li {
-    height: 40px;
-  }
-}
-@media (max-width: 1199px) {
-  .nav-pc-menu {
-    display: none;
-  }
-}
+@import '../../assets/css/components/header/threeLevelMenu.less';
 </style>

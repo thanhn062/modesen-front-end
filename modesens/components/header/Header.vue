@@ -28,7 +28,9 @@
           id="nav_collapse"
           is-nav>
           <!-- 菜单分类 -->
+          <!-- pc端 -->
           <ThreeLevelMenu/>
+          <!-- 响应式 -->
           <NavCategory/>
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
