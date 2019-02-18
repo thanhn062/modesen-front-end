@@ -293,3 +293,6 @@ export const annual = {
   learnMore: '了解更多',
   emptycon: '噢不！我们没有看到你的任何购买历史。请确保你的购买将在明年跟踪，以查看这些结果，并充分享受ModeSens会员福利'
 };
+export const barcodeHelp= {
+  desc: '通过扫描条形码（通常位于标签或包装盒上），查找ModeSens上的产品和定价信息。你可以扫描类似下面示例中的条形码，祝你使用愉快！'
+};

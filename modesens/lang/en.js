@@ -293,3 +293,6 @@ export const annual = {
   learnMore: 'Learn More',
   emptycon: "Oh no! We don't see any purchase history for you. Be sure your purchases are tracked next year to view these results and enjoy the full benefits of ModeSens membership."
 };
+export const barcodeHelp= {
+  desc: 'Scan an item’s barcode (typically located on the tags or box) to find the product and pricing information on ModeSens. Below are a few examples of barcodes that you could scan. Happy scanning!'
+};

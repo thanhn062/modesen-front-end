@@ -44,27 +44,23 @@ module.exports = {
 }
 ```
 ```scss
-//assets/css/main.less
-fontSize: 16px;
-color: #333;
-border: .5px solid @color;
-
-.contaner {
-	font-size: @fontSize;
-}
+//assets/css/common.less
+@fontSize: 16px;
+@color: #333;
+@border: .5px solid @color;
 ```
-> 在其他less中引用main.less的公共变量
+> 在其他less中引用common.less的公共变量
 ```
-import "~/assets/css/main.less"
+import "~/assets/css/common.less"
 
 .productContainer {
 	background: @color;
 }
 ```
-> 在.vue文件中引用main.less的公共变量
+> 在.vue文件中引用common.less的公共变量
 ```
 <style lang="less">
-import "../assets/css/main.less"
+import "../assets/css/common.less"
 
 .prdlist {
 	border: @border;
