@@ -2,53 +2,53 @@
   <b-navbar-nav class="nav-mini-menu">
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
-        {{ $t('WOMEN') }}
+        {{ $t('common.WOMEN') }}
         <img :src="gconfig.SIDEBAR_MORE">
       </template>
-      <b-dropdown-item href="/product/women/clothing/">{{ $t('CLOTHING') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/women/bags/">{{ $t('BAGS') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/women/shoes/">{{ $t('SHOES') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/women/accessories/">{{ $t('ACCESSORIES') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/women/clothing/">{{ $t('nav.CLOTHING') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/women/bags/">{{ $t('nav.BAGS') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/women/shoes/">{{ $t('nav.SHOES') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/women/accessories/">{{ $t('nav.ACCESSORIES') }}</b-dropdown-item>
       <b-dropdown-item
         v-b-modal.noticemodal1
-        v-if="$i18n.country==='cn'">{{ $t('BEAUTY') }}</b-dropdown-item>
+        v-if="$i18n.country==='cn'">{{ $t('nav.BEAUTY') }}</b-dropdown-item>
       <b-dropdown-item
         v-else
-        href="/product/women/beauty/">{{ $t('BEAUTY') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/women/sale/?orderby=-betterprice_time">{{ $t('SALE') }}</b-dropdown-item>
+        href="/product/women/beauty/">{{ $t('nav.BEAUTY') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/women/sale/?orderby=-betterprice_time">{{ $t('nav.SALE') }}</b-dropdown-item>
     </b-nav-item-dropdown>
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
-        {{ $t('MEN') }}
+        {{ $t('common.MEN') }}
         <img :src="gconfig.SIDEBAR_MORE">
       </template>
-      <b-dropdown-item href="/product/men/clothing/">{{ $t('CLOTHING') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/men/bags/">{{ $t('BAGS') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/men/shoes/">{{ $t('SHOES') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/men/accessories/">{{ $t('ACCESSORIES') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/men/clothing/">{{ $t('nav.CLOTHING') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/men/bags/">{{ $t('nav.BAGS') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/men/shoes/">{{ $t('nav.SHOES') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/men/accessories/">{{ $t('nav.ACCESSORIES') }}</b-dropdown-item>
       <b-dropdown-item
         v-b-modal.noticemodal1
-        v-if="$i18n.country==='cn'">{{ $t('GROOMING') }}</b-dropdown-item>
+        v-if="$i18n.country==='cn'">{{ $t('nav.GROOMING') }}</b-dropdown-item>
       <b-dropdown-item
         v-else
-        href="/product/men/grooming/">{{ $t('GROOMING') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/men/sale/?orderby=-betterprice_time">{{ $t('SALE') }}</b-dropdown-item>
+        href="/product/men/grooming/">{{ $t('nav.GROOMING') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/men/sale/?orderby=-betterprice_time">{{ $t('nav.SALE') }}</b-dropdown-item>
     </b-nav-item-dropdown>
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
-        {{ $t('OFFERS') }}
+        {{ $t('common.OFFERS') }}
         <img :src="gconfig.SIDEBAR_MORE">
       </template>
-      <b-dropdown-item href="/product/coupons/">{{ $t('COUPONS') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/women/sale/">{{ $t('WOMENSSALE') }}</b-dropdown-item>
-      <b-dropdown-item href="/product/men/sale/">{{ $t('MENSSALE') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/coupons/">{{ $t('nav.COUPONS') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/women/sale/">{{ $t('nav.WOMENSSALE') }}</b-dropdown-item>
+      <b-dropdown-item href="/product/men/sale/">{{ $t('nav.MENSSALE') }}</b-dropdown-item>
     </b-nav-item-dropdown>
     <a
       href="/designers/"
-      class="nav-link"><span>{{ $t('DESIGNERS') }}</span></a>
+      class="nav-link"><span>{{ $t('common.DESIGNERS') }}</span></a>
     <a
       href="/designers/"
-      class="nav-link"><span>{{ $t('COMMUNITY') }}</span></a>
+      class="nav-link"><span>{{ $t('common.COMMUNITY') }}</span></a>
   </b-navbar-nav>
 </template>
 <script>

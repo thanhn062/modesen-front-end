@@ -18,10 +18,10 @@
           target="nav_collapse"/>
         <!-- 名牌位置：logo -->
         <b-navbar-brand href="/">
-          <!-- {{ $t('ModeSens') }} -->
+          <!-- {{ $t('common.ModeSens') }} -->
           <img
             :src="gconfig.MS_LOGONEW"
-            :alt="$t('ModeSens')">
+            :alt="$t('common.ModeSens')">
         </b-navbar-brand>
         <!-- menu -->
         <b-collapse
@@ -43,7 +43,7 @@
               <template slot="button-content">
                 <i :class="'country-icon country-' + $i18n.country"/>
                 <span class="country-selected">{{ COUNTRIES[$i18n.country.toUpperCase()] ? COUNTRIES[$i18n.country.toUpperCase()][1] : '' }}</span>
-                <span class="country-category">{{ $t('COUNTRY') }}</span>
+                <span class="country-category">{{ $t('common.COUNTRY') }}</span>
                 <img :src="gconfig.SIDEBAR_MORE">
               </template>
               <b-dropdown-item
@@ -58,7 +58,7 @@
               class="language-dropdown"
               no-caret>
               <template slot="button-content">
-                {{ $t('LANGUAGE') }}
+                {{ $t('common.LANGUAGE') }}
                 <img :src="gconfig.SIDEBAR_MORE">
               </template>
               <b-dropdown-item
@@ -105,28 +105,28 @@
                     :src="lsuser.icon"
                     :alt="lsuser.username"></a>
                 </template>
-                <b-dropdown-item href="/account/loyalty/">{{ $t('MyLoyalty') }}</b-dropdown-item>
-                <b-dropdown-item :href="'/u/'+lsuser.username">{{ $t('MyCloset') }}</b-dropdown-item>
-                <b-dropdown-item href="/dashboard/">{{ $t('MyDashboard') }}</b-dropdown-item>
-                <b-dropdown-item href="/product/coupons/">{{ $t('MyOffers') }}</b-dropdown-item>
+                <b-dropdown-item href="/account/loyalty/">{{ $t('nav.MyLoyalty') }}</b-dropdown-item>
+                <b-dropdown-item :href="'/u/'+lsuser.username">{{ $t('nav.MyCloset') }}</b-dropdown-item>
+                <b-dropdown-item href="/dashboard/">{{ $t('nav.MyDashboard') }}</b-dropdown-item>
+                <b-dropdown-item href="/product/coupons/">{{ $t('nav.MyOffers') }}</b-dropdown-item>
                 <b-dropdown-item
                   v-if="$i18n.country==='cn'"
-                  :href="'https://pay.modesens.com/order/index/?t='+gconfig.PAY_HASH_TOKEN">{{ $t('MyOrders') }}</b-dropdown-item>
-                <b-dropdown-item href="/invite/">{{ $t('InviteFriends') }}</b-dropdown-item>
-                <b-dropdown-item href="/accounts/profile/">{{ $t('Settings') }}</b-dropdown-item>
+                  :href="'https://pay.modesens.com/order/index/?t='+gconfig.PAY_HASH_TOKEN">{{ $t('nav.MyOrders') }}</b-dropdown-item>
+                <b-dropdown-item href="/invite/">{{ $t('common.InviteFriends') }}</b-dropdown-item>
+                <b-dropdown-item href="/accounts/profile/">{{ $t('common.Settings') }}</b-dropdown-item>
                 <b-dropdown-divider/>
                 <div v-if="lsuser.ispublisher">
-                  <b-dropdown-item href="/reward/linkbuilder/">{{ $t('InfluencerLinkBuilder') }}</b-dropdown-item>
-                  <b-dropdown-item href="/reward/handbook/">{{ $t('InfluencerHandbook') }}</b-dropdown-item>
-                  <b-dropdown-item href="/reward/dashboard/">{{ $t('InfluencerDashboard') }}</b-dropdown-item>
-                  <b-dropdown-item href="/reward/referral/">{{ $t('InfluencerReferral') }}</b-dropdown-item>
-                  <b-dropdown-item href="/trending/">{{ $t('FashionTrendingReport') }}</b-dropdown-item>
+                  <b-dropdown-item href="/reward/linkbuilder/">{{ $t('nav.InfluencerLinkBuilder') }}</b-dropdown-item>
+                  <b-dropdown-item href="/reward/handbook/">{{ $t('nav.InfluencerHandbook') }}</b-dropdown-item>
+                  <b-dropdown-item href="/reward/dashboard/">{{ $t('nav.InfluencerDashboard') }}</b-dropdown-item>
+                  <b-dropdown-item href="/reward/referral/">{{ $t('nav.InfluencerReferral') }}</b-dropdown-item>
+                  <b-dropdown-item href="/trending/">{{ $t('nav.FashionTrendingReport') }}</b-dropdown-item>
                   <b-dropdown-item
                     v-if="lsuser.ispubadmin"
-                    href="/reward/admin/">{{ $t('Influencer Admin') }}</b-dropdown-item>
+                    href="/reward/admin/">{{ $t('nav.InfluencerAdmin') }}</b-dropdown-item>
                   <b-dropdown-divider/>
                 </div>
-                <b-dropdown-item v-b-modal.signoutmodal>{{ $t('SignOut') }}</b-dropdown-item>
+                <b-dropdown-item v-b-modal.signoutmodal>{{ $t('common.SignOut') }}</b-dropdown-item>
               </b-dropdown>
             </div>
           </div>

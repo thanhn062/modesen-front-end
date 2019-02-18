@@ -21,8 +21,8 @@
     <!-- Connect Us -->
     <b-modal
       id="cumodal"
-      :title="$t('ContactUs')"
-      :ok-title="hereHasClick ? $t('Submit') : $t('Close')"
+      :title="$t('common.ContactUs')"
+      :ok-title="hereHasClick ? $t('common.Submit') : $t('common.Close')"
       ok-only
       @ok="contactSubmit"
       @hidden="cumodalHide">
@@ -57,7 +57,7 @@
           <div>{{ $t('cuModal.desc3') }}{{ $t('cuModal.desc5') }}</div>
           <form>
             <div>
-              <label for="contact-company">{{ $t('YourCompanyName') }}</label><br>
+              <label for="contact-company">{{ $t('Modals.YourCompanyName') }}</label><br>
               <input
                 id="contact-company"
                 v-model="company"
@@ -65,7 +65,7 @@
                 type="text">
             </div>
             <div>
-              <label for="contact-name">{{ $t('YourName') }}</label><br>
+              <label for="contact-name">{{ $t('Modals.YourName') }}</label><br>
               <input
                 id="contact-name"
                 v-model="name"
@@ -73,7 +73,7 @@
                 type="text">
             </div>
             <div>
-              <label for="contact-url">{{ $t('URL') }}</label><br>
+              <label for="contact-url">{{ $t('common.URL') }}</label><br>
               <input
                 id="contact-url"
                 v-model="url"
@@ -81,7 +81,7 @@
                 type="text">
             </div>
             <div>
-              <label for="contact-email">{{ $t('Email') }}</label><br>
+              <label for="contact-email">{{ $t('common.Email') }}</label><br>
               <input
                 id="contact-email"
                 v-model="email"
@@ -89,7 +89,7 @@
                 type="text">
             </div>
             <div>
-              <label for="contact-intro">{{ $t('Introduction') }}</label><br>
+              <label for="contact-intro">{{ $t('common.Introduction') }}</label><br>
               <textarea
                 id="contact-intro"
                 v-model="introduction"
@@ -105,7 +105,7 @@
       ref="FbModal"
       :title="$t('Footer.feedback')"
       :ok-title="$t('FbModal.Sendmessage')"
-      :cancel-title="$t('Close')"
+      :cancel-title="$t('common.Close')"
       @ok="sendFeedback">
       <div>{{ $t('FbModal.desc1') }}</div>
       <br>
@@ -142,14 +142,14 @@
     <!-- sign out modal -->
     <b-modal
       id="signoutmodal"
-      :title="$t('SeeYouSoon')"
-      :ok-title="$t('SignOut')"
+      :title="$t('common.SeeYouSoon')"
+      :ok-title="$t('common.SignOut')"
       size="sm"
       ok-only
       @ok="signout">
       <img
         :src="gconfig.LOGO_ASSISTRANT_ZH"
-        :alt="$t('ModeSens')">
+        :alt="$t('common.ModeSens')">
     </b-modal>
     <!-- notice -->
     <b-modal
@@ -173,6 +173,15 @@
         width="100%"
         height="100%"
         frameborder="0"/>
+    </b-modal>
+    <b-modal
+      id="spmodal"
+      :title="$t('Modals.Pleasesignin')"
+      :ok-title="$t('common.Login')"
+      :cancel-title="$t('common.SignUp')"
+      @ok="openLoginModal"
+      @hidden="gotoSignup">
+      <div>{{ $t('Modals.Notamemberyet') }}{{ $t('Modals.JoinModeSens') }}</div>
     </b-modal>
   </div>
 </template>
@@ -206,6 +215,9 @@ export default {
   },
   created() {},
   methods: {
+    openLoginModal() {
+      this.$refs.mdLogin.show()
+    },
     hideLoginModal() {
       this.$refs.mdLogin.hide()
     },
@@ -279,6 +291,9 @@ export default {
       this.$store.commit('modifyLoginStatus')
       this.$store.commit('removeLsuser')
       this.login_status = false
+    },
+    gotoSignup() {
+      window.open(this.$route.fullPath, '_blank')
     }
   }
 }

@@ -7,4 +7,5 @@ export const gconfig = {
   ACCESS_TOKEN: 'token',
   USERINFO: 'lsuser',
   PAY_HASH_TOKEN: 'wnDka3xJ8AGLjy355mgbRm7QZK04p9',
+  UNLOGIN_ICON: 'https://mds0.com/img/user_unlogin.png'
 }
