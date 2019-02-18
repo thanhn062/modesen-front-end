@@ -55,3 +55,5 @@ export function wxlogin (fullPath) {
     state
   window.parent.location = url
 }
+
+// 时间截取

@@ -4,6 +4,9 @@
 }
 .membershippage {
   text-align: center;
+  .loadmoreall {
+    margin-top: 200px;
+  }
 }
 .keepRight {
   text-align: right;
@@ -11,94 +14,352 @@
 .keepLeft {
   text-align: left;
 }
+.activeimg {
+  transform: rotate(180deg);
+  -ms-transform:rotate(180deg); 	/* IE 9 */
+  -moz-transform:rotate(180deg); 	/* Firefox */
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  -o-transform:rotate(180deg); 
+}
+.activeimg.active {
+  transform: rotate(0deg);
+  -ms-transform:rotate(0deg); 	/* IE 9 */
+  -moz-transform:rotate(0deg); 	/* Firefox */
+  -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+  -o-transform:rotate(0deg); 
+}
+.mobile-only {
+  display: none;
+}
 .userInfoBox {
   width: 100%;
   height: 286px;
   background: @bgColor; 
 }
-  .userInfoinnerBox {
-    width: 1140px;
-    height: 100%;
-    padding: 0 15px;
-    margin: 0 auto;
+.userInfoinnerBox {
+  width: 1140px;
+  height: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  .userinfo{
     display: flex;
-    justify-content: space-between;
-    .userinfo{
-      display: flex;
-      justify-content: flex-start;
-      padding-top: 56px;
-      img{
-        width: 151px;
-        height: 151px;
-        border-radius: 50%;
-      }
-      .info {
-        width: 344px;
-        margin-left: 32px;
-        text-align: left;
-      }
-      .info .user_name{
-        font-size: 18px;
-        font-weight: 300;
-      }
-      .info .user_bio, .info .user_words{
-        margin-top: 12px;
-      }
+    justify-content: flex-start;
+    padding-top: 56px;
+    img{
+      width: 151px;
+      height: 151px;
+      border-radius: 50%;
     }
-    .levelcard {
-      padding-top:32px;
-      .card {
-        width: 364px;
-        height: 193px;
-        position: relative;
-        background: transparent;
-        border: 0;
-      }
-      .card img {
-        widows: 100%;
-      }
-      .card .cardinfo {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top:0;
-        left:0;
-        padding:12px 22px 17px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-      .cardinfo .userStart .name {
-        font-size: 14px;
-      }
-      .cardinfo .currentLevel {
-        font-size: 20px;
-      }
-      .userEnd a:hover {
-        text-decoration: underline;
-      }
+    .info {
+      width: 344px;
+      margin-left: 32px;
+      text-align: left;
+    }
+    .info .user_name{
+      font-size: 18px;
+      font-weight: 300;
+    }
+    .info .user_bio, .info .user_words{
+      margin-top: 12px;
     }
   }
+  .levelcard {
+    padding-top:32px;
+    .card {
+      width: 364px;
+      height: 193px;
+      position: relative;
+      background: transparent;
+      border: 0;
+    }
+    .card img {
+      widows: 100%;
+    }
+    .card .cardinfo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top:0;
+      left:0;
+      padding:12px 22px 17px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cardinfo .userStart .name {
+      font-size: 14px;
+    }
+    .cardinfo .currentLevel {
+      font-size: 20px;
+    }
+    .userEnd a:hover {
+      text-decoration: underline;
+    }
+  }
+}
 .page-content {
   margin-top: @descSpace;
 }
+.page-right {
+  min-height: 500px;
+}
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+  padding: 0 ;
+  color: @fontStandard;
+}
+.btn-link {
+  color: @fontStandard;
+}
+.btn-link:hover {
+  color: @fontColor;
+  text-decoration: none;
+}
 .col-auto {
-  width: 25%;
-  margin-top: 77px;
-  .nav-tabs .nav-link.active {
+  width: 18%;
+  text-align: right;
+  padding-right: 85px;
+  .nav-tabs .nav-link {
     border: 0;
-    color: #1c1c1c;
-    font-weight: 700;
-    background: transparent;
     box-sizing: border-box;
     padding: 0;
+    font-weight: 400;
+    margin-bottom: 10px;
+    background: transparent;
+    color: #8e8e8e;
+  }
+  .nav-tabs .nav-link.active {
+    font-weight: 700;
+    color: #1c1c1c;
+  }
+}
+//order
+.order_nothing {
+  width: 200px;
+}
+.order-loadmore {
+  margin-top: 50px;
+}
+.order-title {
+  display: flex;
+  padding:0 22px;
+  margin: 0;
+  font-weight: 700;
+  .order-title-list {
+    padding: 0 5px;
+  }
+  .order-title-list-status {
+    display: flex;
+    justify-content: space-between;
+  }
+  #status-sel {
+    width: unset;
+    height: unset;
+    line-height: unset;
+    border: none;
+    outline: none;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    .status-selected {
+      padding-right: 13px;
+      color: @fontColor;
+      text-decoration: none;
+    }
+    .dropdown-item:active {
+      background: @btnBgColor;
+    }
+  }
+  #status-sel:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  img {
+    width: 9px;
+    cursor: pointer;
+  }
+}
+.order-title-line {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  margin: 18px 0 0;
+  background: @borderColor;
+}
+#order-list {
+  margin-bottom: 40px;
+  li {
+    border-bottom: 0.5px solid #f5f5f5;
+    line-height: 65px;
+  }
+  .order-list-info {
+    margin: 0;
+    padding: 0 22px;
+    .order-list-box {
+      padding: 0 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      cursor: context-menu;
+    }
+    .orderlist-con-total {
+      display: flex;
+      justify-content: space-between;
+    }
+    .orderlist-total-num {
+      padding-right: 29px;
+    }
+  }
+  .see-info {
+    text-align: right ;
+    cursor: pointer;
+    img {
+      width: 9px;
+      cursor: pointer;
+    }
+  }
+  .order-list-prd {
+    width: 100%;
+    padding: 20px 22px;
+    line-height: normal;
+    background: #f5f5f5;
+    display: none;
+    .waybill {
+      margin: 0 0 20px 0;
+    }
+    .storeId {
+      padding: 0 5px;
+      display: flex;
+      justify-content: flex-start
+    }
+    .storeId-title, .waybll-num-title {
+      font-size: @font-size;
+      font-weight: 700;
+    }
+    .storeId-con, .waybill-num-con {
+      font-size: @font-size;
+      padding: 0 5px;
+    }
+    .storeId-title, .storeId-con {
+      flex: 1;
+    }
+    .storeId-con {
+      padding-left: 15px;
+    }
+    .waybll-num-title {
+      padding: 0;
+    }
+    .colon {
+      padding-left: 3px;
+    }
+    .order-detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .order-prd-box {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 0;
+    }
+    .to-product {
+      display: flex;
+      width: 100%;
+    }
+    .order-prd-img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      height: 90px;
+      background: #fff;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .order-prd-info {
+      margin-left: 15px;
+      width: calc(100% - 105px);
+    }
+    .order-prd-designername {
+      font-size: @fontStandard;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .order-prd-productname {
+      font-size: @font-size;
+      font-weight: 300;
+      color: #8e8e8e;
+      margin-bottom: 10px;
+    }
+    .order-prd-size {
+      display: flex;
+      justify-content: flex-start;
+      line-height: 18px;
+    }
+    .order-size-con {
+      padding-left: 10px;
+    }
+    .order-quantity {
+      margin-left: 20px;
+    }
+    .order-prd-price {
+      padding: 0;
+    }
+    .order-prd-price-list {
+      line-height: 16px;
+      display: flex;
+      border: none;
+    }
+    .order-price-list-title {
+      flex: 1;
+      padding-right: 10px;
+      text-align: right;
+    }
+    .order-price-num {
+      display: flex;
+      justify-content: space-between;
+      flex: 1;
+      text-align: left;
+    }
+    .order-price-number {
+      padding-right: 34px;
+    }
+    .order-prd-status {
+      padding: 0 5px;
+    }
+    .after-sale {
+      margin-bottom: 10px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}
+.pagebox {
+  position: relative;
+  .toIquery {
+    position: absolute;
+    right: 27px;
+    top: 0;
+    line-height: 27px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 .page-right {
+  // myloyalty
   .title-part {
     font-size: 20px;
     font-weight: 300;
+    line-height: normal;
   }
   #rankbox {
     margin-bottom: 20px;
@@ -309,10 +570,13 @@
           border: 0;
           display: flex;
           justify-content: flex-end;
-          width: 200px;
+          width: 250px;
         }
-        .openitem .itemtitle, .openitem .itemcon{
+        .openitem .itemtitle {
           flex: 1;
+        }
+        .openitem .itemcon {
+          flex: 3,
         }
       }
       .see-more {
@@ -321,19 +585,6 @@
       }
       .see-more img {
         width: 9px;
-        transform: rotate(90deg);
-        -ms-transform:rotate(90deg); 	/* IE 9 */
-        -moz-transform:rotate(90deg); 	/* Firefox */
-        -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
-        -o-transform:rotate(90deg); 
-      }
-      .see-more img.active {
-        width: 9px;
-        transform: rotate(0deg);
-        -ms-transform:rotate(0deg); 	/* IE 9 */
-        -moz-transform:rotate(0deg); 	/* Firefox */
-        -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
-        -o-transform:rotate(0deg); 
       }
     }
   }
@@ -352,9 +603,10 @@
     border: 0;
     box-sizing: border-box;
   }
-  .page-item.disabled .page-link {
+  .page-item.disabled[role="none presentation"] .page-link {
     margin-left:1px;
     border: 0;
+    color: #fff;
   }
   .page-item.active .page-link:focus {
     outline: none;
@@ -362,6 +614,45 @@
   }
 }
 @media(max-width: 1199px) {
+  .mobile-only {
+    display: block;
+  }
+  .col-auto {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin-top: 0;
+    background: #fff;
+    .nav-tabs {
+      margin-top: 20px;
+      padding: 0 5%;
+      .nav-link {
+        line-height: unset;
+      }
+    }
+    .nav-item {
+      text-align: left;
+      line-height: 40px;
+      border-bottom: 0.5px solid #8e8e8e;
+    }
+    .tab-backbtn {
+      border-bottom: 1px solid #f1f1f1;
+      font-size: 14px;
+      text-align: left;
+      line-height: 50px;
+      background: #FFF;
+      padding: 0 5%;
+    }
+  }
+  .mobile-tabbtn {
+    font-weight: 700;
+    border: @border;
+    line-height: 36px;
+  }
   .membershippage {
     width: 100%;
   }
@@ -395,18 +686,96 @@
     margin-top:10px;
     padding:  10px;
   }
-  .col-auto {
-    width: 100%;
-    margin-top: 0;
-    line-height: 36px;
-    .nav-item {
-      text-align: center;
-      border: @border;
+  .tabs {
+    margin: 0px;
+  }
+  .tab-content.col {
+    padding: 0;
+  }
+  // order
+  #order-list {
+    .order-list-info {
+      padding: 0;
+      .order-list-box {
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        line-height: 30px;
+      }
+      .order-list-title {
+        font-weight: 700;
+      }
+      .order-list-con {
+        font-weight: 300;
+      }
+      .orderlist-total-num {
+        padding-right: 0;
+      }
+      .see-info {
+        height: 30px;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+    .order-list-prd {
+      padding: 20px 10px;
+      .storeId {
+        padding: 0;
+      }
+      .waybll-num-title {
+        padding: 0;
+        text-align: left;
+      }
+      .storeId-con, .waybill-num-con {
+        padding: 0;
+        text-align: right;
+        font-weight: 300;
+      }
+      .waybll-num-title, .waybill-num-con {
+        margin-top: 10px;
+      }
+      .order-detail {
+        display: block;
+      }
+      .order-prd-box {
+        margin-bottom: 10px;
+      }
+      .order-prd-price-list {
+        padding-bottom: 10px;
+      }
+      .order-price-list-title {
+        text-align: left;
+        font-weight: 700;
+      }
+      .order-price-num {
+        text-align: right;
+        font-weight: 300;
+      }
+      .order-price-number {
+        padding-right: 0;
+      }
+      .order-prd-status {
+        padding: 0;
+        text-align: right;
+      }
+    }
+  }
+  .pagebox {
+    .toIquery {
+      right: 10px;
     }
   }
   .page-right {
     width: 100%;
     margin-top: 20px;
+    // order
+    .order-title {
+      display: none;
+    }
+    .order-title-line {
+      display: none;
+    }
+   
     .levelinfo {
       margin-top: 20px;
       flex-direction: column;
