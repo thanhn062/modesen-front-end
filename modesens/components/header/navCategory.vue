@@ -49,6 +49,9 @@
     <a
       href="/designers/"
       class="nav-link"><span>{{ $t('common.COMMUNITY') }}</span></a>
+    <a
+      href="/why-modesens/"
+      class="nav-link"><span>{{ $t('nav.WHYMODESENS') }}</span></a>
   </b-navbar-nav>
 </template>
 <script>

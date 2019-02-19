@@ -2,7 +2,7 @@ export const state = () => ({
   login_status: false,
   next_url: '/',
   mdLoginShow: false,
-  lsuser: {},
+  lsuser: null,
   sex: 'f',   //f:women   m:men
 })
 
@@ -17,6 +17,6 @@ export const mutations = {
     state.lsuser = params;
   },
   removeLsuser(state) {
-    state.lsuser = {};
+    state.lsuser = null;
   },
 }

@@ -7,5 +7,7 @@ export default function({ app, store }) {
   if (app.$cookies.get(gconfig.ACCESS_TOKEN) && lsuser) {
     store.commit('modifyLoginStatus')
     store.commit('setLsuser', JSON.parse(lsuser))
+    Vue.prototype.login_status = app.$cookies.get(gconfig.ACCESS_TOKEN)
+    Vue.prototype.lsuser = JSON.parse(lsuser)
   }
 }

@@ -252,7 +252,6 @@ export default {
       disabledstatus: false
     }
   },
-  mounted() {},
   methods: {
     async newsSubmit(evt) {
       evt.preventDefault()

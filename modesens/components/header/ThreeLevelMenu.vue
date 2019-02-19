@@ -6,7 +6,7 @@
         @mouseover="changeFirstLevelIndex(1)"
         @mouseout="changeFirstLevelIndex(-1)">
         <a
-          :class="{ borderbottom: firstLevelIndex===1 }"
+          :class="{ borderbottom: firstLevelIndex===1 || (firstLevelIndex===-1 && gender==='women') }"
           href="/">{{ $t('common.WOMEN') }}</a>
         <ul
           v-if="firstLevelIndex===1"
@@ -16,7 +16,9 @@
             class="dropdown"
             @mouseover="changeSecondLevelIndex(0)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/product/women/clothing/">{{ $t('nav.CLOTHING') }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===0 }"
+              href="/product/women/clothing/">{{ $t('nav.CLOTHING') }}</a>
             <ul
               v-if="secondLevelIndex===0"
               :style="thirdmenuStyle"
@@ -118,7 +120,9 @@
             class="dropdown"
             @mouseover="changeSecondLevelIndex(1)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/product/women/bags/">{{ $t('nav.BAGS') }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===1 }"
+              href="/product/women/bags/">{{ $t('nav.BAGS') }}</a>
             <ul
               v-if="secondLevelIndex===1"
               :style="thirdmenuStyle"
@@ -214,7 +218,9 @@
             class="dropdown"
             @mouseover="changeSecondLevelIndex(2)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/product/women/shoes/">{{ $t('nav.SHOES') }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===2 }"
+              href="/product/women/shoes/">{{ $t('nav.SHOES') }}</a>
             <ul
               v-if="secondLevelIndex===2"
               :style="thirdmenuStyle"
@@ -301,7 +307,9 @@
             class="dropdown"
             @mouseover="changeSecondLevelIndex(3)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/product/women/accessories/">{{ $t('nav.ACCESSORIES') }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===3 }"
+              href="/product/women/accessories/">{{ $t('nav.ACCESSORIES') }}</a>
             <ul
               v-if="secondLevelIndex===3"
               :style="thirdmenuStyle"
@@ -408,19 +416,21 @@
               </div>
             </ul>
           </li>
-          <li v-if="$i18n.country==='cn'">
-            <a
-              v-b-modal.noticemodal1
-              href="javascript:;">{{ $t('nav.BEAUTY') }}</a>
-          </li>
           <li
-            v-else
             class="dropdown"
             @mouseover="changeSecondLevelIndex(4)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/product/women/beauty/">{{ $t('nav.BEAUTY') }}</a>
+            <a
+              v-b-modal.noticemodal1
+              v-if="$i18n.country==='cn'"
+              :class="{ borderbottom: secondLevelIndex===4 }"
+              href="javascript:;">{{ $t('nav.BEAUTY') }}</a>
+            <a
+              v-else
+              :class="{ borderbottom: secondLevelIndex===4 }"
+              href="/product/women/beauty/">{{ $t('nav.BEAUTY') }}</a>
             <ul
-              v-if="secondLevelIndex===4"
+              v-if="$i18n.country!=='cn' && secondLevelIndex===4"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div class="d-flex justify-content-between thirdmenu-wrapper">
@@ -506,12 +516,15 @@
             class="dropdown"
             @mouseover="changeSecondLevelIndex(5)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/product/women/sale/?orderby=-betterprice_time">{{ $t('nav.SALE') }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===5 }"
+              href="/product/women/sale/?orderby=-betterprice_time"
+              style="color: #f8472b">{{ $t('nav.SALE') }}</a>
             <ul
               v-if="secondLevelIndex===5"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
@@ -556,7 +569,9 @@
         class="dropdown"
         @mouseover="changeFirstLevelIndex(2)"
         @mouseout="changeFirstLevelIndex(-1)">
-        <a href="/">{{ $t('common.MEN') }}</a>
+        <a
+          :class="{ borderbottom: firstLevelIndex===2 || (firstLevelIndex===-1 && gender==='men') }"
+          href="/">{{ $t('common.MEN') }}</a>
         <ul
           v-if="firstLevelIndex===2"
           :style="secondmenuStyle"
@@ -566,6 +581,7 @@
             @mouseover="changeSecondLevelIndex(0)"
             @mouseout="changeSecondLevelIndex(-1)">
             <a
+              :class="{ borderbottom: secondLevelIndex===0 }"
               href="/product/men/clothing/"
               data-ga-click="headerNavClothing-Open">{{ $t('nav.CLOTHING') }}</a>
             <ul
@@ -664,6 +680,7 @@
             @mouseover="changeSecondLevelIndex(1)"
             @mouseout="changeSecondLevelIndex(-1)">
             <a
+              :class="{ borderbottom: secondLevelIndex===1 }"
               href="/product/men/bags/"
               data-ga-click="headerNavBags-Open">{{ $t('nav.BAGS') }}</a>
             <ul
@@ -756,6 +773,7 @@
             @mouseover="changeSecondLevelIndex(2)"
             @mouseout="changeSecondLevelIndex(-1)">
             <a
+              :class="{ borderbottom: secondLevelIndex===2 }"
               href="/product/men/shoes/"
               data-ga-click="headerNavShoes-Open">{{ $t('nav.SHOES') }}</a>
             <ul
@@ -842,6 +860,7 @@
             @mouseover="changeSecondLevelIndex(3)"
             @mouseout="changeSecondLevelIndex(-1)">
             <a
+              :class="{ borderbottom: secondLevelIndex===3 }"
               href="/product/men/accessories/"
               data-ga-click="headerNavAccessories-Open">{{ $t('nav.ACCESSORIES') }}</a>
             <ul
@@ -941,20 +960,22 @@
               </div>
             </ul>
           </li>
-          <li v-if="$i18n.country==='cn'">
-            <a
-              v-b-modal.noticemodal1
-              href="javascript:;">{{ $t('nav.GROOMING') }}</a>
-          </li>
           <li
-            v-else
+            class="dropdown"
             @mouseover="changeSecondLevelIndex(4)"
             @mouseout="changeSecondLevelIndex(-1)">
             <a
+              v-b-modal.noticemodal1
+              v-if="$i18n.country==='cn'"
+              :class="{ borderbottom: secondLevelIndex===4 }"
+              href="javascript:;">{{ $t('nav.GROOMING') }}</a>
+            <a
+              v-else
+              :class="{ borderbottom: secondLevelIndex===4 }"
               href="/product/men/grooming/"
               data-ga-click="headerNavAccessories-Open">{{ $t('nav.GROOMING') }}</a>
             <ul
-              v-if="secondLevelIndex===4"
+              v-if="$i18n.country!=='cn' && secondLevelIndex===4"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div class="d-flex justify-content-between thirdmenu-wrapper">
@@ -1032,13 +1053,15 @@
             @mouseover="changeSecondLevelIndex(5)"
             @mouseout="changeSecondLevelIndex(-1)">
             <a
+              :class="{ borderbottom: secondLevelIndex===5 }"
               href="/product/men/sale/?orderby=-betterprice_time"
-              data-ga-click="headerNavSale-Open">{{ $t('nav.SALE') }}</a>
+              data-ga-click="headerNavSale-Open"
+              style="color: #f8472b">{{ $t('nav.SALE') }}</a>
             <ul
               v-if="secondLevelIndex===5"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
@@ -1085,7 +1108,9 @@
         class="dropdown"
         @mouseover="changeFirstLevelIndex(3)"
         @mouseout="changeFirstLevelIndex(-1)">
-        <a href="/">{{ $t('common.OFFERS') }}</a>
+        <a
+          :class="{ borderbottom: firstLevelIndex===3 }"
+          href="/product/coupons/">{{ $t('common.OFFERS') }}</a>
         <ul
           v-if="firstLevelIndex===3"
           :style="secondmenuStyle"
@@ -1094,7 +1119,9 @@
             class="dropdown"
             @mouseover="changeSecondLevelIndex(0)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/product/coupons/">{{ $t('nav.COUPONS') }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===0 }"
+              href="/product/coupons/">{{ $t('nav.COUPONS') }}</a>
             <ul
               v-if="secondLevelIndex===0 && coupons"
               :style="thirdmenuStyle"
@@ -1133,12 +1160,14 @@
             class="dropdown"
             @mouseover="changeSecondLevelIndex(1)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/product/women/sale/">{{ $t('nav.WOMENSSALE') }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===1 }"
+              href="/product/women/sale/">{{ $t('nav.WOMENSSALE') }}</a>
             <ul
               v-if="secondLevelIndex===1"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
@@ -1181,12 +1210,14 @@
             class="dropdown"
             @mouseover="changeSecondLevelIndex(2)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/product/men/sale/">{{ $t('nav.MENSSALE') }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===2 }"
+              href="/product/men/sale/">{{ $t('nav.MENSSALE') }}</a>
             <ul
               v-if="secondLevelIndex===2"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
@@ -1231,7 +1262,9 @@
         class="dropdown"
         @mouseover="changeFirstLevelIndex(4)"
         @mouseout="changeFirstLevelIndex(-1)">
-        <a href="/">{{ $t('common.DESIGNERS') }}</a>
+        <a
+          :class="{ borderbottom: firstLevelIndex===4 }"          
+          href="/designers/">{{ $t('common.DESIGNERS') }}</a>
         <ul
           v-if="firstLevelIndex===4"
           :style="secondmenuStyle"
@@ -1240,7 +1273,9 @@
             class="dropdown"
             @mouseover="changeSecondLevelIndex(0)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/" >{{ $t('nav.HOTDESIGNERS') }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===0 }"
+              href="/" >{{ $t('nav.HOTDESIGNERS') }}</a>
             <ul
               v-if="secondLevelIndex===0"
               :style="thirdmenuStyle"
@@ -1282,7 +1317,9 @@
             class="dropdown letter-box"
             @mouseover="changeSecondLevelIndex(n)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a :href="'/designers/#p'+String.fromCharCode(64 + n)">{{ String.fromCharCode(64 + n) }}</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===n }"
+              :href="'/designers/#p'+String.fromCharCode(64 + n)">{{ String.fromCharCode(64 + n) }}</a>
             <ul
               v-if="secondLevelIndex===n && designers"
               :style="thirdmenuStyle"
@@ -1305,7 +1342,9 @@
             class="dropdown letter-box"
             @mouseover="changeSecondLevelIndex(27)"
             @mouseout="changeSecondLevelIndex(-1)">
-            <a href="/designers/#p#">#</a>
+            <a
+              :class="{ borderbottom: secondLevelIndex===27 }"
+              href="/designers/#p#">#</a>
             <ul
               v-if="secondLevelIndex===27 && designers"
               :style="thirdmenuStyle"
@@ -1358,7 +1397,9 @@
         class="dropdown"
         @mouseover="changeFirstLevelIndex(5)"
         @mouseout="changeFirstLevelIndex(-1)">
-        <a href="/">{{ $t('nav.COMMUNITY') }}</a>
+        <a
+          :class="{ borderbottom: firstLevelIndex===5 }"          
+          href="/looks/">{{ $t('nav.COMMUNITY') }}</a>
         <ul
           v-if="firstLevelIndex===5"
           :style="secondmenuStyle"
@@ -1400,8 +1441,8 @@
                 <span>{{ $t('nav.ORGANIZEMYCLOSET') }}</span>
               </a>
               <div
-                v-b-modal.spmodal
-                v-else>
+                v-else
+                @click="openspmodal">
                 <div><img
                   :src="gconfig.UNLOGIN_ICON"></div>
                 <span>{{ $t('nav.LOGINTOBUILDMYCLOSET') }}</span>
@@ -1429,13 +1470,23 @@
                     <a
                       :href="'/u/'+e.username"
                       target="_blank">{{ e.username }}</a>
-                    <div class="text-center follow-btn">{{ $t('nav.Follow') }}</div>
+                    <div
+                      class="text-center follow-btn"
+                      @click="followEvent(e.username, e.uid, 'follow')">{{ $t('nav.Follow') }}</div>
                   </div>
                 </li>
               </ul>
             </ul>
           </div>
         </ul>
+      </li>
+      <li
+        class="dropdown"
+        @mouseover="changeFirstLevelIndex(6)"
+        @mouseout="changeFirstLevelIndex(-1)">
+        <a
+          :class="{ borderbottom: firstLevelIndex===6 }"          
+          href="/why-modesens/">{{ $t('nav.WHYMODESENS') }}</a>
       </li>
     </ul>
   </div>
@@ -1549,6 +1600,30 @@ export default {
     },
     searchKeyUp() {
       this.getHint2(this.searchTxt)
+    },
+    openspmodal() {
+      $('#spmsg').html(this.$t('Modals.JoinModeSens'))
+      this.$root.$emit('bv::show::modal', 'spmodal')
+    },
+    followEvent(username, uid, action) {
+      if (this.$store.state.login_status) {
+        this.postFollow(action, uid)
+      } else {
+        $('#spmsg').html(
+          this.$t('nav.JoinModeSenstofollow') +
+            username +
+            this.$t('nav.scloset')
+        )
+        this.$root.$emit('bv::show::modal', 'spmodal')
+      }
+    },
+    async postFollow(action, uid) {
+      var data = {}
+      data.action = action
+      data.uni = 1
+      data.feuid = uid
+      let obj = await this.$axios.post('/follow/', data)
+      console.log(obj)
     }
   }
 }

@@ -153,7 +153,7 @@
     </b-modal>
     <!-- notice -->
     <b-modal
-      v-if="$store.state.login_status"
+      v-if="login_status"
       id="noticeproductmd"
       hide-header
       hide-footer>
@@ -177,11 +177,11 @@
     <b-modal
       id="spmodal"
       :title="$t('Modals.Pleasesignin')"
-      :ok-title="$t('common.Login')"
-      :cancel-title="$t('common.SignUp')"
-      @ok="openLoginModal"
-      @hidden="gotoSignup">
-      <div>{{ $t('Modals.Notamemberyet') }}{{ $t('Modals.JoinModeSens') }}</div>
+      :ok-title="$t('common.SignUp')"
+      :cancel-title="$t('common.Login')"
+      @ok="gotoSignup"
+      @cancel="openLoginModal">
+      <div style="fontSize: 24px;">{{ $t('Modals.Notamemberyet') }}<span id="spmsg">{{ $t('Modals.JoinModeSens') }}</span></div>
     </b-modal>
   </div>
 </template>
@@ -213,9 +213,9 @@ export default {
       return this.$store.state.mdLoginShow
     }
   },
-  created() {},
   methods: {
-    openLoginModal() {
+    openLoginModal(evt) {
+      evt.preventDefault()
       this.$refs.mdLogin.show()
     },
     hideLoginModal() {
@@ -292,8 +292,9 @@ export default {
       this.$store.commit('removeLsuser')
       this.login_status = false
     },
-    gotoSignup() {
-      window.open(this.$route.fullPath, '_blank')
+    gotoSignup(evt) {
+      evt.preventDefault()
+      window.open('/accounts/signup/?next=' + this.$route.fullPath, '_blank')
     }
   }
 }

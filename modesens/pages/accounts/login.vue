@@ -78,16 +78,10 @@ export default {
           this.$localStorage.set(this.gconfig.USERINFO, lsuser, 24 * 30)
           this.$store.commit('setLsuser', userdata.lsuser)
           this.$store.commit('modifyMdLoginShow')
-          this.$root.$emit('bv::hide::modal', 'mdLogin')
         }
-        // this.$router.push(this.$route.query.next)
+        window.parent.open(this.$route.query.next, '_self')
       } else {
       }
-      // window.parent.open(this.$route.query.next, '_self')
-      // parent.$router.replace('/about')
-      // } catch (e) {
-      //   this.error = e.message
-      // }
     }
   }
 }

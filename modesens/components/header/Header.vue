@@ -90,8 +90,8 @@
               v-else
               class="d-flex justify-content-between align-items-center authInfo">
               <a
-                v-b-modal.noticeproductmd
-                href="javascript:;"><img src="https://mds0.com/static/img/prd-update-20180504.svg"></a>
+                href="javascript:;"
+                @click="openNoticemd"><img src="https://mds0.com/static/img/prd-update-20180504.svg"></a>
               <a
                 v-b-modal.noticeusermd
                 href="javascript:;"><img src="https://mds0.com/static/img/social-update-20180504.svg"></a>
@@ -138,7 +138,7 @@
               <div class="search-img"/>
               <!-- <img
                 src="https://mds0.com/static/img/20180905search_b.svg"> -->
-              <span class="search-btn-txt">SEARCH</span>
+              <span class="search-btn-txt">{{ $t('nav.SEARCH') }}</span>
             </div>
             <div
               v-click-outside="clickoutside"
@@ -380,6 +380,17 @@ export default {
           this.serachInputOpen = false
         }
       }
+    },
+    openNoticemd() {
+      console.log(333333)
+      this.$root.$emit('bv::show::modal', 'noticeproductmd')
+      this.$nextTick(() => {
+        let aa = $('#noticeproductmd')
+        console.log(aa, $(aa))
+        console.log(aa.next())
+        console.log($('.modal-backdrop.fade.show'))
+        // .css({ top: $('.header').height() })
+      })
     }
   }
 }

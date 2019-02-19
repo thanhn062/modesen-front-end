@@ -451,6 +451,9 @@ export const nav = {
   InfluencerReferral: '博主推荐平台',
   FashionTrendingReport: '流行趋势报告',
   InfluencerAdmin: 'Influencer Admin',
+  WHYMODESENS: '玩转ModeSens',
+  JoinModeSenstofollow : '加入ModeSens以关注',
+  scloset: '的衣橱',
 };
 export const Modals = {
   YourCompanyName: '你的公司名称：',

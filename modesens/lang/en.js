@@ -451,6 +451,9 @@ export const nav = {
   InfluencerReferral: 'Influencer Referral',
   FashionTrendingReport: 'Fashion Trending Report',
   InfluencerAdmin: 'Influencer Admin',
+  WHYMODESENS: 'WHY MODESENS',
+  JoinModeSenstofollow : 'Join ModeSens to follow ',
+  scloset: "'s closet!",
 };
 export const Modals = {
   YourCompanyName: 'Your Company Name:',
