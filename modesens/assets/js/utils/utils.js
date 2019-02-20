@@ -75,3 +75,29 @@ export function firstUp(str){
   result = '';
   result += str.substring(0,1).toUpperCase()+str.substring(1)+' ';
 }
+
+// 获取当前浏览器
+export function getBrowse(){
+  var userAgent = navigator.userAgent;
+  if(userAgent.indexOf("Edge") != -1){
+      return "Others";
+  }
+  else if(userAgent.indexOf("QQBrowser") != -1){
+      return "QQBrowser";
+  }
+  else if(userAgent.indexOf("Opera") != -1 || userAgent.indexOf("OPR") != -1){
+      return "Opera";
+  }
+  else if(userAgent.indexOf("Chrome") != -1){
+      return "Chrome";
+  }
+  else if (userAgent.indexOf("Firefox") != -1) {
+      return "FF";
+  }
+  else if (userAgent.indexOf("Safari") != -1) {
+      return "Safari";
+  }
+  else{
+      return "Others";
+  }
+}

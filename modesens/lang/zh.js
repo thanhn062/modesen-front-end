@@ -454,6 +454,7 @@ export const nav = {
   WHYMODESENS: '玩转ModeSens',
   JoinModeSenstofollow : '加入ModeSens以关注',
   scloset: '的衣橱',
+  InstallNow: '即刻安装',
 };
 export const Modals = {
   YourCompanyName: '你的公司名称：',

@@ -9,7 +9,66 @@
       <a
         href="/shopping-assistant/"
         data-ga-click="headerNav-Stores"><span>Shop like a pro - Get your smart fashion <b>SHOPPING ASSISTANT</b></span></a>
-      <div class="d-inline-block popBrowser">安装按钮</div>
+      <div class="d-inline-block popBrowser">
+        <div
+          v-if="mybrowse==='Chrome'"
+          class="modelinkbrowsebtn chrome-install-button"
+          @click="installChromeExtention">
+          <img src="https://mds0.com/navi/20171102chromelogo.png">
+          <span>{{ $t('nav.InstallNow') }}</span>
+        </div>
+        <div
+          v-else-if="mybrowse==='QQBrowser'"
+          class="modelinkbrowsebtn chrome-install-button"
+          @click="installChromeExtention">
+          <img src="https://mds0.com/navi/20171102qqbrowserlogo.png">
+          <span>{{ $t('nav.InstallNow') }}</span>
+        </div>
+        <div
+          v-else-if="mybrowse==='Opera'"
+          class="modelinkbrowsebtn opera-install-button btn-primary"
+          @click="installOperaExtention">
+          <img src="https://mds0.com/navi/20171102operalogo.png">
+          <span>{{ $t('nav.InstallNow') }}</span>
+        </div>
+        <div
+          v-else-if="mybrowse==='FF'"
+          class="modelinkbrowsebtn ff-install-button btn-primary"
+          @click="installFFExtention">
+          <img src="https://mds0.com/navi/20171102firefoxlogo.png">
+          <span>{{ $t('nav.InstallNow') }}</span>
+        </div>
+        <div
+          v-else-if="mybrowse==='Safari'"
+          class="modelinkbrowsebtn Safari-install-button btn-primary"
+          @click="installSafariExtention">
+          <a
+            href="https://safari-extensions.apple.com/details/?id=com.modesens.shoppingassistant-6EL854LDB8"
+            target="_blank">
+            <img src="https://mds0.com/navi/20171102safarilogo.png">
+            <span>{{ $t('nav.InstallNow') }}</span>
+          </a>
+        </div>
+        <div
+          v-else
+          class="d-flex justify-content-start">
+          <div
+            class="modelinkbrowsebtnlogo"
+            @click="modelinkGoToBrowse('Chrome')">
+            <img src="https://mds0.com/navi/20171102chromelogo.png">
+          </div>
+          <div
+            class="modelinkbrowsebtnlogo"
+            @click="modelinkGoToBrowse('Firefox')">
+            <img src="https://mds0.com/navi/20171102firefoxlogo.png">
+          </div>
+          <div
+            class="modelinkbrowsebtnlogo"
+            @click="modelinkGoToBrowse('Safari')">
+            <img src="https://mds0.com/navi/20171102safarilogo.png">
+          </div>
+        </div>
+      </div>
     </div>
     <!-- 菜单nav -->
     <div class="nav-container">
@@ -90,8 +149,8 @@
               v-else
               class="d-flex justify-content-between align-items-center authInfo">
               <a
-                href="javascript:;"
-                @click="openNoticemd"><img src="https://mds0.com/static/img/prd-update-20180504.svg"></a>
+                v-b-modal.noticeproductmd
+                href="javascript:;"><img src="https://mds0.com/static/img/prd-update-20180504.svg"></a>
               <a
                 v-b-modal.noticeusermd
                 href="javascript:;"><img src="https://mds0.com/static/img/social-update-20180504.svg"></a>
@@ -157,9 +216,10 @@
                   v-if="Object.keys(searchResult.words).length !== 0"
                   class="searchres-item">
                   <div class="searchres-title">{{ $t('nav.SearchProductbykeyword') }}</div>
-                  <ul>
+                  <ul class="searchres-con">
                     <li
                       v-for="(word,index) in searchResult.words"
+                      v-if="index < 10"
                       :key="index"
                       :title="$t('nav.Shop')+word">{{ word | capitalize }}</li>
                   </ul>
@@ -168,7 +228,7 @@
                   v-if="searchResult.designers"
                   class="searchres-item">
                   <div class="searchres-title">{{ $t('nav.Designers') }}</div>
-                  <ul>
+                  <ul class="searchres-con">
                     <li
                       v-for="(designer,index) in searchResult.designers"
                       :key="index"><a
@@ -184,6 +244,7 @@
                   <ul class="search-user-content">
                     <li
                       v-for="(user,index) in searchResult.users"
+                      v-if="index < 6"
                       :key="index"
                       class="userbox">
                       <a
@@ -202,9 +263,10 @@
                   v-if="searchResult.hashtags"
                   class="searchres-item">
                   <div class="searchres-title">{{ $t('nav.Look') }}</div>
-                  <ul>
+                  <ul class="d-flex flex-wrap justify-content-start">
                     <li
                       v-for="(hashtag,index) in searchResult.hashtags"
+                      v-if="index < 10"
                       :key="index"
                       :title="$t('nav.Searchlookstanged')+hashtag+$t('nav.searchend')"
                       class="momentbox">#{{ hashtag }}</li>
@@ -214,9 +276,10 @@
                   v-if="searchResult.merchants"
                   class="searchres-item">
                   <div class="searchres-title">{{ $t('nav.Store') }}</div>
-                  <ul>
+                  <ul class="searchres-con">
                     <li
                       v-for="(merchant,index) in searchResult.merchants"
+                      v-if="index < 6"
                       :key="index"><a
                         :href="'/store/'+merchant.url+'/'+gender+'/'"
                         :title="$t('nav.Shopproductsfrom')+merchant.name+$t('nav.shoppend')">{{ merchant.name }}</a></li>
@@ -234,6 +297,7 @@
 <script>
 import ThreeLevelMenu from './ThreeLevelMenu'
 import NavCategory from './NavCategory'
+import { getBrowse } from '~/assets/js/utils/utils.js'
 export default {
   components: {
     NavCategory,
@@ -268,7 +332,8 @@ export default {
       searchTxt: '',
       searchResult: '',
       serachInputOpen: false,
-      hint2Timeout: null
+      hint2Timeout: null,
+      mybrowse: null
     }
   },
   computed: {
@@ -284,13 +349,13 @@ export default {
   },
   mounted() {
     this.getConfig()
+    this.mybrowse = getBrowse()
     $('.main-container').css('padding-top', $('.header').height())
 
     $('.navbar-toggler-icon').click(evt => {
       evt.preventDefault()
       evt.stopPropagation()
       let showStatus = $('.header .navbar-expand-xl').hasClass('show')
-      console.log(45454545)
       if (showStatus) {
         $('.header .navbar-expand-xl').removeClass('show')
         $('.wrapper-mask').addClass('hidden')
@@ -381,16 +446,62 @@ export default {
         }
       }
     },
-    openNoticemd() {
-      console.log(333333)
-      this.$root.$emit('bv::show::modal', 'noticeproductmd')
-      this.$nextTick(() => {
-        let aa = $('#noticeproductmd')
-        console.log(aa, $(aa))
-        console.log(aa.next())
-        console.log($('.modal-backdrop.fade.show'))
-        // .css({ top: $('.header').height() })
-      })
+    installChromeExtention(evt) {
+      ga('send', 'event', 'Test', 'Extention', 'Chrome')
+      window.open(
+        'https://chrome.google.com/webstore/detail/modesens-shopping-assista/cmfmhegpbogfmojekmidappigcfbgbcb',
+        '_blank'
+      )
+      evt.stopPropagation()
+    },
+    installOperaExtention() {
+      ga('send', 'event', 'Test', 'Extention', 'Opera')
+      var id = 'efjhmecngnegjbeammojcaecfmjllpbk'
+      opr.addons.installExtension(
+        id,
+        function() {
+          $.each($('.opera-install-button'), function(i, e) {
+            $(e).attr('onclick', "window.open('')")
+            $(e)
+              .find('span')
+              .html(this.$t('Write Review'))
+          })
+          ga('send', 'event', 'Test', 'Extention', 'operaSuccess')
+        },
+        function(errorMessage) {
+          alert('Error: ' + errorMessage)
+          extentionErrorMsg = errorMessage
+        }
+      )
+      event.stopPropagation()
+    },
+    installFFExtention() {
+      ga('send', 'event', 'Test', 'Extention', 'Firefox')
+      var params = {
+        Foo: {
+          URL: FIREFOX_INSTALL_XPI
+        }
+      }
+      InstallTrigger.install(params)
+      event.stopPropagation()
+    },
+    installSafariExtention() {
+      ga('send', 'event', 'Test', 'Extention', 'Safari')
+    },
+    modelinkGoToBrowse(browse) {
+      if (browse === 'Chrome') {
+        window.open(
+          'https://chrome.google.com/webstore/detail/modesens-shopping-assista/cmfmhegpbogfmojekmidappigcfbgbcb'
+        )
+      } else if (browse === 'Firefox') {
+        window.open(
+          'https://addons.mozilla.org/firefox/addon/modesens-shopping-assistant/'
+        )
+      } else if (browse === 'Safari') {
+        window.open(
+          'https://safari-extensions.apple.com/details/?id=com.modesens.shoppingassistant-6EL854LDB8'
+        )
+      }
     }
   }
 }

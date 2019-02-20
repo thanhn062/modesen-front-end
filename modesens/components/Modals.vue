@@ -156,7 +156,8 @@
       v-if="login_status"
       id="noticeproductmd"
       hide-header
-      hide-footer>
+      hide-footer
+      @shown="showNoticemd">
       <iframe
         src="https://modesens.com/notice/product/"
         width="100%"
@@ -167,7 +168,8 @@
       v-if="$store.state.login_status"
       id="noticeusermd"
       hide-header
-      hide-footer>
+      hide-footer
+      @shown="showNoticemd">
       <iframe
         src="https://modesens.com/notice/me/"
         width="100%"
@@ -295,6 +297,24 @@ export default {
     gotoSignup(evt) {
       evt.preventDefault()
       window.open('/accounts/signup/?next=' + this.$route.fullPath, '_blank')
+    },
+    showNoticemd(evt) {
+      console.log(434434)
+      console.log($(evt.target).find('.modal-dialog'))
+      // console.log($('#noticeproductmd').next('.modal-backdrop').css({ top: $('.header').height() }))
+      let headerH = $('.header').height()
+      $(evt.target)
+        .next('.modal-backdrop')
+        .css({ top: headerH })
+      $(evt.target)
+        .find('.modal-dialog')
+        .css({
+          marginTop: headerH,
+          height: $(window).height() - headerH - 10
+        })
+      $(evt.target)
+        .find('.modal-body')
+        .css({ padding: 0 })
     }
   }
 }
@@ -377,6 +397,12 @@ export default {
   text-align: center;
   img {
     width: 300px;
+  }
+}
+#noticeproductmd,
+#noticeusermd {
+  .modal-dialog {
+    margin-right: 0;
   }
 }
 </style>

@@ -25,14 +25,44 @@
   width: 100%;
   height: 30px;
   background: #f2f2f2;
-  img {
+  & > img {
     width: 20px;
   }
-  a {
+  & > a {
     margin: 0 20px;
     font-size: 12px;
     &:hover {
       text-decoration: underline;
+    }
+  }
+  .modelinkbrowsebtn {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    height: 24px;
+    margin-right: 10px;
+    background-image: linear-gradient(#575757,#575757),linear-gradient(#696969,#191919);
+    cursor: pointer;
+    img {
+      width: 14px;
+      height: 14px;
+    }
+    span {
+      font-size: 10px;
+      color: #fff;
+      margin-left: 10px;
+      vertical-align: middle;
+      line-height: 22px;
+    }
+  }
+  .modelinkbrowsebtnlogo {
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
+    img {
+      width: 14px;
+      height: 14px;
+      vertical-align: baseline;
     }
   }
 }
@@ -147,6 +177,7 @@
     }
     .momentbox {
       padding: 5px;
+      margin: 10px 10px 0 0;
       font-size: 12px;
       color: @fontGray;
       line-height: 12px;
@@ -157,13 +188,23 @@
       }
     }
   }
-  ul {
-    overflow: hidden;
+  .searchres-con {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
     padding: 5px 20px 0;
+    max-height: 60px;
+    overflow: hidden;
     li {
-      float: left;
-      margin: 10px 20px 0 0;
+      margin: 5px 15px 5px 0;
     }
+  // ul {
+    // overflow: hidden;
+    // padding: 5px 20px 0;
+    // li {
+    //   float: left;
+    //   margin: 10px 20px 0 0;
+    // }
     a {
       color: @fontGray;
       &:hover {
@@ -174,6 +215,10 @@
   }
 }
 .search-user-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px 0;
+  max-height: 77px;
   .userbox {
     width: 70px;
     height: 70px;
@@ -208,9 +253,9 @@
     }
   }
 }
-#noticeproductmd + div {
-  top: 60px;
-}
+// #noticeproductmd + div {
+//   top: 60px;
+// }
 @media(max-width: 1199px) {
   @itemcolor: #9d9d9d;
   #popLink {

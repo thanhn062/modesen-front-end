@@ -454,6 +454,7 @@ export const nav = {
   WHYMODESENS: 'WHY MODESENS',
   JoinModeSenstofollow : 'Join ModeSens to follow ',
   scloset: "'s closet!",
+  InstallNow: 'Install Now',
 };
 export const Modals = {
   YourCompanyName: 'Your Company Name:',
