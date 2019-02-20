@@ -1,12 +1,12 @@
 <template>
-  <section class="container">
+  <section class="container loyalty-con">
     <div class="accountsCon">
       <div class="logoCon"><img 
         src="/img/20180905footer_logo.svg"
         alt="logo"></div>
       <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
       <div
-        v-if="!login_status"
+        v-if="!$store.state.login_status"
         class="accountsBox">
         <a
           href="/accounts/signup/?next=/loyalty/"
@@ -225,7 +225,7 @@
             <div
               v-if="index===1"
               class="answer">
-              <div v-if="login_status">{{ $t('loyalty.answer2_1_1') }}<a
+              <div v-if="$store.state.login_status">{{ $t('loyalty.answer2_1_1') }}<a
                 href="/account/loyalty/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</a></div>
@@ -326,11 +326,11 @@ export default {
     title: 'Loyalty | ModeSens'
   },
   created() {
-    console.log(this.login_status)
+    console.log(this.$store.state.login_status)
   },
   mounted() {
-    if (this.login_status) {
-      // this.getLevelInfo()
+    if (this.$store.state.login_status) {
+      this.getLevelInfo()
     }
     if ($(window).width() < 1200) {
       this.isPC = false

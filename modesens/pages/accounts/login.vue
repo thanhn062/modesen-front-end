@@ -53,8 +53,8 @@ export default {
   layout: 'noframe',
   data() {
     return {
-      email: 'yinliyuan520@gmail.com',
-      password: 'AAaa123456',
+      email: '',
+      password: '',
       error: ''
     }
   },

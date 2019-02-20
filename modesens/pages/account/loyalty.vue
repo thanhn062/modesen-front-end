@@ -211,11 +211,12 @@ export default {
         this.orderOffset = 0
         this.orderAmount = 7
       }
-      let offset = this.orderOffset
-      let amount = this.orderAmount
-      let orderObj = await this.$axios.get(
-        '/accounts/order/all/?offset=' + offset + '&amount=' + amount
-      )
+      let data = {}
+      data.offset = this.orderOffset
+      data.amount = this.orderAmount
+      let orderObj = await this.$axios.get('/accounts/order/all/', {
+        params: data
+      })
       let orderObjJson = JSON.stringify(orderObj)
       this.$localStorage.set('order', orderObjJson, 1)
       this.userOrder = orderObj.orders

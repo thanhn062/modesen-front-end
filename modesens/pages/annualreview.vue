@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section class="container annualreview-con">
     <div class="bannerimg">
       <img
         :src="handimgsrc"
@@ -276,14 +276,8 @@ export default {
   head: {
     title: 'Annual Review | ModeSens'
   },
-  async asyncData({ app, query }) {
-    let oToken = query.otoken
-    if (oToken) {
-      app.$cookies.set('token', oToken)
-    }
-  },
   created() {
-    if (this.$route.query.otoken) {
+    if (this.$store.state.login_status) {
       this.getannualreview()
     }
     if (this.$i18n.locale == 'zh') {
@@ -315,7 +309,9 @@ export default {
   },
   methods: {
     async getannualreview() {
-      let { overall, user } = await this.$axios.get('/annualreview/')
+      let { overall, user } = await this.$axios.get('/annualreview/', {
+        params: {}
+      })
       var that = this
       that.piechartDataM.rows = []
       that.piechartDataY.rows = []

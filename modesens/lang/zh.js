@@ -52,7 +52,6 @@ export const Footer = {
   loyaltyProgram: '会员介绍',
   classtitle1: '使用帮助',
   helpcenter: '帮助中心',
-  contactus: '联系我们',
   feedback: '用户反馈',
   classtitle2: '关于ModeSens',
   aboutus: '关于我们',

@@ -52,7 +52,6 @@ export const Footer = {
   loyaltyProgram: 'Loyalty Program',
   classtitle1: 'CUSTOMER CARE',
   helpcenter: 'Help Center',
-  contactus: 'Contact Us',
   feedback: 'Feedback',
   classtitle2: 'INFORMATION',
   aboutus: 'About Us',

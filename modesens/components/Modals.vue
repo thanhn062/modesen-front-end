@@ -2,7 +2,7 @@
   <div>
     <!-- 登录modal -->
     <b-modal
-      v-if="login_status===false"
+      v-if="$store.state.login_status===false"
       id="mdLogin"
       ref="mdLogin"
       hide-header
@@ -170,7 +170,7 @@
     </b-modal>
     <!-- notice -->
     <b-modal
-      v-if="login_status"
+      v-if="$store.state.login_status"
       id="noticeproductmd"
       hide-header
       hide-footer
@@ -182,7 +182,7 @@
         frameborder="0"/>
     </b-modal>
     <b-modal
-      v-if="login_status"
+      v-if="$store.state.login_status"
       id="noticeusermd"
       hide-header
       hide-footer
@@ -206,14 +206,6 @@
 </template>
 <script>
 export default {
-  props: {
-    lsuid: {
-      type: String,
-      default: function() {
-        return '123'
-      }
-    }
-  },
   data() {
     return {
       hereHasClick: false,
@@ -309,7 +301,7 @@ export default {
       this.$localStorage.remove(this.gconfig.USERINFO)
       this.$store.commit('modifyLoginStatus')
       this.$store.commit('removeLsuser')
-      this.login_status = false
+      this.$store.state.login_status = false
       window.open('/', '_self')
     },
     gotoSignup(evt) {

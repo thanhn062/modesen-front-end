@@ -73,7 +73,6 @@
         </div>
         <div
           v-if="lsuser"
-          style="min-width: 300px;"
           class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle5') }}</h6>
           <div>{{ $t('Footer.class5desc') }}</div>
@@ -244,12 +243,16 @@ export default {
   },
   data() {
     return {
-      lsuser: false,
       newsEmail: '',
       shareEmail: '',
       emailSubStatus: 0, //0注册 1登录
       selectedSex: 'f',
       disabledstatus: false
+    }
+  },
+  computed: {
+    lsuser() {
+      return this.$store.state.lsuser
     }
   },
   methods: {

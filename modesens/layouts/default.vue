@@ -1,6 +1,6 @@
 <template>
   <div class="root-container">
-    <Header :lsuid="lsuid"/>
+    <Header/>
     <main class="main-container">
       <nuxt/>
     </main>
@@ -8,7 +8,7 @@
     <div
       class="wrapper-mask hidden"
       @click="hideMenu"/>
-    <Modals :lsuid="lsuid"/>
+    <Modals/>
   </div>
 </template>
 <script>
@@ -17,7 +17,6 @@ import Header from '~/components/header/Header.vue'
 import Footer from '~/components/Footer.vue'
 import Modals from '~/components/Modals.vue'
 export default {
-  // middleware: 'countries',
   components: {
     Header,
     Footer,
@@ -25,12 +24,10 @@ export default {
   },
   data() {
     return {
-      lsuid: '',
       isPC: true
     }
   },
   mounted() {
-    // this.headerHeight = $('header').height() + 'px 0'
     if ($(window).width() < 1200) {
       this.isPC = false
     }

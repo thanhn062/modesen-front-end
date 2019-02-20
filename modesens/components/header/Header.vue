@@ -94,7 +94,7 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <!-- COUNTRIES -->
-            <!-- <b-nav-item-dropdown
+            <b-nav-item-dropdown
               v-if="COUNTRIES"
               class="country-select-container"
               right
@@ -111,7 +111,7 @@
                 :href="switchLocalePath(index.toLowerCase(), $i18n.locale)">
                 <i :class="'country-icon country-' + index.toLowerCase()"/> {{ opt[4] }}
               </b-dropdown-item>
-            </b-nav-item-dropdown> -->
+            </b-nav-item-dropdown>
             <!-- language -->
             <b-nav-item-dropdown
               class="language-dropdown"
@@ -141,7 +141,7 @@
           <div class="userInfo">
             <a
               v-b-modal.mdLogin
-              v-if="login_status===false"
+              v-if="$store.state.login_status===false"
               href="javascript:;">
               <img src="https://mds0.com/static/img/20180905account_b.svg">
             </a>
@@ -310,18 +310,6 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1)
     }
   },
-  props: {
-    countries: {
-      type: Array,
-      default: () => [1, 2, 3]
-    },
-    lsuid: {
-      type: String,
-      default: function() {
-        return '123'
-      }
-    }
-  },
   data() {
     return {
       langSelected: this.$i18n.locale,
@@ -348,6 +336,7 @@ export default {
     }
   },
   mounted() {
+    console.log(3434343434)
     this.getConfig()
     this.mybrowse = getBrowse()
     $('.main-container').css('padding-top', $('.header').height())

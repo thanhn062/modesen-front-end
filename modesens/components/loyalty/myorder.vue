@@ -311,17 +311,13 @@ export default {
   },
   methods: {
     async getmoreOrder(page, stauts) {
-      let amount = this.perorder
-      let offset = (page - 1) * amount
-      let status = stauts ? stauts : ''
-      let { orders, total } = await this.$axios.get(
-        '/accounts/order/all/?offset=' +
-          offset +
-          '&amount=' +
-          amount +
-          '&status=' +
-          stauts
-      )
+      let data = {}
+      data.amount = this.perorder
+      data.offset = (page - 1) * this.perorder
+      data.status = stauts || ''
+      let { orders, total } = await this.$axios.get('/accounts/order/all/', {
+        params: data
+      })
       this.ordercontent = orders
       this.pageCannotSwitched = false
       this.orderflag = true

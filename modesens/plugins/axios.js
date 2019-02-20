@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import qs from 'qs'
 
 export default function ({ $axios, app }) {
@@ -7,8 +8,8 @@ export default function ({ $axios, app }) {
     } else {
       config.baseURL = process.env.browserBaseURL + 'api/2.0/';  //请求根目录
     }
-    config.timeout = 50000;    //请求超时
-    config.headers.Authorization = 'Bearer ' + app.$cookies.get('token'); //获取cookie放在头部传到后端
+    config.timeout = 5000;    //请求超时
+    config.headers.Authorization = 'Bearer ' + app.$cookies.get(app.gconfig.ACCESS_TOKEN); //获取cookie放在头部传到后端
     // config.withCredentials = true, // 允许携带cookie
     // config.crossDomain = true   //允许跨域
     // config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
