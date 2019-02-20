@@ -6,7 +6,7 @@
         alt="logo"></div>
       <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
       <div
-        v-if="lsuid===''"
+        v-if="!login_status"
         class="accountsBox">
         <a
           href="/accounts/signup/?next=/loyalty/"
@@ -20,9 +20,6 @@
           href="javascript:;"
           @click="openloginmodal">{{ $t('loyalty.loginNow') }}</a>
         </div>
-        <Modal
-          ref="modals"
-          :lsuid="lsuid"/>
       </div>
       <div
         v-else
@@ -228,7 +225,7 @@
             <div
               v-if="index===1"
               class="answer">
-              <div v-if="lsuid">{{ $t('loyalty.answer2_1_1') }}<a
+              <div v-if="login_status">{{ $t('loyalty.answer2_1_1') }}<a
                 href="/account/loyalty/"
                 target="_blank"
                 data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</a></div>
@@ -281,14 +278,10 @@
   </section>
 </template>
 <script>
-import Modals from '~/components/Modals.vue'
 import { wxlogin } from '~/assets/js/utils/utils.js'
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
 export default {
-  components: {
-    Modals
-  },
   data() {
     return {
       level: '',
@@ -332,16 +325,12 @@ export default {
   head: {
     title: 'Loyalty | ModeSens'
   },
-  async asyncData({ app, query }) {
-    let oToken = query.otoken
-    if (oToken) {
-      app.$cookies.set('token', oToken)
-    }
-    return { lsuid: oToken || '' }
+  created() {
+    console.log(this.login_status)
   },
   mounted() {
-    if (this.$route.query.otoken) {
-      this.getLevelInfo()
+    if (this.login_status) {
+      // this.getLevelInfo()
     }
     if ($(window).width() < 1200) {
       this.isPC = false
@@ -382,7 +371,7 @@ export default {
       if (ua.match(/MicroMessenger/i) == 'micromessenger') {
         wxlogin(this.$route.fullPath)
       } else {
-        this.$refs.modals.showLoginModal()
+        this.$root.$emit('bv::show::modal', 'mdLogin')
       }
     }
   }

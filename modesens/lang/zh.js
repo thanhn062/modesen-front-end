@@ -36,11 +36,23 @@ export const common = {
   SignOut: '退出登录',
   SeeYouSoon: '待会见!',
 };
+export const service = {
+  help: '需要帮助？',
+  WeChat: '扫描二维码添加微信号进行沟通'
+};
+export const cuModal = {
+  desc1: '我们的团队乐意提供任查询帮助，为了能提供更好的服务，请先确定以下正确操作步骤。',
+  desc2: '你是否存在关于在ModeSens上购物的疑问？',
+  desc3: '作为设计师和电商，你是否想成为我们的合作伙伴？',
+  desc4: '任何媒体需求请联系',
+  desc5: '如果是请填写以下表格并提交。'
+};
 export const Footer = {
   validemails: '请输入一个有效的邮箱地址',
-  classtitle1: '使用帮助',
   loyaltyProgram: '会员介绍',
+  classtitle1: '使用帮助',
   helpcenter: '帮助中心',
+  contactus: '联系我们',
   feedback: '用户反馈',
   classtitle2: '关于ModeSens',
   aboutus: '关于我们',
@@ -213,6 +225,8 @@ export const accountLoyalty = {
   memberendTimgcard: '有效期至',
   memberendTimg: '会员权益截止时间',
   account_overview: '账户信息',
+  my_order: '我的订单',
+  my_loyalty: '我的会员',
   benefits: '福利',
   membershipDeltails: '会员详情',
   deltail: '你今年得到的所有的积分让你更接近更多的会员等级权益!',
@@ -264,6 +278,41 @@ export const accountLoyalty = {
   record_fs: '关注一位用户',
   record_ll: '为美达点赞',
 };
+export const accountOrder = {
+  orderTime: '订单时间',
+  msOrderId: '订单号',
+  Seller: '卖家名称',
+  Total: '总价',
+  Status: '状态',
+  storeId: '订单号',
+  trackNum: '运单号',
+  Size: '尺码',
+  oneSize: '均码',
+  Quantity: '数量',
+  ProductP: '产品价格',
+  ShippingF: '邮费',
+  Duty: '税费',
+  Servicef: '服务费',
+  Discount: '折扣',
+  status0: '待支付',
+  status1: '付款完成',
+  status2: '下单中',
+  status3: '已发货',
+  status4: '已签收',
+  status5: '退货中',
+  status6: '已退货',
+  status8: '转运已发货',
+  statusTracked: '已跟踪',
+  status_1: '已取消',
+  afterstatus1: '立即支付',
+  afterstatus2: '联系客服',
+  afterstatus3: '异常申请',
+  afterstatus4: '添加评论',
+  All: '全部',
+  Completed: '已完成',
+  Active: '进行中',
+  Orderinquery: '追踪订单'
+};
 export const annual = {
   MemberSince: '会员始于',
   yousaved: '你的购物节省总额',
@@ -286,13 +335,6 @@ export const annual = {
   p3: '了解如何开始享受今天更有价值的购物体验。',
   learnMore: '了解更多',
   emptycon: '噢不！我们没有看到你的任何购买历史。请确保你的购买将在明年跟踪，以查看这些结果，并充分享受ModeSens会员福利'
-};
-export const cuModal = {
-  desc1: '我们的团队乐意提供任查询帮助，为了能提供更好的服务，请先确定以下正确操作步骤。',
-  desc2: '你是否存在关于在ModeSens上购物的疑问？',
-  desc3: '作为设计师和电商，你是否想成为我们的合作伙伴？',
-  desc4: '任何媒体需求请联系',
-  desc5: '如果是请填写以下表格并提交。'
 };
 export const FbModal = {
   desc1: '帮助改善ModeSens体验',
@@ -462,4 +504,7 @@ export const Modals = {
   Pleasesignin: '请登录',
   Notamemberyet: '还没成为ModeSens的一员？',
   JoinModeSens: '加入ModeSens打造个人衣橱，和好友一起享受购物乐趣。'
+};
+export const barcodeHelp = {
+  desc: '通过扫描条形码（通常位于标签或包装盒上），查找ModeSens上的产品和定价信息。你可以扫描类似下面示例中的条形码，祝你使用愉快！'
 };

@@ -1,6 +1,8 @@
 <template>
   <section>
-    <div class="membershippage">
+    <div
+      v-if = "flag1"
+      class="membershippage">
       <div class="userInfoBox">
         <div class="userInfoinnerBox">
           <div class="userinfo">
@@ -55,18 +57,52 @@
         </div>
       </div>
       <div class="page-content container">
+        <div
+          v-if="activeTab === 'order'"
+          class="mobile-tabbtn mobile-only"
+          @click="tabswich">{{ $t('accountLoyalty.my_order') }}</div>
+        <div
+          v-else-if="activeTab === 'loyalty'"
+          class="mobile-tabbtn mobile-only"
+          @click="tabswich">{{ $t('accountLoyalty.my_loyalty') }}</div>
         <b-tabs
-          vertical>
-          <b-tab
-            :title="$t('accountLoyalty.account_overview')" 
-            active>
+          vertical
+          class="loyatyTab">
+          <b-tab 
+            :title="$t('accountLoyalty.my_loyalty')"
+            :active="activeTab ==='loyalty' ? true : false"
+            @click="getTabLoyalty">
             <div
-              v-if = "flag1 && flag2"
+              v-if = "flag2"
               class="page-right ">
               <keep-alive>
                 <myloyalty 
                   :myloyaltycontent="level"
-                  :myloyaltycontent1="userRecords"/>
+                  :myloyaltycontent1="userRecords"
+                  :recordsflag2="flag2"/>
+              </keep-alive>
+            </div>
+            <div
+              v-else
+              class="page-right">
+              <img
+                src="/img/20190102sync.gif"
+                alt=""
+                class="loadmore">
+            </div>
+          </b-tab>
+          <b-tab
+            :title="$t('accountLoyalty.my_order')"
+            :active="activeTab ==='order' ? true : false"
+            @click="getTabOrder">
+            <div
+              v-if = "orderflag"
+              class="page-right">
+              <keep-alive>
+                <myorder
+                  :userordercontent="userOrder"
+                  :userordertotal="userOrdertotal"
+                  :userorderflag="orderflag"/>
               </keep-alive>
             </div>
             <div
@@ -81,13 +117,23 @@
         </b-tabs>
       </div>
     </div>
+    <div
+      v-else
+      class="membershippage">
+      <img
+        src="/img/20190102sync.gif"
+        alt=""
+        class="loadmore loadmoreall">
+    </div>
   </section>
 </template>
 <script>
 import myloyalty from '~/components/loyalty/myloyalty.vue'
+import myorder from '~/components/loyalty/myorder.vue'
 export default {
   components: {
-    myloyalty
+    myloyalty,
+    myorder
   },
   data() {
     return {
@@ -100,7 +146,13 @@ export default {
       flag2: false,
       limit: -1,
       //当前显示的页面
-      currentPage: 1
+      currentPage: 1,
+      userOrder: [],
+      userOrdertotal: 0,
+      orderOffset: 0,
+      orderAmount: 16,
+      orderflag: false,
+      activeTab: ''
     }
   },
   head: {
@@ -112,10 +164,15 @@ export default {
       app.$cookies.set('token', oToken)
     }
   },
-  created() {
+  mounted() {
+    this.activeTab = this.$route.query.tab
     if (this.$route.query.otoken) {
       this.getUserInfo()
-      this.getRecords()
+      if (this.$route.query.tab === 'order') {
+        this.getOrderInfo()
+      } else if (this.$route.query.tab === 'loyalty') {
+        this.getRecords()
+      }
     }
   },
   methods: {
@@ -130,15 +187,78 @@ export default {
       this.level = level
       this.userLevel = level.level
       this.flag1 = true
+      if ($(window).width() < 1200 && this.flag1) {
+        this.$nextTick(() => {
+          let backtab = `<div class='tab-backbtn' >< Back</div>`
+          $('.nav-tabs').before(backtab)
+          $('.tab-backbtn').on('click', this.tabback)
+        })
+      }
     },
     async getRecords() {
       var recordsparams = {}
       recordsparams.offset = 0
       recordsparams.amount = 10
       let records = await this.$axios.post('/loyalty/records/', recordsparams)
+      let recordsJson = JSON.stringify(records)
+      this.$localStorage.set('records', recordsJson, 1)
       this.records = records
       this.userRecords = records.records
       this.flag2 = true
+    },
+    async getOrderInfo() {
+      if ($(window).width() < 1200) {
+        this.orderOffset = 0
+        this.orderAmount = 7
+      }
+      let offset = this.orderOffset
+      let amount = this.orderAmount
+      let orderObj = await this.$axios.get(
+        '/accounts/order/all/?offset=' + offset + '&amount=' + amount
+      )
+      let orderObjJson = JSON.stringify(orderObj)
+      this.$localStorage.set('order', orderObjJson, 1)
+      this.userOrder = orderObj.orders
+      this.userOrdertotal = orderObj.total
+      this.orderflag = true
+    },
+    getTabOrder: function() {
+      this.orderflag = false
+      if (this.$localStorage.get('order')) {
+        let order = JSON.parse(this.$localStorage.get('order'))
+        this.userOrder = order.orders
+        this.userOrdertotal = order.total
+        this.orderflag = true
+      } else {
+        this.getOrderInfo()
+      }
+      if ($(window).width() < 1200) {
+        this.tabback()
+        $('.mobile-tabbtn').html(this.$t('accountLoyalty.my_order'))
+      }
+    },
+    getTabLoyalty: function() {
+      this.flag2 = false
+      if (this.$localStorage.get('records')) {
+        var records = JSON.parse(this.$localStorage.get('records'))
+        this.records = records
+        this.userRecords = records.records
+        this.flag2 = true
+      } else {
+        if (this.$route.query.otoken) {
+          this.getRecords()
+        }
+      }
+      if ($(window).width() < 1200) {
+        this.tabback()
+        $('.mobile-tabbtn').html(this.$t('accountLoyalty.my_loyalty'))
+      }
+    },
+    tabswich: function() {
+      $('.col-auto').css('left', '0')
+    },
+    tabback: function() {
+      $('.col-auto').css('left', '-100%')
     }
   }
 }

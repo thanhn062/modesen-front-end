@@ -1,5 +1,5 @@
 ---
-- hosts: us,cn
+- hosts: us,usca,cn,au
   remote_user: root
   become: yes 
   tasks:

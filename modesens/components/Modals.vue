@@ -2,8 +2,7 @@
   <div>
     <!-- 登录modal -->
     <b-modal
-      v-if="$store.state.login_status===false"
-      v-show="!$store.state.login_status"
+      v-if="login_status===false"
       id="mdLogin"
       ref="mdLogin"
       hide-header
@@ -18,9 +17,27 @@
         height="100%"
         frameborder="0"/>
     </b-modal>
+    <!-- 客服 -->
+    <b-modal
+      id="service-modal"
+      ref="cuModalCn"
+      size="sm"
+      hide-header
+      hide-footer>
+      <div class="customer_service_head">
+        <img src="/img/20190122customer_service.png">
+      </div>
+      <div class="customer_service_body">
+        <p>{{ $t('service.help') }}<br>{{ $t('service.WeChat') }}</p>
+        <div class="customer_service_body_qrcode">
+          <img src="/img/20190122customer_service_qrcode.png">
+        </div>
+      </div>
+    </b-modal>
     <!-- Connect Us -->
     <b-modal
       id="cumodal"
+      ref="cuModal"
       :title="$t('common.ContactUs')"
       :ok-title="hereHasClick ? $t('common.Submit') : $t('common.Close')"
       ok-only
@@ -165,7 +182,7 @@
         frameborder="0"/>
     </b-modal>
     <b-modal
-      v-if="$store.state.login_status"
+      v-if="login_status"
       id="noticeusermd"
       hide-header
       hide-footer
@@ -293,6 +310,7 @@ export default {
       this.$store.commit('modifyLoginStatus')
       this.$store.commit('removeLsuser')
       this.login_status = false
+      window.open('/', '_self')
     },
     gotoSignup(evt) {
       evt.preventDefault()
@@ -331,7 +349,58 @@ export default {
     height: 680px;
   }
 }
+#service-modal {
+  // width: 300px;
+  padding-top: 40px;
+  margin-top: 60px;
+  .modal-body {
+    padding: 0;
+    border-radius: 0.3rem;
+    background: #fff;
+  }
+  .modal-content {
+    background: transparent;
+    border: 0;
+  }
+  .customer_service {
+    position: relative;
+    width: 300px;
+    border-radius: 6px;
+    background: #fff;
+  }
+  .customer_service_head {
+    position: absolute;
+    left: 91px;
+    top: -51px;
+    width: 118px;
+    height: 118px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .customer_service_body {
+    position: relative;
+    padding: 90px 52px 34px 52px;
+    p {
+      margin: 0 auto;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
+    }
+    .customer_service_body_qrcode {
+      width: 142px;
+      height: 149px;
+      margin: 14px auto 0;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 #cumodal {
+  text-align: left;
   .modal-body {
     a {
       text-decoration: underline;

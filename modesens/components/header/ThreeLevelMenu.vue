@@ -1606,7 +1606,7 @@ export default {
       this.$root.$emit('bv::show::modal', 'spmodal')
     },
     followEvent(username, uid, action) {
-      if (this.$store.state.login_status) {
+      if (this.login_status) {
         this.postFollow(action, uid)
       } else {
         $('#spmsg').html(

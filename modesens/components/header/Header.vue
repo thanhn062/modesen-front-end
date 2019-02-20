@@ -94,7 +94,7 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <!-- COUNTRIES -->
-            <b-nav-item-dropdown
+            <!-- <b-nav-item-dropdown
               v-if="COUNTRIES"
               class="country-select-container"
               right
@@ -111,7 +111,7 @@
                 :href="switchLocalePath(index.toLowerCase(), $i18n.locale)">
                 <i :class="'country-icon country-' + index.toLowerCase()"/> {{ opt[4] }}
               </b-dropdown-item>
-            </b-nav-item-dropdown>
+            </b-nav-item-dropdown> -->
             <!-- language -->
             <b-nav-item-dropdown
               class="language-dropdown"
@@ -141,7 +141,7 @@
           <div class="userInfo">
             <a
               v-b-modal.mdLogin
-              v-if="$store.state.login_status===false"
+              v-if="login_status===false"
               href="javascript:;">
               <img src="https://mds0.com/static/img/20180905account_b.svg">
             </a>
@@ -326,7 +326,7 @@ export default {
     return {
       langSelected: this.$i18n.locale,
       countryLower: this.$i18n.country,
-      COUNTRIES: {},
+      COUNTRIES: null,
       preIndexOver: -1,
       secondaryIndexOver: -1,
       searchTxt: '',
@@ -373,6 +373,7 @@ export default {
         secretkey: process.env.secretKey
       })
       this.COUNTRIES = COUNTRIES
+      console.log(this.COUNTRIES)
     },
     langChange(val) {
       let path = this.switchLocalePath(this.$i18n.country, val)

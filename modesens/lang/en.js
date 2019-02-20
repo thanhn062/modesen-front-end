@@ -36,11 +36,23 @@ export const common = {
   SignOut: 'Sign Out',
   SeeYouSoon: 'See You Soon!',
 }
+export const service = {
+  help: 'Need help?',
+  WeChat: 'Scan the two-dimensional code to add WeChat to communicate.'
+};
+export const cuModal= {
+  desc1: 'Our team is happy to assist with any inquiry. To better serve you, please determine the correct next step below.',
+  desc2: 'Are you a customer with a question about shopping on ModeSens?',
+  desc3: 'Are you a store or designer interested in becoming a ModeSens partner? ',
+  desc4: 'For any media inquiries please contact',
+  desc5: 'If so, please complete and submit the form below.'
+};
 export const Footer = {
   validemails: 'Please enter valid email address(es)',
-  classtitle1: 'CUSTOMER CARE',
   loyaltyProgram: 'Loyalty Program',
+  classtitle1: 'CUSTOMER CARE',
   helpcenter: 'Help Center',
+  contactus: 'Contact Us',
   feedback: 'Feedback',
   classtitle2: 'INFORMATION',
   aboutus: 'About Us',
@@ -213,6 +225,8 @@ export const accountLoyalty = {
   memberendTimgcard: 'Valid through',
   memberendTimg: 'Your Membership Benefits through',
   account_overview: 'ACCOUNT OVERVIEW',
+  my_order: 'MY ORDERS',
+  my_loyalty: 'MY LOYALTY',
   benefits: 'Benefits',
   membershipDeltails: 'Membership Details',
   deltail: 'All activity this year gets you closer to even more benefits',
@@ -262,7 +276,42 @@ export const accountLoyalty = {
   record_ul: 'Upload A Look',
   record_dc: 'Daily Log In',
   record_fs: 'Follow Someone',
-  record_ll: 'Like A Look'
+  record_ll: 'Like A Look',
+};
+export const accountOrder = {
+  orderTime: 'Order Time',
+  msOrderId: 'ModeSens Order ID',
+  Seller: 'Seller',
+  Total: 'Total',
+  Status: 'Status',
+  storeId: 'Store Order ID',
+  trackNum: 'Tracking Number',
+  Size: 'Size',
+  oneSize: 'One Size',
+  Quantity: 'Quantity',
+  ProductP: 'Product Price',
+  ShippingF: 'Shipping Fee',
+  Duty: 'Duty',
+  Servicef: 'Service fee',
+  Discount: 'Discount',
+  status0: 'Payment Pending',
+  status1: 'Payment Received',
+  status2: 'Ordered Placed',
+  status3: 'Shipped',
+  status4: 'Delivered',
+  status5: 'Refund Approved',
+  status6: 'Refunded',
+  status8: 'Transshipment Shipped',
+  statusTracked: 'Tracked',
+  status_1: 'Canceled',
+  afterstatus1: 'Pay Now',
+  afterstatus2: 'Customer Service',
+  afterstatus3: 'File A Claim',
+  afterstatus4: 'Submit a Review',
+  All: 'All',
+  Completed: 'Completed',
+  Active: 'Active',
+  Orderinquery: 'Order Inquery'
 };
 export const annual = {
   MemberSince: 'Member Since',
@@ -286,13 +335,6 @@ export const annual = {
   p3: 'See how you can start enjoying an even more rewarding shopping experience today.',
   learnMore: 'Learn More',
   emptycon: "Oh no! We don't see any purchase history for you. Be sure your purchases are tracked next year to view these results and enjoy the full benefits of ModeSens membership."
-};
-export const cuModal = {
-  desc1: 'Our team is happy to assist with any inquiry. To better serve you, please determine the correct next step below.',
-  desc2: 'Are you a customer with a question about shopping on ModeSens?',
-  desc3: 'Are you a store or designer interested in becoming a ModeSens partner? ',
-  desc4: 'For any media inquiries please contact',
-  desc5: 'If so, please complete and submit the form below.'
 };
 export const FbModal = {
   desc1: 'Help Improve The ModeSens Experience',
@@ -462,4 +504,7 @@ export const Modals = {
   Pleasesignin: 'Please sign in',
   Notamemberyet: 'Not a member yet?',
   JoinModeSens: 'Join ModeSens to curate your closet and shop with friends.'
+};
+export const barcodeHelp = {
+  desc: 'Scan an item’s barcode (typically located on the tags or box) to find the product and pricing information on ModeSens. Below are a few examples of barcodes that you could scan. Happy scanning!'
 };
