@@ -68,21 +68,34 @@
 .footer-connect-img {
   width: 130px;
 }
-#footer_form {
+#footer-form {
   width: 100%;
-  .custom-control-label::before {
-    display: none;
+  .signup-email {
+    padding: 6px 0;
+    width: 100%;
+    color: #555;
+    border: 0;
+    border-bottom: 0.5px solid #252525
   }
-  .custom-control-label::after {
-    top: -0.25rem;
-    left: -2rem;
-    width: 2rem;
-    height: 2rem;
-    background-size: unset;
-    background-image: url('/img/unchecked.svg');
-  }
-  .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
-    background-image: url('/img/checked.svg');
+  .sexbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 10px 30px 14px 0;
+    cursor: pointer;
+    i {
+      width: 16px;
+      height: 16px;
+    }
+    span {
+      margin-left: 9px;
+    }
+    .sex-check {
+      background: url(/img/checked.svg) no-repeat round;
+    }
+    .sex-uncheck {
+      background: url(/img/unchecked.svg) no-repeat round;
+    }
   }
 }
 .footer-bottom {

@@ -308,6 +308,7 @@ export default {
 </script>
 ```
 ### vuex状态树
+参考：https://zh.nuxtjs.org/guide/vuex-store/#codefund_ad
 #### nuxtServerInit
 > Nuxt.js 调用它的时候会将页面的上下文对象作为第2个参数传给它，上下文对象可以拿到req请求对象，那么就存在这么一种逻辑。我可以将用户信息存储在服务器session中，然后通过req.session.user来访问当前登录的用户。将用户登录信息传给客户端的状态树，代码如下：
 ```

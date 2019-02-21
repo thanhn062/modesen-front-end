@@ -59,13 +59,14 @@ export function wxlogin (fullPath) {
 
 export function installChromeExtention(){
   ga('send', 'event', 'Test', 'Extention', 'Chrome');
-  chrome.webstore.install("https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb", function(){
-      $.each($(".chrome-install-button"), function (i, e){
-          $(e).attr("onclick", "window.open('https://chrome.google.com/webstore/detail/modesens-shopping-assista/cmfmhegpbogfmojekmidappigcfbgbcb/reviews')");
-          $(e).find("span").html(gettext("Write Review"))
-      })
-      ga('send', 'event', 'Test', 'Extention', 'chromeSuccess');
-  });
+  window.open('https://chrome.google.com/webstore/detail/modesens-shopping-assista/cmfmhegpbogfmojekmidappigcfbgbcb', '_blank');
+  // chrome.webstore.install("https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb", function(){
+  //     $.each($(".chrome-install-button"), function (i, e){
+  //         $(e).attr("onclick", "window.open('https://chrome.google.com/webstore/detail/modesens-shopping-assista/cmfmhegpbogfmojekmidappigcfbgbcb/reviews')");
+  //         $(e).find("span").html(gettext("Write Review"))
+  //     })
+  //     ga('send', 'event', 'Test', 'Extention', 'chromeSuccess');
+  // });
   event.stopPropagation();
 }
 //搜索框

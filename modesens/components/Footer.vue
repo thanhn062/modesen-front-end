@@ -89,29 +89,32 @@
           v-else
           class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle6') }}</h6>
-          <b-form
-            id="footer_form"
+          <form
+            id="footer-form"
             @submit="newsSubmit">
-            <b-form-group>
-              <b-form-input
-                :placeholder="$t('common.emailaddress')"
-                v-model="newsEmail"
-                type="email"/>
-            </b-form-group>
-            <b-form-group>
-              <b-form-radio-group
-                v-model="selectedSex"
-                name="sexoptions">
-                <b-form-radio value="f">{{ $t('Footer.Womens') }}</b-form-radio>
-                <b-form-radio value="m">{{ $t('Footer.Mens') }}</b-form-radio>
-              </b-form-radio-group>
-            </b-form-group>
-            <b-button
+            <input
+              :placeholder="$t('common.emailaddress')"
+              v-model="newsEmail"
+              class="signup-email"
+              type="email">
+            <div class="d-flex justify-content-start">
+              <div
+                class="sexbox"
+                @click="selectedSex='f'">
+                <i :class="selectedSex==='f' ? 'sex-check' : 'sex-uncheck'"/><span>{{ $t('Footer.Womens') }}</span>
+              </div>
+              <div
+                class="sexbox"
+                @click="selectedSex='m'">
+                <i :class="selectedSex==='m' ? 'sex-check' : 'sex-uncheck'"/><span>{{ $t('Footer.Mens') }}</span>
+              </div>
+            </div>
+            <button
               :disabled="disabledstatus"
               type="submit"
-              variant="default"
-              style="width: 100%;">{{ $t('common.SUBMIT') }}</b-button>
-          </b-form>
+              class="btn btn-default"
+              style="width: 100%;">{{ $t('common.SUBMIT') }}</button>
+          </form>
         </div>
       </div>
       <div class="footer-bottom">
@@ -308,7 +311,7 @@ export default {
       this.$refs.appentranceModal.hide()
     },
     iosappClick() {
-      if ($(document).width > 1199) {
+      if ($(document).width() > 1199) {
         this.$root.$emit('bv::show::modal', 'app-entrance')
       } else {
         window.open('https://itunes.apple.com/app/id976201094', '_blank')
