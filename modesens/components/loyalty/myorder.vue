@@ -300,7 +300,7 @@ export default {
     }
   },
   created() {
-    this.usertoken = this.$route.query.otoken
+    this.usertoken = this.$cookies.get(gconfig.ACCESS_TOKEN)
   },
   mounted() {
     if ($(window).width() < 1200) {

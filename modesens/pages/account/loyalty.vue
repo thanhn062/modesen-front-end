@@ -158,15 +158,9 @@ export default {
   head: {
     title: 'My Loyalty | ModeSens'
   },
-  async asyncData({ app, route, $axios }) {
-    let oToken = route.query.otoken
-    if (oToken) {
-      app.$cookies.set('token', oToken)
-    }
-  },
   mounted() {
     this.activeTab = this.$route.query.tab
-    if (this.$route.query.otoken) {
+    if (this.$cookies.get(gconfig.ACCESS_TOKEN)) {
       this.getUserInfo()
       if (this.$route.query.tab === 'order') {
         this.getOrderInfo()
@@ -246,7 +240,7 @@ export default {
         this.userRecords = records.records
         this.flag2 = true
       } else {
-        if (this.$route.query.otoken) {
+        if (this.$store.state.login_status) {
           this.getRecords()
         }
       }

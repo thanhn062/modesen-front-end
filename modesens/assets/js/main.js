@@ -3,10 +3,10 @@ import vClickOutside from 'v-click-outside'
 Vue.use(vClickOutside)
 
 // 引入公共变量和方法
-// import {gconfig} from '~/assets/js/gconfig.js'
-// import localStorage from '~/assets/js/utils/localStorage.js'
-// Vue.prototype.gconfig = gconfig;
-// Vue.prototype.$localStorage = localStorage;
+import {gconfig} from '~/assets/js/gconfig.js'
+import localStorage from '~/assets/js/utils/localStorage.js'
+Vue.prototype.gconfig = gconfig;
+Vue.prototype.$localStorage = localStorage;
 // export default ({ app }) => {
 //   app.gconfig = gconfig
 //   app.$localStorage = localStorage

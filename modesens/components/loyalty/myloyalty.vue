@@ -239,7 +239,7 @@ export default {
     }
   },
   created() {
-    if (this.$route.query.otoken) {
+    if (this.$store.state.login_status) {
       let pers =
         this.myloyaltycontent.points_earned / this.myloyaltycontent.points_goal
       this.pers_percentage = Math.round(pers * 100)
@@ -347,7 +347,6 @@ export default {
       }
     },
     async getmoreRecords(page, starttime, endtime) {
-      var token = this.$route.query.otoken
       this.pageCannotSwitched = true
       var params = {}
       params.amount = 10
