@@ -52,6 +52,12 @@
     <a
       href="/why-modesens/"
       class="nav-link"><span>{{ $t('nav.WHYMODESENS') }}</span></a>
+    <a
+      href="javascript:;"
+      class="nav-link"><span>{{ $t('nav.PRODUCTALERT') }}</span></a>
+    <a
+      href="javascript:;"
+      class="nav-link"><span>{{ $t('nav.SOCIALFEED') }}</span></a>
   </b-navbar-nav>
 </template>
 <script>

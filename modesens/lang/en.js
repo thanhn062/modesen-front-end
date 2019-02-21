@@ -496,6 +496,8 @@ export const nav = {
   JoinModeSenstofollow : 'Join ModeSens to follow ',
   scloset: "'s closet!",
   InstallNow: 'Install Now',
+  PRODUCTALERT: 'PRODUCT ALERT',
+  SOCIALFEED: 'SOCIAL FEED',
 };
 export const Modals = {
   YourCompanyName: 'Your Company Name:',

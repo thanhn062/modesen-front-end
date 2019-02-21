@@ -496,6 +496,8 @@ export const nav = {
   JoinModeSenstofollow : '加入ModeSens以关注',
   scloset: '的衣橱',
   InstallNow: '即刻安装',
+  PRODUCTALERT: '产品通知',
+  SOCIALFEED: '社区消息',
 };
 export const Modals = {
   YourCompanyName: '你的公司名称：',
