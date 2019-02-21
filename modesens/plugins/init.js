@@ -1,10 +1,6 @@
 import Vue from 'vue'
-
-//引入公共变量和方法
 import {gconfig} from '~/assets/js/gconfig.js'
 import localStorage from '~/assets/js/utils/localStorage.js'
-// Vue.prototype.gconfig = gconfig;
-// Vue.prototype.$localStorage = localStorage;
 
 export default function({ app, store }) {
   app.$localStorage = localStorage
