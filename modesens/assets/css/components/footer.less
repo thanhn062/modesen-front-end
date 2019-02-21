@@ -10,17 +10,21 @@
   }
 }
 .footer-wrap {
-  overflow: hidden;
+  // overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   padding: @sectionSpace 0;
   border-top: @border;
   border-top: @border;
   .wrap-item {
-    float: left;
-    margin-bottom: 15px;
+    // float: left;
+    // margin-bottom: 15px;
     min-width: 180px;
-    width: 20%;
+    // width: 20%;
   }
   .footer-title {
+    margin-bottom: 15px;
     font-size: 1.1em;
     letter-spacing: 0.2rem;
   }
@@ -31,7 +35,8 @@
     &:hover {
       text-decoration: none;
     }
-    img {
+    i {
+      display: inline-block;
       width: 21px;
     }
     span {
@@ -40,6 +45,16 @@
       width: 108px;
       vertical-align: middle;
       font-size: 12px;
+    }
+  }
+  .iosimg {
+    height: 31px;
+    background: url('https://mds0.com/static/img/20181127add_app.svg') no-repeat round;
+  }
+  .android-app {
+    .androidimg {
+      height: 17px;
+      background: url('https://mds0.com/static/img/20181127add_browse.svg') no-repeat round;
     }
   }
 }
@@ -181,9 +196,10 @@
   }
   .footer-wrap {
     .wrap-item {
+      margin-bottom: 10px;
       width: 50%;
       &:last-of-type {
-        width: 100%;
+        width: 100% !important;
       }
     }
   }
@@ -201,8 +217,21 @@
       padding-top: 12px;
     }
     a {
-      img {
+      i {
         width: 137px;
+      }
+      span {
+        display: none;
+      }
+    }
+    .iosimg {
+      height: 38px;
+      background: url('https://mds0.com/static/img/20190107Mobileios.svg') no-repeat round;
+    }
+    .android-app {
+      .androidimg {
+        height: 38px;
+        background: url('https://mds0.com/static/img/20190107Mobileandroid.svg') no-repeat round;
       }
     }
   }

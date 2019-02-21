@@ -240,7 +240,6 @@ export default {
     },
     async contactSubmit(evt) {
       if (this.hereHasClick) {
-        evt.preventDefault()
         // if (this.company) {
         //   $('#contact-company').css('border-color', '#8E8E8E')
         // } else {
@@ -276,6 +275,9 @@ export default {
         data.email = this.email
         data.intro = this.introduction
         let obj = await this.$axios.post('/customeremail/', data)
+        if (obj.result !== 'success') {
+          evt.preventDefault()
+        }
       }
     },
     async sendFeedback(evt) {

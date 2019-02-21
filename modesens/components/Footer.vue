@@ -50,30 +50,26 @@
           <ul class="contact">
             <li class="install-box">
               <a
-                v-b-modal.app-entrance
-                v-if="isPC"
-                href="javascript:;">
-                <img src="https://mds0.com/static/img/20181127add_app.svg">
+                class="ios-app"
+                href="javascript:;"
+                @click="iosappClick">
+                <i class="iosimg"/>
                 <span>{{ $t('Footer.ModeSensApp') }}</span>
-              </a>
-              <a
-                v-else
-                href="https://itunes.apple.com/app/id976201094"
-                target="_blank">
-                <img src="https://mds0.com/static/img/20190107Mobileios.svg">
               </a>
             </li>
             <li class="install-box"><a
-              :href="isPC ? 'javascript:;' : 'https://modesens.com/s/android_cn/'"
-              @click="isPC ? 'myInstallChromeExtention' : ''">
-              <img :src="isPC ? 'https://mds0.com/static/img/20181127add_browse.svg' : 'https://mds0.com/static/img/20190107Mobileandroid.svg'">
+              class="android-app"
+              href="javascript:;"
+              @click="myInstallChromeExtention">
+              <i class="androidimg"/>
               <span v-if="isPC">{{ $t('Footer.Addtobrowser') }}</span>
             </a></li>
           </ul>
         </div>
         <div
           v-if="lsuser"
-          class="wrap-item">
+          class="wrap-item"
+          style="width: 300px">
           <h6 class="footer-title">{{ $t('Footer.classtitle5') }}</h6>
           <div>{{ $t('Footer.class5desc') }}</div>
           <input
@@ -279,6 +275,7 @@ export default {
       }
     },
     async shareInvite() {
+      console.log(333333)
       var emails = this.shareEmail.trim()
       let toinvite = []
       $.each(emails.split(','), function(index, value) {
@@ -301,10 +298,21 @@ export default {
       alert(this.shareEmail + this.$t(' is(are) invited'))
     },
     myInstallChromeExtention() {
-      installChromeExtention()
+      if ($(document).width() > 1199) {
+        installChromeExtention()
+      } else {
+        window.open('https://modesens.com/s/android_cn/', '_blank')
+      }
     },
     hideAppEntranceModal() {
       this.$refs.appentranceModal.hide()
+    },
+    iosappClick() {
+      if ($(document).width > 1199) {
+        this.$root.$emit('bv::show::modal', 'app-entrance')
+      } else {
+        window.open('https://itunes.apple.com/app/id976201094', '_blank')
+      }
     }
   }
 }
