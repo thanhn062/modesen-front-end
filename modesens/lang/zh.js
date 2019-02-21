@@ -473,6 +473,7 @@ export const nav = {
   LOGINTOBUILDMYCLOSET: '登陆管理我的衣橱',
   WHOTOFOLLOW: '时尚达人',
   Follow: '关注',
+  Following: '已关注',
   CLOTHING: '服装',
   BAGS: '箱包',
   SHOES: '鞋履',

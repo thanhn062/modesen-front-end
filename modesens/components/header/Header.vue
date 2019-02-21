@@ -362,7 +362,6 @@ export default {
         secretkey: process.env.secretKey
       })
       this.COUNTRIES = COUNTRIES
-      console.log(this.COUNTRIES)
     },
     langChange(val) {
       let path = this.switchLocalePath(this.$i18n.country, val)

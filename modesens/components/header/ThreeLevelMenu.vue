@@ -1472,7 +1472,7 @@
                       target="_blank">{{ e.username }}</a>
                     <div
                       class="text-center follow-btn"
-                      @click="followEvent(e.username, e.uid, 'follow')">{{ $t('nav.Follow') }}</div>
+                      @click="followEvent(i, e.username, e.uid, 'follow')">{{ $t('nav.Follow') }}</div>
                   </div>
                 </li>
               </ul>
@@ -1605,9 +1605,9 @@ export default {
       $('#spmsg').html(this.$t('Modals.JoinModeSens'))
       this.$root.$emit('bv::show::modal', 'spmodal')
     },
-    followEvent(username, uid, action) {
+    followEvent(i, username, uid, action) {
       if (this.$store.state.login_status) {
-        this.postFollow(action, uid)
+        this.postFollow(i, action, uid)
       } else {
         $('#spmsg').html(
           this.$t('nav.JoinModeSenstofollow') +
@@ -1623,7 +1623,11 @@ export default {
       data.uni = 1
       data.feuid = uid
       let obj = await this.$axios.post('/follow/', data)
-      console.log(obj)
+      if (obj.action === 'follow') {
+        $('.follow-btn')
+          .eq(i)
+          .html(this.$t('nav.Following'))
+      }
     }
   }
 }

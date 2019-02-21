@@ -473,6 +473,7 @@ export const nav = {
   LOGINTOBUILDMYCLOSET: 'LOGIN TO BUILD MY CLOSET',
   WHOTOFOLLOW: 'WHO TO FOLLOW',
   Follow: 'Follow',
+  Following: 'Following',
   CLOTHING: 'CLOTHING',
   BAGS: 'BAGS',
   SHOES: 'SHOES',
