@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="aloyalty-con">
     <div
       v-if = "flag1"
       class="membershippage">
@@ -160,7 +160,7 @@ export default {
   },
   mounted() {
     this.activeTab = this.$route.query.tab
-    if (this.$cookies.get(gconfig.ACCESS_TOKEN)) {
+    if (this.$cookies.get(this.gconfig.ACCESS_TOKEN)) {
       this.getUserInfo()
       if (this.$route.query.tab === 'order') {
         this.getOrderInfo()

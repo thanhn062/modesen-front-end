@@ -295,8 +295,8 @@
   </header>
 </template>
 <script>
-import ThreeLevelMenu from './ThreeLevelMenu'
-import NavCategory from './NavCategory'
+import ThreeLevelMenu from '~/components/header/ThreeLevelMenu'
+import NavCategory from '~/components/header/NavCategory'
 import { getBrowse } from '~/assets/js/utils/utils.js'
 export default {
   components: {
