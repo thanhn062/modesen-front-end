@@ -119,6 +119,13 @@
         </div>
       </div>
     </b-modal>
+    <!-- China notice modal -->
+    <b-modal
+      id="noticemodal1"
+      ok-only>
+      <h3>Coming soon for China. Please stay in tune.</h3>
+    </b-modal>
+
   </div>
 </template>
 <script>

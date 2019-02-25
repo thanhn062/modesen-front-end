@@ -296,3 +296,31 @@ export const annual = {
 export const barcodeHelp= {
   desc: '通过扫描条形码（通常位于标签或包装盒上），查找ModeSens上的产品和定价信息。你可以扫描类似下面示例中的条形码，祝你使用愉快！'
 };
+export const Wechat = {
+  fc: "女士服饰",
+  fb: "女士箱包",
+  fs: "女士鞋履",
+  fa: "女士配饰",
+  fbe: "女神美妆",
+  Knit: "针织",
+  Dresses: "连衣裙",
+  Jackets: "夹克",
+  Coats: "外套",
+  Hoodies: "帽衫",
+  Pants: "长裤",
+  Boots: "靴子",
+  Sneakers: "运动鞋",
+  Crossbody_Bags: "斜挎包",
+  Satchels: "提包",
+  Hats: "帽子",
+  Jewelry: "珠宝",
+  mc: "男士服饰",
+  mb: "男士箱包",
+  ms: "男士鞋履",
+  ma: "男士配饰",
+  mbe: "男士护理",
+  hc: '热门分类',
+  hd: '热门品牌',
+  hm: '合作电商',
+};
+

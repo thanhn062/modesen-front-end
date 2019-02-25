@@ -296,3 +296,31 @@ export const annual = {
 export const barcodeHelp= {
   desc: 'Scan an item’s barcode (typically located on the tags or box) to find the product and pricing information on ModeSens. Below are a few examples of barcodes that you could scan. Happy scanning!'
 };
+export const Wechat = {
+  fc: "Women's Clothing",
+  fb: "Women's Bags",
+  fs: "Women's Shoes",
+  fa: "Women's Accessories",
+  fbe: "Women's Beauty",
+  Knit: "Knit",
+  Dresses: "Dresses",
+  Jackets: "Jackets",
+  Coats: "Coats",
+  Hoodies: "Hoodies",
+  Pants: "Pants",
+  Boots: "Boots",
+  Sneakers: "Sneakers",
+  Crossbody_Bags: "Crossbody Bags",
+  Satchels: "Satchels",
+  Hats: "Hats",
+  Jewelry: "Jewelry",
+  mc: "Men's Clothing",
+  mb: "Men's Bags",
+  ms: "Men's Shoes",
+  ma: "Men's Accessories",
+  mbe: "Men's Grooming",
+  hc: 'Hot Categories',
+  hd: 'Hot Designers',
+  hm: 'Hot Merchants',
+};
+
