@@ -1149,7 +1149,7 @@
                   <div class="coupons-first">
                     <a :href="coupons[0].landing_page || '/store/'+coupons[0].merchant.url+'/getlink/'">
                       <span>{{ coupons[0].merchant.name }} : {{ coupons[0].txt }}</span>
-                      <img :src="coupons[0].img_l || coupons[0].merchant.logo">
+                      <img v-lazy="coupons[0].img_l || coupons[0].merchant.logo">
                     </a>
                   </div>
                 </div>
@@ -1417,7 +1417,7 @@
                     target="_blank">
                     <div class="momentimg-box">
                       <img
-                        :src="e.link+'s'"
+                        v-lazy="e.link+'s'"
                         :alt="e.dsp">
                     </div>
                     <div
@@ -1436,7 +1436,7 @@
                 v-if="lsuser"
                 :href="'/u/'+lsuser.username">
                 <div><img
-                  :src="lsuser.icon"
+                  v-lazy="lsuser.icon"
                   :alt="lsuser.username"></div>
                 <span>{{ $t('nav.ORGANIZEMYCLOSET') }}</span>
               </a>
@@ -1444,7 +1444,7 @@
                 v-else
                 @click="openspmodal">
                 <div><img
-                  :src="gconfig.UNLOGIN_ICON"></div>
+                  v-lazy="gconfig.UNLOGIN_ICON"></div>
                 <span>{{ $t('nav.LOGINTOBUILDMYCLOSET') }}</span>
               </div>
             </div>
@@ -1460,7 +1460,7 @@
                     target="_blank"
                     class="d-flex justify-content-center align-items-center follow-usericon">
                     <img
-                      :src="e.icon"
+                      v-lazy="e.icon"
                       class="w-100">
                   </a>
                   <i/>
@@ -1532,6 +1532,7 @@ export default {
     }
   },
   mounted() {
+    this.getnavhead()
     // if ($(document).width() > 1199) {
     //   let headerH = $('.header').height()
     //   console.log(
@@ -1549,16 +1550,16 @@ export default {
     // }
   },
   methods: {
+    async getnavhead() {
+      let { navHeadJson } = await this.$axios.get('/getnavhead/', {
+        params: {}
+      })
+      this.navHeadJson = navHeadJson
+    },
     changeFirstLevelIndex(index) {
       clearTimeout(this.menuTimer1)
       this.menuTimer1 = setTimeout(async () => {
         this.firstLevelIndex = index
-        if (index === 5) {
-          let { navHeadJson } = await this.$axios.get('/getnavhead/', {
-            params: {}
-          })
-          this.navHeadJson = navHeadJson
-        }
       }, 300)
     },
     changeSecondLevelIndex(index) {

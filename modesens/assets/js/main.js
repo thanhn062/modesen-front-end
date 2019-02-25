@@ -1,6 +1,10 @@
 import Vue from 'vue'
+//引入点击控件外部区域插件
 import vClickOutside from 'v-click-outside'
 Vue.use(vClickOutside)
+//引入懒加载插件
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
 
 // 引入公共变量和方法
 import {gconfig} from '~/assets/js/gconfig.js'
