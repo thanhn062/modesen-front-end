@@ -15,7 +15,7 @@
               <li class="kind-item">
                 <a 
                   href="/product/women/clothing/"
-                  target="_slef">
+                  target="_self">
                   <img
                     :src="countryUrl+female_0.icon"
                     alt="">
@@ -211,7 +211,7 @@
               <li class="kind-item">
                 <a 
                   href="/product/men/clothing/"
-                  target="_slef">
+                  target="_self">
                   <img
                     :src="countryUrl+male_0.icon"
                     alt="">
