@@ -441,22 +441,22 @@ export default {
         secretkey: process.env.secretKey
       })
       this.countryUrl = configinfo.CDN_HOST
-      this.female_0 = configinfo.CLASSIFICATION.female.categories[0]
-      this.female_1 = configinfo.CLASSIFICATION.female.categories[1]
-      this.female_2 = configinfo.CLASSIFICATION.female.categories[2]
-      this.female_3 = configinfo.CLASSIFICATION.female.categories[3]
-      this.female_4 = configinfo.CLASSIFICATION.female.categories[4]
-      this.f_menus = configinfo.CLASSIFICATION.female.hot_menu
-      this.f_designers = configinfo.CLASSIFICATION.female.hot_designers
-      this.f_merchants = configinfo.CLASSIFICATION.female.hot_merchants
-      this.male_0 = configinfo.CLASSIFICATION.male.categories[0]
-      this.male_1 = configinfo.CLASSIFICATION.male.categories[1]
-      this.male_2 = configinfo.CLASSIFICATION.male.categories[2]
-      this.male_3 = configinfo.CLASSIFICATION.male.categories[3]
-      this.male_4 = configinfo.CLASSIFICATION.male.categories[4]
-      this.m_menus = configinfo.CLASSIFICATION.male.hot_menu
-      this.m_designers = configinfo.CLASSIFICATION.male.hot_designers
-      this.m_merchants = configinfo.CLASSIFICATION.male.hot_merchants
+      this.female_0 = configinfo.SHOP_MENUS[0].main_menus[0]
+      this.female_1 = configinfo.SHOP_MENUS[0].main_menus[1]
+      this.female_2 = configinfo.SHOP_MENUS[0].main_menus[2]
+      this.female_3 = configinfo.SHOP_MENUS[0].main_menus[3]
+      this.female_4 = configinfo.SHOP_MENUS[0].main_menus[4]
+      this.f_menus = configinfo.SHOP_MENUS[0].hot_menus
+      this.f_designers = configinfo.SHOP_MENUS[0].hot_designers
+      this.f_merchants = configinfo.SHOP_MENUS[0].hot_merchants
+      this.male_0 = configinfo.SHOP_MENUS[1].main_menus[0]
+      this.male_1 = configinfo.SHOP_MENUS[1].main_menus[1]
+      this.male_2 = configinfo.SHOP_MENUS[1].main_menus[2]
+      this.male_3 = configinfo.SHOP_MENUS[1].main_menus[3]
+      this.male_4 = configinfo.SHOP_MENUS[1].main_menus[4]
+      this.m_menus = configinfo.SHOP_MENUS[1].hot_menus
+      this.m_designers = configinfo.SHOP_MENUS[1].hot_designers
+      this.m_merchants = configinfo.SHOP_MENUS[1].hot_merchants
     },
     currentGender: function(gendertab) {
       $('.nav-link').css('color', '#8e8e8e')
