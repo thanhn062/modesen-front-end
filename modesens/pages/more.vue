@@ -10,7 +10,7 @@
           class="d-flex justify-content-between align-items-center h-100">
           <span>{{ menu.title }}</span>
           <img
-            :src="moreimg"
+            v-lazy="moreimg"
             alt="">
         </a>
       </li>

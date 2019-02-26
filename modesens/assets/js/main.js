@@ -1,3 +1,8 @@
+import Vue from 'vue'
+// 引入懒加载
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
 //浏览器端功能
 if (process.browser){
   $(document).ready(function() {
