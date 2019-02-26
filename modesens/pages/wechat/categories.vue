@@ -96,7 +96,7 @@
                     <img
                       :src="countryUrl+f_menu.icon"
                       alt="">
-                    <div class="filter-item-title">{{ f_menu.subcategory | menuname }}</div>
+                    <div class="filter-item-title">{{ $t('Wechat. f_subcategory' + index) }}</div>
                   </a>
                   <a
                     v-else-if="f_menu.category === 'b'"
@@ -105,7 +105,7 @@
                     <img
                       :src="countryUrl+f_menu.icon"
                       alt="">
-                    <div class="filter-item-title">{{ f_menu.subcategory | menuname }}</div>
+                    <div class="filter-item-title">{{ $t('Wechat. f_subcategory' + index) }}</div>
                   </a>
                   <a
                     v-else-if="f_menu.category === 's'"
@@ -114,7 +114,7 @@
                     <img
                       :src="countryUrl+f_menu.icon"
                       alt="">
-                    <div class="filter-item-title">{{ f_menu.subcategory | menuname }}</div>
+                    <div class="filter-item-title">{{ $t('Wechat. f_subcategory' + index) }}</div>
                   </a>
                   <a
                     v-else-if="f_menu.category === 'a'"
@@ -123,7 +123,7 @@
                     <img
                       :src="countryUrl+f_menu.icon"
                       alt="">
-                    <div class="filter-item-title">{{ f_menu.subcategory | menuname }}</div>
+                    <div class="filter-item-title">{{ $t('Wechat. f_subcategory' + index) }}</div>
                   </a>
                 </div>
               </li>
@@ -292,7 +292,7 @@
                     <img
                       :src="countryUrl+m_menu.icon"
                       alt="">
-                    <div class="filter-item-title">{{ m_menu.subcategory | menuname }}</div>
+                    <div class="filter-item-title">{{ $t('Wechat. m_subcategory' + index) }}</div>
                   </a>
                   <a
                     v-else-if="m_menu.category === 'b'"
@@ -301,7 +301,7 @@
                     <img
                       :src="countryUrl+m_menu.icon"
                       alt="">
-                    <div class="filter-item-title">{{ m_menu.subcategory | menuname }}</div>
+                    <div class="filter-item-title">{{ $t('Wechat. m_subcategory' + index) }}</div>
                   </a>
                   <a
                     v-else-if="m_menu.category === 's'"
@@ -310,7 +310,7 @@
                     <img
                       :src="countryUrl+m_menu.icon"
                       alt="">
-                    <div class="filter-item-title">{{ m_menu.subcategory | menuname }}</div>
+                    <div class="filter-item-title">{{ $t('Wechat. m_subcategory' + index) }}</div>
                   </a>
                   <a
                     v-else-if="m_menu.category === 'a'"
@@ -319,7 +319,7 @@
                     <img
                       :src="countryUrl+m_menu.icon"
                       alt="">
-                    <div class="filter-item-title">{{ m_menu.subcategory | menuname }}</div>
+                    <div class="filter-item-title">{{ $t('Wechat. m_subcategory' + index) }}</div>
                   </a>
                 </div>
               </li>
@@ -401,23 +401,8 @@
   </section>
 </template>
 <script>
-import { menuname } from '~/static/utils/utils.js'
 export default {
   layout: 'noframe',
-  filters: {
-    menuname: function(str) {
-      if (str.indexOf(';') != -1) {
-        var arr = str.split(';')
-        var newStr = arr[arr.length - 1]
-        return newStr
-      } else if (str.indexOf(' ') != -1) {
-        var newstr = str.replace(' ', '_')
-        return newstr
-      } else {
-        return str
-      }
-    }
-  },
   data() {
     return {
       countryUrl: '',
