@@ -176,7 +176,7 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/'+f_merchant.murl+'-women/'"
+                  :href="'/store/'+f_merchant.murl+'-women/'"
                   target="_self">
                   <div class="filter-item-box">
                     <img
@@ -372,7 +372,7 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/'+m_merchant.murl+'-men'"
+                  :href="'/store/'+m_merchant.murl+'-men'"
                   target="_self">
                   <div class="filter-item-box">
                     <img
