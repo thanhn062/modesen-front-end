@@ -466,5 +466,5 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-@import '../../assets/css/wechat/categories.less';
+@import '../assets/css/shop.less';
 </style>
