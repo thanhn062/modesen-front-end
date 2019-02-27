@@ -17,7 +17,7 @@
                   href="/product/women/clothing/"
                   target="_self">
                   <img
-                    :src="countryUrl+female_0.icon"
+                    v-lazy="countryUrl+female_0.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fc') }}</div>
                 </a>
@@ -27,7 +27,7 @@
                   href="/product/women/bags/"
                   target="_self">   
                   <img
-                    :src="countryUrl+female_1.icon"
+                    v-lazy="countryUrl+female_1.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fb') }}</div>
                 </a>
@@ -39,7 +39,7 @@
                   href="/product/women/shoes/"
                   target="_self">  
                   <img
-                    :src="countryUrl+female_2.icon"
+                    v-lazy="countryUrl+female_2.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fs') }}</div>
                 </a>
@@ -49,7 +49,7 @@
                   href="/product/women/accessories/"
                   target="_self">
                   <img
-                    :src="countryUrl+female_3.icon"
+                    v-lazy="countryUrl+female_3.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fa') }}</div>
                 </a>
@@ -61,7 +61,7 @@
                   href="#"
                   target="_self">   
                   <img
-                    :src="countryUrl+female_4.icon"
+                    v-lazy="countryUrl+female_4.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fbe') }}</div>
                 </a>
@@ -70,7 +70,7 @@
                   href="/product/women/beauty/"
                   target="_self">   
                   <img
-                    :src="countryUrl+female_4.icon"
+                    v-lazy="countryUrl+female_4.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fbe') }}</div>
                 </a>
@@ -94,7 +94,7 @@
                     :href="'/product/women/clothing/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory"
                     target="_self">  
                     <img
-                      :src="countryUrl+f_menu.icon"
+                      v-lazy="countryUrl+f_menu.icon"
                       alt="">
                     <div class="filter-item-title">{{ $t('Wechat. f_subcategory' + index) }}</div>
                   </a>
@@ -103,7 +103,7 @@
                     :href="'/product/women/bags/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory"
                     target="_self">  
                     <img
-                      :src="countryUrl+f_menu.icon"
+                      v-lazy="countryUrl+f_menu.icon"
                       alt="">
                     <div class="filter-item-title">{{ $t('Wechat. f_subcategory' + index) }}</div>
                   </a>
@@ -112,7 +112,7 @@
                     :href="'/product/women/shoes/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory"
                     target="_self">  
                     <img
-                      :src="countryUrl+f_menu.icon"
+                      v-lazy="countryUrl+f_menu.icon"
                       alt="">
                     <div class="filter-item-title">{{ $t('Wechat. f_subcategory' + index) }}</div>
                   </a>
@@ -121,7 +121,7 @@
                     :href="'/product/women/accessories/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory"
                     target="_self">  
                     <img
-                      :src="countryUrl+f_menu.icon"
+                      v-lazy="countryUrl+f_menu.icon"
                       alt="">
                     <div class="filter-item-title">{{ $t('Wechat. f_subcategory' + index) }}</div>
                   </a>
@@ -145,7 +145,7 @@
                   target="_self">
                   <div class="filter-item-box">
                     <img
-                      :src="f_designer.logo"
+                      v-lazy="f_designer.logo"
                       alt="">
                   </div>
                 </a>
@@ -156,7 +156,7 @@
                   target="_self"> 
                   <div class="filter-item-box to-more-box">
                     <img
-                      src="/img/more 02@2x.png"
+                      v-lazy="'/img/more 02@2x.png'"
                       alt="">
                     <div class="to-more">More</div>
                   </div>
@@ -180,7 +180,7 @@
                   target="_self">
                   <div class="filter-item-box">
                     <img
-                      :src="f_merchant.logo"
+                      v-lazy="f_merchant.logo"
                       alt="">
                   </div>
                 </a>
@@ -191,7 +191,7 @@
                   target="_self">
                   <div class="filter-item-box to-more-box">
                     <img
-                      src="/img/more 02@2x.png"
+                      v-lazy="'/img/more 02@2x.png'"
                       alt="">
                     <div class="to-more">More</div>
                   </div>
@@ -213,7 +213,7 @@
                   href="/product/men/clothing/"
                   target="_self">
                   <img
-                    :src="countryUrl+male_0.icon"
+                    v-lazy="countryUrl+male_0.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.mc') }}</div>
                 </a>
@@ -223,7 +223,7 @@
                   href="/product/men/bags/"
                   target="_self">   
                   <img
-                    :src="countryUrl+male_1.icon"
+                    v-lazy="countryUrl+male_1.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.mb') }}</div>
                 </a>
@@ -235,7 +235,7 @@
                   href="/product/men/shoes/"
                   target="_self">  
                   <img
-                    :src="countryUrl+male_2.icon"
+                    v-lazy="countryUrl+male_2.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.ms') }}</div>
                 </a>
@@ -245,7 +245,7 @@
                   href="/product/men/accessories/"
                   target="_self">
                   <img
-                    :src="countryUrl+male_3.icon"
+                    v-lazy="countryUrl+male_3.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.ma') }}</div>
                 </a>
@@ -257,7 +257,7 @@
                   href="#"
                   target="_self">   
                   <img
-                    :src="countryUrl+male_4.icon"
+                    v-lazy="countryUrl+male_4.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.mbe') }}</div>
                 </a>
@@ -266,7 +266,7 @@
                   href="/product/men/beauty/"
                   target="_self">   
                   <img
-                    :src="countryUrl+male_4.icon"
+                    v-lazy="countryUrl+male_4.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.mbe') }}</div>
                 </a>
@@ -290,7 +290,7 @@
                     :href="'/product/men/clothing/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory"
                     target="_self">  
                     <img
-                      :src="countryUrl+m_menu.icon"
+                      v-lazy="countryUrl+m_menu.icon"
                       alt="">
                     <div class="filter-item-title">{{ $t('Wechat. m_subcategory' + index) }}</div>
                   </a>
@@ -299,7 +299,7 @@
                     :href="'/product/men/bags/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory"
                     target="_self">  
                     <img
-                      :src="countryUrl+m_menu.icon"
+                      v-lazy="countryUrl+m_menu.icon"
                       alt="">
                     <div class="filter-item-title">{{ $t('Wechat. m_subcategory' + index) }}</div>
                   </a>
@@ -308,7 +308,7 @@
                     :href="'/product/men/shoes/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory"
                     target="_self">  
                     <img
-                      :src="countryUrl+m_menu.icon"
+                      v-lazy="countryUrl+m_menu.icon"
                       alt="">
                     <div class="filter-item-title">{{ $t('Wechat. m_subcategory' + index) }}</div>
                   </a>
@@ -317,7 +317,7 @@
                     :href="'/product/men/accessories/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory"
                     target="_self">  
                     <img
-                      :src="countryUrl+m_menu.icon"
+                      v-lazy="countryUrl+m_menu.icon"
                       alt="">
                     <div class="filter-item-title">{{ $t('Wechat. m_subcategory' + index) }}</div>
                   </a>
@@ -341,7 +341,7 @@
                   target="_self">
                   <div class="filter-item-box">
                     <img
-                      :src="m_designer.logo"
+                      v-lazy="m_designer.logo"
                       alt="">
                   </div>
                 </a>
@@ -352,7 +352,7 @@
                   target="_self"> 
                   <div class="filter-item-box to-more-box">
                     <img
-                      src="/img/more 02@2x.png"
+                      v-lazy="'/img/more 02@2x.png'"
                       alt="">
                     <div class="to-more">More</div>
                   </div>
@@ -376,7 +376,7 @@
                   target="_self">
                   <div class="filter-item-box">
                     <img
-                      :src="m_merchant.logo"
+                      v-lazy="m_merchant.logo"
                       alt="">
                   </div>
                 </a>
@@ -387,7 +387,7 @@
                   target="_self">
                   <div class="filter-item-box to-more-box">
                     <img
-                      src="/img/more 02@2x.png"
+                      v-lazy="'/img/more 02@2x.png'"
                       alt="">
                     <div class="to-more">More</div>
                   </div>
