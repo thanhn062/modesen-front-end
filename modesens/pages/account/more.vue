@@ -23,12 +23,12 @@ export default {
   data() {
     return {
       menus: [
-        { title: 'My Loyalty', url: '/account/loyalty/' },
-        { title: 'My Closet', url: '' },
-        { title: 'My Offers', url: '/product/coupons/' },
-        { title: 'My Orders', url: '/account/orders/' },
-        { title: 'Settings', url: '/accounts/profile/' },
-        { title: 'Invite Friends', url: '/invite/' }
+        { title: this.$t('nav.MyLoyalty'), url: '/account/loyalty/' },
+        { title: this.$t('nav.MyCloset'), url: '' },
+        { title: this.$t('nav.MyOffers'), url: '/product/coupons/' },
+        { title: this.$t('nav.MyOrders'), url: '/account/orders/' },
+        { title: this.$t('nav.Settings'), url: '/accounts/profile/' },
+        { title: this.$t('nav.InviteFriends'), url: '/invite/' }
       ],
       moreimg: '/img/20190225jiantou.svg'
     }
