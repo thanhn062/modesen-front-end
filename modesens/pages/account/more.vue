@@ -45,7 +45,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-@import '../assets/css/common.less';
+@import '../../assets/css/common.less';
 .more-container {
   .menulist {
     padding: 0 30px;
