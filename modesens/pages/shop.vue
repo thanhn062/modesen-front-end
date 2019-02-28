@@ -141,7 +141,7 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/'+f_designer.durl+'-women/'"
+                  :href="'/'+f_designer.url+'-women/'"
                   target="_self">
                   <div class="filter-item-box">
                     <img
@@ -176,7 +176,7 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/store/'+f_merchant.murl+'-women/'"
+                  :href="'/store/'+f_merchant.url+'-women/'"
                   target="_self">
                   <div class="filter-item-box">
                     <img
@@ -337,7 +337,7 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/'+m_designer.durl+'-men/'"
+                  :href="'/'+m_designer.url+'-men/'"
                   target="_self">
                   <div class="filter-item-box">
                     <img
@@ -372,7 +372,7 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/store/'+m_merchant.murl+'-men'"
+                  :href="'/store/'+m_merchant.url+'-men'"
                   target="_self">
                   <div class="filter-item-box">
                     <img
