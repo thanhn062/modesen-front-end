@@ -239,9 +239,9 @@
             next-text=">"
             @input="orderpageSwitching"/>
           <a
-            href="/orderinquery/"
+            href="/orderinquiry/"
             target="_blank"
-            class="toIquery">{{ $t('accountOrder.Orderinquery') }}</a>
+            class="toIquery">{{ $t('accountOrder.Orderinquiry') }}</a>
         </div>       
       </div> 
       <div

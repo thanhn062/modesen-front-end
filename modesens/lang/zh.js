@@ -268,7 +268,7 @@ export const accountOrder = {
   All: '全部',
   Completed: '已完成',
   Active: '进行中',
-  Orderinquery: '追踪订单'
+  Orderinquiry: '追踪订单'
 };
 export const annual = {
   MemberSince: '会员始于',

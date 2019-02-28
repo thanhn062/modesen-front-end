@@ -268,7 +268,7 @@ export const accountOrder = {
   All: 'All',
   Completed: 'Completed',
   Active: 'Active',
-  Orderinquery: 'Order Inquery'
+  Orderinquiry: 'Order Inquiry'
 };
 export const annual = {
   MemberSince: 'Member Since',
