@@ -19,7 +19,7 @@
 </template>
 <script>
 export default {
-  // layout: 'noframe',
+  layout: 'noframe',
   data() {
     return {
       menus: [
