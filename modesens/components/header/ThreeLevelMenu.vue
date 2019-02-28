@@ -108,8 +108,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="product/women/clothing/jackets/#page=1&category=c&subcategory=Jackets%3B">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_f_j.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_f_j.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -206,8 +206,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="/product/women/bags/belt%20bags/#page=1&category=b&subcategory=Belt%20Bags%3B">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_f_b.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_f_b.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -295,8 +295,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="/product/women/shoes/pumps/#page=1&category=s&subcategory=Pumps%3B">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_f_s.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_f_s.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -408,8 +408,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="/product/women/accessories/jewelry/#page=1&category=a">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_f_jy.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_f_jy.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -504,8 +504,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="/product/women/beauty/skincare/#page=1&category=e&subcategory=Skincare%3B">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_f_ski.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_f_ski.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -557,8 +557,9 @@
                   <div class="menucategory-title">{{ $t('nav.POPULARCATEGORY') }}</div>
                   <div class="menucategory-desc">{{ $t('nav.WOMENSJACKETS') }}</div>
                   <div><a href="/product/women/clothing/jackets/?orderby=-betterprice_time"><img
-                    class="sale-img lazyload"
-                    src="https://mds0.com/static/img/20180905SALE.png"></a></div>
+                    v-lazy="'https://mds0.com/static/img/20180905SALE.png'"
+                    class="sale-img"
+                    alt=""></a></div>
                 </div>
               </div>
             </ul>
@@ -667,8 +668,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="/product/men/clothing/jackets/#page=1&category=c&subcategory=Jackets%3B">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_m_j.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_m_j.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -760,8 +761,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="/product/men/bags/belt%20bags/#page=1&category=b&subcategory=Belt%20Bags%3B">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_m_b.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_m_b.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -847,8 +848,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="/product/men/shoes/sneakers/#page=1&category=s&subcategory=Sneakers%3B">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_m_s.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_m_s.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -952,8 +953,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="/product/men/accessories/hats/#page=1&category=a&subcategory=Hats%3B">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_m_h.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_m_h.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -1040,8 +1041,8 @@
                   <div class="prd-recommend-wrapper">
                     <a href="/product/men/grooming/#page=1&category=e&subcategory=Fragrance%3B">
                       <img
-                        class="lazyload"
-                        src="https://mds0.com/static/img/20180930navi_m_ski.jpg">
+                        v-lazy="'https://mds0.com/static/img/20180930navi_m_ski.jpg'"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -1095,8 +1096,9 @@
                   <div class="menucategory-desc">{{ $t('nav.MENSJACKETS') }}</div>
                   <div><a href="/product/men/clothing/jackets/?orderby=-betterprice_time">
                     <img
-                      class="sale-img lazyload"
-                      src="https://mds0.com/static/img/20180905SALE.png">
+                      v-lazy="'https://mds0.com/static/img/20180905SALE.png'"
+                      class="sale-img"
+                      alt="">
                   </a></div>
                 </div>
               </div>
@@ -1200,8 +1202,9 @@
                   <div class="menucategory-title">{{ $t('nav.POPULARCATEGORY') }}</div>
                   <div class="menucategory-desc">{{ $t('nav.WOMENSJACKETS') }}</div>
                   <div><a href="/product/women/clothing/jackets/?orderby=-betterprice_time"><img
-                    class="sale-img lazyload"
-                    src="https://mds0.com/static/img/20180905SALE.png"></a></div>
+                    v-lazy="'https://mds0.com/static/img/20180905SALE.png'"
+                    class="sale-img"
+                    alt=""></a></div>
                 </div>
               </div>
             </ul>
@@ -1250,8 +1253,9 @@
                   <div class="menucategory-title">{{ $t('nav.POPULARCATEGORY') }}</div>
                   <div class="menucategory-desc">{{ $t('nav.MENSJACKETS') }}</div>
                   <div><a href="/product/men/clothing/jackets/?orderby=-betterprice_time"><img
-                    class="sale-img lazyload"
-                    src="https://mds0.com/static/img/20180905SALE.png"></a></div>
+                    v-lazy="'https://mds0.com/static/img/20180905SALE.png'"
+                    class="sale-img"
+                    alt=""></a></div>
                 </div>
               </div>
             </ul>
@@ -1304,8 +1308,8 @@
                     target="_blank"
                     href="/GUCCI-women/">
                     <img
-                      class="lazyload"
-                      src="https://mds0.com/static/img/mini_header/w_designer.jpg">
+                      v-lazy="'https://mds0.com/static/img/mini_header/w_designer.jpg'"
+                      alt="">
                   </a>
                 </div>
               </div>
@@ -1372,7 +1376,9 @@
               :placeholder="$t('nav.FILTERBYDESIGNERNAME')"
               type="text"
               @keyup="searchKeyUp">
-            <img src="https://mds0.com/static/img/20180905search_b.svg">
+            <img
+              v-lazy="'https://mds0.com/static/img/20180905search_b.svg'"
+              alt="">
             <ul
               v-if="secondLevelIndex===28 && designers"
               :style="thirdmenuStyle"

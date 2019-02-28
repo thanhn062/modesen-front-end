@@ -120,7 +120,7 @@
       <div class="footer-bottom">
         <div class="footer-logo-con">
           <img
-            src="/img/20180905footer_logo.svg"
+            v-lazy="'/img/20180905footer_logo.svg'"
             class="footer-logo">
           <span v-if="$i18n.country === 'cn'">© 2018, 尚睿科技（北京）有限公司<br>京 ICP 备 16029930号</span>
           <span v-else>© 2018, ModeSens Inc</span>
@@ -129,32 +129,32 @@
           <a
             href="https://www.pinterest.com/modesens/"
             target="_blank"><img
-              src="/img/20181008footer-pit.svg"
+              v-lazy="'/img/20181008footer-pit.svg'"
               class="footer-mini-img"
               style="width: 30px;margin-right: 20px;"></a>
           <a
             href="https://twitter.com/modesens"
             target="_blank"><img
-              src="/img/20181008footer-tt.svg"
+              v-lazy="'/img/20181008footer-tt.svg'"
               class="footer-mini-img"
               style="width: 30px;margin-right: 10px;"></a>
           <a
             href="https://www.instagram.com/modesens/"
             target="_blank"><img
-              src="/img/footer-p.svg"
+              v-lazy="'/img/footer-p.svg'"
               class="footer-mini-img"></a>
           <a
             href="https://www.facebook.com/modesens"
             target="_blank"><img
-              src="/img/footer-fb.svg"
+              v-lazy="'/img/footer-fb.svg'"
               class="footer-mini-img"></a>
           <a
             href="https://weibo.com/5365182498/profile?topnav=1&wvr=6&is_all=1"
             target="_blank"><img
-              src="/img/footer-wb.svg"
+              v-lazy="'/img/footer-wb.svg'"
               class="footer-mini-img"></a>
           <a href="javascript:;"><img
-            src="/img/footer-wx.svg"
+            v-lazy="'/img/footer-wx.svg'"
             class="footer-mini-img"></a>
         </div>
       </div>
@@ -201,28 +201,28 @@
       <div class="apptitle">{{ $t('common.DownloadApp') }}</div>
       <div class="applistbox">
         <div class="app-box">
-          <img src="https://mds0.com/static/img/20190103ios_QR_code.png">
+          <img v-lazy="'https://mds0.com/static/img/20190103ios_QR_code.png'">
           <a
             href="https://itunes.apple.com/app/id976201094"
             target="_blank">
             <button class="btn-theme">
-              <img src="https://mds0.com/static/img/20181127ioslogo.svg">
+              <img v-lazy="'https://mds0.com/static/img/20181127ioslogo.svg'">
               {{ $t('common.IOSApp') }}
             </button>
           </a>
         </div>
         <div class="app-box">
           <img
-            v-if="$i18n.country === 'cn'"
-            src="https://mds0.com/static/img/20181229android_QR_code_cn.png">
+            v-lazy="'https://mds0.com/static/img/20181229android_QR_code_cn.png'"
+            v-if="$i18n.country === 'cn'">
           <img
-            v-else
-            src="https://mds0.com/static/img/20181229android_QR_code_gconfig.png">
+            v-lazy="'https://mds0.com/static/img/20181229android_QR_code_gconfig.png'"
+            v-else>
           <a
             href="https://modesens.com/s/android_cn/"
             target="_blank">
             <button class="btn-theme">
-              <img src="https://mds0.com/static/img/20181127androidlogo.svg">
+              <img v-lazy="'https://mds0.com/static/img/20181127androidlogo.svg'">
               {{ $t('common.AndroidApp') }}
             </button>
           </a>

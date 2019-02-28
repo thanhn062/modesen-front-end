@@ -3,7 +3,7 @@
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('common.WOMEN') }}
-        <img :src="gconfig.SIDEBAR_MORE">
+        <img v-lazy="gconfig.SIDEBAR_MORE">
       </template>
       <b-dropdown-item href="/product/women/clothing/">{{ $t('nav.CLOTHING') }}</b-dropdown-item>
       <b-dropdown-item href="/product/women/bags/">{{ $t('nav.BAGS') }}</b-dropdown-item>
@@ -20,7 +20,7 @@
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('common.MEN') }}
-        <img :src="gconfig.SIDEBAR_MORE">
+        <img v-lazy="gconfig.SIDEBAR_MORE">
       </template>
       <b-dropdown-item href="/product/men/clothing/">{{ $t('nav.CLOTHING') }}</b-dropdown-item>
       <b-dropdown-item href="/product/men/bags/">{{ $t('nav.BAGS') }}</b-dropdown-item>
@@ -37,7 +37,7 @@
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('common.OFFERS') }}
-        <img :src="gconfig.SIDEBAR_MORE">
+        <img v-lazy="gconfig.SIDEBAR_MORE">
       </template>
       <b-dropdown-item href="/product/coupons/">{{ $t('nav.COUPONS') }}</b-dropdown-item>
       <b-dropdown-item href="/product/women/sale/">{{ $t('nav.WOMENSSALE') }}</b-dropdown-item>

@@ -5,7 +5,7 @@
       v-if="$i18n.locale!=='zh'"
       id="popLink"
       class="d-none d-flex justify-content-center align-items-center">
-      <img src="https://mds0.com/static/img/20180929logo.svg">
+      <img v-lazy="'https://mds0.com/static/img/20180929logo.svg'">
       <a
         href="/shopping-assistant/"
         data-ga-click="headerNav-Stores"><span>Shop like a pro - Get your smart fashion <b>SHOPPING ASSISTANT</b></span></a>
@@ -14,28 +14,28 @@
           v-if="mybrowse==='Chrome'"
           class="modelinkbrowsebtn chrome-install-button"
           @click="installChromeExtention">
-          <img src="https://mds0.com/navi/20171102chromelogo.png">
+          <img v-lazy="gconfig.CHROME_LOGO">
           <span>{{ $t('nav.InstallNow') }}</span>
         </div>
         <div
           v-else-if="mybrowse==='QQBrowser'"
           class="modelinkbrowsebtn chrome-install-button"
           @click="installChromeExtention">
-          <img src="https://mds0.com/navi/20171102qqbrowserlogo.png">
+          <img v-lazy="gconfig.QQBROWSER_LOGO">
           <span>{{ $t('nav.InstallNow') }}</span>
         </div>
         <div
           v-else-if="mybrowse==='Opera'"
           class="modelinkbrowsebtn opera-install-button btn-primary"
           @click="installOperaExtention">
-          <img src="https://mds0.com/navi/20171102operalogo.png">
+          <img v-lazy="gconfig.OPERA_LOGO">
           <span>{{ $t('nav.InstallNow') }}</span>
         </div>
         <div
           v-else-if="mybrowse==='FF'"
           class="modelinkbrowsebtn ff-install-button btn-primary"
           @click="installFFExtention">
-          <img src="https://mds0.com/navi/20171102firefoxlogo.png">
+          <img v-lazy="gconfig.FIREFOX_LOGO">
           <span>{{ $t('nav.InstallNow') }}</span>
         </div>
         <div
@@ -45,7 +45,7 @@
           <a
             href="https://safari-extensions.apple.com/details/?id=com.modesens.shoppingassistant-6EL854LDB8"
             target="_blank">
-            <img src="https://mds0.com/navi/20171102safarilogo.png">
+            <img v-lazy="gconfig.SAFARI_LOGO">
             <span>{{ $t('nav.InstallNow') }}</span>
           </a>
         </div>
@@ -55,17 +55,17 @@
           <div
             class="modelinkbrowsebtnlogo"
             @click="modelinkGoToBrowse('Chrome')">
-            <img src="https://mds0.com/navi/20171102chromelogo.png">
+            <img v-lazy="gconfig.CHROME_LOGO">
           </div>
           <div
             class="modelinkbrowsebtnlogo"
             @click="modelinkGoToBrowse('Firefox')">
-            <img src="https://mds0.com/navi/20171102firefoxlogo.png">
+            <img v-lazy="gconfig.FIREFOX_LOGO">
           </div>
           <div
             class="modelinkbrowsebtnlogo"
             @click="modelinkGoToBrowse('Safari')">
-            <img src="https://mds0.com/navi/20171102safarilogo.png">
+            <img v-lazy="gconfig.SAFARI_LOGO">
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@
                 <i :class="'country-icon country-' + $i18n.country"/>
                 <span class="country-selected">{{ COUNTRIES[$i18n.country.toUpperCase()] ? COUNTRIES[$i18n.country.toUpperCase()][1] : '' }}</span>
                 <span class="country-category">{{ $t('common.COUNTRY') }}</span>
-                <img :src="gconfig.SIDEBAR_MORE">
+                <img v-lazy="gconfig.SIDEBAR_MORE">
               </template>
               <b-dropdown-item
                 v-for="(opt,index) in COUNTRIES"
@@ -118,7 +118,7 @@
               no-caret>
               <template slot="button-content">
                 {{ $t('common.LANGUAGE') }}
-                <img :src="gconfig.SIDEBAR_MORE">
+                <img v-lazy="gconfig.SIDEBAR_MORE">
               </template>
               <b-dropdown-item
                 v-for="locale in $i18n.locales"
@@ -143,17 +143,17 @@
               v-b-modal.mdLogin
               v-if="$store.state.login_status===false"
               href="javascript:;">
-              <img src="https://mds0.com/static/img/20180905account_b.svg">
+              <img v-lazy="'https://mds0.com/static/img/20180905account_b.svg'">
             </a>
             <div
               v-else
               class="d-flex justify-content-between align-items-center authInfo">
               <a
                 v-b-modal.noticeproductmd
-                href="javascript:;"><img src="https://mds0.com/static/img/prd-update-20180504.svg"></a>
+                href="javascript:;"><img v-lazy="'https://mds0.com/static/img/prd-update-20180504.svg'"></a>
               <a
                 v-b-modal.noticeusermd
-                href="javascript:;"><img src="https://mds0.com/static/img/social-update-20180504.svg"></a>
+                href="javascript:;"><img v-lazy="'https://mds0.com/static/img/social-update-20180504.svg'"></a>
               <b-dropdown
                 v-if="lsuser"
                 variant="link"
@@ -161,7 +161,7 @@
                 no-caret>
                 <template slot="text">
                   <a href="javascript:;"><img
-                    :src="lsuser.icon"
+                    v-lazy="lsuser.icon"
                     :alt="lsuser.username"></a>
                 </template>
                 <b-dropdown-item href="/account/loyalty/">{{ $t('nav.MyLoyalty') }}</b-dropdown-item>
@@ -195,8 +195,6 @@
               class="search-btn"
               @click="openSearchInput">
               <div class="search-img"/>
-              <!-- <img
-                src="https://mds0.com/static/img/20180905search_b.svg"> -->
               <span class="search-btn-txt">{{ $t('nav.SEARCH') }}</span>
             </div>
             <div
@@ -207,8 +205,8 @@
                 type="text"
                 @keyup="getHint2">
               <img
-                class="search-icon"
-                src="https://mds0.com/static/img/20180905search_b.svg">
+                v-lazy="'https://mds0.com/static/img/20180905search_b.svg'"
+                class="search-icon">
               <div
                 v-if="searchResult && (Object.keys(searchResult.words).length !== 0 || searchResult.designers || searchResult.users || searchResult.hashtags || searchResult.merchants)"
                 class="searchres-box">
@@ -251,7 +249,7 @@
                         :href="'/u/'+user.username+'/'"
                         target="_blank">
                         <img
-                          :src="user.icon"
+                          v-lazy="user.icon"
                           :title="$t('nav.Visit')+user.username.toLowerCase()+$t('nav.scloset')">
                         <span :class=" user.isofficial ? 'official-icon' : 'mstar-icon'"/>
                         <div class="user-name">{{ user.username.toLowerCase() }}</div>
