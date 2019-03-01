@@ -400,8 +400,6 @@
     </b-tabs>
   </section>
 </template>
-<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js">
-</script>
 <script>
 export default {
   layout: 'noframe',
@@ -427,7 +425,8 @@ export default {
     }
   },
   head: {
-    title: 'ModeSens'
+    title: 'ModeSens',
+    script: [{ src: 'https://res.wx.qq.com/open/js/jweixin-1.3.2.js' }]
   },
   mounted() {
     this.getConfig()
