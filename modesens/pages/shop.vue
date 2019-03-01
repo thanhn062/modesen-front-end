@@ -14,8 +14,8 @@
             <ul class="kinds-box-big">
               <li class="kind-item">
                 <a 
-                  href="/product/women/clothing/"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/product/women/clothing/')">
                   <img
                     v-lazy="countryUrl+female_0.icon"
                     alt="">
@@ -24,8 +24,8 @@
               </li>
               <li class="kind-item">
                 <a
-                  href="/product/women/bags/"
-                  target="_self">   
+                  target="_self"
+                  @click="wechatclick('/product/women/bags/')">   
                   <img
                     v-lazy="countryUrl+female_1.icon"
                     alt="">
@@ -36,8 +36,8 @@
             <ul class="kinds-box-sm">
               <li class="kind-item">
                 <a
-                  href="/product/women/shoes/"
-                  target="_self">  
+                  target="_self"
+                  @click="wechatclick('/product/women/shoes/')">  
                   <img
                     v-lazy="countryUrl+female_2.icon"
                     alt="">
@@ -46,8 +46,8 @@
               </li>
               <li class="kind-item">
                 <a
-                  href="/product/women/accessories/"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/product/women/accessories/')">
                   <img
                     v-lazy="countryUrl+female_3.icon"
                     alt="">
@@ -67,8 +67,8 @@
                 </a>
                 <a
                   v-else
-                  href="/product/women/beauty/"
-                  target="_self">   
+                  target="_self"
+                  @click="wechatclick('/product/women/beauty/')">   
                   <img
                     v-lazy="countryUrl+female_4.icon"
                     alt="">
@@ -91,8 +91,8 @@
                 <div class="filter-item-box">
                   <a
                     v-if="f_menu.category === 'c'"
-                    :href="'/product/women/clothing/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory"
-                    target="_self">  
+                    target="_self"
+                    @click="wechatclick('/product/women/clothing/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory)">  
                     <img
                       v-lazy="countryUrl+f_menu.icon"
                       alt="">
@@ -100,8 +100,8 @@
                   </a>
                   <a
                     v-else-if="f_menu.category === 'b'"
-                    :href="'/product/women/bags/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory"
-                    target="_self">  
+                    target="_self"
+                    @click="wechatclick('/product/women/bags/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory)">  
                     <img
                       v-lazy="countryUrl+f_menu.icon"
                       alt="">
@@ -118,8 +118,8 @@
                   </a>
                   <a
                     v-else-if="f_menu.category === 'a'"
-                    :href="'/product/women/accessories/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory"
-                    target="_self">  
+                    target="_self"
+                    @click="wechatclick('/product/women/accessories/#page=1&category='+f_menu.category+'&subcategory='+f_menu.subcategory)">  
                     <img
                       v-lazy="countryUrl+f_menu.icon"
                       alt="">
@@ -141,8 +141,8 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/'+f_designer.url+'-women/'"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/'+f_designer.url+'-women/')">
                   <div class="filter-item-box">
                     <img
                       v-lazy="f_designer.logo"
@@ -152,8 +152,8 @@
               </li>
               <li class="col-3 filter-item-list">
                 <a
-                  href="/designers/"
-                  target="_self"> 
+                  target="_self"
+                  @click="wechatclick('/designers/')"> 
                   <div class="filter-item-box to-more-box">
                     <img
                       v-lazy="'/img/more 02@2x.png'"
@@ -176,8 +176,8 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/store/'+f_merchant.url+'-women/'"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/store/'+f_merchant.url+'-women/')">
                   <div class="filter-item-box">
                     <img
                       v-lazy="f_merchant.logo"
@@ -187,8 +187,8 @@
               </li>
               <li class="col-3 filter-item-list">
                 <a
-                  href="/stores/"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/stores/')">
                   <div class="filter-item-box to-more-box">
                     <img
                       v-lazy="'/img/more 02@2x.png'"
@@ -210,8 +210,8 @@
             <ul class="kinds-box-big">
               <li class="kind-item">
                 <a 
-                  href="/product/men/clothing/"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/product/men/clothing/')">
                   <img
                     v-lazy="countryUrl+male_0.icon"
                     alt="">
@@ -220,8 +220,8 @@
               </li>
               <li class="kind-item">
                 <a
-                  href="/product/men/bags/"
-                  target="_self">   
+                  target="_self"
+                  @click="wechatclick('/product/men/bags/')">   
                   <img
                     v-lazy="countryUrl+male_1.icon"
                     alt="">
@@ -232,8 +232,8 @@
             <ul class="kinds-box-sm">
               <li class="kind-item">
                 <a
-                  href="/product/men/shoes/"
-                  target="_self">  
+                  target="_self"
+                  @click="wechatclick('/product/men/shoes/')">  
                   <img
                     v-lazy="countryUrl+male_2.icon"
                     alt="">
@@ -242,8 +242,8 @@
               </li>
               <li class="kind-item">
                 <a
-                  href="/product/men/accessories/"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/product/men/accessories/')">
                   <img
                     v-lazy="countryUrl+male_3.icon"
                     alt="">
@@ -263,8 +263,8 @@
                 </a>
                 <a
                   v-else
-                  href="/product/men/beauty/"
-                  target="_self">   
+                  target="_self"
+                  @click="wechatclick('/product/men/beauty/')">   
                   <img
                     v-lazy="countryUrl+male_4.icon"
                     alt="">
@@ -287,8 +287,8 @@
                 <div class="filter-item-box">
                   <a
                     v-if="m_menu.category === 'c'"
-                    :href="'/product/men/clothing/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory"
-                    target="_self">  
+                    target="_self"
+                    @click="wechatclick('/product/men/clothing/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory)">  
                     <img
                       v-lazy="countryUrl+m_menu.icon"
                       alt="">
@@ -296,8 +296,8 @@
                   </a>
                   <a
                     v-else-if="m_menu.category === 'b'"
-                    :href="'/product/men/bags/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory"
-                    target="_self">  
+                    target="_self"
+                    @click="wechatclick('/product/men/bags/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory)">  
                     <img
                       v-lazy="countryUrl+m_menu.icon"
                       alt="">
@@ -305,8 +305,8 @@
                   </a>
                   <a
                     v-else-if="m_menu.category === 's'"
-                    :href="'/product/men/shoes/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory"
-                    target="_self">  
+                    target="_self"
+                    @click="wechatclick('/product/men/shoes/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory)">  
                     <img
                       v-lazy="countryUrl+m_menu.icon"
                       alt="">
@@ -314,8 +314,8 @@
                   </a>
                   <a
                     v-else-if="m_menu.category === 'a'"
-                    :href="'/product/men/accessories/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory"
-                    target="_self">  
+                    target="_self"
+                    @click="wechatclick('/product/men/accessories/#page=1&category='+m_menu.category+'&subcategory='+m_menu.subcategory)">  
                     <img
                       v-lazy="countryUrl+m_menu.icon"
                       alt="">
@@ -337,8 +337,8 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/'+m_designer.url+'-men/'"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/'+m_designer.url+'-men/')">
                   <div class="filter-item-box">
                     <img
                       v-lazy="m_designer.logo"
@@ -348,8 +348,8 @@
               </li>
               <li class="col-3 filter-item-list">
                 <a
-                  href="/designers/"
-                  target="_self"> 
+                  target="_self"
+                  @click="wechatclick('/designers/')"> 
                   <div class="filter-item-box to-more-box">
                     <img
                       v-lazy="'/img/more 02@2x.png'"
@@ -372,8 +372,8 @@
                 :key="index"
                 class="col-3 filter-item-list">
                 <a
-                  :href="'/store/'+m_merchant.url+'-men'"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/store/'+m_merchant.url+'-men')">
                   <div class="filter-item-box">
                     <img
                       v-lazy="m_merchant.logo"
@@ -383,8 +383,8 @@
               </li>
               <li class="col-3 filter-item-list">
                 <a
-                  href="/stores/"
-                  target="_self">
+                  target="_self"
+                  @click="wechatclick('/stores/')">
                   <div class="filter-item-box to-more-box">
                     <img
                       v-lazy="'/img/more 02@2x.png'"
@@ -400,6 +400,8 @@
     </b-tabs>
   </section>
 </template>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js">
+</script>
 <script>
 export default {
   layout: 'noframe',
@@ -464,6 +466,11 @@ export default {
     currentGender: function(gendertab) {
       $('.nav-link').css('color', '#8e8e8e')
       $('.' + gendertab + ' .nav-link').css('color', '#1c1c1c')
+    },
+    wechatclick: function(href) {
+      wx.miniProgram.navigateTo({
+        url: '/pages/webview_1?url=https://test.modesens.com' + href
+      })
     }
   }
 }
