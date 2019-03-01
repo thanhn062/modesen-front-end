@@ -424,6 +424,9 @@ export default {
       m_merchants: []
     }
   },
+  head: {
+    title: 'ModeSens'
+  },
   mounted() {
     this.getConfig()
     this.$nextTick(() => {

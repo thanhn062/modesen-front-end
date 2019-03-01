@@ -33,6 +33,9 @@ export default {
       moreimg: '/img/20190225jiantou.svg'
     }
   },
+  head: {
+    title: 'ModeSens'
+  },
   mounted() {
     this.getProfile()
   },
