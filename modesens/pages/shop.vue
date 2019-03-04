@@ -468,7 +468,7 @@ export default {
     },
     wechatclick: function(href) {
       wx.miniProgram.navigateTo({
-        url: '/pages/webview_1?url=https://test.modesens.com' + href
+        url: '/pages/webview_1?url=' + href
       })
     }
   }
