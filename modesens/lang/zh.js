@@ -301,7 +301,7 @@ export const Wechat = {
   fb: "女士箱包",
   fs: "女士鞋履",
   fa: "女士配饰",
-  fbe: "女神美妆",
+  fbe: "女士美妆",
   f_subcategory0: "针织",
   f_subcategory1: "连衣裙",
   f_subcategory2: "夹克",
