@@ -2,8 +2,8 @@
   <section class="container">
     <div class="accountsCon">
       <div class="logoCon"><img 
-        src="/img/20180905footer_logo.svg"
-        alt="logo"></div>
+        v-lazy="'/img/20180905footer_logo.svg'"
+        alt=""></div>
       <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
       <div
         v-if="lsuid===''"
@@ -48,7 +48,7 @@
             :key="num"
             class="swiper-slide">
             <div class="imgBox"><img
-              :src="'/img/20181213benefits-' + num + '.png'"
+              v-lazy="'/img/20181213benefits-' + num + '.png'"
               alt=""></div>
             <div class="descBox">
               <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
@@ -63,7 +63,7 @@
     <div class="levelCon">
       <div class="title">{{ $t('loyalty.levelTitle') }}</div>
       <div class="arrowBox">
-        <img src="/img/20180905overlay_right_arrow_b.svg">
+        <img v-lazy="'/img/20180905overlay_right_arrow_b.svg'">
         <span>{{ $t('loyalty.SwapRight') }}</span>
       </div>
       <div class="levelBox">
@@ -218,8 +218,8 @@
             @click="questionClick(index)">
             <span>{{ $t('loyalty.question'+(index+1)) }}</span>
             <img 
+              v-lazy="'/img/20181214slidedown.svg'"
               :class="indexQt===index ? 'imgrotate' : ''"
-              src="/img/20181214slidedown.svg"
               alt="">
           </div>
           <div
@@ -353,7 +353,7 @@ export default {
         autoplay: true,
         speed: 1000,
         loop: true,
-        initialSlide: 1
+        initialSlide: 0
       })
     }
   },
