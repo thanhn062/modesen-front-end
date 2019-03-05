@@ -36,7 +36,8 @@
     "sass-resources-loader": "^2.0.0",
     "swiper": "^4.4.5",
     "v-charts": "^1.19.0",
-    "windows-fs": "^1.2.0"
+    "windows-fs": "^1.2.0",
+    "vue-lazyload": "^1.2.6"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
@@ -47,6 +48,5 @@
     "eslint-plugin-vue": "^4.7.1",
     "nodemon": "^1.11.0",
     "prettier": "1.14.3",
-    "vue-lazyload": "^1.2.6"
   }
 }
