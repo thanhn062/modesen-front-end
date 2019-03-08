@@ -54,27 +54,6 @@
                   <div class="kind-title">{{ $t('Wechat.fa') }}</div>
                 </a>
               </li>
-              <li class="kind-item">
-                <a
-                  v-b-modal.noticemodal1
-                  v-if="$i18n.country==='cn'"
-                  href="#"
-                  target="_self">   
-                  <img
-                    v-lazy="countryUrl+female_4.icon"
-                    alt="">
-                  <div class="kind-title">{{ $t('Wechat.fbe') }}</div>
-                </a>
-                <a
-                  v-else
-                  target="_self"
-                  @click="wechatclick('/product/women/beauty/')">   
-                  <img
-                    v-lazy="countryUrl+female_4.icon"
-                    alt="">
-                  <div class="kind-title">{{ $t('Wechat.fbe') }}</div>
-                </a>
-              </li>
             </ul>
           </div>
           <div class="filter-hot filter">
@@ -248,27 +227,6 @@
                     v-lazy="countryUrl+male_3.icon"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.ma') }}</div>
-                </a>
-              </li>
-              <li class="kind-item">
-                <a
-                  v-b-modal.noticemodal1
-                  v-if="$i18n.country==='cn'"
-                  href="#"
-                  target="_self">   
-                  <img
-                    v-lazy="countryUrl+male_4.icon"
-                    alt="">
-                  <div class="kind-title">{{ $t('Wechat.mbe') }}</div>
-                </a>
-                <a
-                  v-else
-                  target="_self"
-                  @click="wechatclick('/product/men/beauty/')">   
-                  <img
-                    v-lazy="countryUrl+male_4.icon"
-                    alt="">
-                  <div class="kind-title">{{ $t('Wechat.mbe') }}</div>
                 </a>
               </li>
             </ul>
