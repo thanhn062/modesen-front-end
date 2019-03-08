@@ -17,7 +17,7 @@
                   target="_self"
                   @click="wechatclick('/product/women/clothing/')">
                   <img
-                    v-lazy="countryUrl+female_0.icon"
+                    v-lazy="female_0"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fc') }}</div>
                 </a>
@@ -27,7 +27,7 @@
                   target="_self"
                   @click="wechatclick('/product/women/bags/')">   
                   <img
-                    v-lazy="countryUrl+female_1.icon"
+                    v-lazy="female_1"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fb') }}</div>
                 </a>
@@ -39,7 +39,7 @@
                   target="_self"
                   @click="wechatclick('/product/women/shoes/')">  
                   <img
-                    v-lazy="countryUrl+female_2.icon"
+                    v-lazy="female_2"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fs') }}</div>
                 </a>
@@ -49,7 +49,7 @@
                   target="_self"
                   @click="wechatclick('/product/women/accessories/')">
                   <img
-                    v-lazy="countryUrl+female_3.icon"
+                    v-lazy="female_3"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.fa') }}</div>
                 </a>
@@ -192,7 +192,7 @@
                   target="_self"
                   @click="wechatclick('/product/men/clothing/')">
                   <img
-                    v-lazy="countryUrl+male_0.icon"
+                    v-lazy="male_0"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.mc') }}</div>
                 </a>
@@ -202,7 +202,7 @@
                   target="_self"
                   @click="wechatclick('/product/men/bags/')">   
                   <img
-                    v-lazy="countryUrl+male_1.icon"
+                    v-lazy="male_1"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.mb') }}</div>
                 </a>
@@ -214,7 +214,7 @@
                   target="_self"
                   @click="wechatclick('/product/men/shoes/')">  
                   <img
-                    v-lazy="countryUrl+male_2.icon"
+                    v-lazy="male_2"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.ms') }}</div>
                 </a>
@@ -224,7 +224,7 @@
                   target="_self"
                   @click="wechatclick('/product/men/accessories/')">
                   <img
-                    v-lazy="countryUrl+male_3.icon"
+                    v-lazy="male_3"
                     alt="">
                   <div class="kind-title">{{ $t('Wechat.ma') }}</div>
                 </a>
@@ -364,19 +364,17 @@ export default {
   data() {
     return {
       countryUrl: '',
-      female_0: {},
-      female_1: {},
-      female_2: {},
-      female_3: {},
-      female_4: {},
+      female_0: '/img/female_0.jpg',
+      female_1: '/img/female_1.jpg',
+      female_2: '/img/female_2.jpg',
+      female_3: '/img/female_3.jpg',
       f_menus: [],
       f_designers: [],
       f_merchants: [],
-      male_0: {},
-      male_1: {},
-      male_2: {},
-      male_3: {},
-      male_4: {},
+      male_0: '/img/male_0.jpg',
+      male_1: '/img/male_1.jpg',
+      male_2: '/img/male_2.jpg',
+      male_3: '/img/male_3.jpg',
       m_menus: [],
       m_designers: [],
       m_merchants: []
@@ -403,19 +401,9 @@ export default {
         secretkey: process.env.secretKey
       })
       this.countryUrl = configinfo.CDN_HOST
-      this.female_0 = configinfo.SHOP_MENUS[0].main_menus[0]
-      this.female_1 = configinfo.SHOP_MENUS[0].main_menus[1]
-      this.female_2 = configinfo.SHOP_MENUS[0].main_menus[2]
-      this.female_3 = configinfo.SHOP_MENUS[0].main_menus[3]
-      this.female_4 = configinfo.SHOP_MENUS[0].main_menus[4]
       this.f_menus = configinfo.SHOP_MENUS[0].hot_menus
       this.f_designers = configinfo.SHOP_MENUS[0].hot_designers
       this.f_merchants = configinfo.SHOP_MENUS[0].hot_merchants
-      this.male_0 = configinfo.SHOP_MENUS[1].main_menus[0]
-      this.male_1 = configinfo.SHOP_MENUS[1].main_menus[1]
-      this.male_2 = configinfo.SHOP_MENUS[1].main_menus[2]
-      this.male_3 = configinfo.SHOP_MENUS[1].main_menus[3]
-      this.male_4 = configinfo.SHOP_MENUS[1].main_menus[4]
       this.m_menus = configinfo.SHOP_MENUS[1].hot_menus
       this.m_designers = configinfo.SHOP_MENUS[1].hot_designers
       this.m_merchants = configinfo.SHOP_MENUS[1].hot_merchants
