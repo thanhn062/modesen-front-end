@@ -2,9 +2,9 @@
   <div>
     <!-- 登录modal -->
     <b-modal
-      v-if="$store.state.login_status===false"
+      v-if="!$store.state.login_status"
       id="mdLogin"
-      ref="mdLogin"
+      ref="loginmd"
       hide-header
       hide-footer
       style="width: 600px,height: 680px">
@@ -227,10 +227,10 @@ export default {
   methods: {
     openLoginModal(evt) {
       evt.preventDefault()
-      this.$refs.mdLogin.show()
+      this.$refs.loginmd.show()
     },
     hideLoginModal() {
-      this.$refs.mdLogin.hide()
+      this.$refs.loginmd.hide()
     },
     hereClick() {
       this.hereHasClick = !this.hereHasClick

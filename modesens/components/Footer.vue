@@ -4,7 +4,7 @@
       <div class="footer-wrap">
         <div class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle1') }}</h6>
-          <div class="p">
+          <div>
             <ul class="contact">
               <li><a href="/loyalty/">{{ $t('Footer.loyaltyProgram') }}</a></li>
               <li><a href="/faq/">{{ $t('Footer.helpcenter') }}</a></li>
@@ -19,7 +19,7 @@
         </div>
         <div class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle2') }}</h6>
-          <div class="p">
+          <div>
             <ul class="contact">
               <li><a href="/about/">{{ $t('Footer.aboutus') }}</a></li>
               <li><a href="/influencer/">{{ $t('Footer.influencerpro') }}</a></li>
@@ -38,7 +38,7 @@
         </div>
         <div class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle3') }}</h6>
-          <div class="p">
+          <div>
             <ul class="contact">
               <li><a href="/legal/">{{ $t('Footer.termsofuse') }}</a></li>
               <li><a href="/privacy/">{{ $t('Footer.privacypolicy') }}</a></li>

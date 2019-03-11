@@ -55,7 +55,7 @@ module.exports = {
   plugins: [
     //ssr：false是为了不让js文件再服务器中编译；
     { src: '~/plugins/init.js', ssr: false },
-    { src: '~/plugins/axios.js', ssr: true },
+    { src: '~/plugins/axios.js', ssr: false },
   ],
 
   router: {
