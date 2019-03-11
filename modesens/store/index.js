@@ -20,3 +20,9 @@ export const mutations = {
     state.lsuser = null;
   },
 }
+
+export const actions = {
+  nuxtServerInit({ commit }, { req }) {
+    console.log(21212, req.headers.cookie)
+  }
+}

@@ -17,10 +17,33 @@ import Header from '~/components/header/Header.vue'
 import Footer from '~/components/Footer.vue'
 import Modals from '~/components/Modals.vue'
 export default {
+  head() {
+    return {
+      meta: [
+        {
+          name: 'apple-itunes-app',
+          content:
+            'app-id=976201094, app-argument=https://modesens.com' +
+            this.$route.fullPath
+        }
+      ],
+      link: [
+        { rel: 'canonical', href: 'https://modesens.com' },
+        {
+          rel: 'alternate',
+          href: 'https://modesens.com',
+          hreflang: 'x-default'
+        }
+      ]
+    }
+  },
   components: {
     Header,
     Footer,
     Modals
+  },
+  created() {
+    // console.log(this.$route)
   },
   methods: {
     hideMenu() {

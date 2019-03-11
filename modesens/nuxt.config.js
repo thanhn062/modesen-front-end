@@ -14,10 +14,17 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+      { name: 'theme-color', content: '#FFF' },
+      { name: 'ir-site-verification-token', value: '-1470320165' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'ModeSens' },
+      { property: 'fb:app_id', content: '822420867799662' }
     ],
     link: [
-      { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' },
+      { rel: 'manifest', href: '/manifest.json'}
     ]
   },
 
@@ -39,7 +46,6 @@ module.exports = {
 	*/
   css: [
     '~/assets/css/font.css',
-    // {src: '~/assets/css/theme/bootstrap2.css', lang: 'css'},
     {src: '~/assets/css/main.less', lang: 'less'},
   ],
 
@@ -48,12 +54,13 @@ module.exports = {
 	*/
   plugins: [
     //ssr：false是为了不让js文件再服务器中编译；
-    { src: '~/plugins/axios.js', ssr: true },
     { src: '~/plugins/init.js', ssr: false },
+    { src: '~/plugins/axios.js', ssr: true },
   ],
 
   router: {
     // base: '/vue/'
+    // 在每页渲染前运行 middleware下 中间件的逻辑
     // middleware: 'countries'
   },
 

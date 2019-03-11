@@ -311,9 +311,6 @@ export default {
       window.open('/accounts/signup/?next=' + this.$route.fullPath, '_blank')
     },
     showNoticemd(evt) {
-      console.log(434434)
-      console.log($(evt.target).find('.modal-dialog'))
-      // console.log($('#noticeproductmd').next('.modal-backdrop').css({ top: $('.header').height() }))
       let headerH = $('.header').height()
       $(evt.target)
         .next('.modal-backdrop')

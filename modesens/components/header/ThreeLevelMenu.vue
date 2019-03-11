@@ -1513,7 +1513,6 @@ export default {
   },
   computed: {
     lsuser() {
-      console.log(this.$store.state.lsuser)
       return this.$store.state.lsuser
     },
     headerH() {

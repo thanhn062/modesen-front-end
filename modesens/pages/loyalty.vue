@@ -325,9 +325,6 @@ export default {
   head: {
     title: 'Loyalty | ModeSens'
   },
-  created() {
-    console.log(this.$store.state.login_status)
-  },
   mounted() {
     if (this.$store.state.login_status) {
       this.getLevelInfo()

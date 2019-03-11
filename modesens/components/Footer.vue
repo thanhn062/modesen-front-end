@@ -73,8 +73,8 @@
           <h6 class="footer-title">{{ $t('Footer.classtitle5') }}</h6>
           <div>{{ $t('Footer.class5desc') }}</div>
           <input
-            v-modal="shareEmail"
             id="iemail"
+            v-model="shareEmail"
             :placeholder="$t('Footer.placeholder1')"
             class="form-control footer-email"
             name="iemail">
