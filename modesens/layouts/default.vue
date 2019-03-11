@@ -4,7 +4,7 @@
     <main class="main-container">
       <nuxt/>
     </main>
-    <Footer :isPC="isPC"/>
+    <Footer/>
     <div
       class="wrapper-mask hidden"
       @click="hideMenu"/>
@@ -21,16 +21,6 @@ export default {
     Header,
     Footer,
     Modals
-  },
-  data() {
-    return {
-      isPC: true
-    }
-  },
-  mounted() {
-    if ($(window).width() < 1200) {
-      this.isPC = false
-    }
   },
   methods: {
     hideMenu() {

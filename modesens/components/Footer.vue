@@ -62,7 +62,7 @@
               href="javascript:;"
               @click="myInstallChromeExtention">
               <i class="androidimg"/>
-              <span v-if="isPC">{{ $t('Footer.Addtobrowser') }}</span>
+              <span>{{ $t('Footer.Addtobrowser') }}</span>
             </a></li>
           </ul>
         </div>
@@ -234,12 +234,6 @@
 <script>
 import { installChromeExtention } from '~/assets/js/utils/utils.js'
 export default {
-  props: {
-    isPC: {
-      type: Boolean,
-      default: () => true
-    }
-  },
   data() {
     return {
       newsEmail: '',

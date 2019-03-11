@@ -12,7 +12,7 @@
         class="close"
         @click="hideLoginModal"><img src="/img/close.svg"></button>
       <iframe
-        :src="'/vue/accounts/login/?next=' + $route.fullPath"
+        :src="'/accounts/login/?next=' + $route.fullPath"
         width="100%"
         height="100%"
         frameborder="0"/>
