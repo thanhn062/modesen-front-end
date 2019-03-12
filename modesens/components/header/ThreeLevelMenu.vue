@@ -3,8 +3,8 @@
     <ul class="d-flex nav-pc-menu">
       <li
         class="dropdown"
-        @mouseover="changeFirstLevelIndex(1)"
-        @mouseout="changeFirstLevelIndex(-1)">
+        @mouseover.capture="changeFirstLevelIndex(1)"
+        @mouseout.capture="changeFirstLevelIndex(-1)">
         <a
           :class="{ borderbottom: firstLevelIndex===1 || (firstLevelIndex===-1 && gender==='women') }"
           href="/">{{ $t('common.WOMEN') }}</a>
@@ -1125,14 +1125,14 @@
               :class="{ borderbottom: secondLevelIndex===0 }"
               href="/product/coupons/">{{ $t('nav.COUPONS') }}</a>
             <ul
-              v-if="secondLevelIndex===0 && coupons"
+              v-if="secondLevelIndex===0 && $store.state.coupons"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div class="d-flex justify-content-between thirdmenu-wrapper">
                 <div>
                   <ul>
                     <li
-                      v-for="(e,i) in coupons"
+                      v-for="(e,i) in $store.state.coupons"
                       v-if="i>0 && i<5"
                       :key="i"
                       class="coupon-each">
@@ -1149,9 +1149,9 @@
                 <div class="coupons-right">
                   <div class="menucategory-title">{{ $t('nav.FEATUREDOFFER') }}</div>
                   <div class="coupons-first">
-                    <a :href="coupons[0].landing_page || '/store/'+coupons[0].merchant.url+'/getlink/'">
-                      <span>{{ coupons[0].merchant.name }} : {{ coupons[0].txt }}</span>
-                      <img v-lazy="coupons[0].img_l || coupons[0].merchant.logo">
+                    <a :href="$store.state.coupons[0].landing_page || '/store/'+$store.state.coupons[0].merchant.url+'/getlink/'">
+                      <span>{{ $store.state.coupons[0].merchant.name }} : {{ $store.state.coupons[0].txt }}</span>
+                      <img v-lazy="$store.state.coupons[0].img_l || $store.state.coupons[0].merchant.logo">
                     </a>
                   </div>
                 </div>
@@ -1411,79 +1411,85 @@
           :style="secondmenuStyle"
           style="height: 350px"
           class="d-flex align-items-center navbar-secondmenu">
-          <div class="d-flex justify-content-between thirdmenu-wrapper community-con">
-            <div style="width: 750px">
-              <div class="menucategory-title">{{ $t('nav.BESTLOOKS') }}</div>
-              <ul class="d-flex justify-content-between">
-                <li
-                  v-for="(e,i) in navHeadJson.moments"
-                  :key="i">
-                  <a
-                    :href="'https://modesens.com/u/'+e.lsuname+'/'+e.umid+'/?popup=open'"
-                    target="_blank">
-                    <div class="momentimg-box">
-                      <img
-                        v-lazy="e.link+'s'"
-                        :alt="e.dsp">
-                    </div>
-                    <div
-                      class="text-center"
-                      style="margin-top: 10px">{{ e.lsuname }}</div>
-                  </a>
-                </li>
-              </ul>
-              <div style="margin-top: 50px"><a
-                target="_blank"
-                href="/looks/">{{ $t('nav.MORELOOKS') }}></a></div>
-            </div>
-            <div class="menu-userinfo">
-              <div class="menucategory-title">{{ $t('nav.MYCLOSET') }}</div>
-              <a
-                v-if="lsuser"
-                :href="'/u/'+lsuser.username">
-                <div><img
-                  v-lazy="lsuser.icon"
-                  :alt="lsuser.username"></div>
-                <span>{{ $t('nav.ORGANIZEMYCLOSET') }}</span>
-              </a>
-              <div
-                v-else
-                @click="openspmodal">
-                <div><img
-                  v-lazy="gconfig.UNLOGIN_ICON"></div>
-                <span>{{ $t('nav.LOGINTOBUILDMYCLOSET') }}</span>
+          <keep-alive>
+            <div
+              v-if="$store.state.navHeadJson"
+              class="d-flex justify-content-between thirdmenu-wrapper community-con">
+              <div style="width: 750px">
+                <div class="menucategory-title">{{ $t('nav.BESTLOOKS') }}</div>
+                <ul class="d-flex justify-content-between">
+                  <li
+                    v-for="(e,i) in $store.state.navHeadJson.moments"
+                    :key="i">
+                    <a
+                      :href="'https://modesens.com/u/'+e.lsuname+'/'+e.umid+'/?popup=open'"
+                      target="_blank">
+                      <div class="momentimg-box">
+                        <img
+                          v-lazy="e.link+'s'"
+                          :alt="e.dsp">
+                      </div>
+                      <div
+                        class="text-center"
+                        style="margin-top: 10px">{{ e.lsuname }}</div>
+                    </a>
+                  </li>
+                </ul>
+                <div style="margin-top: 50px"><a
+                  target="_blank"
+                  href="/looks/">{{ $t('nav.MORELOOKS') }}></a></div>
               </div>
-            </div>
-            <ul style="width: 250px">
-              <div class="menucategory-title">{{ $t('nav.WHOTOFOLLOW') }}</div>
-              <ul>
-                <li
-                  v-for="(e,i) in navHeadJson.users"
-                  :key="i"
-                  class="d-flex justify-content-between follow-userbox">
-                  <a
-                    :href="'/u/'+e.username"
-                    target="_blank"
-                    class="d-flex justify-content-center align-items-center follow-usericon">
-                    <img
-                      v-lazy="e.icon"
-                      class="w-100">
-                  </a>
-                  <i/>
-                  <div
-                    style="width: 120px"
-                    class="d-flex flex-column">
+              <div class="menu-userinfo">
+                <div class="menucategory-title">{{ $t('nav.MYCLOSET') }}</div>
+                <a
+                  v-if="lsuser"
+                  :href="'/u/'+lsuser.username">
+                  <div><img
+                    v-lazy="lsuser.icon"
+                    :alt="lsuser.username"></div>
+                  <span>{{ $t('nav.ORGANIZEMYCLOSET') }}</span>
+                </a>
+                <div
+                  v-else
+                  @click="openspmodal">
+                  <div><img
+                    v-lazy="gconfig.UNLOGIN_ICON"></div>
+                  <span>{{ $t('nav.LOGINTOBUILDMYCLOSET') }}</span>
+                </div>
+              </div>
+              <ul style="width: 250px">
+                <div class="menucategory-title">{{ $t('nav.WHOTOFOLLOW') }}</div>
+                <ul>
+                  <li
+                    v-for="(e,i) in $store.state.navHeadJson.users"
+                    :key="i"
+                    class="d-flex justify-content-between follow-userbox">
                     <a
                       :href="'/u/'+e.username"
-                      target="_blank">{{ e.username }}</a>
+                      target="_blank"
+                      class="d-flex justify-content-center align-items-center follow-usericon">
+                      <img
+                        v-lazy="e.icon"
+                        class="w-100">
+                    </a>
+                    <i/>
                     <div
-                      class="text-center follow-btn"
-                      @click="followEvent(i, e.username, e.uid, 'follow')">{{ $t('nav.Follow') }}</div>
-                  </div>
-                </li>
+                      style="width: 120px"
+                      class="d-flex flex-column">
+                      <a
+                        :href="'/u/'+e.username"
+                        target="_blank">{{ e.username }}</a>
+                      <keep-alive>
+                        <div
+                          class="text-center follow-btn"
+                          @click="followEvent(i, e.username, e.uid)">{{ followStatus[i] ? $t('nav.Following') : $t('nav.Follow') }}</div>
+                      </keep-alive>
+                    </div>
+                  </li>
+                </ul>
               </ul>
-            </ul>
-          </div>
+            </div>
+          </keep-alive>
         </ul>
       </li>
       <li
@@ -1507,8 +1513,8 @@ export default {
       menuTimer2: -1,
       searchTxt: '',
       designers: '',
-      navHeadJson: '',
-      coupons: null
+      latest_txt: null,
+      followStatus: [0, 0, 0]
     }
   },
   computed: {
@@ -1537,7 +1543,6 @@ export default {
     }
   },
   mounted() {
-    this.getnavhead()
     // if ($(document).width() > 1199) {
     //   let headerH = $('.header').height()
     //   console.log(
@@ -1559,18 +1564,24 @@ export default {
       let { navHeadJson } = await this.$axios.get('/getnavhead/', {
         params: {}
       })
-      this.navHeadJson = navHeadJson
+      this.$store.commit('saveNavHeadJson', navHeadJson)
     },
     changeFirstLevelIndex(index) {
       clearTimeout(this.menuTimer1)
       this.menuTimer1 = setTimeout(async () => {
+        if (index === 5 && !this.$store.state.navHeadJson) {
+          this.getnavhead()
+        }
         this.firstLevelIndex = index
-      }, 300)
+      }, 500)
     },
     changeSecondLevelIndex(index) {
       clearTimeout(this.menuTimer2)
       this.menuTimer2 = setTimeout(() => {
         this.secondLevelIndex = index
+        if (index === -1) {
+          this.latest_txt = null
+        }
         if (this.firstLevelIndex === 4 && index > 0) {
           let letter = ''
           if (index < 28) {
@@ -1578,17 +1589,25 @@ export default {
               .eq(index - 1)
               .html()
               .toLowerCase()
+            let rhint = this.$store.state.rhints[letter]
+            if (rhint) {
+              this.designers = rhint.designers
+            } else {
+              this.getHint2(letter, 1)
+            }
           } else {
             letter = this.searchTxt
+            this.getHint2(letter, 0)
           }
-          this.getHint2(letter)
         }
         if (this.firstLevelIndex === 3 && index === 0) {
-          this.getOffers()
+          if (!this.$store.state.coupons) {
+            this.getOffers()
+          }
         }
-      }, 300)
+      }, 500)
     },
-    async getHint2(txt) {
+    async getHint2(txt, isSave) {
       var data = {}
       data.txt = txt
       data.amount = 30
@@ -1596,24 +1615,35 @@ export default {
       data.typs = 'D'
       let { rhints } = await this.$axios.get('/hint2/', { params: data })
       this.designers = rhints.designers
+      if (isSave) {
+        this.$store.commit('saveRHints', [txt, rhints])
+      }
     },
     async getOffers() {
       var data = {}
       data.amount = 5
       data.format = 'json'
       let { coupons } = await this.$axios.post('/offers/', data)
-      this.coupons = coupons
+      this.$store.commit('setCoupons', coupons)
     },
     searchKeyUp() {
-      this.getHint2(this.searchTxt)
+      clearTimeout(this.menuTimer2)
+      this.menuTimer2 = setTimeout(() => {
+        this.getHint2(this.searchTxt)
+      }, 500)
     },
     openspmodal() {
       $('#spmsg').html(this.$t('Modals.JoinModeSens'))
       this.$root.$emit('bv::show::modal', 'spmodal')
     },
-    followEvent(i, username, uid, action) {
+    followEvent(i, username, uid) {
+      this.changeFirstLevelIndex(-1)
       if (this.$store.state.login_status) {
-        this.postFollow(i, action, uid)
+        if (this.followStatus[i]) {
+          this.postFollow(i, 'unfollow', uid)
+        } else {
+          this.postFollow(i, 'follow', uid)
+        }
       } else {
         $('#spmsg').html(
           this.$t('nav.JoinModeSenstofollow') +
@@ -1623,16 +1653,16 @@ export default {
         this.$root.$emit('bv::show::modal', 'spmodal')
       }
     },
-    async postFollow(action, uid) {
+    async postFollow(i, action, uid) {
       var data = {}
       data.action = action
       data.uni = 1
       data.feuid = uid
       let obj = await this.$axios.post('/follow/', data)
       if (obj.action === 'follow') {
-        $('.follow-btn')
-          .eq(i)
-          .html(this.$t('nav.Following'))
+        this.followStatus[i] = 1
+      } else {
+        this.followStatus[i] = 0
       }
     }
   }

@@ -170,7 +170,7 @@
                 <b-dropdown-item href="/product/coupons/">{{ $t('nav.MyOffers') }}</b-dropdown-item>
                 <b-dropdown-item
                   v-if="$i18n.country==='cn'"
-                  :href="'https://pay.modesens.com/order/index/?t='+gconfig.PAY_HASH_TOKEN">{{ $t('nav.MyOrders') }}</b-dropdown-item>
+                  href="/account/orders/">{{ $t('nav.MyOrders') }}</b-dropdown-item>
                 <b-dropdown-item href="/invite/">{{ $t('common.InviteFriends') }}</b-dropdown-item>
                 <b-dropdown-item href="/accounts/profile/">{{ $t('common.Settings') }}</b-dropdown-item>
                 <b-dropdown-divider/>

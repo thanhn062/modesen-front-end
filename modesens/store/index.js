@@ -3,7 +3,10 @@ export const state = () => ({
   next_url: '/',
   mdLoginShow: false,
   lsuser: null,
-  sex: 'f',   //f:women   m:men
+  gender: 'f',   //f:women   m:men
+  coupons: null,
+  navHeadJson: null,
+  rhints: {},//26个字母及#的搜索值
 })
 
 export const mutations = {
@@ -19,6 +22,15 @@ export const mutations = {
   removeLsuser(state) {
     state.lsuser = null;
   },
+  setCoupons(state, params) {
+    state.coupons = params;
+  },
+  saveNavHeadJson(state, params) {
+    state.navHeadJson = params;
+  },
+  saveRHints(state, params) {
+    state.rhints[params[0]] = params[1];
+  }
 }
 
 export const actions = {
