@@ -44,12 +44,11 @@
                 </div>
                 <div class="currentLevel">{{ $t('accountLoyalty.'+userLevel.toUpperCase()) }}</div>
                 <div class="userEnd">
-                  <a
-                    href="/loyalty/"
-                    data-ga-click="accountLoyalty-card--"
-                    target="_blank">
+                  <nuxt-link
+                    to="/loyalty/"
+                    data-ga-click="accountLoyalty-card--">
                     {{ $t('accountLoyalty.memberendTimgcard') }} {{ level.end_date }}
-                  </a>
+                  </nuxt-link>
                 </div>
               </div>
             </div>

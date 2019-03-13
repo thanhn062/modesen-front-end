@@ -310,7 +310,7 @@ export const accountOrder = {
   All: 'All',
   Completed: 'Completed',
   Active: 'Active',
-  Orderinquery: 'Order Inquery'
+  Orderinquiry: 'Order Inquiry'
 };
 export const annual = {
   MemberSince: 'Member Since',
@@ -509,4 +509,43 @@ export const Modals = {
 };
 export const barcodeHelp = {
   desc: 'Scan an item’s barcode (typically located on the tags or box) to find the product and pricing information on ModeSens. Below are a few examples of barcodes that you could scan. Happy scanning!'
+};
+export const Wechat = {
+  fc: "Women's Clothing",
+  fb: "Women's Bags",
+  fs: "Women's Shoes",
+  fa: "Women's Accessories",
+  fbe: "Women's Beauty",
+  f_subcategory0: "Knit",
+  f_subcategory1: "Dresses",
+  f_subcategory2: "Jackets",
+  f_subcategory3: "Coats",
+  f_subcategory4: "Hoodies",
+  f_subcategory5: "Pants",
+  f_subcategory6: "Boots",
+  f_subcategory7: "Sneakers",
+  f_subcategory8: "Crossbody Bags",
+  f_subcategory9: "Satchels",
+  f_subcategory10: "Hats",
+  f_subcategory11: "Jewelry",
+  mc: "Men's Clothing",
+  mb: "Men's Bags",
+  ms: "Men's Shoes",
+  ma: "Men's Accessories",
+  mbe: "Men's Grooming",
+  m_subcategory0: "Knit",
+  m_subcategory1: "Hoodies",
+  m_subcategory2: "Jackets",
+  m_subcategory3: "Shirts",
+  m_subcategory4: "Jeans",
+  m_subcategory5: "Sneakers",
+  m_subcategory6: "Boots",
+  m_subcategory7: "Crossbody_Bags",
+  m_subcategory8: "Backpacks",
+  m_subcategory9: "Totes",
+  m_subcategory10: "Wallets",
+  m_subcategory11: "Watches",
+  hc: 'Hot Categories',
+  hd: 'Hot Designers',
+  hm: 'Hot Merchants',
 };

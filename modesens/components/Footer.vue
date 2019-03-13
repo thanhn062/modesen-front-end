@@ -6,7 +6,7 @@
           <h6 class="footer-title">{{ $t('Footer.classtitle1') }}</h6>
           <div>
             <ul class="contact">
-              <li><a href="/loyalty/">{{ $t('Footer.loyaltyProgram') }}</a></li>
+              <li><nuxt-link to="/loyalty/">{{ $t('Footer.loyaltyProgram') }}</nuxt-link></li>
               <li><a href="/faq/">{{ $t('Footer.helpcenter') }}</a></li>
               <li><a
                 v-b-modal.cumodal

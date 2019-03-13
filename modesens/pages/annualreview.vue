@@ -146,10 +146,9 @@
         <p>{{ $t('annual.p2') }}</p>
         <p>{{ $t('annual.p3') }}</p>
       </div>
-      <a
-        href="/loyalty/"
-        target="_blank"
-        class="toloyalty"> {{ $t('annual.learnMore') }}</a>
+      <nuxt-link
+        to="/loyalty/"
+        class="toloyalty"> {{ $t('annual.learnMore') }}</nuxt-link>
     </div>
   </section>
 </template>

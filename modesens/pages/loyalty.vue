@@ -2,19 +2,17 @@
   <section class="container loyalty-con">
     <div class="accountsCon">
       <div class="logoCon"><img 
-        src="/img/20180905footer_logo.svg"
-        alt="logo"></div>
+        v-lazy="'/img/20180905footer_logo.svg'"
+        alt=""></div>
       <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
       <div
         v-if="!$store.state.login_status"
         class="accountsBox">
-        <a
-          href="/accounts/signup/?next=/loyalty/"
-          target="_blank">
+        <nuxt-link to="/accounts/signup/?next=/loyalty/">
           <button
             class="btn btn-modesens"
             data-ga-click="loyalty-joinBtn--">{{ $t('loyalty.joinNow') }}</button>
-        </a>
+        </nuxt-link>
         <div class="loginBox login_btn">{{ $t('loyalty.member') }}<a
           data-ga-click="loyalty-loginBtn--"
           href="javascript:;"
@@ -24,13 +22,11 @@
       <div
         v-else
         class="accountsBox">
-        <a
-          href="/account/loyalty/"
-          target="_blank">
+        <nuxt-link to="/account/loyalty/">
           <button
             class="btn btn-modesens"
             data-ga-click="loyalty-ViewMyAccount--">{{ $t('loyalty.ViewMyAccount') }}</button>
-        </a>
+        </nuxt-link>
       </div>
     </div>
     <div
@@ -45,7 +41,7 @@
             :key="num"
             class="swiper-slide">
             <div class="imgBox"><img
-              :src="'/img/20181213benefits-' + num + '.png'"
+              v-lazy="'/img/20181213benefits-' + num + '.png'"
               alt=""></div>
             <div class="descBox">
               <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
@@ -60,7 +56,7 @@
     <div class="levelCon">
       <div class="title">{{ $t('loyalty.levelTitle') }}</div>
       <div class="arrowBox">
-        <img src="/img/20180905overlay_right_arrow_b.svg">
+        <img v-lazy="'/img/20180905overlay_right_arrow_b.svg'">
         <span>{{ $t('loyalty.SwapRight') }}</span>
       </div>
       <div class="levelBox">
@@ -215,8 +211,8 @@
             @click="questionClick(index)">
             <span>{{ $t('loyalty.question'+(index+1)) }}</span>
             <img 
+              v-lazy="'/img/20181214slidedown.svg'"
               :class="indexQt===index ? 'imgrotate' : ''"
-              src="/img/20181214slidedown.svg"
               alt="">
           </div>
           <div
@@ -225,14 +221,16 @@
             <div
               v-if="index===1"
               class="answer">
-              <div v-if="$store.state.login_status">{{ $t('loyalty.answer2_1_1') }}<a
-                href="/account/loyalty/"
-                target="_blank"
-                data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</a></div>
-              <div v-else>{{ $t('loyalty.answer2_1') }}<a
-                href="/accounts/signup/?next=/loyalty/"
-                target="_blank"
-                data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2') }}</a></div>
+              <div v-if="$store.state.login_status">{{ $t('loyalty.answer2_1_1') }}
+                <nuxt-link
+                  to="/account/loyalty/"
+                  data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</nuxt-link>
+              </div>
+              <div v-else>{{ $t('loyalty.answer2_1') }}
+                <nuxt-link
+                  to="/accounts/signup/?next=/loyalty/"
+                  data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2') }}</nuxt-link>
+              </div>
             </div>
             <div
               v-else-if="index===14"
@@ -339,7 +337,7 @@ export default {
         autoplay: true,
         speed: 1000,
         loop: true,
-        initialSlide: 1
+        initialSlide: 0
       })
     }
   },

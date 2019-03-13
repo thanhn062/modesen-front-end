@@ -310,7 +310,7 @@ export const accountOrder = {
   All: '全部',
   Completed: '已完成',
   Active: '进行中',
-  Orderinquery: '追踪订单'
+  Orderinquiry: '追踪订单'
 };
 export const annual = {
   MemberSince: '会员始于',
@@ -492,7 +492,7 @@ export const nav = {
   InfluencerDashboard: '博主佣金统计仪表盘',
   InfluencerReferral: '博主推荐平台',
   FashionTrendingReport: '流行趋势报告',
-  InfluencerAdmin: 'Influencer Admin',
+  InfluencerAdmin: '博主管理员',
   WHYMODESENS: '玩转ModeSens',
   JoinModeSenstofollow : '加入ModeSens以关注',
   scloset: '的衣橱',
@@ -509,4 +509,43 @@ export const Modals = {
 };
 export const barcodeHelp = {
   desc: '通过扫描条形码（通常位于标签或包装盒上），查找ModeSens上的产品和定价信息。你可以扫描类似下面示例中的条形码，祝你使用愉快！'
+};
+export const Wechat = {
+  fc: "女士服饰",
+  fb: "女士箱包",
+  fs: "女士鞋履",
+  fa: "女士配饰",
+  fbe: "女士美妆",
+  f_subcategory0: "针织",
+  f_subcategory1: "连衣裙",
+  f_subcategory2: "夹克",
+  f_subcategory3: "外套",
+  f_subcategory4: "帽衫",
+  f_subcategory5: "长裤",
+  f_subcategory6: "靴子",
+  f_subcategory7: "运动鞋",
+  f_subcategory8: "斜挎包",
+  f_subcategory9: "提包",
+  f_subcategory10: "帽子",
+  f_subcategory11: "珠宝",
+  mc: "男士服饰",
+  mb: "男士箱包",
+  ms: "男士鞋履",
+  ma: "男士配饰",
+  mbe: "男士护理",
+  m_subcategory0: "针织",
+  m_subcategory1: "帽衫",
+  m_subcategory2: "夹克",
+  m_subcategory3: "衬衫",
+  m_subcategory4: "牛仔裤",
+  m_subcategory5: "运动鞋",
+  m_subcategory6: "靴子",
+  m_subcategory7: "斜挎包",
+  m_subcategory8: "双肩包",
+  m_subcategory9: "拎包",
+  m_subcategory10: "钱包",
+  m_subcategory11: "手表",
+  hc: '热门分类',
+  hd: '热门品牌',
+  hm: '合作电商',
 };

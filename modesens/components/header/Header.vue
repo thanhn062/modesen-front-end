@@ -168,9 +168,7 @@
                 <b-dropdown-item :href="'/u/'+lsuser.username">{{ $t('nav.MyCloset') }}</b-dropdown-item>
                 <b-dropdown-item href="/dashboard/">{{ $t('nav.MyDashboard') }}</b-dropdown-item>
                 <b-dropdown-item href="/product/coupons/">{{ $t('nav.MyOffers') }}</b-dropdown-item>
-                <b-dropdown-item
-                  v-if="$i18n.country==='cn'"
-                  href="/account/orders/">{{ $t('nav.MyOrders') }}</b-dropdown-item>
+                <b-dropdown-item href="/account/orders/">{{ $t('nav.MyOrders') }}</b-dropdown-item>
                 <b-dropdown-item href="/invite/">{{ $t('common.InviteFriends') }}</b-dropdown-item>
                 <b-dropdown-item href="/accounts/profile/">{{ $t('common.Settings') }}</b-dropdown-item>
                 <b-dropdown-divider/>
@@ -289,7 +287,6 @@
         </div>
       </b-navbar>
     </div>
-    <!-- <headerModals/> -->
   </header>
 </template>
 <script>

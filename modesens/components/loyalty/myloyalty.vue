@@ -6,10 +6,9 @@
         <div class="levelBenefits">
           <div class="levelBenefitscon">
             <div class="leveltitle">{{ $t('accountLoyalty.benefits') }}</div>
-            <a
-              href="/loyalty/"
+            <nuxt-link
+              to="/loyalty/"
               data-ga-click="accountLoyalty-Benefits--"
-              target="_blank"
               class="Member-failure">
               <span>{{ $t('accountLoyalty.memberendTimg') }} {{ myloyaltycontent.end_date }}</span>
               <div class="tointro">
@@ -17,7 +16,7 @@
                   src="/img/20181221tointro.png"
                   alt="">
               </div>
-            </a>
+            </nuxt-link>
             <div class="current-L">
               <img
                 :src="levelimgHref"
@@ -33,10 +32,9 @@
         </div>
         <div class="userleveldes">
           <div class="leveltitle">{{ $t('accountLoyalty.membershipDeltails') }}</div>
-          <a
-            href="/loyalty/"
+          <nuxt-link
+            to="/loyalty/"
             data-ga-click="accountLoyalty-Membership_Details--"
-            target="_blank" 
             class="Member-failure">
             <span>{{ $t('accountLoyalty.deltail') }}</span>
             <div class="tointro">
@@ -44,7 +42,7 @@
                 src="/img/20181221tointro.png"
                 alt="">
             </div>
-          </a>
+          </nuxt-link>
           <div class="conbox">
             <div class="con">
               <div
@@ -81,13 +79,12 @@
               </ul>
             </div>
           </div>
-          <a
-            href="/loyalty/"
+          <nuxt-link
+            to="/loyalty/"
             data-ga-click="accountLoyalty-Learn_More_Benefits--"
-            target="_blank" 
             class="toleveldes">
             {{ $t('accountLoyalty.moreBennefits') }}     
-          </a>
+          </nuxt-link>
         </div>
       </div>
     </div>

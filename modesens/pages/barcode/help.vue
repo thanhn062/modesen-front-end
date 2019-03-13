@@ -12,6 +12,7 @@
 </template>
 <script>
 export default {
+  layout: 'noframe',
   head: {
     title: this.$t('Barcode Help | ModeSens')
   },
