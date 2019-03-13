@@ -5,10 +5,14 @@
       v-if="$i18n.locale!=='zh'"
       id="popLink"
       class="d-none d-flex justify-content-center align-items-center">
-      <img v-lazy="'https://mds0.com/static/img/20180929logo.svg'">
+      <img
+        v-lazy="'https://mds0.com/static/img/20180929logo.svg'"
+        alt="">
       <a
         href="/shopping-assistant/"
-        data-ga-click="headerNav-Stores"><span>Shop like a pro - Get your smart fashion <b>SHOPPING ASSISTANT</b></span></a>
+        data-ga-click="headerNav-Stores--">
+        <span>Shop like a pro - Get your smart fashion <b>SHOPPING ASSISTANT</b></span>
+      </a>
       <div class="d-inline-block popBrowser">
         <div
           v-if="mybrowse==='Chrome'"
@@ -75,9 +79,10 @@
       <b-navbar toggleable="xl">
         <b-navbar-toggle
           target="nav_collapse"/>
-        <!-- 名牌位置：logo -->
-        <b-navbar-brand href="/">
-          <!-- {{ $t('common.ModeSens') }} -->
+        <!-- logo位置 -->
+        <b-navbar-brand
+          href="/"
+          data-ga-click="Nav-logo--">
           <img
             :src="gconfig.MS_LOGONEW"
             :alt="$t('common.ModeSens')">
@@ -95,13 +100,18 @@
           <b-navbar-nav class="ml-auto">
             <!-- COUNTRIES -->
             <b-nav-item-dropdown
-              v-if="COUNTRIES"
               class="country-select-container"
               right
               no-caret>
               <template slot="button-content">
+                <!-- web -->
                 <i :class="'country-icon country-' + $i18n.country"/>
-                <span class="country-selected">{{ COUNTRIES[$i18n.country.toUpperCase()] ? COUNTRIES[$i18n.country.toUpperCase()][1] : '' }}</span>
+                <span
+                  v-if="COUNTRIES"
+                  class="country-selected">
+                  {{ COUNTRIES[$i18n.country.toUpperCase()] ? COUNTRIES[$i18n.country.toUpperCase()][1] : '' }}
+                </span>
+                <!-- 响应式 -->
                 <span class="country-category">{{ $t('common.COUNTRY') }}</span>
                 <img v-lazy="gconfig.SIDEBAR_MORE">
               </template>
@@ -150,10 +160,22 @@
               class="d-flex justify-content-between align-items-center authInfo">
               <a
                 v-b-modal.noticeproductmd
-                href="javascript:;"><img v-lazy="'https://mds0.com/static/img/prd-update-20180504.svg'"></a>
+                href="javascript:;"
+                @click="has_notice_p=false">
+                <img v-lazy="'https://mds0.com/static/img/prd-update-20180504.svg'">
+                <span
+                  v-if="has_notice_p && $store.state.lsuser.has_notice_p"
+                  class="ncount"/>
+              </a>
               <a
                 v-b-modal.noticeusermd
-                href="javascript:;"><img v-lazy="'https://mds0.com/static/img/social-update-20180504.svg'"></a>
+                href="javascript:;"
+                @click="has_notice_m=false">
+                <img v-lazy="'https://mds0.com/static/img/social-update-20180504.svg'">
+                <span
+                  v-if="has_notice_m && $store.state.lsuser.has_notice_m"
+                  class="ncount"/>
+              </a>
               <b-dropdown
                 v-if="lsuser"
                 variant="link"
@@ -191,6 +213,7 @@
           <div class="search-container">
             <div
               class="search-btn"
+              data-ga-click="Header-searchIcon--"
               @click="openSearchInput">
               <div class="search-img"/>
               <span class="search-btn-txt">{{ $t('nav.SEARCH') }}</span>
@@ -245,7 +268,8 @@
                       class="userbox">
                       <a
                         :href="'/u/'+user.username+'/'"
-                        target="_blank">
+                        target="_blank"
+                        data-ga-click="HeaderSearch-userIcon--">
                         <img
                           v-lazy="user.icon"
                           :title="$t('nav.Visit')+user.username.toLowerCase()+$t('nav.scloset')">
@@ -276,9 +300,12 @@
                     <li
                       v-for="(merchant,index) in searchResult.merchants"
                       v-if="index < 6"
-                      :key="index"><a
+                      :key="index">
+                      <a
                         :href="'/store/'+merchant.url+'/'+gender+'/'"
-                        :title="$t('nav.Shopproductsfrom')+merchant.name+$t('nav.shoppend')">{{ merchant.name }}</a></li>
+                        :title="$t('nav.Shopproductsfrom')+merchant.name+$t('nav.shoppend')"
+                        data-ga-click="HeaderSearch-merchantName--">{{ merchant.name }}</a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -316,7 +343,9 @@ export default {
       searchResult: '',
       serachInputOpen: false,
       hint2Timeout: null,
-      mybrowse: null
+      mybrowse: null,
+      has_notice_p: true,
+      has_notice_m: true
     }
   },
   computed: {
@@ -331,24 +360,26 @@ export default {
     }
   },
   mounted() {
-    console.log(3434343434)
-    this.getConfig()
-    this.mybrowse = getBrowse()
-    $('.main-container').css('padding-top', $('.header').height())
+    this.$nextTick(() => {
+      console.log(3434343434)
+      this.getConfig()
+      this.mybrowse = getBrowse()
+      $('.main-container').css('padding-top', $('.header').height())
 
-    $('.navbar-toggler-icon').click(evt => {
-      evt.preventDefault()
-      evt.stopPropagation()
-      let showStatus = $('.header .navbar-expand-xl').hasClass('show')
-      if (showStatus) {
-        $('.header .navbar-expand-xl').removeClass('show')
-        $('.wrapper-mask').addClass('hidden')
-      } else {
-        $('.header .navbar-expand-xl').addClass('show')
-        $('.wrapper-mask').removeClass('hidden')
-      }
-      $('#nav_collapse').animate({ left: showStatus ? '-100%' : 0 })
-      $('.header').animate({ left: showStatus ? 0 : '80%' })
+      $('.navbar-toggler-icon').click(evt => {
+        evt.preventDefault()
+        evt.stopPropagation()
+        let showStatus = $('.header .navbar-expand-xl').hasClass('show')
+        if (showStatus) {
+          $('.header .navbar-expand-xl').removeClass('show')
+          $('.wrapper-mask').addClass('hidden')
+        } else {
+          $('.header .navbar-expand-xl').addClass('show')
+          $('.wrapper-mask').removeClass('hidden')
+        }
+        $('#nav_collapse').animate({ left: showStatus ? '-100%' : 0 })
+        $('.header').animate({ left: showStatus ? 0 : '80%' })
+      })
     })
   },
   methods: {
@@ -382,7 +413,7 @@ export default {
           var search_h = $(window).height() - 150
           $('.searchres-box').css('max-height', search_h)
         })
-      }, 200)
+      }, 500)
     },
     openSearchInput() {
       if (this.serachInputOpen === true) {
@@ -431,15 +462,15 @@ export default {
       }
     },
     installChromeExtention(evt) {
-      ga('send', 'event', 'Test', 'Extention', 'Chrome')
+      ga('send', 'event', 'HeaderExtention', 'Chrome', 'click')
       window.open(
         'https://chrome.google.com/webstore/detail/modesens-shopping-assista/cmfmhegpbogfmojekmidappigcfbgbcb',
         '_blank'
       )
       evt.stopPropagation()
     },
-    installOperaExtention() {
-      ga('send', 'event', 'Test', 'Extention', 'Opera')
+    installOperaExtention(evt) {
+      ga('send', 'event', 'HeaderExtention', 'Opera', 'click')
       var id = 'efjhmecngnegjbeammojcaecfmjllpbk'
       opr.addons.installExtension(
         id,
@@ -450,17 +481,17 @@ export default {
               .find('span')
               .html(this.$t('Write Review'))
           })
-          ga('send', 'event', 'Test', 'Extention', 'operaSuccess')
+          ga('send', 'event', 'HeaderExtention', 'operaSuccess')
         },
         function(errorMessage) {
           alert('Error: ' + errorMessage)
           extentionErrorMsg = errorMessage
         }
       )
-      event.stopPropagation()
+      evt.stopPropagation()
     },
     installFFExtention() {
-      ga('send', 'event', 'Test', 'Extention', 'Firefox')
+      ga('send', 'event', 'HeaderExtention', 'Firefox', 'click')
       var params = {
         Foo: {
           URL: FIREFOX_INSTALL_XPI
@@ -470,22 +501,26 @@ export default {
       event.stopPropagation()
     },
     installSafariExtention() {
-      ga('send', 'event', 'Test', 'Extention', 'Safari')
+      ga('send', 'event', 'HeaderExtention', 'Safari', 'click')
     },
     modelinkGoToBrowse(browse) {
       if (browse === 'Chrome') {
         window.open(
-          'https://chrome.google.com/webstore/detail/modesens-shopping-assista/cmfmhegpbogfmojekmidappigcfbgbcb'
+          'https://chrome.google.com/webstore/detail/modesens-shopping-assista/cmfmhegpbogfmojekmidappigcfbgbcb',
+          '_blank'
         )
       } else if (browse === 'Firefox') {
         window.open(
-          'https://addons.mozilla.org/firefox/addon/modesens-shopping-assistant/'
+          'https://addons.mozilla.org/firefox/addon/modesens-shopping-assistant/',
+          '_blank'
         )
       } else if (browse === 'Safari') {
         window.open(
-          'https://safari-extensions.apple.com/details/?id=com.modesens.shoppingassistant-6EL854LDB8'
+          'https://safari-extensions.apple.com/details/?id=com.modesens.shoppingassistant-6EL854LDB8',
+          '_blank'
         )
       }
+      ga('send', 'event', 'HeaderExtention', browse, 'click')
     }
   }
 }

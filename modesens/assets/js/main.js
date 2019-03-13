@@ -11,10 +11,6 @@ import {gconfig} from '~/assets/js/gconfig.js'
 import localStorage from '~/assets/js/utils/localStorage.js'
 Vue.prototype.gconfig = gconfig;
 Vue.prototype.$localStorage = localStorage;
-// export default ({ app }) => {
-//   app.gconfig = gconfig
-//   app.$localStorage = localStorage
-// }
 
 //浏览器端功能
 if (process.browser){
@@ -28,12 +24,12 @@ if (process.browser){
         ga('send', 'event', category, action, label, val)
       }
     })
-    //mouseover--ga
+    //mouseenter--ga
     $('*[data-ga-enter]').mouseenter(function() {
       let res = $(this).attr('data-ga-enter');
       if (res) {
         var [category, action, label, val] = [...res.split('-')];
-        label = label || 'mouseover'
+        label = label || 'mouseenter'
         ga('send', 'event', category, action, label, val)
       }
     })
