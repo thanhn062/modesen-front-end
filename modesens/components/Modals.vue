@@ -21,7 +21,6 @@
     <b-modal
       id="service-modal"
       ref="cuModalCn"
-      size="sm"
       hide-header
       hide-footer>
       <div class="customer_service_head">
@@ -344,6 +343,9 @@ export default {
   // width: 300px;
   padding-top: 40px;
   margin-top: 60px;
+  .modal-dialog {
+    width: 300px;
+  }
   .modal-body {
     padding: 0;
     border-radius: 0.3rem;
