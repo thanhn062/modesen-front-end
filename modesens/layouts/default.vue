@@ -18,6 +18,15 @@ import Footer from '~/components/Footer.vue'
 import Modals from '~/components/Modals.vue'
 export default {
   head() {
+    let link = []
+    if (this.$store.state.request) {
+      // if ($route.fullPath.match(/\/us\/en\//)) {
+      link.push({
+        rel: 'canonical',
+        href: `https://modesens.com${this.$store.state.request.CANONICAL_URL}`
+      })
+      // }
+    }
     return {
       meta: [
         {
@@ -27,14 +36,15 @@ export default {
             this.$route.fullPath
         }
       ],
-      link: [
-        { rel: 'canonical', href: 'https://modesens.com' },
-        {
-          rel: 'alternate',
-          href: 'https://modesens.com',
-          hreflang: 'x-default'
-        }
-      ]
+      link
+      // link: [
+      //   { rel: 'canonical', href: 'https://modesens.com' },
+      //   {
+      //     rel: 'alternate',
+      //     href: 'https://modesens.com',
+      //     hreflang: 'x-default'
+      //   }
+      // ]
     }
   },
   components: {

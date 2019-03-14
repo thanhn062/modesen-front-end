@@ -194,6 +194,7 @@
         frameborder="0"/>
     </b-modal>
     <b-modal
+      v-if="!$store.state.login_status"
       id="spmodal"
       :title="$t('Modals.Pleasesignin')"
       :ok-title="$t('common.SignUp')"
