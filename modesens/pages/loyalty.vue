@@ -22,7 +22,7 @@
       <div
         v-else
         class="accountsBox">
-        <nuxt-link to="/account/loyalty/">
+        <nuxt-link to="/account/loyalty/?tab=loyalty">
           <button
             class="btn btn-modesens"
             data-ga-click="loyalty-ViewMyAccount--">{{ $t('loyalty.ViewMyAccount') }}</button>
