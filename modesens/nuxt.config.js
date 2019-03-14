@@ -22,9 +22,13 @@ module.exports = {
       { property: 'fb:app_id', content: '822420867799662' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
       { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' },
       { rel: 'manifest', href: '/manifest.json'}
+    ],
+    script: [
+      { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js' },
+      { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js' }
     ]
   },
 
@@ -54,8 +58,8 @@ module.exports = {
 	*/
   plugins: [
     //ssr：false是为了不让js文件再服务器中编译；
-    { src: '~/plugins/init.js', ssr: false },
     { src: '~/plugins/axios.js', ssr: false },
+    { src: '~/plugins/init.js', ssr: false },
   ],
 
   router: {

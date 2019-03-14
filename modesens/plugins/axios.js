@@ -1,7 +1,11 @@
-import Vue from 'vue'
 import qs from 'qs'
+import {gconfig} from '~/assets/js/gconfig.js'
+import localStorage from '~/assets/js/utils/localStorage.js'
 
 export default function ({ $axios, app }) {
+  app.$localStorage = localStorage
+  app.gconfig = gconfig
+  
   $axios.onRequest(config => {
     if (config.async === false) { //asyncData函数中调用的接口
       config.baseURL = process.env.baseUrl + 'api/2.0/';  //请求根目录

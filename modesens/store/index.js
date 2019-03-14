@@ -6,7 +6,8 @@ export const state = () => ({
   gender: 'f',   //f:women   m:men
   coupons: null,
   navHeadJson: null,
-  rhints: {},//26个字母及#的搜索值
+  rhints: {},//26个字母及#的搜索值,
+  request: null
 })
 
 export const mutations = {
@@ -30,11 +31,19 @@ export const mutations = {
   },
   saveRHints(state, params) {
     state.rhints[params[0]] = params[1];
+  },
+  saveRequest(state, params) {
+    state.request = params;
   }
 }
 
 export const actions = {
   nuxtServerInit({ commit }, { req }) {
     console.log(21212, req.headers.cookie)
+  },
+  async getRequest({ commit }, $axios) {
+    let obj = await $axios.get('/request_context/', { params: {} });
+    commit('saveRequest', obj);
+    console.log(obj);
   }
 }
