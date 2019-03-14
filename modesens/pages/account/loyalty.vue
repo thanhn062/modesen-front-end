@@ -118,7 +118,7 @@
     </div>
     <div
       v-else
-      class="membershippage">
+      class="membershippage loading">
       <img
         src="/img/20190102sync.gif"
         alt=""

@@ -45,5 +45,14 @@ if (process.browser){
         window.open('/accounts/signup/?next=' + next_url)
       }
     })
+    //置顶功能
+    $(window).scroll(bindScroll)
+    function bindScroll(){
+      var scrollTop = $(window).scrollTop();
+      var winHeight = Math.max($(window).height(), $(this).outerHeight(), $('html').height());
+      var viewHeight = Math.min(window.innerHeight, document.body.clientHeight);
+      if (scrollTop + 200 > viewHeight) $('#to-top').fadeIn(500);
+      else $('#to-top').fadeOut(500);
+    }
   })
 }

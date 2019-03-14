@@ -9,6 +9,8 @@
       class="wrapper-mask hidden"
       @click="hideMenu"/>
     <Modals/>
+    <Top/>
+    <CustomerService/>
   </div>
 </template>
 <script>
@@ -16,6 +18,8 @@ import '~/assets/js/main.js'
 import Header from '~/components/header/Header.vue'
 import Footer from '~/components/Footer.vue'
 import Modals from '~/components/Modals.vue'
+import Top from '~/components/Top.vue'
+import CustomerService from '~/components/CustomerService.vue'
 export default {
   head() {
     let link = []
@@ -50,7 +54,9 @@ export default {
   components: {
     Header,
     Footer,
-    Modals
+    Modals,
+    Top,
+    CustomerService
   },
   created() {
     // console.log(this.$route)
