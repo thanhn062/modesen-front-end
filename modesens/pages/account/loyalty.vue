@@ -130,6 +130,21 @@
 import myloyalty from '~/components/loyalty/myloyalty.vue'
 import myorder from '~/components/loyalty/myorder.vue'
 export default {
+  head() {
+    return {
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Our selection of high end women’s clothing is vast with a wide variety of your favorite designers. These designer clothes for women are made from the highest quality materials that make each piece exquisite and last for ages. Our women’s designer clothing collection has been carefully selected to offer you the best articles of luxury women’s clothing. We stand behind each of our womens designer clothing items and promise that you will find the right piece to transform your wardrobe from drab or boring to upscale. Scroll through our high end women’s clothing items to find your favorite pieces. You will soon want to wear nothing but these pieces each and every day.'
+        },
+        {
+          name: 'twitter:url',
+          content: 'https://modesens.com/'
+        }
+      ]
+    }
+  },
   components: {
     myloyalty,
     myorder
