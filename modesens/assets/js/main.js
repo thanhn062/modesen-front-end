@@ -45,5 +45,5 @@ if (process.browser){
         window.open('/accounts/signup/?next=' + next_url)
       }
     })
-  })
+  });
 }

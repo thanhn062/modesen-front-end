@@ -8,7 +8,7 @@ export default {
     //1小时过期
     if (Date.now() > exp) {  //毫秒*秒*分*时
       this.remove(key)
-      return
+      return null
     }
     return localStorage.getItem(key)
   },
