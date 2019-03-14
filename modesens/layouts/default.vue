@@ -10,7 +10,8 @@
       @click="hideMenu"/>
     <Modals/>
     <Top/>
-    <CustomerService/>
+    <CustomerService
+      v-if="$store.state.request && $store.state.request.RCOUNTRY ==='cn'" />
   </div>
 </template>
 <script>
