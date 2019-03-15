@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import {gconfig} from '~/assets/js/gconfig.js'
+import localStorage from '~/assets/js/utils/localStorage.js'
 
 export const state = () => ({
   login_status: false,
@@ -13,11 +15,11 @@ export const state = () => ({
 })
 
 export const mutations = {
-  modifyLoginStatus (state) {
-    state.login_status = !state.login_status;
+  login(state) {
+    state.login_status = true;
   },
-  modifyMdLoginShow() {
-    state.mdLoginShow = !state.mdLoginShow;
+  logout(state) {
+    state.login_status = false;
   },
   setLsuser(state, params) {
     state.lsuser = params;
@@ -42,8 +44,38 @@ export const mutations = {
 }
 
 export const actions = {
-  nuxtServerInit({ commit }, { req }) {
+  nuxtServerInit({ commit, state, dispatch }, { req, app }) {
     console.log(21212, req.headers.cookie)
+    console.log(3333, req.session)
+    console.log(app.gconfig)
+    console.log(state)
+    let cookies = req.headers.cookie;
+    let token = app.$cookies.get(gconfig.ACCESS_TOKEN)
+    let lsuid = app.$cookies.get(gconfig.LSUID)
+    console.log(token, lsuid)
+    if (cookies.indexOf(gconfig.ACCESS_TOKEN) && cookies.indexOf(gconfig.LSUID)) {
+      if (!state.lsuser) {
+        console.log('没有用户信息')
+        // commit('setLsuser', 'werw=324')
+        // commit('login')
+        // if (cookies.indexOf(gconfig.USERINFO)) {
+        //   if (!state.lsuser) {
+        //     let res = cookies.match(/lsuser=/)
+        //     JSON.parse(lsuser)
+        //     commit('setLsuser', )
+        //   }
+        // } else {
+        // let obj = dispatch('getLsuser', app)
+        // console.log(obj)
+        // }
+      } else {
+        console.log('一登录')
+      }
+    } else {
+
+      commit('logout')
+    }
+    console.log(21212, req.headers.cookie.i18n_country)
   },
   async getRequest({ commit }, $axios) {
     let obj = await $axios.get('/request_context/', { params: {} });
@@ -51,15 +83,18 @@ export const actions = {
     Vue.prototype.ISWECHATLITE = obj.ISWECHATLITE;
     console.log(obj);
   },
-  async getLsuser({ commit }, $axios) {
-    let userdata = await this.$axios.post('/accounts/profile/get/', {})
+  async getLsuser({ commit }, app) {
+    console.log(app)
+    return 
+    let userdata = await app.$axios.post('/accounts/profile/get/', {})
     if (userdata.lsuser) {
+      return userdata.lsuser
       console.log(userdata.lsuser.uid)
       let lsuser = JSON.stringify(userdata.lsuser)
-      this.$cookies.set(this.gconfig.LSUID, userdata.lsuser.uid)
-      this.$localStorage.set(this.gconfig.USERINFO, lsuser, 24 * 30)
-      this.$store.commit('setLsuser', userdata.lsuser)
-      this.$store.commit('modifyMdLoginShow')
+      app.$cookies.set(app.gconfig.LSUID, userdata.lsuser.uid)
+      // app.$cookies.set(app.gconfig.USERINFO, lsuser, 24 * 30)
+      app.$store.commit('setLsuser', userdata.lsuser)
+      app.$store.commit('login')
       console.log(userdata.lsuser.uid)
     }
   }

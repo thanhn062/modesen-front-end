@@ -7,7 +7,7 @@
         alt=""></div>
       <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
       <div
-        v-if="!$store.state.login_status"
+        v-if="!$store.state.lsuser"
         class="accountsBox">
         <nuxt-link to="/accounts/signup/?next=/loyalty/">
           <button
@@ -222,7 +222,7 @@
             <div
               v-if="index===1"
               class="answer">
-              <div v-if="$store.state.login_status">{{ $t('loyalty.answer2_1_1') }}
+              <div v-if="$store.state.lsuser">{{ $t('loyalty.answer2_1_1') }}
                 <nuxt-link
                   to="/account/loyalty/"
                   data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</nuxt-link>
@@ -336,7 +336,7 @@ export default {
     title: 'Loyalty | ModeSens'
   },
   mounted() {
-    if (this.$store.state.login_status) {
+    if (this.$store.state.lsuser) {
       this.getLevelInfo()
     }
     if ($(window).width() < 1200) {

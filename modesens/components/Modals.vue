@@ -2,7 +2,7 @@
   <div>
     <!-- 登录modal -->
     <b-modal
-      v-if="!$store.state.login_status"
+      v-if="!$store.state.lsuser"
       id="mdLogin"
       ref="loginmd"
       hide-header
@@ -169,7 +169,7 @@
     </b-modal>
     <!-- notice -->
     <b-modal
-      v-if="$store.state.login_status"
+      v-if="$store.state.lsuser"
       id="noticeproductmd"
       hide-header
       hide-footer
@@ -181,7 +181,7 @@
         frameborder="0"/>
     </b-modal>
     <b-modal
-      v-if="$store.state.login_status"
+      v-if="$store.state.lsuser"
       id="noticeusermd"
       hide-header
       hide-footer
@@ -193,7 +193,7 @@
         frameborder="0"/>
     </b-modal>
     <b-modal
-      v-if="!$store.state.login_status"
+      v-if="!$store.state.lsuser"
       id="spmodal"
       :title="$t('Modals.Pleasesignin')"
       :ok-title="$t('common.SignUp')"
@@ -451,9 +451,9 @@ export default {
     async signout() {
       this.$cookies.remove(this.gconfig.ACCESS_TOKEN)
       this.$localStorage.remove(this.gconfig.USERINFO)
-      this.$store.commit('modifyLoginStatus')
+      this.$store.commit('logout')
       this.$store.commit('removeLsuser')
-      this.$store.state.login_status = false
+      this.$store.state.lsuser = false
       window.open('/', '_self')
     },
     gotoSignup(evt) {

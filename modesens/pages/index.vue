@@ -34,11 +34,6 @@ export default {
     mdLoginShow() {
       return this.$store.state.mdLoginShow
     }
-  },
-  methods: {
-    showMOdal() {
-      this.$store.commit('modifyMdLoginShow')
-    }
   }
 }
 </script>
