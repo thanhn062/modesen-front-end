@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 export const state = () => ({
   login_status: false,
   next_url: '/',
@@ -19,6 +21,7 @@ export const mutations = {
   },
   setLsuser(state, params) {
     state.lsuser = params;
+    console.log(params);
   },
   removeLsuser(state) {
     state.lsuser = null;
@@ -34,6 +37,7 @@ export const mutations = {
   },
   saveRequest(state, params) {
     state.request = params;
+    
   }
 }
 
@@ -44,6 +48,7 @@ export const actions = {
   async getRequest({ commit }, $axios) {
     let obj = await $axios.get('/request_context/', { params: {} });
     commit('saveRequest', obj);
+    Vue.prototype.ISWECHATLITE = obj.ISWECHATLITE;
     console.log(obj);
   }
 }

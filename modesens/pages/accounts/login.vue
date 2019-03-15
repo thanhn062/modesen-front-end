@@ -75,6 +75,7 @@ export default {
         let userdata = await this.$axios.post('/accounts/profile/get/', {})
         if (userdata.lsuser) {
           let lsuser = JSON.stringify(userdata.lsuser)
+          this.$cookies.set(this.gconfig.LSUID, userdata.lsuser.uid)
           this.$localStorage.set(this.gconfig.USERINFO, lsuser, 24 * 30)
           this.$store.commit('setLsuser', userdata.lsuser)
           this.$store.commit('modifyMdLoginShow')

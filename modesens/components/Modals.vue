@@ -221,6 +221,9 @@
       size="lg"
       hide-header
       hide-footer>
+      <button
+        class="close"
+        @click="hideMembershipModal"><img src="/img/close.svg"></button>  
       <div class="ass-head">
         <div>
           <img
@@ -249,6 +252,7 @@
           :interval="4000"
           controls
           indicators
+          background="#fff"
           @sliding-start="onSlideStart"
           @sliding-end="onSlideEnd">
           <b-carousel-slide img-src="https://mds0.com/static/img/20180928availability.png"/>
@@ -256,7 +260,9 @@
           <b-carousel-slide img-src="https://mds0.com/static/img/20180928assistant2_1.png"/>
           <b-carousel-slide img-src="https://mds0.com/static/img/20180928add_to_collection_720.png"/>
           <b-carousel-slide img-src="https://mds0.com/static/img/20180928want1.png"/>
-          <b-carousel-slide>
+          <b-carousel-slide
+            img-blank
+            img-alt="Blank image">
             <div class="description-plug-in">
               <h5>NEVER OVERPAY AGAIN</h5>
               <p class="modesens-shopping">★ ModeSens Shopping Assistant helps you save time and money by finding the lowest price and availabilities for a product when you shop for fashion online. Simply install the extension and view a product page to to find all information from all other stores carrying the same product.</p>
@@ -274,14 +280,66 @@
           </b-carousel-slide>
         </b-carousel>
       </div>
-      <button
-        class="close"
-        @click="hideMembershipModal"><img src="/img/close.svg"></button>  
+    </b-modal>
+    <b-modal
+      id="shmodal"
+      :title="$t('Modals.SharewithFriends')"
+      hide-footer>
+      <div class="mshare">
+        <span
+          :title="$t('Modals.ShareFacebook')"
+          class="mfb"
+          @click="share('fb')">FB</span>
+        <span
+          :title="$t('Modals.ShareTwitter')"
+          class="mtw"
+          @click="share('tw')">TW</span>
+        <span
+          :title="$t('Modals.SharePt')"
+          class="mpi"
+          @click="share('pi')">PI</span>
+        <span
+          :title="$t('Modals.ShareGoole')"
+          class="mgg"
+          @click="share('gg')">GG</span>
+        <span
+          :title="$t('Modals.ShareTr')"
+          class="mtb"
+          @click="share('tb')">TB</span>
+        <span
+          :title="$t('Modals.ShareReddit')"
+          class="mrd"
+          @click="share('rd')">RD</span>
+        <span
+          :title="$t('Modals.ShareLinkedin')"
+          class="mli"
+          @click="share('li')">LI</span>
+        <span
+          :title="$t('Modals.ShareWeibo')"
+          class="mwb"
+          @click="share('wb')">WB</span>
+        <span
+          :title="$t('Modals.ShareUrl')"
+          class="mlk"
+          @click="share('lk')">LK</span>
+        <span
+          :title="$t('Modals.ShareQr')"
+          class="mqr"
+          @click="share('fb')">QR</span>
+      </div>
+    </b-modal>
+    <b-modal
+      id="fcmmodal"
+      :title="$t('Modals.StayInTheKnow')"
+      :ok-title="$t('Modals.DonLetMeMissOut')"
+      :cancel-title="$t('Modals.AskMeLater')">
+      <div class="desc">{{ $t('Modals.fcdesc') }}</div>
     </b-modal>
   </div>
 </template>
 <script>
 import InstallBtn from '~/components/extention/installBtn'
+import { ssshare } from '~/assets/js/utils/share.js'
 export default {
   components: {
     InstallBtn
@@ -299,6 +357,10 @@ export default {
       contactMsg: '',
       frommodelinkshare: false,
       ssurl: '',
+      ssurls: '',
+      sstitle: '',
+      ssdesp: '',
+      ssimg: '',
       slide: 0,
       sliding: null
     }
@@ -309,8 +371,9 @@ export default {
     }
   },
   mounted() {
-    this.showMemberShip()
-    this.showModelink()
+    // this.showMemberShip()
+    // this.showModelink()
+    // this.showFcmodal()
   },
   methods: {
     openLoginModal(evt) {
@@ -414,14 +477,11 @@ export default {
         .css({ padding: 0 })
     },
     showMemberShip() {
-      // $("#membershipMd").css('top', $('#header').height());
       // if (
       //   !this.$store.state.lsuser &&
       //   !this.$localStorage.get('membershipModal')
       // ) {
       setTimeout(() => {
-        // $("#abtestbassistant").modal('hide');
-        // $('.modal.fade.in').modal('hide');
         this.$root.$emit('bv::show::modal', 'membershipMd')
         this.$localStorage.set('membershipModal', 1, 24)
       }, 4000)
@@ -436,6 +496,7 @@ export default {
         this.ssurl = location.href
       }
       // this.shareumds();
+      this.$root.$emit('bv::show::modal', 'shmodal')
     },
     onSlideStart(slide) {
       this.sliding = true
@@ -456,6 +517,21 @@ export default {
         this.$cookies.set('modelinkmodal', true, 1)
       }, 5000)
       // }
+    },
+    share(target) {
+      ssshare(
+        this.$store.state.lsuser.uid,
+        target,
+        1,
+        this.ssurl,
+        this.ssurls,
+        this.sstitle,
+        this.ssdesp,
+        this.ssimg
+      )
+    },
+    showFcmodal() {
+      this.$root.$emit('bv::show::modal', 'fcmmodal')
     }
   }
 }
@@ -617,6 +693,7 @@ export default {
 #abtestbassistant {
   .modal-body {
     // width: 750px;
+    padding: 30px;
   }
   .ass-head {
     display: flex;
@@ -639,6 +716,9 @@ export default {
       color: #000;
       white-space: nowrap;
     }
+  }
+  .ass-content {
+    height: 320px;
   }
   .browser {
     display: flex;
@@ -676,8 +756,89 @@ export default {
       img {
         margin: 0 auto;
         width: 72% !important;
+        height: 285px;
+        &:last-child {
+          width: 90%;
+        }
       }
     }
+    .carousel-caption {
+      left: 0;
+      right: 0;
+      padding: 0;
+    }
+  }
+  .description-plug-in {
+    // margin: 0 auto;
+    // width: 90%;
+    // height: 320px;
+    color: #1c1c1c;
+    text-align: left;
+    overflow-y: hidden;
+    h5 {
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 17px;
+      text-align: center;
+    }
+    .modesens-shopping {
+      font-size: 12px;
+      color: #000;
+      line-height: 17px;
+      text-align: justify;
+    }
+  }
+}
+#shmodal {
+  .mshare {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding-left: 10px;
+    span {
+      width: 30px;
+      height: 20px;
+      font-size: 0;
+      background-size: 20px auto;
+      background-repeat: no-repeat;
+    }
+    .mfb {
+      background-image: url(https://mds0.com/static/img/fb.png);
+    }
+    .mtw {
+      background-image: url(https://mds0.com/static/img/tw.png);
+    }
+    .mpi {
+      background-image: url(https://mds0.com/static/img/pi.png);
+    }
+    .mgg {
+      background-image: url(https://mds0.com/static/img/gg.png);
+    }
+    .mtb {
+      background-image: url(https://mds0.com/static/img/tb.png);
+    }
+    .mrd {
+      background-image: url(https://mds0.com/static/img/rd.png);
+    }
+    .mli {
+      background-image: url(https://mds0.com/static/img/li.png);
+    }
+    .mwb {
+      background-image: url(https://mds0.com/static/img/wb.png);
+    }
+    .mlk {
+      background-image: url(https://mds0.com/static/img/link.png);
+    }
+    .mqr {
+      background-image: url(https://mds0.com/static/img/qr.png);
+    }
+  }
+}
+#fcmmodal {
+  .desc {
+    font-size: 24px;
   }
 }
 </style>
