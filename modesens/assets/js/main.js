@@ -5,6 +5,10 @@ Vue.use(vClickOutside)
 //引入懒加载插件
 import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload)
+//引入meta、titile
+import Meta from 'vue-meta'
+Vue.use(Meta)
+
 
 // 引入公共变量和方法
 import {gconfig} from '~/assets/js/gconfig.js'

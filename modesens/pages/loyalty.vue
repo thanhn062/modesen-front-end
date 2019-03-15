@@ -1,5 +1,6 @@
 <template>
   <section class="container loyalty-con">
+    <h1 class="hiddenh1">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</h1>
     <div class="accountsCon">
       <div class="logoCon"><img 
         v-lazy="'/img/20180905footer_logo.svg'"
@@ -280,6 +281,17 @@ import { wxlogin } from '~/assets/js/utils/utils.js'
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
 export default {
+  metaInfo() {
+    let headobj = {}
+    let H1 = this.$t('loyalty.desc1') + ' ' + this.$t('loyalty.desc2')
+    let TITLE = this.$t('loyalty.loyaltyTitle') + ' | ModeSens'
+    let request = this.$store.state.request
+    if (request) {
+      let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    }
+    return headobj
+  },
   data() {
     return {
       level: '',

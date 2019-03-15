@@ -1,5 +1,11 @@
 <template>
   <section class="container annualreview-con">
+    <h1
+      v-if="$i18n.locale == 'zh'"
+      class="hiddenh1">ModeSens 的2018年终总结</h1>
+    <h1
+      v-else
+      class="hiddenh1">2018 Annual Report for ModeSens</h1>
     <div class="bannerimg">
       <img
         :src="handimgsrc"
@@ -157,6 +163,23 @@ import VeHistogram from 'v-charts/lib/histogram.js'
 import vepie from 'v-charts/lib/pie.js'
 import { NumFormat } from '~/assets/js/utils/utils.js'
 export default {
+  metaInfo() {
+    let headobj = {}
+    let H1 = ''
+    if (this.$i18n.locale == 'zh') {
+      H1 = 'ModeSens 的2018年终总结'
+    } else {
+      H1 = '2018 Annual Report for ModeSens'
+    }
+    this.$t('accountLoyalty.my_loyalty')
+    let TITLE = this.$t('annual.annualTitle') + ' | ModeSens'
+    let request = this.$store.state.request
+    if (request) {
+      let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    }
+    return headobj
+  },
   filters: {
     NumFormat(value) {
       return NumFormat(value)
@@ -271,9 +294,6 @@ export default {
         rows: []
       }
     }
-  },
-  head: {
-    title: 'Annual Review | ModeSens'
   },
   created() {
     if (this.$store.state.login_status) {

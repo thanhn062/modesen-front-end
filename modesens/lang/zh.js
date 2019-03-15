@@ -81,6 +81,7 @@ export const Footer = {
   Mens: "男士",
 };
 export const loyalty = {
+  loyaltyTitle: '会员制度',
   benefitsTitle: '会员权益',
   bfTitle1: '快速晋升',
   bfdesc1: '通过三倍积分日你可以立即晋升下一个ModeSens会员等级。',
@@ -314,6 +315,7 @@ export const accountOrder = {
   Orderinquiry: '追踪订单'
 };
 export const annual = {
+  annualTitle: '年终总结',
   MemberSince: '会员始于',
   yousaved: '你的购物节省总额',
   modesenssaved: 'ModeSens会员购物节省总额',
@@ -509,9 +511,12 @@ export const Modals = {
   JoinModeSens: '加入ModeSens打造个人衣橱，和好友一起享受购物乐趣。'
 };
 export const barcodeHelp = {
+  barcodeTitle: '扫码介绍',
   desc: '通过扫描条形码（通常位于标签或包装盒上），查找ModeSens上的产品和定价信息。你可以扫描类似下面示例中的条形码，祝你使用愉快！'
 };
 export const Wechat = {
+  f_categories: '女士购买分类页',
+  m_categories: '男士购买分类页',
   fc: "女士服饰",
   fb: "女士箱包",
   fs: "女士鞋履",

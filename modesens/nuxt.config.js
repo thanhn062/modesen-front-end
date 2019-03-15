@@ -60,6 +60,7 @@ module.exports = {
     //ssr：false是为了不让js文件再服务器中编译；
     { src: '~/plugins/axios.js', ssr: false },
     { src: '~/plugins/init.js', ssr: false },
+    { src: '~/assets/js/utils/utils.js', ssr: false},
   ],
 
   router: {
