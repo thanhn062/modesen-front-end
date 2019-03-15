@@ -9,8 +9,13 @@ export default function({ app, store }) {
   let lsuid = app.$cookies.get(app.gconfig.LSUID)
   if (token && lsuid) {
     let lsuser = app.$localStorage.get(app.gconfig.USERINFO)
-    store.commit('modifyLoginStatus')
-    store.commit('setLsuser', JSON.parse(lsuser))
+    if (lsuser) {
+      store.commit('modifyLoginStatus')
+      store.commit('setLsuser', JSON.parse(lsuser))  
+    } else {
+      store.dispatch('getLsuser', app.$axios)
+    }
+    
   }
   console.log('plugin-init')
 }

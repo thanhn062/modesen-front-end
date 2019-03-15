@@ -4,7 +4,7 @@
             "name": "ModeSens",
             "script": "npm",
             "args" : "start",
-            "instances": 4,
+            "instances": 1,
             "watch": [".nuxt"],   // 监控输出目录
         }
     ]
