@@ -506,7 +506,9 @@ export const Modals = {
   YourName: 'Your Name:',
   Pleasesignin: 'Please sign in',
   Notamemberyet: 'Not a member yet?',
-  JoinModeSens: 'Join ModeSens to curate your closet and shop with friends.'
+  JoinModeSens: 'Join ModeSens to curate your closet and shop with friends.',
+  StartEarningToday: 'Start Earning Today',
+  MakeModeSens: 'Make the most of your ModeSens experience by creating a free account and start earning points toward ModeSens Rewards when you shop.',
 };
 export const barcodeHelp = {
   desc: 'Scan an item’s barcode (typically located on the tags or box) to find the product and pricing information on ModeSens. Below are a few examples of barcodes that you could scan. Happy scanning!'

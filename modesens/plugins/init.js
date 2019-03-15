@@ -10,4 +10,5 @@ export default function({ app, store }) {
     store.commit('modifyLoginStatus')
     store.commit('setLsuser', JSON.parse(lsuser))
   }
+  console.log('plugin-init')
 }

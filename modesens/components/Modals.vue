@@ -202,10 +202,89 @@
       @cancel="openLoginModal">
       <div style="fontSize: 24px;">{{ $t('Modals.Notamemberyet') }}<span id="spmsg">{{ $t('Modals.JoinModeSens') }}</span></div>
     </b-modal>
+    <!-- membership -->
+    <b-modal
+      id="membershipMd"
+      hide-header
+      hide-footer>
+      <button
+        class="close"
+        @click="hideMembershipModal"><img src="/img/close.svg"></button>
+      <div class="membership-desc">{{ $t('Modals.MakeModeSens') }}</div>
+      <div class="membership-btn"><a href="/accounts/signup/?next=/">
+        <button class="btn btn-primary">{{ $t('Modals.StartEarningToday') }}</button>
+      </a></div>
+    </b-modal>
+    <b-modal
+      id="abtestbassistant"
+      size="lg"
+      hide-header
+      hide-footer>
+      <div class="ass-head">
+        <div>
+          <img
+            v-lazy="'https://mds0.com/static/img/20180930modesenslogo.png'"
+            class="modesens-logo">
+          <div class="smart-shopping">
+            <div class="meetS">Meet your premier fashion shopping assistant</div>
+            <p>Automatically find and compare prices, availabilities and coupons from 160+ fashion stores.</p>
+          </div>
+        </div>
+        <div class="browser-logo">
+          <div class="browser">
+            <div class="browser-name"><InstallBtn/></div>
+            <div
+              class="browser-share"
+              @click="modelinkshare">
+              <img v-lazy="'https://mds0.com/static/img/prd_share1_360.png'">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ass-content">
+        <b-carousel
+          id="carousel1"
+          v-model="slide"
+          :interval="4000"
+          controls
+          indicators
+          @sliding-start="onSlideStart"
+          @sliding-end="onSlideEnd">
+          <b-carousel-slide img-src="https://mds0.com/static/img/20180928availability.png"/>
+          <b-carousel-slide img-src="https://mds0.com/static/img/20180928Coupon_1.png"/>
+          <b-carousel-slide img-src="https://mds0.com/static/img/20180928assistant2_1.png"/>
+          <b-carousel-slide img-src="https://mds0.com/static/img/20180928add_to_collection_720.png"/>
+          <b-carousel-slide img-src="https://mds0.com/static/img/20180928want1.png"/>
+          <b-carousel-slide>
+            <div class="description-plug-in">
+              <h5>NEVER OVERPAY AGAIN</h5>
+              <p class="modesens-shopping">★ ModeSens Shopping Assistant helps you save time and money by finding the lowest price and availabilities for a product when you shop for fashion online. Simply install the extension and view a product page to to find all information from all other stores carrying the same product.</p>
+              <h5 class="find-items">FIND ITEM AVAILABILITY ACROSS THE WEB</h5>
+              <p class="modesens-shopping">
+                ★ Stay informed on what stores carry your size for an item by saving the item to your ModeSens Shopping Assistant
+              </p>
+              <h5>AUTOMATICALLY FIND COUPON CODES</h5>
+              <p class="modesens-shopping">
+                ★ Click on the ModeSens button to find the latest coupons and offers from stores such as NET-A-PORTER, Barney’s, Bloomingdale’s, Farfetch, LUISAVIAROMA, East Dane, Neiman Marcus, Nordstrom, REVOLVE, Sak’s and 160+ more.
+              </p>
+              <h5>EXCLUSIVE ACCESS</h5>
+              <p class="modesens-shopping">★ Exclusive access to special offers and coupons only available via ModeSens Shopping Assistant.</p>
+            </div>
+          </b-carousel-slide>
+        </b-carousel>
+      </div>
+      <button
+        class="close"
+        @click="hideMembershipModal"><img src="/img/close.svg"></button>  
+    </b-modal>
   </div>
 </template>
 <script>
+import InstallBtn from '~/components/extention/installBtn'
 export default {
+  components: {
+    InstallBtn
+  },
   data() {
     return {
       hereHasClick: false,
@@ -216,13 +295,21 @@ export default {
       introduction: '',
       isSendFeedback: false,
       contactEmail: '',
-      contactMsg: ''
+      contactMsg: '',
+      frommodelinkshare: false,
+      ssurl: '',
+      slide: 0,
+      sliding: null
     }
   },
   computed: {
     mdLoginShow() {
       return this.$store.state.mdLoginShow
     }
+  },
+  mounted() {
+    this.showMemberShip()
+    this.showModelink()
   },
   methods: {
     openLoginModal(evt) {
@@ -324,6 +411,50 @@ export default {
       $(evt.target)
         .find('.modal-body')
         .css({ padding: 0 })
+    },
+    showMemberShip() {
+      // $("#membershipMd").css('top', $('#header').height());
+      // if (
+      //   !this.$store.state.lsuser &&
+      //   !this.$localStorage.get('membershipModal')
+      // ) {
+      setTimeout(() => {
+        // $("#abtestbassistant").modal('hide');
+        // $('.modal.fade.in').modal('hide');
+        this.$root.$emit('bv::show::modal', 'membershipMd')
+        this.$localStorage.set('membershipModal', 1, 24)
+      }, 4000)
+      // }
+    },
+    hideMembershipModal() {
+      this.$root.$emit('bv::hide::modal', 'membershipMd')
+    },
+    modelinkshare() {
+      this.frommodelinkshare = true
+      if (!this.ssurl) {
+        this.ssurl = location.href
+      }
+      // this.shareumds();
+    },
+    onSlideStart(slide) {
+      this.sliding = true
+    },
+    onSlideEnd(slide) {
+      this.sliding = false
+    },
+    showModelink() {
+      // if (
+      //   this.$i18n.locale !== "zh" &&
+      //   !$("#modesensinstalled")[0] &&
+      //   !this.$cookies.get('modelinkmodal') &&
+      //   $(window).width() > 1199 &&
+      //   $('#paypal-button').length <= 0 ||
+      //   location.href.indexOf("frommodelinkfrommodelink=1") > -1) {
+      setTimeout(() => {
+        this.$root.$emit('bv::show::modal', 'abtestbassistant')
+        this.$cookies.set('modelinkmodal', true, 1)
+      }, 5000)
+      // }
     }
   }
 }
@@ -458,6 +589,9 @@ export default {
 }
 #signoutmodal {
   text-align: center;
+  .modal-dialog {
+    width: 400px;
+  }
   img {
     width: 300px;
   }
@@ -466,6 +600,86 @@ export default {
 #noticeusermd {
   .modal-dialog {
     margin-right: 0;
+  }
+}
+#membershipMd {
+  .modal-body {
+    padding: 0;
+  }
+  text-align: center;
+  .membership-desc {
+    padding: 60px 30px 30px;
+    font-size: 22px;
+    font-weight: 300;
+  }
+  .membership-btn {
+    padding-bottom: 60px;
+  }
+}
+#abtestbassistant {
+  .modal-body {
+    // width: 750px;
+  }
+  .ass-head {
+    display: flex;
+    justify-content: space-between;
+    height: 99px;
+    .modesens-logo {
+      width: 300px;
+    }
+    .smart-shopping {
+      margin-top: 15px;
+    }
+    .meetS {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 22px;
+    }
+    p {
+      font-size: 12px;
+      line-height: 18px;
+      color: #000;
+      white-space: nowrap;
+    }
+  }
+  .browser {
+    display: flex;
+    justify-content: space-between;
+  }
+  .modelinkbrowsebtn {
+    padding: 3px 15px;
+    height: 33px;
+    border: 2px solid transparent;
+    img {
+      width: 24px;
+      height: 24px;
+    }
+    span {
+      line-height: 24px;
+    }
+  }
+  .browser-share {
+    padding: 3px 10px;
+    height: 33px;
+    border: 2px solid transparent;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    background-image: linear-gradient(#575757, #575757),
+      linear-gradient(#696969, #191919);
+    cursor: pointer;
+    img {
+      width: 24px;
+    }
+  }
+  #carousel1 {
+    margin: 0 auto;
+    width: 633px;
+    .carousel-item {
+      img {
+        margin: 0 auto;
+        width: 72% !important;
+      }
+    }
   }
 }
 </style>
