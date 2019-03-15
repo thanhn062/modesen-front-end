@@ -1,4 +1,5 @@
 export const common = {
+  fff: 'fff',
   about: 'About',
   emailaddress: 'Email Address',
   SUBMIT: 'SUBMIT',

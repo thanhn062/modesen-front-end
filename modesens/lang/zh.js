@@ -1,4 +1,5 @@
 export const common = {
+  fff: '好的',
   about: '关于我们',
   emailaddress: '填写邮件地址',
   SUBMIT: '订阅邮件',
