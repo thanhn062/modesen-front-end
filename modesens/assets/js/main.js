@@ -5,6 +5,10 @@ Vue.use(vClickOutside)
 //引入懒加载插件
 import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload)
+//引入meta、titile
+import Meta from 'vue-meta'
+Vue.use(Meta)
+
 
 // 引入公共变量和方法
 import {gconfig} from '~/assets/js/gconfig.js'
@@ -45,5 +49,14 @@ if (process.browser){
         window.open('/accounts/signup/?next=' + next_url)
       }
     })
-  });
+    //置顶功能
+    $(window).scroll(bindScroll)
+    function bindScroll(){
+      var scrollTop = $(window).scrollTop();
+      var winHeight = Math.max($(window).height(), $(this).outerHeight(), $('html').height());
+      var viewHeight = Math.min(window.innerHeight, document.body.clientHeight);
+      if (scrollTop + 200 > viewHeight) $('#to-top').fadeIn(500);
+      else $('#to-top').fadeOut(500);
+    }
+  })
 }

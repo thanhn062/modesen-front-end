@@ -1,5 +1,6 @@
 <template>
   <section class="barcode-help">
+    <h1 class="hiddenh1">{{ $t('barcodeHelp.desc') }}</h1>
     <div class="desc">{{ $t('barcodeHelp.desc') }}</div>
     <div class="imgbox">
       <div
@@ -13,8 +14,21 @@
 <script>
 export default {
   layout: 'noframe',
-  head: {
-    title: this.$t('Barcode Help | ModeSens')
+  metaInfo() {
+    let headobj = {}
+    let H1 = this.$t('barcodeHelp.desc')
+    let TITLE = this.$t('barcodeHelp.barcodeTitle') + ' | ModeSens'
+    let request = this.$store.state.request
+    let MS_LOGO = ''
+    if (request) {
+      if (this.$i18n.locale == 'zh') {
+        MS_LOGO = request.STATIC_DOMAIN_IMG + '/static/img/20190201scan_zh.png'
+      } else {
+        MS_LOGO = request.STATIC_DOMAIN_IMG + '/static/img/20190201scan_en.png'
+      }
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    }
+    return headobj
   },
   data() {
     return {

@@ -1,4 +1,5 @@
 export const common = {
+  fff: 'fff',
   about: 'About',
   emailaddress: 'Email Address',
   SUBMIT: 'SUBMIT',
@@ -80,6 +81,7 @@ export const Footer = {
   Mens: "Men's",
 };
 export const loyalty = {
+  loyaltyTitle: 'Loyalty',
   benefitsTitle: 'Membership Benefits',
   bfTitle1: 'Get More Faster',
   bfdesc1: 'With Triple Points Days you can move up to the next ModeSens Rewards level in no time.',
@@ -313,6 +315,7 @@ export const accountOrder = {
   Orderinquiry: 'Order Inquiry'
 };
 export const annual = {
+  annualTitle: 'Annual Review',
   MemberSince: 'Member Since',
   yousaved: 'Your Total Savings',
   modesenssaved: 'ModeSens Members Total Savings',
@@ -525,9 +528,12 @@ export const Modals = {
   DonLetMeMissOut: 'Don’t Let Me Miss Out',
 };
 export const barcodeHelp = {
+  barcodeTitle: 'Barcode Help',
   desc: 'Scan an item’s barcode (typically located on the tags or box) to find the product and pricing information on ModeSens. Below are a few examples of barcodes that you could scan. Happy scanning!'
 };
 export const Wechat = {
+  f_categories: 'Shop Women Categories',
+  m_categories: 'Shop Men Categories',
   fc: "Women's Clothing",
   fb: "Women's Bags",
   fs: "Women's Shoes",

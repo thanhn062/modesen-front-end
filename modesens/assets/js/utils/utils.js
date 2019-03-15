@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 // 时间戳转为UTC时间
 export function getLocalTime (nS) {
   var date = new Date(parseInt(nS) * 1000);
@@ -102,3 +104,48 @@ export function getBrowse(){
       return "Others";
   }
 }
+
+var commonfn = {
+  install(Vue){
+    Vue.prototype.commonfn = {
+      creatMetaTitle: function(H1, TITLE, MS_LOGO) {
+        let meta = []
+        let LOCATION_URL = window.location.href
+        let META_name = [
+          'description',
+          'twitter:url',
+          'twitter:title',
+          'twitter:description',
+          'twitter:image',
+          'og:url',
+          'og:title',
+          'og:description',
+          'og:image'
+        ]
+        let content_txt = ''
+        META_name.map(name => {
+          if (name.includes('description')) {
+            content_txt = H1
+          } else if (name.includes('url')) {
+            content_txt = LOCATION_URL
+          } else if (name.includes('title')) {
+            content_txt = TITLE
+          } else if (name.includes('image')) {
+            content_txt = MS_LOGO
+          }
+          meta.push({
+            hid: name,
+            name,
+            content: content_txt
+          })
+        })
+        return { 
+          title: TITLE,
+          meta
+        }
+      }
+    }
+  }
+}
+
+Vue.use(commonfn)

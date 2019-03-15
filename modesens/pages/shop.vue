@@ -1,5 +1,6 @@
 <template>
   <section>
+    <h1 class="hiddenh1">{{ $t('Wechat.f_categories') }} <br> {{ $t('Wechat.m_categories') }}</h1>
     <b-tabs
       no-nav-style
       nav-class="filterTab"
@@ -360,6 +361,18 @@
 </template>
 <script>
 export default {
+  metaInfo() {
+    let headobj = {}
+    let H1 =
+      this.$t('Wechat.f_categories') + '|' + this.$t('Wechat.m_categories')
+    let TITLE = 'ModeSens'
+    let request = this.$store.state.request
+    if (request) {
+      let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    }
+    return headobj
+  },
   layout: 'noframe',
   data() {
     return {
@@ -381,7 +394,6 @@ export default {
     }
   },
   head: {
-    title: 'ModeSens',
     script: [{ src: 'https://res.wx.qq.com/open/js/jweixin-1.3.2.js' }]
   },
   mounted() {

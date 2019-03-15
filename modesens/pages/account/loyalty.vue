@@ -1,5 +1,6 @@
 <template>
   <section class="aloyalty-con">
+    <h1 class="hiddenh1">{{ $t('accountLoyalty.my_loyalty') }}</h1>
     <div
       v-if = "flag1"
       class="membershippage">
@@ -118,7 +119,7 @@
     </div>
     <div
       v-else
-      class="membershippage">
+      class="membershippage loading">
       <img
         src="/img/20190102sync.gif"
         alt=""
@@ -130,6 +131,17 @@
 import myloyalty from '~/components/loyalty/myloyalty.vue'
 import myorder from '~/components/loyalty/myorder.vue'
 export default {
+  metaInfo() {
+    let headobj = {}
+    let H1 = this.$t('accountLoyalty.my_loyalty')
+    let TITLE = this.$t('nav.MyLoyalty') + ' | ModeSens'
+    let request = this.$store.state.request
+    if (request) {
+      let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    }
+    return headobj
+  },
   components: {
     myloyalty,
     myorder
@@ -153,9 +165,6 @@ export default {
       orderflag: false,
       activeTab: ''
     }
-  },
-  head: {
-    title: 'My Loyalty | ModeSens'
   },
   mounted() {
     this.activeTab = this.$route.query.tab

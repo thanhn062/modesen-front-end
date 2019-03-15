@@ -201,9 +201,10 @@
                       {{ $t('accountOrder.afterstatus'+aftersale) }}
                     </a>
                     <div
+                      v-b-modal.service-modal
                       v-else-if="aftersale === 2 && order.merchant_id"
                       class="after-sale-other"
-                      @click="openContact">{{ $t('accountOrder.afterstatus'+aftersale) }}</div>
+                    >{{ $t('accountOrder.afterstatus'+aftersale) }}</div>
                     <a
                       v-else-if="aftersale === 4"
                       :href="order.availability ? '/product/'+order.availability.product_id+'/review/' : 'https://modesens.com/store/merchantreview/'+order.merchant_url+'/'"
@@ -253,15 +254,10 @@
           class="loadmore">
       </div>
     </div>
-    <serviceModal ref="contact"/>
   </section>
 </template>
 <script>
-import serviceModal from '~/components/Modals.vue'
 export default {
-  components: {
-    serviceModal
-  },
   props: {
     userordercontent: {
       type: Array,
@@ -300,7 +296,7 @@ export default {
     }
   },
   created() {
-    this.usertoken = this.$cookies.get(gconfig.ACCESS_TOKEN)
+    this.usertoken = this.$cookies.get(this.gconfig.ACCESS_TOKEN)
   },
   mounted() {
     if ($(window).width() < 1200) {
@@ -384,9 +380,6 @@ export default {
       this.orderlimit = -1
       this.currentPage = 1
       this.orderflag = false
-    },
-    openContact: function() {
-      this.$refs.contact.showCuModal()
     }
   }
 }
