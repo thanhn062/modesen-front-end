@@ -138,6 +138,7 @@ export default {
   },
   created() {},
   mounted() {
+    console.log('default---mounted')
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this.$axios)
     }

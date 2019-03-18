@@ -1,9 +1,9 @@
 <template>
   <section class="container login-container">
     <div class="logo-con">
-      <nuxt-link
-        to="/"
-        target="_blank"><img :src="$i18n.locale==='zh' ? gconfig.LOGO_ASSISTRANT_ZH : gconfig.LOGO_ASSISTRANT_EN"></nuxt-link>
+      <a
+        href="/"
+        target="_blank"><img :src="$i18n.locale==='zh' ? gconfig.LOGO_ASSISTRANT_ZH : gconfig.LOGO_ASSISTRANT_EN"></a>
     </div>
     <b-form
       class="login-form"
@@ -67,14 +67,11 @@ export default {
       data.grant_type = 'password'
       data.username = this.email
       data.password = this.password
-      // try {
       let obj = await this.$axios.post('/o/token/', data)
       if (obj.access_token) {
-        // this.$store.commit('login')
         this.$cookies.set(this.gconfig.ACCESS_TOKEN, obj.access_token)
-        this.$store.dispatch('getLsuser', this.$axios)
+        this.$store.dispatch('getLsuser', this)
         window.parent.open(this.$route.query.next, '_self')
-      } else {
       }
     }
   }
