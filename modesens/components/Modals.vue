@@ -2,7 +2,7 @@
   <div>
     <!-- 登录modal -->
     <b-modal
-      v-if="!$store.state.lsuser"
+      v-if="!$store.state.login_status"
       id="mdLogin"
       ref="loginmd"
       hide-header
@@ -169,7 +169,7 @@
     </b-modal>
     <!-- notice -->
     <b-modal
-      v-if="$store.state.lsuser"
+      v-if="$store.state.login_status"
       id="noticeproductmd"
       hide-header
       hide-footer
@@ -181,7 +181,7 @@
         frameborder="0"/>
     </b-modal>
     <b-modal
-      v-if="$store.state.lsuser"
+      v-if="$store.state.login_status"
       id="noticeusermd"
       hide-header
       hide-footer
@@ -193,7 +193,7 @@
         frameborder="0"/>
     </b-modal>
     <b-modal
-      v-if="!$store.state.lsuser"
+      v-if="!$store.state.login_status"
       id="spmodal"
       :title="$t('Modals.Pleasesignin')"
       :ok-title="$t('common.SignUp')"
@@ -453,7 +453,7 @@ export default {
       this.$localStorage.remove(this.gconfig.USERINFO)
       this.$store.commit('logout')
       this.$store.commit('removeLsuser')
-      this.$store.state.lsuser = false
+      this.$store.state.login_status = false
       window.open('/', '_self')
     },
     gotoSignup(evt) {
@@ -477,7 +477,7 @@ export default {
     },
     showMemberShip() {
       // if (
-      //   !this.$store.state.lsuser &&
+      //   !this.$store.state.login_status &&
       //   !this.$localStorage.get('membershipModal')
       // ) {
       setTimeout(() => {

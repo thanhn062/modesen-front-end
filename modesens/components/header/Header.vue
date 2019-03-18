@@ -151,12 +151,12 @@
           <div class="userInfo">
             <a
               v-b-modal.mdLogin
-              v-if="!$store.state.lsuser"
+              v-if="!$store.state.login_status"
               href="javascript:;">
               <img v-lazy="'https://mds0.com/static/img/20180905account_b.svg'">
             </a>
             <div
-              v-else
+              v-if="$store.state.lsuser"
               class="d-flex justify-content-between align-items-center authInfo">
               <a
                 v-b-modal.noticeproductmd
@@ -361,7 +361,6 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      console.log(3434343434)
       this.getConfig()
       this.mybrowse = getBrowse()
       $('.main-container').css('padding-top', $('.header').height())

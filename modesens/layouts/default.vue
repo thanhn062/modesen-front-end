@@ -136,10 +136,16 @@ export default {
     Top,
     CustomerService
   },
-  created() {
-    console.log(this.$route)
+  created() {},
+  mounted() {
+    if (!this.$store.state.request) {
+      this.$store.dispatch('getRequest', this.$axios)
+    }
+    if (this.$store.state.login_status && !this.$store.state.lsuser) {
+      this.$store.dispatch('getLsuser', this)
+      console.log('dafalut-mounted--', this.$store.state.lsuser)
+    }
   },
-  mounted() {},
   methods: {
     hideMenu() {
       $('#nav_collapse').animate({ left: '-100%' })

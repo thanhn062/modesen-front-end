@@ -236,7 +236,7 @@ export default {
     }
   },
   created() {
-    if (this.$store.state.lsuser) {
+    if (this.$store.state.login_status) {
       let pers =
         this.myloyaltycontent.points_earned / this.myloyaltycontent.points_goal
       this.pers_percentage = Math.round(pers * 100)

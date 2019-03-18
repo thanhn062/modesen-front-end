@@ -1740,7 +1740,7 @@ export default {
     },
     followEvent(i, username, uid) {
       this.changeFirstLevelIndex(-1)
-      if (this.$store.state.lsuser) {
+      if (this.$store.state.login_status) {
         if (this.followStatus[i]) {
           this.postFollow(i, 'unfollow', uid)
         } else {

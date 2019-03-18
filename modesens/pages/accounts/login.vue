@@ -70,7 +70,7 @@ export default {
       // try {
       let obj = await this.$axios.post('/o/token/', data)
       if (obj.access_token) {
-        this.$store.commit('login')
+        // this.$store.commit('login')
         this.$cookies.set(this.gconfig.ACCESS_TOKEN, obj.access_token)
         this.$store.dispatch('getLsuser', this.$axios)
         window.parent.open(this.$route.query.next, '_self')

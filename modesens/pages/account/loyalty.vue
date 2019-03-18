@@ -248,7 +248,7 @@ export default {
         this.userRecords = records.records
         this.flag2 = true
       } else {
-        if (this.$store.state.lsuser) {
+        if (this.$store.state.login_status) {
           this.getRecords()
         }
       }
