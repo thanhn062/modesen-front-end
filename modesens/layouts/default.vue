@@ -136,6 +136,29 @@ export default {
     Top,
     CustomerService
   },
+  computed: {
+    listenstage() {
+      return this.$store.state.request
+    }
+  },
+  watch: {
+    listenstage: function(ov, nv) {
+      if (this.$store.state.request.RCOUNTRY == 'cn') {
+        var hm = document.createElement('script')
+        hm.src = 'https://hm.baidu.com/hm.js?5d6195861bd1dc57fe4981c6ed078dd4'
+        var s = document.getElementsByTagName('script')[0]
+        s.parentNode.insertBefore(hm, s)
+        /* 每次路由变更时进行pv统计 */
+        this.$router.afterEach((to, from) => {
+          /* 告诉增加一个PV */
+          try {
+            window._hmt = window._hmt || []
+            window._hmt.push(['_trackPageview', to.fullPath])
+          } catch (e) {}
+        })
+      }
+    }
+  },
   created() {},
   mounted() {
     console.log('default---mounted')

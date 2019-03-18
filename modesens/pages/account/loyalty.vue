@@ -76,7 +76,7 @@
               v-if = "flag2"
               class="page-right ">
               <keep-alive>
-                <myloyalty 
+                <Myloyalty 
                   :myloyaltycontent="level"
                   :myloyaltycontent1="userRecords"
                   :recordsflag2="flag2"/>
@@ -99,7 +99,7 @@
               v-if = "orderflag"
               class="page-right">
               <keep-alive>
-                <myorder
+                <Myorder
                   :userordercontent="userOrder"
                   :userordertotal="userOrdertotal"
                   :userorderflag="orderflag"/>
@@ -128,8 +128,8 @@
   </section>
 </template>
 <script>
-import myloyalty from '~/components/loyalty/myloyalty.vue'
-import myorder from '~/components/loyalty/myorder.vue'
+import Myloyalty from '~/components/loyalty/Myloyalty.vue'
+import Myorder from '~/components/loyalty/Myorder.vue'
 export default {
   metaInfo() {
     let headobj = {}
@@ -143,8 +143,8 @@ export default {
     return headobj
   },
   components: {
-    myloyalty,
-    myorder
+    Myloyalty,
+    Myorder
   },
   data() {
     return {
