@@ -296,7 +296,7 @@ export default {
     }
   },
   created() {
-    if (this.$store.state.lsuser) {
+    if (this.$store.state.login_status) {
       this.getannualreview()
     }
     if (this.$i18n.locale == 'zh') {
