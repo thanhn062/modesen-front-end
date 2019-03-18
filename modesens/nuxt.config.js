@@ -35,7 +35,7 @@ module.exports = {
 
   env: {
     baseUrl: process.env.BASE_URL || 'http://127.0.0.1/',
-    browserBaseURL: process.env.BROWSER_BASE_URL || 'https://modesens.com/',
+    browserBaseURL: process.env.BROWSER_BASE_URL || 'https://test.modesens.com/',
     secretKey: 'gDsdSXwddn3xp3SWgujuTUizGbfUM3wHcrzj8FLihicCJLUUePkX1dT9NiW8',
     client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
     client_secret:

@@ -151,7 +151,7 @@
           <div class="userInfo">
             <a
               v-b-modal.mdLogin
-              v-if="!$store.state.login_status"
+              v-if="!$store.state.lsuser"
               href="javascript:;">
               <img v-lazy="'https://mds0.com/static/img/20180905account_b.svg'">
             </a>

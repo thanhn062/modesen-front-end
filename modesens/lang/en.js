@@ -511,6 +511,21 @@ export const Modals = {
   JoinModeSens: 'Join ModeSens to curate your closet and shop with friends.',
   StartEarningToday: 'Start Earning Today',
   MakeModeSens: 'Make the most of your ModeSens experience by creating a free account and start earning points toward ModeSens Rewards when you shop.',
+  SharewithFriends: 'Share with Friends',
+  ShareFacebook: 'Share with friends through facebook',
+  ShareTwitter: 'Share with friends through twitter',
+  SharePt: 'Share with friends through pinterest',
+  ShareGoole: 'Share with friends through google+',
+  ShareTr: 'Share with friends through tumblr',
+  ShareReddit: 'Share with friends through reddit',
+  ShareLinkedin: 'Share with friends through linkedin',
+  ShareWeibo: 'Share with friends through weibo',
+  ShareUrl: 'Share with friends through url',
+  ShareQr: 'Share with friends through qr code',
+  fcdesc: 'Do you want to keep up-to-date on the latest sales and product notifications? Subscribe to ModeSens web notifications now.',
+  StayInTheKnow: 'Stay In The Know',
+  AskMeLater: 'Ask Me Later',
+  DonLetMeMissOut: 'Don’t Let Me Miss Out',
 };
 export const barcodeHelp = {
   barcodeTitle: 'Barcode Help',
@@ -557,3 +572,6 @@ export const Wechat = {
   hd: 'Hot Designers',
   hm: 'Hot Merchants',
 };
+export const share = {
+  urlshare: 'Copy this url to share with friends'
+}

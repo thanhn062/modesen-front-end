@@ -182,6 +182,27 @@ img.loadmore {
 .borderbottom {
   border-bottom: @border3;
 }
+.carousel-control-prev,
+.carousel-control-next {
+  top: unset;
+  bottom: -38px;
+  display: unset;
+}
+.carousel-control-prev-icon {
+  background-image: url(https://mds0.com/static/img/20180905overlay_left_arrow_b.svg)
+}
+.carousel-control-next-icon {
+  background-image: url(https://mds0.com/static/img/20180905overlay_right_arrow_b.svg)
+}
+.carousel-indicators {
+  bottom: -48px;
+  li {
+    background-color: #c2c2c2;
+  }
+  .active {
+    background-color: #f54a35;
+  }
+}
 @media(max-width: 1199px) {
   .container {
     padding: 0;

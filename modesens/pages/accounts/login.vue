@@ -70,15 +70,9 @@ export default {
       // try {
       let obj = await this.$axios.post('/o/token/', data)
       if (obj.access_token) {
-        this.$store.commit('modifyLoginStatus')
+        this.$store.commit('login')
         this.$cookies.set(this.gconfig.ACCESS_TOKEN, obj.access_token)
-        let userdata = await this.$axios.post('/accounts/profile/get/', {})
-        if (userdata.lsuser) {
-          let lsuser = JSON.stringify(userdata.lsuser)
-          this.$localStorage.set(this.gconfig.USERINFO, lsuser, 24 * 30)
-          this.$store.commit('setLsuser', userdata.lsuser)
-          this.$store.commit('modifyMdLoginShow')
-        }
+        this.$store.dispatch('getLsuser', this.$axios)
         window.parent.open(this.$route.query.next, '_self')
       } else {
       }
