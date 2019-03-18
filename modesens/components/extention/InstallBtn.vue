@@ -4,28 +4,36 @@
       v-if="mybrowse==='Chrome'"
       class="modelinkbrowsebtn chrome-install-button"
       @click="installChromeExtention">
-      <img v-lazy="gconfig.CHROME_LOGO">
+      <img
+        v-lazy="gconfig.CHROME_LOGO"
+        alt="">
       <span>{{ $t('nav.InstallNow') }}</span>
     </div>
     <div
       v-else-if="mybrowse==='QQBrowser'"
       class="modelinkbrowsebtn chrome-install-button"
       @click="installChromeExtention">
-      <img v-lazy="gconfig.QQBROWSER_LOGO">
+      <img
+        v-lazy="gconfig.QQBROWSER_LOGO"
+        alt="">
       <span>{{ $t('nav.InstallNow') }}</span>
     </div>
     <div
       v-else-if="mybrowse==='Opera'"
       class="modelinkbrowsebtn opera-install-button btn-primary"
       @click="installOperaExtention">
-      <img v-lazy="gconfig.OPERA_LOGO">
+      <img
+        v-lazy="gconfig.OPERA_LOGO"
+        alt="">
       <span>{{ $t('nav.InstallNow') }}</span>
     </div>
     <div
       v-else-if="mybrowse==='FF'"
       class="modelinkbrowsebtn ff-install-button btn-primary"
       @click="installFFExtention">
-      <img v-lazy="gconfig.FIREFOX_LOGO">
+      <img
+        v-lazy="gconfig.FIREFOX_LOGO"
+        alt="">
       <span>{{ $t('nav.InstallNow') }}</span>
     </div>
     <div
@@ -35,7 +43,9 @@
       <a
         href="https://safari-extensions.apple.com/details/?id=com.modesens.shoppingassistant-6EL854LDB8"
         target="_blank">
-        <img v-lazy="gconfig.SAFARI_LOGO">
+        <img
+          v-lazy="gconfig.SAFARI_LOGO"
+          alt="">
         <span>{{ $t('nav.InstallNow') }}</span>
       </a>
     </div>
@@ -45,17 +55,23 @@
       <div
         class="modelinkbrowsebtnlogo"
         @click="modelinkGoToBrowse('Chrome')">
-        <img v-lazy="gconfig.CHROME_LOGO">
+        <img
+          v-lazy="gconfig.CHROME_LOGO"
+          alt="">
       </div>
       <div
         class="modelinkbrowsebtnlogo"
         @click="modelinkGoToBrowse('Firefox')">
-        <img v-lazy="gconfig.FIREFOX_LOGO">
+        <img
+          v-lazy="gconfig.FIREFOX_LOGO"
+          alt="">
       </div>
       <div
         class="modelinkbrowsebtnlogo"
         @click="modelinkGoToBrowse('Safari')">
-        <img v-lazy="gconfig.SAFARI_LOGO">
+        <img
+          v-lazy="gconfig.SAFARI_LOGO"
+          alt="">
       </div>
     </div>
   </div>

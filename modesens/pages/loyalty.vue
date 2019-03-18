@@ -57,7 +57,9 @@
     <div class="levelCon">
       <div class="title">{{ $t('loyalty.levelTitle') }}</div>
       <div class="arrowBox">
-        <img v-lazy="'/img/20180905overlay_right_arrow_b.svg'">
+        <img
+          v-lazy="'/img/20180905overlay_right_arrow_b.svg'"
+          alt="">
         <span>{{ $t('loyalty.SwapRight') }}</span>
       </div>
       <div class="levelBox">

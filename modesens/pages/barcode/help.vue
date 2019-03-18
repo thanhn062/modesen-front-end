@@ -6,7 +6,9 @@
       <div
         v-for="(imgname,index) in imgAry"
         :key="index">
-        <img :src="'/img/' + imgname">
+        <img
+          :src="'/img/' + imgname"
+          alt="">
       </div>
     </div>
   </section>

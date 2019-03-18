@@ -1218,7 +1218,9 @@
                       :href="$store.state.coupons[0].landing_page || '/store/'+$store.state.coupons[0].merchant.url+'/getlink/'"
                       :data-ga-click="'navOffers-COUPONS'+$store.state.coupons[0].merchant.url+'--'">
                       <span>{{ $store.state.coupons[0].merchant.name }} : {{ $store.state.coupons[0].txt }}</span>
-                      <img v-lazy="$store.state.coupons[0].img_l || $store.state.coupons[0].merchant.logo">
+                      <img
+                        v-lazy="$store.state.coupons[0].img_l || $store.state.coupons[0].merchant.logo"
+                        alt="">
                     </a>
                   </div>
                 </div>
@@ -1548,7 +1550,8 @@
                   data-ga-click="navCommunity-UserIcon--"
                   @click="openspmodal">
                   <div><img
-                    v-lazy="gconfig.UNLOGIN_ICON"></div>
+                    v-lazy="gconfig.UNLOGIN_ICON"
+                    alt=""></div>
                   <span>{{ $t('nav.LOGINTOBUILDMYCLOSET') }}</span>
                 </div>
               </div>
@@ -1565,7 +1568,8 @@
                       class="d-flex justify-content-center align-items-center follow-usericon">
                       <img
                         v-lazy="e.icon"
-                        class="w-100">
+                        class="w-100"
+                        alt="">
                     </a>
                     <i/>
                     <div

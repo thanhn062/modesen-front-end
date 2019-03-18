@@ -22,11 +22,12 @@ import Modals from '~/components/Modals.vue'
 import Top from '~/components/Top.vue'
 import CustomerService from '~/components/CustomerService.vue'
 export default {
-  head() {
+  metaInfo() {
     let link = []
     let meta = []
     let path = this.$route.path
     let request = this.$store.state.request
+    console.log('request: ', request)
     if (request) {
       if (path.indexOf('/us/en/') > -1) {
         link.push({
@@ -114,7 +115,40 @@ export default {
           href: `https://${request.ROOT_DAMAIN}${this.$route.path}`
         })
       }
+      // if (
+      //   !request.BLOCK_INTL &&
+      //   request.RCOUNTRY !== 'cn' &&
+      //   this.$route.fullPath.indexOf('en') === -1 &&
+      //   this.$route.fullPath.indexOf('zh') === -1
+      // ) {
+      let alternateAry = [
+        { href: 'https://modesens.com', lang: 'x-default' },
+        { href: 'https://modesens.uk', lang: 'en-gb' },
+        { href: 'https://modesens.ca', lang: 'en-ca' },
+        { href: 'https://modesens.com', lang: 'en' },
+        { href: 'https://modesens.cn', lang: 'zh' },
+        { href: 'https://modesens.com', lang: 'en-us' },
+        { href: 'https://modesens.com.au', lang: 'en-au' },
+        { href: 'https://modesens.cn', lang: 'zh-cn' },
+        { href: 'https://modesens.fr', lang: 'en-fr' },
+        { href: 'https://modesens.de', lang: 'en-de' },
+        { href: 'https://modesens.it', lang: 'en-it' },
+        { href: 'https://modesens.jp', lang: 'en-jp' },
+        { href: 'https://modesens.kr', lang: 'en-kr' },
+        { href: 'https://modesens.nl', lang: 'en-nl' },
+        { href: 'https://modesens.ru', lang: 'en-ru' },
+        { href: 'https://modesens.es', lang: 'en-es' }
+      ]
+      alternateAry.map(item => {
+        link.push({
+          rel: 'alternate',
+          href: `${item.href}${request.CANONICAL_URL}`,
+          hreflang: `${item.lang}`
+        })
+      })
+      // }
     }
+
     // 搜索页防爬处理
     // meta.push({
     //   name: 'robots',

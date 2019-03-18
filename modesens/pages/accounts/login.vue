@@ -3,7 +3,9 @@
     <div class="logo-con">
       <a
         href="/"
-        target="_blank"><img :src="$i18n.locale==='zh' ? gconfig.LOGO_ASSISTRANT_ZH : gconfig.LOGO_ASSISTRANT_EN"></a>
+        target="_blank"><img
+          :src="$i18n.locale==='zh' ? gconfig.LOGO_ASSISTRANT_ZH : gconfig.LOGO_ASSISTRANT_EN"
+          alt=""></a>
     </div>
     <b-form
       class="login-form"
@@ -43,7 +45,9 @@
     </b-form>
     <div class="loginwith-con">
       <label>{{ $t('common.Loginwith') }}</label><br>
-      <img src="https://mds0.com/static/img/login-icon/icon-weixin.svg">
+      <img
+        src="https://mds0.com/static/img/login-icon/icon-weixin.svg"
+        alt="">
     </div>
   </section>
 </template>

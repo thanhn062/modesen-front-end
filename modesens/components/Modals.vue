@@ -10,7 +10,9 @@
       style="width: 600px,height: 680px">
       <button
         class="close"
-        @click="hideLoginModal"><img src="/img/close.svg"></button>
+        @click="hideLoginModal"><img
+          src="/img/close.svg"
+          alt=""></button>
       <iframe
         :src="'/accounts/login/?next=' + $route.fullPath"
         width="100%"
@@ -24,12 +26,16 @@
       hide-header
       hide-footer>
       <div class="customer_service_head">
-        <img src="/img/20190122customer_service.png">
+        <img
+          src="/img/20190122customer_service.png"
+          alt="">
       </div>
       <div class="customer_service_body">
         <p>{{ $t('service.help') }}<br>{{ $t('service.WeChat') }}</p>
         <div class="customer_service_body_qrcode">
-          <img src="/img/20190122customer_service_qrcode.png">
+          <img
+            src="/img/20190122customer_service_qrcode.png"
+            alt="">
         </div>
       </div>
     </b-modal>
@@ -209,7 +215,9 @@
       hide-footer>
       <button
         class="close"
-        @click="hideMembershipModal"><img src="/img/close.svg"></button>
+        @click="hideMembershipModal"><img
+          src="/img/close.svg"
+          alt=""></button>
       <div class="membership-desc">{{ $t('Modals.MakeModeSens') }}</div>
       <div class="membership-btn"><a href="/accounts/signup/?next=/">
         <button class="btn btn-primary">{{ $t('Modals.StartEarningToday') }}</button>
@@ -222,12 +230,15 @@
       hide-footer>
       <button
         class="close"
-        @click="hideMembershipModal"><img src="/img/close.svg"></button>  
+        @click="hideMembershipModal"><img
+          src="/img/close.svg"
+          alt=""></button>  
       <div class="ass-head">
         <div>
           <img
             v-lazy="'https://mds0.com/static/img/20180930modesenslogo.png'"
-            class="modesens-logo">
+            class="modesens-logo"
+            alt="">
           <div class="smart-shopping">
             <div class="meetS">Meet your premier fashion shopping assistant</div>
             <p>Automatically find and compare prices, availabilities and coupons from 160+ fashion stores.</p>
@@ -239,7 +250,9 @@
             <div
               class="browser-share"
               @click="modelinkshare">
-              <img v-lazy="'https://mds0.com/static/img/prd_share1_360.png'">
+              <img
+                v-lazy="'https://mds0.com/static/img/prd_share1_360.png'"
+                alt="">
             </div>
           </div>
         </div>
@@ -669,7 +682,7 @@ export default {
     width: 400px;
   }
   img {
-    width: 300px;
+    max-width: 100%;
   }
 }
 #noticeproductmd,

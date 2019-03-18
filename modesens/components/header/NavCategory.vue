@@ -3,7 +3,9 @@
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('common.WOMEN') }}
-        <img v-lazy="gconfig.SIDEBAR_MORE">
+        <img
+          v-lazy="gconfig.SIDEBAR_MORE"
+          alt="">
       </template>
       <b-dropdown-item
         href="/product/women/clothing/"
@@ -32,7 +34,9 @@
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('common.MEN') }}
-        <img v-lazy="gconfig.SIDEBAR_MORE">
+        <img
+          v-lazy="gconfig.SIDEBAR_MORE"
+          alt="">
       </template>
       <b-dropdown-item
         href="/product/men/clothing/"
@@ -61,7 +65,9 @@
     <b-nav-item-dropdown no-caret>
       <template slot="button-content">
         {{ $t('common.OFFERS') }}
-        <img v-lazy="gconfig.SIDEBAR_MORE">
+        <img
+          v-lazy="gconfig.SIDEBAR_MORE"
+          alt="">
       </template>
       <b-dropdown-item
         href="/product/coupons/"

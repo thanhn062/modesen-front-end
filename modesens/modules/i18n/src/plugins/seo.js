@@ -27,36 +27,36 @@ Vue.mixin({
     }
 
     // hreflang tags
-    const link = this.$i18n.countries
-      .map(country => {
-        if (country[LOCALE_ISO_KEY]) {
-          return {
-            hid: 'alternate-hreflang-' + country[LOCALE_ISO_KEY],
-            rel: 'alternate',
-            href:
-              BASE_URL +
-              this.switchLocalePath(country.code, country.defaultLocale),
-            hreflang: country[LOCALE_ISO_KEY]
-          }
-        } else {
-          console.warn(
-            '[<%= options.MODULE_NAME %>] Locale ISO code is required to generate alternate link'
-          )
-          return null
-        }
-        /*if (locale[LOCALE_ISO_KEY]) {
-          return {
-            hid: 'alternate-hreflang-' + locale[LOCALE_ISO_KEY],
-            rel: 'alternate',
-            href: BASE_URL + this.switchLocalePath(locale.code),
-            hreflang: locale[LOCALE_ISO_KEY]
-          }
-        } else {
-          console.warn('[<%= options.MODULE_NAME %>] Locale ISO code is required to generate alternate link')
-          return null
-        }*/
-      })
-      .filter(item => !!item)
+    // const link = this.$i18n.countries
+    //   .map(country => {
+    //     if (country[LOCALE_ISO_KEY]) {
+    //       return {
+    //         hid: 'alternate-hreflang-' + country[LOCALE_ISO_KEY],
+    //         rel: 'alternate',
+    //         href:
+    //           BASE_URL +
+    //           this.switchLocalePath(country.code, country.defaultLocale),
+    //         hreflang: country[LOCALE_ISO_KEY]
+    //       }
+    //     } else {
+    //       console.warn(
+    //         '[<%= options.MODULE_NAME %>] Locale ISO code is required to generate alternate link'
+    //       )
+    //       return null
+    //     }
+    //     /*if (locale[LOCALE_ISO_KEY]) {
+    //       return {
+    //         hid: 'alternate-hreflang-' + locale[LOCALE_ISO_KEY],
+    //         rel: 'alternate',
+    //         href: BASE_URL + this.switchLocalePath(locale.code),
+    //         hreflang: locale[LOCALE_ISO_KEY]
+    //       }
+    //     } else {
+    //       console.warn('[<%= options.MODULE_NAME %>] Locale ISO code is required to generate alternate link')
+    //       return null
+    //     }*/
+    //   })
+    //   .filter(item => !!item)
 
     // og:locale meta
     const meta = []
@@ -88,7 +88,7 @@ Vue.mixin({
 
     return {
       htmlAttrs,
-      link,
+      // link,
       meta
     }
   }
