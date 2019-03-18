@@ -184,8 +184,7 @@
 
 <script>
 import daterangepicker from 'bootstrap-daterangepicker'
-import { getLocalTime } from '~/assets/js/utils/utils.js'
-import { getTimestamp } from '~/assets/js/utils/utils.js'
+import { getLocalTime, getTimestamp } from '~/assets/js/utils/utils.js'
 import 'bootstrap-daterangepicker/daterangepicker.css'
 export default {
   filters: {
