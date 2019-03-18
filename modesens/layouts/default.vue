@@ -207,6 +207,10 @@ export default {
   },
   created() {},
   mounted() {
+<<<<<<< HEAD
+=======
+    console.log('default---mounted')
+>>>>>>> c1ee39a1d4191918ddbee7709824cf4db2b853a2
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this.$axios)
     }

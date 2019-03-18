@@ -337,7 +337,7 @@
   </div>
 </template>
 <script>
-import InstallBtn from '~/components/extention/installBtn'
+import InstallBtn from '~/components/extention/InstallBtn'
 import { ssshare } from '~/assets/js/utils/share.js'
 export default {
   components: {

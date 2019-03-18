@@ -93,7 +93,7 @@
           is-nav>
           <!-- 菜单分类 -->
           <!-- pc端 -->
-          <ThreeLevelMenu/>
+          <NavMenu/>
           <!-- 响应式 -->
           <NavCategory/>
           <!-- Right aligned nav items -->
@@ -317,13 +317,13 @@
   </header>
 </template>
 <script>
-import ThreeLevelMenu from '~/components/header/ThreeLevelMenu'
+import NavMenu from '~/components/header/NavMenu'
 import NavCategory from '~/components/header/NavCategory'
 import { getBrowse } from '~/assets/js/utils/utils.js'
 export default {
   components: {
     NavCategory,
-    ThreeLevelMenu
+    NavMenu
   },
   filters: {
     capitalize(value) {
