@@ -27,6 +27,7 @@ module.exports = {
       { rel: 'manifest', href: '/manifest.json'}
     ],
     script: [
+      { src: 'https://hm.baidu.com/hm.js?5d6195861bd1dc57fe4981c6ed078dd4' },
       { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js' },
       { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js' }
     ]
@@ -60,7 +61,8 @@ module.exports = {
     //ssr：false是为了不让js文件再服务器中编译；
     { src: '~/plugins/axios.js', ssr: false },
     { src: '~/plugins/init.js', ssr: false },
-    { src: '~/assets/js/utils/utils.js', ssr: false},
+    { src: '~/plugins/baiduGa.js', ssr: false },
+    { src: '~/assets/js/utils/utils.js', ssr: false}
   ],
 
   router: {
