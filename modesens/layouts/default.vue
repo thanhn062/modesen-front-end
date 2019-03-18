@@ -178,9 +178,9 @@ export default {
   watch: {
     listenstage: function(ov, nv) {
       if (this.$store.state.request.RCOUNTRY == 'cn') {
-        var hm = document.createElement('script')
+        let hm = document.createElement('script')
         hm.src = 'https://hm.baidu.com/hm.js?5d6195861bd1dc57fe4981c6ed078dd4'
-        var s = document.getElementsByTagName('script')[0]
+        let s = document.getElementsByTagName('script')[0]
         s.parentNode.insertBefore(hm, s)
         /* 每次路由变更时进行pv统计 */
         this.$router.afterEach((to, from) => {
@@ -190,6 +190,52 @@ export default {
             window._hmt.push(['_trackPageview', to.fullPath])
           } catch (e) {}
         })
+      } else if (
+        this.$store.state.request.RCOUNTRY != 'cn' &&
+        !this.$store.state.login_status
+      ) {
+        // Facebook Pixel Code
+        ;((f, b, e, v, n, t, s) => {
+          if (f.fbq) return
+          n = f.fbq = function() {
+            n.callMethod
+              ? n.callMethod.apply(n, arguments)
+              : n.queue.push(arguments)
+          }
+          // _fbq is a flag to determine inited or not
+          if (!f._fbq) f._fbq = n
+          // fbq.push is itself
+          n.push = n
+          n.loaded = !0
+          n.version = '2.0'
+          // fbq.queue
+          n.queue = []
+          t = b.createElement(e)
+          t.async = !0
+          t.src = v
+          s = b.getElementsByTagName(e)[0]
+          s.parentNode.insertBefore(t, s)
+        })(
+          window,
+          document,
+          'script',
+          'https://connect.facebook.net/en_US/fbevents.js'
+        )
+        fbq('init', '148244878887970')
+        fbq('track', 'PageView')
+        let nohm = document.createElement('noscript')
+        nohm.innerHTML = `<img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=148244878887970&ev=PageView&noscript=1'/>`
+        // FB share
+        ;((d, s, id) => {
+          var js,
+            fjs = d.getElementsByTagName(s)[0]
+          if (d.getElementById(id)) return
+          js = d.createElement(s)
+          js.id = id
+          js.src =
+            '//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=115187351888718&version=v2.2'
+          fjs.parentNode.insertBefore(js, fjs)
+        })(document, 'script', 'facebook-jssdk')
       }
     }
   },
