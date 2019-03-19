@@ -231,7 +231,7 @@
       <button
         class="close"
         @click="hideMembershipModal"><img
-          src="/img/close.svg"
+          v-lazy="'/img/close.svg'"
           alt=""></button>  
       <div class="ass-head">
         <div>
@@ -267,11 +267,35 @@
           background="#fff"
           @sliding-start="onSlideStart"
           @sliding-end="onSlideEnd">
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928availability.png"/>
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928Coupon_1.png"/>
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928assistant2_1.png"/>
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928add_to_collection_720.png"/>
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928want1.png"/>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928availability.png'"
+              slot="img"
+              alt="">
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928Coupon_1.png'"
+              slot="img"
+              alt="">
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928assistant2_1.png'"
+              slot="img"
+              alt="">
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928add_to_collection_720.png'"
+              alt="">
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928want1.png'"
+              slot="img"
+              alt="">
+          </b-carousel-slide>
           <b-carousel-slide
             img-blank
             img-alt="Blank image">
@@ -344,7 +368,8 @@
       id="fcmmodal"
       :title="$t('Modals.StayInTheKnow')"
       :ok-title="$t('Modals.DonLetMeMissOut')"
-      :cancel-title="$t('Modals.AskMeLater')">
+      :cancel-title="$t('Modals.AskMeLater')"
+      @ok="requestFCMToken">
       <div class="desc">{{ $t('Modals.fcdesc') }}</div>
     </b-modal>
   </div>
@@ -384,8 +409,8 @@ export default {
   },
   mounted() {
     // this.showMemberShip()
-    // this.showModelink()
-    // this.showFcmodal()
+    this.showModelink()
+    this.showFcmodal()
   },
   methods: {
     openLoginModal(evt) {
@@ -489,15 +514,15 @@ export default {
         .css({ padding: 0 })
     },
     showMemberShip() {
-      // if (
-      //   !this.$store.state.login_status &&
-      //   !this.$localStorage.get('membershipModal')
-      // ) {
-      setTimeout(() => {
-        this.$root.$emit('bv::show::modal', 'membershipMd')
-        this.$localStorage.set('membershipModal', 1, 24)
-      }, 4000)
-      // }
+      if (
+        !this.$store.state.login_status &&
+        !this.$localStorage.get('membershipModal')
+      ) {
+        setTimeout(() => {
+          this.$root.$emit('bv::show::modal', 'membershipMd')
+          this.$localStorage.set('membershipModal', 1, 24)
+        }, 4000)
+      }
     },
     hideMembershipModal() {
       this.$root.$emit('bv::hide::modal', 'membershipMd')
@@ -517,18 +542,20 @@ export default {
       this.sliding = false
     },
     showModelink() {
-      // if (
-      //   this.$i18n.locale !== "zh" &&
-      //   !$("#modesensinstalled")[0] &&
-      //   !this.$cookies.get('modelinkmodal') &&
-      //   $(window).width() > 1199 &&
-      //   $('#paypal-button').length <= 0 ||
-      //   location.href.indexOf("frommodelinkfrommodelink=1") > -1) {
-      setTimeout(() => {
-        this.$root.$emit('bv::show::modal', 'abtestbassistant')
-        this.$cookies.set('modelinkmodal', true, 1)
-      }, 5000)
-      // }
+      if (
+        (this.$store.state.login_status &&
+          this.$i18n.locale !== 'zh' &&
+          !$('#modesensinstalled')[0] &&
+          !this.$cookies.get('modelinkmodal') &&
+          $(window).width() > 1199 &&
+          $('#paypal-button').length <= 0) ||
+        location.href.indexOf('frommodelinkfrommodelink=1') > -1
+      ) {
+        setTimeout(() => {
+          this.$root.$emit('bv::show::modal', 'abtestbassistant')
+          this.$cookies.set('modelinkmodal', true, 1)
+        }, 5000)
+      }
     },
     share(target) {
       ssshare(
@@ -543,317 +570,25 @@ export default {
       )
     },
     showFcmodal() {
-      this.$root.$emit('bv::show::modal', 'fcmmodal')
+      if (
+        this.$store.state.login_status &&
+        this.$cookies.get('modelinkmodal') &&
+        !this.$cookies.get('ms_notification')
+      ) {
+        setTimeout(() => {
+          this.$root.$emit('bv::show::modal', 'fcmmodal')
+          ga('send', 'event', 'FCM', 'FCMModalShow')
+          this.$cookies.set('ms_notification', true, 1)
+        }, 15000)
+      }
+    },
+    requestFCMToken() {
+      ga('send', 'event', 'Modal-fcmmodal', 'Yes')
+      this.$cookies.set('ms_notification', true, 1)
     }
   }
 }
 </script>
 <style lang="less">
-@import '../assets/css/common.less';
-#mdLogin {
-  button {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-  }
-  .modal-body {
-    height: 680px;
-  }
-}
-#service-modal {
-  // width: 300px;
-  padding-top: 40px;
-  margin-top: 60px;
-  .modal-dialog {
-    width: 300px;
-  }
-  .modal-body {
-    padding: 0;
-    border-radius: 0.3rem;
-    background: #fff;
-  }
-  .modal-content {
-    background: transparent;
-    border: 0;
-  }
-  .customer_service {
-    position: relative;
-    width: 300px;
-    border-radius: 6px;
-    background: #fff;
-  }
-  .customer_service_head {
-    position: absolute;
-    left: 91px;
-    top: -51px;
-    width: 118px;
-    height: 118px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .customer_service_body {
-    position: relative;
-    padding: 90px 52px 34px 52px;
-    p {
-      margin: 0 auto;
-      font-size: 14px;
-      line-height: 20px;
-      text-align: center;
-    }
-    .customer_service_body_qrcode {
-      width: 142px;
-      height: 149px;
-      margin: 14px auto 0;
-    }
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-#cumodal {
-  text-align: left;
-  .modal-body {
-    a {
-      text-decoration: underline;
-    }
-  }
-  .btn-primary {
-    color: #333;
-    background-color: @btnFontColor;
-    border-color: @borderColor;
-    &:hover {
-      color: @btnFontColor;
-      background-color: @btnBgColor;
-      border-color: @btnBgColor;
-    }
-  }
-  form {
-    margin-top: @descSpace-s;
-    div {
-      float: left;
-      width: 45%;
-      box-sizing: border-box;
-      &:nth-of-type(2n) {
-        margin-left: 10%;
-      }
-      &:nth-of-type(5) {
-        width: 100%;
-      }
-    }
-    label {
-      font-weight: 700;
-    }
-    input {
-      width: 100%;
-      margin-bottom: 10px;
-      border: @border;
-    }
-    textarea {
-      width: 100%;
-      margin-bottom: 10px;
-      border: @border;
-    }
-  }
-}
-#FbModal {
-  .btn-secondary {
-    color: #333;
-    background-color: @btnFontColor;
-    border-color: @borderColor;
-    &:hover {
-      color: @btnFontColor;
-      background-color: @btnBgColor;
-      border-color: @btnBgColor;
-    }
-  }
-  .fb-thanks {
-    padding: 30px 15px;
-    font-size: 18px;
-    height: 186px;
-    text-align: center;
-  }
-}
-#signoutmodal {
-  text-align: center;
-  .modal-dialog {
-    width: 400px;
-  }
-  img {
-    max-width: 100%;
-  }
-}
-#noticeproductmd,
-#noticeusermd {
-  .modal-dialog {
-    margin-right: 0;
-  }
-}
-#membershipMd {
-  .modal-body {
-    padding: 0;
-  }
-  text-align: center;
-  .membership-desc {
-    padding: 60px 30px 30px;
-    font-size: 22px;
-    font-weight: 300;
-  }
-  .membership-btn {
-    padding-bottom: 60px;
-  }
-}
-#abtestbassistant {
-  .modal-body {
-    // width: 750px;
-    padding: 30px;
-  }
-  .ass-head {
-    display: flex;
-    justify-content: space-between;
-    height: 99px;
-    .modesens-logo {
-      width: 300px;
-    }
-    .smart-shopping {
-      margin-top: 15px;
-    }
-    .meetS {
-      font-size: 18px;
-      font-weight: bold;
-      line-height: 22px;
-    }
-    p {
-      font-size: 12px;
-      line-height: 18px;
-      color: #000;
-      white-space: nowrap;
-    }
-  }
-  .ass-content {
-    height: 320px;
-  }
-  .browser {
-    display: flex;
-    justify-content: space-between;
-  }
-  .modelinkbrowsebtn {
-    padding: 3px 15px;
-    height: 33px;
-    border: 2px solid transparent;
-    img {
-      width: 24px;
-      height: 24px;
-    }
-    span {
-      line-height: 24px;
-    }
-  }
-  .browser-share {
-    padding: 3px 10px;
-    height: 33px;
-    border: 2px solid transparent;
-    background-clip: padding-box, border-box;
-    background-origin: padding-box, border-box;
-    background-image: linear-gradient(#575757, #575757),
-      linear-gradient(#696969, #191919);
-    cursor: pointer;
-    img {
-      width: 24px;
-    }
-  }
-  #carousel1 {
-    margin: 0 auto;
-    width: 633px;
-    .carousel-item {
-      img {
-        margin: 0 auto;
-        width: 72% !important;
-        height: 285px;
-        &:last-child {
-          width: 90%;
-        }
-      }
-    }
-    .carousel-caption {
-      left: 0;
-      right: 0;
-      padding: 0;
-    }
-  }
-  .description-plug-in {
-    // margin: 0 auto;
-    // width: 90%;
-    // height: 320px;
-    color: #1c1c1c;
-    text-align: left;
-    overflow-y: hidden;
-    h5 {
-      margin-bottom: 0;
-      font-size: 14px;
-      font-weight: bold;
-      line-height: 17px;
-      text-align: center;
-    }
-    .modesens-shopping {
-      font-size: 12px;
-      color: #000;
-      line-height: 17px;
-      text-align: justify;
-    }
-  }
-}
-#shmodal {
-  .mshare {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    padding-left: 10px;
-    span {
-      width: 30px;
-      height: 20px;
-      font-size: 0;
-      background-size: 20px auto;
-      background-repeat: no-repeat;
-    }
-    .mfb {
-      background-image: url(https://mds0.com/static/img/fb.png);
-    }
-    .mtw {
-      background-image: url(https://mds0.com/static/img/tw.png);
-    }
-    .mpi {
-      background-image: url(https://mds0.com/static/img/pi.png);
-    }
-    .mgg {
-      background-image: url(https://mds0.com/static/img/gg.png);
-    }
-    .mtb {
-      background-image: url(https://mds0.com/static/img/tb.png);
-    }
-    .mrd {
-      background-image: url(https://mds0.com/static/img/rd.png);
-    }
-    .mli {
-      background-image: url(https://mds0.com/static/img/li.png);
-    }
-    .mwb {
-      background-image: url(https://mds0.com/static/img/wb.png);
-    }
-    .mlk {
-      background-image: url(https://mds0.com/static/img/link.png);
-    }
-    .mqr {
-      background-image: url(https://mds0.com/static/img/qr.png);
-    }
-  }
-}
-#fcmmodal {
-  .desc {
-    font-size: 24px;
-  }
-}
+@import '../assets/css/components/modals.less';
 </style>

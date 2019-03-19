@@ -23,11 +23,11 @@ import Top from '~/components/Top.vue'
 import CustomerService from '~/components/CustomerService.vue'
 export default {
   metaInfo() {
+    let htmlAttrs = null
     let link = []
     let meta = []
     let path = this.$route.path
     let request = this.$store.state.request
-    console.log('request: ', request)
     if (request) {
       if (path.indexOf('/us/en/') > -1) {
         link.push({
@@ -112,7 +112,7 @@ export default {
       } else {
         link.push({
           rel: 'canonical',
-          href: `https://${request.ROOT_DAMAIN}${this.$route.path}`
+          href: `https://${request.ROOT_DOMAIN}${this.$route.path}`
         })
       }
       if (
@@ -158,8 +158,13 @@ export default {
       name: 'apple-itunes-app',
       content: `app-id=976201094, app-argument=https://modesens.com${path}`
     })
+    if (path.indexOf('/zh/') > -1) {
+      htmlAttrs = { lang: 'zh-cn' }
+    } else {
+      htmlAttrs = { lang: 'en-us' }
+    }
     return {
-      titleTemplate: '%s | ModeSens',
+      htmlAttrs,
       link,
       meta
     }
@@ -242,13 +247,11 @@ export default {
   },
   created() {},
   mounted() {
-    console.log('default---mounted')
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this.$axios)
     }
     if (this.$store.state.login_status && !this.$store.state.lsuser) {
       this.$store.dispatch('getLsuser', this)
-      console.log('dafalut-mounted--', this.$store.state.lsuser)
     }
   },
   methods: {
