@@ -13,13 +13,13 @@
               <span>{{ $t('accountLoyalty.memberendTimg') }} {{ myloyaltycontent.end_date }}</span>
               <div class="tointro">
                 <img
-                  src="/img/20181221tointro.png"
+                  v-lazy="'/img/20181221tointro.png'"
                   alt="">
               </div>
             </nuxt-link>
             <div class="current-L">
               <img
-                :src="levelimgHref"
+                v-lazy="levelimgHref"
                 alt="">
             </div>
             <ul class="level-rights">
@@ -39,7 +39,7 @@
             <span>{{ $t('accountLoyalty.deltail') }}</span>
             <div class="tointro">
               <img
-                src="/img/20181221tointro.png"
+                v-lazy="'/img/20181221tointro.png'"
                 alt="">
             </div>
           </nuxt-link>
@@ -108,8 +108,8 @@
               <div id="config-demo">
                 {{ $t('accountLoyalty.filter') }}
                 <img
+                  v-lazy="'/img/20181214slidedown.svg'"
                   :class="dateSlideDown ? 'active' : ''"
-                  src="/img/20181214slidedown.svg"
                   class="activeimg"
                   alt="">
               </div>
@@ -132,8 +132,8 @@
                   class="see-more  keepRight col-md-3 col-3"
                   @click="toggle(index)">
                   <img
+                    v-lazy="'/img/20181214slidedown.svg'" 
                     :class="index===limit ? 'active' : ''"
-                    src="/img/20181214slidedown.svg" 
                     alt="">
                 </div>
               </div>
@@ -173,7 +173,7 @@
           v-else
           class="order-loadmore">
           <img
-            src="/img/20190102sync.gif"
+            v-lazy="'/img/20190102sync.gif'"
             alt=""
             class="loadmore">
         </div>
