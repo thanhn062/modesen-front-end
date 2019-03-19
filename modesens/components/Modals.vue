@@ -542,20 +542,20 @@ export default {
       this.sliding = false
     },
     showModelink() {
-      if (
-        (this.$store.state.login_status &&
-          this.$i18n.locale !== 'zh' &&
-          !$('#modesensinstalled')[0] &&
-          !this.$cookies.get('modelinkmodal') &&
-          $(window).width() > 1199 &&
-          $('#paypal-button').length <= 0) ||
-        location.href.indexOf('frommodelinkfrommodelink=1') > -1
-      ) {
-        setTimeout(() => {
-          this.$root.$emit('bv::show::modal', 'abtestbassistant')
-          this.$cookies.set('modelinkmodal', true, 1)
-        }, 5000)
-      }
+      // if (
+      //   (this.$store.state.login_status &&
+      //     this.$i18n.locale !== 'zh' &&
+      //     !$('#modesensinstalled')[0] &&
+      //     !this.$cookies.get('modelinkmodal') &&
+      //     $(window).width() > 1199 &&
+      //     $('#paypal-button').length <= 0) ||
+      //   location.href.indexOf('frommodelinkfrommodelink=1') > -1
+      // ) {
+      setTimeout(() => {
+        this.$root.$emit('bv::show::modal', 'abtestbassistant')
+        this.$cookies.set('modelinkmodal', true, 1)
+      }, 5000)
+      // }
     },
     share(target) {
       ssshare(
