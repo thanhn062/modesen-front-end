@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="d-inline-block">
     <div
       v-if="mybrowse==='Chrome'"
       class="modelinkbrowsebtn chrome-install-button"
@@ -157,7 +157,6 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 6px;
-  // height: 24px;
   margin-right: 10px;
   background-image: linear-gradient(#575757, #575757),
     linear-gradient(#696969, #191919);
@@ -167,7 +166,6 @@ export default {
     height: 14px;
   }
   span {
-    // font-size: 10px;
     color: #fff;
     margin-left: 10px;
     vertical-align: middle;
