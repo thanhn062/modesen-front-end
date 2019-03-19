@@ -231,7 +231,7 @@
       <button
         class="close"
         @click="hideMembershipModal"><img
-          src="/img/close.svg"
+          v-lazy="'/img/close.svg'"
           alt=""></button>  
       <div class="ass-head">
         <div>
@@ -267,11 +267,35 @@
           background="#fff"
           @sliding-start="onSlideStart"
           @sliding-end="onSlideEnd">
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928availability.png"/>
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928Coupon_1.png"/>
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928assistant2_1.png"/>
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928add_to_collection_720.png"/>
-          <b-carousel-slide img-src="https://mds0.com/static/img/20180928want1.png"/>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928availability.png'"
+              slot="img"
+              alt="">
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928Coupon_1.png'"
+              slot="img"
+              alt="">
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928assistant2_1.png'"
+              slot="img"
+              alt="">
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928add_to_collection_720.png'"
+              alt="">
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <img
+              v-lazy="'https://mds0.com/static/img/20180928want1.png'"
+              slot="img"
+              alt="">
+          </b-carousel-slide>
           <b-carousel-slide
             img-blank
             img-alt="Blank image">

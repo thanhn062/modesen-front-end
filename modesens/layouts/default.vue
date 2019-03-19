@@ -23,6 +23,7 @@ import Top from '~/components/Top.vue'
 import CustomerService from '~/components/CustomerService.vue'
 export default {
   metaInfo() {
+    let htmlAttrs = null
     let link = []
     let meta = []
     let path = this.$route.path
@@ -157,7 +158,13 @@ export default {
       name: 'apple-itunes-app',
       content: `app-id=976201094, app-argument=https://modesens.com${path}`
     })
+    if (path.indexOf('/zh/') > -1) {
+      htmlAttrs = { lang: 'zh-cn' }
+    } else {
+      htmlAttrs = { lang: 'en-us' }
+    }
     return {
+      htmlAttrs,
       link,
       meta
     }

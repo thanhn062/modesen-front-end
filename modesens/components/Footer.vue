@@ -89,9 +89,7 @@
           v-else
           class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle6') }}</h6>
-          <form
-            id="footer-form"
-            @submit="newsSubmit">
+          <div id="footer-form">
             <input
               :placeholder="$t('common.emailaddress')"
               v-model="newsEmail"
@@ -113,8 +111,9 @@
               :disabled="disabledstatus"
               type="submit"
               class="btn btn-default"
-              style="width: 100%;">{{ $t('common.SUBMIT') }}</button>
-          </form>
+              style="width: 100%;"
+              @click="newsSubmit">{{ $t('common.SUBMIT') }}</button>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
