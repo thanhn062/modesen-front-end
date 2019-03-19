@@ -8,7 +8,7 @@
         <div class="userInfoinnerBox">
           <div class="userinfo">
             <img 
-              :src="lsuser.icon" 
+              v-lazy="lsuser.icon" 
               alt="">
             <div class="info">
               <div class="user_name">{{ lsuser.username }}</div>
@@ -19,20 +19,20 @@
           <div class="levelcard">
             <div class="card">
               <img
+                v-lazy="'/img/20181213bronzecard.svg'"
                 v-if="level.level==='Bronze'" 
-                src="/img/20181213bronzecard.svg"
                 alt="">
               <img
+                v-lazy="'/img/20181213silvercard.svg'"
                 v-if="level.level==='Silver'" 
-                src="/img/20181213silvercard.svg"
                 alt="">
               <img
+                v-lazy="'/img/20181213goldcard.svg'"
                 v-if="level.level==='Gold'" 
-                src="/img/20181213goldcard.svg"
                 alt="">
               <img
+                v-lazy="'/img/20181213platinumcard.svg'"
                 v-if="level.level==='Platinum'" 
-                src="/img/20181213platinumcard.svg"
                 alt="">
               <div class="cardinfo keepLeft">
                 <div class="userStart">
@@ -86,7 +86,7 @@
               v-else
               class="page-right">
               <img
-                src="/img/20190102sync.gif"
+                v-lazy="'/img/20190102sync.gif'"
                 alt=""
                 class="loadmore">
             </div>
@@ -109,7 +109,7 @@
               v-else
               class="page-right">
               <img
-                src="/img/20190102sync.gif"
+                v-lazy="'/img/20190102sync.gif'"
                 alt=""
                 class="loadmore">
             </div>
@@ -121,7 +121,7 @@
       v-else
       class="membershippage loading">
       <img
-        src="/img/20190102sync.gif"
+        v-lazy="'/img/20190102sync.gif'"
         alt=""
         class="loadmore loadmoreall">
     </div>

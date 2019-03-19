@@ -11,7 +11,7 @@
       <button
         class="close"
         @click="hideLoginModal"><img
-          src="/img/close.svg"
+          v-lazy="'/img/close.svg'"
           alt=""></button>
       <iframe
         :src="'/accounts/login/?next=' + $route.fullPath"
@@ -27,14 +27,14 @@
       hide-footer>
       <div class="customer_service_head">
         <img
-          src="/img/20190122customer_service.png"
+          v-lazy="'/img/20190122customer_service.png'"
           alt="">
       </div>
       <div class="customer_service_body">
         <p>{{ $t('service.help') }}<br>{{ $t('service.WeChat') }}</p>
         <div class="customer_service_body_qrcode">
           <img
-            src="/img/20190122customer_service_qrcode.png"
+            v-lazy="'/img/20190122customer_service_qrcode.png'"
             alt="">
         </div>
       </div>
@@ -170,7 +170,7 @@
       ok-only
       @ok="signout">
       <img
-        :src="gconfig.LOGO_ASSISTRANT_ZH"
+        v-lazy="gconfig.LOGO_ASSISTRANT_ZH"
         :alt="$t('common.ModeSens')">
     </b-modal>
     <!-- notice -->
@@ -216,7 +216,7 @@
       <button
         class="close"
         @click="hideMembershipModal"><img
-          src="/img/close.svg"
+          v-lazy="'/img/close.svg'"
           alt=""></button>
       <div class="membership-desc">{{ $t('Modals.MakeModeSens') }}</div>
       <div class="membership-btn"><a href="/accounts/signup/?next=/">
