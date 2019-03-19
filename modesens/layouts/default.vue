@@ -27,9 +27,7 @@ export default {
     let meta = []
     let path = this.$route.path
     let request = this.$store.state.request
-    console.log('request: ', request)
     if (request) {
-      console.log('default---head')
       if (path.indexOf('/us/en/') > -1) {
         link.push({
           rel: 'canonical',
@@ -240,12 +238,8 @@ export default {
       }
     }
   },
-  created() {
-    console.log('default---created')
-  },
   created() {},
   mounted() {
-    console.log('default---mounted', this)
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this.$axios)
     }
