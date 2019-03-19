@@ -29,6 +29,7 @@ export default {
     let request = this.$store.state.request
     console.log('request: ', request)
     if (request) {
+      console.log('default---head')
       if (path.indexOf('/us/en/') > -1) {
         link.push({
           rel: 'canonical',
@@ -112,7 +113,7 @@ export default {
       } else {
         link.push({
           rel: 'canonical',
-          href: `https://${request.ROOT_DAMAIN}${this.$route.path}`
+          href: `https://${request.ROOT_DOMAIN}${this.$route.path}`
         })
       }
       if (
@@ -159,7 +160,6 @@ export default {
       content: `app-id=976201094, app-argument=https://modesens.com${path}`
     })
     return {
-      titleTemplate: '%s | ModeSens',
       link,
       meta
     }
@@ -240,15 +240,17 @@ export default {
       }
     }
   },
+  created() {
+    console.log('default---created')
+  },
   created() {},
   mounted() {
-    console.log('default---mounted')
+    console.log('default---mounted', this)
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this.$axios)
     }
     if (this.$store.state.login_status && !this.$store.state.lsuser) {
       this.$store.dispatch('getLsuser', this)
-      console.log('dafalut-mounted--', this.$store.state.lsuser)
     }
   },
   methods: {
