@@ -7,7 +7,7 @@
         v-for="(imgname,index) in imgAry"
         :key="index">
         <img
-          :src="'/img/' + imgname"
+          v-lazy="'/img/' + imgname"
           alt="">
       </div>
     </div>

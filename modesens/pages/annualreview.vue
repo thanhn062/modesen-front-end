@@ -8,7 +8,7 @@
       class="hiddenh1">2018 Annual Report for ModeSens</h1>
     <div class="bannerimg">
       <img
-        :src="handimgsrc"
+        v-lazy="handimgsrc"
         alt="">
     </div>
     <div class="totalSaving">
@@ -51,7 +51,7 @@
             <div class="imgbox">
               <div class="img">
                 <img
-                  :src="userprd.cover"
+                  v-lazy="userprd.cover"
                   alt="">
               </div>
               <div class="designername">{{ userprd.designer }}</div>
@@ -75,7 +75,7 @@
             <div class="imgbox">
               <div class="img">
                 <img
-                  :src="overallprd.cover"
+                  v-lazy="overallprd.cover"
                   alt="">
               </div>
               <div class="designername">{{ overallprd.designer }}</div>

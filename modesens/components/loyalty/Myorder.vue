@@ -17,7 +17,7 @@
               <template slot="button-content">
                 <span class="status-selected">{{ $t('accountOrder.'+status_selected) }}</span>
                 <img
-                  src="/img/20181214slidedown.svg" 
+                  v-lazy="'/img/20181214slidedown.svg'" 
                   alt=""
                   class="activeimg">
               </template>
@@ -76,8 +76,8 @@
                 class="see-info order-list-box col-12 col-md-1"
                 @click="toggle(index)">
                 <img
+                  v-lazy="index===orderlimit ? '/img/20190115slideup.svg' : '/img/20190115slidedown.svg'"
                   :class="index===orderlimit ? 'active' : ''"
-                  :src="index===orderlimit ? '/img/20190115slideup.svg' : '/img/20190115slidedown.svg'"
                   class="activeimg"
                   alt="">
               </div>
@@ -117,7 +117,7 @@
                       v-if = "order.availability"
                       class="order-prd-img">
                       <img
-                        :src="order.availability.cover"
+                        v-lazy="order.availability.cover"
                         alt="">
                     </div>
                     <div class="order-prd-info">
@@ -223,7 +223,7 @@
         </ul>
         <div v-else-if="ordercontent.length <= 0">
           <img
-            src="/img/20190129order_nothing.svg"
+            v-lazy="'/img/20190129order_nothing.svg'"
             alt=""
             class="order_nothing">
         </div>
@@ -249,7 +249,7 @@
         v-else
         class="order-loadmore">
         <img
-          src="/img/20190102sync.gif"
+          v-lazy="'/img/20190102sync.gif'"
           alt=""
           class="loadmore">
       </div>
