@@ -42,7 +42,7 @@
                 v-else
                 class="name">{{ lsuser.username }}</div>
             </div>
-            <div class="currentLevel">{{ $t('accountLoyalty.'+userlevel.toUpperCase()) }}</div>
+            <div class="currentLevel">{{ $t('accountLoyalty.'+userLevel.toUpperCase()) }}</div>
             <div class="userEnd">
               <nuxt-link
                 to="/loyalty/"
@@ -70,17 +70,21 @@ export default {
       default: function() {
         return {}
       }
+    },
+    userLevel: {
+      type: String,
+      default: function() {
+        return 'abc'
+      }
     }
   },
   data() {
     return {
-      userlevel: ''
+      // userlevel: ''
     }
   },
   mounted() {
-    if (this.level) {
-      this.userlevel = this.level.level
-    }
+    console.log(this.level)
   }
 }
 </script>

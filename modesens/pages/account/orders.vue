@@ -2,8 +2,10 @@
   <section>
     <h1 class="hiddenh1">{{ $t('accountLoyalty.my_loyalty') }}</h1>
     <UserInfo
+      v-if="lsuser && level"
       :lsuser="lsuser"
-      :level="level"/>
+      :level="level"
+      :userLevel="userLevel"/>
   </section>
 </template>
 <script>
@@ -15,12 +17,14 @@ export default {
   },
   data() {
     return {
-      lsuser: null,
-      level: null,
+      lsuser: {},
+      level: {},
       userLevel: ''
     }
   },
-  mounted() {},
+  mounted() {
+    this.getUserInfo()
+  },
   methods: {
     async getUserInfo() {
       let params = {}

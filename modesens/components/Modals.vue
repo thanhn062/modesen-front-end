@@ -412,7 +412,6 @@ export default {
     // this.showMemberShip()
     this.showModelink()
     this.showFcmodal()
-    console.log('modals-root', this.$root)
   },
   methods: {
     openLoginModal(evt) {
