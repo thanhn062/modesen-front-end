@@ -25,6 +25,9 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
       { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' },
       { rel: 'manifest', href: '/manifest.json'}
+      // { rel: 'stylesheet', type: 'text/css', href: '/css/font.css'},
+      // // { rel: 'stylesheet/less', type: 'text/css', href: '/css/common.less'},
+      // { rel: 'stylesheet/less', type: 'text/css', href: '/css/main.less'},
     ],
     script: [
       { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js' },
@@ -165,6 +168,7 @@ module.exports = {
 	** Build configuration
 	*/
   build: {
+    extractCSS: { allChunks: true },
     // 防止多次打包axios
     // vendor: ['axios'],
     plugins: [
