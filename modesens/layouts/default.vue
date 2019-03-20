@@ -16,6 +16,7 @@
 </template>
 <script>
 import '~/assets/js/main.js'
+// import '~/assets/js/endhelper.js'
 import Header from '~/components/header/Header.vue'
 import Footer from '~/components/Footer.vue'
 import Modals from '~/components/Modals.vue'
@@ -176,6 +177,11 @@ export default {
     Top,
     CustomerService
   },
+  data() {
+    return {
+      messaging: null
+    }
+  },
   computed: {
     listenstage() {
       return this.$store.state.request
@@ -253,6 +259,62 @@ export default {
     if (this.$store.state.login_status && !this.$store.state.lsuser) {
       this.$store.dispatch('getLsuser', this)
     }
+
+    firebase.initializeApp({
+      apiKey: 'AIzaSyCgiJcGjK2JNt_o6UOEcPPUP2GvBjpsm80',
+      databaseURL: 'https://sonorous-veld-95923.firebaseio.com',
+      storageBucket: 'sonorous-veld-95923.appspot.com',
+      authDomain: 'sonorous-veld-95923.firebaseapp.com',
+      messagingSenderId: '985405782985',
+      projectId: 'sonorous-veld-95923'
+    })
+    this.messaging = firebase.messaging()
+    this.messaging.usePublicVapidKey(
+      'BD4iDfxlD_FalzscVlfjiw4fN3YKp6X2u2DxbsLiRzUT6scSBAxvHlzH4ctfnYV--joqcjWh4M4_SDRZ3pOcuVQ'
+    )
+    this.messaging
+      .getToken()
+      .then(function(currentToken) {
+        if (currentToken) {
+          this.sendTokenToServer(currentToken)
+        } else {
+          console.log(
+            'No Instance ID token available. Request permission to generate one.'
+          )
+          setTimeout(function() {
+            if (
+              $('#modesensinstalled')[0] ||
+              this.$cookies.get('modelinkmodal')
+            ) {
+              if (!this.$cookies.get('ms_notification')) {
+                this.$root.$emit('bv::show::modal', 'fcmmodal')
+                ga('send', 'event', 'FCM', 'FCMModalShow')
+                this.$cookies.set('ms_notification', true, 1)
+              }
+            }
+          }, 15000)
+        }
+      })
+      .catch(function(err) {
+        console.log('An error occurred while retrieving token. ', err)
+        ga('send', 'event', 'FCM', 'GetTokenError', err)
+      })
+    this.messaging.onTokenRefresh(function() {
+      this.messaging
+        .getToken()
+        .then(function(refreshedToken) {
+          console.log('Token refreshed.')
+          this.sendTokenToServer(refreshedToken)
+          ga('send', 'event', 'FCM', 'TokenRefreshed')
+        })
+        .catch(function(err) {
+          console.log('Unable to retrieve refreshed token ', err)
+          ga('send', 'event', 'FCM', 'TokenRefreshedError', err)
+        })
+    })
+    this.messaging.onMessage(function(payload) {
+      console.log('Message received. ', payload)
+    })
   },
   methods: {
     hideMenu() {
@@ -260,6 +322,47 @@ export default {
       $('.header').animate({ left: 0 })
       $('.header .navbar-expand-xl').removeClass('show')
       $('.wrapper-mask').addClass('hidden')
+    },
+    sendTokenToServer(token) {
+      console.log(token)
+      let old_token = this.$cookies.get('ms_notification')
+      let lsuid = this.$cookies.get(this.gconfig.LSUID)
+      this.$cookies.set('ms_notification', token + lsuid, 1)
+      if (old_token === token + lsuid) {
+        return
+      }
+      let data = {}
+      data.device_typ = 'FCM'
+      data.device_registration_id = token
+      this.$axios.post('/adddevice/', data)
+    },
+    requestFCMToken() {
+      this.messaging
+        .requestPermission()
+        .then(function() {
+          console.log('Notification permission granted.')
+          ga('send', 'event', 'FCM', 'RequestPermissionGranted')
+          this.messaging
+            .getToken()
+            .then(function(currentToken) {
+              if (currentToken) {
+                this.sendTokenToServer(currentToken)
+              } else {
+                console.log(
+                  'No Instance ID token available. Request permission to generate one.'
+                )
+              }
+            })
+            .catch(function(err) {
+              console.log('An error occurred while retrieving token. ', err)
+              ga('send', 'event', 'FCM', 'GetTokenError', err)
+            })
+        })
+        .catch(function(err) {
+          console.log('Unable to get permission to notify.', err)
+          ga('send', 'event', 'FCM', 'RequestPermissionError', err)
+          this.$cookies.set('ms_notification', true, 1)
+        })
     }
   }
 }

@@ -412,6 +412,7 @@ export default {
     // this.showMemberShip()
     this.showModelink()
     this.showFcmodal()
+    console.log('modals-root', this.$root)
   },
   methods: {
     openLoginModal(evt) {
@@ -584,8 +585,9 @@ export default {
       }
     },
     requestFCMToken() {
-      ga('send', 'event', 'Modal-fcmmodal', 'Yes')
-      this.$cookies.set('ms_notification', true, 1)
+      this.$partent.requestFCMToken
+      // ga('send', 'event', 'Modal-fcmmodal', 'Yes')
+      // this.$cookies.set('ms_notification', true, 1)
     }
   }
 }
