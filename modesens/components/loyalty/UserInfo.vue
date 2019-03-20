@@ -1,6 +1,8 @@
 <template>
   <div class="userInfoBox">
-    <div class="userInfoinnerBox">
+    <div
+      v-if="lsuser"
+      class="userInfoinnerBox">
       <div class="userinfo">
         <img 
           v-lazy="lsuser.icon" 
@@ -12,7 +14,9 @@
         </div>
       </div>
       <div class="levelcard">
-        <div class="card">
+        <div
+          v-if="level"
+          class="card">
           <img
             v-lazy="'/img/20181213bronzecard.svg'"
             v-if="level.level==='Bronze'" 
@@ -38,7 +42,7 @@
                 v-else
                 class="name">{{ lsuser.username }}</div>
             </div>
-            <div class="currentLevel">{{ $t('accountLoyalty.'+userLevel.toUpperCase()) }}</div>
+            <div class="currentLevel">{{ $t('accountLoyalty.'+userlevel.toUpperCase()) }}</div>
             <div class="userEnd">
               <nuxt-link
                 to="/loyalty/"
@@ -53,7 +57,33 @@
   </div>
 </template>
 <script>
-export default {}
+export default {
+  props: {
+    lsuser: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    },
+    level: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    }
+  },
+  data() {
+    return {
+      userlevel: ''
+    }
+  },
+  mounted() {
+    if (this.level) {
+      this.userlevel = this.level.level
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
+@import '../../assets/css/account/userInfo.less';
 </style>

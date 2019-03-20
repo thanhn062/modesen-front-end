@@ -11,7 +11,8 @@ export const state = () => ({
   coupons: null,
   navHeadJson: null,
   rhints: {},//26个字母及#的搜索值,
-  request: null
+  request: null,
+  userLevel: null
 })
 
 export const mutations = {
@@ -26,6 +27,9 @@ export const mutations = {
   },
   removeLsuser(state) {
     state.lsuser = null;
+  },
+  setUserlevel(state, params) {
+    state.userLevel = params;
   },
   setCoupons(state, params) {
     state.coupons = params;
@@ -57,12 +61,26 @@ export const actions = {
     commit('saveRequest', obj);
     Vue.prototype.ISWECHATLITE = obj.ISWECHATLITE;
   },
-  async getLsuser({ commit }, app) {
-    let userdata = await app.$axios.post('/accounts/profile/get/', {})
+  async getLsuser({ commit }, { app, data}) {
+    let userdata = await app.$axios.post('/accounts/profile/get/', data)
     if (userdata.lsuser) {
       commit('login')
       commit('setLsuser', userdata.lsuser)
       app.$cookies.set(gconfig.LSUID, userdata.lsuser.uid)
+    }
+    if (userdata.level) {
+      commit('setUserlevel', userdata.level)
+    }
+  },
+  async getProfile({ commit }, { app, params}) {
+    let userdata = await app.$axios.post('/accounts/profile/get/', params)
+    if (userdata.lsuser) {
+      commit('login')
+      commit('setLsuser', userdata.lsuser)
+      app.$cookies.set(gconfig.LSUID, userdata.lsuser.uid)
+    }
+    if (userdata.level) {
+      commit('setUserlevel', userdata.level)
     }
   }
 }
