@@ -490,10 +490,9 @@ export default {
     },
     async signout() {
       this.$cookies.remove(this.gconfig.ACCESS_TOKEN)
-      this.$localStorage.remove(this.gconfig.USERINFO)
+      this.$cookies.remove(this.gconfig.LSUID)
       this.$store.commit('logout')
       this.$store.commit('removeLsuser')
-      this.$store.state.login_status = false
       window.open('/', '_self')
     },
     gotoSignup(evt) {
