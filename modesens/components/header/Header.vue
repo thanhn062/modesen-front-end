@@ -6,7 +6,7 @@
       id="popLink"
       class="d-none d-flex justify-content-center align-items-center">
       <img
-        v-lazy="'https://mds0.com/static/img/20180929logo.svg'"
+        v-lazy="'/img/20180929logo.svg'"
         alt="">
       <a
         href="/shopping-assistant/"
@@ -100,7 +100,7 @@
               v-if="!$store.state.login_status"
               href="javascript:;">
               <img
-                v-lazy="'https://mds0.com/static/img/20180905account_b.svg'"
+                v-lazy="'/img/20180905account_b.svg'"
                 alt="">
             </a>
             <div
@@ -111,7 +111,7 @@
                 href="javascript:;"
                 @click="has_notice_p=false">
                 <img
-                  v-lazy="'https://mds0.com/static/img/prd-update-20180504.svg'"
+                  v-lazy="'/img/prd-update-20180504.svg'"
                   alt="">
                 <span
                   v-if="has_notice_p && $store.state.lsuser.has_notice_p"
@@ -122,7 +122,7 @@
                 href="javascript:;"
                 @click="has_notice_m=false">
                 <img
-                  v-lazy="'https://mds0.com/static/img/social-update-20180504.svg'"
+                  v-lazy="'/img/social-update-20180504.svg'"
                   alt="">
                 <span
                   v-if="has_notice_m && $store.state.lsuser.has_notice_m"
@@ -178,7 +178,7 @@
                 type="text"
                 @keyup="getHint2">
               <img
-                v-lazy="'https://mds0.com/static/img/20180905search_b.svg'"
+                v-lazy="'/img/20180905search_b.svg'"
                 class="search-icon"
                 alt="">
               <div

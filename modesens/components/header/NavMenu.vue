@@ -126,7 +126,7 @@
                       href="product/women/clothing/jackets/#page=1&category=c&subcategory=Jackets%3B"
                       data-ga-click="navClothing-WomenJacketsIcon--">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_f_j.jpg'"
+                        v-lazy="'/img/20180930navi_f_j.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -228,7 +228,7 @@
                       href="/product/women/bags/belt%20bags/#page=1&category=b&subcategory=Belt%20Bags%3B"
                       data-ga-click="navBags-WomenBeltbagsIcon">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_f_b.jpg'"
+                        v-lazy="'/img/20180930navi_f_b.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -321,7 +321,7 @@
                       href="/product/women/shoes/pumps/#page=1&category=s&subcategory=Pumps%3B"
                       data-ga-click="navShoes-WomenPumpsIcon--">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_f_s.jpg'"
+                        v-lazy="'/img/20180930navi_f_s.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -438,7 +438,7 @@
                       href="/product/women/accessories/jewelry/#page=1&category=a"
                       data-ga-click="navAccessories-WomenJewelryIcon--">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_f_jy.jpg'"
+                        v-lazy="'/img/20180930navi_f_jy.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -539,7 +539,7 @@
                       href="/product/women/beauty/skincare/#page=1&category=e&subcategory=Skincare%3B"
                       data-ga-click="navBeauty-WomenSkinIcon--">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_f_ski.jpg'"
+                        v-lazy="'/img/20180930navi_f_ski.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -594,7 +594,7 @@
                   <div class="menucategory-title">{{ $t('nav.POPULARCATEGORY') }}</div>
                   <div class="menucategory-desc">{{ $t('nav.WOMENSJACKETS') }}</div>
                   <div><a href="/product/women/clothing/jackets/?orderby=-betterprice_time"><img
-                    v-lazy="'https://mds0.com/static/img/20180905SALE.png'"
+                    v-lazy="'/img/20180905SALE.png'"
                     class="sale-img"
                     alt=""></a></div>
                 </div>
@@ -710,7 +710,7 @@
                       href="/product/men/clothing/jackets/#page=1&category=c&subcategory=Jackets%3B"
                       data-ga-click="navClothing-MenIcon--">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_m_j.jpg'"
+                        v-lazy="'/img/20180930navi_m_j.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -806,7 +806,7 @@
                       href="/product/men/bags/belt%20bags/#page=1&category=b&subcategory=Belt%20Bags%3B"
                       data-ga-click="navBags-MenIcon--">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_m_b.jpg'"
+                        v-lazy="'/img/20180930navi_m_b.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -896,7 +896,7 @@
                       href="/product/men/shoes/sneakers/#page=1&category=s&subcategory=Sneakers%3B"
                       data-ga-click="navShoes-MenIcon--">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_m_s.jpg'"
+                        v-lazy="'/img/20180930navi_m_s.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -1004,7 +1004,7 @@
                       href="/product/men/accessories/hats/#page=1&category=a&subcategory=Hats%3B"
                       data-ga-click="navAccessories-MenIcon--">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_m_h.jpg'"
+                        v-lazy="'/img/20180930navi_m_h.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -1096,7 +1096,7 @@
                       href="/product/men/grooming/#page=1&category=e&subcategory=Fragrance%3B"
                       data-ga-click="navBeauty-MenIcon--">
                       <img
-                        v-lazy="'https://mds0.com/static/img/20180930navi_m_ski.jpg'"
+                        v-lazy="'/img/20180930navi_m_ski.jpg'"
                         alt="">
                     </a>
                   </div>
@@ -1154,7 +1154,7 @@
                     href="/product/men/clothing/jackets/?orderby=-betterprice_time"
                     data-ga-click="navSale-MenIcon--">
                     <img
-                      v-lazy="'https://mds0.com/static/img/20180905SALE.png'"
+                      v-lazy="'/img/20180905SALE.png'"
                       class="sale-img"
                       alt="">
                   </a></div>
@@ -1276,7 +1276,7 @@
                     <a
                       href="/product/women/clothing/jackets/?orderby=-betterprice_time"
                       data-ga-click="navOffers-WOMENSSALEIcon--"><img
-                        v-lazy="'https://mds0.com/static/img/20180905SALE.png'"
+                        v-lazy="'/img/20180905SALE.png'"
                         class="sale-img"
                         alt="">
                     </a>
@@ -1334,7 +1334,7 @@
                     <a
                       href="/product/men/clothing/jackets/?orderby=-betterprice_time"
                       data-ga-click="navOffers-MENSSALEIcon--"><img
-                        v-lazy="'https://mds0.com/static/img/20180905SALE.png'"
+                        v-lazy="'/img/20180905SALE.png'"
                         class="sale-img"
                         alt=""></a>
                   </div>
@@ -1394,7 +1394,7 @@
                     target="_blank"
                     href="/GUCCI-women/">
                     <img
-                      v-lazy="'https://mds0.com/static/img/mini_header/w_designer.jpg'"
+                      v-lazy="'/img/mini_header/w_designer.jpg'"
                       alt="">
                   </a>
                 </div>
@@ -1470,7 +1470,7 @@
               type="text"
               @keyup="searchKeyUp">
             <img
-              v-lazy="'https://mds0.com/static/img/20180905search_b.svg'"
+              v-lazy="'/img/20180905search_b.svg'"
               alt="">
             <ul
               v-if="secondLevelIndex===28 && designers"

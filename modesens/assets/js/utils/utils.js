@@ -48,7 +48,7 @@ export function wxlogin (fullPath) {
   if (!res) return
   let next = [...res][1]
   let redirect_uri =
-    'https://modesens.com/accounts/weixin/callback2/?next=' + next
+    '/accounts/weixin/callback2/?next=' + next
   let encode_url = encodeURIComponent(redirect_uri)
   let state = new Date().getTime()
   let url =

@@ -207,7 +207,7 @@
                     >{{ $t('accountOrder.afterstatus'+aftersale) }}</div>
                     <a
                       v-else-if="aftersale === 4"
-                      :href="order.availability ? '/product/'+order.availability.product_id+'/review/' : 'https://modesens.com/store/merchantreview/'+order.merchant_url+'/'"
+                      :href="order.availability ? '/product/'+order.availability.product_id+'/review/' : '/store/merchantreview/'+order.merchant_url+'/'"
                       target="_blank"
                       class="after-sale-other">{{ $t('accountOrder.afterstatus'+aftersale) }}</a>
                     <a

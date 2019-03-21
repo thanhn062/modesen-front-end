@@ -181,7 +181,7 @@
       hide-footer
       @shown="showNoticemd">
       <iframe
-        src="https://modesens.com/notice/product/"
+        src="/notice/product/"
         width="100%"
         height="100%"
         frameborder="0"/>
@@ -193,7 +193,7 @@
       hide-footer
       @shown="showNoticemd">
       <iframe
-        src="https://modesens.com/notice/me/"
+        src="/notice/me/"
         width="100%"
         height="100%"
         frameborder="0"/>
@@ -236,7 +236,7 @@
       <div class="ass-head">
         <div>
           <img
-            v-lazy="'https://mds0.com/static/img/20180930modesenslogo.png'"
+            v-lazy="'/img/20180930modesenslogo.png'"
             class="modesens-logo"
             alt="">
           <div class="smart-shopping">
@@ -251,7 +251,7 @@
               class="browser-share"
               @click="modelinkshare">
               <img
-                v-lazy="'https://mds0.com/static/img/prd_share1_360.png'"
+                v-lazy="'/img/prd_share1_360.png'"
                 alt="">
             </div>
           </div>
@@ -269,31 +269,31 @@
           @sliding-end="onSlideEnd">
           <b-carousel-slide>
             <img
-              v-lazy="'https://mds0.com/static/img/20180928availability.png'"
+              v-lazy="'/img/20180928availability.png'"
               slot="img"
               alt="">
           </b-carousel-slide>
           <b-carousel-slide>
             <img
-              v-lazy="'https://mds0.com/static/img/20180928Coupon_1.png'"
+              v-lazy="'/img/20180928Coupon_1.png'"
               slot="img"
               alt="">
           </b-carousel-slide>
           <b-carousel-slide>
             <img
-              v-lazy="'https://mds0.com/static/img/20180928assistant2_1.png'"
+              v-lazy="'/img/20180928assistant2_1.png'"
               slot="img"
               alt="">
           </b-carousel-slide>
           <b-carousel-slide>
             <img
-              v-lazy="'https://mds0.com/static/img/20180928add_to_collection_720.png'"
+              v-lazy="'/img/20180928add_to_collection_720.png'"
               slot="img"
               alt="">
           </b-carousel-slide>
           <b-carousel-slide>
             <img
-              v-lazy="'https://mds0.com/static/img/20180928want1.png'"
+              v-lazy="'/img/20180928want1.png'"
               slot="img"
               alt="">
           </b-carousel-slide>

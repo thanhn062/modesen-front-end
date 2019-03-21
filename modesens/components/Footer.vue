@@ -210,14 +210,14 @@
       <div class="applistbox">
         <div class="app-box">
           <img
-            v-lazy="'https://mds0.com/static/img/20190103ios_QR_code.png'"
+            v-lazy="'/img/20190103ios_QR_code.png'"
             alt="">
           <a
             href="https://itunes.apple.com/app/id976201094"
             target="_blank">
             <button class="btn-theme">
               <img
-                v-lazy="'https://mds0.com/static/img/20181127ioslogo.svg'"
+                v-lazy="'/img/20181127ioslogo.svg'"
                 alt="">
               {{ $t('common.IOSApp') }}
             </button>
@@ -225,19 +225,19 @@
         </div>
         <div class="app-box">
           <img
-            v-lazy="'https://mds0.com/static/img/20181229android_QR_code_cn.png'"
+            v-lazy="'/img/20181229android_QR_code_cn.png'"
             v-if="$i18n.country === 'cn'"
             alt="">
           <img
-            v-lazy="'https://mds0.com/static/img/20181229android_QR_code_gconfig.png'"
+            v-lazy="'/img/20181229android_QR_code_gconfig.png'"
             v-else
             alt="">
           <a
-            href="https://modesens.com/s/android_cn/"
+            href="/s/android_cn/"
             target="_blank">
             <button class="btn-theme">
               <img
-                v-lazy="'https://mds0.com/static/img/20181127androidlogo.svg'"
+                v-lazy="'/img/20181127androidlogo.svg'"
                 alt="">
               {{ $t('common.AndroidApp') }}
             </button>
@@ -314,7 +314,7 @@ export default {
       if ($(document).width() > 1199) {
         installChromeExtention()
       } else {
-        window.open('https://modesens.com/s/android_cn/', '_blank')
+        window.open('/s/android_cn/', '_blank')
       }
     },
     hideAppEntranceModal() {

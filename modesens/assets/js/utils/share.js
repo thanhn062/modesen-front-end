@@ -26,7 +26,7 @@ function wxlogin(){
         id: "login_container",
         appid: "wxe1d0bd1efdb080ca",
         scope: "snsapi_login,snsapi_userinfo",
-        redirect_uri: `https://modesens.com/accounts/weixin/callback/?next=${location.href}`,
+        redirect_uri: `/accounts/weixin/callback/?next=${location.href}`,
         state: new Date().getTime(),
         style: "",
         href: ""

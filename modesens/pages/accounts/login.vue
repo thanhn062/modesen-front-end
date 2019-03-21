@@ -46,7 +46,7 @@
     <div class="loginwith-con">
       <label>{{ $t('common.Loginwith') }}</label><br>
       <img
-        v-lazy="'https://mds0.com/static/img/login-icon/icon-weixin.svg'"
+        v-lazy="'/img/login-icon/icon-weixin.svg'"
         alt="">
     </div>
   </section>

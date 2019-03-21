@@ -29,83 +29,77 @@ export default {
     let meta = []
     let path = this.$route.path
     let request = this.$store.state.request
+    let country = this.$i18n.country
+    let local = this.$i18n.locale
     if (request) {
-      if (path.indexOf('/us/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.com${this.$route.path}`
-        })
-      } else if (path.indexOf('/uk/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.uk${this.$route.path}`
-        })
-      } else if (path.indexOf('/ca/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.ca${this.$route.path}`
-        })
-      } else if (path.indexOf('/cn/zh/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.cn${this.$route.path}`
-        })
-      } else if (path.indexOf('/uk/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.uk${this.$route.path}`
-        })
-      } else if (path.indexOf('/au/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.au${this.$route.path}`
-        })
-      } else if (path.indexOf('/fr/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.fr${this.$route.path}`
-        })
-      } else if (path.indexOf('/de/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.de${this.$route.path}`
-        })
-      } else if (path.indexOf('/it/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.it${this.$route.path}`
-        })
-      } else if (path.indexOf('/jp/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.jp${this.$route.path}`
-        })
-      } else if (path.indexOf('/kr/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.kr${this.$route.path}`
-        })
-      } else if (path.indexOf('/nl/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.nl${this.$route.path}`
-        })
-      } else if (path.indexOf('/ru/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.ru${this.$route.path}`
-        })
-      } else if (path.indexOf('/es/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.es${this.$route.path}`
-        })
-      } else if (path.indexOf('/en/') > -1) {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.com${this.$route.path}`
-        })
-      } else if (path.indexOf('/zh/') > -1) {
+      if (local === 'en') {
+        if (country === 'us') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.com${this.$route.path}`
+          })
+        } else if (country === 'uk') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.uk${this.$route.path}`
+          })
+        } else if (country === 'ca') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.ca${this.$route.path}`
+          })
+        } else if (country === 'au') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.com.au${this.$route.path}`
+          })
+        } else if (country === 'fr') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.fr${this.$route.path}`
+          })
+        } else if (country === 'de') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.de${this.$route.path}`
+          })
+        } else if (country === 'it') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.it${this.$route.path}`
+          })
+        } else if (country === 'jp') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.jp${this.$route.path}`
+          })
+        } else if (country === 'kr') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.kr${this.$route.path}`
+          })
+        } else if (country === 'nl') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.nl${this.$route.path}`
+          })
+        } else if (country === 'ru') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.ru${this.$route.path}`
+          })
+        } else if (country === 'es') {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.es${this.$route.path}`
+          })
+        } else {
+          link.push({
+            rel: 'canonical',
+            href: `https://modesens.com${this.$route.path}`
+          })
+        }
+      } else if (local === 'zh') {
         link.push({
           rel: 'canonical',
           href: `https://modesens.cn${this.$route.path}`
@@ -118,9 +112,9 @@ export default {
       }
       if (
         !request.BLOCK_INTL &&
-        request.RCOUNTRY !== 'cn' &&
-        this.$route.fullPath.indexOf('en') === -1 &&
-        this.$route.fullPath.indexOf('zh') === -1
+        request.RCOUNTRY !== 'cn'
+        // this.$route.fullPath.indexOf('/en/') === -1 &&
+        // this.$route.fullPath.indexOf('/zh/') === -1
       ) {
         let alternateAry = [
           { href: 'https://modesens.com', lang: 'x-default' },
@@ -159,7 +153,7 @@ export default {
       name: 'apple-itunes-app',
       content: `app-id=976201094, app-argument=https://modesens.com${path}`
     })
-    if (path.indexOf('/zh/') > -1) {
+    if (local === 'zh') {
       htmlAttrs = { lang: 'zh-cn' }
     } else {
       htmlAttrs = { lang: 'en-us' }
