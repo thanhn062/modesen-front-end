@@ -1,17 +1,54 @@
 <template>
-  <section>
-    <h1 class="hiddenh1">{{ $t('accountLoyalty.my_loyalty') }}</h1>
-    <UserInfo/>
+  <section class="aloyalty-con">
+    <h1 class="hiddenh1">{{ $t('accountLoyalty.my_order') }}</h1>
+    <div
+      class="membershippage">
+      <UserInfo @userinfoloaded="userInfoLoad"/>
+      <div
+        v-if="flag1"
+        class="page-content container">
+        <Tabscon
+          v-if="levelinfo"
+          :userlevel="levelinfo"
+          :activetab="'order'"
+          :userinfoflag="flag1"/>
+      </div>
+    </div>
   </section>
 </template>
 <script>
-import UserInfo from '~/components/loyalty/UserInfo.vue'
-
+import UserInfo from '~/components/accounts/UserInfo.vue'
+import Tabscon from '~/components/accounts/Tabscon.vue'
 export default {
+  metaInfo() {
+    let headobj = {}
+    let H1 = this.$t('accountLoyalty.my_order')
+    let TITLE = this.$t('nav.MyOrders') + ' | ModeSens'
+    let request = this.$store.state.request
+    if (request) {
+      let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    }
+    return headobj
+  },
   components: {
-    UserInfo
+    UserInfo,
+    Tabscon
+  },
+  data() {
+    return {
+      levelinfo: null,
+      flag1: false
+    }
+  },
+  methods: {
+    userInfoLoad: function(userinfo) {
+      this.levelinfo = userinfo.level
+      this.flag1 = userinfo.flag1
+    }
   }
 }
 </script>
-<style lang="less" scoped>
+<style lang="less">
+@import '../../assets/css/account/loyalty.less';
 </style>

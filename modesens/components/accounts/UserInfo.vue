@@ -54,12 +54,26 @@
         </div>
       </div>
     </div>
+    <div
+      v-else
+      class="userInfoinnerBox">
+      <img
+        v-lazy="'/img/20190102sync.gif'"
+        alt=""
+        class="loadmore loadmoreall">  
+    </div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      userInfo: {
+        lsuser: null,
+        level: null,
+        userLevel: null,
+        flag1: false
+      },
       lsuser: null,
       level: null,
       userlevel: ''
@@ -79,6 +93,10 @@ export default {
       this.lsuser = lsuser
       this.level = level
       this.userLevel = level.level
+      this.userInfo.lsuser = lsuser
+      this.userInfo.level = level
+      this.userInfo.flag1 = true
+      this.$emit('userinfoloaded', this.userInfo)
     }
   }
 }
