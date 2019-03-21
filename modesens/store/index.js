@@ -61,15 +61,12 @@ export const actions = {
     commit('saveRequest', obj);
     Vue.prototype.ISWECHATLITE = obj.ISWECHATLITE;
   },
-  async getLsuser({ commit }, { app, data}) {
-    let userdata = await app.$axios.post('/accounts/profile/get/', data)
+  async getLsuser({ commit }, app) {
+    let userdata = await app.$axios.post('/accounts/profile/get/', {})
     if (userdata.lsuser) {
       commit('login')
       commit('setLsuser', userdata.lsuser)
       app.$cookies.set(gconfig.LSUID, userdata.lsuser.uid)
-    }
-    if (userdata.level) {
-      commit('setUserlevel', userdata.level)
     }
   },
   async getProfile({ commit }, { app, params}) {
