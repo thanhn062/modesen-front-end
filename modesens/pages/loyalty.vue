@@ -2,12 +2,9 @@
   <section class="container loyalty-con">
     <h1 class="hiddenh1">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</h1>
     <div class="accountsCon">
-      <div class="logoCon"><amp-img
+      <div class="logoCon"><img
         :src="'/img/20180905footer_logo.svg'"
-        width="91"
-        height="109"
-        layout="responsive"
-        alt=""/></div>
+        alt=""></div>
       <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
       <div
         v-if="!$store.state.login_status"
@@ -44,12 +41,9 @@
             v-for="num in benefits"
             :key="num"
             class="swiper-slide">
-            <div class="imgBox"><amp-img
+            <div class="imgBox"><img
               :src="'/img/20181213benefits-' + num + '.png'"
-              width="124"
-              height="110"
-              layout="responsive"
-              alt=""/></div>
+              alt=""></div>
             <div class="descBox">
               <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
               <div class="desc">{{ $t('loyalty.bfdesc' + num) }}</div>
@@ -63,12 +57,9 @@
     <div class="levelCon">
       <div class="title">{{ $t('loyalty.levelTitle') }}</div>
       <div class="arrowBox">
-        <amp-img
+        <img
           :src="'/img/20180905overlay_right_arrow_b.svg'"
-          width="893"
-          height="500"
-          layout="responsive"
-          alt=""/>
+          alt="">
         <span>{{ $t('loyalty.SwapRight') }}</span>
       </div>
       <div class="levelBox">
@@ -222,13 +213,10 @@
             class="question"
             @click="questionClick(index)">
             <span>{{ $t('loyalty.question'+(index+1)) }}</span>
-            <amp-img 
+            <img 
               :src="'/img/20181214slidedown.svg'"
               :class="indexQt===index ? 'imgrotate' : ''"
-              width="767"
-              height="400"
-              layout="responsive"
-              alt=""/>
+              alt="">
           </div>
           <div
             v-if="indexQt===index"

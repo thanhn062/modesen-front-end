@@ -174,20 +174,20 @@ module.exports = {
   //     'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
   // },
   // AMP---- render & hooks
-  render: {
-    // Disable resourceHints since we don't load any scripts for AMP
-    resourceHints: false
-  },
-  hooks: {
-    // This hook is called before generatic static html files for SPA mode
-    'generate:page': (page) => {
-      page.html = modifyHtml(page.html)
-    },
-    // This hook is called before rendering the html to the browser
-    'render:route': (url, page, { req, res }) => {
-      page.html = modifyHtml(page.html)
-    }
-  },
+  // render: {
+  //   // Disable resourceHints since we don't load any scripts for AMP
+  //   resourceHints: false
+  // },
+  // hooks: {
+  //   // This hook is called before generatic static html files for SPA mode
+  //   'generate:page': (page) => {
+  //     page.html = modifyHtml(page.html)
+  //   },
+  //   // This hook is called before rendering the html to the browser
+  //   'render:route': (url, page, { req, res }) => {
+  //     page.html = modifyHtml(page.html)
+  //   }
+  // },
   /*
 	** Build configuration
 	*/
