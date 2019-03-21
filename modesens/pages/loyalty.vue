@@ -3,7 +3,7 @@
     <h1 class="hiddenh1">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</h1>
     <div class="accountsCon">
       <div class="logoCon"><img
-        :src="'/img/20180905footer_logo.svg'"
+        v-lazy="'/img/20180905footer_logo.svg'"
         alt=""></div>
       <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
       <div
@@ -42,7 +42,7 @@
             :key="num"
             class="swiper-slide">
             <div class="imgBox"><img
-              :src="'/img/20181213benefits-' + num + '.png'"
+              v-lazy="'/img/20181213benefits-' + num + '.png'"
               alt=""></div>
             <div class="descBox">
               <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
@@ -58,7 +58,7 @@
       <div class="title">{{ $t('loyalty.levelTitle') }}</div>
       <div class="arrowBox">
         <img
-          :src="'/img/20180905overlay_right_arrow_b.svg'"
+          v-lazy="'/img/20180905overlay_right_arrow_b.svg'"
           alt="">
         <span>{{ $t('loyalty.SwapRight') }}</span>
       </div>
@@ -214,7 +214,7 @@
             @click="questionClick(index)">
             <span>{{ $t('loyalty.question'+(index+1)) }}</span>
             <img 
-              :src="'/img/20181214slidedown.svg'"
+              v-lazy="'/img/20181214slidedown.svg'"
               :class="indexQt===index ? 'imgrotate' : ''"
               alt="">
           </div>
