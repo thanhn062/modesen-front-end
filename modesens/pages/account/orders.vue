@@ -1,11 +1,7 @@
 <template>
   <section>
     <h1 class="hiddenh1">{{ $t('accountLoyalty.my_loyalty') }}</h1>
-    <UserInfo
-      v-if="lsuser && level"
-      :lsuser="lsuser"
-      :level="level"
-      :userLevel="userLevel"/>
+    <UserInfo/>
   </section>
 </template>
 <script>
@@ -14,37 +10,6 @@ import UserInfo from '~/components/loyalty/UserInfo.vue'
 export default {
   components: {
     UserInfo
-  },
-  data() {
-    return {
-      lsuser: {},
-      level: {},
-      userLevel: ''
-    }
-  },
-  mounted() {
-    this.getUserInfo()
-  },
-  methods: {
-    async getUserInfo() {
-      let params = {}
-      params.level = true
-      let { lsuser, level } = await this.$axios.post(
-        '/accounts/profile/get/',
-        params
-      )
-      this.lsuser = lsuser
-      this.level = level
-      this.userLevel = level.level
-      this.flag1 = true
-      if ($(window).width() < 1200) {
-        this.$nextTick(() => {
-          let backtab = `<div class='tab-backbtn' >< Back</div>`
-          $('.nav-tabs').before(backtab)
-          $('.tab-backbtn').on('click', this.tabback)
-        })
-      }
-    }
   }
 }
 </script>

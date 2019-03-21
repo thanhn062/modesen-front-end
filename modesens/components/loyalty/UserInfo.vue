@@ -58,33 +58,28 @@
 </template>
 <script>
 export default {
-  props: {
-    lsuser: {
-      type: Object,
-      default: function() {
-        return {}
-      }
-    },
-    level: {
-      type: Object,
-      default: function() {
-        return {}
-      }
-    },
-    userLevel: {
-      type: String,
-      default: function() {
-        return 'abc'
-      }
-    }
-  },
   data() {
     return {
-      // userlevel: ''
+      lsuser: null,
+      level: null,
+      userlevel: ''
     }
   },
   mounted() {
-    console.log(this.level)
+    this.getUserInfo()
+  },
+  methods: {
+    async getUserInfo() {
+      let params = {}
+      params.level = true
+      let { lsuser, level } = await this.$axios.post(
+        '/accounts/profile/get/',
+        params
+      )
+      this.lsuser = lsuser
+      this.level = level
+      this.userLevel = level.level
+    }
   }
 }
 </script>
