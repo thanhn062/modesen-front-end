@@ -14,4 +14,6 @@ export const gconfig = {
   OPERA_LOGO: '/img/20190228operalogo.png',
   FIREFOX_LOGO: '/img/20190228firefoxlogo.png',
   SAFARI_LOGO: '/img/20190228safarilogo.png',
+  countryKey: 'i18n_country',
+  localeKey: 'i18n_locale'
 }

@@ -61,7 +61,8 @@
               <b-dropdown-item
                 v-for="(opt,index) in COUNTRIES"
                 :key="index"
-                :href="switchLocalePath(index.toLowerCase(), $i18n.locale)">
+                href="javascript:;"
+                @click="i18nCookieChange(index.toLowerCase(), $i18n.locale)">
                 <i :class="'country-icon country-' + index.toLowerCase()"/> {{ opt[4] }}
               </b-dropdown-item>
             </b-nav-item-dropdown>
@@ -343,12 +344,23 @@ export default {
       })
       this.COUNTRIES = COUNTRIES
     },
+    i18nCookieChange(country, locale) {
+      let date = new Date()
+      this.$cookies.set(this.gconfig.countryKey, country, {
+        expires: new Date(date.setDate(date.getDate() + 365)),
+        path: '/'
+      })
+      this.$cookies.set(this.gconfig.localeKey, locale, {
+        expires: new Date(date.setDate(date.getDate() + 365)),
+        path: '/'
+      })
+      // let path = this.switchLocalePath(country, locale)
+      // path = path.replace(/\/[a-z]{2}\/[a-z]{2}\//, '/')
+      // window.open(path, '_self')
+      window.open(this.$route.fullPath, '_self')
+    },
     langChange(val) {
-      let path = this.switchLocalePath(this.$i18n.country, val)
-      this.$router.replace(path)
-      this.$nextTick(() =>
-        $('.main-container').css('padding-top', $('header').height())
-      )
+      this.i18nCookieChange(this.$i18n.country, val)
     },
     getHint2() {
       clearTimeout(this.hint2Timeout)

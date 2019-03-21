@@ -74,23 +74,23 @@ export default async ({ app, route, store, req }) => {
     })
   }
 
-  let country = app.i18n.defaultCountry || null
-  let locale = app.i18n.defaultLocale || null
+  const detectBrowserLanguage = <%= JSON.stringify(options.detectBrowserLanguage) %>
+  const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(app, detectBrowserLanguage)
+  let country = cookieCountry || app.i18n.defaultCountry || null
+  let locale = cookieLocale || app.i18n.defaultLocale || null
 
   if (app.i18n.differentDomains) {
     const domainLocale = getLocaleDomain()
     locale = domainLocale ? domainLocale : locale
   } else {
-    const [routeCountry, routeLocale] = getCountryLocaleFromRoute(route, app.i18n.routesNameSeparator, app.i18n.countries, app.i18n.locales)
+    // const [routeCountry, routeLocale] = getCountryLocaleFromRoute(route, app.i18n.routesNameSeparator, app.i18n.countries, app.i18n.locales)
 
-    const detectBrowserLanguage = <%= JSON.stringify(options.detectBrowserLanguage) %>
 
-    const [cookieCountry, cookieLocale] = getCountryLocaleFromCookie(app, detectBrowserLanguage)
 
-    country = cookieCountry ? cookieCountry : country
-    locale = cookieLocale ? cookieLocale : locale
-    country = routeCountry ? routeCountry : country
-    locale = routeLocale ? routeLocale : locale
+    // country = cookieCountry ? cookieCountry : country
+    // locale = cookieLocale ? cookieLocale : locale
+    // country = routeCountry ? routeCountry : country
+    // locale = routeLocale ? routeLocale : locale
 
     if (cookieCountry != country || cookieLocale != locale) {
       setCountryLocaleToCookie(app, detectBrowserLanguage, country, locale, cookie, Cookies)
