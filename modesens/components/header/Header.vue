@@ -320,7 +320,7 @@ export default {
       this.getConfig()
       this.mybrowse = getBrowse()
       $('.main-container').css('padding-top', $('.header').height())
-
+      console.log('header-main-top')
       $('.navbar-toggler-icon').click(evt => {
         evt.preventDefault()
         evt.stopPropagation()

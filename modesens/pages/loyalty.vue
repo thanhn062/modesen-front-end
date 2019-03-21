@@ -2,9 +2,12 @@
   <section class="container loyalty-con">
     <h1 class="hiddenh1">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</h1>
     <div class="accountsCon">
-      <div class="logoCon"><img 
-        v-lazy="'/img/20180905footer_logo.svg'"
-        alt=""></div>
+      <div class="logoCon"><amp-img
+        :src="'/img/20180905footer_logo.svg'"
+        width="91"
+        height="109"
+        layout="responsive"
+        alt=""/></div>
       <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
       <div
         v-if="!$store.state.login_status"
@@ -41,9 +44,12 @@
             v-for="num in benefits"
             :key="num"
             class="swiper-slide">
-            <div class="imgBox"><img
-              v-lazy="'/img/20181213benefits-' + num + '.png'"
-              alt=""></div>
+            <div class="imgBox"><amp-img
+              :src="'/img/20181213benefits-' + num + '.png'"
+              width="124"
+              height="110"
+              layout="responsive"
+              alt=""/></div>
             <div class="descBox">
               <div class="title">{{ $t('loyalty.bfTitle' + num) }}</div>
               <div class="desc">{{ $t('loyalty.bfdesc' + num) }}</div>
@@ -57,9 +63,12 @@
     <div class="levelCon">
       <div class="title">{{ $t('loyalty.levelTitle') }}</div>
       <div class="arrowBox">
-        <img
-          v-lazy="'/img/20180905overlay_right_arrow_b.svg'"
-          alt="">
+        <amp-img
+          :src="'/img/20180905overlay_right_arrow_b.svg'"
+          width="893"
+          height="500"
+          layout="responsive"
+          alt=""/>
         <span>{{ $t('loyalty.SwapRight') }}</span>
       </div>
       <div class="levelBox">
@@ -213,10 +222,13 @@
             class="question"
             @click="questionClick(index)">
             <span>{{ $t('loyalty.question'+(index+1)) }}</span>
-            <img 
-              v-lazy="'/img/20181214slidedown.svg'"
+            <amp-img 
+              :src="'/img/20181214slidedown.svg'"
               :class="indexQt===index ? 'imgrotate' : ''"
-              alt="">
+              width="767"
+              height="400"
+              layout="responsive"
+              alt=""/>
           </div>
           <div
             v-if="indexQt===index"
