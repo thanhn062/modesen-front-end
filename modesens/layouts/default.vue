@@ -274,14 +274,14 @@ export default {
     )
     this.messaging
       .getToken()
-      .then(function(currentToken) {
+      .then(currentToken => {
         if (currentToken) {
           this.sendTokenToServer(currentToken)
         } else {
           console.log(
             'No Instance ID token available. Request permission to generate one.'
           )
-          setTimeout(function() {
+          setTimeout(() => {
             if (
               $('#modesensinstalled')[0] ||
               this.$cookies.get('modelinkmodal')
@@ -302,7 +302,7 @@ export default {
     this.messaging.onTokenRefresh(function() {
       this.messaging
         .getToken()
-        .then(function(refreshedToken) {
+        .then(refreshedToken => {
           console.log('Token refreshed.')
           this.sendTokenToServer(refreshedToken)
           ga('send', 'event', 'FCM', 'TokenRefreshed')
