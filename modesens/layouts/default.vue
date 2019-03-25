@@ -12,6 +12,8 @@
     <Top/>
     <CustomerService
       v-if="$store.state.request && $store.state.request.RCOUNTRY ==='cn'" />
+    <Storefav
+      v-if="!$store.state.login_status"/>
   </div>
 </template>
 <script>
@@ -22,6 +24,7 @@ import Footer from '~/components/Footer.vue'
 import Modals from '~/components/Modals.vue'
 import Top from '~/components/Top.vue'
 import CustomerService from '~/components/CustomerService.vue'
+import Storefav from '~/components/Storefav.vue'
 export default {
   metaInfo() {
     let htmlAttrs = null
@@ -169,7 +172,8 @@ export default {
     Footer,
     Modals,
     Top,
-    CustomerService
+    CustomerService,
+    Storefav
   },
   data() {
     return {
