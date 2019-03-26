@@ -192,7 +192,7 @@ module.exports = {
 	** Build configuration
 	*/
   build: {
-    extractCSS: { allChunks: true },
+    optimization: { splitChunks: true },
     // 防止多次打包axios
     // vendor: ['axios'],
     plugins: [
