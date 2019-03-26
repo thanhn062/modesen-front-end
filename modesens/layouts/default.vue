@@ -113,12 +113,7 @@ export default {
           href: `https://${request.ROOT_DOMAIN}${this.$route.path}`
         })
       }
-      if (
-        !request.BLOCK_INTL &&
-        request.RCOUNTRY !== 'cn'
-        // this.$route.fullPath.indexOf('/en/') === -1 &&
-        // this.$route.fullPath.indexOf('/zh/') === -1
-      ) {
+      if (!request.BLOCK_INTL && request.RCOUNTRY !== 'cn') {
         let alternateAry = [
           { href: 'https://modesens.com', lang: 'x-default' },
           { href: 'https://modesens.uk', lang: 'en-gb' },
