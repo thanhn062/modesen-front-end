@@ -257,7 +257,6 @@ export default {
     if (this.$store.state.login_status && !this.$store.state.lsuser) {
       this.$store.dispatch('getLsuser', this)
     }
-    
     firebase.initializeApp({
       apiKey: 'AIzaSyCgiJcGjK2JNt_o6UOEcPPUP2GvBjpsm80',
       databaseURL: 'https://sonorous-veld-95923.firebaseio.com',
