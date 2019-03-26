@@ -76,7 +76,7 @@ export default {
     },
     favstoreDown() {
       $('.toggle-button').attr('status', '1')
-      $('#store-fav-container').animate({ bottom: '-300px' })
+      $('#store-fav-container').animate({ bottom: '-330px' })
       $('.store-fav-close').css({ transform: 'rotate(540deg)' })
       $('.learnmore').css('display', 'block')
     },
@@ -125,11 +125,11 @@ export default {
 @import '../assets/css/common.less';
 #store-fav-container {
   position: fixed;
-  bottom: -300px;
+  bottom: -330px;
   left: 50%;
   z-index: 12;
   width: 805px;
-  height: 300px;
+  height: 330px;
   background-color: #fff;
   transform: translateX(-50%);
   .toggle-button {
