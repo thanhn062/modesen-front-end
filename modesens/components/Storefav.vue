@@ -238,4 +238,9 @@ export default {
     cursor: pointer;
   }
 }
+@media (max-width: 1199px) {
+  #store-fav-container {
+    display: none;
+  }
+}
 </style>
