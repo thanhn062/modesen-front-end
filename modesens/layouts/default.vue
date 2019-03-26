@@ -283,61 +283,64 @@ export default {
     if (this.$store.state.login_status && !this.$store.state.lsuser) {
       this.$store.dispatch('getLsuser', this)
     }
-    firebase.initializeApp({
-      apiKey: 'AIzaSyCgiJcGjK2JNt_o6UOEcPPUP2GvBjpsm80',
-      databaseURL: 'https://sonorous-veld-95923.firebaseio.com',
-      storageBucket: 'sonorous-veld-95923.appspot.com',
-      authDomain: 'sonorous-veld-95923.firebaseapp.com',
-      messagingSenderId: '985405782985',
-      projectId: 'sonorous-veld-95923'
-    })
-    this.messaging = firebase.messaging()
-    this.messaging.usePublicVapidKey(
-      'BD4iDfxlD_FalzscVlfjiw4fN3YKp6X2u2DxbsLiRzUT6scSBAxvHlzH4ctfnYV--joqcjWh4M4_SDRZ3pOcuVQ'
-    )
-    this.messaging
-      .getToken()
-      .then(currentToken => {
-        if (currentToken) {
-          this.sendTokenToServer(currentToken)
-        } else {
-          console.log(
-            'No Instance ID token available. Request permission to generate one.'
-          )
-          setTimeout(() => {
-            if (
-              $('#modesensinstalled')[0] ||
-              this.$cookies.get('modelinkmodal')
-            ) {
-              if (!this.$cookies.get('ms_notification')) {
-                this.$root.$emit('bv::show::modal', 'fcmmodal')
-                ga('send', 'event', 'FCM', 'FCMModalShow')
-                this.$cookies.set('ms_notification', true, 1)
-              }
-            }
-          }, 15000)
-        }
+    if (this.$store.state.login_status) {
+      var firebase = require('firebase')
+      firebase.initializeApp({
+        apiKey: 'AIzaSyCgiJcGjK2JNt_o6UOEcPPUP2GvBjpsm80',
+        databaseURL: 'https://sonorous-veld-95923.firebaseio.com',
+        storageBucket: 'sonorous-veld-95923.appspot.com',
+        authDomain: 'sonorous-veld-95923.firebaseapp.com',
+        messagingSenderId: '985405782985',
+        projectId: 'sonorous-veld-95923'
       })
-      .catch(function(err) {
-        console.log('An error occurred while retrieving token. ', err)
-        ga('send', 'event', 'FCM', 'GetTokenError', err)
-      })
-    this.messaging.onTokenRefresh(function() {
+      this.messaging = firebase.messaging()
+      this.messaging.usePublicVapidKey(
+        'BD4iDfxlD_FalzscVlfjiw4fN3YKp6X2u2DxbsLiRzUT6scSBAxvHlzH4ctfnYV--joqcjWh4M4_SDRZ3pOcuVQ'
+      )
       this.messaging
         .getToken()
-        .then(refreshedToken => {
-          console.log('Token refreshed.')
-          this.sendTokenToServer(refreshedToken)
-          ga('send', 'event', 'FCM', 'TokenRefreshed')
+        .then(currentToken => {
+          if (currentToken) {
+            this.sendTokenToServer(currentToken)
+          } else {
+            console.log(
+              'No Instance ID token available. Request permission to generate one.'
+            )
+            setTimeout(() => {
+              if (
+                $('#modesensinstalled')[0] ||
+                this.$cookies.get('modelinkmodal')
+              ) {
+                if (!this.$cookies.get('ms_notification')) {
+                  this.$root.$emit('bv::show::modal', 'fcmmodal')
+                  ga('send', 'event', 'FCM', 'FCMModalShow')
+                  this.$cookies.set('ms_notification', true, 1)
+                }
+              }
+            }, 15000)
+          }
         })
         .catch(function(err) {
-          console.log('Unable to retrieve refreshed token ', err)
-          ga('send', 'event', 'FCM', 'TokenRefreshedError', err)
+          console.log('An error occurred while retrieving token. ', err)
+          ga('send', 'event', 'FCM', 'GetTokenError', err)
         })
-    })
-    this.messaging.onMessage(function(payload) {
-      console.log('Message received. ', payload)
-    })
+      this.messaging.onTokenRefresh(function() {
+        this.messaging
+          .getToken()
+          .then(refreshedToken => {
+            console.log('Token refreshed.')
+            this.sendTokenToServer(refreshedToken)
+            ga('send', 'event', 'FCM', 'TokenRefreshed')
+          })
+          .catch(function(err) {
+            console.log('Unable to retrieve refreshed token ', err)
+            ga('send', 'event', 'FCM', 'TokenRefreshedError', err)
+          })
+      })
+      this.messaging.onMessage(function(payload) {
+        console.log('Message received. ', payload)
+      })
+    }
   },
   methods: {
     hideMenu() {

@@ -40,10 +40,10 @@ module.exports = {
       // // { rel: 'stylesheet/less', type: 'text/css', href: '/css/common.less'},
       // { rel: 'stylesheet/less', type: 'text/css', href: '/css/main.less'},
     ],
-    script: [
-      { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js' },
-      { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js' }
-    ]
+    // script: [
+    //   { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js' },
+    //   { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js' }
+    // ]
   },
 
   env: {

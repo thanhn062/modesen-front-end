@@ -7,14 +7,14 @@
       ref="loginmd"
       hide-header
       hide-footer
-      style="width: 600px,height: 680px">
+      style="width: 600px,height: 680px"
+      @show="mdLoginshown">
       <button
         class="close"
         @click="hideLoginModal"><img
           v-lazy="'/img/close.svg'"
           alt=""></button>
       <iframe
-        :src="'/accounts/login/?next=' + $route.fullPath"
         width="100%"
         height="100%"
         frameborder="0"/>
@@ -384,6 +384,7 @@ export default {
   },
   data() {
     return {
+      loginnext: '',
       hereHasClick: false,
       company: '',
       name: '',
@@ -414,6 +415,12 @@ export default {
     this.showFcmodal()
   },
   methods: {
+    mdLoginshown() {
+      $('#mdLogin iframe').attr(
+        'src',
+        '/accounts/login/?next=' + this.$route.fullPath
+      )
+    },
     openLoginModal(evt) {
       evt.preventDefault()
       this.$refs.loginmd.show()
