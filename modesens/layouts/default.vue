@@ -30,117 +30,148 @@ export default {
     let htmlAttrs = null
     let link = []
     let meta = []
+    let host = location.origin
+    // let host = process.env.baseUrl
     let path = this.$route.path
     let request = this.$store.state.request
     let country = this.$i18n.country
     let local = this.$i18n.locale
-    if (request) {
-      if (local === 'en') {
-        if (country === 'us') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.com${this.$route.path}`
-          })
-        } else if (country === 'uk') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.uk${this.$route.path}`
-          })
-        } else if (country === 'ca') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.ca${this.$route.path}`
-          })
-        } else if (country === 'au') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.com.au${this.$route.path}`
-          })
-        } else if (country === 'fr') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.fr${this.$route.path}`
-          })
-        } else if (country === 'de') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.de${this.$route.path}`
-          })
-        } else if (country === 'it') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.it${this.$route.path}`
-          })
-        } else if (country === 'jp') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.jp${this.$route.path}`
-          })
-        } else if (country === 'kr') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.kr${this.$route.path}`
-          })
-        } else if (country === 'nl') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.nl${this.$route.path}`
-          })
-        } else if (country === 'ru') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.ru${this.$route.path}`
-          })
-        } else if (country === 'es') {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.es${this.$route.path}`
-          })
-        } else {
-          link.push({
-            rel: 'canonical',
-            href: `https://modesens.com${this.$route.path}`
-          })
-        }
-      } else if (local === 'zh') {
-        link.push({
-          rel: 'canonical',
-          href: `https://modesens.cn${this.$route.path}`
-        })
-      } else {
-        link.push({
-          rel: 'canonical',
-          href: `https://${request.ROOT_DOMAIN}${this.$route.path}`
-        })
-      }
-      if (!request.BLOCK_INTL && request.RCOUNTRY !== 'cn') {
-        let alternateAry = [
-          { href: 'https://modesens.com', lang: 'x-default' },
-          { href: 'https://modesens.uk', lang: 'en-gb' },
-          { href: 'https://modesens.ca', lang: 'en-ca' },
-          { href: 'https://modesens.com', lang: 'en' },
-          { href: 'https://modesens.cn', lang: 'zh' },
-          { href: 'https://modesens.com', lang: 'en-us' },
-          { href: 'https://modesens.com.au', lang: 'en-au' },
-          { href: 'https://modesens.cn', lang: 'zh-cn' },
-          { href: 'https://modesens.fr', lang: 'en-fr' },
-          { href: 'https://modesens.de', lang: 'en-de' },
-          { href: 'https://modesens.it', lang: 'en-it' },
-          { href: 'https://modesens.jp', lang: 'en-jp' },
-          { href: 'https://modesens.kr', lang: 'en-kr' },
-          { href: 'https://modesens.nl', lang: 'en-nl' },
-          { href: 'https://modesens.ru', lang: 'en-ru' },
-          { href: 'https://modesens.es', lang: 'en-es' }
-        ]
-        alternateAry.map(item => {
-          link.push({
-            rel: 'alternate',
-            href: `${item.href}${request.CANONICAL_URL}`,
-            hreflang: `${item.lang}`
-          })
-        })
-      }
-    }
+    link.push({
+      rel: 'canonical',
+      href: `${host}${path}`
+    })
+    let alternateAry = [
+      { href: 'https://modesens.com', lang: 'x-default' },
+      { href: 'https://modesens.uk', lang: 'en-gb' },
+      { href: 'https://modesens.ca', lang: 'en-ca' },
+      { href: 'https://modesens.com', lang: 'en' },
+      { href: 'https://modesens.cn', lang: 'zh' },
+      { href: 'https://modesens.com', lang: 'en-us' },
+      { href: 'https://modesens.com.au', lang: 'en-au' },
+      { href: 'https://modesens.cn', lang: 'zh-cn' },
+      { href: 'https://modesens.fr', lang: 'en-fr' },
+      { href: 'https://modesens.de', lang: 'en-de' },
+      { href: 'https://modesens.it', lang: 'en-it' },
+      { href: 'https://modesens.jp', lang: 'en-jp' },
+      { href: 'https://modesens.kr', lang: 'en-kr' },
+      { href: 'https://modesens.nl', lang: 'en-nl' },
+      { href: 'https://modesens.ru', lang: 'en-ru' },
+      { href: 'https://modesens.es', lang: 'en-es' }
+    ]
+    alternateAry.map(item => {
+      link.push({
+        rel: 'alternate',
+        href: `${item.href}${path}`,
+        hreflang: `${item.lang}`
+      })
+    })
+    // if (request) {
+    //   if (local === 'en') {
+    //     if (country === 'us') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.com${path}`
+    //       })
+    //     } else if (country === 'uk') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.uk${path}`
+    //       })
+    //     } else if (country === 'ca') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.ca${path}`
+    //       })
+    //     } else if (country === 'au') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.com.au${path}`
+    //       })
+    //     } else if (country === 'fr') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.fr${path}`
+    //       })
+    //     } else if (country === 'de') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.de${path}`
+    //       })
+    //     } else if (country === 'it') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.it${path}`
+    //       })
+    //     } else if (country === 'jp') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.jp${path}`
+    //       })
+    //     } else if (country === 'kr') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.kr${path}`
+    //       })
+    //     } else if (country === 'nl') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.nl${path}`
+    //       })
+    //     } else if (country === 'ru') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.ru${path}`
+    //       })
+    //     } else if (country === 'es') {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.es${path}`
+    //       })
+    //     } else {
+    //       link.push({
+    //         rel: 'canonical',
+    //         href: `https://modesens.com${path}`
+    //       })
+    //     }
+    //   } else if (local === 'zh') {
+    //     link.push({
+    //       rel: 'canonical',
+    //       href: `https://modesens.cn${path}`
+    //     })
+    //   } else {
+    //     link.push({
+    //       rel: 'canonical',
+    //       href: `https://${request.ROOT_DOMAIN}${path}`
+    //     })
+    //   }
+    //   if (!request.BLOCK_INTL && request.RCOUNTRY !== 'cn') {
+    //     let alternateAry = [
+    //       { href: 'https://modesens.com', lang: 'x-default' },
+    //       { href: 'https://modesens.uk', lang: 'en-gb' },
+    //       { href: 'https://modesens.ca', lang: 'en-ca' },
+    //       { href: 'https://modesens.com', lang: 'en' },
+    //       { href: 'https://modesens.cn', lang: 'zh' },
+    //       { href: 'https://modesens.com', lang: 'en-us' },
+    //       { href: 'https://modesens.com.au', lang: 'en-au' },
+    //       { href: 'https://modesens.cn', lang: 'zh-cn' },
+    //       { href: 'https://modesens.fr', lang: 'en-fr' },
+    //       { href: 'https://modesens.de', lang: 'en-de' },
+    //       { href: 'https://modesens.it', lang: 'en-it' },
+    //       { href: 'https://modesens.jp', lang: 'en-jp' },
+    //       { href: 'https://modesens.kr', lang: 'en-kr' },
+    //       { href: 'https://modesens.nl', lang: 'en-nl' },
+    //       { href: 'https://modesens.ru', lang: 'en-ru' },
+    //       { href: 'https://modesens.es', lang: 'en-es' }
+    //     ]
+    //     alternateAry.map(item => {
+    //       link.push({
+    //         rel: 'alternate',
+    //         href: `${item.href}${request.CANONICAL_URL}`,
+    //         hreflang: `${item.lang}`
+    //       })
+    //     })
+    //   }
+    // }
 
     // 搜索页防爬处理
     // meta.push({
@@ -252,62 +283,61 @@ export default {
     if (this.$store.state.login_status && !this.$store.state.lsuser) {
       this.$store.dispatch('getLsuser', this)
     }
-    
-    firebase.initializeApp({
-      apiKey: 'AIzaSyCgiJcGjK2JNt_o6UOEcPPUP2GvBjpsm80',
-      databaseURL: 'https://sonorous-veld-95923.firebaseio.com',
-      storageBucket: 'sonorous-veld-95923.appspot.com',
-      authDomain: 'sonorous-veld-95923.firebaseapp.com',
-      messagingSenderId: '985405782985',
-      projectId: 'sonorous-veld-95923'
-    })
-    this.messaging = firebase.messaging()
-    this.messaging.usePublicVapidKey(
-      'BD4iDfxlD_FalzscVlfjiw4fN3YKp6X2u2DxbsLiRzUT6scSBAxvHlzH4ctfnYV--joqcjWh4M4_SDRZ3pOcuVQ'
-    )
-    this.messaging
-      .getToken()
-      .then(currentToken => {
-        if (currentToken) {
-          this.sendTokenToServer(currentToken)
-        } else {
-          console.log(
-            'No Instance ID token available. Request permission to generate one.'
-          )
-          setTimeout(() => {
-            if (
-              $('#modesensinstalled')[0] ||
-              this.$cookies.get('modelinkmodal')
-            ) {
-              if (!this.$cookies.get('ms_notification')) {
-                this.$root.$emit('bv::show::modal', 'fcmmodal')
-                ga('send', 'event', 'FCM', 'FCMModalShow')
-                this.$cookies.set('ms_notification', true, 1)
-              }
-            }
-          }, 15000)
-        }
-      })
-      .catch(function(err) {
-        console.log('An error occurred while retrieving token. ', err)
-        ga('send', 'event', 'FCM', 'GetTokenError', err)
-      })
-    this.messaging.onTokenRefresh(function() {
-      this.messaging
-        .getToken()
-        .then(refreshedToken => {
-          console.log('Token refreshed.')
-          this.sendTokenToServer(refreshedToken)
-          ga('send', 'event', 'FCM', 'TokenRefreshed')
-        })
-        .catch(function(err) {
-          console.log('Unable to retrieve refreshed token ', err)
-          ga('send', 'event', 'FCM', 'TokenRefreshedError', err)
-        })
-    })
-    this.messaging.onMessage(function(payload) {
-      console.log('Message received. ', payload)
-    })
+    // firebase.initializeApp({
+    //   apiKey: 'AIzaSyCgiJcGjK2JNt_o6UOEcPPUP2GvBjpsm80',
+    //   databaseURL: 'https://sonorous-veld-95923.firebaseio.com',
+    //   storageBucket: 'sonorous-veld-95923.appspot.com',
+    //   authDomain: 'sonorous-veld-95923.firebaseapp.com',
+    //   messagingSenderId: '985405782985',
+    //   projectId: 'sonorous-veld-95923'
+    // })
+    // this.messaging = firebase.messaging()
+    // this.messaging.usePublicVapidKey(
+    //   'BD4iDfxlD_FalzscVlfjiw4fN3YKp6X2u2DxbsLiRzUT6scSBAxvHlzH4ctfnYV--joqcjWh4M4_SDRZ3pOcuVQ'
+    // )
+    // this.messaging
+    //   .getToken()
+    //   .then(currentToken => {
+    //     if (currentToken) {
+    //       this.sendTokenToServer(currentToken)
+    //     } else {
+    //       console.log(
+    //         'No Instance ID token available. Request permission to generate one.'
+    //       )
+    //       setTimeout(() => {
+    //         if (
+    //           $('#modesensinstalled')[0] ||
+    //           this.$cookies.get('modelinkmodal')
+    //         ) {
+    //           if (!this.$cookies.get('ms_notification')) {
+    //             this.$root.$emit('bv::show::modal', 'fcmmodal')
+    //             ga('send', 'event', 'FCM', 'FCMModalShow')
+    //             this.$cookies.set('ms_notification', true, 1)
+    //           }
+    //         }
+    //       }, 15000)
+    //     }
+    //   })
+    //   .catch(function(err) {
+    //     console.log('An error occurred while retrieving token. ', err)
+    //     ga('send', 'event', 'FCM', 'GetTokenError', err)
+    //   })
+    // this.messaging.onTokenRefresh(function() {
+    //   this.messaging
+    //     .getToken()
+    //     .then(refreshedToken => {
+    //       console.log('Token refreshed.')
+    //       this.sendTokenToServer(refreshedToken)
+    //       ga('send', 'event', 'FCM', 'TokenRefreshed')
+    //     })
+    //     .catch(function(err) {
+    //       console.log('Unable to retrieve refreshed token ', err)
+    //       ga('send', 'event', 'FCM', 'TokenRefreshedError', err)
+    //     })
+    // })
+    // this.messaging.onMessage(function(payload) {
+    //   console.log('Message received. ', payload)
+    // })
   },
   methods: {
     hideMenu() {
