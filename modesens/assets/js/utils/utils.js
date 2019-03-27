@@ -110,7 +110,7 @@ var commonfn = {
     Vue.prototype.commonfn = {
       creatMetaTitle: function(H1, TITLE, MS_LOGO) {
         let meta = []
-        let LOCATION_URL = window.location.href
+        // let LOCATION_URL = window.location.href
         let META_name = [
           'description',
           'twitter:url',
@@ -127,7 +127,7 @@ var commonfn = {
           if (name.includes('description')) {
             content_txt = H1
           } else if (name.includes('url')) {
-            content_txt = LOCATION_URL
+            content_txt = 'https://test.modesens.com/loyalty/'
           } else if (name.includes('title')) {
             content_txt = TITLE
           } else if (name.includes('image')) {

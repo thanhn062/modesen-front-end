@@ -283,15 +283,15 @@ import { wxlogin } from '~/assets/js/utils/utils.js'
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
 export default {
-  metaInfo() {
+  head() {
     let headobj = {}
     let H1 = this.$t('loyalty.desc1') + ' ' + this.$t('loyalty.desc2')
     let TITLE = this.$t('loyalty.loyaltyTitle') + ' | ModeSens'
-    let request = this.$store.state.request
-    if (request) {
-      let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
-      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
-    }
+    // let request = this.$store.state.request
+    // if (request) {
+    let MS_LOGO = "https://cdn.modesens.com" + this.gconfig.MS_LOGONEW
+    headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    // }
     return headobj
   },
   data() {
@@ -334,9 +334,9 @@ export default {
       ]
     }
   },
-  head: {
-    title: 'Loyalty | ModeSens'
-  },
+  // head: {
+  //   title: 'Loyalty | ModeSens'
+  // },
   mounted() {
     if (this.$store.state.login_status) {
       this.getLevelInfo()
