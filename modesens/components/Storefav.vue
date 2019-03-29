@@ -8,52 +8,43 @@
       class="toggle-button"
       status="1"
       @click="favstoreup(1)">
-      <div class="store-fav-title">{{ $t('Become a ModeSens Member for exclusive VIP shopping benefits') }}</div>
+      <div class="store-fav-title">{{ $t('Storefav.title') }}</div>
       <div>
-        <div class="learnmore">{{ $t('Learn more') }}</div>
+        <div class="learnmore">{{ $t('Storefav.LearnMore') }}</div>
         <div class="store-fav-close"/>
       </div>
     </div>
     <div class="main-wrapper">
       <div class="ingfobox">
         <div class="inforleft">
-          <p
-            v-if="$i18n.locale ==='zh'"
-            class="inforleft-item">
-            ModeSens是技术驱动的时尚购物助手。我们汇集了全球11,000+高端时尚品牌，整合每件产品在全球150+优质电商的库存及搭配信息，为你打造无缝，透明，安全的未来购物体验。
-          </p>
-          <p
-            v-else
-            class="inforleft-item">
-            A world of fashion, powered by technology. ModeSens pulls from the racks of 11,000+ luxury brands, aggregating every product at the item level for a seamless, transparent and secure shopping experience
-          </p>
+          <p class="inforleft-item">{{ $t('Storefav.desc0') }}</p>
         </div>
         <div class="inforright">
-          <div class="inforrighttitle">{{ $t('As a ModeSens Shopper You Can:') }}</div>
+          <div class="inforrighttitle">{{ $t('Storefav.AsaModeSensShopperYouCan') }}</div>
           <ul class="ingforright-itembox">
             <li class="inforright-item">
               <div class="ingforright-start"/>
-              {{ $t('Find the best price from over 150+ stores ') }}
+              {{ $t('Storefav.desc1') }}
             </li>
             <li class="inforright-item">
               <div class="ingforright-start"/>
-              {{ $t('Keep track of what you want to buy ') }}
+              {{ $t('Storefav.desc2') }}
             </li>
             <li class="inforright-item">
               <div class="ingforright-start"/>
-              {{ $t('Be the first to know when something you want goes on sale ') }}
+              {{ $t('Storefav.desc3') }}
             </li>
             <li class="inforright-item">
               <div class="ingforright-start"/>
-              {{ $t('Share your style and connect with others') }}
+              {{ $t('Storefav.desc4') }}
             </li>
             <li class="inforright-item">
               <div class="ingforright-start"/>
-              {{ $t('Shop like a pro with ModeSens Shopping Assistant') }}
+              {{ $t('Storefav.desc5') }}
             </li>
             <li class="inforright-item">
               <div class="ingforright-start"/>
-              {{ $t('Enjoy exclusive perks and protection with our membership program') }}
+              {{ $t('Storefav.desc6') }}
             </li>
           </ul>
         </div>
@@ -61,7 +52,7 @@
       <button
         class="btn btn-primary signupbtn"
         data-ga-click="Frame-Header-SignUp-aboutmoment-model"
-        @click="tosignup">{{ $t('Create An Account') }}</button>
+        @click="tosignup">{{ $t('common.CreateAnAccount') }}</button>
     </div>
   </div>
 </template>

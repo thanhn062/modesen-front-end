@@ -575,3 +575,15 @@ export const Wechat = {
 export const share = {
   urlshare: 'Copy this url to share with friends'
 }
+export const Storefav = {
+  title: 'Become a ModeSens Member for exclusive VIP shopping benefits',
+  desc0: 'A world of fashion, powered by technology. ModeSens pulls from the racks of 11,000+ luxury brands, aggregating every product at the item level for a seamless, transparent and secure shopping experience',
+  LearnMore: 'Learn More',
+  AsaModeSensShopperYouCan: 'As a ModeSens Shopper You Can:',
+  desc1: 'Find the best price from over 150+ stores',
+  desc2: 'Keep track of what you want to buy',
+  desc3: 'Be the first to know when something you want goes on sale',
+  desc4: 'Share your style and connect with others',
+  desc5: 'Shop like a pro with ModeSens Shopping Assistant',
+  desc6: 'Enjoy exclusive perks and protection with our membership program'
+}

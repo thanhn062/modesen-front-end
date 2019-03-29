@@ -509,23 +509,23 @@ export const Modals = {
   Pleasesignin: '请登录',
   Notamemberyet: '还没成为ModeSens的一员？',
   JoinModeSens: '加入ModeSens打造个人衣橱，和好友一起享受购物乐趣。',
-  StartEarningToday: 'Start Earning Today',
-  MakeModeSens: 'Make the most of your ModeSens experience by creating a free account and start earning points toward ModeSens Rewards when you shop.',
-  SharewithFriends: 'Share with Friends',
-  ShareFacebook: 'Share with friends through facebook',
-  ShareTwitter: 'Share with friends through twitter',
-  SharePt: 'Share with friends through pinterest',
-  ShareGoole: 'Share with friends through google+',
-  ShareTr: 'Share with friends through tumblr',
-  ShareReddit: 'Share with friends through reddit',
-  ShareLinkedin: 'Share with friends through linkedin',
-  ShareWeibo: 'Share with friends through weibo',
-  ShareUrl: 'Share with friends through url',
-  ShareQr: 'Share with friends through qr code',
-  fcdesc: 'Do you want to keep up-to-date on the latest sales and product notifications? Subscribe to ModeSens web notifications now.',
-  StayInTheKnow: 'Stay In The Know',
-  AskMeLater: 'Ask Me Later',
-  DonLetMeMissOut: 'Don’t Let Me Miss Out',
+  StartEarningToday: '即刻开启会员之旅',
+  MakeModeSens: '现在免费创建帐户，充分利用你的ModeSens体验，赚取ModeSens的会员奖励积分。',
+  SharewithFriends: '分享给好友',
+  ShareFacebook: 'facebook分享',
+  ShareTwitter: 'twitter分享',
+  SharePt: 'pinterest分享',
+  ShareGoole: 'google+分享',
+  ShareTr: 'tumblr分享',
+  ShareReddit: 'reddit分享',
+  ShareLinkedin: 'linkedin分享',
+  ShareWeibo: '微博分享',
+  ShareUrl: '链接分享',
+  ShareQr: '微信分享',
+  fcdesc: '你想收到我们的浏览器通知么？我们会让你获得最新的潮流和折扣信息。',
+  StayInTheKnow: '成为时尚先知',
+  AskMeLater: '一会的',
+  DonLetMeMissOut: '当然!',
 };
 export const barcodeHelp = {
   barcodeTitle: '扫码介绍',
@@ -573,5 +573,17 @@ export const Wechat = {
   hm: '合作电商',
 };
 export const share = {
-  urlshare: 'Copy this url to share with friends'
+  urlshare: '拷贝链接分享给你的好友'
+}
+export const Storefav = {
+  title: '成为ModeSens会员，领取你的福利奖励。',
+  desc0: 'ModeSens是技术驱动的时尚购物助手。我们汇集了全球11,000+高端时尚品牌，整合每件产品在全球150+优质电商的库存及搭配信息，为你打造无缝，透明，安全的未来购物体验。',
+  LearnMore: '了解更多',
+  AsaModeSensShopperYouCan: '作为ModeSens会员你可以：',
+  desc1: '从150多家商店中找到最优惠的价格',
+  desc2: '随时跟踪你心仪的商品',
+  desc3: '第一时间收到关注商品的更新信息',
+  desc4: '与他人分享或交流你的时尚风格',
+  desc5: '使用 ModeSens 时尚购物助手就能成为购物达人',
+  desc6: '参与我们的会员计划享受独家优惠与购物保障'
 }

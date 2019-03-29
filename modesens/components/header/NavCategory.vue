@@ -1,6 +1,8 @@
 <template>
   <b-navbar-nav class="nav-mini-menu">
-    <b-nav-item-dropdown no-caret>
+    <b-nav-item-dropdown
+      no-caret
+      @show="showDropdown">
       <template slot="button-content">
         {{ $t('common.WOMEN') }}
         <img
@@ -106,7 +108,16 @@
   </b-navbar-nav>
 </template>
 <script>
-export default {}
+export default {
+  methods: {
+    showDropdown(evt) {
+      console.log(evt)
+      $(evt.target)
+        .stop(true, true)
+        .addClass('show', 300)
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 @import '../../assets/css/common.less';
@@ -114,6 +125,18 @@ export default {}
   display: none;
 }
 @media (max-width: 1199px) {
+  .fade-enter {
+    opacity: 0;
+  }
+  .fade-enter-active {
+    transition: opacity 3s;
+  }
+  .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-leave-active {
+    transition: opacity 3s;
+  }
   .nav-mini-menu {
     display: block;
     background: inherit;
