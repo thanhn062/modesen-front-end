@@ -18,8 +18,7 @@
     <!-- 菜单nav -->
     <div class="nav-container">
       <b-navbar toggleable="xl">
-        <b-navbar-toggle
-          target="nav_collapse"/>
+        <b-navbar-toggle target="nav_collapse"/>
         <!-- logo位置 -->
         <b-navbar-brand
           href="/"

@@ -59,7 +59,7 @@
         </div>
       </div>
       <button
-        class="signupbtn"
+        class="btn btn-primary signupbtn"
         data-ga-click="Frame-Header-SignUp-aboutmoment-model"
         @click="tosignup">{{ $t('Create An Account') }}</button>
     </div>
@@ -67,28 +67,33 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      storefavTime: -1,
+      storefavTimeout: -1
+    }
+  },
   methods: {
     favstoreUp() {
       $('.toggle-button').attr('status', '-1')
-      $('#store-fav-container').animate({ bottom: '25px' })
+      $('#store-fav-container').animate({ bottom: '0px' })
       $('.store-fav-close').css({ transform: 'rotate(0deg)' })
       $('.learnmore').css('display', 'none')
     },
     favstoreDown() {
       $('.toggle-button').attr('status', '1')
-      $('#store-fav-container').animate({ bottom: '-330px' })
+      $('#store-fav-container').animate({ bottom: '-325px' })
       $('.store-fav-close').css({ transform: 'rotate(540deg)' })
       $('.learnmore').css('display', 'block')
     },
     changefavstore(index) {
+      clearTimeout(this.storefavTime)
       if (index == 1) {
-        clearTimeout(storefavTime)
-        let storefavTime = setTimeout(() => {
+        this.storefavTime = setTimeout(() => {
           this.favstoreUp()
         }, 1000)
       } else if (index == -1) {
-        clearTimeout(storefavTimeout)
-        let storefavTimeout = setTimeout(() => {
+        this.storefavTime = setTimeout(() => {
           this.favstoreDown()
         }, 1000)
       }
@@ -125,18 +130,18 @@ export default {
 @import '../assets/css/common.less';
 #store-fav-container {
   position: fixed;
-  bottom: -330px;
+  bottom: -325px;
   left: 50%;
   z-index: 12;
   width: 805px;
-  height: 330px;
+  // height: 330px;
   background-color: #fff;
   transform: translateX(-50%);
   .toggle-button {
-    position: absolute;
-    top: -44px;
-    left: 0;
-    z-index: 50;
+    // position: absolute;
+    // top: -44px;
+    // left: 0;
+    // z-index: 50;
     justify-content: space-between;
     align-items: center;
     display: flex;
@@ -177,7 +182,7 @@ export default {
     }
   }
   .main-wrapper {
-    padding: 30px 10px 35px;
+    padding: 30px 10px 0;
     border-left: @border4;
     border-right: @border4;
     .ingfobox {
@@ -225,17 +230,8 @@ export default {
     }
   }
   .signupbtn {
-    width: 310px;
-    height: 36px;
-    margin: 30px 0 30px 238px;
-    outline: 0;
-    border: 0;
-    background: #1c1c1c;
-    font-size: @fontStandard;
-    text-align: center;
-    line-height: 36px;
-    color: #fff;
-    cursor: pointer;
+    margin-top: 30px;
+    margin-left: calc((100% - 154px) / 2);
   }
 }
 @media (max-width: 1199px) {

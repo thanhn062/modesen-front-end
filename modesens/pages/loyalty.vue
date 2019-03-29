@@ -9,11 +9,11 @@
       <div
         v-if="!$store.state.login_status"
         class="accountsBox">
-        <nuxt-link to="/accounts/signup/?next=/loyalty/">
+        <a href="/accounts/signup/?next=/loyalty/">
           <button
             class="btn btn-modesens"
             data-ga-click="loyalty-joinBtn--">{{ $t('loyalty.joinNow') }}</button>
-        </nuxt-link>
+        </a>
         <div class="loginBox login_btn">{{ $t('loyalty.member') }}<a
           data-ga-click="loyalty-loginBtn--"
           href="javascript:;"
@@ -230,9 +230,9 @@
                   data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</nuxt-link>
               </div>
               <div v-else>{{ $t('loyalty.answer2_1') }}
-                <nuxt-link
-                  to="/accounts/signup/?next=/loyalty/"
-                  data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2') }}</nuxt-link>
+                <a
+                  href="/accounts/signup/?next=/loyalty/"
+                  data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2') }}</a>
               </div>
             </div>
             <div
@@ -334,9 +334,6 @@ export default {
       ]
     }
   },
-  // head: {
-  //   title: 'Loyalty | ModeSens'
-  // },
   mounted() {
     if (this.$store.state.login_status) {
       this.getLevelInfo()

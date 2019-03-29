@@ -31,9 +31,9 @@
         type="submit"
         title="Sign in to love item, build your closet, and get updates on your likes">{{ $t('common.Login') }}</b-button>
       <div class="forgotpw">
-        <nuxt-link
+        <a
           to="/accounts/password/reset/"
-          target="_blank">{{ $t('common.ForgotPassword') }}</nuxt-link>
+          target="_blank">{{ $t('common.ForgotPassword') }}</a>
       </div>
       <div class="sign-con">
         <label>Not yet a member?</label><br>

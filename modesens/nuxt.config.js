@@ -22,7 +22,7 @@ module.exports = {
       { property: 'fb:app_id', content: '822420867799662' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.png' },
       { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' },
       { rel: 'manifest', href: '/manifest.json'}
       // { rel: 'stylesheet', type: 'text/css', href: '/css/font.css'},

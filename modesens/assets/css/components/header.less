@@ -66,6 +66,14 @@
     }
   }
 }
+.navbar-light {
+  .navbar-toggler {
+    border: unset;
+  }
+  .navbar-light {
+    background-image: url(/img/menu_bar.png)
+  }
+}
 .navbar-brand {
   img {
     width: 147px;
@@ -77,9 +85,6 @@
       display: none;
     }
   }
-}
-.nav-mini-menu {
-  display: none;
 }
 .country-select-container {
   & > a {
@@ -289,9 +294,6 @@
     color: @itemcolor;
     background: #eeeeee;
     display: block !important;
-    .nav-mini-menu {
-      display: block;
-    }
     .nav-link {
       display: flex;
       justify-content: space-between;
@@ -304,15 +306,17 @@
       }
     }
     .show {
-      & > .nav-link {
-        color: #fff;
-      }
+      // & > .nav-link {
+      //   color: #fff;
+      // }
       .dropdown-menu {
         background: inherit;
         border: 0;
       }
       .dropdown-item {
         color: @itemcolor;
+        padding: 5px 10px;
+        height: 30px;
         &:active,
         &:hover,
         &:focus {

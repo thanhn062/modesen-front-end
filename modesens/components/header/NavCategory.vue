@@ -92,10 +92,14 @@
       class="nav-link"
       data-ga-click="nav-WHYMODESENS--"><span>{{ $t('nav.WHYMODESENS') }}</span></a>
     <a
+      v-b-modal.noticeproductmd
+      v-if="$store.state.login_status"
       href="javascript:;"
       class="nav-link"
       data-ga-click="nav-PRODUCTALERT--"><span>{{ $t('nav.PRODUCTALERT') }}</span></a>
     <a
+      v-b-modal.noticeusermd
+      v-if="$store.state.login_status"
       href="javascript:;"
       class="nav-link"
       data-ga-click="nav-SOCIALFEED--"><span>{{ $t('nav.SOCIALFEED') }}</span></a>
@@ -105,4 +109,14 @@
 export default {}
 </script>
 <style lang="less" scoped>
+@import '../../assets/css/common.less';
+.nav-mini-menu {
+  display: none;
+}
+@media (max-width: 1199px) {
+  .nav-mini-menu {
+    display: block;
+    background: inherit;
+  }
+}
 </style>

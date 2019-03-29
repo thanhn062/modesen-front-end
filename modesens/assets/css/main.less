@@ -83,8 +83,8 @@ ul {
   list-style: none;
 }
 .btn {
-  border-radius: 0;
   padding: 16px 15px 13px;
+  border-radius: 0;
   line-height: 1;
 }
 .btn-modesens,
@@ -104,6 +104,9 @@ ul {
     border-color: @btnBgColor;
   }
 }
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle,
 .btn-success:not(:disabled):not(.disabled):active,
 .btn-success:not(:disabled):not(.disabled).active,
 .show > .btn-success.dropdown-toggle {
