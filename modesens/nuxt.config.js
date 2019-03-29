@@ -3,17 +3,6 @@ const countries = require('./countries')
 const webpack = require('webpack')
 require('dotenv').config()
 
-const modifyHtml = (html) => {
-  // Add amp-custom tag to added CSS
-  html = html.replace(/<style data-vue-ssr/g, '<style amp-custom data-vue-ssr')
-  // Remove every script tag from generated HTML
-  html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-  // Add AMP script before </head>
-  const ampScript = '<script async src="https://cdn.ampproject.org/v0.js"></script>'
-  html = html.replace('</head>', ampScript + '</head>')
-  return html
-}
-
 module.exports = {
   mode: 'universal',
 
@@ -172,21 +161,6 @@ module.exports = {
   //   client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
   //   client_secret:
   //     'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
-  // },
-  // AMP---- render & hooks
-  // render: {
-  //   // Disable resourceHints since we don't load any scripts for AMP
-  //   resourceHints: false
-  // },
-  // hooks: {
-  //   // This hook is called before generatic static html files for SPA mode
-  //   'generate:page': (page) => {
-  //     page.html = modifyHtml(page.html)
-  //   },
-  //   // This hook is called before rendering the html to the browser
-  //   'render:route': (url, page, { req, res }) => {
-  //     page.html = modifyHtml(page.html)
-  //   }
   // },
   /*
 	** Build configuration

@@ -27,7 +27,7 @@ import CustomerService from '~/components/CustomerService.vue'
 import Storefav from '~/components/Storefav.vue'
 export default {
   head() {
-    let host = "https://test.modesens.com"
+    let host = 'https://test.modesens.com'
     // let host = process.env.baseUrl
     let path = this.$route.path
     let htmlAttrs = null
@@ -39,23 +39,87 @@ export default {
     }
     return {
       link: [
-        { rel: 'canonical', href: `${host}${path}`},
-        { rel: 'alternate', href: `https://modesens.com${path}`, hreflang: 'x-default' },
-        { rel: 'alternate', href: `https://modesens.uk${path}`, hreflang: 'en-gb' },
-        { rel: 'alternate', href: `https://modesens.ca${path}`, hreflang: 'en-ca' },
-        { rel: 'alternate', href: `https://modesens.com${path}`, hreflang: 'en' },
-        { rel: 'alternate', href: `https://modesens.cn${path}`, hreflang: 'zh' },
-        { rel: 'alternate', href: `https://modesens.com${path}`, hreflang: 'en-us' },
-        { rel: 'alternate', href: `https://modesens.com.au${path}`, hreflang: 'en-au' },
-        { rel: 'alternate', href: `https://modesens.cn${path}`, hreflang: 'zh-cn' },
-        { rel: 'alternate', href: `https://modesens.fr${path}`, hreflang: 'en-fr' },
-        { rel: 'alternate', href: `https://modesens.de${path}`, hreflang: 'en-de' },
-        { rel: 'alternate', href: `https://modesens.it${path}`, hreflang: 'en-it' },
-        { rel: 'alternate', href: `https://modesens.jp${path}`, hreflang: 'en-jp' },
-        { rel: 'alternate', href: `https://modesens.kr${path}`, hreflang: 'en-kr' },
-        { rel: 'alternate', href: `https://modesens.nl${path}`, hreflang: 'en-nl' },
-        { rel: 'alternate', href: `https://modesens.ru${path}`, hreflang: 'en-ru' },
-        { rel: 'alternate', href: `https://modesens.es${path}`, hreflang: 'en-es' }
+        { rel: 'canonical', href: `${host}${path}` },
+        {
+          rel: 'alternate',
+          href: `https://modesens.com${path}`,
+          hreflang: 'x-default'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.uk${path}`,
+          hreflang: 'en-gb'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.ca${path}`,
+          hreflang: 'en-ca'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.com${path}`,
+          hreflang: 'en'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.cn${path}`,
+          hreflang: 'zh'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.com${path}`,
+          hreflang: 'en-us'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.com.au${path}`,
+          hreflang: 'en-au'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.cn${path}`,
+          hreflang: 'zh-cn'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.fr${path}`,
+          hreflang: 'en-fr'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.de${path}`,
+          hreflang: 'en-de'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.it${path}`,
+          hreflang: 'en-it'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.jp${path}`,
+          hreflang: 'en-jp'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.kr${path}`,
+          hreflang: 'en-kr'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.nl${path}`,
+          hreflang: 'en-nl'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.ru${path}`,
+          hreflang: 'en-ru'
+        },
+        {
+          rel: 'alternate',
+          href: `https://modesens.es${path}`,
+          hreflang: 'en-es'
+        }
       ],
       meta: [
         {
