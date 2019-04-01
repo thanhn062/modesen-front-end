@@ -41,6 +41,7 @@ function switchLocalePathFactory(i18nPath) {
   return function switchLocalePath(country, locale) {
     const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
     const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
+    const default_domain = '<%= options.defaultDomain %>'
     const name = this.getRouteBaseName() + '___' + country
 
     if (!name) {
@@ -52,10 +53,11 @@ function switchLocalePathFactory(i18nPath) {
 
     // Handle different domains
     if (this[i18nPath].differentDomains) {
-      const lang = this[i18nPath].locales.find(
-        l => l[LOCALE_CODE_KEY] === locale
+      const lang = this[i18nPath].countries.find(
+        l => l[LOCALE_CODE_KEY] === country
       )
-      if (lang && lang[LOCALE_DOMAIN_KEY]) {
+      if (lang) {
+        let domain = lang[LOCALE_DOMAIN_KEY] || default_domain
         let protocol
         if (!process.browser) {
           const { req } = this.$options._parentVnode.ssrContext
@@ -63,7 +65,7 @@ function switchLocalePathFactory(i18nPath) {
         } else {
           protocol = window.location.href.split(':')[0]
         }
-        path = protocol + '://' + lang[LOCALE_DOMAIN_KEY] + path
+        path = protocol + '://' + domain + path
       } else {
         console.warn(
           '[<%= options.MODULE_NAME %>] Could not find domain name for locale ' +

@@ -13,8 +13,10 @@ Vue.use(Meta)
 // 引入公共变量和方法
 import {gconfig} from '~/assets/js/gconfig.js'
 import localStorage from '~/assets/js/utils/localStorage.js'
+import cookie from '~/assets/js/utils/cookie.js'
 Vue.prototype.gconfig = gconfig;
 Vue.prototype.$localStorage = localStorage;
+Vue.prototype.$cookie = cookie;
 
 //浏览器端功能
 if (process.browser){
@@ -25,7 +27,13 @@ if (process.browser){
       if (res) {
         var [category, action, label, val] = [...res.split('-')];
         label = label || 'click'
-        ga('send', 'event', category, action, label, val)
+        if (cookie.get('lsuid') && cookie.get('otoken')) {
+          ga('send', 'event', {'userId': cookie.get('lsuid')}, category, action, label, val)
+          ga('set', 'dimension2', cookie.get('lsuid'));
+        } else {
+          ga('send', 'event', category, action, label, val)
+        }
+        ga('set', 'dimension1', cookie.get('gcid'));
       }
     })
     //mouseenter--ga
@@ -34,7 +42,13 @@ if (process.browser){
       if (res) {
         var [category, action, label, val] = [...res.split('-')];
         label = label || 'mouseenter'
-        ga('send', 'event', category, action, label, val)
+        if (cookie.get('lsuid') && cookie.get('otoken')) {
+          ga('send', 'event', {'userId': cookie.get('lsuid')},  category, action, label, val)
+          ga('set', 'dimension2', cookie.get('lsuid'));
+        } else {
+          ga('send', 'event', category, action, label, val)
+        }
+        ga('set', 'dimension1', cookie.get('gcid'));
       }
     })
     // 注册 所有的注册按钮添加类名：btn-signup

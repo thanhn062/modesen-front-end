@@ -91,16 +91,22 @@ module.exports = {
     [
       '~/modules/i18n',
       {
+        baseUrl: 'https://test.modesens.com',
+        defaultDomain: 'modesens.com',
         countries: countries,
         locales: [
           {
             code: 'en',
             file: 'en.js',
+            iso: 'en-us',
+            domain: 'modesens.com',
             name: 'English'
           },
           {
             code: 'zh',
             file: 'zh.js',
+            iso: 'zh-cn',
+            domain: 'modesens.cn',
             name: '简体中文'
           }
         ],
@@ -109,6 +115,7 @@ module.exports = {
         defaultCountry: 'us',
         defaultLocale: 'en',
         strategy: 'prefix',
+        differentDomains: true,
         detectBrowserLanguage: {
           // If enabled, a cookie is set once a user has been redirected to his
           // preferred language to prevent subsequent redirections

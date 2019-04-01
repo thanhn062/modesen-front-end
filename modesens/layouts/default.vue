@@ -26,278 +26,6 @@ import Top from '~/components/Top.vue'
 import CustomerService from '~/components/CustomerService.vue'
 import Storefav from '~/components/Storefav.vue'
 export default {
-  head() {
-    let host = 'https://test.modesens.com'
-    // let host = process.env.baseUrl
-    let path = this.$route.path
-    let htmlAttrs = null
-    let local = this.$i18n.locale
-    if (local === 'zh') {
-      htmlAttrs = { lang: 'zh-cn' }
-    } else {
-      htmlAttrs = { lang: 'en-us' }
-    }
-    return {
-      link: [
-        { rel: 'canonical', href: `${host}${path}` },
-        {
-          rel: 'alternate',
-          href: `https://modesens.com${path}`,
-          hreflang: 'x-default'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.uk${path}`,
-          hreflang: 'en-gb'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.ca${path}`,
-          hreflang: 'en-ca'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.com${path}`,
-          hreflang: 'en'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.cn${path}`,
-          hreflang: 'zh'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.com${path}`,
-          hreflang: 'en-us'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.com.au${path}`,
-          hreflang: 'en-au'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.cn${path}`,
-          hreflang: 'zh-cn'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.fr${path}`,
-          hreflang: 'en-fr'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.de${path}`,
-          hreflang: 'en-de'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.it${path}`,
-          hreflang: 'en-it'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.jp${path}`,
-          hreflang: 'en-jp'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.kr${path}`,
-          hreflang: 'en-kr'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.nl${path}`,
-          hreflang: 'en-nl'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.ru${path}`,
-          hreflang: 'en-ru'
-        },
-        {
-          rel: 'alternate',
-          href: `https://modesens.es${path}`,
-          hreflang: 'en-es'
-        }
-      ],
-      meta: [
-        {
-          name: 'apple-itunes-app',
-          content: `app-id=976201094, app-argument=${host}${path}`
-        }
-      ],
-      htmlAttrs
-    }
-  },
-
-  // metaInfo() {
-  //   let htmlAttrs = null
-  //   let link = []
-  //   let meta = []
-  //   let host = location.origin
-  //   // let host = process.env.baseUrl
-  //   let path = this.$route.path
-  //   let request = this.$store.state.request
-  //   let country = this.$i18n.country
-  //   let local = this.$i18n.locale
-  //   link.push({
-  //     rel: 'canonical',
-  //     href: `${host}${path}`
-  //   })
-  //   let alternateAry = [
-  //     { href: 'https://modesens.com', lang: 'x-default' },
-  //     { href: 'https://modesens.uk', lang: 'en-gb' },
-  //     { href: 'https://modesens.ca', lang: 'en-ca' },
-  //     { href: 'https://modesens.com', lang: 'en' },
-  //     { href: 'https://modesens.cn', lang: 'zh' },
-  //     { href: 'https://modesens.com', lang: 'en-us' },
-  //     { href: 'https://modesens.com.au', lang: 'en-au' },
-  //     { href: 'https://modesens.cn', lang: 'zh-cn' },
-  //     { href: 'https://modesens.fr', lang: 'en-fr' },
-  //     { href: 'https://modesens.de', lang: 'en-de' },
-  //     { href: 'https://modesens.it', lang: 'en-it' },
-  //     { href: 'https://modesens.jp', lang: 'en-jp' },
-  //     { href: 'https://modesens.kr', lang: 'en-kr' },
-  //     { href: 'https://modesens.nl', lang: 'en-nl' },
-  //     { href: 'https://modesens.ru', lang: 'en-ru' },
-  //     { href: 'https://modesens.es', lang: 'en-es' }
-  //   ]
-  //   alternateAry.map(item => {
-  //     link.push({
-  //       rel: 'alternate',
-  //       href: `${item.href}${path}`,
-  //       hreflang: `${item.lang}`
-  //     })
-  //   })
-  //   // if (request) {
-  //   //   if (local === 'en') {
-  //   //     if (country === 'us') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.com${path}`
-  //   //       })
-  //   //     } else if (country === 'uk') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.uk${path}`
-  //   //       })
-  //   //     } else if (country === 'ca') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.ca${path}`
-  //   //       })
-  //   //     } else if (country === 'au') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.com.au${path}`
-  //   //       })
-  //   //     } else if (country === 'fr') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.fr${path}`
-  //   //       })
-  //   //     } else if (country === 'de') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.de${path}`
-  //   //       })
-  //   //     } else if (country === 'it') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.it${path}`
-  //   //       })
-  //   //     } else if (country === 'jp') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.jp${path}`
-  //   //       })
-  //   //     } else if (country === 'kr') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.kr${path}`
-  //   //       })
-  //   //     } else if (country === 'nl') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.nl${path}`
-  //   //       })
-  //   //     } else if (country === 'ru') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.ru${path}`
-  //   //       })
-  //   //     } else if (country === 'es') {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.es${path}`
-  //   //       })
-  //   //     } else {
-  //   //       link.push({
-  //   //         rel: 'canonical',
-  //   //         href: `https://modesens.com${path}`
-  //   //       })
-  //   //     }
-  //   //   } else if (local === 'zh') {
-  //   //     link.push({
-  //   //       rel: 'canonical',
-  //   //       href: `https://modesens.cn${path}`
-  //   //     })
-  //   //   } else {
-  //   //     link.push({
-  //   //       rel: 'canonical',
-  //   //       href: `https://${request.ROOT_DOMAIN}${path}`
-  //   //     })
-  //   //   }
-  //   //   if (!request.BLOCK_INTL && request.RCOUNTRY !== 'cn') {
-  //   //     let alternateAry = [
-  //   //       { href: 'https://modesens.com', lang: 'x-default' },
-  //   //       { href: 'https://modesens.uk', lang: 'en-gb' },
-  //   //       { href: 'https://modesens.ca', lang: 'en-ca' },
-  //   //       { href: 'https://modesens.com', lang: 'en' },
-  //   //       { href: 'https://modesens.cn', lang: 'zh' },
-  //   //       { href: 'https://modesens.com', lang: 'en-us' },
-  //   //       { href: 'https://modesens.com.au', lang: 'en-au' },
-  //   //       { href: 'https://modesens.cn', lang: 'zh-cn' },
-  //   //       { href: 'https://modesens.fr', lang: 'en-fr' },
-  //   //       { href: 'https://modesens.de', lang: 'en-de' },
-  //   //       { href: 'https://modesens.it', lang: 'en-it' },
-  //   //       { href: 'https://modesens.jp', lang: 'en-jp' },
-  //   //       { href: 'https://modesens.kr', lang: 'en-kr' },
-  //   //       { href: 'https://modesens.nl', lang: 'en-nl' },
-  //   //       { href: 'https://modesens.ru', lang: 'en-ru' },
-  //   //       { href: 'https://modesens.es', lang: 'en-es' }
-  //   //     ]
-  //   //     alternateAry.map(item => {
-  //   //       link.push({
-  //   //         rel: 'alternate',
-  //   //         href: `${item.href}${request.CANONICAL_URL}`,
-  //   //         hreflang: `${item.lang}`
-  //   //       })
-  //   //     })
-  //   //   }
-  //   // }
-
-  //   // 搜索页防爬处理
-  //   // meta.push({
-  //   //   name: 'robots',
-  //   //   content: 'noindex'
-  //   // })
-  //   meta.push({
-  //     name: 'apple-itunes-app',
-  //     content: `app-id=976201094, app-argument=https://modesens.com${path}`
-  //   })
-  //   if (local === 'zh') {
-  //     htmlAttrs = { lang: 'zh-cn' }
-  //   } else {
-  //     htmlAttrs = { lang: 'en-us' }
-  //   }
-  //   return {
-  //     htmlAttrs,
-  //     link,
-  //     meta
-  //   }
-  // },
   components: {
     Header,
     Footer,
@@ -318,8 +46,9 @@ export default {
   },
   watch: {
     listenstage: function(ov, nv) {
+      let createjs = document.createElement('script')
       if (this.$store.state.request.RCOUNTRY == 'cn') {
-        let hm = document.createElement('script')
+        let hm = createjs
         hm.src = 'https://hm.baidu.com/hm.js?5d6195861bd1dc57fe4981c6ed078dd4'
         let s = document.getElementsByTagName('script')[0]
         s.parentNode.insertBefore(hm, s)
@@ -331,10 +60,7 @@ export default {
             window._hmt.push(['_trackPageview', to.fullPath])
           } catch (e) {}
         })
-      } else if (
-        this.$store.state.request.RCOUNTRY != 'cn' &&
-        !this.$store.state.login_status
-      ) {
+      } else if (this.$store.state.request.RCOUNTRY != 'cn') {
         // Facebook Pixel Code
         ;((f, b, e, v, n, t, s) => {
           if (f.fbq) return
@@ -356,27 +82,50 @@ export default {
           t.src = v
           s = b.getElementsByTagName(e)[0]
           s.parentNode.insertBefore(t, s)
+          let nohm = document.createElement('noscript')
+          nohm.innerHTML = `<img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=148244878887970&ev=PageView&noscript=1'/>`
+          s.parentNode.insertBefore(nohm, b.getElementsByTagName(e)[1])
         })(
           window,
           document,
           'script',
           'https://connect.facebook.net/en_US/fbevents.js'
         )
+
         fbq('init', '148244878887970')
         fbq('track', 'PageView')
-        let nohm = document.createElement('noscript')
-        nohm.innerHTML = `<img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=148244878887970&ev=PageView&noscript=1'/>`
         // FB share
-        ;((d, s, id) => {
-          var js,
-            fjs = d.getElementsByTagName(s)[0]
-          if (d.getElementById(id)) return
-          js = d.createElement(s)
-          js.id = id
-          js.src =
-            '//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=115187351888718&version=v2.2'
-          fjs.parentNode.insertBefore(js, fjs)
-        })(document, 'script', 'facebook-jssdk')
+        if (this.$store.state.request.COUNTRY != 'cn') {
+          ;((d, s, id) => {
+            var js,
+              fjs = d.getElementsByTagName(s)[0]
+            if (d.getElementById(id)) return
+            js = d.createElement(s)
+            js.id = id
+            js.src =
+              '//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=115187351888718&version=v2.2'
+            fjs.parentNode.insertBefore(js, fjs)
+          })(document, 'script', 'facebook-jssdk')
+          /* <![CDATA[ */
+          let googledatajs = createjs
+          googledatajs.innerHTML = `
+            let google_conversion_id = 993189995
+            let google_custom_params = window.google_tag_params
+            let google_remarketing_only = true`
+          document.getElementsByTagName('head')[0].appendChild(googledatajs)
+          let googleadserviceshm = createjs
+          googleadserviceshm.src =
+            '//www.googleadservices.com/pagead/conversion.js'
+          googleadserviceshm.type = 'text/javascript'
+          let nofbhm = document.createElement('noscript')
+          nofbhm.innerHTML = `<div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/993189995/?value=0&amp;guid=ON&amp;script=0"/>
+            </div>`
+          document
+            .getElementsByTagName('head')[0]
+            .appendChild(googleadserviceshm)
+          document.getElementsByTagName('head')[0].appendChild(nofbhm)
+        }
       }
     }
   },
@@ -385,10 +134,8 @@ export default {
     // sw
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        console.log(989898, 'coming')
         navigator.serviceWorker.register('/sw.js').then(
           function(registration) {
-            console.log(989898, 'successful')
             // Registration was successful
             console.log(
               'ServiceWorker registration successful with scope: ',
@@ -396,7 +143,6 @@ export default {
             )
           },
           function(err) {
-            console.log(989898, 'failed')
             // registration failed :(
             console.log('ServiceWorker registration failed: ', err)
           }
