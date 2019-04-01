@@ -92,7 +92,7 @@ module.exports = {
       '~/modules/i18n',
       {
         baseUrl: 'https://test.modesens.com',
-        defaultDomain: 'modesens.com',
+        defaultDomain: 'test.modesens.com',
         countries: countries,
         locales: [
           {
