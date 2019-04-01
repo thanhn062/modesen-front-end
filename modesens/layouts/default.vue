@@ -382,6 +382,27 @@ export default {
   },
   created() {},
   mounted() {
+    // sw
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        console.log(989898, 'coming')
+        navigator.serviceWorker.register('/sw.js').then(
+          function(registration) {
+            console.log(989898, 'successful')
+            // Registration was successful
+            console.log(
+              'ServiceWorker registration successful with scope: ',
+              registration.scope
+            )
+          },
+          function(err) {
+            console.log(989898, 'failed')
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err)
+          }
+        )
+      })
+    }
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this.$axios)
     }

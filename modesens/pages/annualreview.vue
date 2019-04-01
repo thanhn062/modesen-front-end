@@ -1,18 +1,12 @@
 <template>
   <section class="container annualreview-con">
-    <h1
-      v-if="$i18n.locale == 'zh'"
-      class="hiddenh1">ModeSens 的2018年终总结</h1>
-    <h1
-      v-else
-      class="hiddenh1">2018 Annual Report for ModeSens</h1>
     <div class="bannerimg">
       <img
         v-lazy="handimgsrc"
         alt="">
     </div>
     <div class="totalSaving">
-      <div class="username"> {{ username }}</div>
+      <h1 class="username"> {{ username }}</h1>
       <div class="memberStartTime">{{ $t('annual.MemberSince') }} {{ user.user_joined }}</div>
       <div class="savingProportion">
         <div class="proportionbox">

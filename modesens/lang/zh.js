@@ -36,6 +36,8 @@ export const common = {
   Settings: '设置',
   SignOut: '退出登录',
   SeeYouSoon: '待会见!',
+  womens: "男士",
+  mens: "女士",
 };
 export const service = {
   help: '需要帮助？',
@@ -315,6 +317,7 @@ export const accountOrder = {
   Orderinquiry: '追踪订单'
 };
 export const annual = {
+  annualModesens: 'ModeSens 的2018年终总结',
   annualTitle: '年终总结',
   MemberSince: '会员始于',
   yousaved: '你的购物节省总额',

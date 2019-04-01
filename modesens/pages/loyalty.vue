@@ -1,11 +1,10 @@
 <template>
   <section class="container loyalty-con">
-    <h1 class="hiddenh1">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</h1>
     <div class="accountsCon">
       <div class="logoCon"><img
         v-lazy="'/img/20180905footer_logo.svg'"
         alt=""></div>
-      <div class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</div>
+      <h1 class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</h1>
       <div
         v-if="!$store.state.login_status"
         class="accountsBox">
