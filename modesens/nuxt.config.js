@@ -115,7 +115,7 @@ module.exports = {
         defaultCountry: 'us',
         defaultLocale: 'en',
         strategy: 'prefix',
-        differentDomains: true,
+        // differentDomains: true,
         detectBrowserLanguage: {
           // If enabled, a cookie is set once a user has been redirected to his
           // preferred language to prevent subsequent redirections

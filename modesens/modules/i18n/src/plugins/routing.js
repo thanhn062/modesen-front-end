@@ -8,7 +8,6 @@ function localePathFactory(i18nPath, routerPath) {
     locale = locale || this[i18nPath].locale
     if (!locale) return
 
-
     // If route parameters is a string, use it as the route's name
     if (typeof route === 'string') {
       route = { name: route }
@@ -37,26 +36,25 @@ function localePathFactory(i18nPath, routerPath) {
     return href
   }
 }
-function switchLocalePathFactory (i18nPath) {
-  const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
-  const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
 
-  return function switchLocalePath (locale) {
-    const name = this.getRouteBaseName()
+function switchLocalePathFactory(i18nPath) {
+  return function switchLocalePath(country, locale) {
+    const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
+    const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
+    const name = this.getRouteBaseName() + '___' + country
+
     if (!name) {
       return ''
     }
+    const baseRoute = Object.assign({}, this.$route, { name })
 
-    const { params, ...routeCopy } = this.$route
-    const baseRoute = Object.assign({}, routeCopy, {
-      name,
-      params: { ...params, '0': params.pathMatch }
-    })
     let path = this.localePath(baseRoute, locale)
 
     // Handle different domains
     if (this[i18nPath].differentDomains) {
-      const lang = this[i18nPath].locales.find(l => l[LOCALE_CODE_KEY] === locale)
+      const lang = this[i18nPath].locales.find(
+        l => l[LOCALE_CODE_KEY] === locale
+      )
       if (lang && lang[LOCALE_DOMAIN_KEY]) {
         let protocol
         if (!process.browser) {
@@ -67,16 +65,20 @@ function switchLocalePathFactory (i18nPath) {
         }
         path = protocol + '://' + lang[LOCALE_DOMAIN_KEY] + path
       } else {
-        console.warn('[<%= options.MODULE_NAME %>] Could not find domain name for locale ' + locale)
+        console.warn(
+          '[<%= options.MODULE_NAME %>] Could not find domain name for locale ' +
+            locale
+        )
       }
     }
+
     return path
   }
 }
 
+function switchIsoPathFactory(i18nPath) {
+  return function switchIsoPath(country, locale) {
 
-function switchCountryPathFactory(i18nPath) {
-  return function switchCountryPath(country, locale) {
     const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
     const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
     const default_domain = '<%= options.defaultDomain %>'
@@ -90,26 +92,25 @@ function switchCountryPathFactory(i18nPath) {
     let path = this.localePath(baseRoute, locale)
 
     // Handle different domains
-    if (this[i18nPath].differentDomains) {
-      const lang = this[i18nPath].countries.find(
-        l => l[LOCALE_CODE_KEY] === country
-      )
-      if (lang) {
-        let domain = lang[LOCALE_DOMAIN_KEY] || default_domain
-        let protocol
-        if (!process.browser) {
-          const { req } = this.$options._parentVnode.ssrContext
-          protocol = req.secure ? 'https' : 'http'
-        } else {
-          protocol = window.location.href.split(':')[0]
-        }
-        path = protocol + '://' + domain + path
+    const lang = this[i18nPath].countries.find(
+      l => l[LOCALE_CODE_KEY] === country
+    )
+
+    if (lang) {
+      let domain = lang[LOCALE_DOMAIN_KEY] || default_domain
+      let protocol
+      if (!process.browser) {
+        const { req } = this.$options._parentVnode.ssrContext
+        protocol = req.secure ? 'https' : 'http'
       } else {
-        console.warn(
-          '[<%= options.MODULE_NAME %>] Could not find domain name for locale ' +
-            locale
-        )
+        protocol = window.location.href.split(':')[0]
       }
+      path = protocol + '://' + lang[LOCALE_DOMAIN_KEY] + path
+    } else {
+      console.warn(
+        '[<%= options.MODULE_NAME %>] Could not find domain name for locale ' +
+          locale
+      )
     }
 
     return path
@@ -137,7 +138,7 @@ Vue.mixin({
   methods: {
     localePath: localePathFactory('$i18n', '$router'),
     switchLocalePath: switchLocalePathFactory('$i18n'),
-    switchCountryPath: switchCountryPathFactory('$i18n'),
+    switchIsoPath: switchIsoPathFactory('$i18n'),
     getRouteBaseName: getRouteBaseNameFactory()
   }
 })
@@ -145,6 +146,6 @@ Vue.mixin({
 export default ({ app, route }) => {
   app.localePath = localePathFactory('i18n', 'router')
   ;(app.switchLocalePath = switchLocalePathFactory('i18n')),
-  (app.switchCountryPath = switchCountryPathFactory('i18n')),
+  (app.switchIsoPath = switchIsoPathFactory('i18n')),
     (app.getRouteBaseName = getRouteBaseNameFactory(route))
 }

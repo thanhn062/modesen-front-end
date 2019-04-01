@@ -2,19 +2,19 @@
   {
     "code": "us",
     "defaultLocale": "en",
-    "domain": "test.modesens.com",
+    "domain": "modesens.com",
     "iso": "en-us"
   },
   {
     "code": "gb",
     "defaultLocale": "en",
-    "domain": "test.modesens.uk",
+    "domain": "modesens.uk",
     "iso": "en-gb"
   },
   {
     "code": "au",
     "defaultLocale": "en",
-    "domain": "test.modesens.com.au",
+    "domain": "modesens.com.au",
     "iso": "en-au"
   },
   {
@@ -30,7 +30,7 @@
   {
     "code": "ca",
     "defaultLocale": "en",
-    "domain": "test.modesens.ca",
+    "domain": "modesens.ca",
     "iso": "en-ca"
   },
   {
@@ -50,7 +50,7 @@
   },
   {
     "code": "fr",
-    "domain": "test.modesens.fr",
+    "domain": "modesens.fr",
     "defaultLocale": "en",
     "iso": "en-fr"
   },
@@ -62,7 +62,7 @@
   {
     "code": "de",
     "defaultLocale": "en",
-    "domain": "test.modesens.de",
+    "domain": "modesens.de",
     "iso": "en-de"
   },
   {
@@ -83,13 +83,13 @@
   {
     "code": "it",
     "defaultLocale": "en",
-    "domain": "test.modesens.it",
+    "domain": "modesens.it",
     "iso": "en-it"
   },
   {
     "code": "jp",
     "defaultLocale": "en",
-    "domain": "test.modesens.jp",
+    "domain": "modesens.jp",
     "iso": "en-jp"
   },
   {
@@ -115,7 +115,7 @@
   {
     "code": "nl",
     "defaultLocale": "en",
-    "domain": "test.modesens.nl",
+    "domain": "modesens.nl",
     "iso": "en-nl"
   },
   {
@@ -141,7 +141,7 @@
   {
     "code": "ru",
     "defaultLocale": "en",
-    "domain": "test.modesens.ru",
+    "domain": "modesens.ru",
     "iso": "en-ru"
   },
   {
@@ -162,13 +162,13 @@
   {
     "code": "kr",
     "defaultLocale": "en",
-    "domain": "test.modesens.kr",
+    "domain": "modesens.kr",
     "iso": "en-kr"
   },
   {
     "code": "es",
     "defaultLocale": "en",
-    "domain": "test.modesens.es",
+    "domain": "modesens.es",
     "iso": "en-es"
   },
   {
@@ -188,8 +188,26 @@
   },
   {
     "code": "cn",
-    "domain": "test.modesens.cn",
+    "domain": "modesens.cn",
     "defaultLocale": "zh",
     "iso": "zh-cn"
+  },
+  {
+    "code": "en",
+    "defaultLocale": "en",
+    "domain": "modesens.com",
+    "iso": "en"
+  },
+  {
+    "code": "zh",
+    "defaultLocale": "en",
+    "domain": "modesens.cn",
+    "iso": "zh"
+  },
+  {
+    "code": "x-default",
+    "defaultLocale": "en",
+    "domain": "modesens.com",
+    "iso": "x-default"
   }
 ]
