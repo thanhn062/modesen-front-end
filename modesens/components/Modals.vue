@@ -84,7 +84,8 @@
                 id="contact-company"
                 v-model="company"
                 name="company"
-                type="text">
+                type="text"
+                required>
             </div>
             <div>
               <label for="contact-name">{{ $t('Modals.YourName') }}</label><br>
@@ -92,7 +93,8 @@
                 id="contact-name"
                 v-model="name"
                 name="name"
-                type="text">
+                type="text"
+                required>
             </div>
             <div>
               <label for="contact-url">{{ $t('common.URL') }}</label><br>
