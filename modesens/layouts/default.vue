@@ -318,8 +318,9 @@ export default {
   },
   watch: {
     listenstage: function(ov, nv) {
+      let createjs = document.createElement('script')
       if (this.$store.state.request.RCOUNTRY == 'cn') {
-        let hm = document.createElement('script')
+        let hm = createjs
         hm.src = 'https://hm.baidu.com/hm.js?5d6195861bd1dc57fe4981c6ed078dd4'
         let s = document.getElementsByTagName('script')[0]
         s.parentNode.insertBefore(hm, s)
@@ -356,27 +357,50 @@ export default {
           t.src = v
           s = b.getElementsByTagName(e)[0]
           s.parentNode.insertBefore(t, s)
+          let nohm = document.createElement('noscript')
+          nohm.innerHTML = `<img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=148244878887970&ev=PageView&noscript=1'/>`
+          s.parentNode.insertBefore(nohm, b.getElementsByTagName(e)[1])
         })(
           window,
           document,
           'script',
           'https://connect.facebook.net/en_US/fbevents.js'
         )
+
         fbq('init', '148244878887970')
         fbq('track', 'PageView')
-        let nohm = document.createElement('noscript')
-        nohm.innerHTML = `<img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=148244878887970&ev=PageView&noscript=1'/>`
         // FB share
-        ;((d, s, id) => {
-          var js,
-            fjs = d.getElementsByTagName(s)[0]
-          if (d.getElementById(id)) return
-          js = d.createElement(s)
-          js.id = id
-          js.src =
-            '//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=115187351888718&version=v2.2'
-          fjs.parentNode.insertBefore(js, fjs)
-        })(document, 'script', 'facebook-jssdk')
+        if (this.$store.state.request.COUNTRY != 'cn') {
+          ;((d, s, id) => {
+            var js,
+              fjs = d.getElementsByTagName(s)[0]
+            if (d.getElementById(id)) return
+            js = d.createElement(s)
+            js.id = id
+            js.src =
+              '//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=115187351888718&version=v2.2'
+            fjs.parentNode.insertBefore(js, fjs)
+          })(document, 'script', 'facebook-jssdk')
+          /* <![CDATA[ */
+          let googledatajs = createjs
+          googledatajs.innerHTML = `
+            let google_conversion_id = 993189995
+            let google_custom_params = window.google_tag_params
+            let google_remarketing_only = true`
+          document.getElementsByTagName('head')[0].appendChild(googledatajs)
+          let googleadserviceshm = createjs
+          googleadserviceshm.src =
+            '//www.googleadservices.com/pagead/conversion.js'
+          googleadserviceshm.type = 'text/javascript'
+          let nofbhm = document.createElement('noscript')
+          nofbhm.innerHTML = `<div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/993189995/?value=0&amp;guid=ON&amp;script=0"/>
+            </div>`
+          document
+            .getElementsByTagName('head')[0]
+            .appendChild(googleadserviceshm)
+          document.getElementsByTagName('head')[0].appendChild(nofbhm)
+        }
       }
     }
   },
@@ -385,10 +409,8 @@ export default {
     // sw
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        console.log(989898, 'coming')
         navigator.serviceWorker.register('/sw.js').then(
           function(registration) {
-            console.log(989898, 'successful')
             // Registration was successful
             console.log(
               'ServiceWorker registration successful with scope: ',
@@ -396,7 +418,6 @@ export default {
             )
           },
           function(err) {
-            console.log(989898, 'failed')
             // registration failed :(
             console.log('ServiceWorker registration failed: ', err)
           }
