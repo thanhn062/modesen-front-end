@@ -2,8 +2,7 @@ const pkg = require('./package')
 const countries = require('./countries')
 const webpack = require('webpack')
 require('dotenv').config()
-const path = require('path')
-console.log('path: ', path)
+
 module.exports = {
   mode: 'universal',
 
@@ -161,7 +160,7 @@ module.exports = {
 	*/
   build: {
     styleResources: {
-      less: './assets/css/common.less'
+      less: './assets/css/common2.less'
     },
     extractCSS: { allChunks: true },
     // 防止多次打包axios
