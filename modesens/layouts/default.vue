@@ -332,10 +332,7 @@ export default {
             window._hmt.push(['_trackPageview', to.fullPath])
           } catch (e) {}
         })
-      } else if (
-        this.$store.state.request.RCOUNTRY != 'cn' &&
-        !this.$store.state.login_status
-      ) {
+      } else if (this.$store.state.request.RCOUNTRY != 'cn') {
         // Facebook Pixel Code
         ;((f, b, e, v, n, t, s) => {
           if (f.fbq) return
