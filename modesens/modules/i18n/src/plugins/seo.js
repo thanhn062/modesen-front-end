@@ -34,13 +34,13 @@ Vue.mixin({
           return {
             hid: 'alternate-hreflang-' + country[LOCALE_ISO_KEY],
             rel: 'alternate',
-            href: this.switchCountryPath(country.code, country.defaultLocale),
+            href: this.switchLocalePath(country.code, country.defaultLocale),
             hreflang: country[LOCALE_ISO_KEY]
           }
         } else {
-          // console.warn(
-          //   '[<%= options.MODULE_NAME %>] Locale ISO code is required to generate alternate link'
-          // )
+          console.warn(
+            '[<%= options.MODULE_NAME %>] Locale ISO code is required to generate alternate link'
+          )
           return null
         }
       })
@@ -49,7 +49,7 @@ Vue.mixin({
   link.unshift({
     hid: 'canonical-' + currentLocaleData[LOCALE_CODE_KEY],
     rel: 'canonical',
-    href: this.switchCountryPath(currentLocaleData[LOCALE_CODE_KEY], currentLocaleData[LOCALE_ISO_KEY]),
+    href: this.switchLocalePath(currentLocaleData[LOCALE_CODE_KEY], currentLocaleData[LOCALE_ISO_KEY]),
   })
 
     // og:locale meta

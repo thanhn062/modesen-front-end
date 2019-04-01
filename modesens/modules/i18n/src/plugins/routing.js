@@ -41,45 +41,6 @@ function switchLocalePathFactory(i18nPath) {
   return function switchLocalePath(country, locale) {
     const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
     const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
-    const name = this.getRouteBaseName() + '___' + country
-
-    if (!name) {
-      return ''
-    }
-    const baseRoute = Object.assign({}, this.$route, { name })
-
-    let path = this.localePath(baseRoute, locale)
-
-    // Handle different domains
-    if (this[i18nPath].differentDomains) {
-      const lang = this[i18nPath].locales.find(
-        l => l[LOCALE_CODE_KEY] === locale
-      )
-      if (lang && lang[LOCALE_DOMAIN_KEY]) {
-        let protocol
-        if (!process.browser) {
-          const { req } = this.$options._parentVnode.ssrContext
-          protocol = req.secure ? 'https' : 'http'
-        } else {
-          protocol = window.location.href.split(':')[0]
-        }
-        path = protocol + '://' + lang[LOCALE_DOMAIN_KEY] + path
-      } else {
-        console.warn(
-          '[<%= options.MODULE_NAME %>] Could not find domain name for locale ' +
-            locale
-        )
-      }
-    }
-
-    return path
-  }
-}
-
-function switchCountryPathFactory(i18nPath) {
-  return function switchCountryPath(country, locale) {
-    const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
-    const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
     const default_domain = '<%= options.defaultDomain %>'
     const name = this.getRouteBaseName() + '___' + country
 
@@ -138,7 +99,6 @@ Vue.mixin({
   methods: {
     localePath: localePathFactory('$i18n', '$router'),
     switchLocalePath: switchLocalePathFactory('$i18n'),
-    switchCountryPath: switchCountryPathFactory('$i18n'),
     getRouteBaseName: getRouteBaseNameFactory()
   }
 })
@@ -146,6 +106,5 @@ Vue.mixin({
 export default ({ app, route }) => {
   app.localePath = localePathFactory('i18n', 'router')
   ;(app.switchLocalePath = switchLocalePathFactory('i18n')),
-   (app.switchCountryPath = switchCountryPathFactory('i18n')),
     (app.getRouteBaseName = getRouteBaseNameFactory(route))
 }

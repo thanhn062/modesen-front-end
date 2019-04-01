@@ -99,14 +99,14 @@ module.exports = {
             code: 'en',
             file: 'en.js',
             iso: 'en-us',
-            domain: 'modesens.com',
+            domain: 'test.modesens.com',
             name: 'English'
           },
           {
             code: 'zh',
             file: 'zh.js',
             iso: 'zh-cn',
-            domain: 'modesens.cn',
+            domain: 'test.modesens.com',
             name: '简体中文'
           }
         ],
