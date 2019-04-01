@@ -5,7 +5,7 @@
     data-ga-click="Side-Customer service--"/>
 </template>
 <style lang="less">
-@import '../assets/css/common.less';
+// @import '../assets/css/common.less';
 #customer-service-modal {
   position: fixed;
   right: 0px;

@@ -33,9 +33,9 @@
           is-nav>
           <!-- 菜单分类 -->
           <!-- pc端 -->
-          <NavMenu/>
+          <NavMenu v-if="$store.state.deviceType === 'pc'"/>
           <!-- 响应式 -->
-          <NavCategory/>
+          <NavCategory v-else/>
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <!-- COUNTRIES -->
@@ -67,6 +67,7 @@
             </b-nav-item-dropdown>
             <!-- language -->
             <b-nav-item-dropdown
+              v-if="$store.state.deviceType !== 'pc'"
               class="language-dropdown"
               no-caret>
               <template slot="button-content">
@@ -81,6 +82,7 @@
                 :value="locale.code">{{ locale.name }}</b-dropdown-item>
             </b-nav-item-dropdown>
             <b-form-select
+              v-else
               v-model="langSelected"
               class="language-select-container"
               @change="langChange">
@@ -315,11 +317,10 @@ export default {
     }
   },
   mounted() {
+    this.getConfig()
     this.$nextTick(() => {
-      this.getConfig()
       this.mybrowse = getBrowse()
       $('.main-container').css('padding-top', $('.header').height())
-      console.log('header-main-top')
       $('.navbar-toggler-icon').click(evt => {
         evt.preventDefault()
         evt.stopPropagation()

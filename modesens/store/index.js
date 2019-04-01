@@ -12,7 +12,8 @@ export const state = () => ({
   navHeadJson: null,
   rhints: {},//26个字母及#的搜索值,
   request: null,
-  userLevel: null
+  userLevel: null,
+  deviceType: ''
 })
 
 export const mutations = {
@@ -42,6 +43,9 @@ export const mutations = {
   },
   saveRequest(state, params) {
     state.request = params;
+  },
+  setDeviceType(state, type) {
+    state.deviceType = type
   }
 }
 

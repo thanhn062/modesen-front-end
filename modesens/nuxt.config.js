@@ -2,7 +2,8 @@ const pkg = require('./package')
 const countries = require('./countries')
 const webpack = require('webpack')
 require('dotenv').config()
-
+const path = require('path')
+console.log('path: ', path)
 module.exports = {
   mode: 'universal',
 
@@ -25,14 +26,7 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.png' },
       { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' },
       { rel: 'manifest', href: '/manifest.json'}
-      // { rel: 'stylesheet', type: 'text/css', href: '/css/font.css'},
-      // // { rel: 'stylesheet/less', type: 'text/css', href: '/css/common.less'},
-      // { rel: 'stylesheet/less', type: 'text/css', href: '/css/main.less'},
-    ],
-    // script: [
-    //   { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js' },
-    //   { src: 'https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js' }
-    // ]
+    ]
   },
 
   env: {
@@ -69,7 +63,7 @@ module.exports = {
   router: {
     // base: '/vue/'
     // 在每页渲染前运行 middleware下 中间件的逻辑
-    // middleware: 'countries'
+    middleware: ['device']
   },
 
   /*
@@ -166,6 +160,9 @@ module.exports = {
 	** Build configuration
 	*/
   build: {
+    styleResources: {
+      less: './assets/css/common.less'
+    },
     extractCSS: { allChunks: true },
     // 防止多次打包axios
     // vendor: ['axios'],

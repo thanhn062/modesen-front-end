@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../assets/css/common.less';
+// @import '../assets/css/common.less';
 #to-top {
   position: fixed;
   right: 0;
