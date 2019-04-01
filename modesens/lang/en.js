@@ -36,6 +36,8 @@ export const common = {
   Settings: 'Settings',
   SignOut: 'Sign Out',
   SeeYouSoon: 'See You Soon!',
+  womens: "momen's",
+  mens: "Men's",
 }
 export const service = {
   help: 'Need help?',
@@ -315,6 +317,7 @@ export const accountOrder = {
   Orderinquiry: 'Order Inquiry'
 };
 export const annual = {
+  annualModesens: '2018 Annual Report for ModeSens',
   annualTitle: 'Annual Review',
   MemberSince: 'Member Since',
   yousaved: 'Your Total Savings',

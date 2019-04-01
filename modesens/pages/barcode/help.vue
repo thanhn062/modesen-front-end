@@ -1,7 +1,6 @@
 <template>
   <section class="barcode-help">
-    <h1 class="hiddenh1">{{ $t('barcodeHelp.desc') }}</h1>
-    <div class="desc">{{ $t('barcodeHelp.desc') }}</div>
+    <h1 class="desc">{{ $t('barcodeHelp.desc') }}</h1>
     <div class="imgbox">
       <div
         v-for="(imgname,index) in imgAry"
@@ -58,6 +57,7 @@ export default {
   padding: 0 20px;
   .desc {
     margin-top: @sectionSpace;
+    font-size: 14px;
     font-weight: 300;
     text-align: center;
   }
