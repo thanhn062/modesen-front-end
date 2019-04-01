@@ -191,23 +191,5 @@
     "domain": "test.modesens.cn",
     "defaultLocale": "zh",
     "iso": "zh-cn"
-  },
-  {
-    "code": "en",
-    "defaultLocale": "en",
-    "domain": "test.modesens.com",
-    "iso": "en"
-  },
-  {
-    "code": "x-default",
-    "defaultLocale": "en",
-    "domain": "test.modesens.com",
-    "iso": "x-default"
-  },
-  {
-    "code": "zh",
-    "defaultLocale": "en",
-    "domain": "test.modesens.cn",
-    "iso": "zh"
   }
 ]
