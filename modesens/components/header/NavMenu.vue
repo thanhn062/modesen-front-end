@@ -1641,30 +1641,8 @@ export default {
       return 'women'
     }
   },
-  mounted() {
-    // if ($(document).width() > 1199) {
-    //   let headerH = $('.header').height()
-    //   console.log(
-    //     headerH,
-    //     $('.nav-pc-menu').offset().left,
-    //     $('.navbar-secondmenu').height()
-    //   )
-    //   $('.navbar-secondmenu').css({
-    //     top: headerH + 'px',
-    //     'padding-left': $('.nav-pc-menu').offset().left
-    //   })
-    //   $('.navbar-thirdmenu').css({
-    //     top: headerH + $('.navbar-secondmenu').height() + 'px'
-    //   })
-    // }
-  },
+  mounted() {},
   methods: {
-    naventer() {
-      console.log('mouseenter')
-    },
-    navleave() {
-      console.log('mouseleave')
-    },
     async getnavhead() {
       let { navHeadJson } = await this.$axios.get('/getnavhead/', {
         params: {}
@@ -1672,7 +1650,6 @@ export default {
       this.$store.commit('saveNavHeadJson', navHeadJson)
     },
     changeFirstLevelIndex(index) {
-      console.log(index)
       clearTimeout(this.menuTimer1)
       this.menuTimer1 = setTimeout(async () => {
         if (index === 5 && !this.$store.state.navHeadJson) {
@@ -1775,5 +1752,5 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-@import '../../assets/css/components/header/threeLevelMenu.less';
+@import '../../assets/css/components/header/navMenu.less';
 </style>

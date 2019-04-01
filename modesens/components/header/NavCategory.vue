@@ -111,19 +111,15 @@
 export default {
   methods: {
     showDropdown(evt) {
-      console.log(evt)
-      $(evt.target)
-        .stop(true, true)
-        .addClass('show', 300)
+      // $(evt.target)
+      //   .stop(true, true)
+      //   .addClass('show', 300)
     }
   }
 }
 </script>
 <style lang="less" scoped>
-@import '../../assets/css/common.less';
-.nav-mini-menu {
-  display: none;
-}
+// @import '../../assets/css/common.less';
 @media (max-width: 1199px) {
   .fade-enter {
     opacity: 0;
@@ -138,7 +134,6 @@ export default {
     transition: opacity 3s;
   }
   .nav-mini-menu {
-    display: block;
     background: inherit;
   }
 }

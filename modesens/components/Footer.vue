@@ -124,7 +124,7 @@
             v-lazy="'/img/20180905footer_logo.svg'"
             class="footer-logo"
             alt="">
-          <span v-if="$i18n.country === 'cn'">© 2018, 尚睿科技（北京）有限公司<br>京 ICP 备 16029930号</span>
+          <span v-if="$store.state.request && $store.state.request.RCOUNTRY === 'cn'">© 2018, 尚睿科技（北京）有限公司<br>京 ICP 备 16029930号</span>
           <span v-else>© 2018, ModeSens Inc</span>
         </div>
         <div class="footer-svg-con">
@@ -288,7 +288,6 @@ export default {
       }
     },
     async shareInvite() {
-      console.log(333333)
       var emails = this.shareEmail.trim()
       let toinvite = []
       $.each(emails.split(','), function(index, value) {

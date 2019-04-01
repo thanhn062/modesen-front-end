@@ -84,7 +84,8 @@
                 id="contact-company"
                 v-model="company"
                 name="company"
-                type="text">
+                type="text"
+                required>
             </div>
             <div>
               <label for="contact-name">{{ $t('Modals.YourName') }}</label><br>
@@ -92,7 +93,8 @@
                 id="contact-name"
                 v-model="name"
                 name="name"
-                type="text">
+                type="text"
+                required>
             </div>
             <div>
               <label for="contact-url">{{ $t('common.URL') }}</label><br>
@@ -230,7 +232,7 @@
       hide-footer>
       <button
         class="close"
-        @click="hideMembershipModal"><img
+        @click="hideModelinkModal"><img
           v-lazy="'/img/close.svg'"
           alt=""></button>  
       <div class="ass-head">
@@ -412,7 +414,7 @@ export default {
   mounted() {
     // this.showMemberShip()
     this.showModelink()
-    this.showFcmodal()
+    // this.showFcmodal()
   },
   methods: {
     mdLoginshown() {
@@ -534,6 +536,9 @@ export default {
     hideMembershipModal() {
       this.$root.$emit('bv::hide::modal', 'membershipMd')
     },
+    hideModelinkModal() {
+      this.$root.$emit('bv::hide::modal', 'abtestbassistant')
+    },
     modelinkshare() {
       this.frommodelinkshare = true
       if (!this.ssurl) {
@@ -579,19 +584,19 @@ export default {
         this.ssimg
       )
     },
-    showFcmodal() {
-      if (
-        this.$store.state.login_status &&
-        this.$cookies.get('modelinkmodal') &&
-        !this.$cookies.get('ms_notification')
-      ) {
-        setTimeout(() => {
-          this.$root.$emit('bv::show::modal', 'fcmmodal')
-          ga('send', 'event', 'FCM', 'FCMModalShow')
-          this.$cookies.set('ms_notification', true, 1)
-        }, 15000)
-      }
-    },
+    // showFcmodal() {
+    //   if (
+    //     this.$store.state.login_status &&
+    //     this.$cookies.get('modelinkmodal') &&
+    //     !this.$cookies.get('ms_notification')
+    //   ) {
+    //     setTimeout(() => {
+    //       this.$root.$emit('bv::show::modal', 'fcmmodal')
+    //       ga('send', 'event', 'FCM', 'FCMModalShow')
+    //       this.$cookies.set('ms_notification', true, 1)
+    //     }, 15000)
+    //   }
+    // },
     requestFCMToken() {
       this.$partent.requestFCMToken
       // ga('send', 'event', 'Modal-fcmmodal', 'Yes')
