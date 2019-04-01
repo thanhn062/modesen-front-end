@@ -15,7 +15,7 @@ Vue.mixin({
     }
     const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
     const LOCALE_ISO_KEY = '<%= options.LOCALE_ISO_KEY %>'
-    const BASE_URL = '<%= options.baseUrl %>'
+    const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
 
     // Prepare html lang attribute
     const currentLocaleData = this.$i18n.countries.find(
@@ -30,7 +30,7 @@ Vue.mixin({
     // hreflang tags for countries
     const link = this.$i18n.countries
       .map(country => {
-        if (country[LOCALE_ISO_KEY] && country[LOCALE_ISO_KEY] != currentLocaleData[LOCALE_ISO_KEY] ) {
+        if (country[LOCALE_ISO_KEY] && country[LOCALE_ISO_KEY] != currentLocaleData[LOCALE_ISO_KEY] && country[LOCALE_DOMAIN_KEY]) {
           return {
             hid: 'alternate-hreflang-' + country[LOCALE_ISO_KEY],
             rel: 'alternate',
