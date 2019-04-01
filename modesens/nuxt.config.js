@@ -91,22 +91,16 @@ module.exports = {
     [
       '~/modules/i18n',
       {
-        baseUrl: 'https://test.modesens.com',
-        defaultDomain: 'test.modesens.com',
         countries: countries,
         locales: [
           {
             code: 'en',
             file: 'en.js',
-            iso: 'en-us',
-            domain: 'test.modesens.com',
             name: 'English'
           },
           {
             code: 'zh',
             file: 'zh.js',
-            iso: 'zh-cn',
-            domain: 'test.modesens.com',
             name: '简体中文'
           }
         ],

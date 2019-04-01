@@ -34,7 +34,7 @@ Vue.mixin({
           return {
             hid: 'alternate-hreflang-' + country[LOCALE_ISO_KEY],
             rel: 'alternate',
-            href: this.switchIsoPath(country.code, country.defaultLocale),
+            href: this.switchIsoPath(country.code, country.defaultLocale,country[LOCALE_ISO_KEY]),
             hreflang: country[LOCALE_ISO_KEY]
           }
         } else {
@@ -49,7 +49,7 @@ Vue.mixin({
   link.unshift({
     hid: 'canonical-' + currentLocaleData[LOCALE_CODE_KEY],
     rel: 'canonical',
-    href: this.switchIsoPath(currentLocaleData[LOCALE_CODE_KEY], currentLocaleData.defaultLocale),
+    href: this.switchIsoPath(currentLocaleData[LOCALE_CODE_KEY], currentLocaleData.defaultLocale, currentLocaleData[LOCALE_ISO_KEY]),
   })
 
     // og:locale meta

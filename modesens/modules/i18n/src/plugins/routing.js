@@ -77,7 +77,7 @@ function switchLocalePathFactory(i18nPath) {
 }
 
 function switchIsoPathFactory(i18nPath) {
-  return function switchIsoPath(country, locale) {
+  return function switchIsoPath(country, locale, iso) {
 
     const LOCALE_DOMAIN_KEY = '<%= options.LOCALE_DOMAIN_KEY %>'
     const LOCALE_CODE_KEY = '<%= options.LOCALE_CODE_KEY %>'
@@ -98,6 +98,7 @@ function switchIsoPathFactory(i18nPath) {
 
     if (lang) {
       let domain = lang[LOCALE_DOMAIN_KEY] || default_domain
+      let url_pattern = '/' + iso.split('-').reverse().join('/')
       let protocol
       if (!process.browser) {
         const { req } = this.$options._parentVnode.ssrContext
@@ -105,7 +106,7 @@ function switchIsoPathFactory(i18nPath) {
       } else {
         protocol = window.location.href.split(':')[0]
       }
-      path = protocol + '://' + lang[LOCALE_DOMAIN_KEY] + path
+      path = protocol + '://' + lang[LOCALE_DOMAIN_KEY] + path.replace(url_pattern, '').replace('/en/', '/').replace('/zh/', '/').replace('/x-default/', '/')
     } else {
       console.warn(
         '[<%= options.MODULE_NAME %>] Could not find domain name for locale ' +
