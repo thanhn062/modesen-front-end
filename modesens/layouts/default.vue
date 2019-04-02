@@ -135,23 +135,23 @@ export default {
   created() {},
   mounted() {
     // sw
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js').then(
-          function(registration) {
-            // Registration was successful
-            console.log(
-              'ServiceWorker registration successful with scope: ',
-              registration.scope
-            )
-          },
-          function(err) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', err)
-          }
-        )
-      })
-    }
+    // if ('serviceWorker' in navigator) {
+    //   window.addEventListener('load', function() {
+    //     navigator.serviceWorker.register('/sw.js').then(
+    //       function(registration) {
+    //         // Registration was successful
+    //         console.log(
+    //           'ServiceWorker registration successful with scope: ',
+    //           registration.scope
+    //         )
+    //       },
+    //       function(err) {
+    //         // registration failed :(
+    //         console.log('ServiceWorker registration failed: ', err)
+    //       }
+    //     )
+    //   })
+    // }
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this)
     }
@@ -167,9 +167,20 @@ export default {
         })
         this.$ga.set('dimension2', this.$store.state.lsuser.uid)
       }
-      let gcid = this.$ga.tracker.get('clientId')
-      this.$cookie.set('gcid', gcid, 60)
-      this.$ga.set('dimension1', this.$cookies.get('gcid'))
+      window.addEventListener('load', function() {
+        var clientId = false
+        var gcid = ''
+        if (process.browser && ga) {
+          ga(function(tracker) {
+            gcid = tracker.get('clientId')
+          })
+        }
+        var ExpireDate = new Date()
+        ExpireDate.setTime(ExpireDate.getTime() + 60 * 24 * 3600 * 1000)
+        document.cookie =
+          'gcid =' + gcid + '; expires=' + 60 + ExpireDate.toGMTString() + ';'
+        ga('set', 'dimension1', gcid)
+      })
     } else {
       this.$ga.event()
     }
