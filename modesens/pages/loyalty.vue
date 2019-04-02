@@ -202,77 +202,73 @@
     </div>
     <div class="questionsCon">
       <div class="title">{{ $t('loyalty.questionTitle') }}</div>
-      <div class="questionsBox">
-        <div
+      <div
+        class="questionsBox"
+        role="tablist">
+        <b-card
           v-for="(answer,index) in answers"
           :key="index"
-          class="questionBox">
+          class="questionBox"
+          no-body>
           <div
-            :id="`question-${index+1}`"
-            class="question"
-            @click="questionClick(index)">
+            class="d-flex justify-content-between align-items-center question"
+            role="tab"
+            @click="openAnswer(index)">
             <span>{{ $t('loyalty.question'+(index+1)) }}</span>
             <img 
               v-lazy="'/img/20181214slidedown.svg'"
-              :class="indexQt===index ? 'imgrotate' : ''"
               alt="">
           </div>
-          <div
-            v-if="indexQt===index"
-            class="answers">
-            <div
-              v-if="index===1"
-              class="answer">
-              <div v-if="$store.state.login_status">{{ $t('loyalty.answer2_1_1') }}
-                <nuxt-link
-                  to="/account/loyalty/"
-                  data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</nuxt-link>
-              </div>
-              <div v-else>{{ $t('loyalty.answer2_1') }}
-                <a
-                  href="/accounts/signup/?next=/loyalty/"
-                  data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2') }}</a>
-              </div>
-            </div>
-            <div
-              v-else-if="index===14"
-              class="answer">
-              {{ $t('loyalty.answer15_1') }}<a
-                href="/shopping-assistant/"
-                target="_blank"
-                data-ga-click="loyalty-questionAnswer--15">{{ $t('loyalty.answer15_2') }}</a>
-            </div>
-            <div
-              v-else-if="index===19"
-              class="answer">
-              {{ $t('loyalty.answer20_1') }}<a
-                href="/invite/"
-                target="_blank"
-                data-ga-click="loyalty-questionAnswer--20">{{ $t('loyalty.answer20_2') }}</a>{{ $t('loyalty.answer20_3') }}
-            </div>
-            <div
-              v-else-if="index===23"
-              class="answer">
-              {{ $t('loyalty.answer24_1') }} <a
-                href="mailto:info@modesens.com"
-                data-ga-click="loyalty-questionAnswer--24">info@modesens.com.</a>
-            </div>
-            <div
-              v-for="(a, aindex) in answer"
-              v-else
-              :key="aindex"
-              class="answer">
-              {{ $t('loyalty.answer'+(index+1)+'_'+(aindex+1)) }}
-              <div v-if="typeof(a)==='object'">
-                <div
-                  v-for="(num,bindex) in a"
-                  :key="bindex">
-                  &nbsp;&nbsp;&nbsp;&nbsp;{{ $t('loyalty.answer'+(index+1)+'_'+(aindex+1)+'_'+(bindex+1)) }}
+          <b-collapse
+            :id="`answer-${index}`"
+            class="answers"
+            accordion="my-accordion">
+            <b-card-body>
+              <div v-if="index===1">
+                <div v-if="$store.state.login_status">{{ $t('loyalty.answer2_1_1') }}
+                  <nuxt-link
+                    to="/account/loyalty/"
+                    data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2_1') }}</nuxt-link>
+                </div>
+                <div v-else>{{ $t('loyalty.answer2_1') }}
+                  <a
+                    href="/accounts/signup/?next=/loyalty/"
+                    data-ga-click="loyalty-questionAnswer--2">{{ $t('loyalty.answer2_2') }}</a>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+              <div v-else-if="index===14">
+                {{ $t('loyalty.answer15_1') }}<a
+                  href="/shopping-assistant/"
+                  target="_blank"
+                  data-ga-click="loyalty-questionAnswer--15">{{ $t('loyalty.answer15_2') }}</a>
+              </div>
+              <div v-else-if="index===19">
+                {{ $t('loyalty.answer20_1') }}<a
+                  href="/invite/"
+                  target="_blank"
+                  data-ga-click="loyalty-questionAnswer--20">{{ $t('loyalty.answer20_2') }}</a>{{ $t('loyalty.answer20_3') }}
+              </div>
+              <div v-else-if="index===23">
+                {{ $t('loyalty.answer24_1') }} <a
+                  href="mailto:info@modesens.com"
+                  data-ga-click="loyalty-questionAnswer--24">info@modesens.com.</a>
+              </div>
+              <div
+                v-for="(a, aindex) in answer"
+                v-else
+                :key="aindex">
+                {{ $t('loyalty.answer'+(index+1)+'_'+(aindex+1)) }}
+                <div v-if="typeof(a)==='object'">
+                  <div
+                    v-for="(num,bindex) in a"
+                    :key="bindex">
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{ $t('loyalty.answer'+(index+1)+'_'+(aindex+1)+'_'+(bindex+1)) }}
+                  </div>
+                </div>
+              </div>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
       </div>
     </div>
   </section>
@@ -362,6 +358,9 @@ export default {
           .not($(`.level-${level.level.toLowerCase()}`))
           .addClass('level-gray')
       }
+    },
+    openAnswer(index) {
+      this.$root.$emit('bv::toggle::collapse', `answer-${index}`)
     },
     questionClick(index) {
       if (this.indexQt === index) {

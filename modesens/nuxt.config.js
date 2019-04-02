@@ -161,7 +161,7 @@ module.exports = {
 	*/
   build: {
     styleResources: {
-      less: './assets/css/common2.less'
+      less: './assets/css/common.less'
     },
     extractCSS: { allChunks: true },
     // 防止多次打包axios
