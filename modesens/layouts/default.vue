@@ -161,16 +161,17 @@ export default {
     //ga
     if (!this.$store.state.lsuser || !this.$store.state.lsuser.is_staff) {
       if (this.$store.state.lsuser) {
-        ga('send', 'pageview', { userId: this.$store.state.lsuser.uid })
-        ga('set', 'dimension2', this.$store.state.lsuser.uid)
+        this.$ga.page({
+          pageview: this.$route.fullPath,
+          userId: this.$store.state.lsuser.uid
+        })
+        this.$ga.set('dimension2', this.$store.state.lsuser.uid)
       }
-      ga(function(tracker) {
-        var gcid = tracker.get('clientId')
-        setCookie('gcid', gcid, 60)
-      })
-      ga('set', 'dimension1', this.$cookies.get('gcid'))
+      let gcid = this.$ga.tracker.get('clientId')
+      this.$cookie.set('gcid', gcid, 60)
+      this.$ga.set('dimension1', this.$cookies.get('gcid'))
     } else {
-      ga()
+      this.$ga.event()
     }
     if (this.$store.state.login_status) {
       // firebase
