@@ -27,13 +27,7 @@ if (process.browser){
       if (res) {
         var [category, action, label, val] = [...res.split('-')];
         label = label || 'click'
-        if (cookie.get('lsuid') && cookie.get('otoken')) {
-          ga('send', 'event', {'userId': cookie.get('lsuid')}, category, action, label, val)
-          ga('set', 'dimension2', cookie.get('lsuid'));
-        } else {
-          ga('send', 'event', category, action, label, val)
-        }
-        ga('set', 'dimension1', cookie.get('gcid'));
+        ga('send', 'event', category, action, label, val)
       }
     })
     //mouseenter--ga
@@ -42,13 +36,7 @@ if (process.browser){
       if (res) {
         var [category, action, label, val] = [...res.split('-')];
         label = label || 'mouseenter'
-        if (cookie.get('lsuid') && cookie.get('otoken')) {
-          ga('send', 'event', {'userId': cookie.get('lsuid')},  category, action, label, val)
-          ga('set', 'dimension2', cookie.get('lsuid'));
-        } else {
-          ga('send', 'event', category, action, label, val)
-        }
-        ga('set', 'dimension1', cookie.get('gcid'));
+        ga('send', 'event', category, action, label, val)
       }
     })
     // 注册 所有的注册按钮添加类名：btn-signup
