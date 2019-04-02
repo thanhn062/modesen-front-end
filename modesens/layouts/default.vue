@@ -46,6 +46,7 @@ export default {
   },
   watch: {
     listenstage: function(ov, nv) {
+      console.log(this.$store.state)
       let createjs = document.createElement('script')
       if (this.$store.state.request.RCOUNTRY == 'cn') {
         let hm = createjs
@@ -149,6 +150,7 @@ export default {
         )
       })
     }
+    //ga
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this.$axios)
     }
