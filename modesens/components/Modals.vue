@@ -181,7 +181,7 @@
       id="noticeproductmd"
       hide-header
       hide-footer
-      @shown="showNoticemd">
+      @show="showNoticemd">
       <iframe
         width="100%"
         height="100%"
@@ -192,7 +192,7 @@
       id="noticeusermd"
       hide-header
       hide-footer
-      @shown="showNoticemd">
+      @show="showNoticemd">
       <iframe
         width="100%"
         height="100%"
@@ -415,7 +415,7 @@ export default {
     // this.showFcmodal()
   },
   methods: {
-    mdLoginshown() {
+    mdLoginshown(evt) {
       $('#mdLogin iframe').attr(
         'src',
         '/accounts/login/?next=' + this.$route.fullPath
@@ -506,6 +506,12 @@ export default {
       window.open('/accounts/signup/?next=' + this.$route.fullPath, '_blank')
     },
     showNoticemd(evt) {
+      let id = evt.target.id
+      if (id === 'noticeproductmd') {
+        $('#noticeproductmd iframe').attr('src', '/notice/product/')
+      } else if (id === 'noticeusermd') {
+        $('#noticeusermd iframe').attr('src', '/notice/me/')
+      }
       let headerH = $('.header').height()
       $(evt.target)
         .next('.modal-backdrop')

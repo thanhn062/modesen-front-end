@@ -129,6 +129,7 @@
         <a
           v-b-modal.noticeproductmd
           v-if="$store.state.login_status"
+          class="nav-menu"
           href="javascript:;"
           data-ga-click="nav-PRODUCTALERT--"><span>{{ $t('nav.PRODUCTALERT') }}</span></a>
       </b-card>
@@ -136,6 +137,7 @@
         <a
           v-b-modal.noticeusermd
           v-if="$store.state.login_status"
+          class="nav-menu"
           href="javascript:;"
           data-ga-click="nav-SOCIALFEED--"><span>{{ $t('nav.SOCIALFEED') }}</span></a>
       </b-card>

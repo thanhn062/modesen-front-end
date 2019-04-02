@@ -91,8 +91,9 @@
               v-if="$store.state.lsuser"
               class="d-flex justify-content-between align-items-center authInfo">
               <a
+                v-b-modal.noticeproductmd
                 href="javascript:;"
-                @click="openNoticeP">
+                @click="has_notice_p=false">
                 <img
                   v-lazy="'/img/prd-update-20180504.svg'"
                   alt="">
@@ -101,8 +102,9 @@
                   class="ncount"/>
               </a>
               <a
+                v-b-modal.noticeusermd
                 href="javascript:;"
-                @click="openNoticeM">
+                @click="has_notice_m=false">
                 <img
                   v-lazy="'/img/social-update-20180504.svg'"
                   alt="">
@@ -361,16 +363,6 @@ export default {
           $('.searchres-box').css('max-height', search_h)
         })
       }, 500)
-    },
-    openNoticeP() {
-      this.has_notice_p = false
-      $('#noticeproductmd iframe').attr('src', '/notice/product/')
-      this.$root.$emit('bv::show::modal', 'noticeproductmd')
-    },
-    openNoticeM() {
-      this.has_notice_m = false
-      $('#noticeusermd iframe').attr('src', '/notice/me/')
-      this.$root.$emit('bv::show::modal', 'noticeusermd')
     },
     openSearchInput() {
       if (this.serachInputOpen === true) {
