@@ -60,10 +60,12 @@ export const actions = {
       commit('logout')
     }
   },
-  async getRequest({ commit }, $axios) {
-    let obj = await $axios.get('/request_context/', { params: {} });
+  async getRequest({ commit }, app) {
+    let obj = await app.$axios.get('/request_context/', { params: {} });
     commit('saveRequest', obj);
     Vue.prototype.ISWECHATLITE = obj.ISWECHATLITE;
+    app.$cookies.set('refinfo', obj.REFINFO)
+    app.$cookies.set('refdate', obj.REFDATE)
   },
   async getLsuser({ commit }, app) {
     let userdata = await app.$axios.post('/accounts/profile/get/', {})
