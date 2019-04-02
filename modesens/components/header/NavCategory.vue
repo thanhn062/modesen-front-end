@@ -238,6 +238,9 @@ export default {
     padding: 10px 0;
     height: 40px;
     color: inherit;
+    img {
+      width: 20px;
+    }
   }
 }
 // }
