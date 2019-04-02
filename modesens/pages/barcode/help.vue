@@ -52,7 +52,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-// @import '../../assets/css/common.less';
 .barcode-help {
   padding: 0 20px;
   .desc {

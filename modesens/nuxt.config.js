@@ -71,6 +71,7 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
     //ga跟踪
     ['@nuxtjs/google-analytics', {
       id: 'UA-37288238-6'
@@ -134,6 +135,10 @@ module.exports = {
       }
     ]
   ],
+  
+  styleResources: {
+    less: './assets/css/common.less'
+  },
   /*
 	** Axios module configuration
 	*/
@@ -160,9 +165,7 @@ module.exports = {
 	** Build configuration
 	*/
   build: {
-    styleResources: {
-      less: './assets/css/common.less'
-    },
+    // optimization: { splitChunks: true },
     extractCSS: { allChunks: true },
     // 防止多次打包axios
     // vendor: ['axios'],
