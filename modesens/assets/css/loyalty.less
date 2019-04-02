@@ -1,4 +1,3 @@
-// @import 'common.less';
 .loyalty-con {
   font-size: @font-size;
 }
@@ -213,6 +212,12 @@
     }
   }
 }
+.card {
+  border: unset;
+  .card-body {
+    padding: 20px;
+  }
+}
 .questionsCon {
   margin-top: @sectionSpace;
   .title {
@@ -223,21 +228,17 @@
   .questionsBox {
     margin-top: @descSpace;
     padding: 0 150px;
+    font-size: 16px;
   }
 }
 .questionBox {
   margin-bottom: 30px;
   .question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     cursor: pointer;
     span {
-      font-size: 16px;
       font-weight: bold;
     }
     img {
-      // margin-top: 6px;
       width: 20px;
       transform: rotate(180deg);
     }
@@ -246,17 +247,8 @@
     }
   }
   .answers {
-    padding: @descSpace-s 0;
-  }
-  .answer {
-    padding: 0 20px;
-    font-size: 16px;
     font-weight: 300;
-    div {
-      font-size: 16px;
-    }
     a {
-      font-size: 16px;
       text-decoration: underline;
     }
   }
