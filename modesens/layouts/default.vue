@@ -150,7 +150,7 @@ export default {
       })
     }
     if (!this.$store.state.request) {
-      this.$store.dispatch('getRequest', this.$axios)
+      this.$store.dispatch('getRequest', this)
     }
     if (this.$store.state.login_status && !this.$store.state.lsuser) {
       this.$store.dispatch('getLsuser', this)
