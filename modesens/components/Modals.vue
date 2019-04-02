@@ -183,7 +183,6 @@
       hide-footer
       @shown="showNoticemd">
       <iframe
-        src="/notice/product/"
         width="100%"
         height="100%"
         frameborder="0"/>
@@ -195,7 +194,6 @@
       hide-footer
       @shown="showNoticemd">
       <iframe
-        src="/notice/me/"
         width="100%"
         height="100%"
         frameborder="0"/>

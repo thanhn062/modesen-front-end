@@ -33,29 +33,28 @@
           is-nav>
           <!-- 菜单分类 -->
           <!-- pc端 -->
-          <NavMenu v-if="$store.state.deviceType === 'pc'"/>
+          <NavMenu v-if="$store.state.deviceType==='pc'"/>
           <!-- 响应式 -->
-          <NavCategory v-else/>
+          <NavCategory
+            v-else
+            :countries="COUNTRIES"
+            :switchlocalcountry="i18nCookieChange"/>
           <!-- Right aligned nav items -->
-          <b-navbar-nav class="ml-auto">
+          <b-navbar-nav
+            v-if="$store.state.deviceType==='pc'"
+            class="ml-auto">
             <!-- COUNTRIES -->
             <b-nav-item-dropdown
               class="country-select-container"
               right
               no-caret>
               <template slot="button-content">
-                <!-- web -->
                 <i :class="'country-icon country-' + $i18n.country"/>
                 <span
                   v-if="COUNTRIES"
                   class="country-selected">
                   {{ COUNTRIES[$i18n.country.toUpperCase()] ? COUNTRIES[$i18n.country.toUpperCase()][1] : '' }}
                 </span>
-                <!-- 响应式 -->
-                <span class="country-category">{{ $t('common.COUNTRY') }}</span>
-                <img
-                  v-lazy="gconfig.SIDEBAR_MORE"
-                  alt="">
               </template>
               <b-dropdown-item
                 v-for="(opt,index) in COUNTRIES"
@@ -66,23 +65,7 @@
               </b-dropdown-item>
             </b-nav-item-dropdown>
             <!-- language -->
-            <b-nav-item-dropdown
-              v-if="$store.state.deviceType !== 'pc'"
-              class="language-dropdown"
-              no-caret>
-              <template slot="button-content">
-                {{ $t('common.LANGUAGE') }}
-                <img
-                  v-lazy="gconfig.SIDEBAR_MORE"
-                  alt="">
-              </template>
-              <b-dropdown-item
-                v-for="locale in $i18n.locales"
-                :key="locale.code"
-                :value="locale.code">{{ locale.name }}</b-dropdown-item>
-            </b-nav-item-dropdown>
             <b-form-select
-              v-else
               v-model="langSelected"
               class="language-select-container"
               @change="langChange">
@@ -108,9 +91,8 @@
               v-if="$store.state.lsuser"
               class="d-flex justify-content-between align-items-center authInfo">
               <a
-                v-b-modal.noticeproductmd
                 href="javascript:;"
-                @click="has_notice_p=false">
+                @click="openNoticeP">
                 <img
                   v-lazy="'/img/prd-update-20180504.svg'"
                   alt="">
@@ -119,9 +101,8 @@
                   class="ncount"/>
               </a>
               <a
-                v-b-modal.noticeusermd
                 href="javascript:;"
-                @click="has_notice_m=false">
+                @click="openNoticeM">
                 <img
                   v-lazy="'/img/social-update-20180504.svg'"
                   alt="">
@@ -380,6 +361,16 @@ export default {
           $('.searchres-box').css('max-height', search_h)
         })
       }, 500)
+    },
+    openNoticeP() {
+      this.has_notice_p = false
+      $('#noticeproductmd iframe').attr('src', '/notice/product/')
+      this.$root.$emit('bv::show::modal', 'noticeproductmd')
+    },
+    openNoticeM() {
+      this.has_notice_m = false
+      $('#noticeusermd iframe').attr('src', '/notice/me/')
+      this.$root.$emit('bv::show::modal', 'noticeusermd')
     },
     openSearchInput() {
       if (this.serachInputOpen === true) {
