@@ -161,16 +161,15 @@ export default {
     //ga
     if (!this.$store.state.lsuser || !this.$store.state.lsuser.is_staff) {
       if (this.$store.state.lsuser) {
-        this.$ga.event('send', 'pageview', {
+        this.$ga.page({
+          pageview: this.$route.fullPath,
           userId: this.$store.state.lsuser.uid
         })
-        this.$ga.event('set', 'dimension2', this.$store.state.lsuser.uid)
+        this.$ga.set('dimension2', this.$store.state.lsuser.uid)
       }
-      this.$ga.event(function(tracker) {
-        var gcid = tracker.get('clientId')
-        setCookie('gcid', gcid, 60)
-      })
-      this.$ga.event('set', 'dimension1', this.$cookies.get('gcid'))
+      let gcid = this.$ga.tracker.get('clientId')
+      this.$cookie.set('gcid', gcid, 60)
+      this.$ga.set('dimension1', this.$cookies.get('gcid'))
     } else {
       this.$ga.event()
     }
