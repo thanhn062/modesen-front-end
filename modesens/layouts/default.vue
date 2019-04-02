@@ -46,7 +46,6 @@ export default {
   },
   watch: {
     listenstage: function(ov, nv) {
-      console.log(this.$store.state)
       let createjs = document.createElement('script')
       if (this.$store.state.request.RCOUNTRY == 'cn') {
         let hm = createjs
@@ -61,7 +60,10 @@ export default {
             window._hmt.push(['_trackPageview', to.fullPath])
           } catch (e) {}
         })
-      } else if (this.$store.state.request.RCOUNTRY != 'cn') {
+      } else if (
+        this.$store.state.request.RCOUNTRY != 'cn' &&
+        (!this.$store.state.lsuser || !this.$store.state.lsuser.is_staff)
+      ) {
         // Facebook Pixel Code
         ;((f, b, e, v, n, t, s) => {
           if (f.fbq) return
@@ -150,14 +152,28 @@ export default {
         )
       })
     }
-    //ga
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this)
     }
     if (this.$store.state.login_status && !this.$store.state.lsuser) {
       this.$store.dispatch('getLsuser', this)
     }
+    //ga
+    if (!this.$store.state.lsuser || !this.$store.state.lsuser.is_staff) {
+      if (this.$store.state.lsuser) {
+        ga('send', 'pageview', { userId: this.$store.state.lsuser.uid })
+        ga('set', 'dimension2', this.$store.state.lsuser.uid)
+      }
+      ga(function(tracker) {
+        var gcid = tracker.get('clientId')
+        setCookie('gcid', gcid, 60)
+      })
+      ga('set', 'dimension1', this.$cookies.get('gcid'))
+    } else {
+      ga()
+    }
     if (this.$store.state.login_status) {
+      // firebase
       var firebase = require('firebase')
       firebase.initializeApp({
         apiKey: 'AIzaSyCgiJcGjK2JNt_o6UOEcPPUP2GvBjpsm80',
