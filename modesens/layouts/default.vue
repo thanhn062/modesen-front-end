@@ -25,6 +25,7 @@ import Modals from '~/components/Modals.vue'
 import Top from '~/components/Top.vue'
 import CustomerService from '~/components/CustomerService.vue'
 import Storefav from '~/components/Storefav.vue'
+import cookie from '~/assets/js/utils/cookie.js'
 export default {
   components: {
     Header,
@@ -135,23 +136,23 @@ export default {
   created() {},
   mounted() {
     // sw
-    // if ('serviceWorker' in navigator) {
-    //   window.addEventListener('load', function() {
-    //     navigator.serviceWorker.register('/sw.js').then(
-    //       function(registration) {
-    //         // Registration was successful
-    //         console.log(
-    //           'ServiceWorker registration successful with scope: ',
-    //           registration.scope
-    //         )
-    //       },
-    //       function(err) {
-    //         // registration failed :(
-    //         console.log('ServiceWorker registration failed: ', err)
-    //       }
-    //     )
-    //   })
-    // }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(
+          function(registration) {
+            // Registration was successful
+            console.log(
+              'ServiceWorker registration successful with scope: ',
+              registration.scope
+            )
+          },
+          function(err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err)
+          }
+        )
+      })
+    }
     if (!this.$store.state.request) {
       this.$store.dispatch('getRequest', this)
     }
@@ -177,9 +178,7 @@ export default {
         }
         var ExpireDate = new Date()
         ExpireDate.setTime(ExpireDate.getTime() + 60 * 24 * 3600 * 1000)
-        document.cookie =
-          'gcid =' + gcid + '; expires=' + 60 + ExpireDate.toGMTString() + ';'
-        ga('set', 'dimension1', gcid)
+        cookie.set('gcid', gcid, 60)
       })
     } else {
       this.$ga.event()
