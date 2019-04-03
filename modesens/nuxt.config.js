@@ -60,7 +60,6 @@ module.exports = {
   ],
 
   router: {
-    // base: '/vue/'
     // 在每页渲染前运行 middleware下 中间件的逻辑
     middleware: ['device']
   },
@@ -145,22 +144,6 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       endpoints: {
-  //         login: {
-  //           propertyName: 'access_token'
-  //         },
-  //         // user: { url: 'me', method: 'get', propertyName: 'data' },
-  //         logout: false
-  //       }
-  //     }
-  //   },
-  //   client_id: 'cNO3k5SqBdKtbZFHCduXzHTX1u5pz29gDRa0uitF',
-  //   client_secret:
-  //     'quBIP7yZJ5ysiupbaDcLOLOVLlPup5EQ5eBjXEQDj8VtcqQiyWfeBowkb7cjS43XRDgf5NvRY5jOY3qhTfp299S6JvFjDXK96oyrUyJaxJB1TzoL1eJK6ky2hDkNmSdn'
-  // },
   /*
 	** Build configuration
 	*/

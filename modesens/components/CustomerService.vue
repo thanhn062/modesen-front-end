@@ -14,7 +14,7 @@
   margin-top: 47px;
   margin-right: 10px;
   border-bottom: 1px solid transparent;
-  background: url(/img/20180929call_customer_service.svg) center center
+  background: url(~/static/img/20180929call_customer_service.svg) center center
     no-repeat;
   background-size: contain;
   background-size: 84%;
