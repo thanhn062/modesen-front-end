@@ -13,10 +13,8 @@ Vue.use(Meta)
 // 引入公共变量和方法
 import {gconfig} from '~/assets/js/gconfig.js'
 import localStorage from '~/assets/js/utils/localStorage.js'
-import cookie from '~/assets/js/utils/cookie.js'
 Vue.prototype.gconfig = gconfig;
 Vue.prototype.$localStorage = localStorage;
-Vue.prototype.$cookie = cookie;
 
 //浏览器端功能
 if (process.browser){

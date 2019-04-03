@@ -32,7 +32,8 @@ export default {
       '=' +
       encodeURIComponent(value) +
       ';expires=' +
-      (time === undefined ? '' : cur.toGMTString())
+      (time === undefined ? '' : cur.toGMTString()) +
+      '; path= /'
   },
   del: function(key) {
     //获取cookie
