@@ -149,7 +149,7 @@ var commonfn = {
           if (name.includes('description')) {
             content_txt = H1
           } else if (name.includes('url')) {
-            content_txt = 'https://test.modesens.com/loyalty/'
+            content_txt = 'https://modesens.com/loyalty/'
           } else if (name.includes('title')) {
             content_txt = TITLE
           } else if (name.includes('image')) {
