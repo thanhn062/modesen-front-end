@@ -35,10 +35,10 @@
           <!-- pc端 -->
           <NavMenu v-if="$store.state.deviceType==='pc'"/>
           <!-- 响应式 -->
-          <NavCategory
+          <!-- <NavCategory
             v-else
             :countries="COUNTRIES"
-            :switchlocalcountry="i18nCookieChange"/>
+            :switchlocalcountry="i18nCookieChange"/> -->
           <!-- Right aligned nav items -->
           <b-navbar-nav
             v-if="$store.state.deviceType==='pc'"
