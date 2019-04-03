@@ -210,6 +210,7 @@
     </b-modal>
     <!-- membership -->
     <b-modal
+      v-if="false"
       id="membershipMd"
       hide-header
       hide-footer>
@@ -230,9 +231,11 @@
       hide-footer>
       <button
         class="close"
-        @click="hideModelinkModal"><img
+        @click="hideModelinkModal">
+        <img
           v-lazy="'/img/close.svg'"
-          alt=""></button>  
+          alt="">
+      </button>  
       <div class="ass-head">
         <div>
           <img
@@ -410,6 +413,7 @@ export default {
     }
   },
   mounted() {
+    this.modelinkshare()
     // this.showMemberShip()
     this.showModelink()
     // this.showFcmodal()
@@ -578,7 +582,6 @@ export default {
     },
     share(target) {
       ssshare(
-        this.$store.state.lsuser.uid,
         target,
         1,
         this.ssurl,

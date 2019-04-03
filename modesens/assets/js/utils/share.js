@@ -18,7 +18,7 @@ var emurltmp = "mailto:?subject=Love this!&body=_ssdesp Find it at _ssurl";
 var qrurltmp = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=_ssurl"
 
 function copyToClipboard(text) {
-  	window.prompt(Vue.$t('share.urlshare'), text);
+  	window.prompt(v.$t('share.urlshare'), text);
 }
 
 function wxlogin(){
@@ -33,9 +33,9 @@ function wxlogin(){
     });
 }
 
-export function ssshare(lsuid, target, from, ssurl, ssurls, sstitle, ssdesp, ssimg){ //from: 1=fromemodelinkshare, 2=from === 2
+//from: 1=fromemodelinkshare, 2=from === 2
+export function ssshare(target, from, ssurl, ssurls, sstitle, ssdesp, ssimg, lsuid){
   console.log(v);
-  return
 	if(ssurl.indexOf('frommodelink') != -1){
 		ssurl = ssurl.replace('?frommodelink=1', "").replace('&frommodelink=1', "");
 	}else if(ssurl.indexOf('fromcoupon') != -1){
