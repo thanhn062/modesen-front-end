@@ -159,12 +159,17 @@
     // width: 750px;
     padding: 30px;
   }
+  .close {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+  }
   .ass-head {
     display: flex;
     justify-content: space-between;
     height: 99px;
     .modesens-logo {
-      width: 300px;
+      // width: 300px;
     }
     .smart-shopping {
       margin-top: 15px;
@@ -217,13 +222,14 @@
     margin: 0 auto;
     width: 633px;
     .carousel-item {
-      img {
-        margin: 0 auto;
-        width: 72% !important;
-        height: 285px;
-        &:last-child {
-          width: 90%;
-        }
+      height: 285px;
+    }
+    .item-img {
+      display: block;
+      margin: 0 auto;
+      width: 72% !important;
+      &:last-child {
+        width: 90%;
       }
     }
     .carousel-caption {
@@ -267,6 +273,7 @@
       font-size: 0;
       background-size: 20px auto;
       background-repeat: no-repeat;
+      cursor: pointer;
     }
     .mfb {
       background-image: url(/img/fb.png);
@@ -298,6 +305,11 @@
     .mqr {
       background-image: url(/img/qr.png);
     }
+  }
+}
+#qrmodal {
+  .modal-body {
+    text-align: center;
   }
 }
 #fcmmodal {

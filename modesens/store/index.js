@@ -13,7 +13,7 @@ export const state = () => ({
   rhints: {},//26个字母及#的搜索值,
   request: null,
   userLevel: null,
-  deviceType: ''
+  deviceType: ''  //设备类型
 })
 
 export const mutations = {

@@ -576,7 +576,8 @@ export const Wechat = {
   hm: '合作电商',
 };
 export const share = {
-  urlshare: '拷贝链接分享给你的好友'
+  urlshare: '拷贝链接分享给你的好友',
+  qrCodeShare: '扫二维码分享'
 }
 export const Storefav = {
   title: '成为ModeSens会员，领取你的福利奖励。',

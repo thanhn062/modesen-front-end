@@ -11,9 +11,7 @@
       @show="mdLoginshown">
       <button
         class="close"
-        @click="hideLoginModal"><img
-          v-lazy="'/img/close.svg'"
-          alt=""></button>
+        @click="hideLoginModal">x</button>
       <iframe
         width="100%"
         height="100%"
@@ -216,31 +214,28 @@
       hide-footer>
       <button
         class="close"
-        @click="hideMembershipModal"><img
-          v-lazy="'/img/close.svg'"
-          alt=""></button>
+        @click="hideMembershipModal">x</button>
       <div class="membership-desc">{{ $t('Modals.MakeModeSens') }}</div>
       <div class="membership-btn"><a href="/accounts/signup/?next=/">
         <button class="btn btn-primary">{{ $t('Modals.StartEarningToday') }}</button>
       </a></div>
     </b-modal>
     <b-modal
+      v-if="$store.state.deviceType==='pc'"
       id="abtestbassistant"
       size="lg"
       hide-header
       hide-footer>
       <button
         class="close"
-        @click="hideModelinkModal">
-        <img
-          v-lazy="'/img/close.svg'"
-          alt="">
-      </button>  
+        @click="hideModelinkModal">x</button>
       <div class="ass-head">
         <div>
           <img
             v-lazy="'/img/20180930modesenslogo.png'"
             class="modesens-logo"
+            width="300"
+            height="37"
             alt="">
           <div class="smart-shopping">
             <div class="meetS">Meet your premier fashion shopping assistant</div>
@@ -274,35 +269,38 @@
             <img
               v-lazy="'/img/20180928availability.png'"
               slot="img"
+              class="item-img"
               alt="">
           </b-carousel-slide>
           <b-carousel-slide>
             <img
               v-lazy="'/img/20180928Coupon_1.png'"
               slot="img"
+              class="item-img"
               alt="">
           </b-carousel-slide>
           <b-carousel-slide>
             <img
               v-lazy="'/img/20180928assistant2_1.png'"
               slot="img"
+              class="item-img"
               alt="">
           </b-carousel-slide>
           <b-carousel-slide>
             <img
               v-lazy="'/img/20180928add_to_collection_720.png'"
               slot="img"
+              class="item-img"
               alt="">
           </b-carousel-slide>
           <b-carousel-slide>
             <img
               v-lazy="'/img/20180928want1.png'"
               slot="img"
+              class="item-img"
               alt="">
           </b-carousel-slide>
-          <b-carousel-slide
-            img-blank
-            img-alt="Blank image">
+          <b-carousel-slide>
             <div class="description-plug-in">
               <h5>NEVER OVERPAY AGAIN</h5>
               <p class="modesens-shopping">★ ModeSens Shopping Assistant helps you save time and money by finding the lowest price and availabilities for a product when you shop for fashion online. Simply install the extension and view a product page to to find all information from all other stores carrying the same product.</p>
@@ -345,7 +343,7 @@
         <span
           :title="$t('Modals.ShareTr')"
           class="mtb"
-          @click="share('tb')">TB</span>
+          @click="share('tt')">TB</span>
         <span
           :title="$t('Modals.ShareReddit')"
           class="mrd"
@@ -363,10 +361,21 @@
           class="mlk"
           @click="share('lk')">LK</span>
         <span
+          v-b-modal.qrmodal
           :title="$t('Modals.ShareQr')"
-          class="mqr"
-          @click="share('fb')">QR</span>
+          class="mqr">QR</span>
       </div>
+    </b-modal>
+    <b-modal
+      id="qrmodal"
+      :title="$t('share.qrCodeShare')"
+      hide-footer
+      @show="share('qr')">
+      <img
+        src=""
+        width="200"
+        height="200"
+        alt="">
     </b-modal>
     <b-modal
       id="fcmmodal"
@@ -413,10 +422,7 @@ export default {
     }
   },
   mounted() {
-    this.modelinkshare()
-    // this.showMemberShip()
     this.showModelink()
-    // this.showFcmodal()
   },
   methods: {
     mdLoginshown(evt) {
@@ -582,6 +588,7 @@ export default {
     },
     share(target) {
       ssshare(
+        this,
         target,
         1,
         this.ssurl,
@@ -591,19 +598,6 @@ export default {
         this.ssimg
       )
     },
-    // showFcmodal() {
-    //   if (
-    //     this.$store.state.login_status &&
-    //     this.$cookies.get('modelinkmodal') &&
-    //     !this.$cookies.get('ms_notification')
-    //   ) {
-    //     setTimeout(() => {
-    //       this.$root.$emit('bv::show::modal', 'fcmmodal')
-    //       ga('send', 'event', 'FCM', 'FCMModalShow')
-    //       this.$cookies.set('ms_notification', true, 1)
-    //     }, 15000)
-    //   }
-    // },
     requestFCMToken() {
       this.$partent.requestFCMToken
       // ga('send', 'event', 'Modal-fcmmodal', 'Yes')
