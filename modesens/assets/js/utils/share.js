@@ -3,11 +3,11 @@ let v = new Vue();
 
 // Requred parameters: ssurl, ssurls, sstitle, ssdesp, ssimg
 let piurltmp = "http://pinterest.com/pin/create/bookmarklet/?url=_ssurl&description=_ssdesp&media=_ssimg";
-//let fburltmp = "http://www.facebook.com/sharer.php?u=_ssurl&t=_ssdesp&p[images][0]=_ssimg";
+let fburltmp = "";
+//fburltmp = "http://www.facebook.com/sharer.php?u=_ssurl&t=_ssdesp&p[images][0]=_ssimg";
 if(v.ISWECHATLITE !== 1){
-	let fburltmp = "http://www.facebook.com/sharer.php?s=100&p[url]=_ssurl&p[images][0]=_ssimg&p[title]=_sstitle&p[summary]=_ssdesp"
+	 fburltmp = "http://www.facebook.com/sharer.php?s=100&p[url]=_ssurl&p[images][0]=_ssimg&p[title]=_sstitle&p[summary]=_ssdesp"
 }
-//let fburltmp = "https://www.facebook.com/dialog/feed?app_id=822420867799662&link=_ssurl&picture=_ssimg&name=_sstitle&description=_ssdesp&redirect_uri=_ssurls";
 let twurltmp = "https://twitter.com/share?url=_ssurls&text=_ssdesp&via=modesens_com";
 let ggurltmp = "https://plus.google.com/share?url=_ssurl";
 let tturltmp = "http://www.tumblr.com/share/link?url=_ssurl&name=_sstitle&description=_ssdesp";

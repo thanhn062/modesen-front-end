@@ -166,7 +166,6 @@
       id="signoutmodal"
       :title="$t('common.SeeYouSoon')"
       :ok-title="$t('common.SignOut')"
-      size="sm"
       ok-only
       @ok="signout">
       <img
