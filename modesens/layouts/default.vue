@@ -251,7 +251,6 @@ export default {
       $('.wrapper-mask').addClass('hidden')
     },
     sendTokenToServer(token) {
-      console.log(token)
       let old_token = this.$cookies.get('ms_notification')
       let lsuid = this.$cookies.get(this.gconfig.LSUID)
       this.$cookies.set('ms_notification', token + lsuid, 1)

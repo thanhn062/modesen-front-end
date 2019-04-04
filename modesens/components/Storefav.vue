@@ -165,7 +165,7 @@ export default {
       height: 44px;
       border-radius: 50%;
       float: right;
-      background-image: url(https://cdn.modesens.com/static/img/store_fav/20180523favopen.svg);
+      background-image: url(~/static/img/store_fav/20180523favopen.svg);
       background-repeat: no-repeat;
       background-position: 50%, 50%;
       transition: transform 0.5s cubic-bezier(1, 0.01, 1, 0.5);
@@ -216,7 +216,7 @@ export default {
       left: 0;
       width: 14px;
       height: 14px;
-      background: url(https://cdn.modesens.com/static/img/store_fav/20180523star.svg);
+      background: url(~/static/img/store_fav/20180523star.svg);
     }
   }
   .signupbtn {
