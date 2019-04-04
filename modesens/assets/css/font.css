@@ -9,35 +9,35 @@ Thin: 100
   font-family: 'SuisseIntl';
   font-weight: bolder;
   font-display: swap;
-  src: url('../fonts/SuisseIntl-Medium.otf');
+  src: url('~/static/fonts/SuisseIntl-Medium.otf');
 }
 
 @font-face {
   font-family: 'SuisseIntl';
   font-weight: bold;
   font-display: swap;
-  src: url('../fonts/SuisseIntl-Medium.otf');
+  src: url('~/static/fonts/SuisseIntl-Medium.otf');
 }
 
 @font-face {
   font-family: 'SuisseIntl';
   font-weight: normal;
   font-display: swap;
-  src: url('../fonts/SuisseIntl-Regular.otf');
+  src: url('~/static/fonts/SuisseIntl-Regular.otf');
 }
 
 @font-face {
   font-family: 'SuisseIntl';
   font-weight: 300;
   font-display: swap;
-  src: url('../fonts/SuisseIntl-Light.otf');
+  src: url('~/static/fonts/SuisseIntl-Light.otf');
 }
 
 @font-face {
   font-family: 'SuisseIntl';
   font-weight: 100;
   font-display: swap;
-  src: url('../fonts/SuisseIntl-Thin.otf');
+  src: url('~/static/fonts/SuisseIntl-Thin.otf');
 }
 /* latin-ext */
 @font-face {
