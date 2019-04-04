@@ -366,11 +366,11 @@ export default {
     let H1 =
       this.$t('Wechat.f_categories') + '|' + this.$t('Wechat.m_categories')
     let TITLE = 'ModeSens'
-    let request = this.$store.state.request
-    if (request) {
-      let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
-      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
-    }
+    // let request = this.$store.state.request
+    // if (request) {
+    let MS_LOGO = 'https://cdn.modesens.com' + this.gconfig.MS_LOGONEW
+    headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    // }
     return headobj
   },
   layout: 'noframe',
