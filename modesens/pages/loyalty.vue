@@ -284,7 +284,7 @@ export default {
     let TITLE = this.$t('loyalty.loyaltyTitle') + ' | ModeSens'
     // let request = this.$store.state.request
     // if (request) {
-    let MS_LOGO = 'https://cdn.modesens.com' + this.gconfig.MS_LOGONEW
+    let MS_LOGO = this.gconfig.MS_LOGONEW
     headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
     // }
     return headobj
