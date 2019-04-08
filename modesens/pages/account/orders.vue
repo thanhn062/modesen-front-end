@@ -24,11 +24,11 @@ export default {
     let headobj = {}
     let H1 = this.$t('accountLoyalty.my_order')
     let TITLE = this.$t('nav.MyOrders') + ' | ModeSens'
-    // let request = this.$store.state.request
-    // if (request) {
-    let MS_LOGO = 'https://cdn.modesens.com' + this.gconfig.MS_LOGONEW
-    headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
-    // }
+    let request = this.$store.state.request
+    if (request) {
+      let MS_LOGO = 'https://cdn.modesens.com' + this.gconfig.MS_LOGONEW
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    }
     return headobj
   },
   components: {

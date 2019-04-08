@@ -167,11 +167,11 @@ export default {
     }
     this.$t('accountLoyalty.my_loyalty')
     let TITLE = this.$t('annual.annualTitle') + ' | ModeSens'
-    // let request = this.$store.state.request
-    // if (request) {
-    let MS_LOGO = 'https://cdn.modesens.com' + this.gconfig.MS_LOGONEW
-    headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
-    // }
+    let request = this.$store.state.request
+    if (request) {
+      let MS_LOGO = 'https://cdn.modesens.com' + this.gconfig.MS_LOGONEW
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    }
     return headobj
   },
   filters: {
