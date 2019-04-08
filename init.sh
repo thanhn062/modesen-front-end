@@ -1,8 +1,6 @@
 #/bin/sh
 
-cd /modesens/modesens-frontend/
-git fetch origin tmp
-git checkout tmp
+/bin/cp -rf /modesens/modesens-frontend/nginx/modesens_us.conf /etc/nginx/conf.d/modesens.conf
 cd /modesens/modesens-frontend/modesens
 rm -rf .nuxt/*
 npm install
