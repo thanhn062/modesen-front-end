@@ -31,7 +31,7 @@ echo
 echo '#########################'
 echo
 echo "4. update machines..."
-python ~/modesens-web/ladystyle/manage.py machines -s ms -r cn
+python ~/modesens-web/ladystyle/manage.py machines -s ms
 
 
 echo
