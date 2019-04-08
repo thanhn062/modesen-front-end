@@ -118,14 +118,16 @@
                 right
                 no-caret>
                 <template slot="text">
-                  <a href="javascript:;"><img
-                    v-lazy="lsuser.icon"
-                    :alt="lsuser.username"></a>
+                  <UserIcon
+                    :url="lsuser.icon"
+                    :ismaster="false"
+                    :isoffical="false"
+                    style="width:20px;height:20px;"/>
                 </template>
                 <b-dropdown-item href="/account/loyalty/">{{ $t('nav.MyLoyalty') }}</b-dropdown-item>
                 <b-dropdown-item :href="'/u/'+lsuser.username">{{ $t('nav.MyCloset') }}</b-dropdown-item>
                 <b-dropdown-item href="/dashboard/">{{ $t('nav.MyDashboard') }}</b-dropdown-item>
-                <b-dropdown-item href="/product/coupons/">{{ $t('nav.MyOffers') }}</b-dropdown-item>
+                <b-dropdown-item href="/coupons/">{{ $t('nav.MyOffers') }}</b-dropdown-item>
                 <b-dropdown-item href="/account/orders/">{{ $t('nav.MyOrders') }}</b-dropdown-item>
                 <b-dropdown-item href="/invite/">{{ $t('common.InviteFriends') }}</b-dropdown-item>
                 <b-dropdown-item href="/accounts/profile/">{{ $t('common.Settings') }}</b-dropdown-item>
@@ -207,11 +209,12 @@
                         :href="'/u/'+user.username+'/'"
                         target="_blank"
                         data-ga-click="HeaderSearch-userIcon--">
-                        <img
-                          v-lazy="user.icon"
-                          :title="$t('nav.Visit')+user.username.toLowerCase()+$t('nav.scloset')"
-                          alt="">
-                        <span :class=" user.isofficial ? 'official-icon' : 'mstar-icon'"/>
+                        <UserIcon
+                          :url="user.icon"
+                          :ismaster="user.ismstar"
+                          :isoffical="user.isofficial"
+                          :cornericonstyle="'right:-6px;width:20px;height:20px;'"
+                          style="width:44px;height:44px;"/>
                         <div class="user-name">{{ user.username.toLowerCase() }}</div>
                       </a>
                     </li>
@@ -259,11 +262,13 @@ import NavMenu from '~/components/header/NavMenu'
 import NavCategory from '~/components/header/NavCategory'
 import InstallBtn from '~/components/extention/InstallBtn'
 import { getBrowse } from '~/assets/js/utils/utils.js'
+import UserIcon from '~/components/UserIcon'
 export default {
   components: {
     NavCategory,
     NavMenu,
-    InstallBtn
+    InstallBtn,
+    UserIcon
   },
   filters: {
     capitalize(value) {

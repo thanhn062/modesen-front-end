@@ -81,6 +81,7 @@ export const Footer = {
   Addtobrowser: 'Add to browser',
   Womens: "Women's",
   Mens: "Men's",
+  Sitemap: 'Sitemap'
 };
 export const loyalty = {
   loyaltyTitle: 'Loyalty',

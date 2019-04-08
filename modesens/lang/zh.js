@@ -81,6 +81,7 @@ export const Footer = {
   Addtobrowser: '添加浏览器扩展程序',
   Womens: "女士",
   Mens: "男士",
+  Sitemap: '网站地图'
 };
 export const loyalty = {
   loyaltyTitle: '会员制度',

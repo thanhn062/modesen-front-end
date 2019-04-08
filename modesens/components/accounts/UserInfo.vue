@@ -4,9 +4,12 @@
       v-if="lsuser"
       class="userInfoinnerBox">
       <div class="userinfo">
-        <img 
-          v-lazy="lsuser.icon" 
-          alt="">
+        <UserIcon
+          v-if="lsuser"
+          :url="lsuser.icon"
+          :ismaster="lsuser.ismstar"
+          :isoffical="lsuser.isofficial"
+          style="width:150px;height:150px;"/>
         <div class="info">
           <div class="user_name">{{ lsuser.username }}</div>
           <div class="user_bio">{{ lsuser.bio }}</div>
@@ -65,7 +68,11 @@
   </div>
 </template>
 <script>
+import UserIcon from '~/components/UserIcon'
 export default {
+  components: {
+    UserIcon
+  },
   data() {
     return {
       userInfo: {
