@@ -118,9 +118,11 @@
                 right
                 no-caret>
                 <template slot="text">
-                  <a href="javascript:;"><img
-                    v-lazy="lsuser.icon"
-                    :alt="lsuser.username"></a>
+                  <UserIcon
+                    :url="lsuser.icon"
+                    :ismaster="false"
+                    :isoffical="false"
+                    style="width:20px;height:20px;"/>
                 </template>
                 <b-dropdown-item href="/account/loyalty/">{{ $t('nav.MyLoyalty') }}</b-dropdown-item>
                 <b-dropdown-item :href="'/u/'+lsuser.username">{{ $t('nav.MyCloset') }}</b-dropdown-item>
