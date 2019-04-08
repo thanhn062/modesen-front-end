@@ -506,6 +506,7 @@ export default {
     async signout() {
       this.$cookies.remove(this.gconfig.ACCESS_TOKEN)
       this.$cookies.remove(this.gconfig.LSUID)
+      this.$cookies.remove(this.gconfig.SESSIONID)
       this.$store.commit('logout')
       this.$store.commit('removeLsuser')
       window.open('/', '_self')
