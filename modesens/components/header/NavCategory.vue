@@ -16,16 +16,16 @@
           accordion="my-accordion">
           <b-card-body>
             <a
-              href="/product/women/clothing/"
+              href="/shop-women-clothing/"
               data-ga-click="navWomen-clothing--">{{ $t('nav.CLOTHING') }}</a>
             <a
-              href="/product/women/bags/"
+              href="/shop-women-bags/"
               data-ga-click="navWomen-bags--">{{ $t('nav.BAGS') }}</a>
             <a
-              href="/product/women/shoes/"
+              href="/shop-women-shoes/"
               data-ga-click="navWoemn-shoes--">{{ $t('nav.SHOES') }}</a>
             <a
-              href="/product/women/accessories/"
+              href="/shop-women-accessories/"
               data-ga-click="navWomen-accessories--">{{ $t('nav.ACCESSORIES') }}</a>
             <a
               v-b-modal.noticemodal1
@@ -33,10 +33,10 @@
               data-ga-click="navWomen-beauty--">{{ $t('nav.BEAUTY') }}</a>
             <a
               v-else
-              href="/product/women/beauty/"
+              href="/shop-women-beauty/"
               data-ga-click="navWomen-beauty--">{{ $t('nav.BEAUTY') }}</a>
             <a
-              href="/product/women/sale/?orderby=-betterprice_time"
+              href="/shop-women-sale/?orderby=-betterprice_time"
               data-ga-click="navWomen-sale--">{{ $t('nav.SALE') }}</a>
           </b-card-body>
         </b-collapse>
@@ -56,16 +56,16 @@
           accordion="my-accordion">
           <b-card-body>
             <a
-              href="/product/men/clothing/"
+              href="/shop-men-clothing/"
               data-ga-click="navMen-clothing--">{{ $t('nav.CLOTHING') }}</a>
             <a
-              href="/product/men/bags/"
+              href="/shop-men-bags/"
               data-ga-click="navMen-bags--">{{ $t('nav.BAGS') }}</a>
             <a
-              href="/product/men/shoes/"
+              href="/shop-men-shoes/"
               data-ga-click="navMen-shoes--">{{ $t('nav.SHOES') }}</a>
             <a
-              href="/product/men/accessories/"
+              href="/shop-men-accessories/"
               data-ga-click="navMen-accessories--">{{ $t('nav.ACCESSORIES') }}</a>
             <a
               v-b-modal.noticemodal1
@@ -73,10 +73,10 @@
               data-ga-click="navMen-grooming--">{{ $t('nav.GROOMING') }}</a>
             <a
               v-else
-              href="/product/men/grooming/"
+              href="/shop-men-grooming/"
               data-ga-click="navMen-grooming--">{{ $t('nav.GROOMING') }}</a>
             <a
-              href="/product/men/sale/?orderby=-betterprice_time"
+              href="/shop-men-sale/?orderby=-betterprice_time"
               data-ga-click="navMen-sale--">{{ $t('nav.SALE') }}</a>
           </b-card-body>
         </b-collapse>
@@ -96,13 +96,13 @@
           accordion="my-accordion">
           <b-card-body>
             <a
-              href="/product/coupons/"
+              href="/coupons/"
               data-ga-click="navOffers-COUPONS--">{{ $t('nav.COUPONS') }}</a>
             <a
-              href="/product/women/sale/"
+              href="/shop-women-sale/"
               data-ga-click="navOffers-WOMENSSALE--">{{ $t('nav.WOMENSSALE') }}</a>
             <a
-              href="/product/men/sale/"
+              href="/shop-men-sale/"
               data-ga-click="navOffers-MENSSALE--">{{ $t('nav.MENSSALE') }}</a>
           </b-card-body>
         </b-collapse>

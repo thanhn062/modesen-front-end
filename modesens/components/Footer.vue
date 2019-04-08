@@ -23,7 +23,7 @@
             <ul class="contact">
               <li><a href="/about/">{{ $t('Footer.aboutus') }}</a></li>
               <li><a href="/influencer/">{{ $t('Footer.influencerpro') }}</a></li>
-              <li>
+              <!-- <li>
                 <a
                   v-if="lsuser"
                   href="/invite/">{{ $t('Footer.invitefd') }}</a>
@@ -31,8 +31,9 @@
                   v-b-modal.inviteModal
                   v-else
                   href="javascript:;">{{ $t('Footer.invitefd') }}</a>
-              </li>
+              </li> -->
               <li><a href="/stores/">{{ $t('Footer.partnerstores') }}</a></li>
+              <li><a href="/fashion-sitemap/">{{ $t('Footer.Sitemap') }}</a></li>
             </ul>
           </div>
         </div>
