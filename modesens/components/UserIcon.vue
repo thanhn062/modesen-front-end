@@ -7,7 +7,7 @@
         alt="">
     </div>
     <img
-      v-lazy="isoffical ? 'https://mds0.com/static/img/official.png' : 'https://mds0.com/static/img/mstar.png'"
+      v-lazy="isoffical ? '/img/official.png' : '/img/mstar.png'"
       v-if="isoffical || ismaster"
       :style="cornericonstyle"
       class="corner-icon"
