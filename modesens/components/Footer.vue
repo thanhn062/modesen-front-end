@@ -91,7 +91,6 @@
           class="wrap-item">
           <h6 class="footer-title">{{ $t('Footer.classtitle6') }}</h6>
           <div id="footer-form">
-            <label for="signup-email"/>
             <input
               id="signup-email"
               :placeholder="$t('common.emailaddress')"

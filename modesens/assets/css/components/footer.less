@@ -26,9 +26,17 @@
     font-size: 1.1em;
     letter-spacing: 0.2rem;
   }
+  #iemail {
+    width: 100% !important;
+    border: 0 !important;
+    border-bottom: 0.5px solid #252525 !important;
+    padding: 6px 0 !important;
+  }
 }
 .install-box {
   a {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     &:hover {
       text-decoration: none;
@@ -43,6 +51,7 @@
       width: 108px;
       vertical-align: middle;
       font-size: 12px;
+      line-height: 17px;
     }
   }
   .iosimg {
@@ -55,6 +64,9 @@
       background: url('~/static/img/20181127add_browse.svg') no-repeat round;
     }
   }
+}
+.install-box:nth-child(2) {
+  margin-top: 10px;
 }
 .footer-logo {
   width: 150px;
