@@ -28,6 +28,7 @@ Vue.mixin({
     }
 
     // hreflang tags for countries
+    // TODO: request.CANONICAL_URL in request.get_full_path
     const link = this.$i18n.countries
       .map(country => {
         if (country[LOCALE_ISO_KEY] && country[LOCALE_ISO_KEY] != currentLocaleData[LOCALE_ISO_KEY] && country[LOCALE_DOMAIN_KEY]) {
