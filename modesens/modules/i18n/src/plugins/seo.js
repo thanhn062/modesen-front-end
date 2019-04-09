@@ -79,9 +79,6 @@ Vue.mixin({
           content: locale[LOCALE_ISO_KEY].replace(/-/g, '_')
         }))
     )
-    // console.log(htmlAttrs)
-    // console.log(link)
-    // console.log(meta)
 
     return {
       htmlAttrs,

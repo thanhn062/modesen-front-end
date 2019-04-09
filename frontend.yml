@@ -23,7 +23,7 @@
     command: "npm install"
 
   - name: get nuxt server scripts from s3.
-    command: "aws s3 sync s3://modesens/nuxt/cn /modesens/modesens-frontend/modesens/.nuxt --delete --cache-control max-age=0"
+    command: "aws s3 sync s3://modesens/nuxt /modesens/modesens-frontend/modesens/.nuxt --delete --cache-control max-age=0"
 
   - name: pm2 restart.
     command: "pm2 startOrReload server.json"

@@ -21,7 +21,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===0 }"
-              href="/product/women/clothing/"
+              href="/shop-women-clothing/"
               data-ga-click="navWomen-CLOTHING--">{{ $t('nav.CLOTHING') }}</a>
             <ul
               v-if="secondLevelIndex===0"
@@ -32,53 +32,53 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/women/clothing/?orderby=-found_datetime"
+                      href="/shop-women-clothing/?orderby=-found_datetime"
                       data-ga-click="navClothing-WomenNewArrivals--">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/"
+                      href="/shop-women-clothing/"
                       data-ga-click="navClothing-WomenCloth--">{{ $t('nav.ALLCLOTHING') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/beachwear/"
+                      href="/shop-women-beachwear/"
                       data-ga-click="navClothing-WomenBeachwear--">{{ $t('nav.BEACHWEAR') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/dresses/"
+                      href="/shop-women-dresses/"
                       data-ga-click="navClothing-WomenDress--">{{ $t('nav.DRESSES') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/tops/"
+                      href="/shop-women-tops/"
                       data-ga-click="navClothing-WomenTops--">{{ $t('nav.TOPS') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/skirts/"
+                      href="/shop-women-skirts/"
                       data-ga-click="navClothing-WomenSkirts--">{{ $t('nav.SKIRTS') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/jeans/"
+                      href="/shop-women-jeans/"
                       data-ga-click="navClothing-WomenJeans--">{{ $t('nav.JEANS') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/pants/"
+                      href="/shop-women-pants/"
                       data-ga-click="navClothing-WomenPants--">{{ $t('nav.PANTS') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/jumpsuits/"
+                      href="/shop-women-jumpsuits/"
                       data-ga-click="navClothing-WomenJumpsuits--">{{ $t('nav.JUMPSUITS') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/shorts/"
+                      href="/shop-women-shorts/"
                       data-ga-click="navClothing-WomenShorts--">{{ $t('nav.SHORTS') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/coats/"
+                      href="/shop-women-coats/"
                       data-ga-click="navClothing-WomenCoats--">{{ $t('nav.COATS') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/jackets/"
+                      href="/shop-women-jackets/"
                       data-ga-click="navClothing-WomenJackets--">{{ $t('nav.JACKETS') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/knitwear/"
+                      href="/shop-women-knitwear/"
                       data-ga-click="navClothing-WomenKnitwear--">{{ $t('nav.KNITWEAR') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/lingerie/"
+                      href="/shop-women-lingerie/"
                       data-ga-click="navClothing-WomenLingerie--">{{ $t('nav.LINGERIE') }}</a></li>
                     <li><a
-                      href="/product/women/clothing/hosiery/"
+                      href="/shop-women-hosiery/"
                       data-ga-click="navClothing-WomenHosiery--">{{ $t('nav.HOSIERY') }}</a></li>
                     <li><a
                       class="subnav-sale"
-                      href="/product/women/clothing/sale/?orderby=-betterprice_time"
+                      href="/shop-women-clothing-sale/?orderby=-betterprice_time"
                       data-ga-click="navClothing-WomenSale--">{{ $t('nav.SALE') }}</a></li>
                   </ul>
                 </div>
@@ -141,7 +141,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===1 }"
-              href="/product/women/bags/"
+              href="/shop-women-bags/"
               data-ga-click="navWomen-BAGS--">{{ $t('nav.BAGS') }}</a>
             <ul
               v-if="secondLevelIndex===1"
@@ -152,22 +152,22 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/women/bags/?orderby=-found_datetime"
+                      href="/shop-women-bags/?orderby=-found_datetime"
                       data-ga-click="navBags-WomenNewArrivals">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/"
+                      href="/shop-women-bags/"
                       data-ga-click="navBags-WomenAll">{{ $t('nav.ALLBAGS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/backpacks/"
+                      href="/shop-women-backpacks/"
                       data-ga-click="navBags-WomenBackpacks">{{ $t('nav.BACKPACKS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/clutches/"
+                      href="/shop-women-clutches/"
                       data-ga-click="navBags-WomenClutches">{{ $t('nav.CLUTCHES') }}</a></li>
                     <li><a
-                      href="/product/women/bags/satchels/"
+                      href="/shop-women-satchels/"
                       data-ga-click="navBags-WomenSatchels">{{ $t('nav.SATCHELS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/totes/"
+                      href="/shop-women-totes/"
                       data-ga-click="navBags-WomenTotes">{{ $t('nav.TOTES') }}</a></li>
                     <li><a
                       href="/product/women/bags/crossbody-bags/"
@@ -185,14 +185,14 @@
                       href="/product/women/bags/belt-bags/"
                       data-ga-click="navBags-WomenBelt">{{ $t('nav.BELTBAGS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/wallets/"
+                      href="/shop-women-wallets/"
                       data-ga-click="navBags-Wallet">{{ $t('nav.WALLETS') }}</a></li>
                     <li><a
                       href="/product/women/bags/bag-accessories/"
                       data-ga-click="navBags-WomenBagAccessories">{{ $t('nav.BAGACCESSORIES') }}</a></li>
                     <li><a
                       class="subnav-sale"
-                      href="/product/women/bags/sale/?orderby=-betterprice_time"
+                      href="/shop-women-bags-sale/?orderby=-betterprice_time"
                       data-ga-click="navBags-WomenSale">{{ $t('nav.SALE') }}</a></li>
                   </ul>
                 </div>
@@ -243,7 +243,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===2 }"
-              href="/product/women/shoes/"
+              href="/shop-women-shoes/"
               data-ga-click="navWomen-SHOES">{{ $t('nav.SHOES') }}</a>
             <ul
               v-if="secondLevelIndex===2"
@@ -254,38 +254,38 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/women/shoes/?orderby=-found_datetime"
+                      href="/shop-women-shoes/?orderby=-found_datetime"
                       data-ga-click="navShoes-WomenNewArrivals--">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/women/shoes/"
+                      href="/shop-women-shoes/"
                       data-ga-click="navShoes-WomenAll--">{{ $t('nav.ALLSHOES') }}</a></li>
                     <li><a
-                      href="/product/women/shoes/boots/"
+                      href="/shop-women-boots/"
                       data-ga-click="navShoes-WomenBoots--">{{ $t('nav.BOOTS') }}</a></li>
                     <li><a
-                      href="/product/women/shoes/flats/"
+                      href="/shop-women-flats/"
                       data-ga-click="navShoes-WomenFlats--">{{ $t('nav.FLATS') }}</a></li>
                     <li><a
-                      href="/product/women/shoes/pumps/"
+                      href="/shop-women-pumps/"
                       data-ga-click="navShoes-WomenPumps--">{{ $t('nav.PUMPS') }}</a></li>
                     <li><a
-                      href="/product/women/shoes/sandals/"
+                      href="/shop-women-sandals/"
                       data-ga-click="navShoes-WomenSandals--">{{ $t('nav.SANDALS') }}</a></li>
                     <li><a
-                      href="/product/women/shoes/sneakers/"
+                      href="/shop-women-sneakers/"
                       data-ga-click="navShoes-WomenSneakers--">{{ $t('nav.SNEAKERS') }}</a></li>
                     <li><a
-                      href="/product/women/shoes/loafers/"
+                      href="/shop-women-loafers/"
                       data-ga-click="navShoes-WomenLoafers--">{{ $t('nav.LOAFERS') }}</a></li>
                     <li><a
-                      href="/product/women/shoes/platforms/"
+                      href="/shop-women-platforms/"
                       data-ga-click="navShoes-WomenPlatforms--">{{ $t('nav.PLATFORMS') }}</a></li>
                     <li><a
-                      href="/product/women/shoes/wedges/"
+                      href="/shop-women-wedges/"
                       data-ga-click="navShoes-WomenWedges--">{{ $t('nav.WEDGES') }}</a></li>
                     <li><a
                       class="subnav-sale"
-                      href="/product/women/shoes/sale/?orderby=-betterprice_time"
+                      href="/shop-women-shoes-sale/?orderby=-betterprice_time"
                       data-ga-click="navShoes-WomenSale--">{{ $t('nav.SALE') }}</a></li>
                   </ul>
                 </div>
@@ -336,7 +336,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===3 }"
-              href="/product/women/accessories/"
+              href="/shop-women-accessories/"
               data-ga-click="navWomen-ACCESSORIES--">{{ $t('nav.ACCESSORIES') }}</a>
             <ul
               v-if="secondLevelIndex===3"
@@ -347,49 +347,49 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/women/accessories/?orderby=-found_datetime"
+                      href="/shop-women-accessories/?orderby=-found_datetime"
                       data-ga-click="navAccessories-WomenNewArrivals--">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/"
+                      href="/shop-women-accessories/"
                       data-ga-click="navAccessories-WomenAll--">{{ $t('nav.ALLACCESSORIES') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/jewelry/"
+                      href="/shop-women-jewelry/"
                       data-ga-click="navAccessories-WomenJewelry--">{{ $t('nav.JEWELRY') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/watches/"
+                      href="/shop-women-watches/"
                       data-ga-click="navAccessories-WomenWatch--">{{ $t('nav.WATCHES') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/sunglasses/"
+                      href="/shop-women-sunglasses/"
                       data-ga-click="navAccessories-WomenSunglasses--">{{ $t('nav.SUNGLASSES') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/opticals/"
+                      href="/shop-women-opticals/"
                       data-ga-click="navAccessories-WomenOpticals--">{{ $t('nav.OPTICALS') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/hats/"
+                      href="/shop-women-hats/"
                       data-ga-click="navAccessories-WomenHat--">{{ $t('nav.HATS') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/belts/"
+                      href="/shop-women-belts/"
                       data-ga-click="navAccessories-WomenBelt--">{{ $t('nav.BELTS') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/gloves/"
+                      href="/shop-women-gloves/"
                       data-ga-click="navAccessories-WomenGlove--">{{ $t('nav.GLOVES') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/scarves/"
+                      href="/shop-women-scarves/"
                       data-ga-click="navAccessories-WomenScarf--">{{ $t('nav.SCARVES') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/wallets/"
+                      href="/shop-women-wallets/"
                       data-ga-click="navAccessories-WomenWallet--">{{ $t('nav.WALLETS') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/keychains/"
+                      href="/shop-women-keychains/"
                       data-ga-click="navAccessories-WomenKeychain--">{{ $t('nav.KEYCHAINS') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/tie/"
+                      href="/shop-women-tie/"
                       data-ga-click="navAccessories-WomenTie--">{{ $t('nav.TIE') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/homeware/"
+                      href="/shop-women-homeware/"
                       data-ga-click="navAccessories-WomenHomeware--">{{ $t('nav.HOMEWARE') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/technology/"
+                      href="/shop-women-technology/"
                       data-ga-click="navAccessories-WomenTech--">{{ $t('nav.TECHONLOGY') }}</a></li>
                     <li><a
                       href="/product/women/accessories/hair-accessories/"
@@ -402,7 +402,7 @@
                       data-ga-click="navAccessories-WomenBagAccessories--">{{ $t('nav.BAGACCESSORIES') }}</a></li>
                     <li><a
                       class="subnav-sale"
-                      href="/product/women/accessories/sale/?orderby=-betterprice_time"
+                      href="/shop-women-accessories-sale/?orderby=-betterprice_time"
                       data-ga-click="navAccessories-WomenSale--">{{ $t('nav.SALE') }}</a></li>
                   </ul>
                 </div>
@@ -460,7 +460,7 @@
             <a
               v-else
               :class="{ borderbottom: secondLevelIndex===4 }"
-              href="/product/women/beauty/"
+              href="/shop-women-beauty/"
               data-ga-click="navWomen-BEAUTY--">{{ $t('nav.BEAUTY') }}</a>
             <ul
               v-if="$i18n.country!=='cn' && secondLevelIndex===4"
@@ -471,50 +471,50 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/women/beauty/?orderby=-found_datetime"
+                      href="/shop-women-beauty/?orderby=-found_datetime"
                       data-ga-click="navBeauty-WomenNewArrivals--">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/"
+                      href="/shop-women-beauty/"
                       data-ga-click="navBeauty-WomenAllbeauty--">{{ $t('nav.ALLBEAUTY') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/bath & body/"
+                      href="/shop-women-bath-%2526-body/"
                       data-ga-click="navBeauty-WomenBath--">{{ $t('nav.BATHBODY') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/beauty sets/"
+                      href="/shop-women-beauty-sets/"
                       data-ga-click="navBeauty-WomenSets--">{{ $t('nav.BEAUTYSETS') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/cosmetics cases/"
+                      href="/shop-women-cosmetics-cases/"
                       data-ga-click="navBeauty-WomenCosmentics--">{{ $t('nav.COSMETICSCASES') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/fragrance/"
+                      href="/shop-women-fragrance/"
                       data-ga-click="navBeauty-WomenFragrace--">{{ $t('nav.FRAGRANCE') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/haircare/"
+                      href="/shop-women-haircare/"
                       data-ga-click="navBeauty-WomenHaircare--">{{ $t('nav.HAIRCARE') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/makeup/"
+                      href="/shop-women-makeup/"
                       data-ga-click="navBeauty-WomenMakeup--">{{ $t('nav.MAKEUP') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/nails/"
+                      href="/shop-women-nails/"
                       data-ga-click="navBeauty-WomenNails--">{{ $t('nav.NAILS') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/skincare/"
+                      href="/shop-women-skincare/"
                       data-ga-click="navBeauty-WomenSkincare--">{{ $t('nav.SKINCARE') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/suncare/"
+                      href="/shop-women-suncare/"
                       data-ga-click="navBeauty-WomenSun--">{{ $t('nav.SUNCARE') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/toothcare/"
+                      href="/shop-women-toothcare/"
                       data-ga-click="navBeauty-WomenTooth--">{{ $t('nav.TOOTHCARE') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/tools & devices/"
+                      href="/shop-women-tools-%2526-devices/"
                       data-ga-click="navBeauty-WomenTools--">{{ $t('nav.TOOLSDEVICES') }}</a></li>
                     <li><a
-                      href="/product/women/beauty/wellness/"
+                      href="/shop-women-wellness/"
                       data-ga-click="navBeauty-WomenWellness--">{{ $t('nav.WELLNESS') }}</a></li>
                     <li><a
                       class="subnav-sale"
-                      href="/product/women/beauty/sale/?orderby=-betterprice_time"
+                      href="/shop-women-beauty-sale/?orderby=-betterprice_time"
                       data-ga-click="navBeauty-WomenSale--">{{ $t('nav.SALE') }}</a></li>
                   </ul>
                 </div>
@@ -554,7 +554,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===5 }"
-              href="/product/women/sale/?orderby=-betterprice_time"
+              href="/shop-women-sale/?orderby=-betterprice_time"
               style="color: #f8472b"
               data-ga-click="navWomen-SALE--">{{ $t('nav.SALE') }}</a>
             <ul
@@ -573,7 +573,7 @@
                   </ul>
                   <div><a
                     target="_blank"
-                    href="/product/women/sale/">{{ $t('nav.SHOPALLSALE') }}></a></div>
+                    href="/shop-women-sale/">{{ $t('nav.SHOPALLSALE') }}></a></div>
                 </div>
                 <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
@@ -593,7 +593,7 @@
                 <div class="popularcategary-box">
                   <div class="menucategory-title">{{ $t('nav.POPULARCATEGORY') }}</div>
                   <div class="menucategory-desc">{{ $t('nav.WOMENSJACKETS') }}</div>
-                  <div><a href="/product/women/clothing/jackets/?orderby=-betterprice_time"><img
+                  <div><a href="/shop-women-jackets/?orderby=-betterprice_time"><img
                     v-lazy="'/img/20180905SALE.png'"
                     class="sale-img"
                     alt=""></a></div>
@@ -623,7 +623,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===0 }"
-              href="/product/men/clothing/"
+              href="/shop-men-clothing/"
               data-ga-click="navMen-CLOTHING--">{{ $t('nav.CLOTHING') }}</a>
             <ul
               v-if="secondLevelIndex===0"
@@ -634,47 +634,47 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/men/clothing/?orderby=-found_datetime"
+                      href="/shop-men-clothing/?orderby=-found_datetime"
                       data-ga-click="navClothing-MenNewArrivals--">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/"
+                      href="/shop-men-clothing/"
                       data-ga-click="navClothing-MenCloth--">{{ $t('nav.ALLCLOTHING') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/beachwear/"
+                      href="/shop-men-beachwear/"
                       data-ga-click="navClothing-MenBeachwear--">{{ $t('nav.BEACHWEAR') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/tops/"
+                      href="/shop-men-tops/"
                       data-ga-click="navClothing-MenTops--">{{ $t('nav.TOPS') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/jeans/"
+                      href="/shop-men-jeans/"
                       data-ga-click="navClothing-MenJeans--">{{ $t('nav.JEANS') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/pants/"
+                      href="/shop-men-pants/"
                       data-ga-click="navClothing-MenPants--">{{ $t('nav.PANTS') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/shorts/"
+                      href="/shop-men-shorts/"
                       data-ga-click="navClothing-MenShorts--">{{ $t('nav.SHORTS') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/coats/"
+                      href="/shop-men-coats/"
                       data-ga-click="navClothing-MenCoats--">{{ $t('nav.COATS') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/jackets/"
+                      href="/shop-men-jackets/"
                       data-ga-click="navClothing-MenJackets--">{{ $t('nav.JACKETS') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/knitwear/"
+                      href="/shop-men-knitwear/"
                       data-ga-click="navClothing-MenKnitwear--">{{ $t('nav.KNITWEAR') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/suits/"
+                      href="/shop-men-suits/"
                       data-ga-click="navClothing-MenSuits--">{{ $t('nav.SUITS') }}</a></li>
                     <li><a
                       href="/product/men/clothing/underwear-%2526-socks/"
                       data-ga-click="navClothing-MenUnderwear--">{{ $t('nav.UNDERWEARSOCKS') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/loungewear/"
+                      href="/shop-men-loungewear/"
                       data-ga-click="navClothing-MenLoungewear--">{{ $t('nav.LOUNGEWEAR') }}</a></li>
                     <li><a
                       class="subnav-sale"
-                      href="/product/men/clothing/sale/?orderby=-betterprice_time"
+                      href="/shop-men-clothing-sale/?orderby=-betterprice_time"
                       data-ga-click="navClothing-MenSale--">{{ $t('nav.SALE') }}</a></li>
                   </ul>
                 </div>
@@ -725,7 +725,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===1 }"
-              href="/product/men/bags/"
+              href="/shop-men-bags/"
               data-ga-click="navMen-BAGS--">{{ $t('nav.BAGS') }}</a>
             <ul
               v-if="secondLevelIndex===1"
@@ -736,19 +736,19 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/men/bags/?orderby=-found_datetime"
+                      href="/shop-men-bags/?orderby=-found_datetime"
                       data-ga-click="navBags-MenNewArrivals--">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/"
+                      href="/shop-men-bags/"
                       data-ga-click="navBags-MenAll--">{{ $t('nav.ALLBAGS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/backpacks/"
+                      href="/shop-men-backpacks/"
                       data-ga-click="navBags-MenBackpacks--">{{ $t('nav.BACKPACKS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/satchels/"
+                      href="/shop-men-satchels/"
                       data-ga-click="navBags-MenSatchels--">{{ $t('nav.SATCHELS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/totes/"
+                      href="/shop-men-totes/"
                       data-ga-click="navBags-MenTotes--">{{ $t('nav.TOTES') }}</a></li>
                     <li><a
                       href="/product/men/bags/crossbody-bags/"
@@ -763,13 +763,13 @@
                       href="/product/men/bags/belt-bags/"
                       data-ga-click="navBags-MenBelt--">{{ $t('nav.BELTBAGS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/wallets/"
+                      href="/shop-men-wallets/"
                       data-ga-click="navBags-Wallet--">{{ $t('nav.WALLETS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/keychain/"
+                      href="/shop-men-keychain/"
                       data-ga-click="navBags-MenKeychain--">{{ $t('nav.KEYCHAINS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/sale/?orderby=-betterprice_time"
+                      href="/shop-men-bags-sale/?orderby=-betterprice_time"
                       class="subnav-sale"
                       data-ga-click="navBags-MenSale--">{{ $t('nav.SALE') }}</a></li>
                   </ul>
@@ -821,7 +821,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===2 }"
-              href="/product/men/shoes/"
+              href="/shop-men-shoes/"
               data-ga-click="navMen-SHOES--">{{ $t('nav.SHOES') }}</a>
             <ul
               v-if="secondLevelIndex===2"
@@ -832,34 +832,34 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/men/shoes/?orderby=-found_datetime"
+                      href="/shop-men-shoes/?orderby=-found_datetime"
                       data-ga-click="navClothing-MenNewArrivals--">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/men/shoes/"
+                      href="/shop-men-shoes/"
                       data-ga-click="navShoes-MenAll--">{{ $t('nav.ALLSHOES') }}</a></li>
                     <li><a
-                      href="/product/men/shoes/boots/"
+                      href="/shop-men-boots/"
                       data-ga-click="navShoes-MenBoots--">{{ $t('nav.BOOTS') }}</a></li>
                     <li><a
-                      href="/product/men/shoes/brogues/"
+                      href="/shop-men-brogues/"
                       data-ga-click="navShoes-MenBrogues--">{{ $t('nav.BROGUES') }}</a></li>
                     <li><a
-                      href="/product/men/shoes/loafers/"
+                      href="/shop-men-loafers/"
                       data-ga-click="navShoes-MenLoafers--">{{ $t('nav.LOAFERS') }}</a></li>
                     <li><a
-                      href="/product/men/shoes/oxford/"
+                      href="/shop-men-oxford/"
                       data-ga-click="navShoes-MenOxford--">{{ $t('nav.OXFORD') }}</a></li>
                     <li><a
-                      href="/product/men/shoes/slippers/"
+                      href="/shop-men-slippers/"
                       data-ga-click="navShoes-MenSlippers--">{{ $t('nav.SLIPPERS') }}</a></li>
                     <li><a
-                      href="/product/men/shoes/sandals/"
+                      href="/shop-men-sandals/"
                       data-ga-click="navShoes-MenSandals--">{{ $t('nav.SANDALS') }}</a></li>
                     <li><a
-                      href="/product/men/shoes/sneakers/"
+                      href="/shop-men-sneakers/"
                       data-ga-click="navShoes-MenSneakers--">{{ $t('nav.SNEAKERS') }}</a></li>
                     <li><a
-                      href="/product/men/shoes/sale/?orderby=-betterprice_time"
+                      href="/shop-men-shoes-sale/?orderby=-betterprice_time"
                       class="subnav-sale"
                       data-ga-click="navShoes-MenSale--">{{ $t('nav.SALE') }}</a></li>
                   </ul>
@@ -911,7 +911,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===3 }"
-              href="/product/men/accessories/"
+              href="/shop-men-accessories/"
               data-ga-click="navMen-ACCESSORIES--">{{ $t('nav.ACCESSORIES') }}</a>
             <ul
               v-if="secondLevelIndex===3"
@@ -922,52 +922,52 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/men/accessories/?orderby=-found_datetime"
+                      href="/shop-men-accessories/?orderby=-found_datetime"
                       data-ga-click="navClothing-MenNewArrivals--">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/"
+                      href="/shop-men-accessories/"
                       data-ga-click="navAccessories-MenAll--">{{ $t('nav.ALLACCESSORIES') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/jewelry/"
+                      href="/shop-men-jewelry/"
                       data-ga-click="navAccessories-MenJewelry--">{{ $t('nav.JEWELRY') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/watches/"
+                      href="/shop-men-watches/"
                       data-ga-click="navAccessories-MenWatch--">{{ $t('nav.WATCHES') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/sunglasses/"
+                      href="/shop-men-sunglasses/"
                       data-ga-click="navAccessories-MenSunglasses--">{{ $t('nav.SUNGLASSES') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/opticals/"
+                      href="/shop-men-opticals/"
                       data-ga-click="navAccessories-MenOpticals--">{{ $t('nav.OPTICALS') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/belts/"
+                      href="/shop-men-belts/"
                       data-ga-click="navAccessories-MenBelt--">{{ $t('nav.BELTS') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/hats/"
+                      href="/shop-men-hats/"
                       data-ga-click="navAccessories-MenHat--">{{ $t('nav.HATS') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/tie/"
+                      href="/shop-men-tie/"
                       data-ga-click="navAccessories-MenTie--">{{ $t('nav.TIE') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/wallets/"
+                      href="/shop-men-wallets/"
                       data-ga-click="navAccessories-MenWallet--">{{ $t('nav.WALLETS') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/keychains/"
+                      href="/shop-men-keychains/"
                       data-ga-click="navAccessories-MenKeychain--">{{ $t('nav.KEYCHAINS') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/gloves/"
+                      href="/shop-men-gloves/"
                       data-ga-click="navAccessories-MenGloves--">{{ $t('nav.GLOVES') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/scarves/"
+                      href="/shop-men-scarves/"
                       data-ga-click="navAccessories-MenScarf--">{{ $t('nav.SCARVES') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/technology/"
+                      href="/shop-men-technology/"
                       data-ga-click="navAccessories-MenTech--">{{ $t('nav.TECHONLOGY') }}</a></li>
                     <li><a
                       href="/product/men/accessories/bag-accessories/"
                       data-ga-click="navAccessories-MenBagAccessories--">{{ $t('nav.BAGACCESSORIES') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/sale/?orderby=-betterprice_time"
+                      href="/shop-men-accessories-sale/?orderby=-betterprice_time"
                       class="subnav-sale"
                       data-ga-click="navAccessories-MenSale--">{{ $t('nav.SALE') }}</a></li>
                   </ul>
@@ -1026,7 +1026,7 @@
             <a
               v-else
               :class="{ borderbottom: secondLevelIndex===4 }"
-              href="/product/men/grooming/"
+              href="/shop-men-grooming/"
               data-ga-click="navMen-GROOMING--">{{ $t('nav.GROOMING') }}</a>
             <ul
               v-if="$i18n.country!=='cn' && secondLevelIndex===4"
@@ -1037,40 +1037,40 @@
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
                     <li><a
-                      href="/product/men/grooming/?orderby=-found_datetime"
+                      href="/shop-men-grooming/?orderby=-found_datetime"
                       data-ga-click="navBeauty-MenNewArrivals--">{{ $t('nav.NEWARRIVALS') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/"
+                      href="/shop-men-grooming/"
                       data-ga-click="navBeauty-MenAll--">{{ $t('nav.ALLGROOMING') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/bath & body/"
+                      href="/shop-men-bath-%2526-body/"
                       data-ga-click="navBeauty-MenBathBody--">{{ $t('nav.BATHBODY') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/fragrance/"
+                      href="/shop-men-fragrance/"
                       data-ga-click="navBeauty-MenFragrance--">{{ $t('nav.FRAGRANCE') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/haircare/"
+                      href="/shop-men-haircare/"
                       data-ga-click="navBeauty-MenHaircare--">{{ $t('nav.HAIRCARE') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/shave/"
+                      href="/shop-men-shave/"
                       data-ga-click="navBeauty-MenShave--">{{ $t('nav.SHAVE') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/skincare/"
+                      href="/shop-men-skincare/"
                       data-ga-click="navBeauty-MenSkincare--">{{ $t('nav.SKINCARE') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/suncare/"
+                      href="/shop-men-suncare/"
                       data-ga-click="navBeauty-MenSuncare--">{{ $t('nav.SUNCARE') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/toothcare/"
+                      href="/shop-men-toothcare/"
                       data-ga-click="navBeauty-MenToothcare--">{{ $t('nav.TOOTHCARE') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/tools & devices/"
+                      href="/shop-men-tools-%2526-devices/"
                       data-ga-click="navBeauty-MenToolsDevices--">{{ $t('nav.TOOLSDEVICES') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/wellness/"
+                      href="/shop-men-wellness/"
                       data-ga-click="navBeauty-MenWellness--">{{ $t('nav.WELLNESS') }}</a></li>
                     <li><a
-                      href="/product/men/grooming/sale/?orderby=-betterprice_time"
+                      href="/shop-men-grooming-sale/?orderby=-betterprice_time"
                       class="subnav-sale"
                       data-ga-click="navBeauty-MenSale--">{{ $t('nav.SALE') }}</a></li>
                   </ul>
@@ -1111,7 +1111,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===5 }"
-              href="/product/men/sale/?orderby=-betterprice_time"
+              href="/shop-men-sale/?orderby=-betterprice_time"
               data-ga-click="navMen-SALE--"
               style="color: #f8472b">{{ $t('nav.SALE') }}</a>
             <ul
@@ -1130,7 +1130,7 @@
                   </ul>
                   <div class="view-all"><a
                     target="_blank"
-                    href="/product/men/sale/">{{ $t('nav.SHOPALLSALE') }}></a></div>
+                    href="/shop-men-sale/">{{ $t('nav.SHOPALLSALE') }}></a></div>
                 </div>
                 <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
@@ -1151,7 +1151,7 @@
                   <div class="menucategory-title">{{ $t('nav.POPULARCATEGORY') }}</div>
                   <div class="menucategory-desc">{{ $t('nav.MENSJACKETS') }}</div>
                   <div><a
-                    href="/product/men/clothing/jackets/?orderby=-betterprice_time"
+                    href="/shop-men-jackets/?orderby=-betterprice_time"
                     data-ga-click="navSale-MenIcon--">
                     <img
                       v-lazy="'/img/20180905SALE.png'"
@@ -1171,7 +1171,7 @@
         @mouseleave="changeFirstLevelIndex(-1)">
         <a
           :class="{ borderbottom: firstLevelIndex===3 }"
-          href="/product/coupons/"
+          href="/coupons/"
           data-ga-click="nav-OFFERS--">{{ $t('common.OFFERS') }}</a>
         <ul
           v-if="firstLevelIndex===3"
@@ -1184,7 +1184,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===0 }"
-              href="/product/coupons/"
+              href="/coupons/"
               data-ga-click="navOffers-COUPONS--">{{ $t('nav.COUPONS') }}</a>
             <ul
               v-if="secondLevelIndex===0 && $store.state.coupons"
@@ -1208,7 +1208,7 @@
                   </ul>
                   <div class="view-all"><a
                     target="_blank"
-                    href="/product/coupons/"
+                    href="/coupons/"
                     data-ga-click="navCoupons-viewAll--">{{ $t('nav.VIEWALLCOUPONS') }}></a></div>
                 </div>
                 <div class="coupons-right">
@@ -1234,7 +1234,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===1 }"
-              href="/product/women/sale/"
+              href="/shop-women-sale/"
               data-ga-click="navOffers-WOMENSSALE--">{{ $t('nav.WOMENSSALE') }}</a>
             <ul
               v-if="secondLevelIndex===1"
@@ -1252,7 +1252,7 @@
                   </ul>
                   <div class="view-all"><a
                     target="_blank"
-                    href="/product/women/sale/">{{ $t('nav.SHOPALLSALE') }}></a></div>
+                    href="/shop-women-sale/">{{ $t('nav.SHOPALLSALE') }}></a></div>
                 </div>
                 <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
@@ -1274,7 +1274,7 @@
                   <div class="menucategory-desc">{{ $t('nav.WOMENSJACKETS') }}</div>
                   <div>
                     <a
-                      href="/product/women/clothing/jackets/?orderby=-betterprice_time"
+                      href="/shop-women-jackets/?orderby=-betterprice_time"
                       data-ga-click="navOffers-WOMENSSALEIcon--"><img
                         v-lazy="'/img/20180905SALE.png'"
                         class="sale-img"
@@ -1292,7 +1292,7 @@
             @mouseleave="changeSecondLevelIndex(-1)">
             <a
               :class="{ borderbottom: secondLevelIndex===2 }"
-              href="/product/men/sale/"
+              href="/shop-men-sale/"
               data-ga-click="navOffers-MENSSALE--">{{ $t('nav.MENSSALE') }}</a>
             <ul
               v-if="secondLevelIndex===2"
@@ -1310,7 +1310,7 @@
                   </ul>
                   <div class="view-all"><a
                     target="_blank"
-                    href="/product/men/sale/">{{ $t('nav.SHOPALLSALE') }}></a></div>
+                    href="/shop-men-sale/">{{ $t('nav.SHOPALLSALE') }}></a></div>
                 </div>
                 <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
@@ -1332,7 +1332,7 @@
                   <div class="menucategory-desc">{{ $t('nav.MENSJACKETS') }}</div>
                   <div>
                     <a
-                      href="/product/men/clothing/jackets/?orderby=-betterprice_time"
+                      href="/shop-men-jackets/?orderby=-betterprice_time"
                       data-ga-click="navOffers-MENSSALEIcon--"><img
                         v-lazy="'/img/20180905SALE.png'"
                         class="sale-img"

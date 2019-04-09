@@ -81,6 +81,7 @@ export const Footer = {
   Addtobrowser: '添加浏览器扩展程序',
   Womens: "女士",
   Mens: "男士",
+  Sitemap: '网站地图'
 };
 export const loyalty = {
   loyaltyTitle: '会员制度',
@@ -576,7 +577,8 @@ export const Wechat = {
   hm: '合作电商',
 };
 export const share = {
-  urlshare: '拷贝链接分享给你的好友'
+  urlshare: '拷贝链接分享给你的好友',
+  qrCodeShare: '扫二维码分享'
 }
 export const Storefav = {
   title: '成为ModeSens会员，领取你的福利奖励。',

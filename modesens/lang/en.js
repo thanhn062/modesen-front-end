@@ -81,6 +81,7 @@ export const Footer = {
   Addtobrowser: 'Add to browser',
   Womens: "Women's",
   Mens: "Men's",
+  Sitemap: 'Sitemap'
 };
 export const loyalty = {
   loyaltyTitle: 'Loyalty',
@@ -576,7 +577,8 @@ export const Wechat = {
   hm: 'Hot Merchants',
 };
 export const share = {
-  urlshare: 'Copy this url to share with friends'
+  urlshare: 'Copy this url to share with friends',
+  qrCodeShare: 'Scan this QR code to open in mobile and share with friends'
 }
 export const Storefav = {
   title: 'Become a ModeSens Member for exclusive VIP shopping benefits',
