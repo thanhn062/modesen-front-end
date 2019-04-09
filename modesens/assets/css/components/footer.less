@@ -29,6 +29,8 @@
 }
 .install-box {
   a {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     &:hover {
       text-decoration: none;
@@ -43,6 +45,7 @@
       width: 108px;
       vertical-align: middle;
       font-size: 12px;
+      line-height: 17px;
     }
   }
   .iosimg {
@@ -55,6 +58,9 @@
       background: url('~/static/img/20181127add_browse.svg') no-repeat round;
     }
   }
+}
+.install-box:nth-child(2) {
+  margin-top: 10px;
 }
 .footer-logo {
   width: 150px;
