@@ -123,7 +123,7 @@
                   <div class="menucategory-desc">{{ $t('nav.JACKETS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="product/women/clothing/jackets/"
+                      href="/shop-women-jackets/"
                       data-ga-click="navClothing-WomenJacketsIcon--">
                       <img
                         v-lazy="'/img/20180930navi_f_j.jpg'"
@@ -170,25 +170,25 @@
                       href="/shop-women-totes/"
                       data-ga-click="navBags-WomenTotes">{{ $t('nav.TOTES') }}</a></li>
                     <li><a
-                      href="/product/women/bags/crossbody-bags/"
+                      href="/shop-women-crossbody-bags/"
                       data-ga-click="navBags-WomenCrossbody">{{ $t('nav.CROSSBODYBAGS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/shoulder-bags/"
+                      href="/shop-women-shoulder-bags/"
                       data-ga-click="navBags-WomenShoulder">{{ $t('nav.SHOULDERBAGS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/travel-bags/"
+                      href="/shop-women-travel-bags/"
                       data-ga-click="navBags-WomenTravel">{{ $t('nav.TRAVELBAGS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/baby-bags/"
+                      href="/shop-women-baby-bags/"
                       data-ga-click="navBags-WomenBaby">{{ $t('nav.BABYBAGS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/belt-bags/"
+                      href="/shop-women-belt-bags/"
                       data-ga-click="navBags-WomenBelt">{{ $t('nav.BELTBAGS') }}</a></li>
                     <li><a
                       href="/shop-women-wallets/"
                       data-ga-click="navBags-Wallet">{{ $t('nav.WALLETS') }}</a></li>
                     <li><a
-                      href="/product/women/bags/bag-accessories/"
+                      href="/shop-women-bag-accessories/"
                       data-ga-click="navBags-WomenBagAccessories">{{ $t('nav.BAGACCESSORIES') }}</a></li>
                     <li><a
                       class="subnav-sale"
@@ -225,7 +225,7 @@
                   <div class="menucategory-desc">{{ $t('nav.BELTBAGS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/product/women/bags/belt-bags/"
+                      href="/shop-women-belt-bags/"
                       data-ga-click="navBags-WomenBeltbagsIcon">
                       <img
                         v-lazy="'/img/20180930navi_f_b.jpg'"
@@ -318,7 +318,7 @@
                   <div class="menucategory-desc">{{ $t('nav.PUMPS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/product/women/shoes/pumps/"
+                      href="/shop-women-pumps/"
                       data-ga-click="navShoes-WomenPumpsIcon--">
                       <img
                         v-lazy="'/img/20180930navi_f_s.jpg'"
@@ -392,13 +392,13 @@
                       href="/shop-women-technology/"
                       data-ga-click="navAccessories-WomenTech--">{{ $t('nav.TECHONLOGY') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/hair-accessories/"
+                      href="/shop-women-hair-accessories/"
                       data-ga-click="navAccessories-WomenHair--">{{ $t('nav.HAIRACCESSORIES') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/sport-accessories/"
+                      href="/shop-women-sport-accessories/"
                       data-ga-click="navAccessories-WomenSport--">{{ $t('nav.SPORTACCESSORIES') }}</a></li>
                     <li><a
-                      href="/product/women/accessories/bag-accessories/"
+                      href="/shop-women-bag-accessories/"
                       data-ga-click="navAccessories-WomenBagAccessories--">{{ $t('nav.BAGACCESSORIES') }}</a></li>
                     <li><a
                       class="subnav-sale"
@@ -435,7 +435,7 @@
                   <div class="menucategory-desc">{{ $t('nav.JEWELRY') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/product/women/accessories/jewelry/"
+                      href="/shop-women-jewelry/"
                       data-ga-click="navAccessories-WomenJewelryIcon--">
                       <img
                         v-lazy="'/img/20180930navi_f_jy.jpg'"
@@ -536,7 +536,7 @@
                   <div class="menucategory-desc">{{ $t('nav.SKINCARE') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/product/women/beauty/skincare/"
+                      href="/shop-women-skincare/"
                       data-ga-click="navBeauty-WomenSkinIcon--">
                       <img
                         v-lazy="'/img/20180930navi_f_ski.jpg'"
@@ -565,11 +565,11 @@
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/product/women/clothing/">{{ $t('nav.CLOTHING') }}</a></li>
-                    <li><a href="/product/women/bags/">{{ $t('nav.BAGS') }}</a></li>
-                    <li><a href="/product/women/shoes/">{{ $t('nav.SHOES') }}</a></li>
-                    <li><a href="/product/women/bags/bag-accessories/">{{ $t('nav.ACCESSORIES') }}</a></li>
-                    <li><a href="/product/women/beauty/">{{ $t('nav.BEAUTY') }}</a></li>
+                    <li><a href="/shop-women-clothing/">{{ $t('nav.CLOTHING') }}</a></li>
+                    <li><a href="/shop-women-bags/">{{ $t('nav.BAGS') }}</a></li>
+                    <li><a href="/shop-women-shoes/">{{ $t('nav.SHOES') }}</a></li>
+                    <li><a href="/shop-women-bag-accessories/">{{ $t('nav.ACCESSORIES') }}</a></li>
+                    <li><a href="/shop-women-beauty/">{{ $t('nav.BEAUTY') }}</a></li>
                   </ul>
                   <div><a
                     target="_blank"
@@ -667,7 +667,7 @@
                       href="/shop-men-suits/"
                       data-ga-click="navClothing-MenSuits--">{{ $t('nav.SUITS') }}</a></li>
                     <li><a
-                      href="/product/men/clothing/underwear-%2526-socks/"
+                      href="/shop-men-underwear-%2526-socks/"
                       data-ga-click="navClothing-MenUnderwear--">{{ $t('nav.UNDERWEARSOCKS') }}</a></li>
                     <li><a
                       href="/shop-men-loungewear/"
@@ -707,7 +707,7 @@
                   <div class="menucategory-desc">{{ $t('nav.JACKETS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/product/men/clothing/jackets/"
+                      href="/shop-men-jackets/"
                       data-ga-click="navClothing-MenIcon--">
                       <img
                         v-lazy="'/img/20180930navi_m_j.jpg'"
@@ -751,16 +751,16 @@
                       href="/shop-men-totes/"
                       data-ga-click="navBags-MenTotes--">{{ $t('nav.TOTES') }}</a></li>
                     <li><a
-                      href="/product/men/bags/crossbody-bags/"
+                      href="/shop-men-crossbody-bags/"
                       data-ga-click="navBags-MenCrossbody--">{{ $t('nav.CROSSBODYBAGS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/shoulder-bags/"
+                      href="/shop-men-shoulder-bags/"
                       data-ga-click="navBags-MenShoulder--">{{ $t('nav.SHOULDERBAGS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/travel-bags/"
+                      href="/shop-men-travel-bags/"
                       data-ga-click="navBags-MenTravel--">{{ $t('nav.TRAVELBAGS') }}</a></li>
                     <li><a
-                      href="/product/men/bags/belt-bags/"
+                      href="/shop-men-belt-bags/"
                       data-ga-click="navBags-MenBelt--">{{ $t('nav.BELTBAGS') }}</a></li>
                     <li><a
                       href="/shop-men-wallets/"
@@ -803,7 +803,7 @@
                   <div class="menucategory-desc">{{ $t('nav.BELTBAGS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/product/men/bags/belt-bags/"
+                      href="/shop-men-belt-bags/"
                       data-ga-click="navBags-MenIcon--">
                       <img
                         v-lazy="'/img/20180930navi_m_b.jpg'"
@@ -893,7 +893,7 @@
                   <div class="menucategory-desc">{{ $t('nav.SNEAKERS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/product/men/shoes/sneakers/"
+                      href="/shop-men-sneakers/"
                       data-ga-click="navShoes-MenIcon--">
                       <img
                         v-lazy="'/img/20180930navi_m_s.jpg'"
@@ -964,7 +964,7 @@
                       href="/shop-men-technology/"
                       data-ga-click="navAccessories-MenTech--">{{ $t('nav.TECHONLOGY') }}</a></li>
                     <li><a
-                      href="/product/men/accessories/bag-accessories/"
+                      href="/shop-men-bag-accessories/"
                       data-ga-click="navAccessories-MenBagAccessories--">{{ $t('nav.BAGACCESSORIES') }}</a></li>
                     <li><a
                       href="/shop-men-accessories-sale/?orderby=-betterprice_time"
@@ -1001,7 +1001,7 @@
                   <div class="menucategory-desc">{{ $t('nav.HATS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/product/men/accessories/hats/"
+                      href="/shop-men-hats/"
                       data-ga-click="navAccessories-MenIcon--">
                       <img
                         v-lazy="'/img/20180930navi_m_h.jpg'"
@@ -1093,7 +1093,7 @@
                   <div class="menucategory-desc">{{ $t('nav.FRAGRANCE') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/product/men/grooming/"
+                      href="/shop-men-grooming/"
                       data-ga-click="navBeauty-MenIcon--">
                       <img
                         v-lazy="'/img/20180930navi_m_ski.jpg'"
@@ -1122,11 +1122,11 @@
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/product/men/clothing/">{{ $t('nav.CLOTHING') }}</a></li>
-                    <li><a href="/product/men/bags/">{{ $t('nav.BAGS') }}</a></li>
-                    <li><a href="/product/men/shoes/">{{ $t('nav.SHOES') }}</a></li>
-                    <li><a href="/product/men/bags/bag-accessories/">{{ $t('nav.ACCESSORIES') }}</a></li>
-                    <li><a href="/product/men/grooming/">{{ $t('nav.GROOMING') }}</a></li>
+                    <li><a href="/shop-men-clothing/">{{ $t('nav.CLOTHING') }}</a></li>
+                    <li><a href="/shop-men-bags/">{{ $t('nav.BAGS') }}</a></li>
+                    <li><a href="/shop-men-shoes/">{{ $t('nav.SHOES') }}</a></li>
+                    <li><a href="/shop-men-bag-accessories/">{{ $t('nav.ACCESSORIES') }}</a></li>
+                    <li><a href="/shop-men-grooming/">{{ $t('nav.GROOMING') }}</a></li>
                   </ul>
                   <div class="view-all"><a
                     target="_blank"
@@ -1244,11 +1244,11 @@
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/product/women/clothing/">{{ $t('nav.CLOTHING') }}</a></li>
-                    <li><a href="/product/women/bags/">{{ $t('nav.BAGS') }}</a></li>
-                    <li><a href="/product/women/shoes/">{{ $t('nav.SHOES') }}</a></li>
-                    <li><a href="/product/women/bags/bag-accessories/">{{ $t('nav.ACCESSORIES') }}</a></li>
-                    <li><a href="/product/women/beauty/">{{ $t('nav.BEAUTY') }}</a></li>
+                    <li><a href="/shop-women-clothing/">{{ $t('nav.CLOTHING') }}</a></li>
+                    <li><a href="/shop-women-bags/">{{ $t('nav.BAGS') }}</a></li>
+                    <li><a href="/shop-women-shoes/">{{ $t('nav.SHOES') }}</a></li>
+                    <li><a href="/shop-women-bag-accessories/">{{ $t('nav.ACCESSORIES') }}</a></li>
+                    <li><a href="/shop-women-beauty/">{{ $t('nav.BEAUTY') }}</a></li>
                   </ul>
                   <div class="view-all"><a
                     target="_blank"
@@ -1302,11 +1302,11 @@
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/product/men/clothing/">{{ $t('nav.CLOTHING') }}</a></li>
-                    <li><a href="/product/men/bags/">{{ $t('nav.BAGS') }}</a></li>
-                    <li><a href="/product/men/shoes/">{{ $t('nav.SHOES') }}</a></li>
-                    <li><a href="/product/men/bags/bag-accessories/">{{ $t('nav.ACCESSORIES') }}</a></li>
-                    <li><a href="/product/men/grooming/">{{ $t('nav.GROOMING') }}</a></li>
+                    <li><a href="/shop-men-clothing/">{{ $t('nav.CLOTHING') }}</a></li>
+                    <li><a href="/shop-men-bags/">{{ $t('nav.BAGS') }}</a></li>
+                    <li><a href="/shop-men-shoes/">{{ $t('nav.SHOES') }}</a></li>
+                    <li><a href="/shop-men-bag-accessories/">{{ $t('nav.ACCESSORIES') }}</a></li>
+                    <li><a href="/shop-men-grooming/">{{ $t('nav.GROOMING') }}</a></li>
                   </ul>
                   <div class="view-all"><a
                     target="_blank"
