@@ -138,6 +138,13 @@ module.exports = {
   styleResources: {
     less: './assets/css/common.less'
   },
+  render: {
+    bundleRenderer: {
+      shouldPreload: (file, type) => {
+        return ['script', 'style', 'font'].includes(type)
+      }
+    }
+  },
   /*
 	** Axios module configuration
 	*/

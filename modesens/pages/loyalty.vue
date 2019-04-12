@@ -289,6 +289,11 @@ export default {
     // }
     return headobj
   },
+  // head() {
+  //   link: [
+  //     { rel: 'preload', type: 'text/css', href: '~/assets/css/loyalty.less' }
+  //   ]
+  // },
   data() {
     return {
       level: '',
