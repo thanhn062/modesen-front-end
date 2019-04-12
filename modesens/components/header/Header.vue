@@ -304,32 +304,32 @@ export default {
       return 'women'
     }
   },
-  created() {
-    this.getConfig()
-  },
-  mounted() {
-    // window.addEventListener('load', event => {
-    //   this.getConfig()
-    // })
-    this.$nextTick(() => {
-      this.mybrowse = getBrowse()
-      $('.main-container').css('padding-top', $('.header').height())
-      $('.navbar-toggler-icon').click(evt => {
-        evt.preventDefault()
-        evt.stopPropagation()
-        let showStatus = $('.header .navbar-expand-xl').hasClass('show')
-        if (showStatus) {
-          $('.header .navbar-expand-xl').removeClass('show')
-          $('.wrapper-mask').addClass('hidden')
-        } else {
-          $('.header .navbar-expand-xl').addClass('show')
-          $('.wrapper-mask').removeClass('hidden')
-        }
-        $('#nav_collapse').animate({ left: showStatus ? '-100%' : 0 })
-        $('.header').animate({ left: showStatus ? 0 : '80%' })
-      })
-    })
-  },
+  // created() {
+  //   this.getConfig()
+  // },
+  // mounted() {
+  //   // window.addEventListener('load', event => {
+  //   //   this.getConfig()
+  //   // })
+  //   this.$nextTick(() => {
+  //     this.mybrowse = getBrowse()
+  //     $('.main-container').css('padding-top', $('.header').height())
+  //     $('.navbar-toggler-icon').click(evt => {
+  //       evt.preventDefault()
+  //       evt.stopPropagation()
+  //       let showStatus = $('.header .navbar-expand-xl').hasClass('show')
+  //       if (showStatus) {
+  //         $('.header .navbar-expand-xl').removeClass('show')
+  //         $('.wrapper-mask').addClass('hidden')
+  //       } else {
+  //         $('.header .navbar-expand-xl').addClass('show')
+  //         $('.wrapper-mask').removeClass('hidden')
+  //       }
+  //       $('#nav_collapse').animate({ left: showStatus ? '-100%' : 0 })
+  //       $('.header').animate({ left: showStatus ? 0 : '80%' })
+  //     })
+  //   })
+  // },
   methods: {
     async getConfig() {
       let { COUNTRIES } = await this.$axios.post('/config/', {

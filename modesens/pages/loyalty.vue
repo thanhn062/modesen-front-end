@@ -335,25 +335,25 @@ export default {
     }
   },
   created() {
-    if (this.$store.state.login_status) {
-      this.getLevelInfo()
-    }
+    // if (this.$store.state.login_status) {
+    //   this.getLevelInfo()
+    // }
   },
-  mounted() {
-    if ($(window).width() < 1200) {
-      this.isPC = false
-      let banner_swiper_5 = new Swiper('.swiper-container', {
-        pagination: {
-          el: '.swiper-p5',
-          clickable: true
-        },
-        autoplay: true,
-        speed: 1000,
-        loop: true,
-        initialSlide: 0
-      })
-    }
-  },
+  // mounted() {
+  //   if ($(window).width() < 1200) {
+  //     this.isPC = false
+  //     let banner_swiper_5 = new Swiper('.swiper-container', {
+  //       pagination: {
+  //         el: '.swiper-p5',
+  //         clickable: true
+  //       },
+  //       autoplay: true,
+  //       speed: 1000,
+  //       loop: true,
+  //       initialSlide: 0
+  //     })
+  //   }
+  // },
   methods: {
     async getLevelInfo() {
       let params = {}

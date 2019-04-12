@@ -421,7 +421,7 @@ export default {
     }
   },
   mounted() {
-    this.showModelink()
+    // this.showModelink()
   },
   methods: {
     mdLoginshown(evt) {

@@ -41,12 +41,12 @@ export default {
     }
   },
   created() {
-    if (this.$store.state.login_status && !this.$store.state.lsuser) {
-      this.$store.dispatch('getLsuser', this)
-    }
-    if (!this.$store.state.request) {
-      this.$store.dispatch('getRequest', this)
-    }
+    // if (this.$store.state.login_status && !this.$store.state.lsuser) {
+    //   this.$store.dispatch('getLsuser', this)
+    // }
+    // if (!this.$store.state.request) {
+    //   this.$store.dispatch('getRequest', this)
+    // }
   },
   mounted() {
     // let _this = this
