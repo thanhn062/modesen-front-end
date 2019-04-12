@@ -334,10 +334,12 @@ export default {
       ]
     }
   },
-  mounted() {
+  created() {
     if (this.$store.state.login_status) {
       this.getLevelInfo()
     }
+  },
+  mounted() {
     if ($(window).width() < 1200) {
       this.isPC = false
       let banner_swiper_5 = new Swiper('.swiper-container', {

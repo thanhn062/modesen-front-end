@@ -304,10 +304,13 @@ export default {
       return 'women'
     }
   },
+  created() {
+    this.getConfig()
+  },
   mounted() {
-    window.addEventListener('load', event => {
-      this.getConfig()
-    })
+    // window.addEventListener('load', event => {
+    //   this.getConfig()
+    // })
     this.$nextTick(() => {
       this.mybrowse = getBrowse()
       $('.main-container').css('padding-top', $('.header').height())
