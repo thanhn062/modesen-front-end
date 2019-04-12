@@ -41,15 +41,14 @@ export default {
     }
   },
   mounted() {
-    if (!this.$store.state.request) {
-      this.$store.dispatch('getRequest', this)
-    }
-    if (this.$store.state.login_status && !this.$store.state.lsuser) {
-      this.$store.dispatch('getLsuser', this)
-    }
     let _this = this
     window.addEventListener('load', event => {
-      var ele = document.createElement('script')
+      if (this.$store.state.login_status && !this.$store.state.lsuser) {
+        this.$store.dispatch('getLsuser', this)
+      }
+      if (!this.$store.state.request) {
+        this.$store.dispatch('getRequest', this)
+      }
       if (_this.$store.state.request.RCOUNTRY == 'cn') {
         let hm = document.createElement('script')
         hm.src = 'https://hm.baidu.com/hm.js?5d6195861bd1dc57fe4981c6ed078dd4'

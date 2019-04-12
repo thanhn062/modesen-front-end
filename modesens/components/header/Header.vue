@@ -305,7 +305,9 @@ export default {
     }
   },
   mounted() {
-    this.getConfig()
+    window.addEventListener('load', event => {
+      this.getConfig()
+    })
     this.$nextTick(() => {
       this.mybrowse = getBrowse()
       $('.main-container').css('padding-top', $('.header').height())
