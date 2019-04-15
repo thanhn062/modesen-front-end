@@ -306,7 +306,7 @@ export default {
   },
   mounted() {
   //   // window.addEventListener('load', event => {
-      // this.getConfig()
+      this.getConfig()
   //   // })
   //   this.$nextTick(() => {
   //     this.mybrowse = getBrowse()
