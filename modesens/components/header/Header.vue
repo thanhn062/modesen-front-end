@@ -37,7 +37,7 @@
           <!-- 响应式 -->
           <NavCategory
             v-else
-            :countries="COUNTRIES"
+            :countries="$store.state.countries"
             :switchlocalcountry="i18nCookieChange"/>
           <!-- Right aligned nav items -->
           <b-navbar-nav
@@ -51,13 +51,13 @@
               <template slot="button-content">
                 <i :class="'country-icon country-' + $i18n.country"/>
                 <span
-                  v-if="COUNTRIES"
+                  v-if="$store.state.countries"
                   class="country-selected">
-                  {{ COUNTRIES[$i18n.country.toUpperCase()] ? COUNTRIES[$i18n.country.toUpperCase()][1] : '' }}
+                  {{ $store.state.countries[$i18n.country.toUpperCase()] ? $store.state.countries[$i18n.country.toUpperCase()][1] : '' }}
                 </span>
               </template>
               <b-dropdown-item
-                v-for="(opt,index) in COUNTRIES"
+                v-for="(opt,index) in $store.state.countries"
                 :key="index"
                 href="javascript:;"
                 @click="i18nCookieChange(index.toLowerCase(), $i18n.locale)">
@@ -281,7 +281,6 @@ export default {
     return {
       langSelected: this.$i18n.locale,
       countryLower: this.$i18n.country,
-      COUNTRIES: null,
       preIndexOver: -1,
       secondaryIndexOver: -1,
       searchTxt: '',
@@ -305,9 +304,6 @@ export default {
     }
   },
   mounted() {
-  //   // window.addEventListener('load', event => {
-      this.getConfig()
-  //   // })
   //   this.$nextTick(() => {
   //     this.mybrowse = getBrowse()
   //     $('.main-container').css('padding-top', $('.header').height())
@@ -328,13 +324,6 @@ export default {
   //   })
   },
   methods: {
-    async getConfig() {
-      let { COUNTRIES } = await this.$axios.post('/config/', {
-        secretkey: process.env.secretKey
-      })
-      console.log(COUNTRIES)
-      this.COUNTRIES = COUNTRIES
-    },
     i18nCookieChange(country, locale) {
       let date = new Date()
       this.$cookies.set(this.gconfig.countryKey, country, {

@@ -1,5 +1,6 @@
-import axios from 'axios';
 import Vue from 'vue'
+import axios from 'axios';
+import qs from 'qs'
 import { gconfig } from '~/assets/js/gconfig.js'
 
 export default function({ store, req, app }) {
@@ -22,7 +23,10 @@ export default function({ store, req, app }) {
 //     reqAry.push(axios.get(`https://modesens.com/api/2.0/request_context/?secretkey=${process.env.secretKey}`))
 //   }
 //   if (!store.state.countries) {
-//     reqAry.push(axios.post('https://modesens.com/api/2.0/config/', {secretkey: process.env.secretKey}))
+//     let data = {}
+//      data.secretkey = process.env.secretKey
+//      data = qs.stringify(data)
+//      reqAry.push(axios.post('https://test.modesens.com/api/2.0/config/', data))
 //   }
 //   if (token && lsuid) {
 //     store.commit('login')

@@ -282,11 +282,10 @@ export default {
     let headobj = {}
     let H1 = this.$t('loyalty.desc1') + ' ' + this.$t('loyalty.desc2')
     let TITLE = this.$t('loyalty.loyaltyTitle') + ' | ModeSens'
-    // let request = this.$store.state.request
-    // if (request) {
-    let MS_LOGO = 'https://cdn.modesens.com' + this.gconfig.MS_LOGONEW
+    let request = this.$store.state.request
+    let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
+    // let url = request.
     headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
-    // }
     return headobj
   },
   // head() {

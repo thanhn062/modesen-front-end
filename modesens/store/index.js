@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'qs'
 import Vue from 'vue';
 import {gconfig} from '~/assets/js/gconfig.js'
 import localStorage from '~/assets/js/utils/localStorage.js'
@@ -54,7 +55,6 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit({ commit, state, dispatch }, { req, app }) {
-    // console.log('nuxtServerInit--11111')
     // 获取cookie然后拆成键值对
     let cookiesArr = req.headers.cookie.split(';');
     let cookies = {}
@@ -70,15 +70,18 @@ export const actions = {
     
     let reqAry = []
     if (!state.request) {
-      reqAry.push(axios.get(`https://modesens.com/api/2.0/request_context/?secretkey=${process.env.secretKey}`))
+      reqAry.push(axios.get(`https://test.modesens.com/api/2.0/request_context/?secretkey=${process.env.secretKey}`))
     }
     if (!state.countries) {
-      reqAry.push(axios.post('https://test.modesens.com/api/2.0/config/', {secretkey: process.env.secretKey}))
+      let data = {}
+      data.secretkey = process.env.secretKey
+      data = qs.stringify(data)
+      reqAry.push(axios.post('https://test.modesens.com/api/2.0/config/', data))
     }
     if (token && lsuid) {
       commit('login')
       if (!state.lsuser) {
-        reqAry.push(axios.post('https://modesens.com/api/2.0/accounts/profile/get/'))
+        reqAry.push(axios.post('https://test.modesens.com/api/2.0/accounts/profile/get/'))
       }
     } else {
       app.$cookies.remove(gconfig.SESSIONID)
@@ -92,7 +95,6 @@ export const actions = {
         app.$cookies.set('refinfo', rerequestRes.data.REFINFO)
         app.$cookies.set('refdate', rerequestRes.data.REFDATE)
         // countries
-        console.log(countriesRes)
         commit('saveCountries', countriesRes.data.COUNTRIES)
         // lsuser
         commit('setLsuser', lsuserRes.data.lsuser)
