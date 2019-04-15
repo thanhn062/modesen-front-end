@@ -61,7 +61,7 @@ module.exports = {
 
   router: {
     // 在每页渲染前运行 middleware下 中间件的逻辑
-    middleware: ['device']
+    middleware: ['request', 'device']
   },
 
   /*

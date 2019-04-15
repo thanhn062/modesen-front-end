@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Vue from 'vue';
 import {gconfig} from '~/assets/js/gconfig.js'
 import localStorage from '~/assets/js/utils/localStorage.js'
@@ -13,7 +14,8 @@ export const state = () => ({
   rhints: {},//26个字母及#的搜索值,
   request: null,
   userLevel: null,
-  deviceType: ''  //设备类型
+  deviceType: '',  //设备类型,
+  countries: null //国家
 })
 
 export const mutations = {
@@ -22,12 +24,10 @@ export const mutations = {
   },
   logout(state) {
     state.login_status = false;
+    state.lsuser = null;
   },
   setLsuser(state, params) {
     state.lsuser = params;
-  },
-  removeLsuser(state) {
-    state.lsuser = null;
   },
   setUserlevel(state, params) {
     state.userLevel = params;
@@ -44,6 +44,9 @@ export const mutations = {
   saveRequest(state, params) {
     state.request = params;
   },
+  saveCountries(state, params) {
+    state.countries = params;
+  },
   setDeviceType(state, type) {
     state.deviceType = type
   }
@@ -51,14 +54,46 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit({ commit, state, dispatch }, { req, app }) {
-    let cookies = req.headers.cookie;
-    let token = app.$cookies.get(gconfig.ACCESS_TOKEN)
-    let lsuid = app.$cookies.get(gconfig.LSUID)
-    if (token && lsuid) {
-      commit('login')
-    } else {
-      commit('logout')
-    }
+    // console.log('nuxtServerInit--11111')
+    // // 获取cookie然后拆成键值对
+    // let cookiesArr = req.headers.cookie.split(';');
+    // let cookies = {}
+    // cookiesArr.map(cookieStr => {
+    //   let cookieAry = cookieStr.split('=')
+    //   cookies[cookieAry[0].trim()] = cookieAry[1].trim()
+    // })
+    // let token = cookies[gconfig.ACCESS_TOKEN]
+    // let lsuid = cookies[gconfig.LSUID]
+    // //设置axios的全局变量
+    // axios.baseURL = process.env.browserBaseURL + 'api/2.0/';  //请求根目录
+    // axios.defaults.headers['Authorization'] = 'Bearer ' + cookies[gconfig.ACCESS_TOKEN]; //获取cookie放在头部传到后端
+    
+    // let reqAry = []
+    // if (!state.request) {
+    //   reqAry.push(axios.get(`https://modesens.com/api/2.0/request_context/?secretkey=${process.env.secretKey}`))
+    // }
+    // if (token && lsuid) {
+    //   commit('login')
+    //   if (!state.lsuser) {
+    //     reqAry.push(axios.post('https://modesens.com/api/2.0/accounts/profile/get/'))
+    //   }
+    // } else {
+    //   app.$cookies.remove(gconfig.SESSIONID)
+    //   commit('logout')
+    // }
+    // return axios.all(reqAry)
+    //   .then(axios.spread((rerequestRes, lsuserRes) => {
+    //     // request_context
+    //     commit('saveRequest', rerequestRes.data)
+    //     Vue.prototype.ISWECHATLITE = rerequestRes.data.ISWECHATLITE;
+    //     app.$cookies.set('refinfo', rerequestRes.data.REFINFO)
+    //     app.$cookies.set('refdate', rerequestRes.data.REFDATE)
+    //     // lsuser
+    //     commit('setLsuser', lsuserRes.data.lsuser)
+    //   }))
+    //   .catch(e => {
+    //     console.log(e)
+    //   })
   },
   async getRequest({ commit }, app) {
     let obj = await app.$axios.get('/request_context/', { params: {} });

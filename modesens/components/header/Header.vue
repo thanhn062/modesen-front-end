@@ -304,12 +304,9 @@ export default {
       return 'women'
     }
   },
-  // created() {
-  //   this.getConfig()
-  // },
-  // mounted() {
+  mounted() {
   //   // window.addEventListener('load', event => {
-  //   //   this.getConfig()
+      // this.getConfig()
   //   // })
   //   this.$nextTick(() => {
   //     this.mybrowse = getBrowse()
@@ -329,12 +326,13 @@ export default {
   //       $('.header').animate({ left: showStatus ? 0 : '80%' })
   //     })
   //   })
-  // },
+  },
   methods: {
     async getConfig() {
       let { COUNTRIES } = await this.$axios.post('/config/', {
         secretkey: process.env.secretKey
       })
+      console.log(COUNTRIES)
       this.COUNTRIES = COUNTRIES
     },
     i18nCookieChange(country, locale) {

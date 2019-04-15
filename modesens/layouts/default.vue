@@ -40,15 +40,10 @@ export default {
       messaging: null
     }
   },
-  created() {
-    // if (this.$store.state.login_status && !this.$store.state.lsuser) {
-    //   this.$store.dispatch('getLsuser', this)
-    // }
-    // if (!this.$store.state.request) {
-    //   this.$store.dispatch('getRequest', this)
-    // }
-  },
   mounted() {
+    console.log('default-request: ', this.$store.state.request)
+    console.log('default-lsuser: ', this.$store.state.lsuser)
+    console.log('default-country: ', this.$store.state.countries)
     let _this = this
     window.addEventListener('load', event => {
       // if (_this.$store.state.request) {
