@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import axios from 'axios';
-import qs from 'qs'
 import { gconfig } from '~/assets/js/gconfig.js'
 
 export default function({ store, req, app }) {
+  console.log('middleware----11111111111111111', req.headers);
   // 获取cookie然后拆成键值对
   let cookiesArr = req.headers.cookie.split(';');
   let cookies = {}
@@ -13,25 +13,20 @@ export default function({ store, req, app }) {
   })
   let token = cookies[gconfig.ACCESS_TOKEN]
   let lsuid = cookies[gconfig.LSUID]
-  //设置axios的全局变量
-  axios.baseURL = process.env.browserBaseURL + 'api/2.0/';  //请求根目录
-  axios.timeout = 5000;
-  axios.defaults.headers['Authorization'] = 'Bearer ' + cookies[gconfig.ACCESS_TOKEN]; //获取cookie放在头部传到后端
 
   let reqAry = []
   if (!store.state.request) {
-    reqAry.push(axios.get(`https://modesens.com/api/2.0/request_context/?secretkey=${process.env.secretKey}`))
+    reqAry.push(app.$axios.get('/request_context/', {params: {}, async: false}))
   }
   if (!store.state.countries) {
     let data = {}
      data.secretkey = process.env.secretKey
-     data = qs.stringify(data)
-     reqAry.push(axios.post('https://modesens.com/api/2.0/config/', data))
+     reqAry.push(app.$axios.post('/config/', data, {async: false}))
   }
   if (token && lsuid) {
     store.commit('login')
     if (!store.state.lsuser) {
-      reqAry.push(axios.post('https://modesens.com/api/2.0/accounts/profile/get/'))
+      reqAry.push(app.$axios.post('/accounts/profile/get/', {}, {async: false}))
     }
   } else {
     app.$cookies.remove(gconfig.SESSIONID)
@@ -40,15 +35,14 @@ export default function({ store, req, app }) {
   return axios.all(reqAry)
     .then(axios.spread((rerequestRes, countriesRes, lsuserRes) => {
       // request_context
-      store.commit('saveRequest', rerequestRes.data)
-      Vue.prototype.ISWECHATLITE = rerequestRes.data.ISWECHATLITE;
-      app.$cookies.set('refinfo', rerequestRes.data.REFINFO)
-      app.$cookies.set('refdate', rerequestRes.data.REFDATE)
+      store.commit('saveRequest', rerequestRes)
+      Vue.prototype.ISWECHATLITE = rerequestRes.ISWECHATLITE;
+      app.$cookies.set('refinfo', rerequestRes.REFINFO)
+      app.$cookies.set('refdate', rerequestRes.REFDATE)
       // countries
-      console.log(countriesRes)
-      store.commit('saveCountries', countriesRes.data)
+      store.commit('saveCountries', countriesRes.COUNTRIES)
       // lsuser
-      store.commit('setLsuser', lsuserRes.data.lsuser)
+      store.commit('setLsuser', lsuserRes.lsuser)
     }))
     .catch(e => {
       console.log(e)

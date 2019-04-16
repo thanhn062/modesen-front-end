@@ -55,6 +55,7 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit({ commit, state, dispatch }, { req, app }) {
+    console.log('storeindex----222222222222222222222', req.headers);
     // // 获取cookie然后拆成键值对
     // let cookiesArr = req.headers.cookie.split(';');
     // let cookies = {}
@@ -102,31 +103,5 @@ export const actions = {
     //   .catch(e => {
     //     console.log(e)
     //   })
-  },
-  async getRequest({ commit }, app) {
-    let obj = await app.$axios.get('/request_context/', { params: {} });
-    commit('saveRequest', obj);
-    Vue.prototype.ISWECHATLITE = obj.ISWECHATLITE;
-    app.$cookies.set('refinfo', obj.REFINFO)
-    app.$cookies.set('refdate', obj.REFDATE)
-  },
-  async getLsuser({ commit }, app) {
-    let userdata = await app.$axios.post('/accounts/profile/get/', {})
-    if (userdata.lsuser) {
-      commit('login')
-      commit('setLsuser', userdata.lsuser)
-      app.$cookies.set(gconfig.LSUID, userdata.lsuser.uid)
-    }
-  },
-  async getProfile({ commit }, { app, params}) {
-    let userdata = await app.$axios.post('/accounts/profile/get/', params)
-    if (userdata.lsuser) {
-      commit('login')
-      commit('setLsuser', userdata.lsuser)
-      app.$cookies.set(gconfig.LSUID, userdata.lsuser.uid)
-    }
-    if (userdata.level) {
-      commit('setUserlevel', userdata.level)
-    }
   }
 }
