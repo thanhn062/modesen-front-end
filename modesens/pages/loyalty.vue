@@ -275,8 +275,7 @@
 </template>
 <script>
 import { wxlogin } from '~/assets/js/utils/utils.js'
-import Swiper from 'swiper'
-import 'swiper/dist/css/swiper.min.css'
+// import 'swiper/dist/css/swiper.min.css'
 export default {
   head() {
     let headobj = {}
@@ -285,7 +284,6 @@ export default {
     let request = this.$store.state.request
     if (request) {
       let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
-      // let url = request.
       headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
     }
     return headobj
@@ -330,26 +328,26 @@ export default {
       ]
     }
   },
-  created() {
-    // if (this.$store.state.login_status) {
-    //   this.getLevelInfo()
-    // }
+  mounted() {
+    if (this.$store.state.login_status) {
+      this.getLevelInfo()
+    }
+    if ($(window).width() < 1200) {
+      this.isPC = false
+      let Swiper = require('swiper')
+      require('swiper/dist/css/swiper.min.css')
+      let banner_swiper_5 = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-p5',
+          clickable: true
+        },
+        autoplay: true,
+        speed: 1000,
+        loop: true,
+        initialSlide: 0
+      })
+    }
   },
-  // mounted() {
-  //   if ($(window).width() < 1200) {
-  //     this.isPC = false
-  //     let banner_swiper_5 = new Swiper('.swiper-container', {
-  //       pagination: {
-  //         el: '.swiper-p5',
-  //         clickable: true
-  //       },
-  //       autoplay: true,
-  //       speed: 1000,
-  //       loop: true,
-  //       initialSlide: 0
-  //     })
-  //   }
-  // },
   methods: {
     async getLevelInfo() {
       let params = {}
