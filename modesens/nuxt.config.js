@@ -24,8 +24,13 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.png' },
       { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' },
-      { rel: 'manifest', href: '/manifest.json'}
-    ]
+      { rel: 'manifest', href: '/manifest.json'},
+      // { rel: 'preload', href: '44f7653d4c8f70c2cba9.css'， as: 'style' },
+      { rel: 'preconnect', href: 'https://connect.facebook.net' },
+      { rel: 'preconnect', href: 'http://www.googleadservices.com' },
+      { rel: 'preconnect', href: 'http://connect.facebook.net' },
+      { rel: 'preconnect', href: 'http://dx.steelhousemedia.com' },
+ ]
   },
 
   env: {
@@ -55,13 +60,12 @@ module.exports = {
   plugins: [
     //ssr：false是为了不让js文件再服务器中编译；
     { src: '~/plugins/axios.js', ssr: true },
-    { src: '~/plugins/init.js', ssr: false },
     { src: '~/assets/js/utils/utils.js', ssr: false}
   ],
 
   router: {
     // 在每页渲染前运行 middleware下 中间件的逻辑
-    middleware: ['request', 'device']
+    middleware: ['device']
   },
 
   /*
@@ -155,10 +159,12 @@ module.exports = {
 	** Build configuration
 	*/
   build: {
-    // optimization: { splitChunks: true },
-    extractCSS: { allChunks: true },
-    // 防止多次打包axios
-    // vendor: ['axios'],
+    // extractCSS: { allChunks: true },
+    optimization: {
+      splitChunks: {
+        name: true
+      }
+    },
     plugins: [
       new webpack.ProvidePlugin({
         '$': 'jquery'
