@@ -130,7 +130,7 @@ export default function deviceType(u) {
 var commonfn = {
   install(Vue){
     Vue.prototype.commonfn = {
-      creatMetaTitle: function(H1, TITLE, MS_LOGO) {
+      creatMetaTitle: function(H1, TITLE, MS_LOGO, URL) {
         let meta = []
         // let LOCATION_URL = window.location.href
         let META_name = [

@@ -24,8 +24,13 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.png' },
       { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' },
-      { rel: 'manifest', href: '/manifest.json'}
-    ]
+      { rel: 'manifest', href: '/manifest.json'},
+      // { rel: 'preload', href: '44f7653d4c8f70c2cba9.css'， as: 'style' },
+      { rel: 'preconnect', href: 'https://connect.facebook.net' },
+      { rel: 'preconnect', href: 'http://www.googleadservices.com' },
+      { rel: 'preconnect', href: 'http://connect.facebook.net' },
+      { rel: 'preconnect', href: 'http://dx.steelhousemedia.com' },
+ ]
   },
 
   env: {
@@ -48,14 +53,15 @@ module.exports = {
     '~/assets/css/font.css',
     {src: '~/assets/css/main.less', lang: 'less'},
   ],
-
+  styleResources: {
+    less: './assets/css/common.less'
+  },
   /*
 	** Plugins to load before mounting the App
 	*/
   plugins: [
     //ssr：false是为了不让js文件再服务器中编译；
-    { src: '~/plugins/axios.js', ssr: false },
-    { src: '~/plugins/init.js', ssr: false },
+    { src: '~/plugins/axios.js', ssr: true },
     { src: '~/assets/js/utils/utils.js', ssr: false}
   ],
 
@@ -134,17 +140,14 @@ module.exports = {
       }
     ]
   ],
-  
-  styleResources: {
-    less: './assets/css/common.less'
+
+  render: {
+    bundleRenderer: {
+      shouldPreload: (file, type) => {
+        return ['script', 'style', 'font'].includes(type)
+      }
+    }
   },
-  // render: {
-  //   bundleRenderer: {
-  //     shouldPreload: (file, type) => {
-  //       return ['script', 'style', 'font'].includes(type)
-  //     }
-  //   }
-  // },
   /*
 	** Axios module configuration
 	*/
@@ -155,10 +158,12 @@ module.exports = {
 	** Build configuration
 	*/
   build: {
-    // optimization: { splitChunks: true },
-    extractCSS: { allChunks: true },
-    // 防止多次打包axios
-    // vendor: ['axios'],
+    // extractCSS: { allChunks: true },
+    optimization: {
+      splitChunks: {
+        name: true
+      }
+    },
     plugins: [
       new webpack.ProvidePlugin({
         '$': 'jquery'

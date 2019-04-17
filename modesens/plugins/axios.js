@@ -17,17 +17,16 @@ export default function ({ $axios, app }) {
     // config.withCredentials = true, // 允许携带cookie
     // config.crossDomain = true   //允许跨域
     // config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-
     if (config.method === 'post') {
+      config.data = config.data || {}
       config.data.timestamp = new Date().getTime();
+      config.data = qs.stringify(config.data);
     }
     if (config.method === 'get') {
+      config.params = config.params || {}
       config.params.secretkey = process.env.secretKey
       config.params.timestamp = new Date().getTime();
-      // config.params = qs.stringify(config.params);
-      // config.url += `?${config.params}`
     }
-    config.data = qs.stringify(config.data);
     return config;
   });
  

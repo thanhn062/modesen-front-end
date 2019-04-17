@@ -508,7 +508,6 @@ export default {
       this.$cookies.remove(this.gconfig.LSUID)
       this.$cookies.remove(this.gconfig.SESSIONID)
       this.$store.commit('logout')
-      this.$store.commit('removeLsuser')
       window.open('/', '_self')
     },
     gotoSignup(evt) {

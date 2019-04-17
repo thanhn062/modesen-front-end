@@ -282,18 +282,13 @@ export default {
     let headobj = {}
     let H1 = this.$t('loyalty.desc1') + ' ' + this.$t('loyalty.desc2')
     let TITLE = this.$t('loyalty.loyaltyTitle') + ' | ModeSens'
-    // let request = this.$store.state.request
-    // if (request) {
-    let MS_LOGO = 'https://cdn.modesens.com' + this.gconfig.MS_LOGONEW
-    headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
-    // }
+    let request = this.$store.state.request
+    if (request) {
+      let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
+    }
     return headobj
   },
-  // head() {
-  //   link: [
-  //     { rel: 'preload', type: 'text/css', href: '~/assets/css/loyalty.less' }
-  //   ]
-  // },
   data() {
     return {
       level: '',
@@ -302,7 +297,6 @@ export default {
       goldNum: '50,000-99,999',
       platinumNum: '100,000+',
       indexQt: -1,
-      isPC: true,
       nextUrl: '/',
       benefits: [1, 2, 3, 4],
       answers: [
@@ -334,12 +328,10 @@ export default {
       ]
     }
   },
-  mounted() {
-    if (this.$store.state.login_status) {
-      this.getLevelInfo()
-    }
-    if ($(window).width() < 1200) {
-      this.isPC = false
+  created() {
+    if (this.$store.state.deviceType !== 'pc') {
+      // let Swiper = require('swiper')
+      // require('swiper/dist/css/swiper.min.css')
       let banner_swiper_5 = new Swiper('.swiper-container', {
         pagination: {
           el: '.swiper-p5',
@@ -350,6 +342,11 @@ export default {
         loop: true,
         initialSlide: 0
       })
+    }
+  },
+  mounted() {
+    if (this.$store.state.login_status) {
+      this.getLevelInfo()
     }
   },
   methods: {
