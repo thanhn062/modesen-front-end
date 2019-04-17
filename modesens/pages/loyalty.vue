@@ -275,7 +275,8 @@
 </template>
 <script>
 import { wxlogin } from '~/assets/js/utils/utils.js'
-// import 'swiper/dist/css/swiper.min.css'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
 export default {
   head() {
     let headobj = {}
@@ -334,8 +335,8 @@ export default {
     }
     if ($(window).width() < 1200) {
       this.isPC = false
-      let Swiper = require('swiper')
-      require('swiper/dist/css/swiper.min.css')
+      // let Swiper = require('swiper')
+      // require('swiper/dist/css/swiper.min.css')
       let banner_swiper_5 = new Swiper('.swiper-container', {
         pagination: {
           el: '.swiper-p5',
