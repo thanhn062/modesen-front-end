@@ -18,7 +18,6 @@ export const state = () => ({
   deviceType: '',  //设备类型,
   countries: null, //国家,
   host: '',
-  testTool: false,
   eventTimes: 0
 })
 
@@ -56,9 +55,6 @@ export const mutations = {
   },
   setHost(state, params) {
     state.host = 'https://' + params
-  },
-  setTestTool(state, params) {
-    state.testTool = params
   },
   setClickTimes(state, num) {
     state.eventTimes = num

@@ -297,7 +297,6 @@ export default {
       goldNum: '50,000-99,999',
       platinumNum: '100,000+',
       indexQt: -1,
-      isPC: true,
       nextUrl: '/',
       benefits: [1, 2, 3, 4],
       answers: [
@@ -329,12 +328,8 @@ export default {
       ]
     }
   },
-  mounted() {
-    if (this.$store.state.login_status) {
-      this.getLevelInfo()
-    }
-    if ($(window).width() < 1200) {
-      this.isPC = false
+  created() {
+    if (this.$store.state.deviceType !== 'pc') {
       // let Swiper = require('swiper')
       // require('swiper/dist/css/swiper.min.css')
       let banner_swiper_5 = new Swiper('.swiper-container', {
@@ -347,6 +342,11 @@ export default {
         loop: true,
         initialSlide: 0
       })
+    }
+  },
+  mounted() {
+    if (this.$store.state.login_status) {
+      this.getLevelInfo()
     }
   },
   methods: {
