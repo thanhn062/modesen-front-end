@@ -27,9 +27,10 @@ module.exports = {
       { rel: 'manifest', href: '/manifest.json'},
       // { rel: 'preload', href: '44f7653d4c8f70c2cba9.css'， as: 'style' },
       { rel: 'preconnect', href: 'https://connect.facebook.net' },
-      { rel: 'preconnect', href: 'http://www.googleadservices.com' },
-      { rel: 'preconnect', href: 'http://connect.facebook.net' },
-      { rel: 'preconnect', href: 'http://dx.steelhousemedia.com' },
+      { rel: 'preconnect', href: 'https://www.googleadservices.com' },
+      { rel: 'preconnect', href: 'https://dx.steelhousemedia.com' },
+      { rel: 'preconnect', href: 'https://www.google-analytics.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
  ]
   },
 
