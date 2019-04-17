@@ -328,8 +328,11 @@ export default {
       ]
     }
   },
-  created() {
-    if (this.$store.state.deviceType !== 'pc') {
+  mounted() {
+    if (this.$store.state.login_status) {
+      this.getLevelInfo()
+    }
+    if ($(window).width() < 1200) {
       // let Swiper = require('swiper')
       // require('swiper/dist/css/swiper.min.css')
       let banner_swiper_5 = new Swiper('.swiper-container', {
@@ -342,11 +345,6 @@ export default {
         loop: true,
         initialSlide: 0
       })
-    }
-  },
-  mounted() {
-    if (this.$store.state.login_status) {
-      this.getLevelInfo()
     }
   },
   methods: {
