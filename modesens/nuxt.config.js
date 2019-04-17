@@ -53,7 +53,9 @@ module.exports = {
     '~/assets/css/font.css',
     {src: '~/assets/css/main.less', lang: 'less'},
   ],
-
+  styleResources: {
+    less: './assets/css/common.less'
+  },
   /*
 	** Plugins to load before mounting the App
 	*/
@@ -138,10 +140,7 @@ module.exports = {
       }
     ]
   ],
-  
-  styleResources: {
-    less: './assets/css/common.less'
-  },
+
   render: {
     bundleRenderer: {
       shouldPreload: (file, type) => {
@@ -175,17 +174,17 @@ module.exports = {
 		*/
     extend(config, ctx) {
       // Run ESLint on save
-      // if (ctx.isDev && ctx.isClient) {
-      //   config.module.rules.push({
-      //     enforce: 'pre',
-      //     test: /\.(js|vue)$/,
-      //     loader: 'eslint-loader',
-      //     exclude: /(node_modules)/,
-      //     options: {
-      //       fix: true
-      //     }
-      //   })
-      // }
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/,
+          options: {
+            fix: true
+          }
+        })
+      }
     }
   }
 }

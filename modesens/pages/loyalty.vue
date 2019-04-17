@@ -286,15 +286,10 @@ export default {
     if (request) {
       let MS_LOGO = request.STATIC_DOMAIN_IMG + this.gconfig.MS_LOGONEW
       // let url = request.
-      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO, 'https://test.modesens.com/loyalty/')
+      headobj = this.commonfn.creatMetaTitle(H1, TITLE, MS_LOGO)
     }
     return headobj
   },
-  // head() {
-  //   link: [
-  //     { rel: 'preload', type: 'text/css', href: '~/assets/css/loyalty.less' }
-  //   ]
-  // },
   data() {
     return {
       level: '',

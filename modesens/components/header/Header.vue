@@ -261,7 +261,6 @@
 import NavMenu from '~/components/header/NavMenu'
 import NavCategory from '~/components/header/NavCategory'
 import InstallBtn from '~/components/extention/InstallBtn'
-import { getBrowse } from '~/assets/js/utils/utils.js'
 import UserIcon from '~/components/UserIcon'
 export default {
   components: {
@@ -287,7 +286,6 @@ export default {
       searchResult: '',
       serachInputOpen: false,
       hint2Timeout: null,
-      mybrowse: null,
       has_notice_p: true,
       has_notice_m: true
     }
@@ -304,24 +302,23 @@ export default {
     }
   },
   mounted() {
-  //   this.$nextTick(() => {
-  //     this.mybrowse = getBrowse()
-  //     $('.main-container').css('padding-top', $('.header').height())
-  //     $('.navbar-toggler-icon').click(evt => {
-  //       evt.preventDefault()
-  //       evt.stopPropagation()
-  //       let showStatus = $('.header .navbar-expand-xl').hasClass('show')
-  //       if (showStatus) {
-  //         $('.header .navbar-expand-xl').removeClass('show')
-  //         $('.wrapper-mask').addClass('hidden')
-  //       } else {
-  //         $('.header .navbar-expand-xl').addClass('show')
-  //         $('.wrapper-mask').removeClass('hidden')
-  //       }
-  //       $('#nav_collapse').animate({ left: showStatus ? '-100%' : 0 })
-  //       $('.header').animate({ left: showStatus ? 0 : '80%' })
-  //     })
-  //   })
+    // this.$nextTick(() => {
+    $('.main-container').css('padding-top', $('.header').height())
+    $('.navbar-toggler-icon').click(evt => {
+      evt.preventDefault()
+      evt.stopPropagation()
+      let showStatus = $('.header .navbar-expand-xl').hasClass('show')
+      if (showStatus) {
+        $('.header .navbar-expand-xl').removeClass('show')
+        $('.wrapper-mask').addClass('hidden')
+      } else {
+        $('.header .navbar-expand-xl').addClass('show')
+        $('.wrapper-mask').removeClass('hidden')
+      }
+      $('#nav_collapse').animate({ left: showStatus ? '-100%' : 0 })
+      $('.header').animate({ left: showStatus ? 0 : '80%' })
+    })
+    // })
   },
   methods: {
     i18nCookieChange(country, locale) {
