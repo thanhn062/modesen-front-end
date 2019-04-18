@@ -29,7 +29,6 @@ module.exports = {
       { rel: 'preconnect', href: 'https://www.googleadservices.com' },
       { rel: 'preconnect', href: 'https://dx.steelhousemedia.com' },
       { rel: 'preconnect', href: 'https://www.google-analytics.com' },
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
  ]
   },
 
