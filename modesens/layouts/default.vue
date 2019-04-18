@@ -192,7 +192,7 @@ export default {
               fjs.parentNode.insertBefore(js, fjs)
             })(document, 'script', 'facebook-jssdk')
           }
-          // <![CDATA[ 
+          // <![CDATA[
           let googledatajs = document.createElement('script')
           googledatajs.innerHTML = `
             let google_conversion_id = 993189995
