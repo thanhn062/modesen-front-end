@@ -71,27 +71,6 @@ export default {
         })
         this.$ga.set('dimension1', this.$cookies.get('gcid'))
         this.$ga.set('dimension2', this.$cookies.get(this.gconfig.LSUID))
-        /* <![CDATA[ */
-        if (this.$store.state.request.RCOUNTRY != 'cn') {
-          let googledatajs = document.createElement('script')
-          googledatajs.innerHTML = `
-            let google_conversion_id = 993189995
-            let google_custom_params = window.google_tag_params
-            let google_remarketing_only = true`
-          document.getElementsByTagName('head')[0].appendChild(googledatajs)
-          let googleadserviceshm = document.createElement('script')
-          googleadserviceshm.src =
-            '//www.googleadservices.com/pagead/conversion.js'
-          googleadserviceshm.type = 'text/javascript'
-          let nofbhm = document.createElement('noscript')
-          nofbhm.innerHTML = `<div style="display:inline;">
-            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/993189995/?value=0&amp;guid=ON&amp;script=0"/>
-            </div>`
-          document
-            .getElementsByTagName('head')[0]
-            .appendChild(googleadserviceshm)
-          document.getElementsByTagName('head')[0].appendChild(nofbhm)
-        }
       } else {
         this.$ga.event()
       }
@@ -213,6 +192,25 @@ export default {
               fjs.parentNode.insertBefore(js, fjs)
             })(document, 'script', 'facebook-jssdk')
           }
+          // <![CDATA[ 
+          let googledatajs = document.createElement('script')
+          googledatajs.innerHTML = `
+            let google_conversion_id = 993189995
+            let google_custom_params = window.google_tag_params
+            let google_remarketing_only = true`
+          document.getElementsByTagName('head')[0].appendChild(googledatajs)
+          let googleadserviceshm = document.createElement('script')
+          googleadserviceshm.src =
+            '//www.googleadservices.com/pagead/conversion.js'
+          googleadserviceshm.type = 'text/javascript'
+          let nofbhm = document.createElement('noscript')
+          nofbhm.innerHTML = `<div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/993189995/?value=0&amp;guid=ON&amp;script=0"/>
+            </div>`
+          document
+            .getElementsByTagName('head')[0]
+            .appendChild(googleadserviceshm)
+          document.getElementsByTagName('head')[0].appendChild(nofbhm)
         }
       }
       // sw

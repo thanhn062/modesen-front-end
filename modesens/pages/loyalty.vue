@@ -325,30 +325,31 @@ export default {
         [1],
         [1],
         [1]
-      ]
+      ],
+      touchTimes: 0
     }
   },
   mounted() {
     if (this.$store.state.login_status) {
       this.getLevelInfo()
     }
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        if ($(window).width() < 1200) {
-          let banner_swiper_5 = new Swiper('.swiper-container', {
-            pagination: {
-              el: '.swiper-p5',
-              clickable: true
-            },
-            autoplay: true,
-            speed: 1000,
-            loop: true,
-            initialSlide: 0
-          })
-          $('.benefitsCon .swiper-wrapper').css('flex-direction', 'row')
-        }
-      }, 1000)
-    })
+    if ($(window).width() < 1200) {
+      window.addEventListener('touchstart', () => {
+        if (this.touchTimes === 1) return
+        this.touchTimes = 1
+        let banner_swiper_5 = new Swiper('.swiper-container', {
+          pagination: {
+            el: '.swiper-p5',
+            clickable: true
+          },
+          autoplay: true,
+          speed: 1000,
+          loop: true,
+          initialSlide: 0
+        })
+        $('.benefitsCon .swiper-wrapper').css('flex-direction', 'row')
+      })
+    }
   },
   methods: {
     async getLevelInfo() {
