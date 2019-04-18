@@ -29,9 +29,10 @@ module.exports = {
       { rel: 'preload', href: '/_nuxt/bfaa4a8ef670975ec170.js', as: 'script' },
       { rel: 'preload', href: '/_nuxt/c7c88cee52ff60991176.js', as: 'script' },
       { rel: 'preconnect', href: 'https://connect.facebook.net' },
-      { rel: 'preconnect', href: 'http://www.googleadservices.com' },
-      { rel: 'preconnect', href: 'http://connect.facebook.net' },
-      { rel: 'preconnect', href: 'http://dx.steelhousemedia.com' },
+      { rel: 'preconnect', href: 'https://www.googleadservices.com' },
+      { rel: 'preconnect', href: 'https://dx.steelhousemedia.com' },
+      { rel: 'preconnect', href: 'https://www.google-analytics.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
  ]
   },
 
