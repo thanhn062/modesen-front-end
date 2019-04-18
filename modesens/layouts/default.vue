@@ -71,27 +71,6 @@ export default {
         })
         this.$ga.set('dimension1', this.$cookies.get('gcid'))
         this.$ga.set('dimension2', this.$cookies.get(this.gconfig.LSUID))
-        /* <![CDATA[ */
-        if (this.$store.state.request.RCOUNTRY != 'cn') {
-          let googledatajs = document.createElement('script')
-          googledatajs.innerHTML = `
-            let google_conversion_id = 993189995
-            let google_custom_params = window.google_tag_params
-            let google_remarketing_only = true`
-          document.getElementsByTagName('head')[0].appendChild(googledatajs)
-          let googleadserviceshm = document.createElement('script')
-          googleadserviceshm.src =
-            '//www.googleadservices.com/pagead/conversion.js'
-          googleadserviceshm.type = 'text/javascript'
-          let nofbhm = document.createElement('noscript')
-          nofbhm.innerHTML = `<div style="display:inline;">
-            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/993189995/?value=0&amp;guid=ON&amp;script=0"/>
-            </div>`
-          document
-            .getElementsByTagName('head')[0]
-            .appendChild(googleadserviceshm)
-          document.getElementsByTagName('head')[0].appendChild(nofbhm)
-        }
       } else {
         this.$ga.event()
       }
@@ -213,6 +192,25 @@ export default {
               fjs.parentNode.insertBefore(js, fjs)
             })(document, 'script', 'facebook-jssdk')
           }
+          // <![CDATA[
+          let googledatajs = document.createElement('script')
+          googledatajs.innerHTML = `
+            let google_conversion_id = 993189995
+            let google_custom_params = window.google_tag_params
+            let google_remarketing_only = true`
+          document.getElementsByTagName('head')[0].appendChild(googledatajs)
+          let googleadserviceshm = document.createElement('script')
+          googleadserviceshm.src =
+            '//www.googleadservices.com/pagead/conversion.js'
+          googleadserviceshm.type = 'text/javascript'
+          let nofbhm = document.createElement('noscript')
+          nofbhm.innerHTML = `<div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/993189995/?value=0&amp;guid=ON&amp;script=0"/>
+            </div>`
+          document
+            .getElementsByTagName('head')[0]
+            .appendChild(googleadserviceshm)
+          document.getElementsByTagName('head')[0].appendChild(nofbhm)
         }
       }
       // sw
@@ -291,12 +289,7 @@ export default {
         })
       }
       // SteelHouse Tracking Pixel
-      let SteelHouseScript = document.createElement('script')
-      SteelHouseScript.innerHTML = `(function(){"use strict";var e=null,b="4.0.0",
-      n="30524",
-      additional="term=value",
-      t,r,i;try{t=top.document.referer!==""?encodeURIComponent(top.document.referrer.substring(0,2048)):""}catch(o){t=document.referrer!==null?document.referrer.toString().substring(0,2048):""}try{r=window&&window.top&&document.location&&window.top.location===document.location?document.location:window&&window.top&&window.top.location&&""!==window.top.location?window.top.location:document.location}catch(u){r=document.location}try{i=parent.location.href!==""?encodeURIComponent(parent.location.href.toString().substring(0,2048)):""}catch(a){try{i=r!==null?encodeURIComponent(r.toString().substring(0,2048)):""}catch(f){i=""}}var l,c=document.createElement("script"),h=null,p=document.getElementsByTagName("script"),d=Number(p.length)-1,v=document.getElementsByTagName("script")[d];if(typeof l==="undefined"){l=Math.floor(Math.random()*1e17)}h="dx.steelhousemedia.com/spx?"+"dxver="+b+"&shaid="+n+"&tdr="+t+"&plh="+i+"&cb="+l+additional;c.type="text/javascript";c.src=("https:"===document.location.protocol?"https://":"http://")+h;v.parentNode.insertBefore(c,v)})()`
-      document.head.appendChild(SteelHouseScript)
+      this.$store.state.loadjjs
     }
   }
 }

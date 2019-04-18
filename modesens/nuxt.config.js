@@ -25,7 +25,6 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.png' },
       { rel: 'chrome-webstore-item', href: 'https://chrome.google.com/webstore/detail/cmfmhegpbogfmojekmidappigcfbgbcb' },
       { rel: 'manifest', href: '/manifest.json'},
-      // { rel: 'preload', href: '44f7653d4c8f70c2cba9.css'， as: 'style' },
       { rel: 'preconnect', href: 'https://connect.facebook.net' },
       { rel: 'preconnect', href: 'https://www.googleadservices.com' },
       { rel: 'preconnect', href: 'https://dx.steelhousemedia.com' },
