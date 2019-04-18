@@ -336,6 +336,7 @@ export default {
     if ($(window).width() < 1200) {
       window.addEventListener('touchstart', () => {
         if (this.touchTimes === 1) return
+        console.log('33333')
         this.touchTimes = 1
         let banner_swiper_5 = new Swiper('.swiper-container', {
           pagination: {
