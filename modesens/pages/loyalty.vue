@@ -332,20 +332,23 @@ export default {
     if (this.$store.state.login_status) {
       this.getLevelInfo()
     }
-    if ($(window).width() < 1200) {
-      // let Swiper = require('swiper')
-      // require('swiper/dist/css/swiper.min.css')
-      let banner_swiper_5 = new Swiper('.swiper-container', {
-        pagination: {
-          el: '.swiper-p5',
-          clickable: true
-        },
-        autoplay: true,
-        speed: 1000,
-        loop: true,
-        initialSlide: 0
-      })
-    }
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if ($(window).width() < 1200) {
+          let banner_swiper_5 = new Swiper('.swiper-container', {
+            pagination: {
+              el: '.swiper-p5',
+              clickable: true
+            },
+            autoplay: true,
+            speed: 1000,
+            loop: true,
+            initialSlide: 0
+          })
+          $('.benefitsCon .swiper-wrapper').css('flex-direction', 'row')
+        }
+      }, 1000)
+    })
   },
   methods: {
     async getLevelInfo() {
