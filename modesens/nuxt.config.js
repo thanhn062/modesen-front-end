@@ -157,7 +157,7 @@ module.exports = {
 	** Build configuration
 	*/
   build: {
-    // extractCSS: { allChunks: true },
+    publicPath: 'https://cdn.modesens.com',
     optimization: {
       splitChunks: {
         name: true
