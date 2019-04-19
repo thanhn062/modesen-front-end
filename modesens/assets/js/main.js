@@ -18,45 +18,59 @@ Vue.prototype.$localStorage = localStorage;
 
 //浏览器端功能
 if (process.browser){
+  let eventTimes = 0;
   $(document).ready(function() {
-    //click--ga
-    $('*[data-ga-click]').click(function() {
-      let res = $(this).attr('data-ga-click');
-      if (res) {
-        var [category, action, label, val] = [...res.split('-')];
-        label = label || 'click'
-        ga('send', 'event', category, action, label, val)
-      }
+    window.addEventListener('mousemove', () => {
+      if (eventTimes === 1) return;
+      eventTimes = 1;
+      allActions();
+      //mouseenter--ga
+      $('*[data-ga-enter]').mouseenter(function() {
+        let res = $(this).attr('data-ga-enter');
+        if (res) {
+          var [category, action, label, val] = [...res.split('-')];
+          label = label || 'mouseenter'
+          ga('send', 'event', category, action, label, val)
+        }
+      })
     })
-    //mouseenter--ga
-    $('*[data-ga-enter]').mouseenter(function() {
-      let res = $(this).attr('data-ga-enter');
-      if (res) {
-        var [category, action, label, val] = [...res.split('-')];
-        label = label || 'mouseenter'
-        ga('send', 'event', category, action, label, val)
-      }
+    window.addEventListener('touchstart', () => {
+      if (eventTimes === 1) return;
+      eventTimes = 1;
+      allActions();
     })
-    // 注册 所有的注册按钮添加类名：btn-signup
-    $('.btn-signup').click(function() {
-      let res = location.pathname.match(/(.+)/)
-      // let res = location.pathname.match(/\/[a-z]+\/[a-z]+(.+)/)
-      if (!res) return
-      let next_url = [...res][1]
-      if (next_url === '/about/') {
-        window.open('/accounts/signup/?next=/')
-      } else {
-        window.open('/accounts/signup/?next=' + next_url)
-      }
-    })
-    //置顶功能
-    $(window).scroll(bindScroll)
-    function bindScroll(){
-      var scrollTop = $(window).scrollTop();
-      var winHeight = Math.max($(window).height(), $(this).outerHeight(), $('html').height());
-      var viewHeight = Math.min(window.innerHeight, document.body.clientHeight);
-      if (scrollTop + 200 > viewHeight) $('#to-top').fadeIn(500);
-      else $('#to-top').fadeOut(500);
+  })
+}
+// allActions pc和响应式都会执行的代码
+function allActions() {
+  //click--ga
+  $('*[data-ga-click]').click(function() {
+    let res = $(this).attr('data-ga-click');
+    if (res) {
+      var [category, action, label, val] = [...res.split('-')];
+      label = label || 'click'
+      ga('send', 'event', category, action, label, val)
     }
   })
+  // 注册 所有的注册按钮添加类名：btn-signup
+  $('.btn-signup').click(function() {
+    let res = location.pathname.match(/(.+)/)
+    // let res = location.pathname.match(/\/[a-z]+\/[a-z]+(.+)/)
+    if (!res) return
+    let next_url = [...res][1]
+    if (next_url === '/about/') {
+      window.open('/accounts/signup/?next=/')
+    } else {
+      window.open('/accounts/signup/?next=' + next_url)
+    }
+  })
+  //置顶功能
+  $(window).scroll(bindScroll)
+}
+function bindScroll(){
+  var scrollTop = $(window).scrollTop();
+  var winHeight = Math.max($(window).height(), $(this).outerHeight(), $('html').height());
+  var viewHeight = Math.min(window.innerHeight, document.body.clientHeight);
+  if (scrollTop + 200 > viewHeight) $('#to-top').fadeIn(500);
+  else $('#to-top').fadeOut(500);
 }
