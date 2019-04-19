@@ -64,22 +64,30 @@
       <div class="levelBox">
         <div class="levelWrap">
           <div class="imgBox-l">
-            <div class="levelEach level-platinum">
+            <div
+              v-lazy:background-image="'/img/20181213platinum-l.svg'"              
+              class="levelEach level-platinum">
               <span>{{ $t('loyalty.Platinum') }}</span><br>
               <span>{{ platinumNum }}</span><br>
               <span>{{ $t('loyalty.Points') }}</span>
             </div>
-            <div class="levelEach level-gold">
+            <div
+              v-lazy:background-image="'/img/20181213gold-l.svg'"              
+              class="levelEach level-gold">
               <span>{{ $t('loyalty.Gold') }}</span><br>
               <span>{{ goldNum }}</span><br>
               <span>{{ $t('loyalty.Points') }}</span>
             </div>
-            <div class="levelEach level-silver">
+            <div
+              v-lazy:background-image="'/img/20181213silver-l.svg'"              
+              class="levelEach level-silver">
               <span>{{ $t('loyalty.Silver') }}</span><br>
               <span>{{ silverNum }}</span><br>
               <span>{{ $t('loyalty.Points') }}</span>
             </div>
-            <div class="levelEach level-bronze">
+            <div
+              v-lazy:background-image="'/img/20181213bronze-l.svg'"
+              class="levelEach level-bronze">
               <span>{{ $t('loyalty.Bronze') }}</span><br>
               <span>{{ bronzeNum }}</span><br>
               <span>{{ $t('loyalty.Points') }}</span>
@@ -87,79 +95,117 @@
           </div>
           <div class="levelKind">
             <span>{{ $t('loyalty.PrioritySaleAlert') }}</span>
-            <div class="levelEach level-platinum">
+            <div
+              v-lazy:background-image="'/img/20181213platinum-l.svg'"              
+              class="levelEach level-platinum">
               <span>{{ $t('loyalty.FirstPriority') }}</span>
             </div>
-            <div class="levelEach level-gold">
+            <div
+              v-lazy:background-image="'/img/20181213gold-l.svg'"              
+              class="levelEach level-gold">
               <span>{{ $t('loyalty.SecondPriority') }}</span>
             </div>
-            <div class="levelEach level-silver">
+            <div
+              v-lazy:background-image="'/img/20181213silver-l.svg'"              
+              class="levelEach level-silver">
               <span>{{ $t('loyalty.ThirdPriority') }}</span>
             </div>
-            <div class="levelEach level-bronze">
+            <div
+              v-lazy:background-image="'/img/20181213bronze-l.svg'"
+              class="levelEach level-bronze">
               <span>{{ $t('loyalty.FourthPriority') }}</span>
             </div>
           </div>
           <div class="levelKind">
             <span>{{ $t('loyalty.MaxProducts') }}</span>
-            <div class="levelEach level-platinum">
+            <div
+              v-lazy:background-image="'/img/20181213platinum-l.svg'"              
+              class="levelEach level-platinum">
               <span>{{ $t('loyalty.Unlimited') }}</span>
             </div>
-            <div class="levelEach level-gold">
+            <div
+              v-lazy:background-image="'/img/20181213gold-l.svg'"              
+              class="levelEach level-gold">
               <span><span>10,000</span></span>
             </div>
-            <div class="levelEach level-silver">
+            <div
+              v-lazy:background-image="'/img/20181213silver-l.svg'"              
+              class="levelEach level-silver">
               <span>1,000</span>
             </div>
-            <div class="levelEach level-bronze">
+            <div
+              v-lazy:background-image="'/img/20181213bronze-l.svg'"
+              class="levelEach level-bronze">
               <span><span>100</span></span>
             </div>
           </div>
           <div class="levelKind">
             <span>{{ $t('loyalty.ModeSensProtection') }}</span>
-            <div class="levelEach level-platinum">
+            <div
+              v-lazy:background-image="'/img/20181213platinum-l.svg'"              
+              class="levelEach level-platinum">
               <i/>
             </div>
-            <div class="levelEach level-gold">
+            <div
+              v-lazy:background-image="'/img/20181213gold-l.svg'"              
+              class="levelEach level-gold">
               <i/>
             </div>
-            <div class="levelEach level-silver">
+            <div
+              v-lazy:background-image="'/img/20181213silver-l.svg'"              
+              class="levelEach level-silver">
               <i/>
             </div>
-            <div class="levelEach level-bronze">
+            <div
+              v-lazy:background-image="'/img/20181213bronze-l.svg'"
+              class="levelEach level-bronze">
               <i/>
             </div>
           </div>
           <div class="levelKind">
             <span>{{ $t('loyalty.TriplePointsDays') }}</span>
-            <div class="levelEach level-platinum">
+            <div
+              v-lazy:background-image="'/img/20181213platinum-l.svg'"              
+              class="levelEach level-platinum">
               <span>3</span>
             </div>
-            <div class="levelEach level-gold">
+            <div
+              v-lazy:background-image="'/img/20181213gold-l.svg'"              
+              class="levelEach level-gold">
               <span>2</span>
             </div>
-            <div class="levelEach level-silver">
+            <div
+              v-lazy:background-image="'/img/20181213silver-l.svg'"              
+              class="levelEach level-silver">
               <span>1</span>
             </div>
           </div>
           <div class="levelKind">
             <span>{{ $t('loyalty.EarlySaleAccess') }}</span>
-            <div class="levelEach level-platinum">
+            <div
+              v-lazy:background-image="'/img/20181213platinum-l.svg'"              
+              class="levelEach level-platinum">
               <i/>
             </div>
-            <div class="levelEach level-gold">
+            <div
+              v-lazy:background-image="'/img/20181213gold-l.svg'"              
+              class="levelEach level-gold">
               <i/>
             </div>
           </div>
           <div class="levelKind">
             <span>{{ $t('loyalty.DedicatedVIPService') }}</span>
-            <div class="levelEach level-platinum">
+            <div
+              v-lazy:background-image="'/img/20181213platinum-l.svg'"              
+              class="levelEach level-platinum">
               <i/>
             </div>
           </div>
           <div class="levelKind">
             <span>{{ $t('loyalty.LimitedProducts') }}</span>
-            <div class="levelEach level-platinum">
+            <div
+              v-lazy:background-image="'/img/20181213platinum-l.svg'"              
+              class="levelEach level-platinum">
               <i/>
             </div>
           </div>
