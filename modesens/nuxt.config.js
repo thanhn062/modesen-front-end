@@ -158,6 +158,7 @@ module.exports = {
 	*/
   build: {
     // extractCSS: { allChunks: true },
+    publicPath: 'https://cdn.modesens.com/static/dist',
     optimization: {
       splitChunks: {
         name: true
