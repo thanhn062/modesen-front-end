@@ -40,7 +40,8 @@
     "v-charts": "^1.19.0",
     "v-click-outside": "^2.0.2",
     "vue-lazyload": "^1.2.6",
-    "vue-meta": "^1.5.8",
+    "vue-meta": "^1.6.0",
+    "node-fetch": "^2.3.0",
     "vuelidate": "^0.7.4",
     "windows-fs": "^1.2.0"
   },
