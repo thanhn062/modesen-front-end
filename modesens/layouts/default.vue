@@ -4,53 +4,59 @@
     <main class="main-container">
       <nuxt/>
     </main>
-    <Footer/>
-    <div
-      class="wrapper-mask hidden"
-      @click="hideMenu"/>
-    <Modals/>
-    <Top/>
-    <CustomerService
-      v-if="$store.state.request && $store.state.request.RCOUNTRY ==='cn'" />
+    <div v-if="show">
+      <Footer/>
+      <div
+        class="wrapper-mask hidden"
+        @click="hideMenu"/>
+      <Modals/>
+      <Top/>
+      <CustomerService
+        v-if="$store.state.request && $store.state.request.RCOUNTRY ==='cn'" />
+    </div>
     <Storefav
       v-if="!$store.state.login_status"/>
   </div>
 </template>
 <script>
 import '~/assets/js/main.js'
-// import '~/assets/js/endhelper.js'
 import Header from '~/components/header/Header.vue'
-import Footer from '~/components/Footer.vue'
-import Modals from '~/components/Modals.vue'
-import Top from '~/components/Top.vue'
-import CustomerService from '~/components/CustomerService.vue'
+// import Footer from '~/components/Footer.vue'
+// import Modals from '~/components/Modals.vue'
+// import Top from '~/components/Top.vue'
+// import CustomerService from '~/components/CustomerService.vue'
 import Storefav from '~/components/Storefav.vue'
-import cookie from '~/assets/js/utils/cookie.js'
 export default {
   components: {
     Header,
-    Footer,
-    Modals,
-    Top,
-    CustomerService,
+    Footer: () => import('~/components/Footer.vue'),
+    Modals: () => import('~/components/Modals.vue'),
+    Top: () => import('~/components/Top.vue'),
+    CustomerService: () => import('~/components/CustomerService.vue'),
     Storefav
   },
   data() {
     return {
-      messaging: null
+      messaging: null,
+      show: false
     }
   },
   mounted() {
     if ($(window).width() < 1200) {
       window.addEventListener('touchstart', () => {
+        if (!this.show) {
+          this.show = true
+        }
         this.loadJs()
       })
     } else {
       window.addEventListener('mousemove', () => {
+        if (!this.show) {
+          this.show = true
+        }
         this.loadJs()
       })
     }
-
     window.addEventListener('load', event => {
       //ga
       if (!this.$store.state.lsuser || !this.$store.state.lsuser.is_staff) {
