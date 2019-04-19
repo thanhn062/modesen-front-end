@@ -2,7 +2,7 @@
   <section class="container loyalty-con">
     <div class="accountsCon">
       <div class="logoCon"><img
-        v-lazy="'/img/20180905footer_logo.svg'"
+        src="/img/20180905footer_logo.svg"
         alt=""></div>
       <h1 class="desc">{{ $t('loyalty.desc1') }}<br>{{ $t('loyalty.desc2') }}</h1>
       <div

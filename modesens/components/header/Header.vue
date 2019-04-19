@@ -84,7 +84,7 @@
               v-if="!$store.state.login_status"
               href="javascript:;">
               <img
-                v-lazy="'/img/20180905account_b.svg'"
+                src="/img/20180905account_b.svg"
                 alt="">
             </a>
             <div
@@ -95,7 +95,7 @@
                 href="javascript:;"
                 @click="has_notice_p=false">
                 <img
-                  v-lazy="'/img/prd-update-20180504.svg'"
+                  src="/img/prd-update-20180504.svg"
                   alt="">
                 <span
                   v-if="has_notice_p && $store.state.lsuser.has_notice_p"
@@ -106,7 +106,7 @@
                 href="javascript:;"
                 @click="has_notice_m=false">
                 <img
-                  v-lazy="'/img/social-update-20180504.svg'"
+                  src="/img/social-update-20180504.svg"
                   alt="">
                 <span
                   v-if="has_notice_m && $store.state.lsuser.has_notice_m"
