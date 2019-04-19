@@ -15,7 +15,7 @@ echo "2. npm run build..."
 cd modesens
 rm -rf .nuxt/*
 npm i
-npm run build && npm audit fix
+npm run build
 
 echo
 echo
