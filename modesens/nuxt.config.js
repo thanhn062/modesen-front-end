@@ -1,5 +1,5 @@
 const pkg = require('./package')
-const countries = require('./countries')
+const countries = require('./lang/countries.json')
 const webpack = require('webpack')
 require('dotenv').config()
 
@@ -100,12 +100,12 @@ module.exports = {
         locales: [
           {
             code: 'en',
-            file: 'en.js',
+            file: 'en.json',
             name: 'English'
           },
           {
             code: 'zh',
-            file: 'zh.js',
+            file: 'zh.json',
             name: '简体中文'
           }
         ],
@@ -128,17 +128,14 @@ module.exports = {
         vueI18n: {
           fallbackLocale: 'en',
           messages: {
-            en: {
-              welcome: 'Welcome'
-            },
-            zh: {
-              welcome: '欢迎'
-            }
+            en: require('./lang/en.json'),
+            zh: require('./lang/zh.json')
           }
         }
       }
     ]
   ],
+
 
   render: {
     bundleRenderer: {
@@ -158,7 +155,7 @@ module.exports = {
 	*/
   build: {
     // extractCSS: { allChunks: true },
-    publicPath: 'https://cdn.modesens.com/static/dist',
+    // publicPath: 'https://cdn.modesens.com/static/dist',
     optimization: {
       splitChunks: {
         name: true

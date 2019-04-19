@@ -78,6 +78,7 @@ dist
 .serverless
 
 !server.json
+!modesens/lang/*.json
 
 # IDE
 .idea
