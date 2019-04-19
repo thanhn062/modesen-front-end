@@ -79,7 +79,6 @@ dist
 
 !server.json
 !modesens/lang/*.json
-!package-lock.json
 
 # IDE
 .idea
