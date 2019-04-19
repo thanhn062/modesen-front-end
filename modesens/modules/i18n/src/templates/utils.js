@@ -9,7 +9,7 @@ export async function loadLanguageAsync (i18n, locale) {
   const LOCALE_FILE_KEY = '<%= options.LOCALE_FILE_KEY %>'
 
   if (!i18n.loadedLanguages) {
-    i18n.loadedLanguages = []
+    i18n.loadedLanguages = ['en','zh']
   }
   if (!i18n.loadedLanguages.includes(locale)) {
     const langOptions = i18n.locales.find(l => l[LOCALE_CODE_KEY] === locale)

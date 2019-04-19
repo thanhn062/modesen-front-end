@@ -275,8 +275,8 @@
 </template>
 <script>
 import { wxlogin } from '~/assets/js/utils/utils.js'
-import Swiper from 'swiper'
-import 'swiper/dist/css/swiper.min.css'
+// import Swiper from 'swiper'
+// import 'swiper/dist/css/swiper.min.css'
 export default {
   head() {
     let headobj = {}
@@ -333,23 +333,23 @@ export default {
     if (this.$store.state.login_status) {
       this.getLevelInfo()
     }
-    if ($(window).width() < 1200) {
-      window.addEventListener('touchstart', () => {
-        if (this.touchTimes === 1) return
-        this.touchTimes = 1
-        let banner_swiper_5 = new Swiper('.swiper-container', {
-          pagination: {
-            el: '.swiper-p5',
-            clickable: true
-          },
-          autoplay: true,
-          speed: 1000,
-          loop: true,
-          initialSlide: 0
-        })
-        $('.benefitsCon .swiper-wrapper').css('flex-direction', 'row')
-      })
-    }
+    // if ($(window).width() < 1200) {
+    //   window.addEventListener('touchstart', () => {
+    //     if (this.touchTimes === 1) return
+    //     this.touchTimes = 1
+    //     let banner_swiper_5 = new Swiper('.swiper-container', {
+    //       pagination: {
+    //         el: '.swiper-p5',
+    //         clickable: true
+    //       },
+    //       autoplay: true,
+    //       speed: 1000,
+    //       loop: true,
+    //       initialSlide: 0
+    //     })
+    //     $('.benefitsCon .swiper-wrapper').css('flex-direction', 'row')
+    //   })
+    // }
   },
   methods: {
     async getLevelInfo() {
