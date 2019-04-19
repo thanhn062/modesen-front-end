@@ -6,7 +6,7 @@
       id="popLink"
       class="d-none d-flex justify-content-center align-items-center">
       <img
-        v-lazy="'/img/20180929logo.svg'"
+        src="/img/20180929logo.svg"
         alt="">
       <a
         href="/shopping-assistant/"
@@ -36,7 +36,7 @@
           <NavMenu v-if="$store.state.deviceType==='pc'"/>
           <!-- 响应式 -->
           <NavCategory
-            v-else
+            v-else-if="$store.state.deviceType!=='pc' && showNavCategory"
             :countries="$store.state.countries"
             :switchlocalcountry="i18nCookieChange"/>
           <!-- Right aligned nav items -->
@@ -158,6 +158,7 @@
             </div>
             <div
               v-click-outside="clickoutside"
+              v-if="showSearchBox"
               class="searchbox">
               <input
                 v-model="searchTxt"
@@ -259,12 +260,12 @@
 </template>
 <script>
 import NavMenu from '~/components/header/NavMenu'
-import NavCategory from '~/components/header/NavCategory'
+// import NavCategory from '~/components/header/NavCategory'
 import InstallBtn from '~/components/extention/InstallBtn'
 import UserIcon from '~/components/UserIcon'
 export default {
   components: {
-    NavCategory,
+    NavCategory: () => import('~/components/header/NavCategory'),
     NavMenu,
     InstallBtn,
     UserIcon
@@ -287,7 +288,9 @@ export default {
       serachInputOpen: false,
       hint2Timeout: null,
       has_notice_p: true,
-      has_notice_m: true
+      has_notice_m: true,
+      showNavCategory: false,
+      showSearchBox: false
     }
   },
   computed: {
@@ -302,23 +305,25 @@ export default {
     }
   },
   mounted() {
-    // this.$nextTick(() => {
     $('.main-container').css('padding-top', $('.header').height())
-    $('.navbar-toggler-icon').click(evt => {
-      evt.preventDefault()
-      evt.stopPropagation()
-      let showStatus = $('.header .navbar-expand-xl').hasClass('show')
-      if (showStatus) {
-        $('.header .navbar-expand-xl').removeClass('show')
-        $('.wrapper-mask').addClass('hidden')
-      } else {
-        $('.header .navbar-expand-xl').addClass('show')
-        $('.wrapper-mask').removeClass('hidden')
-      }
-      $('#nav_collapse').animate({ left: showStatus ? '-100%' : 0 })
-      $('.header').animate({ left: showStatus ? 0 : '80%' })
+    window.addEventListener('touchstart', () => {
+      if (this.showNavCategory) return
+      $('.navbar-toggler-icon').click(evt => {
+        evt.preventDefault()
+        evt.stopPropagation()
+        this.showNavCategory = true
+        let showStatus = $('.header .navbar-expand-xl').hasClass('show')
+        if (showStatus) {
+          $('.header .navbar-expand-xl').removeClass('show')
+          $('.wrapper-mask').addClass('hidden')
+        } else {
+          $('.header .navbar-expand-xl').addClass('show')
+          $('.wrapper-mask').removeClass('hidden')
+        }
+        $('#nav_collapse').animate({ left: showStatus ? '-100%' : 0 })
+        $('.header').animate({ left: showStatus ? 0 : '80%' })
+      })
     })
-    // })
   },
   methods: {
     i18nCookieChange(country, locale) {
@@ -359,6 +364,9 @@ export default {
       }, 500)
     },
     openSearchInput() {
+      if (!this.showSearchBox) {
+        this.showSearchBox = true
+      }
       if (this.serachInputOpen === true) {
         $('.searchbox').hide()
         this.serachInputOpen = false
