@@ -1,18 +1,18 @@
 <template>
   <div class="root-container">
-    <Header/>
+    <Header v-if="!$store.state.appSource"/>
     <main class="main-container">
       <nuxt/>
     </main>
     <div v-if="show">
-      <Footer/>
+      <Footer v-if="!$store.state.appSource"/>
       <div
         class="wrapper-mask hidden"
         @click="hideMenu"/>
       <Modals/>
       <Top/>
       <CustomerService
-        v-if="$store.state.request && $store.state.request.RCOUNTRY ==='cn'" />
+        v-if="!$store.state.appSource && $store.state.request && $store.state.request.RCOUNTRY ==='cn'" />
     </div>
     <Storefav
       v-if="!$store.state.login_status"/>
