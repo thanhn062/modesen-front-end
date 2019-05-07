@@ -16,6 +16,7 @@ export const state = () => ({
   request: null,
   userLevel: null,
   deviceType: '',  //设备类型,
+  appSource: '',  //来源app,
   countries: null, //国家,
   host: '',
   eventTimes: 0
@@ -53,6 +54,9 @@ export const mutations = {
   setDeviceType(state, type) {
     state.deviceType = type
   },
+  setAppSource(state, source) {
+    state.appSource = source
+  },
   setHost(state, params) {
     state.host = 'https://' + params
   },
@@ -67,6 +71,16 @@ export const actions = {
     let token = app.$cookies.get(gconfig.ACCESS_TOKEN) || ''
     let lsuid = app.$cookies.get(gconfig.LSUID) || ''
     commit('setHost', req.headers.host)
+
+    if (!token && req.headers.authorization) {
+      token = req.headers.authorization.replace('Bearer ','')
+      app.$cookies.set(gconfig.ACCESS_TOKEN, token)
+    }
+
+    if (!lsuid && req.headers.lsuid) {
+      lsuid = req.headers.lsuid
+      app.$cookies.set(gconfig.LSUID, lsuid)
+    }
     // if (req.headers.cookie) {
     //   let cookiesArr = req.headers.cookie.split(';');
     //   let cookies = {}

@@ -105,7 +105,7 @@ export function getBrowse(){
   }
 }
 //设备类型
-export default function deviceType(u) {
+export function deviceType(u) {
   if (typeof u !== 'string') {
     u = navigator.userAgent;
   }
@@ -127,6 +127,36 @@ export default function deviceType(u) {
     return 'pc'
   }
 }
+
+export const isIOSApp = (ua) => {
+    if (!ua && typeof navigator != 'undefined') ua = navigator.userAgent.toLowerCase();
+    if (ua && ua.headers && typeof ua.headers['user-agent'] == 'string') {
+        ua = ua.headers['user-agent'];
+    }
+    if (typeof ua != 'string') return false;
+    if (ua.match(/modesens ios/i)) {
+        return true;
+    }
+    if (ua.match(/iphone|ipod|ipad/i)) {
+        if (!ua.match(/micromessenger|safari/i)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+export const isAndroidApp = (ua) => {
+    if (!ua && typeof navigator != 'undefined') ua = navigator.userAgent.toLowerCase();
+    if (ua && ua.headers && typeof ua.headers['user-agent'] == 'string') {
+        ua = ua.headers['user-agent'];
+    }
+    if (typeof ua != 'string') return false;
+    if (ua.match(/modesens android/i)) {
+        return true;
+    }
+    return false;
+}
+
 var commonfn = {
   install(Vue){
     Vue.prototype.commonfn = {
