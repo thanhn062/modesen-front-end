@@ -2,7 +2,7 @@
   <header class="header">
     <!-- 弹窗链接 -->
     <div
-      v-if="$i18n.locale!=='zh'"
+      v-if="$i18n.locale!=='zh' && $store.state.deviceType === 'pc' && !extentionCheckInstalled"
       id="popLink"
       class="d-none d-flex justify-content-center align-items-center">
       <img
@@ -290,7 +290,8 @@ export default {
       has_notice_p: true,
       has_notice_m: true,
       showNavCategory: false,
-      showSearchBox: false
+      showSearchBox: false,
+      extentionCheckInstalled: false
     }
   },
   computed: {
@@ -306,6 +307,9 @@ export default {
   },
   mounted() {
     $('.main-container').css('padding-top', $('.header').height())
+    window.addEventListener('mousemove', () => {
+      this.extentionCheckInstalled = $('#modesensinstalled')[0]
+    })
     window.addEventListener('touchstart', () => {
       if (this.showNavCategory) return
       $('.navbar-toggler-icon').click(evt => {
