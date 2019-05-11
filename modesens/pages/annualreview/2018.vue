@@ -430,5 +430,5 @@ export default {
 }
 </script>
 <style lang="less">
-@import '../assets/css/annualreview.less';
+@import '../../assets/css/annualreview.less';
 </style>
