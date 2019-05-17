@@ -251,28 +251,40 @@ export default {
       }
       if (this.myloyaltycontent.level == 'Bronze') {
         this.levelClass = 'bronze'
-        this.levelimgHref = this.$i18n.locale === 'en' ? '/img/20181221bronze-en.png':'/img/20181221bronze-zh.png'
+        this.levelimgHref =
+          this.$i18n.locale === 'en'
+            ? '/img/20181221bronze-en.png'
+            : '/img/20181221bronze-zh.png'
         this.Tripledays = 0
         this.levelRights = [1, 2, 3]
         this.nextLevelRights = [1, 2, 3, 4]
         this.nexrLevel = 'Silver'
       } else if (this.myloyaltycontent.level == 'Silver') {
         this.levelClass = 'sliver'
-        this.levelimgHref = this.$i18n.locale === 'en' ? '/img/20181221silver-en.png':'/img/20181221silver-zh.png'
+        this.levelimgHref =
+          this.$i18n.locale === 'en'
+            ? '/img/20181221silver-en.png'
+            : '/img/20181221silver-zh.png'
         this.Tripledays = 1
         this.levelRights = [1, 2, 3, 4]
         this.nextLevelRights = [1, 2, 3, 4, 5]
         this.nexrLevel = 'Gold'
       } else if (this.myloyaltycontent.level == 'Gold') {
         this.levelClass = 'gold'
-        this.levelimgHref = this.$i18n.locale === 'en' ? '/img/20181221gold-en.png':'/img/20181221gold-zh.png'
+        this.levelimgHref =
+          this.$i18n.locale === 'en'
+            ? '/img/20181221gold-en.png'
+            : '/img/20181221gold-zh.png'
         this.Tripledays = 2
         this.levelRights = [1, 2, 3, 4, 5]
         this.nextLevelRights = [1, 2, 3, 4, 5]
         this.nexrLevel = 'Platinum'
       } else if (this.myloyaltycontent.level == 'Platinum') {
         this.levelClass = 'platinum'
-        this.levelimgHref = this.$i18n.locale === 'en' ? '/img/20181221platinum-en.png':'/img/20181221platinum-zh.png'
+        this.levelimgHref =
+          this.$i18n.locale === 'en'
+            ? '/img/20181221platinum-en.png'
+            : '/img/20181221platinum-zh.png'
         this.Tripledays = 3
         this.levelRights = [1, 2, 3, 4, 5, 6, 7]
         this.nextLevelRights = [1, 2, 3, 4, 5]
