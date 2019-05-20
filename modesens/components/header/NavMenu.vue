@@ -27,7 +27,9 @@
               v-if="secondLevelIndex===0"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.w_c"
+                class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
@@ -85,37 +87,26 @@
                 <div class="collection-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCOLLECTION') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
-                    <li><a
-                      href="/collection/modesens-fab-fur-and-shearling-409220/"
-                      data-ga-click="navClothing-WomenFurshearling--">{{ $t('nav.FURSHEARLING') }}</a></li>
-                    <li><a
-                      href="/collection/modesens-sweater-weather-410014/"
-                      data-ga-click="navClothing-WomenSweaters--">{{ $t('nav.SWEATERS ') }}</a></li>
-                    <li><a
-                      href="/collection/modesens-trend%3A-puffed-up-414558/"
-                      data-ga-click="navClothing-WomenPuffer--">{{ $t('nav.PUFFEROVERSIZEDOUTERWEAR') }}</a></li>
-                    <li><a
-                      href="/collection/modesens-denim-for-days-415377/"
-                      data-ga-click="navClothing-WomenDenim--">{{ $t('nav.DENIM ') }}</a></li>
-                    <li><a
-                      href="/collection/modesens-transition-to-cooler-weather-396218/"
-                      data-ga-click="navClothing-WomenOutfit--">{{ $t('nav.OUTFITMAKINGLAYERS') }}</a></li>
-                    <li><a
-                      href="/collection/modesens-up-our-sleeve%E2%80%94unique-sleeves-collection-385192/"
-                      data-ga-click="navClothing-WomenSpecials--">{{ $t('nav.SPECIALSLEEVES') }}</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_c[10]"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navClothing-womenCollection|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="designer-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/acne-studios-women/">ACNE STUDIOS</a></li>
-                    <li><a href="/saint-laurent-women-clothing/">SAINT LAURENT</a></li>
-                    <li><a href="/gucci-women-clothing/">GUCCI</a></li>
-                    <li><a href="dolce-%2526-gabbana-women-clothing/">DOLCE & GABBANA</a></li>
-                    <li><a href="/prada-women-clothing/">PRADA</a></li>
-                    <li><a href="/givenchy-women-clothing/">GIVENCHY</a></li>
-                    <li><a href="/vetements-women-clothing/">VETEMENTS</a></li>
-                    <li><a href="/alexander-mcqueen-women-accessories/">ALEXANDER MCQUEEN</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_c"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navClothing-womenDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
@@ -123,11 +114,11 @@
                   <div class="menucategory-desc">{{ $t('nav.JACKETS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/shop-women-jackets/"
+                      :href="$store.state.navHeadJson.w_c[11][2]"
                       data-ga-click="navClothing-WomenJacketsIcon--">
                       <img
-                        v-lazy="'/img/20180930navi_f_j.jpg'"
-                        alt="">
+                        v-lazy="$store.state.navHeadJson.w_c[11][1]"
+                        :alt="$store.state.navHeadJson.w_c[11][3]">
                     </a>
                   </div>
                 </div>
@@ -147,7 +138,9 @@
               v-if="secondLevelIndex===1"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.w_b"
+                class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
@@ -199,25 +192,26 @@
                 <div class="collection-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCOLLECTION') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/collection/modesens-hands-free-393706/">{{ $t('nav.BELTBAGS2') }}</a></li>
-                    <li><a href="/collection/modesens-date-night-looks-390564/">{{ $t('nav.DATENIGHT') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-back-to-the-80%2527s-398187/">{{ $t('nav.EIGHTIES') }}</a></li>
-                    <li><a href="/collection/modesens-night-on-the-town%E2%80%94glitz-and-glam-party-pieces-383179/">{{ $t('nav.PATTYLOOKS') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-wild%2C-wild-west-392966/">{{ $t('nav.WESTERN') }}</a></li>
-                    <li><a href="/collection/modesens-make-logos-the-star-387783/">{{ $t('nav.LOGOMANIA') }}</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_b[10]"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navBags-womenCollection|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="designer-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/gucci-women-bags/">GUCCI</a></li>
-                    <li><a href="/saint-laurent-women-bags/">SAINT LAURENT</a></li>
-                    <li><a href="/chlo%c3%89-women-bags/">CHLOÉ</a></li>
-                    <li><a href="/prada-women-bags/">PRADA</a></li>
-                    <li><a href="/miu-miu-women-bags/">MIU MIU</a></li>
-                    <li><a href="/j.w.anderson-women-bags/">J.W.ANDERSON </a></li>
-                    <li><a href="/loewe-women-bags/">LOEWE</a></li>
-                    <li><a href="/fendi-women-bags/">FENDI</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_b"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navBAGS-womenDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
@@ -225,11 +219,11 @@
                   <div class="menucategory-desc">{{ $t('nav.BELTBAGS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/shop-women-belt-bags/"
-                      data-ga-click="navBags-WomenBeltbagsIcon">
+                      :href="$store.state.navHeadJson.w_b[11][2]"
+                      data-ga-click="navBags-WomenBeltbagsIcon--">
                       <img
-                        v-lazy="'/img/20180930navi_f_b.jpg'"
-                        alt="">
+                        v-lazy="$store.state.navHeadJson.w_b[11][1]"
+                        :alt="$store.state.navHeadJson.w_b[11][3]">
                     </a>
                   </div>
                 </div>
@@ -249,7 +243,9 @@
               v-if="secondLevelIndex===2"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.w_s"
+                class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
@@ -292,25 +288,26 @@
                 <div class="collection-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCOLLECTION') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/collection/modesens-the-season%2527s-newest-trainers-388623/">{{ $t('nav.NEWSEASONTRAINERS') }}</a></li>
-                    <li><a href="/collection/modesens-date-night-looks-390564/">{{ $t('nav.DATENIGHT') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-back-to-the-80%2527s-398187/">{{ $t('nav.EIGHTIES') }}</a></li>
-                    <li><a href="/collection/modesens-night-on-the-town%E2%80%94glitz-and-glam-party-pieces-383179/">{{ $t('nav.PATTYLOOKS') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-wild%2C-wild-west-392966/">{{ $t('nav.WESTERN') }}</a></li>
-                    <li><a href="/collection/modesens-make-logos-the-star-387783/">{{ $t('nav.LOGOMANIA') }}</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_s[10]"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navShoes-womenCollection|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="designer-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/christian-louboutin-women-shoes/">CHRISTIAN LOUBOUTIN</a></li>
-                    <li><a href="/nicholas-kirkwood-women-shoes/">NICHOLAS KIRKWOOD</a></li>
-                    <li><a href="/gianvito-rossi-women-shoes/">GIANVITO ROSSI</a></li>
-                    <li><a href="/roger-vivier-women-shoes/">ROGER VIVIER</a></li>
-                    <li><a href="/rene-caovilla-women-shoes/">RENE CAOVILLA</a></li>
-                    <li><a href="/manolo-blahnik-women-shoes/">MANOLO BLAHNIK</a></li>
-                    <li><a href="/aquazzura-women-shoes/">AQUAZZURA</a></li>
-                    <li><a href="/jimmy-choo-women-shoes/">JIMMY CHOO</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_s"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navShoes-womenDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
@@ -318,11 +315,11 @@
                   <div class="menucategory-desc">{{ $t('nav.PUMPS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/shop-women-pumps/"
+                      :href="$store.state.navHeadJson.w_s[11][2]"
                       data-ga-click="navShoes-WomenPumpsIcon--">
                       <img
-                        v-lazy="'/img/20180930navi_f_s.jpg'"
-                        alt="">
+                        v-lazy="$store.state.navHeadJson.w_s[11][1]"
+                        :alt="$store.state.navHeadJson.w_s[11][3]">
                     </a>
                   </div>
                 </div>
@@ -342,7 +339,9 @@
               v-if="secondLevelIndex===3"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.w_a"
+                class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
@@ -409,25 +408,26 @@
                 <div class="collection-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCOLLECTION') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/collection/modesens-24-karat-magic-398873/">{{ $t('nav.DAYTIMEBLING') }}</a></li>
-                    <li><a href="/collection/modesens-date-night-looks-390564/">{{ $t('nav.DATENIGHT') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-back-to-the-80%2527s-398187/">{{ $t('nav.EIGHTIES') }}</a></li>
-                    <li><a href="/collection/modesens-night-on-the-town%E2%80%94glitz-and-glam-party-pieces-383179/">{{ $t('nav.PATTYLOOKS') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-wild%2C-wild-west-392966/">{{ $t('nav.WESTERN') }}</a></li>
-                    <li><a href="/collection/modesens-make-logos-the-star-387783/">{{ $t('nav.LOGOMANIA') }}</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_a[10]"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navACCESSORIES-womenCollection|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="designer-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/dolce-%2526-gabbana-women-accessories/">DOLCE & GABBANA</a></li>
-                    <li><a href="/gucci-women-accessories/">GUCCI</a></li>
-                    <li><a href="/miu-miu-women-accessories/">MIU MIU</a></li>
-                    <li><a href="/lanvin-women-accessories/">LANVIN</a></li>
-                    <li><a href="/saint-laurent-women-accessories/">SAINT LAURENT</a></li>
-                    <li><a href="/fendi-women-accessories/">FENDI</a></li>
-                    <li><a href="/alexander-mcqueen-women-accessories/">ALEXANDER MCQUEEN</a></li>
-                    <li><a href="/loewe-women-accessories/">LOEWE</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_a"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navACCESSORIES-womenDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
@@ -435,11 +435,11 @@
                   <div class="menucategory-desc">{{ $t('nav.JEWELRY') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/shop-women-jewelry/"
-                      data-ga-click="navAccessories-WomenJewelryIcon--">
+                      :href="$store.state.navHeadJson.w_a[11][2]"
+                      data-ga-click="navACCESSORIES-WomenJewelryIcon--">
                       <img
-                        v-lazy="'/img/20180930navi_f_jy.jpg'"
-                        alt="">
+                        v-lazy="$store.state.navHeadJson.w_a[11][1]"
+                        :alt="$store.state.navHeadJson.w_a[11][3]">
                     </a>
                   </div>
                 </div>
@@ -466,7 +466,9 @@
               v-if="$i18n.country!=='cn' && secondLevelIndex===4"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.w_b"
+                class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
@@ -521,14 +523,14 @@
                 <div class="designer-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/dolce-%2526-gabbana-women-beauty/">DOLCE & GABBANA</a></li>
-                    <li><a href="/gucci-women-beauty/">GUCCI</a></li>
-                    <li><a href="/miu-miu-women-beauty/">MIU MIU</a></li>
-                    <li><a href="/lanvin-women-beauty/">LANVIN</a></li>
-                    <li><a href="/saint-laurent-women-beauty/">SAINT LAURENT</a></li>
-                    <li><a href="/fendi-women-beauty/">FENDI</a></li>
-                    <li><a href="/alexander-mcqueen-women-beauty/">ALEXANDER MCQUEEN</a></li>
-                    <li><a href="/loewe-women-beauty/">LOEWE</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_b"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navBEAUTY-womenDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
@@ -536,11 +538,11 @@
                   <div class="menucategory-desc">{{ $t('nav.SKINCARE') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/shop-women-skincare/"
-                      data-ga-click="navBeauty-WomenSkinIcon--">
+                      :href="$store.state.navHeadJson.w_b[11][2]"
+                      data-ga-click="navBEAUTY-WomenSkinIcon--">
                       <img
-                        v-lazy="'/img/20180930navi_f_ski.jpg'"
-                        alt="">
+                        v-lazy="$store.state.navHeadJson.w_b[11][1]"
+                        :alt="$store.state.navHeadJson.w_b[11][3]">
                     </a>
                   </div>
                 </div>
@@ -561,7 +563,9 @@
               v-if="secondLevelIndex===5"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.w_sale"
+                class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
@@ -578,25 +582,29 @@
                 <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
-                    <li><a href="/gucci-women/">GUCCI</a></li>
-                    <li><a href="/saint-laurent-women/">SAINT LAURENT</a></li>
-                    <li><a href="/valentino-women/">VALENTINO</a></li>
-                    <li><a href="/dolce-%2526-gabbana-women/">DOLCE & GABBANA</a></li>
-                    <li><a href="/balenciaga-women-bags/">BALENCIAGA</a></li>
-                    <li><a href="/burberry-women/">BURBERRY</a></li>
-                    <li><a href="/prada-women/">PRADA</a></li>
-                    <li><a href="/givenchy-women/">GIVENCHY</a></li>
-                    <li><a href="/off-white-women-clothing/">OFF-WHITE</a></li>
-                    <li><a href="/acne-studios-women/">ACNE STUDIOS</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.w_sale"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navSALE-womenDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
                   <div class="menucategory-title">{{ $t('nav.POPULARCATEGORY') }}</div>
                   <div class="menucategory-desc">{{ $t('nav.WOMENSJACKETS') }}</div>
-                  <div><a href="/shop-women-jackets/?orderby=-betterprice_time"><img
-                    v-lazy="'/img/20180905SALE.png'"
-                    class="sale-img"
-                    alt=""></a></div>
+                  <div>
+                    <a
+                      :href="$store.state.navHeadJson.w_sale[11][2]"
+                      data-ga-click="navSALE-WomenJacketsIcon--">
+                      <img
+                        v-lazy="$store.state.navHeadJson.w_sale[11][1]"
+                        :alt="$store.state.navHeadJson.w_sale[11][3]"
+                        class="sale-img">
+                    </a>
+                  </div>
                 </div>
               </div>
             </ul>
@@ -629,7 +637,9 @@
               v-if="secondLevelIndex===0"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.m_c"
+                class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
@@ -681,25 +691,26 @@
                 <div class="collection-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCOLLECTION') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/collection/modesens-fab-fur-and-shearling-409219/">{{ $t('nav.FURSHEARLING') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-puffed-up-414557/">{{ $t('nav.PUFFEROVERSIZEDOUTERWEAR') }}</a></li>
-                    <li><a href="/collection/modesens-sweater-weather-410013/">{{ $t('nav.SWEATERS ') }}</a></li>
-                    <li><a href="/collection/modesens-top-this%E2%80%94-fresh-picksfor-the-new-season-385217/">{{ $t('nav.NEWSEASONSHIRTS') }}</a></li>
-                    <li><a href="/collection/modesens-laidback-pants%E2%80%94on-trend-trousers%2C-track-pants-and-joggers-380121/">{{ $t('nav.EASYPANTS') }}</a></li>
-                    <li><a href="/collection/modesens-denim-on-denim%E2%80%94hottest-denim-pieces-373887/">{{ $t('nav.DENIM2') }}</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.m_c[10]"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navClothing-menCollection|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="designer-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/gucci-men-clothing/">GUCCI</a></li>
-                    <li><a href="/givenchy-men-clothing/">GIVENCHY</a></li>
-                    <li><a href="/saint-laurent-men-clothing/">SAINT LAURENT</a></li>
-                    <li><a href="/dolce-%2526-gabbana-men-clothing/">DOLCE &amp; GABBANA</a></li>
-                    <li><a href="/valentino-men-clothing/">VALENTINO</a></li>
-                    <li><a href="/neil-barrett-men-clothing/">NEIL BARRETT</a></li>
-                    <li><a href="/alexander-mcqueen-men-clothing/">ALEXANDER MCQUEEN</a></li>
-                    <li><a href="/thom-browne-men-clothing/">THOM BROWNE</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.m_c"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navClothing-menDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
@@ -707,11 +718,11 @@
                   <div class="menucategory-desc">{{ $t('nav.JACKETS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/shop-men-jackets/"
+                      :href="$store.state.navHeadJson.m_c[11][2]"
                       data-ga-click="navClothing-MenIcon--">
                       <img
-                        v-lazy="'/img/20180930navi_m_j.jpg'"
-                        alt="">
+                        v-lazy="$store.state.navHeadJson.m_c[11][1]"
+                        :alt="$store.state.navHeadJson.m_c[11][3]">
                     </a>
                   </div>
                 </div>
@@ -731,7 +742,9 @@
               v-if="secondLevelIndex===1"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.m_b"
+                class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
@@ -777,25 +790,26 @@
                 <div class="collection-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCOLLECTION') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/collection/modesens-hands-free-393705/">{{ $t('nav.BELTBAGS') }}</a></li>
-                    <li><a href="/collection/modesens-make-logos-the-star-387782/">{{ $t('nav.LOGOMANIA') }}</a></li>
-                    <li><a href="/collection/modesens-on-a-mission-398186/">{{ $t('nav.MILITARY') }}</a></li>
-                    <li><a href="/collection/modesens-night-on-the-town%E2%80%94sleek-party-pieces-383178/">{{ $t('nav.PATTYLOOKS') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-wild%2C-wild-west-392965/">{{ $t('nav.WESTERN') }}</a></li>
-                    <li><a href="/collection/modesens-date-night-looks-389956/">{{ $t('nav.DATENIGHT') }}</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.m_b[10]"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navBAGS-menCollection|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="designer-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/burberry-men-bags/">BURBERRY</a></li>
-                    <li><a href="/bottega-veneta-men-bags/">BOTTEGA VENETA</a></li>
-                    <li><a href="/givenchy-men-bags/">GIVENCHY</a></li>
-                    <li><a href="/saint-laurent-men-bags/">SAINT LAURENT</a></li>
-                    <li><a href="/kenzo-men-bags/">KENZO</a></li>
-                    <li><a href="/versace-men-bags/">VERSACE</a></li>
-                    <li><a href="/mcm-men-bags/">MCM</a></li>
-                    <li><a href="/salvatore-ferragamo-men-bags/">SALVATORE FERRAGAMO</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.m_b"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navBAGS-menDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
@@ -803,11 +817,11 @@
                   <div class="menucategory-desc">{{ $t('nav.BELTBAGS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/shop-men-belt-bags/"
-                      data-ga-click="navBags-MenIcon--">
+                      :href="$store.state.navHeadJson.m_b[11][2]"
+                      data-ga-click="navBAGS-MenIcon--">
                       <img
-                        v-lazy="'/img/20180930navi_m_b.jpg'"
-                        alt="">
+                        v-lazy="$store.state.navHeadJson.m_b[11][1]"
+                        :alt="$store.state.navHeadJson.m_b[11][3]">
                     </a>
                   </div>
                 </div>
@@ -827,7 +841,9 @@
               v-if="secondLevelIndex===2"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.m_s"
+                class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
@@ -867,25 +883,26 @@
                 <div class="collection-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCOLLECTION') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/collection/modesens-you%2527ll-get-a-kick-out-of-this%E2%80%94the-season%2527s-newest-trainers-388618/">{{ $t('nav.NEWSEASONTRAINERS') }}</a></li>
-                    <li><a href="/collection/modesens-make-logos-the-star-387782/">{{ $t('nav.LOGOMANIA') }}</a></li>
-                    <li><a href="/collection/modesens-on-a-mission-398186/">{{ $t('nav.MILITARY') }}</a></li>
-                    <li><a href="/collection/modesens-night-on-the-town%E2%80%94sleek-party-pieces-383178/">{{ $t('nav.PATTYLOOKS') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-wild%2C-wild-west-392965/">{{ $t('nav.WESTERN') }}</a></li>
-                    <li><a href="/collection/modesens-date-night-looks-389956/">{{ $t('nav.DATENIGHT') }}</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.m_s[10]"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navSHOES-menCollection|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="designer-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/prada-men-shoes/">PRADA</a></li>
-                    <li><a href="/givenchy-men-shoes/">GIVENCHY</a></li>
-                    <li><a href="/gucci-men-shoes/">GUCCI</a></li>
-                    <li><a href="/saint-laurent-men-shoes/">SAINT LAURENT</a></li>
-                    <li><a href="/tod%2527s-men-shoes/">TOD'S</a></li>
-                    <li><a href="/valentino-men-shoes/">VALENTINO</a></li>
-                    <li><a href="/balenciaga-men-shoes/">BALENCIAGA</a></li>
-                    <li><a href="/church%2527s-men-shoes/">CHURCH'S</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.m_s"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navSHOES-menDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
@@ -893,11 +910,11 @@
                   <div class="menucategory-desc">{{ $t('nav.SNEAKERS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/shop-men-sneakers/"
-                      data-ga-click="navShoes-MenIcon--">
+                      :href="$store.state.navHeadJson.m_s[11][2]"
+                      data-ga-click="navSHOES-MenIcon--">
                       <img
-                        v-lazy="'/img/20180930navi_m_s.jpg'"
-                        alt="">
+                        v-lazy="$store.state.navHeadJson.m_s[11][1]"
+                        :alt="$store.state.navHeadJson.m_s[11][3]">
                     </a>
                   </div>
                 </div>
@@ -917,7 +934,9 @@
               v-if="secondLevelIndex===3"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.m_a"
+                class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
@@ -975,25 +994,26 @@
                 <div class="collection-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCOLLECTION') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/collection/modesens-finishing-touches-398872/">{{ $t('nav.MENSACCESSORIES') }}</a></li>
-                    <li><a href="/collection/modesens-make-logos-the-star-387782/">{{ $t('nav.LOGOMANIA') }}</a></li>
-                    <li><a href="/collection/modesens-on-a-mission-398186/">{{ $t('nav.MILITARY') }}</a></li>
-                    <li><a href="/collection/modesens-night-on-the-town%E2%80%94sleek-party-pieces-383178/">{{ $t('nav.PATTYLOOKS') }}</a></li>
-                    <li><a href="/collection/modesens-trend%3A-wild%2C-wild-west-392965/">{{ $t('nav.WESTERN') }}</a></li>
-                    <li><a href="/collection/modesens-date-night-looks-389956/">{{ $t('nav.DATENIGHT') }}</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.m_a[10]"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navACCESSORIES-menCollection|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="designer-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="sub-menu">
-                    <li><a href="/fendi-men-accessories/">FENDI</a></li>
-                    <li><a href="/gucci-men-accessories/">GUCCI</a></li>
-                    <li><a href="/bottega-veneta-men-accessories/">BOTTEGA VENETA</a></li>
-                    <li><a href="/loewe-men-accessories/">LOEWE</a></li>
-                    <li><a href="/dsquared2-men-accessories/">DESQUARED2</a></li>
-                    <li><a href="/alexander-mcqueen-men-accessories/">ALEXANDER MCQUEEN</a></li>
-                    <li><a href="/paul-smith-men-accessories/">PAUL SMITH</a></li>
-                    <li><a href="/burberry-men-accessories/">BURBERRY</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.m_a"
+                      v-if="i < 8"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navACCESSORIES-menDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
@@ -1001,11 +1021,11 @@
                   <div class="menucategory-desc">{{ $t('nav.HATS') }}</div>
                   <div class="prd-recommend-wrapper">
                     <a
-                      href="/shop-men-hats/"
-                      data-ga-click="navAccessories-MenIcon--">
+                      :href="$store.state.navHeadJson.m_a[11][2]"
+                      data-ga-click="navACCESSORIES-MenIcon--">
                       <img
-                        v-lazy="'/img/20180930navi_m_h.jpg'"
-                        alt="">
+                        v-lazy="$store.state.navHeadJson.m_a[11][1]"
+                        :alt="$store.state.navHeadJson.m_a[11][3]">
                     </a>
                   </div>
                 </div>
@@ -1118,7 +1138,9 @@
               v-if="secondLevelIndex===5"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
+              <div
+                v-if="$store.state.navHeadJson.m_sale"
+                class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
                   <ul class="sub-menu">
@@ -1135,29 +1157,28 @@
                 <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
-                    <li><a href="/gucci-men/">GUCCI</a></li>
-                    <li><a href="/saint-laurent-men/">SAINT LAURENT</a></li>
-                    <li><a href="/valentino-men/">VALENTINO</a></li>
-                    <li><a href="/balenciaga-men-bags/">BALENCIAGA</a></li>
-                    <li><a href="/burberry-men/">BURBERRY</a></li>
-                    <li><a href="/vetements-men-clothing/">VETEMENTS</a></li>
-                    <li><a href="/givenchy-men/">GIVENCHY</a></li>
-                    <li><a href="/off-white-men-clothing/">OFF-WHITE</a></li>
-                    <li><a href="/acne-studios-men/">ACNE STUDIOS</a></li>
-                    <li><a href="/alexander-mcqueen-men/">ALEXANDERMCQUEEN</a></li>
+                    <li
+                      v-for="(item, i) in $store.state.navHeadJson.m_sale"
+                      v-if="i < 10"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navSALE-menDesigners|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                 </div>
                 <div class="popularcategary-box">
                   <div class="menucategory-title">{{ $t('nav.POPULARCATEGORY') }}</div>
                   <div class="menucategory-desc">{{ $t('nav.MENSJACKETS') }}</div>
-                  <div><a
-                    href="/shop-men-jackets/?orderby=-betterprice_time"
-                    data-ga-click="navSale-MenIcon--">
-                    <img
-                      v-lazy="'/img/20180905SALE.png'"
-                      class="sale-img"
-                      alt="">
-                  </a></div>
+                  <div>
+                    <a
+                      :href="$store.state.navHeadJson.m_sale[11][2]+'?orderby=-betterprice_time'"
+                      data-ga-click="navSALE-MenIcon--">
+                      <img
+                        v-lazy="$store.state.navHeadJson.m_sale[11][1]"
+                        :alt="$store.state.navHeadJson.m_sale[11][3]">
+                    </a>
+                  </div>
                 </div>
               </div>
             </ul>
@@ -1374,16 +1395,14 @@
                 <div class="sale-designers-box">
                   <div class="menucategory-title">{{ $t('common.DESIGNERS') }}</div>
                   <ul class="d-flex flex-column flex-wrap sub-menu">
-                    <li><a href="/gucci-women/">GUCCI</a></li>
-                    <li><a href="/dolce-%2526-gabbana-women/">DOLCE & GABBANA</a></li>
-                    <li><a href="/burberry-women/">BURBERRY</a></li>
-                    <li><a href="stella-mccartney-women">STELLA MCCARTNEY</a></li>
-                    <li><a href="/prada-women/">PRADA</a></li>
-                    <li><a href="/fendi-women/">FENDI</a></li>
-                    <li><a href="/saint-laurent-women/">SAINT LAURENT</a></li>
-                    <li><a href="/valentino-women/">VALENTINO </a></li>
-                    <li><a href="/givenchy-women/">GIVENCHY</a></li>
-                    <li><a href="/christian-louboutin-women/">CHRISTIAN LOUBOUTIN</a></li>
+                    <li
+                      v-for="(item, i) in ($store.state.gender === 'm' ? $store.state.navHeadJson.m_designer : $store.state.navHeadJson.w_designer)"
+                      v-if="i < 10"
+                      :key="i">
+                      <a
+                        :href="item[1]"
+                        :data-ga-click="`navDESIGNERS-Designers|${i}`">{{ item[0] }}</a>
+                    </li>
                   </ul>
                   <div class="view-all"><a
                     target="_blank"
@@ -1391,11 +1410,12 @@
                 </div>
                 <div class="store-img">
                   <a
-                    target="_blank"
-                    href="/GUCCI-women/">
+                    :href="$store.state.gender === 'm' ? $store.state.navHeadJson.m_designer[11][2] : $store.state.navHeadJson.w_designer[11][2]"
+                    data-ga-click="navDESIGNERS-JacketsIcon--"
+                    target="_blank">
                     <img
-                      v-lazy="'/img/mini_header/w_designer.jpg'"
-                      alt="">
+                      v-lazy="$store.state.gender === 'm' ? $store.state.navHeadJson.m_designer[11][2] : $store.state.navHeadJson.w_designer[11][2]"
+                      :alt="$store.state.gender === 'm' ? $store.state.navHeadJson.m_designer[11][2] : $store.state.navHeadJson.w_designer[11][2]">
                   </a>
                 </div>
               </div>
@@ -1652,7 +1672,7 @@ export default {
     changeFirstLevelIndex(index) {
       clearTimeout(this.menuTimer1)
       this.menuTimer1 = setTimeout(async () => {
-        if (index === 5 && !this.$store.state.navHeadJson) {
+        if (!this.$store.state.navHeadJson) {
           this.getnavhead()
         }
         this.firstLevelIndex = index

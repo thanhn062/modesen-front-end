@@ -8,6 +8,7 @@ export const gconfig = {
   LSUID: 'lsuid',
   USERINFO: 'lsuser',
   SESSIONID: 'sessionid',
+  GENDER: 'gender',
   PAY_HASH_TOKEN: 'wnDka3xJ8AGLjy355mgbRm7QZK04p9',
   UNLOGIN_ICON: '/img/user_unlogin.png',
   CHROME_LOGO: '/img/20190228chromelogo.png',
@@ -16,5 +17,5 @@ export const gconfig = {
   FIREFOX_LOGO: '/img/20190228firefoxlogo.png',
   SAFARI_LOGO: '/img/20190228safarilogo.png',
   countryKey: 'i18n_country',
-  localeKey: 'i18n_locale'
+  localeKey: 'i18n_locale',
 }
