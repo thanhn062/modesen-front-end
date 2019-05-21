@@ -503,7 +503,9 @@
     "JoinModeSenstofollow ": "加入ModeSens以关注",
     "InstallNow": "即刻安装",
     "PRODUCTALERT": "产品通知",
-    "SOCIALFEED": "社区消息"
+    "SOCIALFEED": "社区消息",
+    "OCCASION": "场景",
+    "POPULAROCCASION": "流行场景"
   },
   "Modals": {
     "YourCompanyName": "你的公司名称：",

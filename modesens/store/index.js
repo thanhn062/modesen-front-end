@@ -62,6 +62,9 @@ export const mutations = {
   },
   setClickTimes(state, num) {
     state.eventTimes = num
+  },
+  setGender(state, gender) {
+    state.gender = gender
   }
 }
 
@@ -71,6 +74,7 @@ export const actions = {
     let token = app.$cookies.get(gconfig.ACCESS_TOKEN) || ''
     let lsuid = app.$cookies.get(gconfig.LSUID) || ''
     commit('setHost', req.headers.host)
+    commit('setGender', app.$cookies.get(gconfig.GENDER) || 'f')
 
     if (!token && req.headers.authorization) {
       token = req.headers.authorization.replace('Bearer ','')
@@ -133,5 +137,5 @@ export const actions = {
       n="30524",
       additional="term=value",
       t,r,i;try{t=top.document.referer!==""?encodeURIComponent(top.document.referrer.substring(0,2048)):""}catch(o){t=document.referrer!==null?document.referrer.toString().substring(0,2048):""}try{r=window&&window.top&&document.location&&window.top.location===document.location?document.location:window&&window.top&&window.top.location&&""!==window.top.location?window.top.location:document.location}catch(u){r=document.location}try{i=parent.location.href!==""?encodeURIComponent(parent.location.href.toString().substring(0,2048)):""}catch(a){try{i=r!==null?encodeURIComponent(r.toString().substring(0,2048)):""}catch(f){i=""}}var l,c=document.createElement("script"),h=null,p=document.getElementsByTagName("script"),d=Number(p.length)-1,v=document.getElementsByTagName("script")[d];if(typeof l==="undefined"){l=Math.floor(Math.random()*1e17)}h="dx.steelhousemedia.com/spx?"+"dxver="+b+"&shaid="+n+"&tdr="+t+"&plh="+i+"&cb="+l+additional;c.type="text/javascript";c.src=("https:"===document.location.protocol?"https://":"http://")+h;v.parentNode.insertBefore(c,v)})()
-  } 
+  }
 }

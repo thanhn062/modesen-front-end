@@ -503,13 +503,15 @@
     "JoinModeSenstofollow": "Join ModeSens to follow ",
     "InstallNow": "Install Now",
     "PRODUCTALERT": "PRODUCT ALERT",
-    "SOCIALFEED": "SOCIAL FEED"
+    "SOCIALFEED": "SOCIAL FEED",
+    "OCCASION": "OCCASION",
+    "POPULAROCCASION": "POPULAR OCCASION"
   },
   "Modals": {
     "YourCompanyName": "Your Company Name:",
     "YourName": "Your Name:",
     "Pleasesignin": "Please sign in",
-    "Notamemberyet": "Not a member yet?",
+    "Notamemberyet": "Not a member yet? ",
     "JoinModeSens": "Join ModeSens to curate your closet and shop with friends.",
     "StartEarningToday": "Start Earning Today",
     "MakeModeSens": "Make the most of your ModeSens experience by creating a free account and start earning points toward ModeSens Rewards when you shop.",
