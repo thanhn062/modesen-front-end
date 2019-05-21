@@ -229,7 +229,7 @@
         class="close"
         @click="hideModelinkModal">x</button>
       <div class="ass-head">
-        <div>
+        <div style="width: 430px;">
           <img
             v-lazy="'/img/20180930modesenslogo.png'"
             class="modesens-logo"
@@ -273,14 +273,14 @@
           </b-carousel-slide>
           <b-carousel-slide>
             <img
-              v-lazy="'/img/20180928Coupon_1.png'"
+              v-lazy="'/img/20190325Coupon_1.png'"
               slot="img"
               class="item-img"
               alt="">
           </b-carousel-slide>
           <b-carousel-slide>
             <img
-              v-lazy="'/img/20180928assistant2_1.png'"
+              v-lazy="'/img/20190325assistant2_1.png'"
               slot="img"
               class="item-img"
               alt="">
@@ -294,7 +294,7 @@
           </b-carousel-slide>
           <b-carousel-slide>
             <img
-              v-lazy="'/img/20180928want1.png'"
+              v-lazy="'/img/20190325want1.png'"
               slot="img"
               class="item-img"
               alt="">

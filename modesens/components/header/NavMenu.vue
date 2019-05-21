@@ -609,6 +609,43 @@
               </div>
             </ul>
           </li>
+          <li
+            class="dropdown"
+            data-ga-enter="navMen-OCCASION--"
+            @mouseenter="changeSecondLevelIndex(6)"
+            @mouseleave="changeSecondLevelIndex(-1)">
+            <a
+              :class="{ borderbottom: secondLevelIndex===6 }"
+              href="javascript:;"
+              data-ga-click="navMen-OCCASION--">{{ $t('nav.OCCASION') }}</a>
+            <ul
+              v-if="secondLevelIndex===6"
+              :style="thirdmenuStyle"
+              class="navbar-thirdmenu">
+              <div class="thirdmenu-wrapper">
+                <div class="menucategory-title">{{ $t('nav.POPULAROCCASION') }}</div>
+                <div
+                  id="occasion-swiper-w"
+                  class="swiper-container occasion-swiper">
+                  <div class="swiper-wrapper">
+                    <div
+                      v-for="(os,i) in $store.state.navHeadJson.w_occasion"
+                      v-if="i < 5"
+                      :key="i"
+                      class="swiper-slide">
+                      <a :href="os[1]">
+                        <div class="img-box"><img
+                          :src="os[2]"
+                          :alt="os[1]"
+                          class="mx-100 mh-100"></div>
+                        <div>{{ os[0] }}</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </li>
         </ul>
       </li>
       <li
@@ -1178,6 +1215,43 @@
                         v-lazy="$store.state.navHeadJson.m_sale[11][1]"
                         :alt="$store.state.navHeadJson.m_sale[11][3]">
                     </a>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li
+            class="dropdown"
+            data-ga-enter="navMen-OCCASION--"
+            @mouseenter="changeSecondLevelIndex(6)"
+            @mouseleave="changeSecondLevelIndex(-1)">
+            <a
+              :class="{ borderbottom: secondLevelIndex===6 }"
+              href="javascript:;"
+              data-ga-click="navMen-OCCASION--">{{ $t('nav.OCCASION') }}</a>
+            <ul
+              v-if="secondLevelIndex===6"
+              :style="thirdmenuStyle"
+              class="navbar-thirdmenu">
+              <div class="thirdmenu-wrapper">
+                <div class="menucategory-title">{{ $t('nav.POPULAROCCASION') }}</div>
+                <div
+                  id="occasion-swiper"
+                  class="swiper-container occasion-swiper">
+                  <div class="swiper-wrapper">
+                    <div
+                      v-for="(os,i) in $store.state.navHeadJson.m_occasion"
+                      v-if="i < 5"
+                      :key="i"
+                      class="swiper-slide">
+                      <a :href="os[1]">
+                        <div class="img-box"><img
+                          :src="os[2]"
+                          :alt="os[1]"
+                          class="mx-100 mh-100"></div>
+                        <div>{{ os[0] }}</div>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
