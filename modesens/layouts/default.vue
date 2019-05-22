@@ -21,10 +21,6 @@
 <script>
 import '~/assets/js/main.js'
 import Header from '~/components/header/Header.vue'
-// import Footer from '~/components/Footer.vue'
-// import Modals from '~/components/Modals.vue'
-// import Top from '~/components/Top.vue'
-// import CustomerService from '~/components/CustomerService.vue'
 import Storefav from '~/components/Storefav.vue'
 export default {
   components: {
