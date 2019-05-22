@@ -579,7 +579,7 @@ export default {
           setTimeout(() => {
             this.$root.$emit('bv::show::modal', 'abtestbassistant')
             this.$cookies.set('modelinkmodal', 2, 1)
-          }, 0)
+          }, 10000)
         } else if (this.$cookies.get('modelinkmodal') != '2') {
           this.$cookies.set('modelinkmodal', 1, 1)
         }
