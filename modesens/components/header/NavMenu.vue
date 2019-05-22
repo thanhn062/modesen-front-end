@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="d-flex nav-pc-menu">
+    <ul class="d-flex nav-pc-menu text-uppercase">
       <li
         class="dropdown"
         data-ga-enter="nav-WOMEN--"
@@ -28,7 +28,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.w_c"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -139,7 +139,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.w_b"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -244,7 +244,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.w_s"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -340,7 +340,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.w_a"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -467,7 +467,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.w_b"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -564,7 +564,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.w_sale"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -622,7 +622,9 @@
               v-if="secondLevelIndex===6"
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
-              <div class="thirdmenu-wrapper">
+              <div
+                v-if="$store.state.navHeadJson"
+                class="thirdmenu-wrapper">
                 <div class="menucategory-title">{{ $t('nav.POPULAROCCASION') }}</div>
                 <div
                   id="occasion-swiper-w"
@@ -675,7 +677,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.m_c"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -780,7 +782,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.m_b"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -879,7 +881,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.m_s"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -972,7 +974,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.m_a"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper">
                 <div class="category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
@@ -1176,7 +1178,7 @@
               :style="thirdmenuStyle"
               class="navbar-thirdmenu">
               <div
-                v-if="$store.state.navHeadJson.m_sale"
+                v-if="$store.state.navHeadJson"
                 class="d-flex justify-content-between thirdmenu-wrapper sale-wrapper">
                 <div class="sale-category-box">
                   <div class="menucategory-title">{{ $t('nav.SHOPBYCATEGORY') }}</div>
