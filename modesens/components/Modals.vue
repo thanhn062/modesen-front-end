@@ -169,7 +169,7 @@
       ok-only
       @ok="signout">
       <img
-        v-lazy="gconfig.LOGO_ASSISTRANT_ZH"
+        v-lazy="$i18n.locale === 'zh' ? gconfig.LOGO_ASSISTRANT_ZH : gconfig.LOGO_ASSISTRANT_EN"
         :alt="$t('common.ModeSens')">
     </b-modal>
     <!-- notice -->
@@ -508,6 +508,7 @@ export default {
       this.$cookies.remove(this.gconfig.LSUID)
       this.$cookies.remove(this.gconfig.SESSIONID)
       this.$store.commit('logout')
+      await this.$axios.post('/accounts/logout/')
       window.open('/', '_self')
     },
     gotoSignup(evt) {

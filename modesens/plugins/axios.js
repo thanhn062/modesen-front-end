@@ -20,6 +20,8 @@ export default function ({ $axios, app }) {
     if (config.method === 'post') {
       config.data = config.data || {}
       config.data.timestamp = new Date().getTime();
+      config.data.csrfmiddlewaretoken = app.$cookies.get('csrftoken');
+      config.data.fromweb = 1;
       config.data = qs.stringify(config.data);
     }
     if (config.method === 'get') {

@@ -330,7 +330,7 @@ export default {
     })
   },
   methods: {
-    i18nCookieChange(country, locale) {
+    async i18nCookieChange(country, locale) {
       let date = new Date()
       this.$cookies.set(this.gconfig.countryKey, country, {
         expires: new Date(date.setDate(date.getDate() + 365)),
@@ -343,6 +343,11 @@ export default {
       // let path = this.switchLocalePath(country, locale)
       // path = path.replace(/\/[a-z]{2}\/[a-z]{2}\//, '/')
       // window.open(path, '_self')
+      let data = {}
+      data.county = country
+      data.language = locale
+      data.next = this.$route.fullPath
+      await this.$axios.post('/setlang/', data)
       window.open(this.$route.fullPath, '_self')
     },
     langChange(val) {
