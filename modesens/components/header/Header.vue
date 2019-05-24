@@ -377,15 +377,17 @@ export default {
         return
       }
       if ($(document).width() > 1199) {
-        $('.search-icon').show()
-        $('.search-input')
-          .stop()
-          .animate({ width: '600px' }, 300, () => {
-            $('.search-input').css({
-              padding: '6px 12px',
-              'box-shadow': '0 3px 10px 1px rgba(0, 0, 0, 0.4)'
+        this.$nextTick(() => {
+          $('.search-icon').show()
+          $('.search-input')
+            .stop()
+            .animate({ width: '600px' }, 300, () => {
+              $('.search-input').css({
+                padding: '6px 12px',
+                'box-shadow': '0 3px 10px 1px rgba(0, 0, 0, 0.4)'
+              })
             })
-          })
+        })
       }
       $('.search-input').focus()
       this.getHint2()
