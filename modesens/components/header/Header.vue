@@ -152,7 +152,7 @@
             <div
               class="search-btn"
               data-ga-click="Header-searchIcon--"
-              @click="openSearchInput">
+              @click.stop="openSearchInput">
               <div class="search-img"/>
               <span class="search-btn-txt">{{ $t('nav.SEARCH') }}</span>
             </div>
@@ -162,6 +162,7 @@
               class="searchbox">
               <input
                 v-model="searchTxt"
+                class="search-input"
                 type="text"
                 @keyup="getHint2">
               <img
@@ -260,7 +261,6 @@
 </template>
 <script>
 import NavMenu from '~/components/header/NavMenu'
-// import NavCategory from '~/components/header/NavCategory'
 import InstallBtn from '~/components/extention/InstallBtn'
 import UserIcon from '~/components/UserIcon'
 export default {
@@ -356,8 +356,8 @@ export default {
       this.hint2Timeout = setTimeout(async () => {
         let { rhints } = await this.$axios.get('/hint2/', { params: data })
         this.searchResult = rhints
+        this.serachInputOpen = true
         if ($(document).width() < 1200) {
-          this.serachInputOpen = true
           $('.searchbox').show()
         }
         this.$nextTick(() => {
@@ -378,17 +378,16 @@ export default {
       }
       if ($(document).width() > 1199) {
         $('.search-icon').show()
-        $('.searchbox input')
+        $('.search-input')
           .stop()
-          .animate({ width: '600px' }, () => {
-            $('.searchbox input').css({
+          .animate({ width: '600px' }, 300, () => {
+            $('.search-input').css({
               padding: '6px 12px',
               'box-shadow': '0 3px 10px 1px rgba(0, 0, 0, 0.4)'
             })
-            this.serachInputOpen = true
           })
       }
-      $('.searchbox input').focus()
+      $('.search-input').focus()
       this.getHint2()
     },
     clickoutside(evt) {
@@ -396,10 +395,10 @@ export default {
         if (this.serachInputOpen === true) {
           this.serachInputOpen = false
           $('.search-icon').hide()
-          $('.searchbox input')
+          $('.search-input')
             .stop()
             .animate({ width: '0' }, function() {
-              $('.searchbox input').css({
+              $('.search-input').css({
                 padding: '0px',
                 'box-shadow': 'none'
               })

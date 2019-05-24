@@ -129,7 +129,7 @@ export const actions = {
         }
       }))
       .catch(e => {
-        console.log(e)
+        console.log('errormessage: ', e)
       })
   },
   loadjjs() {
