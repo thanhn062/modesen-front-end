@@ -171,7 +171,8 @@
     <b-modal
       v-if="!lsuser"
       id="inviteModal"
-      :title="$t('Footer.inviteTitle')">
+      :title="$t('Footer.inviteTitle')"
+      no-stacking>
       <h3>{{ $t('Footer.inviteMsg') }}</h3>
       <div
         slot="modal-footer"
@@ -185,7 +186,8 @@
     <!-- 订阅modal -->
     <b-modal
       ref="emailsubModal"
-      :title="$t('Footer.emailSubTitle')">
+      :title="$t('Footer.emailSubTitle')"
+      no-stacking>
       <div>{{ emailSubStatus ? $t('Footer.emailSubDesc1') : $t('Footer.emailSubDesc0') }}</div>
       <div slot="modal-footer">
         <button
@@ -201,6 +203,7 @@
     <b-modal
       id="app-entrance"
       ref="appentranceModal"
+      no-stacking
       hide-header
       hide-footer>
       <button

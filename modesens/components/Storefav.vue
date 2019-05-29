@@ -7,7 +7,7 @@
     <div
       class="toggle-button"
       status="1"
-      @click="favstoreup(1)">
+      @click="favstoreup2">
       <div class="store-fav-title">{{ $t('Storefav.title') }}</div>
       <div>
         <div class="learnmore">{{ $t('Storefav.LearnMore') }}</div>
@@ -89,9 +89,9 @@ export default {
         }, 1000)
       }
     },
-    favstoreup(currentindex) {
+    favstoreup2() {
       if ($('.toggle-button').attr('status') == -1) {
-        return
+        this.favstoreDown()
       } else {
         this.favstoreUp()
       }
