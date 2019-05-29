@@ -7,6 +7,7 @@
       ref="loginmd"
       hide-header
       hide-footer
+      no-stacking
       style="width: 600px,height: 680px"
       @show="mdLoginshown">
       <button
@@ -21,6 +22,7 @@
     <b-modal
       id="service-modal"
       ref="cuModalCn"
+      no-stacking
       hide-header
       hide-footer>
       <div class="customer_service_head">
@@ -44,6 +46,7 @@
       :title="$t('common.ContactUs')"
       :ok-title="hereHasClick ? $t('common.Submit') : $t('common.Close')"
       ok-only
+      no-stacking
       @ok="contactSubmit"
       @hidden="cumodalHide">
       <div>
@@ -128,6 +131,7 @@
       :title="$t('Footer.feedback')"
       :ok-title="$t('FbModal.Sendmessage')"
       :cancel-title="$t('common.Close')"
+      no-stacking
       @ok="sendFeedback">
       <div>{{ $t('FbModal.desc1') }}</div>
       <br>
@@ -178,6 +182,7 @@
       id="noticeproductmd"
       hide-header
       hide-footer
+      no-stacking
       @shown="showNoticemd">
       <iframe
         width="100%"
@@ -189,6 +194,7 @@
       id="noticeusermd"
       hide-header
       hide-footer
+      no-stacking
       @shown="showNoticemd">
       <iframe
         width="100%"
@@ -201,6 +207,7 @@
       :title="$t('Modals.Pleasesignin')"
       :ok-title="$t('common.SignUp')"
       :cancel-title="$t('common.Login')"
+      no-stacking
       @ok="gotoSignup"
       @cancel="openLoginModal">
       <div style="fontSize: 24px;">{{ $t('Modals.Notamemberyet') }}<span id="spmsg">{{ $t('Modals.JoinModeSens') }}</span></div>
@@ -209,6 +216,7 @@
     <b-modal
       v-if="false"
       id="membershipMd"
+      no-stacking
       hide-header
       hide-footer>
       <button
@@ -223,6 +231,7 @@
       v-if="$store.state.deviceType==='pc'"
       id="abtestbassistant"
       size="lg"
+      no-stacking
       hide-header
       hide-footer>
       <button
@@ -321,6 +330,7 @@
     <b-modal
       id="shmodal"
       :title="$t('Modals.SharewithFriends')"
+      no-stacking
       hide-footer>
       <div class="mshare">
         <span
@@ -369,6 +379,7 @@
       id="qrmodal"
       :title="$t('share.qrCodeShare')"
       hide-footer
+      no-stacking
       @show="share('qr')">
       <img
         src=""
@@ -381,6 +392,7 @@
       :title="$t('Modals.StayInTheKnow')"
       :ok-title="$t('Modals.DonLetMeMissOut')"
       :cancel-title="$t('Modals.AskMeLater')"
+      no-stacking
       @ok="requestFCMToken">
       <div class="desc">{{ $t('Modals.fcdesc') }}</div>
     </b-modal>
