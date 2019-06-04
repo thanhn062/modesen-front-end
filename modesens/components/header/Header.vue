@@ -427,7 +427,7 @@ export default {
       }
     },
     async getwishlisturl() {
-      if (wishlisturl) return
+      if (this.wishlisturl) return
       let data = {}
       data.csuid = this.$store.state.lsuser.uid
       data.offset = 0
