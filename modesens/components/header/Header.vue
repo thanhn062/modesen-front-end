@@ -116,7 +116,8 @@
                 v-if="lsuser"
                 variant="link"
                 right
-                no-caret>
+                no-caret
+                @show="getwishlisturl">
                 <template slot="text">
                   <UserIcon
                     :url="lsuser.icon"
@@ -125,8 +126,9 @@
                     style="width:20px;height:20px;"/>
                 </template>
                 <b-dropdown-item href="/account/loyalty/">{{ $t('nav.MyLoyalty') }}</b-dropdown-item>
-                <b-dropdown-item :href="'/u/'+lsuser.username">{{ $t('nav.MyCloset') }}</b-dropdown-item>
+                <b-dropdown-item :href="'/u/'+lsuser.username+'/'">{{ $t('nav.MyCloset') }}</b-dropdown-item>
                 <b-dropdown-item href="/dashboard/">{{ $t('nav.MyDashboard') }}</b-dropdown-item>
+                <b-dropdown-item :href="'/collection/'+wishlisturl+'/'">{{ $t('nav.WISHLIST') }}</b-dropdown-item>
                 <b-dropdown-item href="/coupons/">{{ $t('nav.MyOffers') }}</b-dropdown-item>
                 <b-dropdown-item href="/account/orders/">{{ $t('nav.MyOrders') }}</b-dropdown-item>
                 <b-dropdown-item href="/invite/">{{ $t('common.InviteFriends') }}</b-dropdown-item>
@@ -291,7 +293,8 @@ export default {
       has_notice_m: true,
       showNavCategory: false,
       showSearchBox: false,
-      extentionCheckInstalled: false
+      extentionCheckInstalled: false,
+      wishlisturl: ''
     }
   },
   computed: {
@@ -421,6 +424,15 @@ export default {
           this.serachInputOpen = false
         }
       }
+    },
+    async getwishlisturl() {
+      if (this.wishlisturl) return
+      let data = {}
+      data.csuid = this.$store.state.lsuser.uid
+      data.offset = 0
+	    data.amount = 5
+      let queryCollectionsClosetDone = await this.$axios.post('/collection/querycollectionscloset/', data)
+      this.wishlisturl = queryCollectionsClosetDone.collections[0].curl
     }
   }
 }

@@ -76,9 +76,9 @@ export default {
         this.$cookies.set(this.gconfig.ACCESS_TOKEN, obj.access_token)
         let userdata = await this.$axios.post('/accounts/profile/get/', {})
         if (userdata.lsuser) {
-          commit('login')
-          commit('setLsuser', userdata.lsuser)
-          this.$cookies.set(gconfig.LSUID, userdata.lsuser.uid)
+          this.$store.commit('login')
+          this.$store.commit('setLsuser', userdata.lsuser)
+          this.$cookies.set(this.gconfig.LSUID, userdata.lsuser.uid)
         }
         window.parent.open(this.$route.query.next, '_self')
       }
