@@ -116,7 +116,8 @@
                 v-if="lsuser"
                 variant="link"
                 right
-                no-caret>
+                no-caret
+                @show="getwishlisturl">
                 <template slot="text">
                   <UserIcon
                     :url="lsuser.icon"
@@ -127,6 +128,7 @@
                 <b-dropdown-item href="/account/loyalty/">{{ $t('nav.MyLoyalty') }}</b-dropdown-item>
                 <b-dropdown-item :href="'/u/'+lsuser.username">{{ $t('nav.MyCloset') }}</b-dropdown-item>
                 <b-dropdown-item href="/dashboard/">{{ $t('nav.MyDashboard') }}</b-dropdown-item>
+                <b-dropdown-item href="/dashboard/">{{ $t('nav.WISHLIST') }}</b-dropdown-item>
                 <b-dropdown-item href="/coupons/">{{ $t('nav.MyOffers') }}</b-dropdown-item>
                 <b-dropdown-item href="/account/orders/">{{ $t('nav.MyOrders') }}</b-dropdown-item>
                 <b-dropdown-item href="/invite/">{{ $t('common.InviteFriends') }}</b-dropdown-item>
@@ -291,7 +293,8 @@ export default {
       has_notice_m: true,
       showNavCategory: false,
       showSearchBox: false,
-      extentionCheckInstalled: false
+      extentionCheckInstalled: false,
+      haswishlistyrl: false
     }
   },
   computed: {
@@ -328,6 +331,7 @@ export default {
         $('.header').animate({ left: showStatus ? 0 : '80%' })
       })
     })
+    console.log(this.$store.state.lsuser)
   },
   methods: {
     async i18nCookieChange(country, locale) {
@@ -421,6 +425,10 @@ export default {
           this.serachInputOpen = false
         }
       }
+    },
+    async getwishlisturl() {
+      let data = {}
+      // data.csuid = 
     }
   }
 }
