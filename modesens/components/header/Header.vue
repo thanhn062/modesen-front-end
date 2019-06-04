@@ -433,6 +433,7 @@ export default {
       data.offset = 0
 	    data.amount = 5
       let queryCollectionsClosetDone = await this.$axios.post('/collection/querycollectionscloset/', data)
+      console.log(queryCollectionsClosetDone)
       this.wishlisturl = queryCollectionsClosetDone.collections[0].curl
     }
   }
