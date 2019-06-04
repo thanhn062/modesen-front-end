@@ -331,7 +331,6 @@ export default {
         $('.header').animate({ left: showStatus ? 0 : '80%' })
       })
     })
-    console.log(this.$store.state.lsuser)
   },
   methods: {
     async i18nCookieChange(country, locale) {
@@ -433,7 +432,6 @@ export default {
       data.offset = 0
 	    data.amount = 5
       let queryCollectionsClosetDone = await this.$axios.post('/collection/querycollectionscloset/', data)
-      console.log(queryCollectionsClosetDone)
       this.wishlisturl = queryCollectionsClosetDone.collections[0].curl
     }
   }
