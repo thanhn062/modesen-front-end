@@ -9,7 +9,7 @@
       hide-footer
       no-stacking
       style="width: 600px,height: 680px"
-      @shown="mdLoginshown">
+      @show="mdLoginshown">
       <button
         class="close"
         @click="hideLoginModal">x</button>
