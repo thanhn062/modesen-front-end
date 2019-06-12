@@ -2,7 +2,7 @@
   "name": "modesens",
   "version": "1.0.0",
   "description": "ModeSens Frontend Nuxt Project",
-  "author": "Brian",
+  "author": "Thanh",
   "private": true,
   "scripts": {
     "dev": "nuxt",

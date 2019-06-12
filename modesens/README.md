@@ -22,34 +22,7 @@ cd /modesens/modesens-frontend/modesens
 
 npm i
 npm run build
-
-启动(4个进程):
-pm2  start server.json -i 4  
-
-查看实时日志：
-pm2 logs ModeSens
-
-停止：
-pm2 stop all
-
-调试的时候可以直接这样前台起：(先stop调后台进程)
 npm start
-```
-
-
-## nginx modify
-```
-/etc/nginx/conf.d/modesens.conf
-    location /vue/ {
-        proxy_pass http://127.0.0.1:3000/;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Forwarded-Host $host;
-    }
-    location ~ /(_nuxt|__webpack_hmr)/ {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Forwarded-Host $host;
-    }
 ```
 
 

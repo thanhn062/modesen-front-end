@@ -345,7 +345,7 @@ export default {
       // path = path.replace(/\/[a-z]{2}\/[a-z]{2}\//, '/')
       // window.open(path, '_self')
       let data = {}
-      data.county = country
+      data.country = country
       data.language = locale
       data.next = this.$route.fullPath
       await this.$axios.post('/setlang/', data)
